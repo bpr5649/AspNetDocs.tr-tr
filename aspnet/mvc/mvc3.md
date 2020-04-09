@@ -2,313 +2,313 @@
 uid: mvc/mvc3
 title: ASP.NET MVC 3
 author: rick-anderson
-description: (Nisan 2011 Araçlar güncelleştirmesi dahildir) ASP.NET MVC 3, iyi belirlenen tasarım modelini kullanarak ölçeklenebilir, standartlara dayalı Web uygulamaları oluşturmaya yönelik bir çerçevedir...
+description: (Nisan 2011 Araçları Güncelleştirmesi içerir) ASP.NET MVC 3, köklü tasarım deseni kullanarak ölçeklenebilir, standartlara dayalı web uygulamaları oluşturmak için bir çerçevedir...
 ms.author: riande
 ms.date: 10/05/2010
 ms.assetid: dddc8812-a0bc-49f9-aafb-caf2064c2b8c
 msc.legacyurl: /mvc/mvc3
 msc.type: content
-ms.openlocfilehash: 421a06c89d4dbcb05d4080033813cc6558b7c698
-ms.sourcegitcommit: e7e91932a6e91a63e2e46417626f39d6b244a3ab
+ms.openlocfilehash: 6fe734dc0d0106bb346df154e1e03f97b307567a
+ms.sourcegitcommit: ce28244209db8615bc9bdd576a2e2c88174d318d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/06/2020
-ms.locfileid: "78616412"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80675134"
 ---
 # <a name="aspnet-mvc-3"></a>ASP.NET MVC 3
 
-> *(Nisan 2011 Araçlar güncelleştirmesi dahildir)*
+> *(Nisan 2011 Araçları Güncelleştirmesi içerir)*
 > 
-> ASP.NET MVC 3, iyi kurulan tasarım düzenlerini ve ASP.NET ve .NET Framework gücünü kullanarak ölçeklenebilir, standartlara dayalı Web uygulamaları oluşturmaya yönelik bir çerçevedir.
+> ASP.NET MVC 3, köklü tasarım kalıpları ve ASP.NET ve .NET Framework'ün gücünü kullanarak ölçeklenebilir, standartlara dayalı web uygulamaları oluşturmak için bir çerçevedir.
 > 
-> ASP.NET MVC 2 ile yan yana yüklenir, bu nedenle hemen kullanmaya başlayın!
+> Bu ASP.NET MVC 2 ile yan yana yükler, bu yüzden bugün kullanmaya başlayın!
 > 
-> [Yükleyiciyi buraya](https://go.microsoft.com/fwlink/?LinkID=208140) indirin
+> [Yükleyiciyi buradan](https://microsoft.com/download/details.aspx?id=4211) indirin
 
-## <a name="top-features"></a>Popüler Özellikler
+## <a name="top-features"></a>En İyi Özellikler
 
-- NuGet üzerinden Genişletilebilir tümleşik yapı Iskelesi sistemi
+- NuGet ile genişletilebilir entegre İskele sistemi
 - HTML 5 etkin proje şablonları
-- Yeni Razor Görünüm altyapısı dahil ifade eden görünümler
-- Bağımlılık ekleme ve genel eylem filtreleriyle güçlü kancalar
-- Unobtrusive JavaScript, jQuery doğrulaması ve JSON bağlamasıyla zengin JavaScript desteği
+- Yeni Razor View Engine dahil Etkileyici Görünümler
+- Bağımlılık Enjeksiyonu ve Küresel İşlem Filtreleri ile güçlü kancalar
+- Göze çarpmadan JavaScript, jQuery Doğrulama ve JSON bağlama ile zengin JavaScript desteği
 - *[Aşağıdaki](#overview) tam özellik listesini okuyun*
 
-## <a name="top-links"></a>Üst bağlantılar
+## <a name="top-links"></a>En İyi Linkler
 
-ASP.NET MVC 3 sürümündeki yenilikler
+ASP.NET MVC 3'te Yenilikler
 
-- PHIL Haack: [ASP.NET MVC 3 Yayınlandı](http://haacked.com/archive/2011/01/13/aspnetmvc3-released.aspx)
-- Scott Hanselman: [ASP.net mvc3, WebMatrix, NuGet, IIS Express ve Orchard yayımlandı-bağlamdaki Microsoft Ocak Web yayını](http://www.hanselman.com/blog/ASPNETMVC3WebMatrixNuGetIISExpressAndOrchardReleasedTheMicrosoftJanuaryWebReleaseInContext.aspx)
-- Scott Guthrie: [ASP.NET MVC 3, IIS Express, SQL CE 4, Web grubu çerçevesi, Orchard, WebMatrix 'In duyurusu](https://weblogs.asp.net/scottgu/archive/2011/01/13/announcing-release-of-asp-net-mvc-3-iis-express-sql-ce-4-web-farm-framework-orchard-webmatrix.aspx)
-- [ASP.NET MVC 3 için sürüm notları](../whitepapers/mvc3-release-notes.md)
+- Phil Haack: [ASP.NET MVC 3 Çıktı](http://haacked.com/archive/2011/01/13/aspnetmvc3-released.aspx)
+- Scott Hanselman: [ASP.NET MVC3, WebMatrix, NuGet, IIS Express ve Orchard yayınlandı - Microsoft Ocak Web Yayını Bağlamında](http://www.hanselman.com/blog/ASPNETMVC3WebMatrixNuGetIISExpressAndOrchardReleasedTheMicrosoftJanuaryWebReleaseInContext.aspx)
+- Scott Guthrie: [mvc 3, IIS Express, SQL CE 4, Web Farm Framework, Orchard, WebMatrix ASP.NET yayın Duyurusu](https://weblogs.asp.net/scottgu/archive/2011/01/13/announcing-release-of-asp-net-mvc-3-iis-express-sql-ce-4-web-farm-framework-orchard-webmatrix.aspx)
+- [mvc 3 ASP.NET için Yayın Notları](../whitepapers/mvc3-release-notes.md)
 
-Yükleme ve yardım
+Kurulum ve Yardım
 
-- Web platformu yükleyicisini kullanarak ASP.NET MVC 3 ' ü yükleme [(önerilir)](https://www.microsoft.com/web/handlers/webpi.ashx?command=getinstallerredirect&appid=MVC3)
-- [Yükleyici yürütülebilirini](https://go.microsoft.com/fwlink/?LinkID=208140) kullanarak ASP.NET MVC 3 ' ü yükleme
-- [Visual Studio 11 Geliştirici Önizlemesi için ASP.NET MVC 3](https://go.microsoft.com/fwlink/?LinkID=208140) ' ü yükler
-- [ASP.NET MVC 3 öğreticisine giriş](overview/older-versions/getting-started-with-aspnet-mvc3/cs/intro-to-aspnet-mvc-3.md) okuyun
-- [Forumlarda](https://forums.asp.net/1146.aspx) yardım alın ve ASP.NET MVC 3 ' ü tartışın
+- [Web Platform Yükleyicisini](https://www.microsoft.com/web/handlers/webpi.ashx?command=getinstallerredirect&appid=MVC3) kullanarak MVC 3 ASP.NET yükleyin (önerilir)
+- [Yükleyici çalıştırılabilir](https://go.microsoft.com/fwlink/?LinkID=208140) kullanarak mvc 3 ASP.NET yükleyin
+- [Visual Studio 11 Geliştirici Önizleme için MVC 3 ASP.NET](https://go.microsoft.com/fwlink/?LinkID=208140) yükleyin
+- [MVC 3 öğretici ASP.NET Intro](overview/older-versions/getting-started-with-aspnet-mvc3/cs/intro-to-aspnet-mvc-3.md) okuyun
+- Yardım alın ve [forumlarda](https://forums.asp.net/1146.aspx) MVC 3 ASP.NET tartışın
 
 <a id="overview"></a>
-## <a name="aspnet-mvc-3-overview"></a>ASP.NET MVC 3 genel bakış
+## <a name="aspnet-mvc-3-overview"></a>ASP.NET MVC 3 Genel Bakış
 
-ASP.NET MVC 3, kodunuzu basitleştirecek ve daha derin genişletilebilirlik sağlayan harika özellikler ekleyerek ASP.NET MVC 1 ve 2 üzerinde derlemeler. Bu konuda, bu yayında yer alan yeni özelliklerin birçoğu aşağıdaki bölümlere göre düzenlenmiş bir genel bakış sunulmaktadır:
+ASP.NET MVC 3, hem kodunuzu basitleştiren hem de daha derin genişletilebilirlik sağlayan harika özellikler ekleyerek mvc 1 ve 2'ASP.NET oluşturur. Bu konu, aşağıdaki bölümlerde düzenlenen bu sürümde yer alan yeni özelliklerin birçoğuna genel bir bakış sağlar:
 
-- [MvcScaffold tümleştirmesiyle Genişletilebilir yapı Iskelesi](#BM_MvcScaffolding)
+- [MvcScaffold entegrasyonu ile Genişletilebilir İskele](#BM_MvcScaffolding)
 - [HTML 5 etkin proje şablonları](#BM_HTML5)
-- [Razor Görünüm altyapısı](#BM_TheRazorViewEngine)
-- [Birden çok görünüm altyapısı desteği](#BM_Support_for_Multiple_View_Engines)
-- [Denetleyici geliştirmeleri](#BM_Controller_Improvements)
+- [Jilet Görünümü Motoru](#BM_TheRazorViewEngine)
+- [Çoklu Görünüm Motorları için Destek](#BM_Support_for_Multiple_View_Engines)
+- [Denetleyici Geliştirmeleri](#BM_Controller_Improvements)
 - [JavaScript ve Ajax](#BM_JavaScript_and_Ajax_Improvements)
-- [Model doğrulama geliştirmeleri](#BM_Model_Validation_Improvements)
-- [Bağımlılık ekleme geliştirmeleri](#BM_Dependency_Injection_Improvements)
-- [Diğer yeni özellikler](#BM_Other_New_Features)
+- [Model Doğrulama Geliştirmeleri](#BM_Model_Validation_Improvements)
+- [Bağımlılık Enjeksiyon Iyileştirmeler](#BM_Dependency_Injection_Improvements)
+- [Diğer Yeni Özellikler](#BM_Other_New_Features)
 
 <a id="BM_MvcScaffolding"></a>
 
-## <a name="extensible-scaffolding-with-mvcscaffold-integration"></a>MvcScaffold tümleştirmesiyle Genişletilebilir yapı Iskelesi
+## <a name="extensible-scaffolding-with-mvcscaffold-integration"></a>MvcScaffold entegrasyonu ile Genişletilebilir İskele
 
-Yeni yapı Iskelesi sistemi, çerçeveye tamamen yeni başladıysanız ve ne yaptığınızı biliyorsanız ortak geliştirme görevlerini otomatikleştirmek için, üretken bir şekilde kullanmayı ve başlatmayı kolaylaştırır.
+Yeni İskele sistemi, çerçevede tamamen yeniyseniz, hızlı bir şekilde ele alıp verimli bir şekilde kullanmaya başlamanızı ve deneyimliyseniz ve ne yaptığınızı zaten biliyorsanız ortak geliştirme görevlerini otomatikleştirmenizi kolaylaştırır.
 
-Bu, **Mvcscafkatlama**adlı yeni NuGet *scafkatlama* paketi tarafından desteklenir. "Scafkatlama" terimi birçok yazılım teknolojisi tarafından, "sizin düzenleyebileceğiniz ve özelleştirebileceğiniz, yazılımınızın temel bir ana hattını hızla oluşturmak" amacıyla kullanılır. ASP.NET MVC için oluşturmakta olduğumuz yapı iskelesi, çeşitli senaryolarda önemli ölçüde faydalıdır:
+Bu **MvcScaffolding**denilen yeni NuGet *iskele* paketi tarafından desteklenir. "İskele" terimi birçok yazılım teknolojisi tarafından "yazılımınızın daha sonra düzenlenebildiğiniz ve özelleştirebileceğiniz temel bir anahat oluşturma" anlamına gelir. MVC ASP.NET için oluşturduğumuz iskele paketi çeşitli senaryolarda büyük ölçüde yararlıdır:
 
-- **ASP.NET MVC 'yi ilk kez öğreniyor olmanız**nedeniyle, daha sonra gereksinimlerinize göre düzenleyip uyarlayabileceğiniz bazı yararlı, çalışan kodlar elde etmenizi sağlayan bir daha hızlı bir yol sağlar. Bu, size boş bir sayfaya bakmaktan ve nereden başlayabileceğiniz konusunda fikir sahibi olmanın bir bölümünü kaydeder!
-- **ASP.NET MVC 'nin iyi olduğunu biliyorsanız ve** bir nesne ilişkisel Eşleyici, bir görünüm altyapısı, bir test kitaplığı vb. gibi yeni eklenti teknolojisinden de keşfetmeye çalışıyorsanız, bu teknolojinin Oluşturucusu kendisi için de bir yapı iskelesi paketi de oluşturmuş olabilir.
-- Çalışmanız, test armatürleri, dağıtım betikleri veya ihtiyacınız olan herhangi bir başka şey için çıkış yapan özel platformları oluşturabileceğiniz için, **benzer sınıfları veya bazı bir sıralama dosyasını sürekli olarak oluşturma işlemi**içeriyorsa. Takımınızdaki herkes, özel scaffolders da kullanabilir.
+- **MVC'ASP.NET ilk kez öğreniyorsanız,** çünkü size yararlı, çalışma kodu almak için hızlı bir yol sunar, bu da gereksinimlerinize göre edinebilir ve uyarlayabilirsiniz. Bu boş bir sayfaya bakarak ve nereden başlayacağınızı hiçbir fikrim yok travma sizi kurtarır!
+- **MVCASP.NET iyi biliyorsanız ve şimdi** nesne ilişkisisel haritalayıcı, görünüm motoru, test kütüphanesi, vb. gibi yeni bir eklenti teknolojisini keşfediyorsanız, çünkü bu teknolojinin yaratıcısı da bunun için bir iskele paketi oluşturmuş olabilir.
+- **Çalışmanız sürekli olarak benzer sınıflar veya bir tür dosya oluşturmayı**içeriyorsa, test fikstürlerini, dağıtım komut dosyalarını veya ihtiyacınız olan her şeyi oluşturan özel iskele klasörleri oluşturabilirsiniz. Ekibinizdeki herkes özel iskelelerinizi de kullanabilir.
 
-Mvcscafkatlama içindeki diğer özellikler şunlardır:
+MvcScaffolding diğer özellikleri şunlardır:
 
-- Ve VB C# projeleri için destek
+- C# ve VB projeleri için destek
 - Razor ve ASPX görünüm motorları için destek
-- ASP.NET MVC alanlarında yapı iskelesi destekler ve özel görünüm düzenlerini/asıllarını kullanarak
-- T4 şablonlarını düzenleyerek çıktıyı kolay bir şekilde özelleştirebilirsiniz
-- Özel PowerShell mantığını ve özel T4 şablonlarını kullanarak tamamen yeni platformları ekleyebilirsiniz. Bunlar (ve verdiğiniz özel parametreler) konsol sekmesi tamamlama listesinde otomatik olarak görünür.
-- Farklı teknolojiler için ek platformları içeren NuGet paketleri alabilirsiniz (örneğin, şimdilik LINQ to SQL bir kavram kanıtı vardır) ve bunları birlikte karıştırarak ve onlarla eşleştirebilirsiniz
+- ASP.NET MVC alanlarına iskeleyi destekler ve özel görüş düzenleri/ustaları kullanır
+- T4 şablonlarını düzenleyerek çıktıyı kolayca özelleştirebilirsiniz
+- Özel PowerShell mantığı ve özel T4 şablonları kullanarak tamamen yeni iskeleler ekleyebilirsiniz. Bunlar (ve bunları vermiş olduğunuz özel parametreler) otomatik olarak konsol sekmesi tamamlama listesinde görünür.
+- Farklı teknolojiler için ek iskeleler içeren NuGet paketlerini alabilir (örneğin, LINQ'dan SQL'e bir kanıtı nız vardır) ve bunları karıştırıp eşleştirebilirsiniz.
 
-ASP.NET MVC 3 araçları güncelleştirmesi, bu yapı iskelesi sistemi için harika Visual Studio desteği içerir, örneğin:
+mvc 3 Tools Güncellemesi ASP.NET, aşağıdakiler gibi bu iskele sistemi için harika Visual Studio desteği içerir:
 
-- Denetleyici Ekle Iletişim kutusu artık oluşturma, okuma, güncelleştirme ve silme denetleyicisi eylemlerinin ve ilgili görünümlerin tam otomatik yapı iskelesi desteklemektedir. Varsayılan olarak, bu yapı Code First EF kullanarak veri erişim kodunu yasaklıyor.
-- Denetleyici Ekle Iletişim kutusu, *Mvcscafkatlama*gibi NuGet paketleri aracılığıyla *Genişletilebilir yapı iskelesi* destekler. Bu, özel dolandırıcıların iletişim kutusuna takmayı sağlar ve bu sayede Nhazırda bekleme veya hatta JET gibi diğer veri erişimi teknolojileri için daha fazla
+- Denetleyici Ekle İletişim Kutusu artık denetleyici eylemleri ve ilgili görünümleri oluştur, oku, güncelleştir ve sil'in tam otomatik iskelesini destekler. Varsayılan olarak, bu iskele önce EF Code First'i kullanarak veri erişim kodunu kullanır.
+- Denetleyici Dialog ekle, *MvcScaffolding*gibi NuGet paketleri aracılığıyla *genişletilebilir iskeleleri* destekler. Bu, bu kadar eğimli iseniz ODBCDirect ile NHibernate ve hatta JET gibi diğer veri erişim teknolojileri için iskeleler oluşturmak için izin verecek iletişim içine özel iskeletakmanızı sağlar!
 
-ASP.NET MVC 3 ' teki yapı Iskelesi hakkında daha fazla bilgi için aşağıdaki kaynaklara bakın:
+MVC 3'teki İskele ASP.NET hakkında daha fazla bilgi için aşağıdaki kaynaklara bakın:
 
-- Steve Sanderson 'in aşağıdakiler de dahil olmak üzere post serisi: 
+- Steve Sanderson sonrası serisi, dahil: 
 
-    1. [Giriş: Mvcscafkatlama paketiyle ASP.NET MVC 3 projenizi dolandırın](http://blog.stevensanderson.com/2011/01/13/scaffold-your-aspnet-mvc-3-project-with-the-mvcscaffolding-package/)
-    2. [Standart kullanım: tipik kullanım örnekleri ve seçenekleri](http://blog.stevensanderson.com/2011/01/13/mvcscaffolding-standard-usage/)
-    3. [Bire çok Ilişkileri](http://blog.stevensanderson.com/2011/01/28/mvcscaffolding-one-to-many-relationships/)
-    4. [Yapı iskelesi eylemleri ve birim testleri](http://blog.stevensanderson.com/2011/03/28/scaffolding-actions-and-unit-tests-with-mvcscaffolding/)
+    1. [Giriş: MvcScaffolding paketi ile ASP.NET MVC 3 proje iskele](http://blog.stevensanderson.com/2011/01/13/scaffold-your-aspnet-mvc-3-project-with-the-mvcscaffolding-package/)
+    2. [Standart kullanım: Tipik kullanım örnekleri ve seçenekleri](http://blog.stevensanderson.com/2011/01/13/mvcscaffolding-standard-usage/)
+    3. [Bir-Çok İlişkiler](http://blog.stevensanderson.com/2011/01/28/mvcscaffolding-one-to-many-relationships/)
+    4. [İskele İşlemleri ve Birim Testleri](http://blog.stevensanderson.com/2011/03/28/scaffolding-actions-and-unit-tests-with-mvcscaffolding/)
     5. [T4 şablonlarını geçersiz kılma](http://blog.stevensanderson.com/2011/04/06/mvcscaffolding-overriding-the-t4-templates/)
-    6. [Bu Gönderi: özel platformları oluşturma](http://blog.stevensanderson.com/2011/04/07/mvcscaffolding-creating-custom-scaffolders/)
-- Scott Hanselman 'ın PDC 2010 oturumundan gönderisini [Microsoft "adlandırılmamış Web sevgi paketi" ile bir blog oluşturma](http://www.hanselman.com/blog/PDC10BuildingABlogWithMicrosoftUnnamedPackageOfWebLove.aspx)
-- [MVC 3 sürüm notları](../whitepapers/mvc3-release-notes.md)
+    6. [Bu yazı: Özel iskele oluşturma](http://blog.stevensanderson.com/2011/04/07/mvcscaffolding-creating-custom-scaffolders/)
+- Scott Hanselman sonrası onun PDC 2010 oturumu [Microsoft "Web Love İsimsiz Paketi" ile bir blog Oluşturma](http://www.hanselman.com/blog/PDC10BuildingABlogWithMicrosoftUnnamedPackageOfWebLove.aspx)
+- [MVC 3 Yayın Notları](../whitepapers/mvc3-release-notes.md)
 
 <a id="BM_HTML5"></a>
 
-## <a name="html-5-project-templates"></a>HTML 5 proje şablonları
+## <a name="html-5-project-templates"></a>HTML 5 Proje Şablonları
 
-Yeni proje iletişim kutusu, proje şablonlarının HTML 5 sürümlerini etkinleştir onay kutusunu içerir. Bu şablonlar, alt düzey tarayıcılarda HTML 5 ve CSS 3 için uyumluluk desteği sağlamak üzere Modernizr 1,7 ' den faydalanır.
+Yeni Proje iletişim kutusu, proje şablonlarının HTML 5 sürümlerini etkinleştiren bir onay kutusu içerir. Bu şablonlar, alt düzey tarayıcılarda HTML 5 ve CSS 3 için uyumluluk desteği sağlamak için Modernizr 1.7'den yararlanır.
 
 <a id="BM_TheRazorViewEngine"></a>
 
-## <a name="the-razor-view-engine"></a>Razor Görünüm altyapısı
+## <a name="the-razor-view-engine"></a>Jilet Görünümü Motoru
 
-ASP.NET MVC 3, aşağıdaki avantajları sunan Razor adlı yeni bir görünüm altyapısıyla birlikte gelir:
+ASP.NET MVC 3 aşağıdaki avantajları sunan Razor adlı yeni bir görünüm motoru ile birlikte gelir:
 
-- Razor söz dizimi, en az sayıda tuş vuruşu gerektiren temiz ve kısa bir sayıdır.
-- Razor, ve Visual Basic gibi C# var olan dillere bağlı olduğundan, kısmen öğrenilmesi kolaydır.
-- Visual Studio, Razor söz dizimi için IntelliSense ve kod renklendirme içerir.
-- Razor görünümleri, uygulamayı çalıştırmanız veya bir Web sunucusu başlatmanız gerekmeden birim test edilebilir.
+- Jilet sözdizimi temiz ve özlüdür ve en az sayıda tuş vuruşu gerektirir.
+- Razor'ı öğrenmek kolaydır, çünkü kısmen C# ve Visual Basic gibi mevcut dillere dayanır.
+- Visual Studio, IntelliSense ve Razor sözdizimi için kod renklendirmesini içerir.
+- Razor görünümleri, uygulamayı çalıştırmanız veya bir web sunucusu başlatmanız gerekmeden birim test edilebilir.
 
-Bazı yeni Razor özellikleri şunları içerir:
+Bazı yeni Razor özellikleri şunlardır:
 
-- görünüme geçirmekte olan türü belirtmek için `@model` sözdizimi.
-- `@* *@` açıklama sözdizimi.
-- Tüm site için varsayılan değerleri (örneğin `layoutpage`) belirtme özelliği.
-- HTML kodlaması olmadan metin görüntülemek için `Html.Raw` yöntemi.
-- Birden çok görünüm arasında kod paylaşma desteği ( *\_viewstart. cshtml* veya *\_viewstart. vbhtml* dosyaları).
+- `@model`görünüme geçirilen türü belirtmek için sözdizimi.
+- `@* *@`yorum sözdizimi.
+- Tüm site için varsayılanları `layoutpage`(örneğin) bir kez belirtme yeteneği.
+- HTML `Html.Raw` kodlamaolmadan metin görüntüleme yöntemi.
+- Birden çok görünüm*\_(viewstart.cshtml veya* * \_viewstart.vbhtml* dosyaları) arasında kod paylaşımı desteği.
 
-Razor, aşağıdakiler gibi yeni HTML Yardımcıları da içerir:
+Razor, aşağıdakiler gibi yeni HTML yardımcıları da içerir:
 
-- `Chart`. ASP.NET 4 ' te grafik denetimiyle aynı özellikleri sunan bir grafik oluşturur.
-- `WebGrid`. Sayfalama ve sıralama işlevselliğiyle birlikte bir veri kılavuzunu işler.
-- `Crypto`. Doğru şekilde sallanmış ve karma hale getirilmiş parolalar oluşturmak için karma algoritmaları kullanır.
-- `WebImage`. Bir görüntü oluşturur.
+- `Chart`. ASP.NET 4'teki grafik denetimiyle aynı özellikleri sunan bir grafik işler.
+- `WebGrid`. Sayfalama ve sıralama işleviyle birlikte bir veri ızgarası işler.
+- `Crypto`. Düzgün tuzlanmış ve karma parolalar oluşturmak için karma algoritmalar kullanır.
+- `WebImage`. Görüntü işler.
 - `WebMail`. Bir e-posta iletisi gönderir.
 
 Razor hakkında daha fazla bilgi için aşağıdaki kaynaklara bakın:
 
-- [Scott Guthrie 'nin blog gönderisi Razor tanıtımı](https://weblogs.asp.net/scottgu/archive/2010/07/02/introducing-razor.aspx)
-- [Scott Guthrie 'nin blog gönderisi @model anahtar sözcüğünü tanıtma](https://weblogs.asp.net/scottgu/archive/2010/10/19/asp-net-mvc-3-new-model-directive-support-in-razor.aspx)
-- [Scott Guthrie 'nin, Razor düzenlerini tanıtma blog gönderisi](https://weblogs.asp.net/scottgu/archive/2010/10/22/asp-net-mvc-3-layouts.aspx)
-- [Razor API hızlı başvurusu](../web-pages/overview/api-reference/asp-net-web-pages-api-reference.md)
-- [MVC 3 sürüm notları](../whitepapers/mvc3-release-notes.md)
+- [Scott Guthrie's blog yazısı Razor tanıtan](https://weblogs.asp.net/scottgu/archive/2010/07/02/introducing-razor.aspx)
+- [Scott Guthrie's blog yazısı @model anahtar kelime tanıtan](https://weblogs.asp.net/scottgu/archive/2010/10/19/asp-net-mvc-3-new-model-directive-support-in-razor.aspx)
+- [Scott Guthrie's blog yazısı Razor düzenleri tanıtan](https://weblogs.asp.net/scottgu/archive/2010/10/22/asp-net-mvc-3-layouts.aspx)
+- [Razor API Hızlı Başvuru](../web-pages/overview/api-reference/asp-net-web-pages-api-reference.md)
+- [MVC 3 Yayın Notları](../whitepapers/mvc3-release-notes.md)
 
 <a id="BM_Support_for_Multiple_View_Engines"></a>
 
-## <a name="support-for-multiple-view-engines"></a>Birden çok görünüm altyapısı desteği
+## <a name="support-for-multiple-view-engines"></a>Çoklu Görünüm Motorları için Destek
 
-ASP.NET MVC 3 ' teki **Görünüm Ekle** iletişim kutusu, birlikte çalışmak istediğiniz görünüm altyapısını seçmenizi sağlar ve **Yeni proje** iletişim kutusu, bir proje için varsayılan görünüm altyapısını belirtmenize olanak tanır. Web Forms View Engine (ASPX), Razor veya [Spark](http://sparkviewengine.com/), [NHaml](https://code.google.com/p/nhaml/)veya [ndocgo](http://ndjango.org/)gibi bir açık kaynaklı görünüm altyapısını seçebilirsiniz.
+MVC 3'ASP.NET **Görünüm Ekle** iletişim kutusu, çalışmak istediğiniz görünüm altyapısını seçmenize olanak tanır ve **Yeni Proje** iletişim kutusu bir proje için varsayılan görünüm altyapısını belirtmenizi sağlar. Web Formları görünüm motoru (ASPX), Razor veya [Spark,](http://sparkviewengine.com/) [NHaml](https://code.google.com/p/nhaml/)veya [NDjango](http://ndjango.org/)gibi açık kaynak kodlu bir görünüm motorseçebilirsiniz.
 
 <a id="BM_Controller_Improvements"></a>
 
-## <a name="controller-improvements"></a>Denetleyici geliştirmeleri
+## <a name="controller-improvements"></a>Denetleyici Geliştirmeleri
 
-### <a name="global-action-filters"></a>Genel eylem filtreleri
+### <a name="global-action-filters"></a>Genel İşlem Filtreleri
 
-Bazen bir eylem yöntemi çalıştırılmadan önce ya da bir eylem yöntemi çalıştıktan sonra mantığı gerçekleştirmek isteyebilirsiniz. Bunu desteklemek için, ASP.NET MVC 2 tarafından sunulan eylem filtrelerini izleyin. Eylem filtreleri, belirli denetleyici eylem yöntemlerine eylem öncesi ve eylem sonrası davranışı eklemek için bildirime dayalı bir yol sağlayan özel özniteliklerdir. Ancak bazı durumlarda, tüm eylem yöntemleri için geçerli olan eylem öncesi veya eylem sonrası davranışı belirtmek isteyebilirsiniz. MVC 3, genel filtreleri `GlobalFilters` koleksiyonuna ekleyerek belirtmenize olanak tanır. Genel eylem filtreleri hakkında daha fazla bilgi için aşağıdaki kaynaklara bakın:
+Bazen bir eylem yöntemi çalıştırmadan önce veya bir eylem yöntemi çalıştırdıktan sonra mantık gerçekleştirmek istersiniz. Bunu desteklemek için, mvc 2 ASP.NET işlem filtreleri sağladı. Eylem filtreleri, belirli denetleyici eylem yöntemlerine eylem öncesi ve eylem sonrası davranış eklemek için bildirimsel araçlar sağlayan özel özniteliklerdir. Ancak, bazı durumlarda tüm eylem yöntemleri için geçerli olan eylem öncesi veya eylem sonrası davranışı belirtmek isteyebilirsiniz. MVC 3, `GlobalFilters` genel filtreleri koleksiyona ekleyerek belirtmenizi sağlar. Genel eylem filtreleri hakkında daha fazla bilgi için aşağıdaki kaynaklara bakın:
 
-- [Scott Guthrie 'nin Web günlüğü MVC 3 Preview](https://weblogs.asp.net/scottgu/archive/2010/07/27/introducing-asp-net-mvc-3-preview-1.aspx)
-- [ASP.NET MVC 'de filtreleme](https://msdn.microsoft.com/library/gg416513(VS.98).aspx)
+- [MVC 3 Önizleme Scott Guthrie günlüğü](https://weblogs.asp.net/scottgu/archive/2010/07/27/introducing-asp-net-mvc-3-preview-1.aspx)
+- [mvc ASP.NET filtreleme](https://msdn.microsoft.com/library/gg416513(VS.98).aspx)
 
-### <a name="new-viewbag-property"></a>Yeni "ViewBag" özelliği
+### <a name="new-viewbag-property"></a>Yeni "ViewBag" Özelliği
 
-MVC 2 denetleyicileri, verileri bir görünüm şablonuna, geç bağlanan bir sözlük API 'SI kullanarak geçirmenize olanak sağlayan bir `ViewData` özelliğini destekler. MVC 3 ' te, aynı amaca ulaşmak için `ViewBag` özelliği ile biraz daha basit bir sözdizimi de kullanabilirsiniz. Örneğin, `ViewData["Message"]="text"`yazmak yerine `ViewBag.Message="text"`yazabilirsiniz. `ViewBag` özelliğini kullanmak için kesin olarak belirlenmiş bir sınıf tanımlamanız gerekmez. Dinamik bir özellik olduğundan, bunun yerine yalnızca özellikleri alabilir veya ayarlayabilirsiniz ve çalışma zamanında dinamik olarak çözümlenir. Dahili olarak, `ViewBag` Özellikler `ViewData` sözlüğünde ad/değer çiftleri olarak depolanır. (Note: MVC 3 ' ün çoğu yayın öncesi sürümünde, `ViewBag` özelliği `ViewModel` özelliği olarak adlandırılmıştı.)
+MVC 2 denetleyicileri, geç bağlanmış sözlük `ViewData` API'sini kullanarak verileri görünüm şablonuna aktarmanızı sağlayan bir özelliği destekler. MVC 3'te, aynı amacı gerçekleştirmek için `ViewBag` özelliği yle birlikte biraz daha basit sözdizimini de kullanabilirsiniz. Örneğin, yazmak `ViewData["Message"]="text"`yerine, yazabilirsiniz. `ViewBag.Message="text"` Özelliği kullanmak için güçlü bir şekilde yazılan sınıfları `ViewBag` tanımlamanız gerekmez. Dinamik bir özellik olduğundan, bunun yerine sadece alabilirsiniz veya özellikleri ayarlamak ve çalışma zamanında dinamik olarak bunları çözecektir. Dahili `ViewBag` olarak, özellikler `ViewData` sözlükte ad/değer çiftleri olarak depolanır. (Not: MVC 3'ün en ön `ViewBag` sürüm sürümlerinde, `ViewModel` özellik özellik olarak adlandırılmıştır.)
 
 ### <a name="new-actionresult-types"></a>Yeni "ActionResult" türleri
 
-Aşağıdaki `ActionResult` türleri ve ilgili yardımcı yöntemler MVC 3 ' te yenidir veya geliştirilmiştir:
+Aşağıdaki `ActionResult` türleri ve ilgili yardımcı yöntemleri yeni veya MVC 3 geliştirilmiştir:
 
-- [Httpnotfoundresult](https://msdn.microsoft.com/library/system.web.mvc.httpnotfoundresult(v=vs.98).aspx). İstemciye bir 404 HTTP durum kodu döndürür.
-- [RedirectResult](https://msdn.microsoft.com/library/system.web.mvc.redirectresult(v=VS.98).aspx). Boole parametresine bağlı olarak geçici yeniden yönlendirme (HTTP 302 durum kodu) veya kalıcı yeniden yönlendirme (HTTP 301 durum kodu) döndürür. Bu değişiklik ile birlikte, [Denetleyici](https://msdn.microsoft.com/library/system.web.mvc.controller(v=VS.98).aspx) sınıfı artık kalıcı yeniden yönlendirmeler gerçekleştirmek için üç yönteme sahiptir: `RedirectPermanent`, `RedirectToRoutePermanent`ve `RedirectToActionPermanent`. Bu yöntemler, `Permanent` özelliği `true`olarak ayarlanan bir `RedirectResult` örneğini döndürür.
-- [Httpstatuscoderesult](https://msdn.microsoft.com/library/system.web.mvc.httpstatuscoderesult(v=VS.98).aspx). Kullanıcı tarafından belirtilen HTTP durum kodunu döndürür.
+- [httpnotfoundresult](https://msdn.microsoft.com/library/system.web.mvc.httpnotfoundresult(v=vs.98).aspx). İstemciye 404 HTTP durum kodu verir.
+- [RedirectResult](https://msdn.microsoft.com/library/system.web.mvc.redirectresult(v=VS.98).aspx). Boolean parametreye bağlı olarak geçici bir yeniden yönlendirme (HTTP 302 durum kodu) veya kalıcı bir yeniden yönlendirme (HTTP 301 durum kodu) verir. Bu değişiklikle birlikte, [Denetleyici](https://msdn.microsoft.com/library/system.web.mvc.controller(v=VS.98).aspx) sınıfının artık kalıcı yönlendirmeler `RedirectPermanent`gerçekleştirmek `RedirectToRoutePermanent`için `RedirectToActionPermanent`üç yöntemi vardır: , , ve . Bu yöntemler, `RedirectResult` `Permanent` özellik olarak ayarlanmış `true`bir örneğini döndürün.
+- [httpstatuscoderesult](https://msdn.microsoft.com/library/system.web.mvc.httpstatuscoderesult(v=VS.98).aspx). Kullanıcı tarafından belirtilen bir HTTP durum kodunu döndürür.
 
 <a id="BM_JavaScript_and_Ajax_Improvements"></a>
 
-## <a name="javascript-and-ajax-improvements"></a>JavaScript ve Ajax geliştirmeleri
+## <a name="javascript-and-ajax-improvements"></a>JavaScript ve Ajax Geliştirmeleri
 
-Varsayılan olarak, MVC 3 ' teki Ajax ve doğrulama yardımcıları unobtrusive JavaScript yaklaşımını kullanır. Unobtrusive JavaScript, ekleme satır içi JavaScript 'ı HTML olarak önler. Bu, HTML 'nizi daha küçük ve daha az karışık hale getirir ve JavaScript kitaplıklarını değiştirmeyi veya özelleştirmeyi kolaylaştırır. MVC 3 ' teki doğrulama yardımcıları, varsayılan olarak `jQueryValidate` eklentisini de kullanır. MVC 2 davranışını istiyorsanız, *Web. config* dosya ayarını kullanarak unobtrusive JavaScript 'i devre dışı bırakabilirsiniz. JavaScript ve Ajax iyileştirmeleri hakkında daha fazla bilgi için aşağıdaki kaynaklara bakın:
+Varsayılan olarak, Ajax ve Doğrulama yardımcıları MVC 3 göze batan bir JavaScript yaklaşımı kullanın. Göze batmaz JavaScript, HTML'ye satır içinde JavaScript enjekte etmekten kaçınır. Bu, HTML'nizi daha küçük ve daha az karmaşık hale getirir ve JavaScript kitaplıklarını değiştirmeyi veya özelleştirmeyi kolaylaştırır. MVC 3'teki doğrulama yardımcıları `jQueryValidate` da eklentiyi varsayılan olarak kullanır. MVC 2 davranışı istiyorsanız, *bir web.config* dosya ayarını kullanarak göze batmaz JavaScript'i devre dışı kullanabilirsiniz. JavaScript ve Ajax geliştirmeleri hakkında daha fazla bilgi için aşağıdaki kaynaklara bakın:
 
-- [Vimüpit sitede JavaScript 'i kaldırmak için temel giriş](http://en.wikipedia.org/wiki/Unobtrusive_JavaScript)
-- [Atacan Solson 's unobtrusive JavaScript gönderisi](http://bradwilson.typepad.com/blog/2010/10/mvc3-unobtrusive-ajax.html)
-- [Atacan Solson 'un unobtrusive JavaScript doğrulama gönderisi](http://bradwilson.typepad.com/blog/2010/10/mvc3-unobtrusive-validation.html)
-- [Razor ve unobtrusive JavaScript Ile MVC 3 uygulaması oluşturma](overview/older-versions/creating-a-mvc-3-application-with-razor-and-unobtrusive-javascript.md) (ASP.net sitesinde öğretici)
-- [MVC 3 sürüm notları](../whitepapers/mvc3-release-notes.md)
+- [Vikipedi sitesinde göze batmaz JavaScript temel giriş](http://en.wikipedia.org/wiki/Unobtrusive_JavaScript)
+- [Brad Wilson's Unobtrusive JavaScript Post](http://bradwilson.typepad.com/blog/2010/10/mvc3-unobtrusive-ajax.html)
+- [Brad Wilson'S Unobtrusive JavaScript Doğrulama Post](http://bradwilson.typepad.com/blog/2010/10/mvc3-unobtrusive-validation.html)
+- [Jilet ve Göze batmaz JavaScript ile Bir MVC 3 Uygulama oluşturma](overview/older-versions/creating-a-mvc-3-application-with-razor-and-unobtrusive-javascript.md) (ASP.NET sitesinde öğretici)
+- [MVC 3 Yayın Notları](../whitepapers/mvc3-release-notes.md)
 
-### <a name="client-side-validation-enabled-by-default"></a>Varsayılan olarak etkin istemci tarafı doğrulaması
+### <a name="client-side-validation-enabled-by-default"></a>Varsayılan Olarak İstemci Tarafı Doğrulama
 
-MVC 'nin önceki sürümlerinde, istemci tarafı doğrulamayı etkinleştirmek için bir görünümden `Html.EnableClientValidation` yöntemi açıkça çağırmanız gerekir. MVC 3 ' te, istemci tarafı doğrulaması varsayılan olarak etkinleştirildiğinden bu artık gerekli değildir. ( *Web. config* dosyasındaki bir ayarı kullanarak bunu devre dışı bırakabilirsiniz.)
+MVC'nin önceki sürümlerinde, istemci tarafı `Html.EnableClientValidation` doğrulaması etkinleştirmek için yöntemi açıkça bir görünümden aramanız gerekir. MVC 3'te istemci tarafı doğrulaması varsayılan olarak etkinleştirildiğinden artık bu gerekli değildir. (Bunu *web.config* dosyasındaki bir ayarı kullanarak devre dışı kullanabilirsiniz.)
 
-İstemci tarafı doğrulamanın çalışması için, sitenizde uygun jQuery ve jQuery doğrulama kitaplıklarına başvurmanız gerekir. Bu kitaplıkları kendi sunucunuzda barındırabilir veya Microsoft veya Google 'dan CDNs gibi bir Content Delivery Network (CDN) ile başvurabilirsiniz.
+İstemci tarafı doğrulamanın işe yaraması için, sitenizdeki uygun jQuery ve jQuery Doğrulama kitaplıklarına başvurmanız gerekir. Bu kitaplıkları kendi sunucunuzda barındırabilir veya Microsoft veya Google'ın CDN'leri gibi bir içerik dağıtım ağınızdan (CDN) başvuruyapabilirsiniz.
 
-### <a name="remote-validator"></a>Uzak Doğrulayıcı
+### <a name="remote-validator"></a>Uzaktan Doğrulayıcı
 
-ASP.NET MVC 3, jQuery doğrulama eklentisinin uzak Doğrulayıcı desteğinden yararlanmanızı sağlayan yeni [Remoteattribute](https://msdn.microsoft.com/library/system.web.mvc.remoteattribute(v=VS.98).aspx) sınıfını destekler. Bu, istemci tarafı doğrulama kitaplığının yalnızca sunucu tarafında yapılabilen doğrulama mantığını gerçekleştirmek üzere sunucuda tanımladığınız özel bir yöntemi otomatik olarak çağırmasını sağlar.
+ASP.NET MVC 3, jQuery Doğrulama eklentisinin uzaktan doğrulayıcı desteğinden yararlanmanızı sağlayan yeni [RemoteAttribute](https://msdn.microsoft.com/library/system.web.mvc.remoteattribute(v=VS.98).aspx) sınıfını destekler. Bu, istemci tarafı doğrulama kitaplığı, yalnızca sunucu tarafında yapılabilecek doğrulama mantığını gerçekleştirmek için sunucuda tanımladığınız özel bir yöntemi otomatik olarak aramasını sağlar.
 
-Aşağıdaki örnekte `Remote` özniteliği, istemci doğrulamasının `UserName` alanını doğrulamak için `UsersController` sınıfında `UserNameAvailable` adlı bir eylemi çağıracağını belirtir.
+Aşağıdaki `Remote` örnekte, öznitelik istemci doğrulama `UserNameAvailable` `UsersController` `UserName` alanı doğrulamak için sınıfta adlı bir eylem çağıracağını belirtir.
 
 [!code-csharp[Main](mvc3/samples/sample1.cs)]
 
-Aşağıdaki örnek, ilgili denetleyiciyi gösterir.
+Aşağıdaki örnekte karşılık gelen denetleyici gösterilmektedir.
 
 [!code-csharp[Main](mvc3/samples/sample2.cs)]
 
-`Remote` özniteliğini kullanma hakkında daha fazla bilgi için, MSDN Kitaplığı 'nda [nasıl yapılır: ASP.NET MVC 'de uzaktan doğrulamayı uygulama](https://msdn.microsoft.com/library/gg508808(VS.98).aspx) bölümüne bakın.
+Öznitelik nasıl kullanılacağı `Remote` hakkında daha fazla bilgi için bkz: MSDN kitaplığında [mvc ASP.NET Uzaktan Doğrulama uygulama.](https://msdn.microsoft.com/library/gg508808(VS.98).aspx)
 
-### <a name="json-binding-support"></a>JSON bağlama desteği
+### <a name="json-binding-support"></a>JSON Bağlayıcı Destek
 
-ASP.NET MVC 3, eylem yöntemlerinin JSON kodlu verileri almasına ve model olarak bunu eylem-yöntem parametrelerine bağlamasını sağlayan yerleşik JSON bağlama desteğini içerir. Bu özellik, istemci şablonları ve veri bağlama dahil olmak üzere senaryolar için yararlıdır. (İstemci şablonları, istemci üzerinde yürütülen şablonları kullanarak tek bir veri öğesini veya veri öğeleri kümesini biçimlendirebilir ve görüntülemenizi sağlar.) MVC 3, JSON verilerini gönderen ve alan sunucudaki eylem yöntemleriyle istemci şablonlarına kolayca bağlanmanızı sağlar. JSON bağlama desteği hakkında daha fazla bilgi için [Scott Guthrie 'nın MVC 3 Preview blog gönderisinin](https://weblogs.asp.net/scottgu/archive/2010/07/27/introducing-asp-net-mvc-3-preview-1.aspx) **JavaScript ve Ajax iyileştirmeleri** bölümüne bakın.
+ASP.NET MVC 3, eylem yöntemlerinin JSON kodlanmış verileri almasını ve eylem yöntemi parametrelerine model bağlamasını sağlayan yerleşik JSON bağlama desteğini içerir. Bu özellik, istemci şablonları ve veri bağlama içeren senaryolarda yararlıdır. (İstemci şablonları, istemcide çalıştırılabilen şablonları kullanarak tek bir veri öğesini veya veri öğesi kümesini biçimlendirmenizi ve görüntülemenizi sağlar.) MVC 3, JSON verilerini gönderen ve alan sunucudaki eylem yöntemleriyle istemci şablonlarını kolayca bağlamanızı sağlar. JSON bağlayıcı destek hakkında daha fazla bilgi için, [Scott Guthrie's MVC 3 Önizleme blog yazısı](https://weblogs.asp.net/scottgu/archive/2010/07/27/introducing-asp-net-mvc-3-preview-1.aspx) **JavaScript ve AJAX Geliştirmeler** bölümüne bakın.
 
 <a id="BM_Model_Validation_Improvements"></a>
 
-## <a name="model-validation-improvements"></a>Model doğrulama geliştirmeleri
+## <a name="model-validation-improvements"></a>Model Doğrulama Geliştirmeleri
 
-### <a name="dataannotations-metadata-attributes"></a>"Dataaçıklamalarda" meta veri öznitelikleri
+### <a name="dataannotations-metadata-attributes"></a>"DataAnnotations" Meta veri öznitelikleri
 
-ASP.NET MVC 3, `DisplayAttribute`gibi `DataAnnotations` meta veri özniteliklerini destekler.
+ASP.NET MVC `DataAnnotations` 3 gibi `DisplayAttribute`meta veri özniteliklerini destekler.
 
-### <a name="validationattribute-class"></a>"ValidationAttribute" sınıfı
+### <a name="validationattribute-class"></a>"DoğrulamaÖznitelik" Sınıfı
 
-`ValidationAttribute` sınıfı, geçerli doğrulama bağlamı hakkında, hangi nesnenin Doğrulanmakta olduğu gibi daha fazla bilgi sağlayan yeni bir `IsValid` aşırı yüklemesini desteklemek için .NET Framework 4 ' te geliştirilmiştir. Bu, geçerli değeri modelin başka bir özelliğine göre doğrulayabileceğiniz daha zengin senaryolara izin vermez. Örneğin, yeni `CompareAttribute` özniteliği bir modelin iki özelliğinin değerlerini karşılaştırmanıza imkan tanır. Aşağıdaki örnekte, `ComparePassword` özelliğinin geçerli olması için `Password` alanla eşleşmesi gerekir.
+Sınıf, `ValidationAttribute` geçerli doğrulama bağlamı hakkında hangi `IsValid` nesnenin doğrulandığı gibi daha fazla bilgi sağlayan yeni bir aşırı yükü desteklemek için .NET Framework 4'te geliştirilmiştir. Bu, modelin başka bir özelliğine göre geçerli değeri doğrulayabilirsiniz daha zengin senaryolar sağlar. Örneğin, yeni `CompareAttribute` öznitelik bir modelin iki özelliğinin değerlerini karşılaştırmanızı sağlar. Aşağıdaki örnekte, `ComparePassword` özelliğin geçerli `Password` olabilmesi için alanla eşleşmesi gerekir.
 
 [!code-csharp[Main](mvc3/samples/sample3.cs)]
 
-### <a name="validation-interfaces"></a>Doğrulama arabirimleri
+### <a name="validation-interfaces"></a>Doğrulama Arabirimleri
 
-[IValidatableObject](https://msdn.microsoft.com/library/system.componentmodel.dataannotations.ivalidatableobject.aspx) arabirimi model düzeyinde doğrulama gerçekleştirmenize olanak sağlar ve genel modelin durumuna özgü veya modeldeki iki özellik arasında doğrulama hata iletileri sağlamanıza olanak sağlar. MVC 3 artık model bağlama sırasında `IValidatableObject` arabiriminden hata alıyor ve yerleşik HTML form yardımcıları kullanarak bir görünüm içindeki etkilenen alanları otomatik olarak işaretler veya vurgular.
+[IValidatableObject](https://msdn.microsoft.com/library/system.componentmodel.dataannotations.ivalidatableobject.aspx) arabirimi, model düzeyinde doğrulama gerçekleştirmenize olanak tanır ve genel modelin durumuna özgü doğrulama hatası iletileri veya model içindeki iki özellik arasında sağlamanızı sağlar. MVC 3 şimdi model `IValidatableObject` bağlama zaman arabirimden hataları alır ve otomatik olarak bayraklar veya yerleşik HTML formu yardımcıları kullanarak bir görünüm içinde etkilenen alanları vurgulamaktadır.
 
-[Ilientvalidatable](https://msdn.microsoft.com/library/system.web.mvc.iclientvalidatable(v=VS.98).aspx) arabirimi, doğrulayıcının istemci doğrulaması için desteğe sahip olup olmadığına BAKıLMAKSıZıN ASP.NET MVC 'nin çalışma zamanında bulmasını sağlar. Bu arabirim, çeşitli doğrulama çerçeveleri ile tümleştirilebilecek şekilde tasarlanmıştır.
+[IClientValidatable](https://msdn.microsoft.com/library/system.web.mvc.iclientvalidatable(v=VS.98).aspx) arabirimi, ASP.NET MVC'nin bir doğrulayıcının istemci doğrulama desteğine sahip olup olmadığını çalışma zamanında keşfetmesini sağlar. Bu arabirim, çeşitli doğrulama çerçeveleriyle tümleşik olacak şekilde tasarlanmıştır.
 
-Doğrulama arabirimleri hakkında daha fazla bilgi için [Scott Guthrie 'nın MVC 3 Preview blog gönderisinin](https://weblogs.asp.net/scottgu/archive/2010/07/27/introducing-asp-net-mvc-3-preview-1.aspx) **model doğrulama iyileştirmeleri** bölümüne bakın. (Ancak, blogdaki "ıvalidateobject" başvurusunun "IValidatableObject" olması gerektiğini unutmayın.)
+Doğrulama arabirimleri hakkında daha fazla bilgi için Scott [Guthrie'nin MVC 3 Önizleme blog yazısının](https://weblogs.asp.net/scottgu/archive/2010/07/27/introducing-asp-net-mvc-3-preview-1.aspx) **Model Doğrulama Geliştirmeleri** bölümüne bakın. (Ancak, blogdaki "IValidateObject" için başvuru "IValidatableObject" olması gerektiğini unutmayın.)
 
 <a id="BM_Dependency_Injection_Improvements"></a>
 
-## <a name="dependency-injection-improvements"></a>Bağımlılık ekleme geliştirmeleri
+## <a name="dependency-injection-improvements"></a>Bağımlılık Enjeksiyon Iyileştirmeler
 
-ASP.NET MVC 3, bağımlılık ekleme (dı) uygulamak ve bağımlılık ekleme veya denetim (ıOC) kapsayıcıları ile tümleştirme için daha iyi destek sağlar. Şu alanlara dı desteği eklenmiştir:
+ASP.NET MVC 3 Bağımlılık Enjeksiyonu (DI) uygulamak ve Bağımlılık Enjeksiyonu veya Kontrol Ters (IOC) kapları ile entegre için daha iyi destek sağlar. DI desteği aşağıdaki alanlarda eklenmiştir:
 
-- Denetleyiciler (kayıt ve ekleme Controller Factory, ekleme denetleyicileri).
-- Görünümler (kayıt ve ekleme görünüm motorları, ekleme bağımlılıklar görüntüleme sayfalarına).
-- Eylem filtreleri (bulma ve ekleme filtreleri).
-- Model ciltleri (kayıt ve ekleme).
-- Model doğrulama sağlayıcıları (kayıt ve ekleme).
-- Model meta veri sağlayıcıları (kayıt ve ekleme).
-- Değer sağlayıcıları (kayıt ve ekleme).
+- Denetleyiciler (kayıt ve enjekte kontrolörleri, enjekte kontrolörleri).
+- Görünümler (görünüm motorlarını kaydetme ve enjekte etme, görünüm sayfalarına bağımlılıkenjekte etme).
+- İşlem filtreleri (filtreleri bulma ve enjekte etme).
+- Model bağlayıcıları (kayıt ve enjekte).
+- Model doğrulama sağlayıcıları (kayıt ve enjekte etme).
+- Meta veri sağlayıcılarını (kayıt ve enjekte etme) modelle.
+- Değer sağlayıcılar (kayıt ve enjekte etme).
 
-MVC 3, [ortak hizmet bulucu](https://github.com/unitycontainer/commonservicelocator) kitaplığını ve bu kitaplığın `IServiceLocator` arabirimini destekleyen tüm dı kapsayıcısını destekler. Ayrıca, dı çerçevelerini tümleştirmeyi kolaylaştıran yeni bir `IDependencyResolver` arabirimini destekler.
+MVC [3, Ortak Hizmet Bulucu](https://github.com/unitycontainer/commonservicelocator) kitaplığını ve bu kitaplığın `IServiceLocator` arabirimini destekleyen herhangi bir DI kapsayıcısını destekler. Ayrıca, DI `IDependencyResolver` çerçevelerinin tümleştirilen kolaylaşmasını sağlayan yeni bir arabirimi de destekler.
 
-MVC 3 ' teki DI hakkında daha fazla bilgi için aşağıdaki kaynaklara bakın:
+MVC 3'teki DI hakkında daha fazla bilgi için aşağıdaki kaynaklara bakın:
 
-- [Atacan Solson 'ın hizmet konumundaki blog gönderilerinin serisi](http://bradwilson.typepad.com/blog/2010/07/service-location-pt1-introduction.html)
-- [MVC 3 sürüm notları](../whitepapers/mvc3-release-notes.md)
+- [Brad Wilson'ın Hizmet Yeri'ndeki blog gönderileri serisi](http://bradwilson.typepad.com/blog/2010/07/service-location-pt1-introduction.html)
+- [MVC 3 Yayın Notları](../whitepapers/mvc3-release-notes.md)
 
 <a id="BM_Other_New_Features"></a>
 
-## <a name="other-new-features"></a>Diğer yeni özellikler
+## <a name="other-new-features"></a>Diğer Yeni Özellikler
 
-### <a name="nuget-integration"></a>NuGet tümleştirmesi
+### <a name="nuget-integration"></a>NuGet Entegrasyonu
 
-ASP.NET MVC 3, kurulumunun bir parçası olarak NuGet 'yi otomatik olarak yükleyip etkinleştirmektedir. NuGet, projelerinizde .NET kitaplıklarını ve araçları bulmayı, yüklemeyi ve kullanmayı kolaylaştıran ücretsiz bir açık kaynaklı paket yöneticisidir. Tüm Visual Studio proje türleriyle (ASP.NET Web Forms ve ASP.NET MVC dahil) birlikte çalışmaktadır.
+ASP.NET MVC 3, kurulumunun bir parçası olarak NuGet'i otomatik olarak yükler ve etkinleştirirken. NuGet, projelerinizde .NET kitaplıklarını ve araçlarını bulmayı, yüklemeyi ve kullanmayı kolaylaştıran ücretsiz bir açık kaynak paket yöneticisidir. Tüm Visual Studio proje türleri (ASP.NET Web Formları ve ASP.NET MVC dahil) ile çalışır.
 
-NuGet, açık kaynak projeleri (örneğin, moq, Nhazırda beklet, Neklemesine, StructureMap, NUnit, WINR, Rhinomokıs ve ELMAH gibi projeler) kullanan geliştiricilere, kitaplıklarını paketlemek ve çevrimiçi bir galeride kaydetmek için olanak sağlar. Daha sonra, paketi bulmak ve üzerinde çalıştıkları projelere yüklemek için bu kitaplıkların birini kullanmak isteyen .NET geliştiricileri daha kolay olur.
+NuGet, açık kaynak projeleri (örneğin, Moq, NHibernate, Ninject, StructureMap, NUnit, Windsor, RhinoMocks ve Elmah gibi projeler) koruyan geliştiricilerin kitaplıklarını paketlemelerine ve çevrimiçi bir galeriye kaydettirmelerine olanak tanır. Paketi bulmak ve üzerinde çalıştıkları projelere yüklemek için bu kitaplıklardan birini kullanmak isteyen .NET geliştiricileri için daha kolaydır.
 
-ASP.NET 3 Araçlar güncelleştirmesi sayesinde proje şablonları, önceden yüklenmiş olan JavaScript kitaplıklarını, NuGet aracılığıyla güncelleştirilebilir. Entity Framework Code First, bir NuGet paketi olarak da önceden yüklenir.
+ASP.NET 3 Tools Update ile proje şablonları, Önceden yüklenmiş NuGet paketlerini JavaScript kitaplıklarını içerir, böylece NuGet üzerinden güncellenebilir. Varlık Çerçeve Kodu İlk de bir NuGet paketi olarak önceden yüklenir.
 
-NuGet hakkında daha fazla bilgi için bkz. [NuGet belgeleri](https://docs.microsoft.com/nuget/).
+NuGet hakkında daha fazla bilgi için [NuGet belgelerine](https://docs.microsoft.com/nuget/)bakın.
 
-### <a name="partial-page-output-caching"></a>Kısmi sayfa çıkışı önbelleğe alma
+### <a name="partial-page-output-caching"></a>Kısmi Sayfa Çıkış Önbelleğe Alma
 
-ASP.NET MVC, sürüm 1 ' den bu yana tam sayfa yanıtlarının çıkış önbelleğini destekliyordu. MVC 3 Ayrıca, bir yanıtın bölgelerini veya parçalarını kolayca önbelleğe almanıza olanak tanıyan kısmi sayfa çıkışı önbelleğe almayı da destekler. Önbelleğe alma hakkında daha fazla bilgi için [MVC 3 sürüm adayındaki Scott Guthrie 'nin blog gönderisine](https://weblogs.asp.net/scottgu/archive/2010/11/09/announcing-the-asp-net-mvc-3-release-candidate.aspx) ve [MVC 3 sürüm notlarındaki](../whitepapers/mvc3-release-notes.md) **alt eylem çıktısı önbelleğe alma** **bölümüne bakın** .
+ASP.NET MVC, sürüm 1'den bu yana tam sayfa yanıtlarının önbelleğe alınmış çıkışını desteklemiştir. MVC 3 ayrıca, bölgeleri veya yanıt parçalarını kolayca önbelleğe almanızı sağlayan kısmi sayfa çıkış önbelleğe almanızı da destekler. Önbelleğe alma hakkında daha fazla bilgi için, MVC 3 sürüm adayı ve [MVC 3 Sürüm Notları](../whitepapers/mvc3-release-notes.md) **Çocuk Eylem Çıkış Önbelleğe alma** bölümünde Scott [Guthrie's blog yazısı](https://weblogs.asp.net/scottgu/archive/2010/11/09/announcing-the-asp-net-mvc-3-release-candidate.aspx) Kısmi Sayfa Çıkış **Önbelleğe alma** bölümüne bakın.
 
-### <a name="granular-control-over-request-validation"></a>Istek doğrulaması üzerinde ayrıntılı denetim
+### <a name="granular-control-over-request-validation"></a>İstek Doğrulama üzerinde taneli denetim
 
-ASP.NET MVC, XSS ve HTML ekleme saldırılarına karşı korumaya otomatik olarak yardımcı olan yerleşik istek doğrulamaya sahiptir. Ancak bazen, kullanıcıların HTML içeriği (örneğin, blog girişlerinde veya CMS içeriğinde) göndermenize izin vermek gibi istek doğrulamasını açıkça devre dışı bırakmak isteyebilirsiniz. Artık model bağlama sırasında özellik başına temelinde istek doğrulamayı devre dışı bırakmak için modellere veya modellerdeki bir [Allowwhtml](https://msdn.microsoft.com/library/system.web.mvc.allowhtmlattribute(v=VS.98).aspx) özniteliği ekleyebilirsiniz. İstek doğrulama hakkında daha fazla bilgi için aşağıdaki kaynaklara bakın:
+ASP.NET MVC, XSS ve HTML enjeksiyon saldırılarına karşı otomatik olarak korunmaya yardımcı olan yerleşik istek doğrulamasına sahiptir. Ancak, bazen kullanıcıların HTML içeriği yayınlamasına izin vermek gibi (örneğin, blog girişlerinde veya CMS içeriğinde) istek doğrulamasını açıkça devre dışı bırakmak istersiniz. Artık model bağlama sırasında her mülk için istek doğrulamasını devre dışı bırakmaamaçlı modellere [AllowHtml](https://msdn.microsoft.com/library/system.web.mvc.allowhtmlattribute(v=VS.98).aspx) özniteliği ekleyebilirsiniz. İstek doğrulaması hakkında daha fazla bilgi için aşağıdaki kaynaklara bakın:
 
-- [Scott Guthrie 'nın MVC 3 sürüm Candidate 'teki blog gönderisine ait](https://weblogs.asp.net/scottgu/archive/2010/11/09/announcing-the-asp-net-mvc-3-release-candidate.aspx) **unobtrusive JavaScript ve doğrulama** bölümü.
-- [MVC 3 sürüm notları](../whitepapers/mvc3-release-notes.md)
+- [MVC 3 sürüm adayı Scott Guthrie's blog yazısı](https://weblogs.asp.net/scottgu/archive/2010/11/09/announcing-the-asp-net-mvc-3-release-candidate.aspx) **Unobtrusive JavaScript ve Doğrulama** bölümü .
+- [MVC 3 Yayın Notları](../whitepapers/mvc3-release-notes.md)
 
-### <a name="extensible-new-project-dialog-box"></a>Genişletilebilir "yeni proje" Iletişim kutusu
+### <a name="extensible-new-project-dialog-box"></a>Genişletilebilir "Yeni Proje" İletişim Kutusu
 
-ASP.NET MVC 3 ' te, **Yeni proje** iletişim kutusuna proje şablonları, görünüm motorları ve birim testi proje çerçeveleri ekleyebilirsiniz.
+MVC 3 ASP.NET **yeni proje** iletişim kutusuna proje şablonları, görünüm motorları ve birim test proje çerçeveleri ekleyebilirsiniz.
 
-### <a name="template-scaffolding-improvements"></a>Şablon yapı Iskelesi Iyileştirmeleri
+### <a name="template-scaffolding-improvements"></a>Şablon İskele Geliştirmeleri
 
-ASP.NET MVC 3 yapı iskelesi şablonları, modellerdeki birincil anahtar özellikleri tanımlamayı ve bunları daha önceki MVC sürümleriyle uygun şekilde işlemeyi daha iyi bir şekilde işler. (Örneğin, yapı iskelesi şablonları artık birincil anahtarın düzenlenebilir form alanı olarak scaklesi olmadığından emin olur.)
+ASP.NET MVC 3 iskele şablonları, modellerdeki birincil anahtar özelliklerini belirleme ve bunları MVC'nin önceki sürümlerine göre uygun şekilde işleme konusunda daha iyi bir iş yapar. (Örneğin, iskele şablonları artık birincil anahtarın kullanılabilir form alanı olarak İskele oluşturmadığından emin olun.)
 
-Varsayılan olarak, oluşturma ve düzenleme yapı ve düzenleme artık `Html.TextBoxFor` Yardımcısı yerine `Html.EditorFor` Yardımcısı 'nı kullanır. Bu, **Görünüm Ekle** iletişim kutusu bir görünüm oluşturduğunda veri ek açıklaması öznitelikleri biçimindeki modeldeki meta veriler için desteği geliştirir.
+Varsayılan olarak, Oluştur ve Düzenlediği İskeleleri artık `Html.EditorFor` yardımcı yerine `Html.TextBoxFor` yardımcıyı kullanır. Bu, **Görünüm Ekle** iletişim kutusu bir görünüm oluşturduğunda, modeldeki meta veriler için veri ek açıklama öznitelikleri şeklindeki desteği artırır.
 
-### <a name="new-overloads-for-htmllabelfor-and-htmllabelformodel"></a>"HTML. LabelFor" ve "HTML. LabelForModel" için yeni aşırı yüklemeler
+### <a name="new-overloads-for-htmllabelfor-and-htmllabelformodel"></a>"Html.LabelFor" ve "Html.LabelForModel" için yeni aşırı yüklemeler
 
-`LabelFor` ve `LabelForModel` yardımcı yöntemleri için yeni yöntem aşırı yüklemeleri eklendi. Yeni aşırı yüklemeler etiket metnini belirtmenize veya geçersiz kılmanızı sağlar.
+Yeni yöntem aşırı yüklemeleri `LabelFor` ve `LabelForModel` yardımcı yöntemler için eklenmiştir. Yeni aşırı yüklemeler, etiket metnini belirtmenize veya geçersiz kılmanıza olanak tanır.
 
-### <a name="sessionless-controller-support"></a>Oturumsuz denetleyici desteği
+### <a name="sessionless-controller-support"></a>Oturumsuz Denetleyici Desteği
 
-ASP.NET MVC 3 ' te, bir denetleyici sınıfının oturum durumunu kullanmasını isteyip istemediğinizi belirtebilir ve gerekiyorsa, oturum durumunun okuma/yazma veya salt okuma olması gerekip gerekmediğini belirtebilirsiniz. Oturumsuz denetleyici desteği hakkında daha fazla bilgi için bkz. [MVC 3 sürüm notları](../whitepapers/mvc3-release-notes.md).
+MVC 3ASP.NET oturum durumunu kullanmak için bir denetleyici sınıfı isteyip istemediğinizi ve eğer öyleyse oturum durumunun okunması/yazması mı yoksa salt okunur mu gerektiğini belirtebilirsiniz. Oturumsuz denetleyici desteği hakkında daha fazla bilgi için [MVC 3 Sürüm Notları'na](../whitepapers/mvc3-release-notes.md)bakın.
 
-### <a name="new-additionalmetadataattribute-class"></a>Yeni "AdditionalMetadataAttribute" sınıfı
+### <a name="new-additionalmetadataattribute-class"></a>Yeni "EkMetadataAttribute" Sınıfı
 
-Bir model özelliği için `ModelMetadata.AdditionalValues` sözlüğünü doldurmak üzere [AdditionalMetadata](https://msdn.microsoft.com/library/system.web.mvc.additionalmetadataattribute(v=VS.98).aspx) özniteliğini kullanabilirsiniz. Örneğin, bir görünüm modelinin yalnızca bir yöneticiye gösterilmesi gereken bir özelliği varsa, aşağıdaki örnekte gösterildiği gibi bu özelliğe açıklama ekleyebilirsiniz:
+Bir model özelliği için `ModelMetadata.AdditionalValues` sözlüğü doldurmak için [EkMetaveri](https://msdn.microsoft.com/library/system.web.mvc.additionalmetadataattribute(v=VS.98).aspx) özniteliğini kullanabilirsiniz. Örneğin, bir görünüm modelinde yalnızca bir yöneticiye görüntülenmesi gereken bir özellik varsa, bu özelliği aşağıdaki örnekte gösterildiği gibi açıklama ekleyebilirsiniz:
 
 [!code-csharp[Main](mvc3/samples/sample4.cs)]
 
-Bu meta veriler, bir ürün görünümü modeli işlendiğinde herhangi bir görüntü veya düzenleyici şablonu için kullanılabilir hale getirilir. Meta veri bilgilerini yorumlamak en iyisidir.
+Bu meta veriler, bir ürün görünümü modeli işlendiğinde herhangi bir görüntü veya düzenleyici şablonu için kullanılabilir hale getirilir. Meta veri bilgilerini yorumlamak size kalmış.
 
-### <a name="accountcontroller-improvements"></a>AccountController geliştirmeleri
+### <a name="accountcontroller-improvements"></a>AccountController iyileştirmeleri
 
-Internet Proje şablonundaki AccountController önemli ölçüde geliştirildi.
+Internet proje şablonundaki Hesap Denetleyicisi büyük ölçüde geliştirildi.
 
-### <a name="new-intranet-project-template"></a>Yeni Intranet proje şablonu
+### <a name="new-intranet-project-template"></a>Yeni Intranet Proje Şablonu
 
-Windows kimlik doğrulamasına izin veren ve AccountController 'ı kaldıran yeni bir Intranet proje şablonu dahildir.
+Windows Kimlik Doğrulaması'nı etkinleştiren ve Hesap Kontrolörü'nu kaldıran yeni bir Intranet Proje Şablonu dahildir.

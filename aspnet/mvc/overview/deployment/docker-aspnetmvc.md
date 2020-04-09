@@ -1,79 +1,79 @@
 ---
-uid: mvc/overview/deployment/docker
+uid: mvc/overview/deployment/docker-aspnetmvc
 title: ASP.NET MVC Uygulamalarını Windows Kapsayıcılarına Geçirme
-description: Mevcut bir ASP.NET MVC uygulamasını nasıl alabileceğinizi ve Windows Docker kapsayıcısında nasıl çalıştıracağınızı öğrenin
-keywords: Windows kapsayıcıları, Docker, ASP. NET MVC
+description: Varolan bir ASP.NET MVC uygulamasını nasıl alıp Windows Docker Kapsayıcısı'nda çalıştırılamayı öğrenin
+keywords: Windows Kapsayıcılar,Docker,ASP.NET MVC
 author: BillWagner
 ms.author: wiwagn
 ms.date: 12/14/2018
 ms.assetid: c9f1d52c-b4bd-4b5d-b7f9-8f9ceaf778c4
-ms.openlocfilehash: ef184f4256c20e2a66de8fd2d4f8e67f07d9a086
-ms.sourcegitcommit: e7e91932a6e91a63e2e46417626f39d6b244a3ab
+ms.openlocfilehash: 2c3aefab16673f4d4dd28c74319903fbd25a9e7e
+ms.sourcegitcommit: ce28244209db8615bc9bdd576a2e2c88174d318d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/06/2020
-ms.locfileid: "78583631"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80675189"
 ---
 # <a name="migrating-aspnet-mvc-applications-to-windows-containers"></a>ASP.NET MVC Uygulamalarını Windows Kapsayıcılarına Geçirme
 
-Bir Windows kapsayıcısında mevcut .NET Framework tabanlı bir uygulamayı çalıştırmak için uygulamanızda herhangi bir değişiklik yapılması gerekmez. Uygulamanızı bir Windows kapsayıcısında çalıştırmak için uygulamanızı içeren bir Docker görüntüsü oluşturun ve kapsayıcıyı başlatın. Bu konu başlığı altında, var olan bir [ASP.NET MVC uygulamasının](http://www.asp.net/mvc) nasıl yapılacağı ve bir Windows kapsayıcısında nasıl dağıtılacağı açıklanmaktadır.
+Varolan bir .NET Framework tabanlı uygulamayı bir Windows kapsayıcısında çalıştırmak için uygulamanızda herhangi bir değişiklik gerekmez. Uygulamanızı bir Windows kapsayıcısında çalıştırmak için uygulamanızı içeren bir Docker görüntüsü oluşturun ve kapsayıcıyı başlatın. Bu konu, varolan bir [ASP.NET MVC uygulamasının](http://www.asp.net/mvc) nasıl alınıp bir Windows kapsayıcısında dağıtılanın açıklanmaktadır.
 
-Mevcut bir ASP.NET MVC uygulamasıyla başlayın ve ardından Visual Studio 'Yu kullanarak yayımlanmış varlıkları derleyin. Uygulamanızı içeren ve çalıştıran görüntüyü oluşturmak için Docker 'ı kullanırsınız. Bir Windows kapsayıcısında çalışan siteye gözatıp uygulamanın çalıştığını doğrularsınız.
+Varolan bir ASP.NET MVC uygulamasıyla başlarsınız, ardından Visual Studio'yu kullanarak yayımlanmış varlıkları oluşturursunuz. Uygulamanızı içeren ve çalıştıran resmi oluşturmak için Docker'ı kullanırsınız. Windows kapsayıcısında çalışan siteye göz atar ve uygulamanın çalıştığını doğrularsınız.
 
 Bu makale Docker hakkında temel bir anlayışınızın olduğunu varsayar. [Docker’a Genel Bakış](https://docs.docker.com/engine/understanding-docker/) makalesini okuyarak Docker hakkında bilgi edinebilirsiniz.
 
-Bir kapsayıcıda çalıştıracağınız uygulama, soruları rastgele cevapladığı basit bir Web sitesidir. Bu uygulama, kimlik doğrulaması veya veritabanı depolaması olmayan temel bir MVC uygulamasıdır; Web katmanını bir kapsayıcıya taşımaya odaklanmanızı sağlar. Sonraki konularda, Kapsayıcılı uygulamalarda kalıcı depolamayı nasıl taşıyacağınız ve yöneteceğiniz gösterilmektedir.
+Bir kapta çalıştıracağınız uygulama, soruları rasgele yanıtlayan basit bir web sitesidir. Bu uygulama hiçbir kimlik doğrulama veya veritabanı depolama ile temel bir MVC uygulamasıdır; web katmanını bir kapsayıcıya taşımaya odaklanmanızı sağlar. Gelecekteki konular, kapsayıcı laştırılmış uygulamalarda kalıcı depolamanın nasıl taşınacağını ve yöneteceğini gösterir.
 
 Uygulamanızı taşımak şu adımları içerir:
 
-1. [Bir görüntü için varlıklar oluşturmak üzere bir Yayımla görevi oluşturma.](#publish-script)
+1. [Görüntü için varlıkları oluşturmak için bir yayımlama görevi oluşturma.](#publish-script)
 1. [Uygulamanızı çalıştıracak bir Docker görüntüsü oluşturma.](#build-the-image)
-1. [Görüntünüzü çalıştıran bir Docker kapsayıcısı başlatılıyor.](#start-a-container)
-1. [Tarayıcınız kullanılarak uygulama doğrulanıyor.](#verify-in-the-browser)
+1. [Resminizi çalıştıran bir Docker kapsayıcısı başlatma.](#start-a-container)
+1. [Tarayıcınızı kullanarak uygulamayı doğrulama.](#verify-in-the-browser)
 
-[Tamamlanmış uygulama](https://github.com/dotnet/samples/tree/master/framework/docker/MVCRandomAnswerGenerator) GitHub üzerinde.
+[Tamamlanan uygulama](https://github.com/dotnet/samples/tree/master/framework/docker/MVCRandomAnswerGenerator) GitHub'da.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Geliştirme makinesi aşağıdaki yazılıma sahip olmalıdır:
 
-- [Windows 10 yıldönümü güncelleştirmesi](https://www.microsoft.com/software-download/windows10/) (veya üzeri) veya [Windows Server 2016](https://www.microsoft.com/cloud-platform/windows-server) (veya üzeri)
-- [Docker for Windows](https://docs.docker.com/docker-for-windows/) -sürüm kararlı 1.13.0 veya 1,12 beta 26 (veya daha yeni sürümler)
+- [Windows 10 Yıldönümü Güncelleştirmesi](https://www.microsoft.com/software-download/windows10/) (veya üstü) veya [Windows Server 2016](https://www.microsoft.com/cloud-platform/windows-server) (veya daha yüksek)
+- [Docker for Windows](https://docs.docker.com/docker-for-windows/) - sürüm Kararlı 1.13.0 veya 1.12 Beta 26 (veya daha yeni sürümler)
 - [Visual Studio 2017](https://visualstudio.microsoft.com/downloads/?utm_medium=microsoft&utm_source=docs.microsoft.com&utm_campaign=button+cta&utm_content=download+vs2017)
 
 > [!IMPORTANT]
-> Windows Server 2016 kullanıyorsanız [kapsayıcı ana bilgisayar dağıtımı-Windows Server](https://msdn.microsoft.com/virtualization/windowscontainers/deployment/deployment)yönergelerini izleyin.
+> Windows Server 2016 kullanıyorsanız, Kapsayıcı [Ana Bilgisayar Dağıtımı - Windows Server](https://msdn.microsoft.com/virtualization/windowscontainers/deployment/deployment)yönergelerini izleyin.
 
 Docker’ı yükleyip başlattıktan sonra tepsi simgesine sağ tıklayıp **Windows kapsayıcılarına geç** öğesini seçin. Bu işlem, Windows temelinde Docker görüntülerini çalıştırmak için gereklidir. Bu komutun yürütülmesi birkaç saniye sürer:
 
-![Windows kapsayıcısı][windows-container]
+![Windows Kapsayıcı][windows-container]
 
-## <a name="publish-script"></a>Betiği Yayımla
+## <a name="publish-script"></a>Komut dosyası yayımlama
 
-Bir Docker görüntüsüne yüklemeniz gereken tüm varlıkları tek bir yerde toplayın. Uygulamanız için bir yayımlama profili oluşturmak üzere Visual Studio **Publish** komutunu kullanabilirsiniz. Bu profil, bu öğreticide daha sonra hedef yansımanıza kopyaladığınız bir dizin ağacındaki tüm varlıkları yerleştirir.
+Bir Docker görüntüsüne yüklemeniz gereken tüm varlıkları tek bir yerde toplayın. Uygulamanız için bir yayımlama profili oluşturmak için Visual Studio **Publish** komutunu kullanabilirsiniz. Bu profil, daha sonra bu öğreticide hedef resminize kopyaladığınız tüm varlıkları tek bir dizin ağacına koyar.
 
 **Adımları Yayımla**
 
-1. Visual Studio 'da web projesine sağ tıklayın ve **Yayımla**' yı seçin.
-1. **Özel profil düğmesine**tıklayın ve ardından Yöntem olarak **dosya sistemi** ' ni seçin.
-1. Dizini seçin. Kurala göre, indirilen örnek `bin\Release\PublishOutput`kullanır.
+1. Visual Studio'daki web projesine sağ tıklayın ve **Yayımla'yı**seçin.
+1. Özel **profil düğmesini**tıklatın ve ardından yöntem olarak **Dosya Sistemi'ni** seçin.
+1. Dizini seçin. Kurallara göre, indirilen `bin\Release\PublishOutput`örnek kullanır.
 
-![Bağlantıyı Yayımla][publish-connection]
+![Bağlantı Yayımla][publish-connection]
 
-**Ayarlar** sekmesinin **dosya yayımlama seçenekleri** bölümünü açın. **Yayımlama sırasında ön derle**'yi seçin. Bu iyileştirme, Docker kapsayıcısında görünümleri derlediğiniz, önceden derlenmiş görünümleri kopyaladığınızı gösterir.
+**Ayarlar** sekmesinin **Dosya Yayımlama Seçenekleri** bölümünü açın. **Yayımlama sırasında Precompile'yi**seçin. Bu optimizasyon, Docker kapsayıcısında görünümleri derlettiğiniz, önceden derlenmiş görünümleri kopyaladığınız anlamına gelir.
 
-![Yayımlama ayarları][publish-settings]
+![Ayarları Yayımla][publish-settings]
 
-**Yayımla**' ya tıklayın ve Visual Studio gerekli tüm varlıkları hedef klasöre kopyalayacaktır.
+**Yayımla'yı**tıklatın ve Visual Studio gerekli tüm varlıkları hedef klasöre kopyalar.
 
 ## <a name="build-the-image"></a>Görüntü oluşturma
 
-Docker görüntünüzü tanımlamak için *dockerfile* adlı yeni bir dosya oluşturun. *Dockerfile* , son görüntüyü oluşturmak için yönergeler içerir ve tüm temel görüntü adlarını, gerekli bileşenleri, çalıştırmak istediğiniz uygulamayı ve diğer yapılandırma görüntülerini içerir. *Dockerfile* , görüntüyü oluşturan `docker build` komutuna giriştir.
+Docker resminizi tanımlamak için *Dockerfile* adında yeni bir dosya oluşturun. *Dockerfile* son görüntüyü oluşturmak için talimatlar içerir ve herhangi bir temel görüntü adları, gerekli bileşenleri, çalıştırmak istediğiniz uygulama ve diğer yapılandırma görüntüleri içerir. *Dockerfile* görüntüyü oluşturan `docker build` komuta giriştir.
 
-Bu alıştırmada, [Docker Hub 'ında](https://hub.docker.com/r/microsoft/aspnet/)bulunan `microsoft/aspnet` görüntüsünü temel alan bir görüntü oluşturacaksınız.
-Temel görüntü, `microsoft/aspnet`, bir Windows Server görüntüsüdür. Windows Server Core, IIS ve ASP.NET 4.7.2 içerir. Bu görüntüyü kapsayıcıda çalıştırdığınızda, IIS ve yüklenen Web sitelerini otomatik olarak başlatır.
+Bu alıştırma için, Docker `microsoft/aspnet` [Hub'da](https://hub.docker.com/r/microsoft/aspnet/)bulunan görüntüye dayalı bir görüntü oluşturacaksınız.
+Temel görüntü, `microsoft/aspnet`bir Windows Server görüntüsüdür. Windows Server Core, IIS ve 4.7.2 ASP.NET içerir. Bu resmi kapsayıcınızda çalıştırdığınızda, otomatik olarak IIS ve yüklü web siteleri başlatılır.
 
-Görüntünüzü oluşturan Dockerfile şöyle görünür:
+Resminizi oluşturan Dockerfile aşağıdaki gibi görünür:
 
 ```console
 # The `FROM` instruction specifies the base image. You are
@@ -85,69 +85,69 @@ FROM microsoft/aspnet
 COPY ./bin/Release/PublishOutput/ /inetpub/wwwroot
 ```
 
-Bu Dockerfile içinde bir `ENTRYPOINT` komutu yoktur. Gerekli değildir. IIS ile Windows Server çalıştırırken IIS işlemi, ASPNET temel görüntüsünde başlamak üzere yapılandırılmış giriş noktası olur.
+Bu Dockerfile içinde bir `ENTRYPOINT` komutu yoktur. Gerekli değildir. IIS ile Windows Server çalıştırırken, IIS işlemi aspnet temel görüntüde başlamak üzere yapılandırılan giriş noktasıdır.
 
-ASP.NET uygulamanızı çalıştıran görüntüyü oluşturmak için Docker Build komutunu çalıştırın. Bunu yapmak için, projenizin dizininde bir PowerShell penceresi açın ve çözüm dizinine aşağıdaki komutu yazın:
+ASP.NET uygulamanızı çalıştıran görüntüyü oluşturmak için Docker build komutunu çalıştırın. Bunu yapmak için, projenizin dizininde bir PowerShell penceresi açın ve çözüm dizinine aşağıdaki komutu yazın:
 
 ```console
 docker build -t mvcrandomanswers .
 ```
 
-Bu komut, Dockerfile içindeki yönergeleri kullanarak yeni görüntüyü oluşturur ve bu görüntüyü mvcrandomanlar olarak adlandırırın. Bu, temel görüntünün [Docker Hub 'ından](http://hub.docker.com)çekilerek uygulamanızı bu görüntüye ekleyerek içerebilir.
+Bu komut, Dockerfile'nizdeki yönergeleri kullanarak yeni görüntüyü oluşturur ve görüntüyü mvcrandomanswers olarak adlandır (-t etiketleme) verir. Bu, temel görüntüyü [Docker Hub'dan](http://hub.docker.com)çekmeyi ve uygulamanızı bu resme eklemeyi içerebilir.
 
-Komut tamamlandıktan sonra, yeni görüntüyle ilgili bilgileri görmek için `docker images` komutunu çalıştırabilirsiniz:
+Bu komut tamamlandıktan sonra, `docker images` yeni görüntü hakkındaki bilgileri görmek için komutu çalıştırabilirsiniz:
 
 ```console
 REPOSITORY                    TAG                 IMAGE ID            CREATED             SIZE
 mvcrandomanswers              latest              86838648aab6        2 minutes ago       10.1 GB
 ```
 
-GÖRÜNTÜ KIMLIĞI makinenizde farklı olacak. Şimdi uygulamayı çalıştıralım.
+GÖRÜNTÜ Kimliği makinenizde farklı olacaktır. Şimdi, uygulamayı çalıştıralım.
 
 ## <a name="start-a-container"></a>Bir kapsayıcı başlatma
 
-Aşağıdaki `docker run` komutunu yürüterek bir kapsayıcı başlatın:
+Aşağıdaki `docker run` komutu çalıştırarak bir kapsayıcı başlatın:
 
 ```console
 docker run -d --name randomanswers mvcrandomanswers
 ```
 
-`-d` bağımsız değişkeni, Docker 'ın görüntüyü ayrılmış modda başlatmasını söyler. Bu, Docker görüntüsünün geçerli kabuktan kesilen şekilde çalıştığı anlamına gelir.
+Bağımsız `-d` değişken, Docker'a görüntüyü müstakil modda başlatmasını söyler. Bu, Docker görüntüsünün geçerli kabuktan bağlantısının kesildiği anlamına gelir.
 
-Birçok Docker örneğinde, kapsayıcıyı ve ana bilgisayar bağlantı noktalarını eşlemek için-p görebilirsiniz. Varsayılan ASPNET görüntüsü, kapsayıcıyı 80 numaralı bağlantı noktasında dinlemek üzere zaten yapılandırdı ve kullanıma sunar.
+Birçok docker örneğinde, -p konteyner ve ana bağlantı noktaları harita görebilirsiniz. Varsayılan aspnet görüntüsü, konteyneri 80 bağlantı noktasında niçin dinleyecek ve ortaya çıkaracak şekilde yapılandırdı.
 
-`--name randomanswers`, çalışan kapsayıcıya bir ad verir. Çoğu komut içinde kapsayıcı KIMLIĞI yerine bu adı kullanabilirsiniz.
+Çalışan `--name randomanswers` kapsayıcıya bir ad verir. Çoğu komutta kapsayıcı kimliği yerine bu adı kullanabilirsiniz.
 
-`mvcrandomanswers`, başlatılacak görüntünün adıdır.
+Başletmek `mvcrandomanswers` için görüntünün adıdır.
 
 ## <a name="verify-in-the-browser"></a>Tarayıcıda doğrula
 
-Kapsayıcı başlatıldıktan sonra, gösterilen örnekteki `http://localhost` kullanarak çalışan kapsayıcıya bağlanın. URL 'YI tarayıcınıza yazın ve çalışan siteyi görmeniz gerekir.
+Kapsayıcı başladıktan sonra, gösterilen örnekte kullanarak `http://localhost` çalışan kapsayıcıya bağlanın. Bu URL'yi tarayıcınıza yazın ve çalışan siteyi görmeniz gerekir.
 
 > [!NOTE]
-> Bazı VPN veya proxy yazılımları sitenizde geziniyor olabilir.
-> Kapsayıcının çalıştığından emin olmak için bunu geçici olarak devre dışı bırakabilirsiniz.
+> Bazı VPN veya proxy yazılımları sitenizde gezinmenizi engelleyebilir.
+> Kapsayıcınızın çalıştığından emin olmak için geçici olarak devre dışı kullanabilirsiniz.
 
-GitHub 'daki örnek dizin, sizin için bu komutları yürüten bir [PowerShell betiği](https://github.com/dotnet/samples/blob/master/framework/docker/MVCRandomAnswerGenerator/run.ps1) içerir. Bir PowerShell penceresi açın, dizini çözüm dizininiz olarak değiştirin ve şunu yazın:
+GitHub'daki örnek dizini, bu komutları sizin için yürüten bir [PowerShell komut dosyası](https://github.com/dotnet/samples/blob/master/framework/docker/MVCRandomAnswerGenerator/run.ps1) içerir. PowerShell penceresi açın, çözüm dizininizde dizin değiştirin ve yazın:
 
 ```console
 ./run.ps1
 ```
 
-Yukarıdaki komut görüntüyü oluşturur, makinenizde görüntülerin listesini görüntüler ve bir kapsayıcı başlatır.
+Yukarıdaki komut görüntüyü oluşturur, makinenizdeki görüntülerin listesini görüntüler ve bir kapsayıcı başlatır.
 
-Kapsayıcınızı durdurmak için bir `docker stop` komutu verin:
+Kapsayıcınızı durdurmak için `docker stop` bir komut sorun:
 
 ```console
 docker stop randomanswers
 ```
 
-Kapsayıcıyı kaldırmak için bir `docker rm` komutu verin:
+Kapsayıcıyı kaldırmak için `docker rm` bir komut düzenleyin:
 
 ```console
 docker rm randomanswers
 ```
 
-[windows-container]: media/aspnetmvc/SwitchContainer.png "Windows kapsayıcısına geç"
-[publish-connection]: media/aspnetmvc/PublishConnection.png "Dosya sistemine Yayımla"
-[publish-settings]: media/aspnetmvc/PublishSettings.png "Yayımlama ayarları"
+[windows-container]: media/aspnetmvc/SwitchContainer.png "Windows Kapsayıcısına Geçiş"
+[publish-connection]: media/aspnetmvc/PublishConnection.png "Dosya Sistemine Yayımla"
+[publish-settings]: media/aspnetmvc/PublishSettings.png "Ayarları Yayımla"

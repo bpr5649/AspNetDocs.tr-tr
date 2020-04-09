@@ -1,34 +1,34 @@
 ---
 uid: signalr/overview/guide-to-the-api/mapping-users-to-connections
-title: SignalR kullanıcılarını bağlantılarla eşleme | Microsoft Docs
+title: SignalR Kullanıcılarını Bağlantılara Haritalama | Microsoft Dokümanlar
 author: bradygaster
-description: Bu konuda kullanıcılar ve bağlantılarıyla ilgili bilgilerin nasıl saklanacağı gösterilmektedir. Patrick Fleti bu konuyu yazmayı Bu konuda kullanılan yazılım sürümleri...
+description: Bu konu, kullanıcılar ve bağlantıları hakkında nasıl bilgi saklarıkları gösterir. Patrick Fletcher bu konunun yazılmasına yardımcı oldu. Bu konuda kullanılan yazılım sürümleri...
 ms.author: bradyg
 ms.date: 12/30/2014
 ms.assetid: f80c08b1-3f1f-432c-980c-c7b6edeb31b1
 msc.legacyurl: /signalr/overview/guide-to-the-api/mapping-users-to-connections
 msc.type: authoredcontent
 ms.openlocfilehash: d55d40848e1e9d40570850c3552b225235c5e814
-ms.sourcegitcommit: e7e91932a6e91a63e2e46417626f39d6b244a3ab
+ms.sourcegitcommit: ce28244209db8615bc9bdd576a2e2c88174d318d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/06/2020
-ms.locfileid: "78536780"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80676162"
 ---
 # <a name="mapping-signalr-users-to-connections"></a>SignalR Kullanıcılarını Bağlantılarla Eşleme
 
-[Tom FitzMacken](https://github.com/tfitzmac) tarafından
+ yazan: [Tom FitzMacken](https://github.com/tfitzmac)
 
 [!INCLUDE [Consider ASP.NET Core SignalR](~/includes/signalr/signalr-version-disambiguation.md)]
 
-> Bu konuda kullanıcılar ve bağlantılarıyla ilgili bilgilerin nasıl saklanacağı gösterilmektedir.
+> Bu konu, kullanıcılar ve bağlantıları hakkında nasıl bilgi saklarıkları gösterir.
 >
-> Patrick Fleti bu konuyu yazmayı
+> Patrick Fletcher bu konunun yazılmasına yardımcı oldu.
 >
 > ## <a name="software-versions-used-in-this-topic"></a>Bu konuda kullanılan yazılım sürümleri
 >
 >
-> - [Visual Studio 2013](https://my.visualstudio.com/Downloads?q=visual%20studio%202013)
+> - [Görsel Stüdyo 2013](https://my.visualstudio.com/Downloads?q=visual%20studio%202013)
 > - .NET 4.5
 > - SignalR sürüm 2
 >
@@ -36,54 +36,54 @@ ms.locfileid: "78536780"
 >
 > ## <a name="previous-versions-of-this-topic"></a>Bu konunun önceki sürümleri
 >
-> SignalR 'nin önceki sürümleri hakkında daha fazla bilgi için bkz. [SignalR daha eski sürümleri](../older-versions/index.md).
+> SignalR'ın önceki sürümleri hakkında daha fazla bilgi için [SignalR Eski Sürümleri'ne](../older-versions/index.md)bakın.
 >
-> ## <a name="questions-and-comments"></a>Sorular ve açıklamalar
+> ## <a name="questions-and-comments"></a>Sorular ve yorumlar
 >
-> Lütfen bu öğreticiyi nasıl beğentireceğiniz ve sayfanın en altındaki açıklamalarda İyileştiğimiz hakkında geri bildirimde bulunun. Öğreticiyle doğrudan ilgili olmayan sorularınız varsa, bunları [ASP.NET SignalR forumuna](https://forums.asp.net/1254.aspx/1?ASP+NET+SignalR) veya [StackOverflow.com](http://stackoverflow.com/)'e gönderebilirsiniz.
+> Lütfen bu öğreticiyi nasıl beğendiğiniz ve sayfanın altındaki yorumlarda neler geliştirebileceğimiz hakkında geri bildirim de bırakın. Öğreticiyle doğrudan ilgili olmayan sorularınız varsa, bunları ASP.NET [SignalR forumuna](https://forums.asp.net/1254.aspx/1?ASP+NET+SignalR) veya [StackOverflow.com](http://stackoverflow.com/)gönderebilirsiniz.
 
 ## <a name="introduction"></a>Giriş
 
-Bir hub 'a bağlanan her istemci, benzersiz bir bağlantı kimliği geçirir. Hub bağlamının `Context.ConnectionId` özelliğindeki bu değeri alabilirsiniz. Uygulamanız bir kullanıcıyı bağlantı kimliğiyle eşlemek ve bu eşlemeyi kalıcı hale getirmek için aşağıdakilerden birini kullanabilirsiniz:
+Bir hub'a bağlanan her istemci benzersiz bir bağlantı kimliği geçirir. Bu değeri hub bağlamının `Context.ConnectionId` özelliğinde alabilirsiniz. Uygulamanızın bir kullanıcıyı bağlantı kimliğiyle eşlemesi ve bu eşlemayı devam etmesi gerekiyorsa, aşağıdakilerden birini kullanabilirsiniz:
 
-- [Kullanıcı KIMLIĞI sağlayıcısı (SignalR 2)](#IUserIdProvider)
+- [Kullanıcı Kimliği Sağlayıcısı (SignalR 2)](#IUserIdProvider)
 - Sözlük gibi [bellek içi depolama](#inmemory)
-- [Her Kullanıcı için SignalR grubu](#groups)
-- Veritabanı tablosu veya Azure Tablo depolaması gibi [kalıcı, dış depolama](#database)
+- [Her kullanıcı için SignalR grubu](#groups)
+- Veritabanı tablosu veya Azure tablo depolama gibi [kalıcı, harici depolama](#database)
 
-Bu uygulamaların her biri, bu konuda gösterilmektedir. Kullanıcı bağlantı durumunu izlemek için `Hub` sınıfının `OnConnected`, `OnDisconnected`ve `OnReconnected` yöntemlerini kullanın.
+Bu uygulamaların her biri bu konuda gösterilir. Kullanıcı bağlantı `OnConnected` `OnDisconnected`durumunu `OnReconnected` izlemek için `Hub` sınıfın , ve yöntemlerini kullanırsınız.
 
-Uygulamanız için en iyi yaklaşım şunlara bağlıdır:
+Uygulamanız için en iyi yaklaşım şuna bağlıdır:
 
-- Uygulamanızı barındıran Web sunucularının sayısı.
-- Şu anda bağlı olan kullanıcıların listesini almanız gerekip gerekmediğini belirtir.
-- Uygulama veya sunucu yeniden başlatıldığında Grup ve Kullanıcı bilgilerini kalıcı yapmanız gerekip gerekmediğini belirtir.
-- Dış sunucu çağırma gecikmesinin bir sorun olup olmadığı.
+- Uygulamanızı barındıran web sunucularının sayısı.
+- Şu anda bağlı olan kullanıcıların listesini almanız gerekip gerekmediği.
+- Uygulama veya sunucu yeniden başlatıldığında grup ve kullanıcı bilgilerini devam ettirebilmeniz gerekip gerekmediği.
+- Harici bir sunucuarama nın gecikmesinin bir sorun olup olmadığı.
 
-Aşağıdaki tabloda bu noktalar için hangi yaklaşımın çalıştığı gösterilmektedir.
+Aşağıdaki tabloda, bu hususlar için hangi yaklaşımın işe yaradığı gösterilmektedir.
 
-|  | Birden çok sunucu | Şu anda bağlı olan kullanıcıların listesini al | Yeniden başlatıldıktan sonra bilgileri kalıcı yap | En iyi performans |
+|  | Birden fazla sunucu | Şu anda bağlı olan kullanıcıların listesini alma | Yeniden başlatıldıktan sonra bilgileri devam etti | Optimum performans |
 | --- | --- | --- | --- | --- |
-| UserID sağlayıcısı | ![](mapping-users-to-connections/_static/image1.png) |  |  | ![](mapping-users-to-connections/_static/image2.png) |
+| UserID Sağlayıcısı | ![](mapping-users-to-connections/_static/image1.png) |  |  | ![](mapping-users-to-connections/_static/image2.png) |
 | Bellek içi |  | ![](mapping-users-to-connections/_static/image3.png) |  | ![](mapping-users-to-connections/_static/image4.png) |
-| Tek Kullanıcı grupları | ![](mapping-users-to-connections/_static/image5.png) |  |  | ![](mapping-users-to-connections/_static/image6.png) |
+| Tek kullanıcılı gruplar | ![](mapping-users-to-connections/_static/image5.png) |  |  | ![](mapping-users-to-connections/_static/image6.png) |
 | Kalıcı, dış | ![](mapping-users-to-connections/_static/image7.png) | ![](mapping-users-to-connections/_static/image8.png) | ![](mapping-users-to-connections/_static/image9.png) |  |
 
 <a id="IUserIdProvider"></a>
 
-## <a name="iuserid-provider"></a>Iuserıd sağlayıcısı
+## <a name="iuserid-provider"></a>IUserID sağlayıcısı
 
-Bu özellik, kullanıcıların yeni bir ıuserıdprovider arabirimi aracılığıyla bir ırequest 'e göre kimliğini belirlemesine izin verir.
+Bu özellik, kullanıcıların yeni bir arayüz iUserIdProvider üzerinden bir IRequest'e dayalı kullanıcı Kimliği'nin ne olduğunu belirtmelerine olanak tanır.
 
-**Iuserıdprovider**
+**IUseridSağlayıcı**
 
 [!code-csharp[Main](mapping-users-to-connections/samples/sample1.cs)]
 
-Varsayılan olarak, Kullanıcı adı olarak Kullanıcı `IPrincipal.Identity.Name` kullanan bir uygulama olacaktır. Bunu değiştirmek için, uygulamanız başlatıldığında `IUserIdProvider` uygulamanızı küresel ana bilgisayara kaydedin:
+Varsayılan olarak, kullanıcı adı olarak kullanıcının `IPrincipal.Identity.Name` kullanan bir uygulama olacaktır. Bunu değiştirmek için, uygulamanız başladığında uygulamanızı genel ana `IUserIdProvider` bilgisayara kaydedin:
 
 [!code-csharp[Main](mapping-users-to-connections/samples/sample2.cs)]
 
-Hub 'ın içinden aşağıdaki API aracılığıyla bu kullanıcılara ileti gönderebileceksiniz:
+Bir hub içinden, aşağıdaki API üzerinden bu kullanıcılara ileti gönderebilirsiniz:
 
 **Belirli bir kullanıcıya ileti gönderme**
 
@@ -93,25 +93,25 @@ Hub 'ın içinden aşağıdaki API aracılığıyla bu kullanıcılara ileti gö
 
 ## <a name="in-memory-storage"></a>Bellek içi depolama
 
-Aşağıdaki örneklerde, bağlantı ve Kullanıcı bilgilerinin bellekte depolanan bir sözlükte nasıl saklanacağı gösterilmektedir. Sözlük, bağlantı kimliğini depolamak için bir `HashSet` kullanır. Herhangi bir kullanıcının SignalR uygulamasına birden fazla bağlantısı olabilir. Örneğin, birden çok cihaz veya birden çok tarayıcı sekmesinden bağlanmış bir kullanıcının birden fazla bağlantı kimliği vardır.
+Aşağıdaki örnekler, bellekte depolanan bir sözlükte bağlantı ve kullanıcı bilgilerinin nasıl korunup korunacaklarını gösterir. Sözlük, bağlantı `HashSet` kimliğini depolamak için a kullanır. Herhangi bir zamanda bir kullanıcı SinyalR uygulamasına birden fazla bağlantı olabilir. Örneğin, birden çok aygıt veya birden fazla tarayıcı sekmesi aracılığıyla bağlanan bir kullanıcının birden fazla bağlantı kimliği vardır.
 
-Uygulama kapatılırsa tüm bilgiler kaybolur, ancak kullanıcılar bağlantılarını yeniden kurduğundan, yeniden doldurulur. Her sunucunun ayrı bir bağlantı koleksiyonu olması nedeniyle, ortamınız birden fazla Web sunucusu içeriyorsa, bellek içi depolama çalışmaz.
+Uygulama kapanırsa, tüm bilgiler kaybolur, ancak kullanıcılar bağlantılarını yeniden kurdukça yeniden doldurulur. Ortamınızda birden fazla web sunucusu varsa bellek içi depolama çalışmaz, çünkü her sunucuda ayrı bir bağlantı koleksiyonu vardır.
 
-İlk örnek, kullanıcıların bağlantılardaki eşlemesini yöneten bir sınıfı gösterir. HashSet için anahtar, kullanıcının adı olacaktır.
+İlk örnek, kullanıcıların bağlantılarla eşleşmelerini yöneten bir sınıfı gösterir. HashSet için anahtar kullanıcının adı olacaktır.
 
 [!code-csharp[Main](mapping-users-to-connections/samples/sample4.cs)]
 
-Sonraki örnekte, bağlantı eşleme sınıfının bir hub 'dan nasıl kullanılacağı gösterilmektedir. Sınıfının örneği `_connections`değişken adında depolanır.
+Sonraki örnek, bir hub'dan bağlantı eşleme sınıfının nasıl kullanılacağını gösterir. Sınıfın örneği değişken bir adla `_connections`depolanır.
 
 [!code-csharp[Main](mapping-users-to-connections/samples/sample5.cs)]
 
 <a id="groups"></a>
 
-## <a name="single-user-groups"></a>Tek Kullanıcı grupları
+## <a name="single-user-groups"></a>Tek kullanıcılı gruplar
 
-Her Kullanıcı için bir grup oluşturabilir ve yalnızca bu kullanıcıya erişmek istediğinizde bu gruba bir ileti gönderebilirsiniz. Her grubun adı kullanıcının adıdır. Kullanıcının birden fazla bağlantısı varsa, her bağlantı kimliği kullanıcının grubuna eklenir.
+Her kullanıcı için bir grup oluşturabilir ve yalnızca o kullanıcıya ulaşmak istediğinizde bu gruba bir ileti gönderebilirsiniz. Her grubun adı kullanıcının adıdır. Bir kullanıcının birden fazla bağlantısı varsa, her bağlantı kimliği kullanıcının grubuna eklenir.
 
-Kullanıcının bağlantısı kesildiğinde kullanıcıyı gruptan el ile kaldırmayın. Bu eylem, SignalR çerçevesi tarafından otomatik olarak gerçekleştirilir.
+Kullanıcı bağlantınızı kestiğinde kullanıcıyı gruptan el ile kaldırmamalısınız. Bu eylem SignalR çerçevesi tarafından otomatik olarak gerçekleştirilir.
 
 Aşağıdaki örnek, tek kullanıcılı grupların nasıl uygulanacağını gösterir.
 
@@ -119,31 +119,31 @@ Aşağıdaki örnek, tek kullanıcılı grupların nasıl uygulanacağını gös
 
 <a id="database"></a>
 
-## <a name="permanent-external-storage"></a>Kalıcı, dış depolama
+## <a name="permanent-external-storage"></a>Kalıcı, harici depolama
 
-Bu konuda, bağlantı bilgilerini depolamak için bir veritabanının veya Azure Tablo depolamanın nasıl kullanılacağı gösterilmektedir. Her Web sunucusu aynı veri deposuyla etkileşime girebildiğinden, bu yaklaşım birden çok Web sunucunuz olduğunda işe yarar. Web sunucularınız çalışmayı durdurmuş veya uygulama yeniden başlatılırsa `OnDisconnected` yöntemi çağrılmaz. Bu nedenle, veri deponuzda artık geçerli olmayan bağlantı kimlikleri için kayıtlar olabilir. Bu yalnız bırakılmış kayıtları temizlemek için, uygulamanız için uygun bir zaman çerçevesi dışında oluşturulmuş herhangi bir bağlantıyı geçersiz kılmak isteyebilirsiniz. Bu bölümdeki örneklerde, bağlantının oluşturulduğu sırada izleme için bir değer yer alır, ancak bunu arka plan işlemi olarak yapmak isteyebileceğiniz için eski kayıtların nasıl temizleyeceğini göstermeyin.
+Bu konu, bağlantı bilgilerini depolamak için veritabanı nın veya Azure tablo depolama alanının nasıl kullanılacağını gösterir. Her web sunucusu aynı veri deposuyla etkileşimkurabileceğinden, birden çok web sunucunuz olduğunda bu yaklaşım çalışır. Web sunucularınız çalışmayı durdurursa veya `OnDisconnected` uygulama yeniden başlatılırsa, yöntem çağrılmaz. Bu nedenle, veri deponuzun artık geçerli olmayan bağlantı kimlikleri için kayıtları olması mümkündür. Bu yetim kayıtları temizlemek için, uygulamanızla ilgili bir zaman dilimi dışında oluşturulan tüm bağlantıları geçersiz kılabilir. Bu bölümdeki örnekler, bağlantı oluşturulduğunda izleme değeri içerir, ancak arka plan işlemi olarak bunu yapmak isteyebilirsiniz, çünkü eski kayıtları temizlemek için nasıl göstermez.
 
 ### <a name="database"></a>Veritabanı
 
-Aşağıdaki örneklerde, bağlantı ve Kullanıcı bilgilerinin bir veritabanında nasıl saklanacağı gösterilmektedir. Herhangi bir veri erişim teknolojisini kullanabilirsiniz; Ancak, aşağıdaki örnekte Entity Framework kullanarak modellerin nasıl tanımlanacağı gösterilmektedir. Bu varlık modelleri veritabanı tablolarına ve alanlarına karşılık gelir. Veri yapınız, uygulamanızın gereksinimlerine bağlı olarak önemli ölçüde farklılık gösterebilir.
+Aşağıdaki örnekler, bağlantı ve kullanıcı bilgilerinin bir veritabanında nasıl korunup korunur'u gösterir. Herhangi bir veri erişim teknolojisini kullanabilirsiniz; ancak, aşağıdaki örnek, Varlık Çerçevesi'ni kullanarak modellerin nasıl tanımlanacağından gösterilmektedir. Bu varlık modelleri veritabanı tablolarına ve alanlarına karşılık gelir. Veri yapınız, uygulamanızın gereksinimlerine bağlı olarak önemli ölçüde değişebilir.
 
-İlk örnek, birçok bağlantı varlığı ile ilişkilendirilebilen bir Kullanıcı varlığının nasıl tanımlanacağını gösterir.
+İlk örnek, birçok bağlantı varlığıyla ilişkilendirilebilen bir kullanıcı varlığının nasıl tanımlanabileceğini gösterir.
 
 [!code-csharp[Main](mapping-users-to-connections/samples/sample7.cs)]
 
-Ardından, hub 'dan her bağlantının durumunu aşağıda gösterilen kodla izleyebilirsiniz.
+Daha sonra, hub'dan, aşağıda gösterilen kodla her bağlantının durumunu izleyebilirsiniz.
 
 [!code-csharp[Main](mapping-users-to-connections/samples/sample8.cs)]
 
 <a id="azure"></a>
 ### <a name="azure-table-storage"></a>Azure tablo depolama
 
-Aşağıdaki Azure Tablo depolama örneği, veritabanı örneğine benzer. Azure Tablo Depolama hizmetini kullanmaya başlamak için ihtiyacınız olan tüm bilgileri içermez. Bilgi için bkz. [.net 'Ten Tablo Depolamayı kullanma](https://azure.microsoft.com/documentation/articles/storage-dotnet-how-to-use-tables/).
+Aşağıdaki Azure tablo depolama örneği veritabanı örneğine benzer. Azure Tablo Depolama Hizmeti'ni başlatmanız gereken tüm bilgileri içermez. Bilgi için [.NET'ten Tablo depolamasını nasıl kullanacağına](https://azure.microsoft.com/documentation/articles/storage-dotnet-how-to-use-tables/)bakın.
 
-Aşağıdaki örnek, bağlantı bilgilerini depolamak için bir tablo varlığı gösterir. Verileri Kullanıcı adına göre bölümlendirir ve her bir varlığı bağlantı kimliğiyle tanımlar, böylece Kullanıcı istedikleri zaman birden çok bağlantıya sahip olabilir.
+Aşağıdaki örnekte, bağlantı bilgilerini depolamak için bir tablo varlığı gösterilmektedir. Verileri kullanıcı adına göre bölümlere ayırır ve her varlığı bağlantı kimliğiyle tanımlar, böylece kullanıcı herhangi bir zamanda birden çok bağlantıya sahip olabilir.
 
 [!code-csharp[Main](mapping-users-to-connections/samples/sample9.cs)]
 
-Hub 'da, her kullanıcının bağlantısının durumunu izlersiniz.
+Hub'da, her kullanıcının bağlantısının durumunu izlersiniz.
 
 [!code-csharp[Main](mapping-users-to-connections/samples/sample10.cs)]

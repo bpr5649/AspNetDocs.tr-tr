@@ -1,120 +1,120 @@
 ---
 uid: web-api/overview/security/authentication-and-authorization-in-aspnet-web-api
-title: ASP.NET Web API 'sinde kimlik doğrulaması ve yetkilendirme | Microsoft Docs
+title: ASP.NET Web API'sinde kimlik doğrulama ve yetkilendirme | Microsoft Dokümanlar
 author: MikeWasson
-description: ASP.NET Web API 'sinde kimlik doğrulamaya ve yetkilendirmeye genel bir bakış sunar.
+description: ASP.NET Web API'sinde kimlik doğrulama ve yetkilendirme hakkında genel bir genel bakış sağlar.
 ms.author: riande
 ms.date: 11/27/2012
 ms.assetid: 6dfb51ea-9f4d-4e70-916c-8ef8344a88d6
 msc.legacyurl: /web-api/overview/security/authentication-and-authorization-in-aspnet-web-api
 msc.type: authoredcontent
 ms.openlocfilehash: 368d2b9456d12b2bb4063a23333e5c8837faa3b8
-ms.sourcegitcommit: e7e91932a6e91a63e2e46417626f39d6b244a3ab
+ms.sourcegitcommit: ce28244209db8615bc9bdd576a2e2c88174d318d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/06/2020
-ms.locfileid: "78598646"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80676260"
 ---
-# <a name="authentication-and-authorization-in-aspnet-web-api"></a>ASP.NET Web API'de Kimlik Doğrulama ve Yetkilendirme
+# <a name="authentication-and-authorization-in-aspnet-web-api"></a>ASP.NET Web API'sinde kimlik doğrulama ve yetkilendirme
 
-, [Mike te son](https://github.com/MikeWasson)
+Mike [Wasson](https://github.com/MikeWasson) tarafından
 
-Bir Web API 'SI oluşturdunuz, ancak şimdi ona erişimi denetlemek istiyorsunuz. Bu makale dizisinde, yetkisiz kullanıcılardan bir Web API 'sinin güvenliğini sağlamaya yönelik bazı seçeneklere bakacağız. Bu seri, hem kimlik doğrulamasını hem de yetkilendirmeyi kapsar.
+Bir web API'sı oluşturdunuz, ancak şimdi web'e erişimi denetlemek istiyorsunuz. Bu makale serisinde, yetkisiz kullanıcılardan bir web API'sini güvence altına almak için bazı seçeneklere bakacağız. Bu seri hem kimlik doğrulamayı hem de yetkilendirmeyi kapsayacaktır.
 
-- *Kimlik doğrulaması* , kullanıcının kimliğini öğrenmektir. Örneğin, Gamze Kullanıcı adı ve parolasıyla oturum açar ve sunucu çiğdem kimlik doğrulaması için parolayı kullanır.
-- *Yetkilendirme* , bir kullanıcının bir eylem gerçekleştirmesine izin verilip verilmediği konusunda karar verebilir. Örneğin, Gamze 'nin bir kaynağı almak için izni vardır ancak kaynağı oluşturmamalıdır.
+- *Kimlik doğrulama,* kullanıcının kimliğini bilmektir. Örneğin, Alice kullanıcı adı ve parolasıyla oturum açar ve sunucu Alice'in kimliğini doğrulamak için parolayı kullanır.
+- *Yetkilendirme,* bir kullanıcının bir eylem gerçekleştirmesine izin verilip verilmeyeceğine karar vermektir. Örneğin, Gamze'nin kaynak almak için izni vardır, ancak kaynak oluşturmaz.
 
-Serideki ilk makale, ASP.NET Web API 'sinde kimlik doğrulamaya ve yetkilendirmeye genel bir bakış sunar. Diğer konular, Web API 'SI için ortak kimlik doğrulama senaryolarını anlatmaktadır.
+Serinin ilk makalesi, web API'ASP.NET kimlik doğrulama ve yetkilendirmeye genel bir genel bakış sağlar. Diğer konular, Web API'si için yaygın kimlik doğrulama senaryolarını açıklar.
 
 > [!NOTE]
-> Bu seriyi inceleyen ve değerli geri bildirimleri sağlayan kişiler için teşekkürler: Rick Anderson, Levi Broderick, Barry Dorrans, Tom Dykstra, Hongmei Ge, David Matson, Daniel Roth, Tim Teebken.
+> Rick Anderson, Levi Broderick, Barry Dorrans, Tom Dykstra, Hongmei Ge, David Matson, Daniel Roth, Tim Teebken: Bu dizi gözden ve değerli geribildirim sağlanan insanlar sayesinde.
 
-## <a name="authentication"></a>Kimlik doğrulaması
+## <a name="authentication"></a>Kimlik Doğrulaması
 
-Web API 'SI, kimlik doğrulamasının konakta gerçekleştiğini varsayar. Web barındırma için, ana bilgisayar IIS 'dir ve kimlik doğrulaması için HTTP modüllerini kullanır. Projenizi IIS veya ASP.NET 'te yerleşik olarak bulunan kimlik doğrulama modüllerinden birini kullanacak şekilde yapılandırabilir veya özel kimlik doğrulaması gerçekleştirmek için kendi HTTP modülünüzü yazabilirsiniz.
+Web API kimlik doğrulamasının ana bilgisayarda gerçekleştiğini varsayar. Web barındırma için, ana bilgisayar kimlik doğrulaması için HTTP modülleri kullanan IIS'dir. Projenizi, IIS veya ASP.NET yerleşik kimlik doğrulama modüllerinden herhangi birini kullanacak şekilde yapılandırabilir veya özel kimlik doğrulaması gerçekleştirmek için kendi HTTP modülünüzü yazabilirsiniz.
 
-Ana bilgisayar kullanıcının kimliğini doğruladığında, kodun çalıştığı güvenlik bağlamını temsil eden bir [IPrincipal](https://msdn.microsoft.com/library/System.Security.Principal.IPrincipal.aspx) nesnesi olan bir *sorumlu*oluşturur. Ana bilgisayar, **iş parçacığının. CurrentPrincipal**öğesini ayarlayarak sorumluyu geçerli iş parçacığına iliştirir. Asıl öğe, kullanıcıyla ilgili bilgiler içeren ilişkili bir **kimlik** nesnesi içerir. Kullanıcının kimliği doğrulandıysa, **Identity. IsAuthenticated** özelliği **true**değerini döndürür. Anonim istekler için, **IsAuthenticated** , **false**döndürür. Sorumlular hakkında daha fazla bilgi için bkz. [rol tabanlı güvenlik](https://msdn.microsoft.com/library/shz8h065.aspx).
+Ana bilgisayar kullanıcının kimliğini doğruladığında, kodun çalıştırıldığı güvenlik bağlamını temsil eden bir [IPrincipal](https://msdn.microsoft.com/library/System.Security.Principal.IPrincipal.aspx) nesnesi olan bir *anapara*oluşturur. Ana **bilgisayar, Thread.CurrentPrincipal'ı**ayarlayarak asıl başlığı geçerli iş parçacığına bağlar. Asıl, kullanıcı hakkında bilgi içeren ilişkili bir **Kimlik** nesnesi içerir. Kullanıcının kimliği doğrulanmışsa, **Identity.IsAuthenticated** özelliği **doğru**döndürür. Anonim istekler **için, IsAuthenticated** **yanlış**döndürür. Müdürler hakkında daha fazla bilgi için [Bkz. Rol Tabanlı Güvenlik.](https://msdn.microsoft.com/library/shz8h065.aspx)
 
-### <a name="http-message-handlers-for-authentication"></a>Kimlik doğrulaması için HTTP Ileti Işleyicileri
+### <a name="http-message-handlers-for-authentication"></a>Kimlik Doğrulama için HTTP İleti Işleyicileri
 
-Kimlik doğrulaması için konağın kullanılması yerine, kimlik doğrulama mantığını bir [http ileti işleyicisine](../advanced/http-message-handlers.md)koyabilirsiniz. Bu durumda, ileti işleyicisi HTTP isteğini inceler ve sorumluyu ayarlar.
+Kimlik doğrulaması için ana bilgisayarı kullanmak yerine, kimlik doğrulama mantığını bir [HTTP ileti işleyicisine](../advanced/http-message-handlers.md)koyabilirsiniz. Bu durumda, ileti işleyicisi HTTP isteğini inceler ve asıllığı ayarlar.
 
-Kimlik doğrulaması için ileti işleyicilerini ne zaman kullanmalısınız? Aşağıda bazı dengeler verilmiştir:
+Kimlik doğrulaması için ileti işleyicilerini ne zaman kullanmalısınız? İşte bazı tradeoffs şunlardır:
 
-- HTTP modülü, ASP.NET ardışık düzeni üzerinden geçen tüm istekleri görür. İleti işleyicisi yalnızca Web API 'sine yönlendirilen istekleri görür.
-- Belirli bir rotaya bir kimlik doğrulama düzeni uygulamanıza olanak sağlayan yönlendirme başına ileti işleyicileri ayarlayabilirsiniz.
-- HTTP modülleri IIS 'e özeldir. İleti işleyicileri ana bilgisayar belirsiz olduğundan, hem Web barındırma hem de kendiliğinden barındırma ile kullanılabilir.
-- HTTP modülleri, IIS günlüğe kaydetme, denetleme vb. için de yer alır.
-- HTTP modülleri, ardışık düzende daha önce çalışır. Kimlik doğrulamasını bir ileti işleyicisinde işletin, bu, işleyici çalışana kadar küme almaz. Ayrıca, yanıt ileti işleyiciden ayrıldığında, sorumlu önceki sorumluya geri döner.
+- Bir HTTP modülü, ASP.NET ardışık alandan geçen tüm istekleri görür. İleti işleyicisi yalnızca Web API'sine yönlendirilen istekleri görür.
+- Belirli bir rotaya kimlik doğrulama düzeni uygulamanıza olanak tanıyan rota başına ileti işleyicileri ayarlayabilirsiniz.
+- HTTP modülleri IIS'e özgüdür. İleti işleyicileri ana bilgisayar anostiktir, bu nedenle hem web barındırma hem de kendi kendine barındırma ile kullanılabilirler.
+- HTTP modülleri IIS günlüğü, denetimi ve benzeri çalışmalara katılır.
+- HTTP modülleri boru hattında daha erken çalışır. İleti işleyicisinde kimlik doğrulaması işlerseniz, işleyici çalışana kadar asıl ayaralmaz. Ayrıca, yanıt ileti işleyicisi ayrıldığında asıl önceki ana müdüre geri döner.
 
-Genellikle, kendi kendine barındırmayı desteklemeniz gerekmiyorsa, HTTP modülü daha iyi bir seçenektir. Kendi kendine barındırmayı desteklemeniz gerekiyorsa bir ileti işleyicisini düşünün.
+Genellikle, kendi kendine barındırma desteklemek gerekmez, bir HTTP modülü daha iyi bir seçenektir. Kendi kendine barındırmayı desteklemeniz gerekiyorsa, bir ileti işleyicisi düşünün.
 
-### <a name="setting-the-principal"></a>Sorumluyu ayarlama
+### <a name="setting-the-principal"></a>Müdürü ayarlama
 
-Uygulamanız herhangi bir özel kimlik doğrulama mantığı gerçekleştirirse, sorumluyu iki yerde ayarlamanız gerekir:
+Uygulamanız herhangi bir özel kimlik doğrulama mantığı gerçekleştiriyorsa, asıllığı iki yere ayarlamanız gerekir:
 
-- **Thread. CurrentPrincipal**. Bu özellik, .NET 'teki iş parçacığının sorumlusunu ayarlamaya yönelik standart bir yoldur.
-- **HttpContext. Current. User**. Bu özellik ASP.NET 'e özgüdür.
+- **Konu.CurrentPrincipal**. Bu özellik, iş parçacığının anasını .NET'te ayarlamanın standart yoludur.
+- **httpContext.Current.User**. Bu özellik ASP.NET özgüdür.
 
-Aşağıdaki kod, sorumlunun nasıl ayarlanacağını göstermektedir:
+Aşağıdaki kod, asılın nasıl ayarlanır olduğunu gösterir:
 
 [!code-csharp[Main](authentication-and-authorization-in-aspnet-web-api/samples/sample1.cs)]
 
-Web barındırma için, sorumluyu her iki yerde de ayarlamanız gerekir; Aksi takdirde güvenlik bağlamı tutarsız hale gelebilir. Ancak, kendi kendine barındırma için **HttpContext. Current** null. Kodunuzun konağın belirsiz olduğundan emin olmak için, gösterildiği gibi **HttpContext. Current**öğesine atamadan önce null değerini denetleyin.
+Web barındırma için, her iki yerde de ana lığı belirlemeniz gerekir; aksi takdirde güvenlik bağlamı tutarsız hale gelebilir. Kendi kendine barındırma için, ancak, **HttpContext.Current** null. Kodunuzu ana bilgisayar-agnostik olduğundan emin olmak için, bu nedenle, gösterildiği gibi **HttpContext.Current'a**atamadan önce null olup olmadığını denetleyin.
 
 ## <a name="authorization"></a>Yetkilendirme
 
-Yetkilendirme, daha sonra işlem hattında denetleyiciye yaklaşarak gerçekleşir. Bu, kaynaklara erişim izni verdiğinizde daha ayrıntılı seçimler yapmanızı sağlar.
+Yetkilendirme daha sonra boru hattında, denetleyiciye daha yakın olur. Bu, kaynaklara erişim izni verirken daha ayrıntılı seçimler yapmanızı sağlar.
 
-- *Yetkilendirme filtreleri* , denetleyici eyleminden önce çalışır. İstek yetkilendirilmezse, filtre bir hata yanıtı döndürür ve eylem çağrılmaz.
-- Bir denetleyici eylemi içinde, **Apicontroller. User** özelliğinden geçerli sorumluyu alabilirsiniz. Örneğin, bir kaynak listesini Kullanıcı adına göre filtreleyerek yalnızca o kullanıcıya ait olan kaynakları geri alabilirsiniz.
+- *Yetkilendirme filtreleri* denetleyici eyleminden önce çalışır. İstek yetkilendirilemezse, filtre bir hata yanıtı döndürür ve eylem çağrılmaz.
+- Denetleyici eylemi içinde, geçerli anaparayı **ApiController.User** özelliğinden alabilirsiniz. Örneğin, yalnızca bu kullanıcıya ait kaynakları döndürerek kullanıcı adını temel alan bir kaynak listesini filtreleyebilirsiniz.
 
 ![](authentication-and-authorization-in-aspnet-web-api/_static/image1.png)
 
 <a id="auth3"></a>
-### <a name="using-the-authorize-attribute"></a>[Yetkilendir] özniteliğini kullanma
+### <a name="using-the-authorize-attribute"></a>[Authorize] Özniteliğini Kullanma
 
-Web API 'SI, [AuthorizeAttribute](https://msdn.microsoft.com/library/system.web.http.authorizeattribute.aspx)yerleşik bir yetkilendirme filtresi sağlar. Bu filtre, kullanıcının kimliğinin doğrulandığını denetler. Aksi takdirde, eylemi çağırmadan HTTP durum kodu 401 (yetkilendirilmemiş) döndürür.
+Web API yerleşik yetkilendirme filtresi sağlar, [AuthorizeAttribute](https://msdn.microsoft.com/library/system.web.http.authorizeattribute.aspx). Bu filtre, kullanıcının kimliğinin doğrulanıp doğrulanmadığını denetler. Değilse, eylemi devreye girmeden HTTP durum kodu 401 (Yetkisiz) döndürür.
 
-Filtreyi denetleyici düzeyinde küresel olarak veya tek tek eylemler düzeyinde uygulayabilirsiniz.
+Filtreyi genel olarak, denetleyici düzeyinde veya tek tek eylemler düzeyinde uygulayabilirsiniz.
 
-**Küresel**: her Web API denetleyicisine erişimi kısıtlamak için, genel filtre listesine **AuthorizeAttribute** filtresini ekleyin:
+**Genel Olarak**: Her Web API denetleyicisi için erişimi kısıtlamak **için, yetkilendirme** özniteliği filtresini genel filtre listesine ekleyin:
 
 [!code-csharp[Main](authentication-and-authorization-in-aspnet-web-api/samples/sample2.cs)]
 
-**Denetleyici**: belirli bir denetleyicinin erişimini kısıtlamak için, filtreyi denetleyiciye bir öznitelik olarak ekleyin:
+**Denetleyici**: Belirli bir denetleyicinin erişimini kısıtlamak için, filtreyi denetleyiciye öznitelik olarak ekleyin:
 
 [!code-csharp[Main](authentication-and-authorization-in-aspnet-web-api/samples/sample3.cs)]
 
-**Eylem**: belirli eylemlerin erişimini kısıtlamak için, eylem yöntemine özniteliği ekleyin:
+**Eylem**: Belirli eylemlere erişimi kısıtlamak için, özniteliği eylem yöntemine ekleyin:
 
 [!code-csharp[Main](authentication-and-authorization-in-aspnet-web-api/samples/sample4.cs)]
 
-Alternatif olarak, `[AllowAnonymous]` özniteliğini kullanarak denetleyiciyi kısıtlayabilir ve sonra belirli eylemlere anonim erişime izin verebilirsiniz. Aşağıdaki örnekte `Post` yöntemi kısıtlıdır, ancak `Get` yöntemi anonim erişime izin verir.
+Alternatif olarak, denetleyiciyi kısıtlayabilir ve özniteliği kullanarak `[AllowAnonymous]` belirli eylemlere anonim erişime izin verebilirsiniz. Aşağıdaki örnekte, `Post` yöntem sınırlıdır, ancak `Get` yöntem anonim erişimsağlar.
 
 [!code-csharp[Main](authentication-and-authorization-in-aspnet-web-api/samples/sample5.cs)]
 
-Önceki örneklerde, filtre tüm kimliği doğrulanmış kullanıcıların kısıtlı yöntemlere erişmesine izin verir; yalnızca anonim kullanıcılar tutulur. Ayrıca, erişimi belirli kullanıcılara veya belirli rollerdeki kullanıcılara sınırlayabilirsiniz:
+Önceki örneklerde, filtre kimlik doğrulaması yapılan herhangi bir kullanıcının kısıtlı yöntemlere erişmesine izin verir; yalnızca anonim kullanıcılar dışarıda tutulur. Erişimi belirli kullanıcılara veya belirli rollerdeki kullanıcılarla da sınırlandırabilirsiniz:
 
 [!code-csharp[Main](authentication-and-authorization-in-aspnet-web-api/samples/sample6.cs)]
 
 > [!NOTE]
-> Web API denetleyicileri için **AuthorizeAttribute** filtresi **System. Web. http** ad alanında bulunur. **System. Web. Mvc** ad alanında, Web API denetleyicileriyle uyumlu olmayan MVC denetleyicileri için benzer bir filtre vardır.
+> Web API denetleyicileri için **YetkilendirmeÖze filtresi** **System.Web.Http** ad alanında bulunur. **System.Web.Mvc** ad alanında, Web API denetleyicileriyle uyumlu olmayan MVC denetleyicileri için benzer bir filtre vardır.
 
-### <a name="custom-authorization-filters"></a>Özel Yetkilendirme filtreleri
+### <a name="custom-authorization-filters"></a>Özel Yetkilendirme Filtreleri
 
-Özel bir yetkilendirme filtresi yazmak için, bu türlerden birini türetebilirsiniz:
+Özel yetkilendirme filtresi yazmak için aşağıdaki türlerden birini türetin:
 
-- **AuthorizeAttribute**. Geçerli kullanıcıya ve kullanıcının rollerine göre yetkilendirme mantığını gerçekleştirmek için bu sınıfı genişletin.
-- **Authorizationfilterattribute**. Geçerli Kullanıcı veya role dayalı olması gereken zaman uyumlu yetkilendirme mantığını gerçekleştirmek için bu sınıfı genişletin.
-- **IAuthorizationFilter**. Zaman uyumsuz yetkilendirme mantığını gerçekleştirmek için bu arabirimi uygulayın; Örneğin, yetkilendirme mantığınızın zaman uyumsuz g/ç veya ağ çağrıları yapıyorsa. (Yetkilendirme mantığınızın CPU ile sınırlı olması durumunda, bir zaman uyumsuz yöntem yazmanıza gerek olmadığından **Authorizationfilterattribute**'tan türemek daha basittir.)
+- **AuthorizeAttribute**. Geçerli kullanıcıyı ve kullanıcının rollerini temel alan yetkilendirme mantığını gerçekleştirmek için bu sınıfı genişletin.
+- **YetkilendirmeFilterAttribute**. Geçerli kullanıcıya veya role dayalı olmayan eşzamanlı yetkilendirme mantığını gerçekleştirmek için bu sınıfı genişletin.
+- **IAuthorizationFiltresi**. Eşzamanlı yetkilendirme mantığı gerçekleştirmek için bu arabirimi uygulayın; örneğin, yetkilendirme mantığınız eşzamanlı G/Ç veya ağ aramaları yapıyorsa. (Yetkilendirme mantığınız CPU'ya bağlıysa, **AuthorizationFilterAttribute'tan**türetmek daha kolaydır, çünkü o zaman bir eşzamanlı yöntem yazmanız gerekmez.)
 
-Aşağıdaki diyagramda **AuthorizeAttribute** sınıfının sınıf hiyerarşisi gösterilmektedir.
+Aşağıdaki diyagram, **AuthorizeAttribute** sınıfının sınıf hiyerarşisini gösterir.
 
 ![](authentication-and-authorization-in-aspnet-web-api/_static/image2.png)
 
-### <a name="authorization-inside-a-controller-action"></a>Denetleyici eylemi Içinde yetkilendirme
+### <a name="authorization-inside-a-controller-action"></a>Denetleyici Eylem İçinde Yetkilendirme
 
-Bazı durumlarda, bir isteğin devam etmesini sağlayabilir, ancak durumu sorumlu temelinde değiştirebilirsiniz. Örneğin, döndürülen bilgiler kullanıcının rolüne bağlı olarak değişebilir. Bir denetleyici yöntemi içinde, **Apicontroller. User** özelliğinden geçerli sorumluyu alabilirsiniz.
+Bazı durumlarda, isteğin devam etmesine izin verebilirsiniz, ancak davranışı anaparaya göre değiştirebilirsiniz. Örneğin, döndürüleceğiniz bilgiler kullanıcının rolüne bağlı olarak değişebilir. Denetleyici yöntemi nde geçerli anaparayı **ApiController.User** özelliğinden alabilirsiniz.
 
 [!code-csharp[Main](authentication-and-authorization-in-aspnet-web-api/samples/sample7.cs)]

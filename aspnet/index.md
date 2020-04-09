@@ -6,12 +6,12 @@ author: Rick-Anderson
 ms.author: riande
 title: ASP.NET Belgeleri
 ms.date: 08/24/2018
-description: ASP.NET ve ASP.NET web uygulamaları geliştirmeyi öğrenin. Belgeler, kod örneği, öğreticiler ve daha fazlasını edinin.
+description: ASP.NET ve ASP.NET web uygulamaları geliştirmeyi öğrenin. Belge, örnek kod, öğretici ve çok daha fazlasını edinin.
 ms.openlocfilehash: 6309704444d60d42d49c3a8f1683045dc503e761
-ms.sourcegitcommit: e7e91932a6e91a63e2e46417626f39d6b244a3ab
+ms.sourcegitcommit: ce28244209db8615bc9bdd576a2e2c88174d318d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/06/2020
+ms.lasthandoff: 04/06/2020
 ms.locfileid: "78616426"
 ---
 <!-- markdownlint-disable MD033 -->
@@ -20,14 +20,14 @@ ms.locfileid: "78616426"
         <h1>ASP.NET Belgeleri</h1>
         <ul class="pivots">
             <li>
-                <a href="#core">ASP.NET Core</a>
+                <a href="#core">ASP.NET Çekirdek</a>
                 <ul id="core">
                     <li>
                         <a href="#core_overview">Genel bakış</a>
                         <ul id="core_overview" class="cardsC">
                             <li>
                                 <div class="container intro">
-                                    <p>ASP.NET Core, Windows, Mac veya Linux 'ta modern bulut tabanlı Web uygulamaları oluşturmaya yönelik açık kaynaklı ve platformlar arası .NET çerçevesidir.</p>
+                                    <p>ASP.NET Core, Windows, Mac veya Linux'ta modern bulut tabanlı web uygulamaları oluşturmak için açık kaynak kodlu ve çapraz platform .NET çerçevesidir.</p>
                                     <p><a href="https://docs.microsoft.com/aspnet/core/choose-aspnet-framework" data-raw-source="[Learn the benefits of both ASP.NET Core and ASP.NET](https://docs.microsoft.com/aspnet/core/choose-aspnet-framework)">ASP.NET Core ile ASP.NET’in avantajlarını öğrenin</a> ve sizin için doğru olanı seçin.</p>
                                 </div>
                             </li>
@@ -366,7 +366,7 @@ ms.locfileid: "78616426"
                                                     </div>
                                                 </div>
                                                 <div class="cardText">
-                                                    <h3>Web siteleri</h3>
+                                                    <h3>Web Siteleri</h3>
                                                     <p>ASP.NET MVC 5 ve Visual Studio kullanarak web sitesi oluşturmayı öğrenin.</p>
                                                 </div>
                                             </div>
@@ -405,7 +405,7 @@ ms.locfileid: "78616426"
                                                 </div>
                                                 <div class="cardText">
                                                     <h3>Gerçek zamanlı</h3>
-                                                    <p>ASP.NET SignalR 2 ve Visual Studio kullanarak bir sohbet uygulaması derlemeyi öğrenin.</p>
+                                                    <p>SignalR 2 ve Visual Studio ASP.NET kullanarak sohbet uygulaması oluşturmayı öğrenin.</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -439,7 +439,7 @@ ms.locfileid: "78616426"
                         </ul>
                     </li>
                     <li>
-                        <a href="#aspnet_framework">Çerçeveler</a>
+                        <a href="#aspnet_framework">Çerçeve</a>
                         <ul id="aspnet_framework" class="cardsC">
                             <li>
                                 <div class="container intro">
@@ -533,7 +533,7 @@ ms.locfileid: "78616426"
                                                     </div>
                                                 </div>
                                                 <div class="cardText">
-                                                    <h3>Web Kancaları</h3>
+                                                    <h3>WebHooks</h3>
                                                     <p>Basit bir pub/sub modeli sağlayan hafif bir HTTP desenini kullanarak Web API’leri ile SaaS hizmetlerini birbirine bağlayın.</p>
                                                 </div>
                                             </div>

@@ -1,29 +1,29 @@
 ---
 uid: signalr/overview/guide-to-the-api/hubs-api-guide-javascript-client
-title: ASP.NET SignalR hub 'Ları API Kılavuzu-JavaScript Istemcisi | Microsoft Docs
+title: ASP.NET SignalR Hub'ları API Kılavuzu - JavaScript İstemci | Microsoft Dokümanlar
 author: bradygaster
-description: Bu belgede, browsers ve Windows Mağazası (WinJS) Applicat gibi JavaScript istemcilerinde SignalR sürüm 2 için hub API 'sini kullanma hakkında bir giriş sunulmaktadır...
+description: Bu belge, tarayıcılar ve Windows Mağazası (WinJS) aplicat gibi JavaScript istemcilerinde SignalR sürüm 2 için Hubs API'sını kullanmaya giriş sağlar...
 ms.author: bradyg
 ms.date: 01/15/2019
 ms.assetid: a9fd4dc0-1b96-4443-82ca-932a5b4a8ea4
 msc.legacyurl: /signalr/overview/guide-to-the-api/hubs-api-guide-javascript-client
 msc.type: authoredcontent
 ms.openlocfilehash: 8befe133c3627dac1f7d011959c68e2054d345da
-ms.sourcegitcommit: e7e91932a6e91a63e2e46417626f39d6b244a3ab
+ms.sourcegitcommit: ce28244209db8615bc9bdd576a2e2c88174d318d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/06/2020
-ms.locfileid: "78536661"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80676085"
 ---
-# <a name="aspnet-signalr-hubs-api-guide---javascript-client"></a>ASP.NET SignalR hub 'Ları API Kılavuzu-JavaScript Istemcisi
+# <a name="aspnet-signalr-hubs-api-guide---javascript-client"></a>ASP.NET SignalR Hub'ları API Kılavuzu - JavaScript İstemci
 
 [!INCLUDE [Consider ASP.NET Core SignalR](~/includes/signalr/signalr-version-disambiguation.md)]
 
-> Bu belgede, browsers ve Windows Mağazası (WinJS) uygulamaları gibi JavaScript istemcilerinde SignalR sürüm 2 için hub API 'sinin kullanılmasına bir giriş sunulmaktadır.
+> Bu belge, tarayıcılar ve Windows Mağazası (WinJS) uygulamaları gibi JavaScript istemcilerinde SignalR sürüm 2 için Hubs API'sını kullanmaya giriş sağlar.
 >
-> SignalR hub 'Ları API 'SI, uzak yordam çağrılarını (RPC) bir sunucudan, istemcilerden ve istemcilerden sunucuya bağlı hale getirmenizi sağlar. Sunucu kodu ' nda, istemciler tarafından çağrılabilen Yöntemler tanımlar ve istemcide çalışan yöntemleri çağırabilirsiniz. İstemci kodunda, sunucudan çağrılabilen yöntemleri tanımlayabilir ve sunucuda çalışan yöntemleri çağırabilirsiniz. SignalR, sizin için istemciden sunucuya sıhhi kını ele alır.
+> SignalR Hub'ları API, bir sunucudan bağlı istemcilere ve istemcilerden sunucuya uzaktan yordam aramaları (RPC' ler) yapmanızı sağlar. Sunucu kodunda, istemciler tarafından çağrılabilen yöntemleri tanımlarsınız ve istemcide çalışan yöntemleri çağırırsınız. İstemci kodunda, sunucudan çağrılabilen yöntemler tanımlarsınız ve sunucuda çalışan yöntemleri çağırırsınız. SignalR sizin için istemciden sunucuya tüm sıhhi tesisat ilgilenir.
 >
-> SignalR Ayrıca kalıcı bağlantılar adlı alt düzey bir API sunar. SignalR, hub 'Lar ve kalıcı bağlantılara giriş için bkz. [SignalR 'ye giriş](../getting-started/introduction-to-signalr.md).
+> SignalR ayrıca Kalıcı Bağlantılar adı verilen daha düşük düzeyli bir API sunar. SignalR, Hub'lar ve Kalıcı [Bağlantılar'a](../getting-started/introduction-to-signalr.md)giriş için bkz.
 >
 > ## <a name="software-versions-used-in-this-topic"></a>Bu konuda kullanılan yazılım sürümleri
 >
@@ -36,61 +36,61 @@ ms.locfileid: "78536661"
 >
 > ## <a name="previous-versions-of-this-topic"></a>Bu konunun önceki sürümleri
 >
-> SignalR 'nin önceki sürümleri hakkında daha fazla bilgi için bkz. [SignalR daha eski sürümleri](../older-versions/index.md).
+> SignalR'ın önceki sürümleri hakkında daha fazla bilgi için [SignalR Eski Sürümleri'ne](../older-versions/index.md)bakın.
 >
-> ## <a name="questions-and-comments"></a>Sorular ve açıklamalar
+> ## <a name="questions-and-comments"></a>Sorular ve yorumlar
 >
-> Lütfen bu öğreticiyi nasıl beğentireceğiniz ve sayfanın en altındaki açıklamalarda İyileştiğimiz hakkında geri bildirimde bulunun. Öğreticiyle doğrudan ilgili olmayan sorularınız varsa, bunları [ASP.NET SignalR forumuna](https://forums.asp.net/1254.aspx/1?ASP+NET+SignalR) veya [StackOverflow.com](http://stackoverflow.com/)'e gönderebilirsiniz.
+> Lütfen bu öğreticiyi nasıl beğendiğiniz ve sayfanın altındaki yorumlarda neler geliştirebileceğimiz hakkında geri bildirim de bırakın. Öğreticiyle doğrudan ilgili olmayan sorularınız varsa, bunları ASP.NET [SignalR forumuna](https://forums.asp.net/1254.aspx/1?ASP+NET+SignalR) veya [StackOverflow.com](http://stackoverflow.com/)gönderebilirsiniz.
 
-## <a name="overview"></a>Genel bakış
+## <a name="overview"></a>Genel Bakış
 
 Bu belgede aşağıdaki bölümler yer alır:
 
-- [Oluşturulan ara sunucu ve sizin için ne yapar](#genproxy)
+- [Oluşturulan proxy ve sizin için ne yapar](#genproxy)
 
-    - [Oluşturulan ara sunucu ne zaman kullanılır?](#cantusegenproxy)
-- [İstemci kurulumu](#clientsetup)
+    - [Oluşturulan proxy ne zaman kullanılır](#cantusegenproxy)
+- [İstemci Kurulumu](#clientsetup)
 
-    - [Dinamik olarak oluşturulan ara sunucuya başvurma](#dynamicproxy)
-    - [SignalR tarafından oluşturulan ara sunucu için fiziksel bir dosya oluşturma](#manualproxy)
+    - [Dinamik olarak oluşturulan proxy'ye nasıl başvurur?](#dynamicproxy)
+    - [SignalR oluşturulan proxy için fiziksel bir dosya oluşturma](#manualproxy)
 - [Bağlantı kurma](#establishconnection)
 
-    - [$. Connection. hub, $. hubConnection () tarafından oluşturulan nesnedir.](#connequivalence)
-    - [Start yönteminin zaman uyumsuz yürütmesi](#asyncstart)
-- [Etki alanları arası bağlantı kurma](#crossdomain)
-- [Bağlantıyı yapılandırma](#configureconnection)
+    - [$.connection.hub, $.hubConnection() tarafından yapılan nesnedir](#connequivalence)
+    - [Başlangıç yönteminin eşzamanlı yürütmesi](#asyncstart)
+- [Etki alanları arası bağlantı nasıl kurulur?](#crossdomain)
+- [Bağlantı nasıl yapılandırılabilen](#configureconnection)
 
-    - [Sorgu dizesi parametrelerini belirtme](#querystring)
-    - [Taşıma yöntemini belirtme](#transport)
-- [Hub sınıfı için proxy alma](#getproxy)
-- [İstemcide sunucunun çağırabir yöntemi tanımlama](#callclient)
-- [İstemciden sunucu yöntemlerini çağırma](#callserver)
-- [Bağlantı ömrü olaylarını işleme](#connectionlifetime)
+    - [Sorgu dize parametreleri nasıl belirtilir?](#querystring)
+    - [Taşıma yöntemi nasıl belirtilir?](#transport)
+- [Hub sınıfı için proxy nasıl edinilir?](#getproxy)
+- [Sunucunun çağırabileceği istemcide yöntemler nasıl tanımlanır?](#callclient)
+- [İstemciden sunucu yöntemleri nasıl çağrılır?](#callserver)
+- [Bağlantı ömrü olayları nasıl işler?](#connectionlifetime)
 - [Hataları işleme](#handleerrors)
-- [İstemci tarafı günlük kaydını etkinleştirme](#logging)
+- [İstemci tarafı günlüğe kaydetmeyi etkinleştirme](#logging)
 
-Sunucu veya .NET istemcilerini programlama hakkında belgeler için aşağıdaki kaynaklara bakın:
+Sunucu veya .NET istemcilerinin nasıl programlanır, aşağıdaki kaynaklara bakın:
 
-- [SignalR hub 'Ları API Kılavuzu-sunucu](hubs-api-guide-server.md)
-- [SignalR hub 'Ları API Kılavuzu-.NET Istemcisi](hubs-api-guide-net-client.md)
+- [SignalR Hub'lar API Kılavuzu - Sunucu](hubs-api-guide-server.md)
+- [SignalR Hub'lar API Kılavuzu - .NET İstemci](hubs-api-guide-net-client.md)
 
-SignalR 2 sunucu bileşeni yalnızca .NET 4,5 ' de kullanılabilir (ancak .NET 4,0 ' de SignalR 2 için bir .NET istemcisi vardır).
+SignalR 2 sunucu bileşeni yalnızca .NET 4.5'te kullanılabilir (ancak SignalR 2 için .NET 4.0'da bir .NET istemcisi vardır).
 
 <a id="genproxy"></a>
 
-## <a name="the-generated-proxy-and-what-it-does-for-you"></a>Oluşturulan ara sunucu ve sizin için ne yapar
+## <a name="the-generated-proxy-and-what-it-does-for-you"></a>Oluşturulan proxy ve sizin için ne yapar
 
-Bir JavaScript istemcisini, bir SignalR hizmeti ile iletişim kurmak için, SignalR 'nin sizin için oluşturduğu bir ara sunucu olmadan veya olmadan iletişim kurmaya programlayabilirsiniz. Proxy 'nin ne için yaptığı, bağlanmak için kullandığınız kodun sözdizimini basitleştirecek, sunucunun çağırdığı yöntemleri yazacak ve sunucuda Yöntemler çağıracaklarınız.
+SignalR'ın sizin için ürettiği bir proxy ile veya olmadan bir SignalR hizmetiyle iletişim kurmak için bir JavaScript istemcisini programlayabilirsiniz. Proxy'nin sizin için yaptığı şey, bağlanmak, sunucunun çağırdığı yöntemleri yazmak ve sunucuda arama yöntemlerini kullanmak için kullandığınız kodun sözdizimini basitleştirmektir.
 
-Sunucu yöntemlerini çağırmak için kod yazdığınızda, oluşturulan ara sunucu, yerel bir işlev yürütüyorsunuz gibi görünen sözdizimini kullanmanıza olanak sağlar: `invoke('serverMethod', arg1, arg2)`yerine `serverMethod(arg1, arg2)` yazabilirsiniz. Oluşturulan proxy sözdizimi, bir sunucu yöntemi adını yanlış yazdığınız takdirde anında ve okunaklı bir istemci tarafı hatası da sunar. Proxy 'leri tanımlayan dosyayı el ile oluşturursanız, sunucu yöntemlerini çağıran kod yazmak için IntelliSense desteği de alabilirsiniz.
+Sunucu yöntemlerini aramak için kod yazdığınızda, oluşturulan proxy, yerel bir işlev icra ediyormuşsunuz gibi `serverMethod(arg1, arg2)` görünen `invoke('serverMethod', arg1, arg2)`sözdizimini kullanmanızı sağlar: yerine yazabilirsiniz. Oluşturulan proxy sözdizimi, bir sunucu yöntemi adını yanlış yazarsanız, anında ve anlaşılır bir istemci tarafı hatası da sağlar. Vekilleri tanımlayan dosyayı el ile oluşturursanız, sunucu yöntemlerini çağıran kod yazmak için IntelliSense desteği de alabilirsiniz.
 
-Örneğin, sunucusunda aşağıdaki hub sınıfına sahip olduğunuzu varsayalım:
+Örneğin, sunucuda aşağıdaki Hub sınıfına sahip olduğunuzu varsayalım:
 
 [!code-csharp[Main](hubs-api-guide-javascript-client/samples/sample1.cs?highlight=1,3,5)]
 
-Aşağıdaki kod örnekleri, sunucuda `NewContosoChatMessage` yöntemi çağırmak ve sunucudan `addContosoChatMessageToPage` yönteminin çağırmaları almak için hangi JavaScript kodunun göründüğünü gösterir.
+Aşağıdaki kod örnekleri, JavaScript kodunun sunucuda `NewContosoChatMessage` yöntemi çağırmak ve yöntemin `addContosoChatMessageToPage` çağrılarını sunucudan almak için nasıl göründüğünü gösterir.
 
-**Oluşturulan ara sunucu ile**
+**Oluşturulan proxy ile**
 
 [!code-javascript[Main](hubs-api-guide-javascript-client/samples/sample2.js?highlight=1-2,8)]
 
@@ -100,81 +100,81 @@ Aşağıdaki kod örnekleri, sunucuda `NewContosoChatMessage` yöntemi çağırm
 
 <a id="cantusegenproxy"></a>
 
-### <a name="when-to-use-the-generated-proxy"></a>Oluşturulan ara sunucu ne zaman kullanılır?
+### <a name="when-to-use-the-generated-proxy"></a>Oluşturulan proxy ne zaman kullanılır
 
-Sunucunun çağırdığı bir istemci yöntemi için birden çok olay işleyicisini kaydetmek istiyorsanız, oluşturulan proxy 'yi kullanamazsınız. Aksi takdirde, oluşturulan proxy 'yi kullanmayı seçebilirsiniz veya kodlama tercihinizi temel alan değil ' i seçebilirsiniz. Kullanmayı tercih ederseniz, istemci kodunuzda bir `script` öğesinde "SignalR/Hub" URL 'sine başvurmanız gerekmez.
+Sunucunun çağırdığı bir istemci yöntemi için birden çok olay işleyicisi kaydetmek istiyorsanız, oluşturulan proxy'yi kullanamazsınız. Aksi takdirde, oluşturulan proxy'yi kullanmayı veya kodlama tercihinize göre kullanmayı seçebilirsiniz. Kullanmamayı seçerseniz, istemci kodunuzdaki bir `script` öğedeki "sinyal/hub" URL'sine başvurmanız gerekmez.
 
 <a id="clientsetup"></a>
 
 ## <a name="client-setup"></a>İstemci kurulumu
 
-JavaScript istemcisi jQuery ve SignalR Core JavaScript dosyasına başvurular gerektirir. JQuery sürümü 1.6.4 veya 1.7.2, 1.8.2 veya 1.9.1 gibi büyük bir sonraki sürüm olmalıdır. Oluşturulan proxy 'yi kullanmaya karar verirseniz, SignalR tarafından oluşturulan ara sunucu JavaScript dosyası için de bir başvuruya ihtiyacınız vardır. Aşağıdaki örnek, başvuruların oluşturulan proxy 'yi kullanan bir HTML sayfasında nasıl görünebileceğini gösterir.
+Bir JavaScript istemcisi jQuery ve SignalR çekirdek JavaScript dosyasına referanslar gerektirir. jQuery sürümü 1.7.2, 1.8.2 veya 1.9.1 gibi 1.6.4 veya daha sonraki büyük sürümler olmalıdır. Oluşturulan proxy kullanmaya karar verirseniz, ayrıca SignalR oluşturulan proxy JavaScript dosyasına bir başvuru gerekir. Aşağıdaki örnek, oluşturulan proxy'yi kullanan bir HTML sayfasında başvuruların nasıl görünebileceğini gösterir.
 
 [!code-html[Main](hubs-api-guide-javascript-client/samples/sample4.html)]
 
-Bu başvuruların bu sıraya dahil edilmesi gerekir: öncelikle jQuery, SignalR Core ve SignalR proxy 'lerinin son.
+Bu başvurular bu sıraya eklenmelidir: jQuery ilk, SignalR çekirdek bundan sonra, ve SignalR yakınlık son.
 
 <a id="dynamicproxy"></a>
 
-### <a name="how-to-reference-the-dynamically-generated-proxy"></a>Dinamik olarak oluşturulan ara sunucuya başvurma
+### <a name="how-to-reference-the-dynamically-generated-proxy"></a>Dinamik olarak oluşturulan proxy'ye nasıl başvurur?
 
-Yukarıdaki örnekte, SignalR tarafından oluşturulan proxy 'nin başvurusu, fiziksel bir dosyaya değil, dinamik olarak oluşturulan JavaScript koduna sahiptir. SignalR, anında ara sunucu için JavaScript kodunu oluşturur ve "/SignalR/Hub" URL 'sine yanıt olarak istemciye hizmet verir. `MapSignalR` yönteminizin sunucusunda SignalR bağlantıları için farklı bir temel URL belirttiyseniz, dinamik olarak oluşturulan ara sunucu dosyasının URL 'SI, "/Hub" a eklenmiş olan özel URL 'niz olur.
+Önceki örnekte, SignalR oluşturulan proxy başvuru dinamik olarak oluşturulan JavaScript kodu değil, fiziksel bir dosya için. SignalR anında proxy için JavaScript kodu oluşturur ve "/signalr/hubs" URL'sine yanıt olarak istemciye hizmet eder. Yönteminizle sunucuda SignalR bağlantıları için farklı bir `MapSignalR` temel URL belirttiyseniz, dinamik olarak oluşturulan proxy dosyasının URL'si, "/hub"ların ekildiği özel URL'nizdir.
 
 > [!NOTE]
-> Windows 8 (Windows Mağazası) JavaScript istemcileri için, dinamik olarak oluşturulan bir yerine fiziksel proxy dosyasını kullanın. Daha fazla bilgi için, bu konunun ilerleyen bölümlerinde [SignalR tarafından oluşturulan ara sunucu için fiziksel bir dosya oluşturma](#manualproxy) konusuna bakın.
+> Windows 8 (Windows Mağazası) JavaScript istemcileri için, dinamik olarak oluşturulan dosya yerine fiziksel proxy dosyasını kullanın. Daha fazla bilgi için, bu konuda daha sonra [oluşturulan SignalR proxy için fiziksel bir dosya nın nasıl oluşturulabildiğini](#manualproxy) görün.
 
-Bir ASP.NET MVC 4 veya 5 Razor görünümünde, proxy dosyası başvurunuz içindeki uygulama köküne başvurmak için tilde kullanın:
+MVC 4 veya 5 Jilet görünümüASP.NET, proxy dosyası başvurunuzdaki uygulama köküne başvurmak için tilde'yi kullanın:
 
 [!code-html[Main](hubs-api-guide-javascript-client/samples/sample5.html)]
 
-MVC 5 ' te SignalR kullanma hakkında daha fazla bilgi için bkz. [SignalR ve MVC 5 Ile çalışmaya](../getting-started/tutorial-getting-started-with-signalr-and-mvc.md)başlama.
+SignalR'ı MVC 5'te kullanma hakkında daha fazla bilgi için [SignalR ve MVC 5 ile başlarken](../getting-started/tutorial-getting-started-with-signalr-and-mvc.md)bakın.
 
-Bir ASP.NET MVC 3 Razor görünümünde, proxy dosyası başvurunuz için `Url.Content` kullanın:
+MVC 3 Jilet görünümünde `Url.Content` ASP.NET, proxy dosya başvurunuz için kullanın:
 
 [!code-cshtml[Main](hubs-api-guide-javascript-client/samples/sample6.cshtml)]
 
-Bir ASP.NET Web Forms uygulamasında, proxy dosyası başvurunuz için `ResolveClientUrl` kullanın veya bir uygulama kökü göreli yolu (tilde ile başlayarak) kullanarak ScriptManager aracılığıyla kaydedin:
+bir ASP.NET Web Forms `ResolveClientUrl` uygulamasında, yakınlık dosya başvurunuz için kullanın veya uygulama kökü göreli bir yol kullanarak ScriptManager üzerinden kaydedin (tilde ile başlayarak):
 
 [!code-aspx[Main](hubs-api-guide-javascript-client/samples/sample7.aspx)]
 
-Genel bir kural olarak, CSS veya JavaScript dosyaları için kullandığınız "/SignalR/Hub" URL 'sini belirtmek için aynı yöntemi kullanın. Bir URL 'YI bir tilde kullanmadan belirtirseniz, bazı senaryolarda uygulamanız IIS Express kullanarak Visual Studio 'da test ettiğinizde doğru çalışacaktır ancak tam IIS 'e dağıtırken 404 hatasıyla başarısız olur. Daha fazla bilgi için MSDN sitesindeki [ASP.NET Web projeleri Için Visual Studio 'Daki Web sunucularındaki](https://msdn.microsoft.com/library/58wxa9w5.aspx) **kök düzeyindeki kaynaklara başvuruları çözme** konusuna bakın.
+Genel bir kural olarak, CSS veya JavaScript dosyaları için kullandığınız "/signalr/hub" URL'sini belirtmek için aynı yöntemi kullanın. Tilde kullanmadan bir URL belirtirseniz, bazı senaryolarda Uygulamanız IIS Express'i kullanarak Visual Studio'da test ettiğinizde doğru çalışır, ancak tam IIS'ye dağıtığınızda 404 hatasıyla başarısız olur. Daha fazla bilgi için, MSDN sitesindeki [Web Projelerini ASP.NET için Visual Studio'daki Web Sunucularında](https://msdn.microsoft.com/library/58wxa9w5.aspx) **Kök Düzeyi Kaynaklara Yapılan Başvuruları Çözme'ye** bakın.
 
-Visual Studio 2017 ' de bir Web projesini hata ayıklama modunda çalıştırdığınızda ve tarayıcınız olarak Internet Explorer kullanıyorsanız, proxy dosyasını **betikler**altında **Çözüm Gezgini** görebilirsiniz.
+Visual Studio 2017'de hata ayıklama modunda bir web projesi çalıştırdığınızda ve Tarayıcınız olarak Internet Explorer kullanıyorsanız, **Solution Explorer'da** Komut Dosyaları altında proxy **dosyasını**görebilirsiniz.
 
-Dosyanın içeriğini görmek için **hub 'lara**çift tıklayın. Visual Studio 2012 veya 2013 ve Internet Explorer kullanmıyorsanız veya hata ayıklama modunda değilseniz, "/SignalR/Hub" URL 'sine giderek dosyanın içeriğini de alabilirsiniz. Örneğin, siteniz `http://localhost:56699`çalışıyorsa tarayıcınızda `http://localhost:56699/SignalR/hubs` gidin.
+Dosyanın içeriğini görmek için **hub'ları**çift tıklatın. Visual Studio 2012 veya 2013 ve Internet Explorer kullanmıyorsanız veya hata ayıklama modunda değilseniz, "/signalR/hubs" URL'sine göz atarak dosyanın içeriğini de alabilirsiniz. Örneğin, siteniz de `http://localhost:56699`çalışıyorsa, `http://localhost:56699/SignalR/hubs` tarayıcınıza gidin.
 
 <a id="manualproxy"></a>
 
-### <a name="how-to-create-a-physical-file-for-the-signalr-generated-proxy"></a>SignalR tarafından oluşturulan ara sunucu için fiziksel bir dosya oluşturma
+### <a name="how-to-create-a-physical-file-for-the-signalr-generated-proxy"></a>SignalR oluşturulan proxy için fiziksel bir dosya oluşturma
 
-Dinamik olarak oluşturulan ara sunucuya alternatif olarak, proxy koduna sahip ve bu dosyaya başvuran bir fiziksel dosya oluşturabilirsiniz. Bu işlemi, önbelleğe alma veya paketleme davranışında denetim için ya da sunucu yöntemlerine yapılan çağrıları kodaktardığınızda IntelliSense 'i almak isteyebilirsiniz.
+Dinamik olarak oluşturulan proxy'ye alternatif olarak, proxy koduna sahip fiziksel bir dosya oluşturabilir ve bu dosyaya başvuruyapabilirsiniz. Önbelleğe alma veya birleştirme davranışı üzerinde denetim için veya sunucu yöntemleri aramaları kodlarken IntelliSense almak için bunu yapmak isteyebilirsiniz.
 
-Bir proxy dosyası oluşturmak için aşağıdaki adımları gerçekleştirin:
+Proxy dosyası oluşturmak için aşağıdaki adımları gerçekleştirin:
 
-1. [Microsoft. Aspnet. SignalR. utils](https://nuget.org/packages/Microsoft.AspNet.SignalR.Utils/) NuGet paketini yükler.
-2. Bir komut istemi açın ve SignalR. exe dosyasını içeren *Araçlar* klasörüne gidin. Araçlar klasörü şu konumdadır:
+1. [Microsoft.AspNet.SignalR.Utils](https://nuget.org/packages/Microsoft.AspNet.SignalR.Utils/) NuGet paketini yükleyin.
+2. Bir komut istemi açın ve SignalR.exe dosyasını içeren *araçlar* klasörüne göz atın. Araçlar klasörü aşağıdaki konumdadır:
 
     `[your solution folder]\packages\Microsoft.AspNet.SignalR.Utils.2.1.0\tools`
 3. Aşağıdaki komutu girin:
 
     `signalr ghp /path:[path to the .dll that contains your Hub class]`
 
-    *. Dll* dosyanızın yolu, genellikle proje klasörünüzdeki *bin* klasörüdür.
+    *.dll'nize* giden yol genellikle proje klasörünüzdeki *çöp kutusu* klasörüdür.
 
-    Bu komut, *SignalR. exe*ile aynı klasörde *Server. js* adlı bir dosya oluşturur.
-4. *Server. js* dosyasını projenize uygun bir klasöre yerleştirin, uygulamanız için uygun şekilde yeniden adlandırın ve "SignalR/hub 'lar" başvurusunun yerine buna bir başvuru ekleyin.
+    Bu komut *signalr.exe*ile aynı klasörde *server.js* adlı bir dosya oluşturur.
+4. *Server.js* dosyasını projenizdeki uygun bir klasöre koyun, uygulamanız için uygun şekilde yeniden adlandırın ve "sinyalci/hub" başvurusu yerine bir referans ekleyin.
 
 <a id="establishconnection"></a>
 
 ## <a name="how-to-establish-a-connection"></a>Bağlantı kurma
 
-Bir bağlantı kurmadan önce, bir bağlantı nesnesi oluşturmanız, bir ara sunucu oluşturmanız ve sunucudan çağrılabilecek yöntemler için olay işleyicilerini kaydetmeniz gerekir. Proxy ve olay işleyicileri ayarlandığında, `start` yöntemini çağırarak bağlantıyı kurun.
+Bağlantı kurmadan önce, bir bağlantı nesnesi oluşturmanız, proxy oluşturmanız ve sunucudan çağrılabilen yöntemler için olay işleyicilerini kaydetmeniz gerekir. Proxy ve olay işleyicileri ayarlandığında, yöntemi arayarak `start` bağlantıyı kurun.
 
-Oluşturulan proxy 'yi kullanıyorsanız, oluşturulan proxy kodu sizin için yaptığından, bağlantı nesnesini kendi kodunuzda oluşturmanız gerekmez.
+Oluşturulan proxy kullanıyorsanız, oluşturulan proxy kodu sizin için yapar, çünkü kendi kodunda bağlantı nesnesi oluşturmak zorunda değilsiniz.
 
 <a id="nogenconnection"></a>
 
-**Bağlantı kurma (oluşturulan ara sunucu ile)**
+**Bağlantı kurma (oluşturulan proxy ile)**
 
 [!code-javascript[Main](hubs-api-guide-javascript-client/samples/sample8.js?highlight=5)]
 
@@ -182,193 +182,193 @@ Oluşturulan proxy 'yi kullanıyorsanız, oluşturulan proxy kodu sizin için ya
 
 [!code-javascript[Main](hubs-api-guide-javascript-client/samples/sample9.js?highlight=1,6)]
 
-Örnek kod, SignalR hizmetinize bağlanmak için varsayılan "/SignalR" URL 'sini kullanır. Farklı bir temel URL belirtme hakkında daha fazla bilgi için bkz. [ASP.NET SignalR hub 'LARı API Kılavuzu-sunucu-/SignalR URL 'si](hubs-api-guide-server.md#signalrurl).
+Örnek kod, SignalR hizmetinize bağlanmak için varsayılan "/signalr" URL'sini kullanır. Farklı bir temel URL'nin nasıl belirtilen hakkında bilgi için [signalr hub'ASP.NET API Kılavuzu - Sunucu - /signalr URL'ye](hubs-api-guide-server.md#signalrurl)bakın.
 
-Varsayılan olarak, hub konumu geçerli sunucusudur; farklı bir sunucuya bağlanıyorsanız, aşağıdaki örnekte gösterildiği gibi `start` yöntemi çağrılmadan önce URL 'YI belirtin:
+Varsayılan olarak, hub konumu geçerli sunucudur; farklı bir sunucuya bağlanıyorsanız, `start` aşağıdaki örnekte gösterildiği gibi yöntemi aramadan önce URL'yi belirtin:
 
 [!code-javascript[Main](hubs-api-guide-javascript-client/samples/sample10.js)]
 
 > [!NOTE]
-> Normalde, bağlantıyı kurmak için `start` yöntemi çağrılmadan önce olay işleyicilerini kaydedersiniz. Bağlantıyı kurduktan sonra bazı olay işleyicilerini kaydetmek istiyorsanız bunu yapabilirsiniz, ancak `start` yöntemi çağrılmadan önce olay işleyicilerden en az birini kaydetmeniz gerekir. Bunun bir nedeni, bir uygulamada birçok hub olabilir, ancak yalnızca bunlardan birine kullanacaksanız, her hub 'da `OnConnected` olayını tetiklemeniz istemezsiniz. Bağlantı oluşturulduğunda, bir hub proxy üzerinde istemci yönteminin bulunması, SignalR 'nin `OnConnected` olayını tetiklemesine söyleme yöntemidir. `start` yöntemi çağrılmadan önce herhangi bir olay işleyicisini kaydetmezseniz, Hub üzerinde Yöntemler çağırabileceksiniz, ancak hub 'ın `OnConnected` yöntemi çağrılmaz ve sunucudan hiçbir istemci yöntemi çağrılmaz.
+> Normalde bağlantıyı kurmak için yöntemi çağırmadan `start` önce olay işleyicilerini kaydedersiniz. Bağlantıyı kurduktan sonra bazı olay işleyicilerini kaydetmek istiyorsanız, bunu yapabilirsiniz, ancak `start` yöntemi aramadan önce olay işleyicinizden en az birini kaydetmeniz gerekir. Bunun bir nedeni, bir uygulamada çok sayıda Hub olabilir, ancak yalnızca bunlardan `OnConnected` birini kullanacaksanız, her Hub'da olayı tetiklemek istemezsiniz. Bağlantı kurulduğunda, Bir Hub'ın proxy'sindeki istemci yönteminin `OnConnected` varlığı SignalR'a olayı tetiklemasını söyler. `start` Yöntemi aramadan önce herhangi bir olay işleyicisi kaydetmezseniz, Hub'da yöntemleri çağırabilirsiniz, `OnConnected` ancak Hub'ın yöntemi çağrılmaz ve sunucudan istemci yöntemleri çağrılmaz.
 
 <a id="connequivalence"></a>
 
-### <a name="connectionhub-is-the-same-object-that-hubconnection-creates"></a>$. Connection. hub, $. hubConnection () tarafından oluşturulan nesnedir.
+### <a name="connectionhub-is-the-same-object-that-hubconnection-creates"></a>$.connection.hub, $.hubConnection() tarafından yapılan nesnedir
 
-Örneklerden görebileceğiniz gibi, oluşturulan proxy 'yi kullandığınızda `$.connection.hub` bağlantı nesnesine başvurur. Bu, oluşturulan proxy 'yi kullanmadığınız zaman `$.hubConnection()` çağırarak elde ettiğiniz nesnedir. Oluşturulan proxy kodu, aşağıdaki ifadeyi yürüterek bağlantıyı sizin için oluşturur:
+Örneklerden de görebileceğiniz gibi, oluşturulan proxy'yi kullandığınızda bağlantı `$.connection.hub` nesnesi başvurur. Bu, oluşturulan proxy'yi kullanmadığınızda arayarak `$.hubConnection()` elde ettiğiniz nesneyle aynıdır. Oluşturulan proxy kodu aşağıdaki deyimi çalıştırarak sizin için bağlantı oluşturur:
 
 ![Oluşturulan proxy dosyasında bağlantı oluşturma](hubs-api-guide-javascript-client/_static/image3.png)
 
-Oluşturulan proxy 'yi kullanırken, oluşturulan proxy 'yi kullanmadığınız sırada bir bağlantı nesnesiyle yapabileceğiniz `$.connection.hub` her şeyi yapabilirsiniz.
+Oluşturulan proxy'yi kullanırken, oluşturulan proxy'yi kullanmadığınızda bağlantı nesnesiyle yapabileceğiniz her şeyi `$.connection.hub` yapabilirsiniz.
 
 <a id="asyncstart"></a>
 
-### <a name="asynchronous-execution-of-the-start-method"></a>Start yönteminin zaman uyumsuz yürütmesi
+### <a name="asynchronous-execution-of-the-start-method"></a>Başlangıç yönteminin eşzamanlı yürütmesi
 
-`start` yöntemi zaman uyumsuz olarak yürütülür. Bir [jQuery ertelenmiş nesnesi](http://api.jquery.com/category/deferred-object/)döndürür; bu, `pipe`, `done`ve `fail`gibi yöntemleri çağırarak geri çağırma işlevleri ekleyebileceðiniz anlamına gelir. Bağlantı kurulduktan sonra, örneğin bir sunucu yöntemine yapılan çağrı gibi yürütmek istediğiniz kod varsa, bu kodu bir geri çağırma işlevine koyun veya bir geri çağırma işlevinden çağırın. `.done` geri çağırma yöntemi, bağlantı kurulduktan sonra ve sunucudaki `OnConnected` olay işleyicisi yönteminde bulunan herhangi bir kod yürütmeyi bitirdiğinde yürütülür.
+Yöntem `start` eşsenkronize yürütülür. Bir [jQuery Ertelenmiş nesne](http://api.jquery.com/category/deferred-object/)döndürür , bu da gibi `pipe`arama yöntemleri `done`ekleyerek `fail`geri arama işlevleri ekleyebilirsiniz anlamına gelir , , ve . Bağlantı kurulduktan sonra yürütmek istediğiniz kodunuz (sunucu yöntemine çağrı gibi) varsa, bu kodu geri arama işlevine koyun veya geri arama işlevinden arayın. Geri `.done` arama yöntemi, bağlantı kurulduktan sonra ve sunucudaki olay işleyicisi yönteminizde `OnConnected` bulunan herhangi bir kod dan sonra yürütmeyi tamamlar.
 
-Yukarıdaki örnekteki "Şimdi bağlandı" ifadesini, `start` yöntem çağrısından (`.done` bir geri çağırmadan değil) sonraki kod satırı olarak yerleştirirseniz, aşağıdaki örnekte gösterildiği gibi `console.log` satırı bağlantı oluşturulmadan önce yürütülür:
+`start` Yöntem çağrısından sonra `.done` (geri aramada değil) sonraki kod satırı olarak önceki örnekteki "Şimdi bağlı" deyimini koyarsanız, `console.log` aşağıdaki örnekte gösterildiği gibi, bağlantı kurulmadan önce satır yürütülür:
 
-![Bağlantı kurulduktan sonra çalışan kodu yazmanın yanlış yolu](hubs-api-guide-javascript-client/_static/image5.png)
+![Bağlantı kurulduktan sonra çalışan kod yazmak için yanlış yol](hubs-api-guide-javascript-client/_static/image5.png)
 
 <a id="crossdomain"></a>
 
-## <a name="how-to-establish-a-cross-domain-connection"></a>Etki alanları arası bağlantı kurma
+## <a name="how-to-establish-a-cross-domain-connection"></a>Etki alanları arası bağlantı nasıl kurulur?
 
-Genellikle tarayıcı `http://contoso.com`bir sayfa yüklerse, SignalR bağlantısı aynı etki alanında, `http://contoso.com/signalr`. `http://contoso.com` sayfa, etki alanları arası bağlantı olan `http://fabrikam.com/signalr`bir bağlantı yapıyorsa. Güvenlik nedenleriyle, etki alanları arası bağlantılar varsayılan olarak devre dışıdır.
+Genellikle tarayıcı bir sayfa `http://contoso.com`yükler, SinyalR bağlantısı aynı etki alanında, at `http://contoso.com/signalr`. Sayfa, `http://contoso.com` `http://fabrikam.com/signalr`etki alanı arası bağlantıyla bağlantı yapıyorsa. Güvenlik nedenleriyle, etki alanları arası bağlantılar varsayılan olarak devre dışı bırakılır.
 
-SignalR 1. x içinde, çapraz etki alanı istekleri tek bir EnableCrossDomain bayrağıyla denetlenir. Bu bayrak hem JSONP hem de CORS isteklerini denetlediniz. Daha fazla esneklik için, tüm CORS desteği, SignalR 'nin sunucu bileşeninden kaldırılmıştır (JavaScript istemcileri tarayıcının desteklediği algılanırsa CORS 'yi yine de kullanır) ve bu senaryoları desteklemek için yeni OWıN ara yazılımı kullanılabilir hale getirilir.
+SignalR 1.x'te, çapraz etki alanı istekleri tek bir EnableCrossDomain bayrağı tarafından denetlendi. Bu bayrak hem JSONP hem de CORS isteklerini denetler. Daha fazla esneklik için, tüm CORS desteği SignalR'ın sunucu bileşeninden kaldırılmıştır (JavaScript istemcileri tarayıcının bunu desteklediği algılanırsa hala KORS'u kullanır) ve bu senaryoları desteklemek için yeni OWIN ara yazılımları kullanıma sunulmuştur.
 
-İstemci üzerinde JSONP gerekliyse (eski tarayıcılarda etki alanları arası istekleri desteklemek için), aşağıda gösterildiği gibi, `HubConfiguration` `true`nesnesindeki `EnableJSONP` ayarlanarak açıkça etkinleştirilmesi gerekecektir. JSONP, CORS 'den daha az güvenli olduğu için varsayılan olarak devre dışıdır.
+İstemci üzerinde JSONP gerekiyorsa (eski tarayıcılarda etki alanları arası isteklerini desteklemek için), `EnableJSONP` aşağıda `HubConfiguration` gösterildiği `true`gibi nesne üzerinde ayarlayarak açıkça etkinleştirilmesi gerekir. JSONP, CORS'ten daha az güvenli olduğu için varsayılan olarak devre dışı bırakılır.
 
-**Projenize Microsoft. Owin. CORS ekleme:** Bu kitaplığı yüklemek için, Paket Yöneticisi konsolunda aşağıdaki komutu çalıştırın:
+**Microsoft.Owin.Cors'un projenize eklenmesi:** Bu kitaplığı yüklemek için Paket Yöneticisi Konsolunda aşağıdaki komutu çalıştırın:
 
 `Install-Package Microsoft.Owin.Cors`
 
 Bu komut, paketin 2.1.0 sürümünü projenize ekler.
 
-### <a name="calling-usecors"></a>UseCors çağrılıyor
+### <a name="calling-usecors"></a>UseCors'u Arama
 
- Aşağıdaki kod parçacığı, SignalR 2 ' de etki alanları arası bağlantıların nasıl uygulanacağını gösterir.
+ Aşağıdaki kod snippet SignalR 2'de etki alanları arası bağlantıların nasıl uygulanacağını gösterir.
 
-**SignalR 2 ' de etki alanları arası istekleri uygulama**
+**SignalR 2'de etki alanları arası isteklerin uygulanması**
 
-Aşağıdaki kod, bir SignalR 2 projesinde CORS veya JSONP 'nin nasıl etkinleştirileceğini göstermektedir. Bu kod örneği, `MapSignalR`yerine `Map` ve `RunSignalR` kullanır, böylece CORS ara yazılımı yalnızca CORS desteği gerektiren SignalR istekleri için çalışır (`MapSignalR`' de belirtilen yoldaki tüm trafik için değil.) Eşleme, uygulamanın tamamı yerine belirli bir URL öneki için çalıştırılması gereken diğer tüm ara yazılımlar için de kullanılabilir.
+Aşağıdaki kod, SignalR 2 projesinde CORS veya JSONP'nin nasıl etkinleştirilen gösteriş olduğunu gösterir. Bu kod `Map` örneği, `RunSignalR` `MapSignalR`CORS ara yazılımının yalnızca CORS desteği gerektiren SignalR istekleri için (belirtilen `MapSignalR`yoldaki tüm trafikler yerine . Harita, tüm uygulama yerine belirli bir URL öneki için çalışması gereken diğer ara yazılımlar için de kullanılabilir.
 
 [!code-csharp[Main](hubs-api-guide-javascript-client/samples/sample11.cs)]
 
 > [!NOTE]
 >
-> - Kodunuzda `jQuery.support.cors` true olarak ayarlama.
+> - Kodunuzda doğru `jQuery.support.cors` şekilde ayarlanma.
 >
->     ![JQuery. support. CORS 'yi true olarak ayarlama](hubs-api-guide-javascript-client/_static/image7.png)
+>     ![jQuery.support.cors'u doğru ayarlamayın](hubs-api-guide-javascript-client/_static/image7.png)
 >
->     SignalR CORS kullanımını işler. `jQuery.support.cors` true olarak ayarlamak, SignalR 'nin tarayıcının CORS 'yi desteklediğini varsaymasına neden olduğundan JSONP 'yi devre dışı bırakır.
-> - Bir localhost URL 'sine bağlanırken, Internet Explorer 10 bir etki alanları arası bağlantıyı düşünmez, bu nedenle sunucuda etki alanları arası bağlantıları etkinleştirmemiş olsanız bile, uygulama IE 10 ile yerel olarak çalışacaktır.
-> - Internet Explorer 9 ile etki alanları arası bağlantıları kullanma hakkında daha fazla bilgi için [Bu StackOverflow iş parçacığına](http://stackoverflow.com/questions/13573397/siganlr-ie9-cross-domain-request-dont-work)bakın.
-> - Chrome ile etki alanları arası bağlantıları kullanma hakkında daha fazla bilgi için [Bu StackOverflow iş parçacığına](http://stackoverflow.com/questions/15467373/signalr-1-0-1-cross-domain-request-cors-with-chrome)bakın.
-> - Örnek kod, SignalR hizmetinize bağlanmak için varsayılan "/SignalR" URL 'sini kullanır. Farklı bir temel URL belirtme hakkında daha fazla bilgi için bkz. [ASP.NET SignalR hub 'LARı API Kılavuzu-sunucu-/SignalR URL 'si](hubs-api-guide-server.md#signalrurl).
+>     SignalR, CORS kullanımını yönetir. SignalR'ın tarayıcının CORS'u desteklediğini varsayması nedeniyle JSONP'yi gerçek devre dışı bırakırsa ayar. `jQuery.support.cors`
+> - Yerel barındırma URL'sine bağlandığınızda, Internet Explorer 10 bunu etki alanı arası bağlantı olarak kabul etmez, bu nedenle sunucuda etki alanları arası bağlantıları etkinleştirmeseniz bile uygulama IE 10 ile yerel olarak çalışır.
+> - Internet Explorer 9 ile etki alanı arası bağlantıları kullanma hakkında bilgi için [bu StackOverflow iş parçacığına](http://stackoverflow.com/questions/13573397/siganlr-ie9-cross-domain-request-dont-work)bakın.
+> - Chrome ile etki alanı arası bağlantıları kullanma hakkında daha fazla bilgi için [bu StackOverflow iş parçacığına](http://stackoverflow.com/questions/15467373/signalr-1-0-1-cross-domain-request-cors-with-chrome)bakın.
+> - Örnek kod, SignalR hizmetinize bağlanmak için varsayılan "/signalr" URL'sini kullanır. Farklı bir temel URL'nin nasıl belirtilen hakkında bilgi için [signalr hub'ASP.NET API Kılavuzu - Sunucu - /signalr URL'ye](hubs-api-guide-server.md#signalrurl)bakın.
 
 <a id="configureconnection"></a>
 
-## <a name="how-to-configure-the-connection"></a>Bağlantıyı yapılandırma
+## <a name="how-to-configure-the-connection"></a>Bağlantı nasıl yapılandırılabilen
 
-Bir bağlantı kurmadan önce sorgu dizesi parametreleri belirtebilir veya taşıma yöntemini belirtebilirsiniz.
+Bir bağlantı kurmadan önce, sorgu dize parametrelerini belirtebilir veya aktarım yöntemini belirtebilirsiniz.
 
 <a id="querystring"></a>
 
-### <a name="how-to-specify-query-string-parameters"></a>Sorgu dizesi parametrelerini belirtme
+### <a name="how-to-specify-query-string-parameters"></a>Sorgu dize parametreleri nasıl belirtilir?
 
-İstemci bağlandığı zaman sunucuya veri göndermek istiyorsanız, bağlantı nesnesine sorgu dizesi parametreleri ekleyebilirsiniz. Aşağıdaki örneklerde, istemci kodunda bir sorgu dizesi parametresinin nasıl ayarlanacağı gösterilmektedir.
+İstemci bağlandığında sunucuya veri göndermek istiyorsanız, sorgu dize parametrelerini bağlantı nesnesine ekleyebilirsiniz. Aşağıdaki örnekler, istemci kodunda bir sorgu dize parametresi nasıl ayarlanır gösterilmektedir.
 
-**Start metodunu çağırmadan önce bir sorgu dizesi değeri ayarlayın (oluşturulan ara sunucu ile)**
+**Başlangıç yöntemini çağırmadan önce sorgu dize değeri ayarlama (oluşturulan proxy ile)**
 
 [!code-javascript[Main](hubs-api-guide-javascript-client/samples/sample12.js?highlight=1)]
 
-**Start metodunu çağırmadan önce bir sorgu dizesi değeri ayarlayın (oluşturulan proxy olmadan)**
+**Başlangıç yöntemini çağırmadan önce sorgu dize değeri ayarlama (oluşturulan proxy olmadan)**
 
 [!code-javascript[Main](hubs-api-guide-javascript-client/samples/sample13.js?highlight=2)]
 
-Aşağıdaki örnek, sunucu kodundaki bir sorgu dizesi parametresinin nasıl okunacağını gösterir.
+Aşağıdaki örnekte, sunucu kodunda sorgu dize parametresi nasıl okunulup okunulduğu gösterilmektedir.
 
 [!code-csharp[Main](hubs-api-guide-javascript-client/samples/sample14.cs?highlight=5)]
 
 <a id="transport"></a>
 
-### <a name="how-to-specify-the-transport-method"></a>Taşıma yöntemini belirtme
+### <a name="how-to-specify-the-transport-method"></a>Taşıma yöntemi nasıl belirtilir?
 
-Bağlantı sürecinin bir parçası olarak, bir SignalR istemcisi normalde sunucu ve istemci tarafından desteklenen en iyi aktarımı tespit etmek üzere sunucuyla görüşür. Kullanmak istediğiniz taşımayı zaten biliyorsanız, `start` yöntemini çağırdığınızda Transport metodunu belirterek bu anlaşma sürecini atlayabilirsiniz.
+Bağlanma işleminin bir parçası olarak, bir SignalR istemcisi normalde sunucu ile hem sunucu hem de istemci tarafından desteklenen en iyi aktarım belirlemek için görüşür. Hangi aktarımkullanmak istediğinizi zaten biliyorsanız, yöntemi aradığınızda aktarım yöntemini belirterek bu işlem işlemini `start` atlayabilirsiniz.
 
-**Taşıma yöntemini belirten istemci kodu (oluşturulan ara sunucu ile)**
+**Aktarım yöntemini belirten istemci kodu (oluşturulan proxy ile)**
 
 [!code-javascript[Main](hubs-api-guide-javascript-client/samples/sample15.js?highlight=1)]
 
-**Taşıma yöntemini belirten istemci kodu (oluşturulan proxy olmadan)**
+**Aktarım yöntemini belirten istemci kodu (oluşturulan proxy olmadan)**
 
 [!code-javascript[Main](hubs-api-guide-javascript-client/samples/sample16.js?highlight=2)]
 
-Alternatif olarak, SignalR 'nin bunları denemesini istediğiniz sırada birden çok taşıma yöntemi belirtebilirsiniz:
+Alternatif olarak, SignalR'ın denemesini istediğiniz sırada birden çok aktarım yöntemi belirtebilirsiniz:
 
-**Özel bir taşıma geri dönüş şeması belirten istemci kodu (oluşturulan ara sunucu ile)**
+**Özel bir aktarım geri dönüş düzeni belirten istemci kodu (oluşturulan proxy ile)**
 
 [!code-javascript[Main](hubs-api-guide-javascript-client/samples/sample17.js?highlight=1)]
 
-**Özel bir taşıma geri dönüş şeması belirten istemci kodu (oluşturulan proxy olmadan)**
+**Özel bir aktarım geri dönüş düzeni belirten istemci kodu (oluşturulan proxy olmadan)**
 
 [!code-javascript[Main](hubs-api-guide-javascript-client/samples/sample18.js?highlight=2)]
 
-Taşıma yöntemini belirtmek için aşağıdaki değerleri kullanabilirsiniz:
+Aktarım yöntemini belirtmek için aşağıdaki değerleri kullanabilirsiniz:
 
-- WebSockets
+- "webSockets"
 - "foreverFrame"
 - "serverSentEvents"
 - "longPolling"
 
-Aşağıdaki örneklerde, bir bağlantı tarafından hangi taşıma yönteminin kullanıldığını nasıl bulacağınız gösterilmektedir.
+Aşağıdaki örnekler, bağlantı tarafından hangi aktarım yönteminin kullanıldığını nasıl bulabileceğinizi gösterir.
 
-**Bir bağlantı tarafından kullanılan aktarım yöntemini görüntüleyen istemci kodu (oluşturulan ara sunucu ile)**
+**Bağlantı tarafından kullanılan aktarım yöntemini görüntüleyen istemci kodu (oluşturulan proxy ile)**
 
 [!code-javascript[Main](hubs-api-guide-javascript-client/samples/sample19.js?highlight=2)]
 
-**Bir bağlantı tarafından kullanılan aktarım yöntemini görüntüleyen istemci kodu (oluşturulan proxy olmadan)**
+**Bağlantı tarafından kullanılan aktarım yöntemini görüntüleyen istemci kodu (oluşturulan proxy olmadan)**
 
 [!code-javascript[Main](hubs-api-guide-javascript-client/samples/sample20.js?highlight=3)]
 
-Sunucu kodundaki aktarım yöntemini denetleme hakkında daha fazla bilgi için bkz. [ASP.NET SignalR hub 'LARı API Kılavuzu-sunucu-bağlam özelliğinden istemci hakkında bilgi alma](hubs-api-guide-server.md#contextproperty). Aktarımlar ve geri göndermeler hakkında daha fazla bilgi için bkz. [SignalR 'ye giriş-aktarımlar ve geri göndermeler](../getting-started/introduction-to-signalr.md#transports).
+Sunucu kodunda aktarım yöntemini nasıl kontrol edeceğimiz hakkında bilgi için [SignalR Hub'ASP.NET API Kılavuzu - Sunucu - Bağlam özelliğinden istemci hakkında nasıl bilgi alınır.](hubs-api-guide-server.md#contextproperty) Taşımalar ve geri dönüşler hakkında daha fazla bilgi için [SignalR'a Giriş - Taşımalar ve Geri Dönüşler'](../getting-started/introduction-to-signalr.md#transports)e bakın.
 
 <a id="getproxy"></a>
 
-## <a name="how-to-get-a-proxy-for-a-hub-class"></a>Hub sınıfı için proxy alma
+## <a name="how-to-get-a-proxy-for-a-hub-class"></a>Hub sınıfı için proxy nasıl edinilir?
 
-Oluşturduğunuz her bağlantı nesnesi bir veya daha fazla hub sınıfı içeren bir SignalR hizmetine bağlantı hakkındaki bilgileri kapsüller. Bir hub sınıfıyla iletişim kurmak için kendi oluşturduğunuz (oluşturulan proxy kullanmıyorsanız) veya sizin için oluşturulan bir ara sunucu nesnesi kullanırsınız.
+Oluşturduğunuz her bağlantı nesnesi, bir veya daha fazla Hub sınıfı içeren bir SignalR hizmetine bağlantı hakkındaki bilgileri kapsüller. Hub sınıfıyla iletişim kurmak için, kendi oluşturduğunuz (oluşturulan proxy'yi kullanmıyorsanız) veya sizin için oluşturulan bir proxy nesnesi kullanırsınız.
 
-İstemci üzerinde, proxy adı hub sınıfı adının Camel bir sürümüdür. SignalR, JavaScript kodunun JavaScript kurallarına uyum sağlamak için bu değişikliği otomatik olarak yapar.
+İstemci üzerinde proxy adı Hub sınıf adının deve kasalı bir sürümüdür. SignalR, JavaScript kodunun JavaScript kurallarına uygun olması için bu değişikliği otomatik olarak yapar.
 
-**Sunucudaki hub sınıfı**
+**Sunucuda hub sınıfı**
 
 [!code-csharp[Main](hubs-api-guide-javascript-client/samples/sample21.cs?highlight=1)]
 
-**Hub için üretilen istemci ara sunucusuna bir başvuru alın**
+**Hub için oluşturulan istemci proxy'sine başvuru alma**
 
 [!code-javascript[Main](hubs-api-guide-javascript-client/samples/sample22.js?highlight=1)]
 
-**Hub sınıfı için istemci ara sunucusu oluşturma (oluşturulan proxy olmadan)**
+**Hub sınıfı için istemci proxy'si oluşturma (oluşturulan proxy olmadan)**
 
 [!code-csharp[Main](hubs-api-guide-javascript-client/samples/sample23.cs?highlight=1)]
 
-Hub sınıfınızı bir `HubName` özniteliğiyle süslemek isterseniz, büyük/küçük harf durumunu değiştirmeden tam adı kullanın.
+Hub sınıfınızı bir `HubName` öznitelikle dekore ederseniz, büyük/küçük harf değiştirmeden tam adı kullanın.
 
-**HubName özniteliğine sahip sunucudaki hub sınıfı**
+**HubName özniteliği ile sunucuda Hub sınıfı**
 
 [!code-csharp[Main](hubs-api-guide-javascript-client/samples/sample24.cs?highlight=1)]
 
-**Hub için üretilen istemci ara sunucusuna bir başvuru alın**
+**Hub için oluşturulan istemci proxy'sine başvuru alma**
 
 [!code-javascript[Main](hubs-api-guide-javascript-client/samples/sample25.js?highlight=1)]
 
-**Hub sınıfı için istemci ara sunucusu oluşturma (oluşturulan proxy olmadan)**
+**Hub sınıfı için istemci proxy'si oluşturma (oluşturulan proxy olmadan)**
 
 [!code-csharp[Main](hubs-api-guide-javascript-client/samples/sample26.cs?highlight=1)]
 
 <a id="callclient"></a>
 
-## <a name="how-to-define-methods-on-the-client-that-the-server-can-call"></a>İstemcide sunucunun çağırabir yöntemi tanımlama
+## <a name="how-to-define-methods-on-the-client-that-the-server-can-call"></a>Sunucunun çağırabileceği istemcide yöntemler nasıl tanımlanır?
 
-Sunucunun bir hub 'dan çağıracaı bir yöntemi tanımlamak için, oluşturulan proxy 'nin `client` özelliğini kullanarak hub proxy 'sine bir olay işleyicisi ekleyin veya oluşturulan proxy kullanmıyorsanız `on` yöntemini çağırın. Parametreler karmaşık nesneler olabilir.
+Sunucunun Hub'dan çağırabileceği bir yöntem tanımlamak için, oluşturulan proxy'nin `client` özelliğini kullanarak Hub proxy'sine bir olay işleyicisi ekleyin veya oluşturulan proxy'yi kullanmıyorsanız `on` yöntemi arayın. Parametreler karmaşık nesneler olabilir.
 
-Bağlantıyı kurmak için `start` yöntemini çağırmadan önce olay işleyicisini ekleyin. (`start` yöntemini çağırdıktan sonra olay işleyicileri eklemek istiyorsanız, bu belgede daha önce [bir bağlantı kurma](#establishconnection) bölümündeki nota bakın ve oluşturulan proxy 'yi kullanmadan bir yöntemi tanımlamak için gösterilen sözdizimini kullanın.)
+Bağlantıyı kurmak için yöntemi çağırmadan `start` önce olay işleyicisini ekleyin. (Yöntemi aradıktan sonra olay işleyicileri eklemek istiyorsanız, bu belgede daha önce [bağlantı kurma notu](#establishconnection) na bakın ve oluşturulan proxy'yi kullanmadan bir yöntem tanımlamak için gösterilen sözdizimini kullanın.) `start`
 
-Yöntem adı eşleştirme, büyük/küçük harfe duyarlıdır. Örneğin, sunucusundaki `Clients.All.addContosoChatMessageToPage`, istemcide `AddContosoChatMessageToPage`, `addContosoChatMessageToPage`veya `addcontosochatmessagetopage` yürütülür.
+Yöntem adı eşleştirme büyük/küçük harf duyarsız. Örneğin, `Clients.All.addContosoChatMessageToPage` sunucuda , `AddContosoChatMessageToPage` `addContosoChatMessageToPage`veya `addcontosochatmessagetopage` istemci üzerinde yürütülür.
 
-**İstemci üzerinde yöntemi tanımlama (oluşturulan ara sunucu ile)**
+**İstemci üzerinde yöntemi tanımlama (oluşturulan proxy ile)**
 
 [!code-javascript[Main](hubs-api-guide-javascript-client/samples/sample27.js?highlight=2)]
 
-**İstemci üzerinde yöntemi tanımlamanın alternatif yolu (oluşturulan ara sunucu ile)**
+**İstemci de yöntemi tanımlamak için alternatif yol (oluşturulan proxy ile)**
 
 [!code-javascript[Main](hubs-api-guide-javascript-client/samples/sample28.js?highlight=1-2)]
 
-**İstemci üzerinde yöntemi tanımlayın (oluşturulan ara sunucu olmadan veya başlangıç yöntemini çağırdıktan sonra eklenirken)**
+**İstemci üzerinde yöntemi tanımlayın (oluşturulan proxy olmadan veya başlat yöntemini çağırdıktan sonra eklerken)**
 
 [!code-javascript[Main](hubs-api-guide-javascript-client/samples/sample29.js?highlight=3)]
 
@@ -376,13 +376,13 @@ Yöntem adı eşleştirme, büyük/küçük harfe duyarlıdır. Örneğin, sunuc
 
 [!code-csharp[Main](hubs-api-guide-javascript-client/samples/sample30.cs?highlight=5)]
 
-Aşağıdaki örnekler, bir yöntem parametresi olarak karmaşık bir nesne içerir.
+Aşağıdaki örnekler, yöntem parametresi olarak karmaşık bir nesne içerir.
 
-**İstemci üzerinde karmaşık bir nesne alan (oluşturulan ara sunucu ile) yöntemi tanımlayın**
+**Karmaşık bir nesne alan istemcide yöntem tanımlama (oluşturulan proxy ile)**
 
 [!code-javascript[Main](hubs-api-guide-javascript-client/samples/sample31.js?highlight=2-3)]
 
-**İstemci üzerinde karmaşık bir nesne alan (oluşturulan proxy olmadan) yöntemi tanımlayın**
+**Karmaşık bir nesne alan istemcide yöntem tanımlama (oluşturulan proxy olmadan)**
 
 [!code-javascript[Main](hubs-api-guide-javascript-client/samples/sample32.js?highlight=3-4)]
 
@@ -396,23 +396,23 @@ Aşağıdaki örnekler, bir yöntem parametresi olarak karmaşık bir nesne içe
 
 <a id="callserver"></a>
 
-## <a name="how-to-call-server-methods-from-the-client"></a>İstemciden sunucu yöntemlerini çağırma
+## <a name="how-to-call-server-methods-from-the-client"></a>İstemciden sunucu yöntemleri nasıl çağrılır?
 
-İstemciden bir sunucu yöntemi çağırmak için, oluşturulan proxy 'yi kullanmıyorsanız, oluşturulan ara sunucunun `server` özelliğini veya hub proxy üzerinde `invoke` yöntemini kullanın. Dönüş değeri veya parametreleri karmaşık nesneler olabilir.
+İstemciden sunucu yöntemini çağırmak `server` için, oluşturulan proxy'yi kullanmıyorsanız oluşturulan proxy'nin özelliğini veya Hub proxy'deki `invoke` yöntemi kullanın. İade değeri veya parametreler karmaşık nesneler olabilir.
 
-Hub üzerindeki yöntem adının Camel bir sürümünü geçirin. SignalR, JavaScript kodunun JavaScript kurallarına uyum sağlamak için bu değişikliği otomatik olarak yapar.
+Hub'daki yöntem adının deve kılıfı sürümünde geçirin. SignalR, JavaScript kodunun JavaScript kurallarına uygun olması için bu değişikliği otomatik olarak yapar.
 
-Aşağıdaki örneklerde, dönüş değeri olmayan bir sunucu yönteminin nasıl çağrılacağını ve dönüş değerine sahip bir sunucu yönteminin nasıl çağrılacağını gösterilmektedir.
+Aşağıdaki örnekler, iade değeri olmayan bir sunucu yönteminin nasıl çağrılmasını ve iade değeri olan bir sunucu yönteminin nasıl çağrılmasını gösterir.
 
 **HubMethodName özniteliği olmayan sunucu yöntemi**
 
 [!code-csharp[Main](hubs-api-guide-javascript-client/samples/sample35.cs?highlight=3)]
 
-**Bir parametreye geçirilen karmaşık nesneyi tanımlayan sunucu kodu**
+**Parametrede geçirilen karmaşık nesneyi tanımlayan sunucu kodu**
 
 [!code-csharp[Main](hubs-api-guide-javascript-client/samples/sample36.cs)]
 
-**Sunucu yöntemini çağıran istemci kodu (oluşturulan ara sunucu ile)**
+**Sunucu yöntemini çağıran istemci kodu (oluşturulan proxy ile)**
 
 [!code-javascript[Main](hubs-api-guide-javascript-client/samples/sample37.js?highlight=1)]
 
@@ -420,13 +420,13 @@ Aşağıdaki örneklerde, dönüş değeri olmayan bir sunucu yönteminin nasıl
 
 [!code-javascript[Main](hubs-api-guide-javascript-client/samples/sample38.js?highlight=1)]
 
-Hub yöntemini bir `HubMethodName` özniteliğiyle Süsleriniz durumunda bu adı, büyük/küçük harf olmadan kullanın.
+Hub yöntemini bir `HubMethodName` öznitelikle dekore ettiyseniz, büyük/küçük harf değiştirmeden bu adı kullanın.
 
-HubMethodName özniteliğiyle **sunucu yöntemi**
+HubMethodName özniteliği olan **sunucu yöntemi**
 
 [!code-csharp[Main](hubs-api-guide-javascript-client/samples/sample39.cs?highlight=3)]
 
-**Sunucu yöntemini çağıran istemci kodu (oluşturulan ara sunucu ile)**
+**Sunucu yöntemini çağıran istemci kodu (oluşturulan proxy ile)**
 
 [!code-javascript[Main](hubs-api-guide-javascript-client/samples/sample40.js?highlight=1)]
 
@@ -434,17 +434,17 @@ HubMethodName özniteliğiyle **sunucu yöntemi**
 
 [!code-javascript[Main](hubs-api-guide-javascript-client/samples/sample41.js?highlight=1)]
 
-Yukarıdaki örneklerde, dönüş değeri olmayan bir sunucu yönteminin nasıl çağrılacağını gösterilmektedir. Aşağıdaki örneklerde, dönüş değeri olan bir sunucu yönteminin nasıl çağrılacağını gösterilmektedir.
+Önceki örnekler, iade değeri olmayan bir sunucu yönteminin nasıl çağrılmasını gösterir. Aşağıdaki örnekler, iade değeri olan bir sunucu yönteminin nasıl çağrılmasını gösterir.
 
-**Dönüş değerine sahip bir yöntem için sunucu kodu**
+**İade değeri olan bir yöntemiçin sunucu kodu**
 
 [!code-csharp[Main](hubs-api-guide-javascript-client/samples/sample42.cs?highlight=3)]
 
-Dönüş değeri **için kullanılan hisse senedi sınıfı**
+İade değeri **için kullanılan Stok sınıfı**
 
 [!code-csharp[Main](hubs-api-guide-javascript-client/samples/sample43.cs?highlight=1)]
 
-**Sunucu yöntemini çağıran istemci kodu (oluşturulan ara sunucu ile)**
+**Sunucu yöntemini çağıran istemci kodu (oluşturulan proxy ile)**
 
 [!code-javascript[Main](hubs-api-guide-javascript-client/samples/sample44.js?highlight=2,4-5)]
 
@@ -454,43 +454,43 @@ Dönüş değeri **için kullanılan hisse senedi sınıfı**
 
 <a id="connectionlifetime"></a>
 
-## <a name="how-to-handle-connection-lifetime-events"></a>Bağlantı ömrü olaylarını işleme
+## <a name="how-to-handle-connection-lifetime-events"></a>Bağlantı ömrü olayları nasıl işler?
 
-SignalR, işleyebilmeniz için aşağıdaki bağlantı ömrü olaylarını sağlar:
+SignalR işleyebilir aşağıdaki bağlantı ömrü olayları sağlar:
 
-- `starting`: bağlantı üzerinden herhangi bir veri gönderilmeden önce tetiklenir.
-- `received`: bağlantıda herhangi bir veri alındığında tetiklenir. Alınan verileri sağlar.
-- `connectionSlow`: istemci yavaş veya sık bir bırakma bağlantısı algıladığında tetiklenir.
-- `reconnecting`: temeldeki aktarım yeniden bağlanmaya başladığında tetiklenir.
-- `reconnected`: temeldeki aktarım yeniden bağlandığında tetiklenir.
-- `stateChanged`: bağlantı durumu değiştiğinde tetiklenir. Eski durumu ve yeni durumu (bağlanma, bağlanma, yeniden bağlanma veya bağlantısı kesildi) sağlar.
-- `disconnected`: bağlantının bağlantısı kesildiğinde tetiklenir.
+- `starting`: Bağlantı üzerinden herhangi bir veri gönderilmeden önce yükseltilir.
+- `received`: Bağlantıdan herhangi bir veri alındığı zaman yükseltilir. Alınan verileri sağlar.
+- `connectionSlow`: İstemci yavaş veya sık sık bırakarak bağlantı algıladığında yükseltilir.
+- `reconnecting`: Altta yatan aktarım yeniden bağlanmaya başladığında yükseltilir.
+- `reconnected`: Temel taşıma yeniden bağlandığında yükseltilir.
+- `stateChanged`: Bağlantı durumu değiştiğinde yükseltilir. Eski durumu ve yeni durumu (Bağlama, Bağlama, Yeniden Bağlanma veya Bağlantı Kesme) sağlar.
+- `disconnected`: Bağlantı kesildiğinde yükseltilir.
 
-Örneğin, dikkat çekici gecikmelere neden olabilecek bağlantı sorunları olduğunda uyarı iletilerini göstermek istiyorsanız `connectionSlow` olayını işleyin.
+Örneğin, fark edilebilir gecikmelere neden olabilecek bağlantı sorunları olduğunda uyarı iletilerini görüntülemek `connectionSlow` istiyorsanız, olayı ele alın.
 
-**Connectionlow olayını işle (oluşturulan ara sunucu ile)**
+**Bağlantıyı işlemeSlow olayı (oluşturulan proxy ile)**
 
 [!code-javascript[Main](hubs-api-guide-javascript-client/samples/sample46.js?highlight=1)]
 
-**Connectionlow olayını işle (oluşturulan proxy olmadan)**
+**Bağlantıyı işlemeSlow olayı (oluşturulan proxy olmadan)**
 
 [!code-javascript[Main](hubs-api-guide-javascript-client/samples/sample47.js?highlight=2)]
 
-Daha fazla bilgi için bkz. [SignalR 'de bağlantı ömrü olaylarını anlama ve işleme](handling-connection-lifetime-events.md).
+Daha fazla bilgi için [SignalR'deki Bağlantı Yaşam Boyu Olayları Anlama ve İşleme'ye](handling-connection-lifetime-events.md)bakın.
 
 <a id="handleerrors"></a>
 
 ## <a name="how-to-handle-errors"></a>Hataları işleme
 
-SignalR JavaScript istemcisi, için bir işleyici ekleyebileceğiniz bir `error` olayı sağlar. Ayrıca, bir sunucu yöntemi çağrısından kaynaklanan hatalara yönelik bir işleyici eklemek için Fail metodunu kullanabilirsiniz.
+SignalR JavaScript istemcisi için bir işleyici ekleyebileceğiniz bir `error` olay sağlar. Sunucu yöntemi çağırmasından kaynaklanan hatalar için işleyici eklemek için başarısız yöntemini de kullanabilirsiniz.
 
-Sunucuda ayrıntılı hata iletilerini açıkça etkinleştirmezseniz, bir hatadan sonra SignalR 'nin döndürdüğü özel durum nesnesi hata hakkında en az bilgi içerir. Örneğin, `newContosoChatMessage` çağrısı başarısız olursa, hata nesnesindeki hata iletisi, güvenlik nedenleriyle, üretim aşamasındaki istemcilere ayrıntılı hata iletileri gönderilmesi "`There was an error invoking Hub method 'contosoChatHub.newContosoChatMessage'.`" içerir, ancak sorun giderme amacıyla ayrıntılı hata iletileri etkinleştirmek istiyorsanız, sunucuda aşağıdaki kodu kullanın.
+Sunucuda ayrıntılı hata iletilerini açıkça etkinleştirmezseniz, SignalR'ın hatadan sonra döndürdİğİ özel durum nesnesi hata hakkında en az bilgi içerir. Örneğin, bir çağrı `newContosoChatMessage` başarısız olursa, hata nesnesindeki`There was an error invoking Hub method 'contosoChatHub.newContosoChatMessage'.`hata iletisi " " Üretimdeki istemcilere ayrıntılı hata iletileri göndermek güvenlik nedenleriyle önerilmez, ancak sorun giderme amacıyla ayrıntılı hata iletilerini etkinleştirmek istiyorsanız, sunucudaki aşağıdaki kodu kullanın.
 
 [!code-csharp[Main](hubs-api-guide-javascript-client/samples/sample48.cs?highlight=2)]
 
-Aşağıdaki örnek, hata olayı için nasıl işleyicinin ekleneceğini gösterir.
+Aşağıdaki örnekte, hata olayı için işleyici nasıl ekleyeceğiniz gösterilmektedir.
 
-**Hata işleyicisi ekleme (oluşturulan ara sunucu ile)**
+**Hata işleyicisi ekleme (oluşturulan proxy ile)**
 
 [!code-javascript[Main](hubs-api-guide-javascript-client/samples/sample49.js?highlight=1)]
 
@@ -498,30 +498,30 @@ Aşağıdaki örnek, hata olayı için nasıl işleyicinin ekleneceğini göster
 
 [!code-javascript[Main](hubs-api-guide-javascript-client/samples/sample50.js?highlight=2)]
 
-Aşağıdaki örnek, bir yöntem çağrısından bir hatanın nasıl işleneceğini gösterir.
+Aşağıdaki örnek, bir yöntem çağırma bir hata işlemek için nasıl gösterir.
 
-**Yöntem çağrısından bir hata işleme (oluşturulan ara sunucu ile)**
+**Yöntem çağırmadan gelen bir hatayı işleme (oluşturulan proxy ile)**
 
 [!code-javascript[Main](hubs-api-guide-javascript-client/samples/sample51.js?highlight=2)]
 
-**Yöntem çağrısından bir hata işleme (oluşturulan proxy olmadan)**
+**Yöntem çağırmasından bir hata işleme (oluşturulan proxy olmadan)**
 
 [!code-javascript[Main](hubs-api-guide-javascript-client/samples/sample52.js?highlight=2)]
 
-Bir yöntem çağrısı başarısız olursa, `error` olayı da oluşturulur, bu nedenle `error` yöntemi işleyicisindeki kodunuz ve `.fail` Yöntem geri çağırması yürütülür.
+Bir yöntem çağırma başarısız `error` olursa, olay da yükseltilir, `error` bu nedenle yöntem `.fail` işleyicisi ve yöntem geri arama kodu yürütülür.
 
 <a id="logging"></a>
 
-## <a name="how-to-enable-client-side-logging"></a>İstemci tarafı günlük kaydını etkinleştirme
+## <a name="how-to-enable-client-side-logging"></a>İstemci tarafı günlüğe kaydetmeyi etkinleştirme
 
-Bir bağlantıda istemci tarafı günlüğe kaydetmeyi etkinleştirmek için, bağlantıyı kurmak üzere `start` yöntemini çağırmadan önce bağlantı nesnesindeki `logging` özelliğini ayarlayın.
+Bağlantıda istemci tarafı günlüğe kaydetmeyi `logging` etkinleştirmek için, bağlantıyı `start` kurmak için yöntemi çağırmadan önce özelliği bağlantı nesnesi üzerinde ayarlayın.
 
-**Günlüğe kaydetmeyi etkinleştirme (oluşturulan ara sunucu ile)**
+**Günlüğü etkinleştirme (oluşturulan proxy ile)**
 
 [!code-javascript[Main](hubs-api-guide-javascript-client/samples/sample53.js?highlight=1)]
 
-**Günlüğe kaydetmeyi etkinleştir (oluşturulan proxy olmadan)**
+**Günlüğü etkinleştirme (oluşturulan proxy olmadan)**
 
 [!code-javascript[Main](hubs-api-guide-javascript-client/samples/sample54.js?highlight=2)]
 
-Günlükleri görmek için tarayıcınızın geliştirici araçlarını açın ve konsol sekmesine gidin. Bunun nasıl yapılacağını gösteren adım adım yönergeleri ve ekran görüntülerini gösteren bir öğretici için, bkz. [ASP.NET SignalR Ile sunucu yayını-günlüğü etkinleştirme](../getting-started/tutorial-server-broadcast-with-signalr.md#enable-logging).
+Günlükleri görmek için tarayıcınızın geliştirici araçlarını açın ve Konsol sekmesine gidin. Bunu nasıl yapacağını gösteren adım adım yönergeleri ve ekran görüntülerini gösteren bir öğretici için, ASP.NET Signalr ile Sunucu Yayını ' na bakın [- Günlük'u etkinleştirin.](../getting-started/tutorial-server-broadcast-with-signalr.md#enable-logging)
