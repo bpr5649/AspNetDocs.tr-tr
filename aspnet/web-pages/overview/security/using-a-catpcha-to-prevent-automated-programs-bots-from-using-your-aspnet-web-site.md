@@ -1,73 +1,73 @@
 ---
 uid: web-pages/overview/security/using-a-catpcha-to-prevent-automated-programs-bots-from-using-your-aspnet-web-site
-title: ASP.NET Web Razor) sitenizi kullanmalarını engellemek için CAPTCHA kullanma | Microsoft Docs
-author: microsoft
-description: Bu makalede otomatik programların (botlar) bir ASP.NET Web sayfalarında (Razor) görevleri gerçekleştirmesini engellemek için ReCaptcha 'nın (bir güvenlik ölçüsü) nasıl kullanılacağı açıklanmaktadır...
+title: Botların ASP.NET Web Razor) Sitenizi Kullanmasını Önlemek için CAPTCHA Kullanma | Microsoft Dokümanlar
+author: rick-anderson
+description: Bu makalede, otomatik programların (botların) ASP.NET bir Web Sayfasında (Razor) görevleri yerine getirmesini önlemek için ReCaptcha'nın (güvenlik önlemi) nasıl kullanılacağı açıklanmaktadır...
 ms.author: riande
 ms.date: 05/21/2012
 ms.assetid: 2b381a41-2cb3-40c0-8545-1d393e22877f
 msc.legacyurl: /web-pages/overview/security/using-a-catpcha-to-prevent-automated-programs-bots-from-using-your-aspnet-web-site
 msc.type: authoredcontent
-ms.openlocfilehash: 2647a3155893a3dfb3214795a5f9cf1e8931fa91
-ms.sourcegitcommit: e7e91932a6e91a63e2e46417626f39d6b244a3ab
+ms.openlocfilehash: 65f414ae3fed5e2fa28b1e57f5327c6411a43d55
+ms.sourcegitcommit: 022f79dbc1350e0c6ffaa1e7e7c6e850cdabf9af
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/06/2020
-ms.locfileid: "78547049"
+ms.lasthandoff: 04/17/2020
+ms.locfileid: "81543762"
 ---
-# <a name="using-a-captcha-to-prevent-bots-from-using-your-aspnet-web-razor-site"></a>Botların ASP.NET Web Razor) sitenizi kullanmasını engellemek için CAPTCHA kullanma
+# <a name="using-a-captcha-to-prevent-bots-from-using-your-aspnet-web-razor-site"></a>Botların ASP.NET Web Razor) Sitenizi Kullanmasını Önlemek için CAPTCHA Kullanma
 
 [Microsoft](https://github.com/microsoft) tarafından
 
-> Bu makalede otomatik programların (botlar) bir ASP.NET Web Pages (Razor) Web sitesinde görevleri gerçekleştirmesini engellemek için ReCaptcha 'nın (güvenlik ölçüsü) nasıl kullanılacağı açıklanmaktadır.
+> Bu makalede, otomatik programların (botların) ASP.NET web sayfaları (Jilet) web sitesinde görevleri yerine getirmesini önlemek için ReCaptcha (güvenlik önlemi) nasıl kullanılacağı açıklanmaktadır.
 > 
-> **Şunları öğreneceksiniz:** 
+> **Ne öğreneceksiniz:** 
 > 
-> - Sitenize CAPTCHA testi ekleme.
+> - Sitenize captcha testi nasıl eklenir?
 > 
-> Makalesinde sunulan ASP.NET özellikleri şunlardır:
+> Bu makalede tanıtılan ASP.NET özellikleri şunlardır:
 > 
-> - `ReCaptcha` Yardımcısı.
+> - `ReCaptcha` Yardımcı.
 > 
 > > [!NOTE]
-> > Bu makaledeki bilgiler, ASP.NET Web sayfaları 1,0 ve Web sayfaları 2 için geçerlidir.
+> > Bu makaledeki bilgiler ASP.NET Web Sayfaları 1.0 ve Web Sayfaları 2 için geçerlidir.
 
-## <a name="about-captchas"></a>CAPTCHAs hakkında
+## <a name="about-captchas"></a>CAPTCHAs Hakkında
 
-Sitenize herhangi bir zamanda kayıt yaptırıyorsanız veya bir ad ve URL (blog açıklaması gibi) girerseniz, sahte adların bir taşmasına sahip olabilirsiniz. Bunlar genellikle, bulabileceği her Web sitesinde URL 'Leri bırakmayı deneyen otomatik programlar (botlar) tarafından bırakılır. (Yaygın bir mosyon, ürünlerin URL 'Lerini satış için göndermenize yöneliktir.)
+İnsanların sitenize kaydolmasına izin verdiğinizde, hatta sadece bir ad ve URL girdiğinizde (blog yorumu gibi), sahte adlar selebilirsiniz. Bunlar genellikle bulabilecekleri her web sitesinde URL'leri bırakmaya çalışan otomatik programlar (botlar) tarafından bırakılır. (Ortak bir motivasyon satılık ürünlerin URL'leri göndermektir.)
 
-Kullanıcıların, ad ve sitesini kaydederken veya girdiklerinde Kullanıcı doğrulamak için bir *CAPTCHA* kullanarak, bir kullanıcının gerçek bir kişi olduğundan ve bir bilgisayar programı olmadığından emin olmanıza yardımcı olabilirsiniz. CAPTCHA, bilgisayarların ve Insanların ayrı olarak söylemek için tamamen otomatikleştirilmiş genel bir test için gelir. CAPTCHA, kullanıcıdan bir kişinin yapması kolay ancak otomatik bir programın yapması zor olan bir şey yapması istenen bir *sınama yanıt* sınamadır. En yaygın CAPTCHA türü, bazı bozuk harfler gördüğünüz ve bunları yazmaları istenen bir yerdir. (Deformasyon, botların harfleri çözmesidir.)
+Kullanıcının adlarını ve sitesini kaydettiklerinde veya başka bir şekilde girdiklerini doğrulamak için bir *CAPTCHA* kullanarak bir kullanıcının bilgisayar programı değil, gerçek kişi olduğundan emin olmanıza yardımcı olabilirsiniz. CAPTCHA, Bilgisayarlara ve İnsanlara Ayrı Söylemek Için Tamamen Otomatik Leştirilmiş Turing testinin kısaltmasI. CAPTCHA, kullanıcıdan bir kişinin yapması kolay ama otomatik bir programın yapması zor olan bir şey yapması istenen bir *meydan okuma yanıtı* testidir. CAPTCHA'nın en yaygın türü, bazı bozuk harfler gördüğünüz ve bunları yazmanız istendiği bir türdür. (Distorsiyon zor botlar için harfleri deşifre etmek için yapmak gerekiyordu.)
 
-## <a name="adding-a-recaptcha-test"></a>ReCaptcha testi ekleme
+## <a name="adding-a-recaptcha-test"></a>ReCaptcha Testi Ekleme
 
-ASP.NET sayfalarında, ReCaptcha hizmetini ([http://recaptcha.net](http://recaptcha.net)) temel alan BIR CAPTCHA testini işlemek için `ReCaptcha` yardımcısını kullanabilirsiniz. `ReCaptcha` Yardımcısı, kullanıcıların sayfa doğrulanmadan önce doğru şekilde girmesi gereken iki bozuk sözcüğün görüntüsünü görüntüler. Kullanıcı yanıtı ReCaptcha.Net hizmeti tarafından onaylanır.
+ASP.NET sayfalarda, `ReCaptcha` recaptcha hizmetini temel alan bir CAPTCHA testi işlemek için[http://recaptcha.net](http://recaptcha.net)yardımcıyı kullanabilirsiniz. Yardımcı, `ReCaptcha` sayfa doğrulanmadan önce kullanıcıların doğru şekilde girmeleri gereken iki bozuk sözcük resmi görüntüler. Kullanıcı yanıtı ReCaptcha.Net hizmeti tarafından doğrulanır.
 
 ![](using-a-catpcha-to-prevent-automated-programs-bots-from-using-your-aspnet-web-site/_static/image1.jpg)
 
-1. Web sitenizi ReCaptcha.Net adresinden kaydedin ([http://recaptcha.net](http://recaptcha.net)). Kayıt tamamlandığında, bir ortak anahtar ve özel anahtar alırsınız.
-2. Henüz yapmadıysanız, [bir ASP.NET Web sayfaları sitesine yardımcılar yükleme](https://go.microsoft.com/fwlink/?LinkId=252372)bölümünde açıklandığı gibi, ASP.NET Web yardımcıları kitaplığı 'nı Web sitenize ekleyin.
-3. Zaten bir *\_AppStart. cshtml* dosyanız yoksa bir Web sitesinin kök klasöründe *\_AppStart. cshtml*adlı bir dosya oluşturun.
-4. Aşağıdaki `Recaptcha` Yardımcısı ayarlarını *\_AppStart. cshtml* dosyasına ekleyin: 
+1. Web sitenizi ReCaptcha.Net[http://recaptcha.net](http://recaptcha.net)' de kaydedin ( ). Kaydı tamamladığınızda, ortak bir anahtar ve özel bir anahtar alırsınız.
+2. Web Yardımcıları Kitaplığı'ASP.NET, [ASP.NET bir Web Sayfası Sitesine Yardımcı Yükleme'de](https://go.microsoft.com/fwlink/?LinkId=252372)açıklandığı şekilde web sitenize ekleyin .
+3. Zaten bir * \_AppStart.cshtml* dosyanız yoksa, bir web sitesinin kök klasöründe * \_AppStart.cshtml*adında bir dosya oluşturun.
+4. `Recaptcha` * \_AppStart.cshtml* dosyasına aşağıdaki yardımcı ayarlarını ekleyin: 
 
     [!code-cshtml[Main](using-a-catpcha-to-prevent-automated-programs-bots-from-using-your-aspnet-web-site/samples/sample1.cshtml?highlight=6-7)]
-5. Kendi ortak ve özel anahtarlarınızı kullanarak `PublicKey` ve `PrivateKey` özelliklerini ayarlayın.
-6. *\_AppStart. cshtml* dosyasını kaydedin ve kapatın.
-7. Bir Web sitesinin kök klasöründe *reCAPTCHA. cshtml*adlı yeni bir sayfa oluşturun.
-8. Var olan içeriği aşağıdaki ile değiştirin: 
+5. Kendi `PublicKey` ortak `PrivateKey` ve özel anahtarlarınızı kullanarak özellikleri ve özelliklerini ayarlayın.
+6. * \_AppStart.cshtml* dosyasını kaydedin ve kapatın.
+7. Bir web sitesinin kök klasöründe, *Recaptcha.cshtml*adlı yeni bir sayfa oluşturun.
+8. Varolan içeriği aşağıdakilerle değiştirin: 
 
     [!code-cshtml[Main](using-a-catpcha-to-prevent-automated-programs-bots-from-using-your-aspnet-web-site/samples/sample2.cshtml)]
-9. *ReCAPTCHA. cshtml* sayfasını bir tarayıcıda çalıştırın. `PrivateKey` değeri geçerliyse, sayfada ReCaptcha denetimi ve bir düğme görüntülenir. Anahtarlar *\_AppStart. html*' de küresel olarak ayarlanmamışsa sayfada bir hata görüntülenir. 
+9. *Recaptcha.cshtml* sayfasını tarayıcıda çalıştırın. `PrivateKey` Değer geçerliyse, sayfa ReCaptcha denetimini ve bir düğmeyi görüntüler. Eğer appstart.html genel olarak anahtarları ayarlamamış olsaydı, sayfa bir hata görüntülerdi. * \_* 
 
     ![](using-a-catpcha-to-prevent-automated-programs-bots-from-using-your-aspnet-web-site/_static/image1.png)
-10. Test için kelimeleri girin. ReCaptcha testini geçirirseniz, bu etkiye bir ileti görürsünüz. Aksi takdirde bir hata iletisi görürsünüz ve ReCaptcha denetimi yeniden görüntülenir.
+10. Test için sözcükleri girin. ReCaptcha testini geçerseniz, bu yönde bir ileti görürsünüz. Aksi takdirde bir hata iletisi görürsünüz ve ReCaptcha denetimi yeniden görüntülenir.
 
 > [!NOTE]
-> Bilgisayarınız ara sunucu kullanan bir etki alanında bulunuyorsa, *Web. config* dosyasının `defaultproxy` öğesini yapılandırmanız gerekebilir. Aşağıdaki örnek, ReCaptcha hizmetinin çalışmasını sağlamak için `defaultproxy` öğesi ile bir *Web. config* dosyası gösterir.
+> Bilgisayarınız proxy sunucusu kullanan bir etki alanındaysa, `defaultproxy` *Web.config* dosyasının öğesini yapılandırmanız gerekebilir. Aşağıdaki örnekte, ReCaptcha hizmetinin çalışmasını sağlayacak şekilde yapılandırılan öğeye `defaultproxy` sahip bir *Web.config* dosyası gösterilmektedir.
 > 
 > [!code-xml[Main](using-a-catpcha-to-prevent-automated-programs-bots-from-using-your-aspnet-web-site/samples/sample3.xml)]
 
 <a id="Additional_Resources"></a>
 ## <a name="additional-resources"></a>Ek Kaynaklar
 
-- [ASP.NET Web Pages siteleri için site genelinde davranışı özelleştirme](https://go.microsoft.com/fwlink/?LinkId=202906)
+- [ASP.NET Web Sayfaları Siteleri için Site Genelinde Davranışı Özelleştirme](https://go.microsoft.com/fwlink/?LinkId=202906)
 - [ReCaptcha sitesi](https://www.google.com/recaptcha)

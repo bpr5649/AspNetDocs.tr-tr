@@ -1,6 +1,6 @@
 ---
 uid: web-pages/content-guide
-title: WebMatrix Içerik Kılavuzu | Microsoft Docs
+title: WebMatrix İçerik Rehberi | Microsoft Dokümanlar
 author: rick-anderson
 description: ''
 ms.author: riande
@@ -8,72 +8,72 @@ ms.date: 01/13/2011
 ms.assetid: b558e481-775a-4aa0-bd3b-ad61e530c2d2
 msc.legacyurl: /web-pages/content-guide
 msc.type: content
-ms.openlocfilehash: 33b1fa8aa1db90b8995fa86ab64782d482753d4b
-ms.sourcegitcommit: e7e91932a6e91a63e2e46417626f39d6b244a3ab
+ms.openlocfilehash: dd717eba217e0dd16003224d39945b21370d89f2
+ms.sourcegitcommit: 022f79dbc1350e0c6ffaa1e7e7c6e850cdabf9af
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/06/2020
-ms.locfileid: "78523277"
+ms.lasthandoff: 04/17/2020
+ms.locfileid: "81543515"
 ---
 # <a name="webmatrix-content-guide"></a>WebMatrix İçerik Kılavuzu
 
 > [!NOTE] 
-> WebMatrix artık ASP.NET Web sayfaları için tümleşik bir geliştirme ortamı olarak önerilmez. [Visual Studio](xref:aspnet/web-pages/overview/getting-started/program-asp-net-web-pages-in-visual-studio) veya [Visual Studio Code](https://code.visualstudio.com/)kullanın.
+> WebMatrix artık ASP.NET Web Sayfaları için tümleşik bir geliştirme ortamı olarak önerilmez. [Visual Studio](xref:web-pages/overview/getting-started/program-asp-net-web-pages-in-visual-studio) veya Visual [Studio Code](https://code.visualstudio.com/)kullanın.
 
-WebMatrix, Microsoft Windows için Web siteleri oluşturmanın kolay bir yolunu sağlayan bir araç kümesidir. IIS Express (bir geliştirme Web sunucusu), ASP.NET (bir Web programlama çerçevesi) ve SQL Server Compact (katıştırılmış bir veritabanı) içerir. WebMatrix 'in hızlı bir turuna bakmak için bkz. [WebMatrix 'e genel bakış](https://www.microsoft.com/web/webmatrix/). En üstteki WebMatrix özelliklerini gözden geçirmek için bkz. [WebMatrix özellikleri](https://www.microsoft.com/web/webmatrix/features/).
+WebMatrix, Microsoft Windows için Web siteleri oluşturmanın kolay bir yolunu sağlayan bir araç kümesidir. IIS Express (geliştirme web sunucusu), ASP.NET (web programlama çerçevesi) ve SQL Server Compact (gömülü bir veritabanı) içerir. WebMatrix'te hızlı bir tur görmek için [WebMatrix Genel Bakış'a](https://www.microsoft.com/web/webmatrix/)bakın. En üst teki WebMatrix özelliklerini gözden geçirmek için [Bkz. WebMatrix Özellikleri.](https://www.microsoft.com/web/webmatrix/features/)
 
 | **Senaryo** | **İçerik** |
 | --- | --- |
-| WebMatrix ile çalışmaya başlama | [WebMatrix 'e giriş](https://mediadl.microsoft.com/mediadl/www/s/silverlight/video/web/webmatrix/intro.mp4) (video) [WebMatrix ve ASP.NET Web sayfaları ile çalışmaya](https://go.microsoft.com/fwlink/?LinkId=202889) [Başlama (video](https://mediadl.microsoft.com/mediadl/www/s/silverlight/video/web/webmatrix/walkthrough1b.mp4) ) özel bir Web sitesi yazmak Için ASP.net Razor kodunu nasıl kullanacağınızı öğrenin. [WebMatrix kullanan Ilk Web siteniz](https://go.microsoft.com/fwlink/?LinkId=208553) [Web Apps başlar](https://mediadl.microsoft.com/mediadl/www/s/silverlight/video/web/webmatrix/walkthrough2b.mp4) (video) kendi sitenizi oluşturmak için ücretsiz bir açık kaynaklı uygulama kullanın. |
-| Bileşenleri (WebMatrix dahil) yükler | [Microsoft Web Platformu Yükleyicisi](https://www.iis.net/learn/install/web-platform-installer/using-the-microsoft-web-platform-installer) [web platformu yükleyicisi 2,0 Izlenecek yol](https://www.iis.net/learn/install/web-platform-installer/web-platform-installer-20-walkthrough) [Web Platformu Yükleyicisi kaynaklarını](https://www.iis.net/learn/install/web-platform-installer/web-platform-installer-resources) kullanma |
-| WebMatrix Kullanıcı arabirimiyle çalışma | [WebMatrix site çalışma alanı yardım](https://go.microsoft.com/fwlink/?LinkId=208788) [WebMatrix dosyaları çalışma alanı yardım](https://go.microsoft.com/fwlink/?LinkId=208787) [WebMatrix veritabanları çalışma alanı yardım](https://go.microsoft.com/fwlink/?LinkId=208786) [WebMatrix Reports çalışma alanı yardımı](https://go.microsoft.com/fwlink/?LinkId=208789) |
-| Kodla çalışma | ASP.NET Web programlamaya, Visual Studio [ASP.NET web pages Visual Basic](https://go.microsoft.com/fwlink/?LinkId=202908) [ASP.net hızlı API başvurusu](https://go.microsoft.com/fwlink/?LinkId=202907) [Ile programlama ASP.NET Web sayfalarını](https://go.microsoft.com/fwlink/?LinkId=205854) [kullanma konusuna giriş](https://go.microsoft.com/fwlink/?LinkId=202890) [](https://mediadl.microsoft.com/mediadl/www/s/silverlight/video/web/webmatrix/webx-aspnetpages.mp4) |
-| Tutarlı bir Web sitesi görünümü oluşturun | [Tutarlı bir görünüm](https://go.microsoft.com/fwlink/?LinkId=202891) yeniden kullanılabilir Içerik blokları oluşturma-düzen sayfalarını kullanarak tutarlı bir görünüm oluşturma-birden çok Içerik bölümü olan düzen sayfaları tasarlama-Içerik bölümlerini Isteğe bağlı hale getirme-verileri düzen sayfalarına geçirme-temel bir yardımcı oluşturma ve kullanma |
-| Web sayfalarında HTML formlarıyla çalışma | [Formlarla çalışma](https://go.microsoft.com/fwlink/?LinkId=202892) -basıt bir HTML formu oluşturma-formdan Kullanıcı girişi okuma Kullanıcı girişi-geri yükleme sonrasında form değerleri |
-| Verileri görüntüleme ve yönetme | [Veritabanı basit](https://mediadl.microsoft.com/mediadl/www/s/silverlight/video/web/webmatrix/webx-databases.mp4) (video) [bir SQL Server veya MySQL veritabanına bağlanarak](https://go.microsoft.com/fwlink/?LinkId=208661) [verilerle çalışma](https://go.microsoft.com/fwlink/?LinkId=202893) (programlı olarak)-veritabanlarına giriş-veritabanı oluşturma-veritabanına veri ekleme-verileri veritabanından görüntüleme-veri ekleme veritabanı-veritabanındaki verileri güncelleştirme-veritabanındaki verileri silme-bir veritabanına bağlanma-bir veritabanını bir kılavuza bağlama SQL Server, bir kılavuzdaki verileri [görüntüleme](https://go.microsoft.com/fwlink/?LinkId=202894) Görüntülenecek sütunlar-verileri veri aracılığıyla tam disk belleği olarak stillendirme |
-| Grafikleri bir Web sayfasında görüntüle | [Grafik Içindeki verileri görüntüleme](https://go.microsoft.com/fwlink/?LinkId=202895) -grafik Yardımcısı-verilerden grafik oluşturma-grafikleri bir Web sayfası içinde görüntüleme-grafik ekleme-grafik kaydetme |
-| Web sitesindeki dosyaları okuma ve yazma | [Dosyalarla çalışma](https://go.microsoft.com/fwlink/?LinkId=202896) -metin dosyası oluşturma ve dosyaya veri yazma-verileri var olan bir dosyaya ekleme ve dosya silme dosyalarını okuma ve görüntüleme-kullanıcıların bir dosyayı karşıya yüklemesine izin verme-kullanıcıların birden çok dosyayı karşıya yüklemesine izin verme |
-| Resimleri bir Web sayfasında görüntüleme ve işleme | [Görüntülerle çalışma](https://go.microsoft.com/fwlink/?LinkId=202897) -bir Web sayfasına dinamik olarak görüntü ekleme-görüntü yükleme-görüntüyü yeniden boyutlandırma-görüntüyü döndürme ve çevirme-bir görüntüye filigran ekleme-bir görüntüyü filigran olarak kullanma |
-| Bir Web sayfasında video görüntüleme (ve ses yürütme) | [Video Ile çalışma](https://go.microsoft.com/fwlink/?LinkId=202898) -video oynatıcı oynatma Flash (. swf) videoları seçme video oynatma video oynatma (. wmv) videoları-Silverlight videoları oynama |
-| Bir Web sitesinden e-posta iletileri gönderin | [Web sitenize e-posta ekleme](https://go.microsoft.com/fwlink/?LinkId=202899) -e-posta iletilerini Web sitenizden gönderme-e-posta kullanarak dosya gönderme |
-| Web sitesine arama ekleme | [Web sitenize arama ekleme](https://go.microsoft.com/fwlink/?LinkId=202900) -Web sitenizden arama |
-| Web sitesine sosyal ağ akışları ve yer işareti ekleme | [Web sitenize sosyal ağ ekleme](https://go.microsoft.com/fwlink/?LinkId=202901) -Web sitenizi sosyal ağ sitelerinde bağlama-Twitter akışı ekleme-bir Kişık görüntüsünü oluşturma-bir Xbox Gamer kartını görüntüleme-Facebook "Beğen" düğmesini görüntüleme |
-| Site trafiğini çözümleyin ve SEO için iyileştirin | [Trafik](https://go.microsoft.com/fwlink/?LinkId=202902) Izleme ziyaretçi bilgilerini çözümleme (Analiz), [sitenizi arama motorları için optimize etmek için WebMatrix kullanın](https://go.microsoft.com/fwlink/?LinkId=202953) [(video](https://mediadl.microsoft.com/mediadl/www/s/silverlight/video/web/webmatrix/webx-seo.mp4) ) |
-| Bir Web sitesinde performansı geliştirme | [Daha hızlı web siteleri Için önbelleğe alma ekleme](https://go.microsoft.com/fwlink/?LinkId=202903) -Web sitesi yanıtlama hızını artırmak için |
-| Bir Web sitesine güvenlik (üyelik) ekleme | [Güvenlik ve üyelik ekleme](https://go.microsoft.com/fwlink/?LinkId=202904) -Web sitesi üyeliğine giriş-kayıt ve oturum açma sayfaları Içeren bir Web sitesi oluşturma-yalnızca üye sayfası oluşturma-kullanıcı grupları Için güvenlik oluşturma (roller)-parola değiştirme sayfası oluşturma-kullanıcıların yeni bir parola oluşturmasına izin verme-otomatik programların Web sitenize katılmasını engelleyen |
-| Güvenli iletişim (SSL) sınaması | [Web Iletişimlerinin güvenliğini sağlama: sertifikalar, SSL ve https://](https://go.microsoft.com/fwlink/?LinkId=208660) |
-| Araçlar ve kodlama tekniklerini kullanarak Web sayfalarında hata ayıklama | [Hata ayıklamaya giriş](https://go.microsoft.com/fwlink/?LinkId=202905) -sunucu bilgilerini göstermek Için ServerInfo Yardımcısını kullanma-sayfa değerlerini göstermek Için çıkış ifadelerini ekleme-nesne değerlerini göstermek Için ObjectInfo Yardımcısını kullanma-hata ayıklama araçlarını kullanma |
-| Kodda site genelinde işlevsellik ekleme | [Site genelinde davranışı özelleştirme](https://go.microsoft.com/fwlink/?LinkId=202906) -bir klasördeki dosyalardan önce ve sonra Web sitesi başlatma kodu çalıştıran kod ekleme-daha okunabilir ve aranabilir URL 'ler oluşturma |
-| Web sitesi yayımlama | [WebMatrix kullanarak Web uygulaması yayımlama Web](https://go.microsoft.com/fwlink/?LinkId=202954) [sitesini WebMatrix Ile indirme, düzenleme ve yeniden](https://go.microsoft.com/?linkid=9751042) yayımlama [Microsoft WebMatrix: yayımlama uyumluluğu](https://www.iis.net/learn/develop/troubleshooting-webmatrix/microsoft-webmatrix-publish-compatibility) [Microsoft WebMatrix: yayımlama](https://www.iis.net/learn/develop/troubleshooting-webmatrix/microsoft-webmatrix-certificate-errors-during-publishing) [sitesi yayımlama](https://mediadl.microsoft.com/mediadl/www/s/silverlight/video/web/webmatrix/webx-publish.mp4) sırasında sertifika hataları (video) |
-| Web sitelerini test etmek için IIS Express kullanma | [IIS Express genel bakış](https://www.iis.net/learn/extensions/introduction-to-iis-express/iis-express-overview) Web iletişimlerinin güvenliğini sağlamaya yönelik [komut satırından IIS Express çalıştıran](https://www.iis.net/learn/extensions/using-iis-express/running-iis-express-from-the-command-line) [Web sitelerini ve uygulamaları yönetmek için Windows sistem TEPSISINI kullanın](https://www.iis.net/learn/extensions/using-iis-express/using-the-windows-system-tray-to-manage-websites-and-applications) [: sertifikalar, SSL ve https://](https://go.microsoft.com/fwlink/?LinkId=208660) [IIS Express SSS](https://www.iis.net/learn/extensions/introduction-to-iis-express/iis-express-faq) |
+| WebMatrix ile başlayın | [Giriş WebMatrix](https://mediadl.microsoft.com/mediadl/www/s/silverlight/video/web/webmatrix/intro.mp4) (video) [WebMatrix ve ASP.NET Web Sayfaları](https://go.microsoft.com/fwlink/?LinkId=202889) [Sıfırdan Başlat](https://mediadl.microsoft.com/mediadl/www/s/silverlight/video/web/webmatrix/walkthrough1b.mp4) (video) ile başlarken nasıl özel bir web sitesi yazmak için ASP.NET Razor kodu kullanmayı öğrenin. [WebMatrix'i Kullanan İlk Web Siteniz](https://go.microsoft.com/fwlink/?LinkId=208553) Web [Uygulamalarıyla Başlat](https://mediadl.microsoft.com/mediadl/www/s/silverlight/video/web/webmatrix/walkthrough2b.mp4) (video) Kendi sitenizi oluşturmak için ücretsiz bir açık kaynak uygulaması kullanın. |
+| Bileşenleri yükleme (WebMatrix dahil) | [Microsoft Web Platformu Yükleyici](https://www.iis.net/learn/install/web-platform-installer/using-the-microsoft-web-platform-installer) [Web Platformu Yükleyici 2.0 Walkthrough](https://www.iis.net/learn/install/web-platform-installer/web-platform-installer-20-walkthrough) Web Platform [Installer Kaynakları](https://www.iis.net/learn/install/web-platform-installer/web-platform-installer-resources) kullanma |
+| WebMatrix UI ile çalışma | [WebMatrix Sitesi Çalışma Alanı Yardım](https://go.microsoft.com/fwlink/?LinkId=208788) [WebMatrix Dosyaları Çalışma Alanı Yardım](https://go.microsoft.com/fwlink/?LinkId=208787) [WebMatrix Veritabanları Çalışma Alanı Yardım](https://go.microsoft.com/fwlink/?LinkId=208786) [WebMatrix Raporlar Workspace Yardım](https://go.microsoft.com/fwlink/?LinkId=208789) |
+| Kodla çalışma | [Giriş ASP.NET Web Programlama Jilet Sözdizimi](https://go.microsoft.com/fwlink/?LinkId=202890) [Basit kod](https://mediadl.microsoft.com/mediadl/www/s/silverlight/video/web/webmatrix/webx-aspnetpages.mp4) (video) Programlama Visual Studio ASP.NET Web Sayfaları Visual Basic ASP.NET Hızlı [API Referans](https://go.microsoft.com/fwlink/?LinkId=202907) ile Web [Sayfaları](https://go.microsoft.com/fwlink/?LinkId=202908) [ASP.NET](https://go.microsoft.com/fwlink/?LinkId=205854) Kullanarak |
+| Tutarlı bir web sitesi görünümü oluşturma | [Tutarlı Bir Görünüm Oluşturma](https://go.microsoft.com/fwlink/?LinkId=202891) - Yeniden Kullanılabilir İçerik Blokları Oluşturma - Düzen Sayfalarını Kullanarak Tutarlı Bir Görünüm Oluşturma - Birden Çok İçerik Bölümü Ne var Düzen Sayfaları Tasarlama - İçerik Bölümlerini İsteğe Bağlı Hale Getirme - Düzen Sayfalarına Veri Aktarma - Temel Yardımcı Oluşturma ve Kullanma |
+| Web sayfalarındaHTML formları ile çalışma | [Formlarla Çalışma](https://go.microsoft.com/fwlink/?LinkId=202892) - Basit BIR HTML Formu Oluşturma - Bir Formdan Kullanıcı Girişi Okuma - Kullanıcı Girişinin Doğrulanması - Postback'lerden Sonra Form Değerlerini Geri Alma |
+| Verileri görüntüleme ve yönetme | [Veritabanı basit (video)](https://mediadl.microsoft.com/mediadl/www/s/silverlight/video/web/webmatrix/webx-databases.mp4) [WebMatrix'te SQL Server veya MySQL Veritabanına Bağlanma](https://go.microsoft.com/fwlink/?LinkId=208661) [(programlı)](https://go.microsoft.com/fwlink/?LinkId=202893) - Veritabanlarına Giriş - Veritabanı oluşturma - Veritabanına veri ekleme - Veritabanından veri görüntüleme - Veritabanına veri ekleme - Verileri güncelleme veritabanı - Veritabanındaki Verileri Silme - Veritabanına Bağlanma - SQL'i Anlama - Veritabanını SQL Server'a Geçirme - [Grid'de Veri Görüntüleme](https://go.microsoft.com/fwlink/?LinkId=202894) - Görüntülenecek Verileri Görüntüleme - Sütunları Görüntülemek için Belirtme ve Biçimlendirme - Izgarayı Bir Bütün Olarak Şekillendirme - Veriler aracılığıyla Sayfalama |
+| Grafikleri bir web sayfasında görüntüleme | [Grafikte Veri Görüntüleme](https://go.microsoft.com/fwlink/?LinkId=202895) - Grafik Yardımcısı - Verilerden Grafik Oluşturma - Bir Web Sayfası İçinde Grafikleri Görüntüleme - Grafik Oluşturma - Grafik Kaydetme |
+| Web sitesinde dosya okuma ve yazma | [Dosyalarla Çalışma](https://go.microsoft.com/fwlink/?LinkId=202896) - Metin Dosyası Oluşturma ve Ona Veri Yazma - Mevcut Bir Dosyaya Veri Ekleme - Dosyadan Veri Okuma ve Görüntüleme - Dosyaları Silme - Kullanıcıların Dosya Yüklemesine İzin Verme - Kullanıcıların Birden Çok Dosya Yüklemesine İzin Verme |
+| Web sayfasındagörüntüleri görüntüleme ve işleme | [Resimlerle Çalışma](https://go.microsoft.com/fwlink/?LinkId=202897) - Bir Web Sayfasına Dinamik Olarak Görüntü Ekleme - Görüntü Yükleme - Görüntüyü Yeniden Boyutlandırma - Görüntüyü Döndürme ve Çevirme - Görüntüye Filigran Ekleme - Görüntünün Filigran Olarak Kullanılması |
+| Bir web sayfasında video (ve ses oynatma) görüntüleme | [Video ile Çalışma](https://go.microsoft.com/fwlink/?LinkId=202898) - Video Oynatıcı Seçme - Flash (.swf) Videoları Oynatma - MediaPlayer (.wmv) Videoları Oynatma - Silverlight Videolarını Oynatma |
+| Web sitesinden e-posta iletileri gönderme | [Web Sitenize E-posta Ekleme](https://go.microsoft.com/fwlink/?LinkId=202899) - Web sitenizden E-posta Mesajları Gönderme - E-posta Kullanarak Dosya Gönderme |
+| Web sitesine arama ekleme | [Web Sitenize Arama Ekleme](https://go.microsoft.com/fwlink/?LinkId=202900) - Web Sitenizden Arama |
+| Bir web sitesine sosyal ağ akışları ve yer imi ekleme | [Web Sitenize Sosyal Ağ Ekleme](https://go.microsoft.com/fwlink/?LinkId=202901) - Web Sitenizi Sosyal Ağ Sitelerinde Bağlama - Twitter Beslemesi Ekleme - Gravatar Görüntüsü Oluşturma - Xbox Oyuncu Kartı Görüntüleme - Facebook "Beğen" Düğmesi Görüntüleme |
+| Site trafiğini analiz edin ve SEO için optimize edin | [Trafiği Analiz Etme](https://go.microsoft.com/fwlink/?LinkId=202902) - Ziyaretçi Bilgilerini İzleme (Analytics) [Arama motorları için sitenizi optimize etmek için WebMatrix'i kullanın](https://go.microsoft.com/fwlink/?LinkId=202953) Arama için optimize [edin](https://mediadl.microsoft.com/mediadl/www/s/silverlight/video/web/webmatrix/webx-seo.mp4) (video) |
+| Web sitesindeperformansı artırma | [Daha Hızlı Web Siteleri için Önbelleğe Alma](https://go.microsoft.com/fwlink/?LinkId=202903) Ekleme - Web Sitesi Yanıt geliştirmek için Önbelleğe Alma |
+| Bir web sitesine güvenlik (üyelik) ekleme | [Güvenlik ve Üyelik Ekleme](https://go.microsoft.com/fwlink/?LinkId=202904) - Web Sitesi Üyeliğine Giriş - Kayıt ve Giriş Sayfaları Olan Bir Web Sitesi Oluşturma - Yalnızca Üyelere Yönelik Sayfa Oluşturma - Kullanıcı Grupları (Roller) Için Güvenlik Oluşturma - Şifre Değiştirme Sayfası Oluşturma - Kullanıcıların Yeni Bir Şifre Oluşturmasına İzin Vermek - Otomatik Programların Web Sitenize Katılmasını Engelleme |
+| Güvenli iletişimi test edin (SSL) | [Web İletişiminin Güvenliği: Sertifikalar, SSL ve https://](https://go.microsoft.com/fwlink/?LinkId=208660) |
+| Araçlar ve kodlama teknikleri kullanarak hata ayıklama web sayfaları | [Hata Ayıklama Giriş](https://go.microsoft.com/fwlink/?LinkId=202905) - Sunucu Bilgilerini Görüntülemek için ServerInfo Yardımcısını Kullanma - Sayfa Değerlerini Görüntülemek için Çıktı İfadelerini Gömme - Nesne Değerlerini Görüntülemek için ObjectInfo Yardımcısını Kullanma - Hata Ayıklama Araçlarını Kullanma |
+| Kodda site genelinde işlevsellik ekleme | [Site Genelinde Davranış Özelleştirme](https://go.microsoft.com/fwlink/?LinkId=202906) - Web Sitesi Başlangıç Kodu Ekleme - Bir Klasördeki Dosyalardan Önce ve Sonra Kod Çalıştırma - Daha Okunabilir ve Aranabilir URL'ler Oluşturma |
+| Web sitesi yayınlama | [WebMatrix İndirme, Düzenlediğive WebMatrix](https://go.microsoft.com/?linkid=9751042) Microsoft WebMatrix ile Web Sitenizi Yeniden Yayımlama: Uyumluluk [Microsoft WebMatrix Yayımla: Yayımlama](https://www.iis.net/learn/develop/troubleshooting-webmatrix/microsoft-webmatrix-certificate-errors-during-publishing) [Sitesi yayımlama](https://mediadl.microsoft.com/mediadl/www/s/silverlight/video/web/webmatrix/webx-publish.mp4) sırasında sertifika hataları (video) [kullanarak bir web uygulaması yayımlamak için nasıl](https://go.microsoft.com/fwlink/?LinkId=202954) [Microsoft WebMatrix: Publish Compatibility](https://www.iis.net/learn/develop/troubleshooting-webmatrix/microsoft-webmatrix-publish-compatibility) |
+| Web sitelerini test etmek için IIS Express'i kullanma | [IIS Express'e Genel Bakış](https://www.iis.net/learn/extensions/introduction-to-iis-express/iis-express-overview) Web İletişimini Güvence Altına Alan [Komut Satırından IIS Express Çalıştıran](https://www.iis.net/learn/extensions/using-iis-express/running-iis-express-from-the-command-line) [Web Sitelerini ve Uygulamaları Yönetmek için Windows Sistem Tepsisini Kullanın:](https://www.iis.net/learn/extensions/using-iis-express/using-the-windows-system-tray-to-manage-websites-and-applications) [Sertifikalar, SSL ve https://](https://go.microsoft.com/fwlink/?LinkId=208660) [IIS Express SSS](https://www.iis.net/learn/extensions/introduction-to-iis-express/iis-express-faq) |
 
 ## <a name="additional-resources"></a>Ek Kaynaklar
 
 **Okuma**
 
-- [WebMatrix için Microsoft Web Camps eğitim seti](http://trainingkit.webcamps.ms/WebMatrix.htm)
-- [Bir hata veya öneri gönderin](https://go.microsoft.com/fwlink/?LinkId=195940)
+- [WebMatrix için Microsoft Web Kampları eğitim kiti](http://trainingkit.webcamps.ms/WebMatrix.htm)
+- [Hata veya öneri gönderme](https://go.microsoft.com/fwlink/?LinkId=195940)
 - [WebMatrix Benioku dosyası](readme/index.md)
-- [Uygulama Galerisi SSS](https://go.microsoft.com/fwlink/?LinkId=196179)
-- [IIS Express belgeleri](https://go.microsoft.com/fwlink/?LinkID=195075)
-- [ASP.NET Razor sözdizimi kod örnekleri ve öğretici indirme sayfası](https://go.microsoft.com/fwlink/?LinkId=208516)
-- [Forumlarda soru veya tartışma sorun](https://forums.asp.net/1224.aspx)
+- [Uygulama Galerisi Sıkça Sorulan Soru](https://go.microsoft.com/fwlink/?LinkId=196179)
+- [IIS Express Dokümantasyon](https://go.microsoft.com/fwlink/?LinkID=195075)
+- [ASP.NET Jilet Sözdizimi kod örnekleri ve öğretici indirme sayfası](https://go.microsoft.com/fwlink/?LinkId=208516)
+- [Forumlarda soru sorun veya tartışın](https://forums.asp.net/1224.aspx)
 - [SQL Server Compact bilgileri](https://go.microsoft.com/fwlink/?LinkId=195939)
 
-**Görüntüleme (videolar)**
+**Görüntüle (videolar)**
 
-- [WebMatrix 'e giriş](https://mediadl.microsoft.com/mediadl/www/s/silverlight/video/web/webmatrix/intro.mp4)
-- [Sıfırdan Başlat](https://mediadl.microsoft.com/mediadl/www/s/silverlight/video/web/webmatrix/walkthrough1b.mp4)
-- [Web Apps kullanmaya başlayın](https://mediadl.microsoft.com/mediadl/www/s/silverlight/video/web/webmatrix/walkthrough2b.mp4)
-- [Küçük, ancak tüm paket](https://mediadl.microsoft.com/mediadl/www/s/silverlight/video/web/webmatrix/webx-compact.mp4)
-- [Sizinle birlikte büyür](https://mediadl.microsoft.com/mediadl/www/s/silverlight/video/web/webmatrix/webx-extend.mp4)
-- [Açık kaynak](https://mediadl.microsoft.com/mediadl/www/s/silverlight/video/web/webmatrix/webx-webapps-b.mp4)
-- [Veritabanı basit hale getirilir](https://mediadl.microsoft.com/mediadl/www/s/silverlight/video/web/webmatrix/webx-databases.mp4)
-- [Zarif arabirim, basit deneyim](https://mediadl.microsoft.com/mediadl/www/s/silverlight/video/web/webmatrix/webx-ux.mp4)
-- [Basit kod](https://mediadl.microsoft.com/mediadl/www/s/silverlight/video/web/webmatrix/webx-aspnetpages.mp4)
-- ["Hello, World" den fazla](https://mediadl.microsoft.com/mediadl/www/s/silverlight/video/web/webmatrix/webx-helpers.mp4)
+- [WebMatrix'e Giriş](https://mediadl.microsoft.com/mediadl/www/s/silverlight/video/web/webmatrix/intro.mp4)
+- [Sıfırdan Başlayın](https://mediadl.microsoft.com/mediadl/www/s/silverlight/video/web/webmatrix/walkthrough1b.mp4)
+- [Web Uygulamalarıyla Başlayın](https://mediadl.microsoft.com/mediadl/www/s/silverlight/video/web/webmatrix/walkthrough2b.mp4)
+- [Küçük, ama tam paket](https://mediadl.microsoft.com/mediadl/www/s/silverlight/video/web/webmatrix/webx-compact.mp4)
+- [Seninle büyür](https://mediadl.microsoft.com/mediadl/www/s/silverlight/video/web/webmatrix/webx-extend.mp4)
+- [Açık Kaynak](https://mediadl.microsoft.com/mediadl/www/s/silverlight/video/web/webmatrix/webx-webapps-b.mp4)
+- [Veritabanı basitleştirildi](https://mediadl.microsoft.com/mediadl/www/s/silverlight/video/web/webmatrix/webx-databases.mp4)
+- [Zarif arayüz, basit bir deneyim](https://mediadl.microsoft.com/mediadl/www/s/silverlight/video/web/webmatrix/webx-ux.mp4)
+- [Koda basit](https://mediadl.microsoft.com/mediadl/www/s/silverlight/video/web/webmatrix/webx-aspnetpages.mp4)
+- ["Hello, World"den daha fazlası.](https://mediadl.microsoft.com/mediadl/www/s/silverlight/video/web/webmatrix/webx-helpers.mp4)
 - [Masaüstü veya sunucu, hepsi aynı](https://mediadl.microsoft.com/mediadl/www/s/silverlight/video/web/webmatrix/webx-enviroment.mp4)
-- [Sıkı Knit, tamamen tümleşik](https://mediadl.microsoft.com/mediadl/www/s/silverlight/video/web/webmatrix/webx-integrated.mp4)
-- [Arama için iyileştirin](https://mediadl.microsoft.com/mediadl/www/s/silverlight/video/web/webmatrix/webx-seo.mp4)
-- [Site Yayımlama](https://mediadl.microsoft.com/mediadl/www/s/silverlight/video/web/webmatrix/webx-publish.mp4)
-- [CMS 'nizi özelleştirme ve dağıtma](https://mediadl.microsoft.com/mediadl/www/s/silverlight/video/web/webmatrix/walkthrough2b.mp4)
+- [Sıkıca örülmüş, tam entegre](https://mediadl.microsoft.com/mediadl/www/s/silverlight/video/web/webmatrix/webx-integrated.mp4)
+- [Arama için optimize edin](https://mediadl.microsoft.com/mediadl/www/s/silverlight/video/web/webmatrix/webx-seo.mp4)
+- [Site yayıncılığı](https://mediadl.microsoft.com/mediadl/www/s/silverlight/video/web/webmatrix/webx-publish.mp4)
+- [CMS'nizi özelleştirin ve dağıtın](https://mediadl.microsoft.com/mediadl/www/s/silverlight/video/web/webmatrix/walkthrough2b.mp4)

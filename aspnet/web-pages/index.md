@@ -1,26 +1,26 @@
 ---
 uid: web-pages/index
-title: ASP.NET Web sayfaları | Microsoft Docs
+title: ASP.NET Web Sayfaları | Microsoft Dokümanlar
 author: rick-anderson
-description: WebMatrix 'i indirin & sunucu kodunu HTML ile birleştirmek için basit bir yolla Web sayfalarını hızla oluşturmayı öğrenin.
+description: WebMatrix'i & sunucu kodunu HTML ile birleştirmek için web sayfalarını nasıl hızlı bir şekilde oluşturabildiğini öğrenin.
 ms.author: riande
 ms.date: 05/18/2012
 ms.assetid: 5418ba96-ff49-4a43-9cbb-09dea4949d23
 msc.legacyurl: /web-pages
 msc.type: categoryindex
-ms.openlocfilehash: 56bf82e22b3562893ef842a90d42aa7b6ff5858f
-ms.sourcegitcommit: e7e91932a6e91a63e2e46417626f39d6b244a3ab
+ms.openlocfilehash: d767325a376e5daa0ea4236f67c88e6b97ae71a7
+ms.sourcegitcommit: 022f79dbc1350e0c6ffaa1e7e7c6e850cdabf9af
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/06/2020
-ms.locfileid: "78640954"
+ms.lasthandoff: 04/17/2020
+ms.locfileid: "81543528"
 ---
 # <a name="aspnet-web-pages"></a>ASP.NET Web Sayfaları
 
 > [!NOTE] 
-> WebMatrix artık ASP.NET Web sayfaları için tümleşik bir geliştirme ortamı olarak önerilmez. [Visual Studio](xref:aspnet/web-pages/overview/getting-started/program-asp-net-web-pages-in-visual-studio) veya [Visual Studio Code](https://code.visualstudio.com/)kullanın.
+> WebMatrix artık ASP.NET Web Sayfaları için tümleşik bir geliştirme ortamı olarak önerilmez. [Visual Studio](xref:web-pages/overview/getting-started/program-asp-net-web-pages-in-visual-studio) veya Visual [Studio Code](https://code.visualstudio.com/)kullanın.
 
-- [Kılavuz](overview/index.md)
+- [Rehber](overview/index.md)
 
     - [Başlarken](overview/getting-started/index.md)
 
@@ -59,9 +59,9 @@ ms.locfileid: "78640954"
     - [Mobil](overview/mobile/index.md)
 
         - [Mobil Cihazlar için ASP.NET Web Sayfaları Sitelerini İşleme](overview/mobile/rendering-aspnet-web-pages-sites-for-mobile-devices.md)
-    - [Verilerle çalışma](overview/data/index.md)
+    - [Verilerle Çalışma](overview/data/index.md)
 
-        - [Verilerle çalışma](overview/data/5-working-with-data.md)
+        - [Verilerle Çalışma](overview/data/5-working-with-data.md)
         - [Verileri Bir Grafikte Görüntüleme](overview/data/7-displaying-data-in-a-chart.md)
         - [Dosyalarla Çalışma](overview/data/working-with-files.md)
     - [Test ve Hata Ayıklama](overview/testing-and-debugging/index.md)
@@ -102,7 +102,7 @@ ms.locfileid: "78640954"
         - [WebMatrix’te Veri Düzenleme Sayfası Oluşturma](videos/introduction/create-an-edit-data-page-in-webmatrix.md)
         - [WebMatrix’te Veri Silme Sayfası Oluşturma](videos/introduction/create-a-delete-data-page-in-webmatrix.md)
         - [Webmatrix Kullanarak Bir Web Sitesini İnternet'te Yayımlama](videos/introduction/publish-a-website-to-the-internet-using-webmatrix.md)
-    - [ASP.NET Razor Pages](videos/aspnet-razor-pages/index.md)
+    - [ASP.NET Jilet Sayfaları](videos/aspnet-razor-pages/index.md)
 
         - [WebMatrix ve ASP.NET Web Sayfaları ile Çalışmaya Başlama](videos/aspnet-razor-pages/getting-started-with-webmatrix-and-aspnet-web-pages.md)
         - [ASP.NET Web Programlama Razor Söz Dizimine Giriş](videos/aspnet-razor-pages/introduction-to-aspnet-web-programming-using-the-razor-syntax.md)
