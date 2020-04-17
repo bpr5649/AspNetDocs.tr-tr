@@ -1,340 +1,340 @@
 ---
 uid: mvc/overview/older-versions-1/contact-manager/iteration-6-use-test-driven-development-cs
-title: 'Yineleme #6 – test odaklı geliştirme kullanın (C#) | Microsoft Docs'
-author: microsoft
-description: Bu altıncı yinelemede, önce birim testlerini yazarak ve birim testlerine göre kod yazarak uygulamamıza yeni işlevsellik ekleyeceğiz. Bu yinelemede,...
+title: 'Yineleme #6 – Test odaklı geliştirme (C#) kullanın | Microsoft Dokümanlar'
+author: rick-anderson
+description: Bu altıncı yinelemede, önce birim testleri yazarak ve birim testlerine karşı kod yazarak uygulamamıza yeni işlevler ekliyoruz. Bu yinelemede,...
 ms.author: riande
 ms.date: 02/20/2009
 ms.assetid: 013c3c26-7dc3-41d1-8064-f233c86008b5
 msc.legacyurl: /mvc/overview/older-versions-1/contact-manager/iteration-6-use-test-driven-development-cs
 msc.type: authoredcontent
-ms.openlocfilehash: aee0ff9d8d7f17e8a00dab12467bd3a3457fbe18
-ms.sourcegitcommit: e7e91932a6e91a63e2e46417626f39d6b244a3ab
+ms.openlocfilehash: d0e8f30a075cc79c7410ffe1b8bf02da2bd44443
+ms.sourcegitcommit: 022f79dbc1350e0c6ffaa1e7e7c6e850cdabf9af
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/06/2020
-ms.locfileid: "78601803"
+ms.lasthandoff: 04/17/2020
+ms.locfileid: "81542332"
 ---
-# <a name="iteration-6--use-test-driven-development-c"></a>Yineleme #6 – test odaklı geliştirme (C#) kullanın
+# <a name="iteration-6--use-test-driven-development-c"></a>6. Yineleme – Test odaklı geliştirme kullanma (C#)
 
 [Microsoft](https://github.com/microsoft) tarafından
 
-[Kodu indir](iteration-6-use-test-driven-development-cs/_static/contactmanager_6_cs1.zip)
+[İndirme Kodu](iteration-6-use-test-driven-development-cs/_static/contactmanager_6_cs1.zip)
 
-> Bu altıncı yinelemede, önce birim testlerini yazarak ve birim testlerine göre kod yazarak uygulamamıza yeni işlevsellik ekleyeceğiz. Bu yinelemede kişi grupları ekleyeceğiz.
+> Bu altıncı yinelemede, önce birim testleri yazarak ve birim testlerine karşı kod yazarak uygulamamıza yeni işlevler ekliyoruz. Bu yinelemeye kişi grupları ekliyoruz.
 
-## <a name="building-a-contact-management-aspnet-mvc-application-c"></a>Kişi yönetimi ASP.NET MVC uygulaması (C#) oluşturma
+## <a name="building-a-contact-management-aspnet-mvc-application-c"></a>MVC Uygulaması ASP.NET İletişim Yönetimi Oluşturma (C#)
 
-Bu öğretici dizisinde, başlangıçtan sonuna kadar bir Iletişim yönetimi uygulaması oluşturacaksınız. Ilgili kişi Yöneticisi uygulaması, kişi listesi için kişi bilgilerini, telefon numaralarını ve e-posta adreslerini depolamanıza olanak sağlar.
+Öğreticiler bu dizi, biz baştan sona tüm Bir İletişim Yönetimi uygulaması oluşturmak. İletişim Yöneticisi uygulaması, kişi listesi için kişi bilgilerini (adlar, telefon numaraları ve e-posta adresleri) depolamanızı sağlar.
 
-Uygulamayı birden çok yineleme üzerinde oluşturacağız. Her yinelemede, uygulamayı kademeli olarak geliştirdik. Bu birden çok yineleme yaklaşımının hedefi, her bir değişikliğin nedenini anlamanıza olanak sağlamaktır.
+Uygulamayı birden çok yineleme üzerine oluşturuyoruz. Her yineleme ile, yavaş yavaş uygulama geliştirmek. Bu çoklu yineleme yaklaşımının amacı, her değişikliğin nedenini anlamanızı sağlamaktır.
 
-- Yineleme #1-uygulamayı oluşturun. İlk yinelemede, mümkün olan en kolay şekilde Contact Manager oluşturacağız. Temel veritabanı işlemleri için destek ekledik: oluşturma, okuma, güncelleştirme ve silme (CRUD).
+- Yineleme #1 - Uygulamayı oluşturun. İlk yinelemede, İletişim Yöneticisi'ni mümkün olan en basit şekilde oluştururuz. Temel veritabanı işlemleri için destek ekliyoruz: Oluşturma, Okuma, Güncelleme ve Sil (CRUD).
 
-- Yineleme #2-uygulamanın iyi görünmesini sağlayın. Bu yinelemede, varsayılan ASP.NET MVC görünüm ana sayfası ve geçişli stil sayfasını değiştirerek uygulamanın görünüşünü geliştiririz.
+- Yineleme #2 - Uygulama güzel görünmesini sağlamak. Bu yinelemede, varsayılan ASP.NET MVC görünüm ana sayfasını ve basamaklı stil sayfasını değiştirerek uygulamanın görünümünü iyileştiriyoruz.
 
-- Yineleme #3-form doğrulaması ekleme. Üçüncü yinelemede, temel form doğrulaması ekleyeceğiz. Kullanıcıların gerekli form alanlarını tamamlamadan form göndermesini önliyoruz. Ayrıca e-posta adreslerini ve telefon numaralarını da doğruladık.
+- Yineleme #3 - Form doğrulama ekleyin. Üçüncü yinelemede, temel form doğrulamasını ekleriz. İnsanların gerekli form alanlarını tamamlamadan form göndermelerini engelliyoruz. Ayrıca e-posta adreslerini ve telefon numaralarını da doğrularız.
 
-- Yineleme #4-uygulamayı gevşek olarak bağlanmış hale getirin. Bu dördüncü yinelemede, Contact Manager uygulamasının bakımını ve değiştirmesini kolaylaştırmak için çeşitli yazılım tasarımı desenlerinden faydalanır. Örneğin, uygulamamız depo deseninin ve bağımlılık ekleme düzeninin kullanılması için yeniden düzenliyoruz.
+- Yineleme #4 - Uygulamayı gevşek bir şekilde biraraya getirin. Bu dördüncü yinelemede, İletişim Yöneticisi uygulamasını korumayı ve değiştirmeyi kolaylaştırmak için çeşitli yazılım tasarım desenlerinden yararlanıyoruz. Örneğin, uygulamamızı Depo deseni ve Bağımlılık Enjeksiyonu modelini kullanmak üzere yeniden düzenlemeyiz.
 
-- Yineleme #5-birim testleri oluşturun. Beşinci yinelemede, uygulamanızın birim testlerini ekleyerek bakımını ve değiştirmeyi daha kolay hale sunuyoruz. Denetleyicilerimizin ve doğrulama mantığımız için veri modeli Sınıflarımızı ve derleme birimi testlerini modelliyoruz.
+- Yineleme #5 - Birim testleri oluşturun. Beşinci yinelemede, birim testleri ekleyerek uygulamamızın korunmasını ve değiştirilmesini kolaylaştırıyoruz. Veri modeli sınıflarımızla alay ediyoruz ve denetleyicilerimiz ve doğrulama mantığımız için birim testleri oluşturuyoruz.
 
-- Yineleme #6-test odaklı geliştirme kullanın. Bu altıncı yinelemede, önce birim testlerini yazarak ve birim testlerine göre kod yazarak uygulamamıza yeni işlevsellik ekleyeceğiz. Bu yinelemede kişi grupları ekleyeceğiz.
+- Yineleme #6 - Test odaklı geliştirme yi kullanın. Bu altıncı yinelemede, önce birim testleri yazarak ve birim testlerine karşı kod yazarak uygulamamıza yeni işlevler ekliyoruz. Bu yinelemeye kişi grupları ekliyoruz.
 
-- Yineleme #7-Ajax işlevselliği ekleme. Yedinci yinelemede, Ajax desteği ekleyerek uygulamamızın yanıt hızını ve performansını geliştirdik.
+- Yineleme #7 - Ajax işlevselliği ekleyin. Yedinci yinelemede, Ajax'a destek ekleyerek uygulamamızın duyarlılığını ve performansını artırıyoruz.
 
-## <a name="this-iteration"></a>Bu yineleme
+## <a name="this-iteration"></a>Bu Yineleme
 
-Contact Manager uygulamasının önceki yinelemesinde, kodumuza yönelik bir güvenlik ağı sağlamak için birim testleri oluşturduk. Birim testlerini oluşturmaya yönelik mosyon, kodumuzu değiştirmeye daha dayanıklı hale getirmek idi. Birim testleri varken, kodumuza yönelik herhangi bir değişiklik yapabiliriz ve var olan işlevsellikten haberdar olup olmadığını hemen öğreniyoruz.
+Contact Manager uygulamasının önceki yinelemesinde, kodumuz için bir güvenlik ağı sağlamak için birim testleri oluşturduk. Birim testleri oluşturmanın motivasyonu kodumuzu değiştirmeye karşı daha esnek hale getirmekti. Birim testleri devreye girince, kodumuzda herhangi bir değişiklik yapabilir ve mevcut işlevleri bozup bozmadığımızı hemen anlayabiliriz.
 
-Bu yinelemede, birim testlerini tamamen farklı bir amaç için kullanırız. Bu yinelemede, *test odaklı geliştirme*adlı bir uygulama tasarımı felseparçası olarak birim testlerini kullanırız. Test odaklı geliştirme alıştırması yaparken, önce testleri yazar ve ardından testlere karşı kod yazarsınız.
+Bu yinelemede, birim testlerini tamamen farklı bir amaç için kullanırız. Bu yinelemede, birim testleri *test odaklı geliştirme*adı verilen bir uygulama tasarım felsefesinin bir parçası olarak kullanırız. Test odaklı geliştirme alıştırması yaptığınızda, önce testleri yazar, ardından testlere karşı kod yazarsınız.
 
-Daha kesin olarak, test odaklı geliştirme yaparken, kod oluştururken tamamladığınız üç adım vardır (kırmızı/yeşil/yeniden düzenleme):
+Daha doğrusu, test odaklı geliştirme uygularken, kod oluştururken tamamladığınız üç adım vardır (Kırmızı/ Yeşil/Refactor):
 
-1. Başarısız olan bir birim testi yazma (kırmızı)
-2. Birim testini geçiren kodu yazma (yeşil)
-3. Kodunuzu yeniden düzenleme (yeniden düzenleme)
+1. Başarısız olan bir birim testi yazma (Kırmızı)
+2. Birim testini geçen kod yazma (Yeşil)
+3. Kodunuzu yeniden düzenleme (Refactor)
 
-İlk olarak, birim testini yazarsınız. Birim testi, kodunuzun davranışını nasıl beklediğinizi ifade etmelidir. Birim testini ilk oluşturduğunuzda, birim testinin başarısız olması gerekir. Testi karşılayan herhangi bir uygulama kodunu henüz yazmadıysanız test başarısız olmalıdır.
+Önce birim testini yazarsın. Birim testi, kodunuzu nasıl beklediğinize yönelik niyetinizi ifade etmelidir. Birim testini ilk oluşturduğunuzda, birim testi başarısız olmalıdır. Testi karşılayan herhangi bir uygulama kodu henüz yazmadığınız için test başarısız olmalıdır.
 
-Ardından, birim testinin geçmesi için yeterli kodu yazın. Amaç, kodu laziest, sloppiest ve en hızlı olası bir şekilde yazmaktır. Uygulamanızın mimarisi hakkında düşünmekten zaman harcanmamalıdır. Bunun yerine, birim testi tarafından ifade edilen amacı karşılamak için gereken minimum kod miktarını yazmaya odaklanmanız gerekir.
+Sonra, birim testinin geçmesi için yeterli kod yazarsınız. Amaç, kodu mümkün olan en tembel, en özensiz ve en hızlı şekilde yazmaktır. Uygulamanızın mimarisi ni düşünerek zaman kaybetmemelisiniz. Bunun yerine, birim testi tarafından ifade edilen niyeti karşılamak için gereken en az kod miktarını yazmaya odaklanmalısınız.
 
-Son olarak, yeterli kod yazdıktan sonra geri dönerek uygulamanızın genel mimarisini göz önüne alabilirsiniz. Bu adımda, kodunuzun daha sürdürülebilir olması için depo deseni gibi yazılım tasarımı desenlerinden yararlanarak kodunuzu yeniden yazın (yeniden düzenleyin). Kodunuzun birim testleri kapsamında olduğu için kodunuzu bu adımda sorunsuzca yeniden yazabilirsiniz.
+Son olarak, yeterli kod yazdıktan sonra geri adım atabilir ve uygulamanızın genel mimarisini göz önünde bulundurabilirsiniz. Bu adımda, kodunuzu daha iyi koruyabilmek için yazılım tasarım desenlerinden (depo deseni gibi) yararlanarak kodunuzu yeniden yazar (yeniden tasarlarsınız). Kodunuz birim testleri kapsamında olduğundan, bu adımda korkusuzca kodunuzu yeniden yazabilirsiniz.
 
-Test odaklı geliştirmeyi uygulamadan kaynaklanan birçok avantaj vardır. İlk olarak, test odaklı geliştirme sizi gerçekten yazılması gereken koda odaklanmaya zorlar. Belirli bir testi geçirmek için yeterli kod yazmak üzere sürekli olarak odaklandığınız için, Wandering ' den, hiçbir şekilde kullanmayacak büyük miktarda kod yazmanız engellenir.
+Test odaklı geliştirme uygulama sonucu birçok faydası vardır. İlk olarak, test odaklı geliştirme sizi gerçekten yazılması gereken koda odaklanmaya zorlar. Sürekli olarak belirli bir testi geçmek için yeterli kod yazmaya odaklandığınız için, asla kullanamayacağınız büyük miktarda kod yazmak için izniniçine girmeniz ve yazmanız engellenir.
 
-İkinci olarak, "test First" tasarım yöntemi, kodunuzun nasıl kullanılacağına ilişkin perspektiften kod yazmaya zorlar. Diğer bir deyişle, test odaklı geliştirme yaparken, testlerinizi bir Kullanıcı perspektifinden sürekli yazmaya devam edersiniz. Bu nedenle, test odaklı geliştirme, temizleyici ve daha fazla anlaşılabilir API 'Lerle sonuçlanabilir.
+İkinci olarak, "önce test edin" tasarım metodolojisi sizi kodunuzu nasıl kullanılacağı açısından kod yazmaya zorlar. Başka bir deyişle, test odaklı geliştirme uygularken, testlerinizi sürekli olarak kullanıcı açısından yazarsınız. Bu nedenle, test odaklı geliştirme daha temiz ve daha anlaşılır API'ler neden olabilir.
 
-Son olarak, test odaklı geliştirme, bir uygulama yazma sürecinin bir parçası olarak birim testlerini yazmaya zorlar. Proje son tarihi yaklaşımlarına göre test, genellikle pencereyi izleyen ilk şeydir. Test odaklı geliştirme yaparken, diğer taraftan, birim testlerini yazma hakkında daha büyük olasılıkla, test odaklı geliştirme birim testlerini bir uygulama oluşturma sürecine göre temel hale getiriyor.
+Son olarak, test odaklı geliştirme, bir uygulama yazma normal sürecinin bir parçası olarak birim testleri yazmaya zorlar. Bir proje son tarih yaklaştıkça, sınama genellikle pencereden dışarı gider ilk şeydir. Diğer taraftan, test odaklı geliştirme yi uygularken birim testleri yazma konusunda erdemli olma olasılığınız daha yüksektir, çünkü test odaklı geliştirme birim testlerini bir uygulama oluşturma sürecinin merkezinde yapar.
 
 > [!NOTE] 
 > 
-> Test odaklı geliştirme hakkında daha fazla bilgi edinmek için, **eski kod Ile etkin bir şekilde çalışan**Michael fealer defterini okumanızı öneririz.
+> Test odaklı geliştirme hakkında daha fazla bilgi edinmek için, Michael Feathers'ın **Legacy Code ile Etkili Bir Şekilde Çalışma**kitabını okumanızı öneririm.
 
-Bu yinelemede, Contact Manager uygulamasına yeni bir özellik ekleyeceğiz. Kişi grupları için destek ekledik. Kişilerinizi Iş ve arkadaş grupları gibi kategoriler halinde düzenlemek için kişi grupları ' nı kullanabilirsiniz.
+Bu yinelemede, İletişim Yöneticisi uygulamamıza yeni bir özellik ekliyoruz. İletişim Grupları için destek ekliyoruz. Kişi Grupları'nı, kişilerinizi İş ve Arkadaş grupları gibi kategorilerhalinde düzenlemek için kullanabilirsiniz.
 
-Test odaklı geliştirme sürecini izleyerek bu yeni işlevselliği uygulamamıza ekleyeceğiz. Öncelikle birim testlerimizi yazacağız ve bu testlere yönelik olarak tüm kodumuzu yazacağız.
+Bu yeni işlevselliği, test odaklı bir geliştirme sürecini izleyerek uygulamamıza ekleyeceğiz. Önce birim testlerimizi yazacağız ve tüm kodlarımızı bu testlere karşı yazacağız.
 
-## <a name="what-gets-tested"></a>Nelerin test edileceği
+## <a name="what-gets-tested"></a>Ne Test Gets
 
-Önceki yinelemede bahsedildiği gibi, genellikle veri erişim mantığı veya görünüm mantığı için birim testleri yazmayın. Veritabanına erişmek görece yavaş bir işlem olduğundan veri erişim mantığı için birim testleri yazırın. Görüntüleme mantığı için birim testlerini yazmanız gerekmez, çünkü bir görünüme erişmek, görece yavaş bir işlem olan bir Web sunucusunun dönmesini gerektirir. Test tekrar çok hızlı yürütülene kadar bir birim testi yazmamanız gerekir
+Önceki yinelemede de belirttiğimiz gibi, genellikle veri erişim mantığı veya görünüm mantığı için birim testleri yazmayın. Veritabanına erişmek nispeten yavaş bir işlem olduğundan, veri erişim mantığı için birim testleri yazmazsınız. Görünüm mantığı için birim testleri yazmazsınız, çünkü bir görünüme erişmek nispeten yavaş bir işlem olan bir web sunucusunu döndürmeyi gerektirir. Test tekrar tekrar çok hızlı yürütülmedikçe bir birim testi yazmamalısınız
 
-Test odaklı geliştirme birim testleri tarafından kullanıldığı için, başlangıçta yazma denetleyicisi ve iş mantığı üzerine odaklanıyoruz. Veritabanına veya görünümlere dokunmaktan kaçının. Bu öğreticinin çok sonuna kadar veritabanını değiştirmeyecek veya Görünümlerimizi oluşturmayacağız. Neleri test ettiğimiz ile başlayacağız.
+Test odaklı geliştirme birim testleri tarafından yürütüldüğünden, başlangıçta denetleyici ve işman manılığına odaklanılır. Veritabanına veya görünüme dokunmaktan kaçınıyoruz. Bu eğitimin sonuna kadar veritabanını değiştirmeyecek veya görünümlerimizi oluşturmayacağız. Test edilebilenlerle başlıyoruz.
 
-## <a name="creating-user-stories"></a>Kullanıcı hikayeleri oluşturma
+## <a name="creating-user-stories"></a>Kullanıcı Hikayeleri Oluşturma
 
-Test odaklı geliştirme yaparken her zaman bir test yazmaya başlayabilirsiniz. Bu, hemen bu soruyu ortaya çıkarır: ne öncelikle yazılacak teste nasıl karar verirsiniz? Bu soruyu yanıtlamak için [**Kullanıcı hikayeleri**](http://en.wikipedia.org/wiki/User_stories)kümesi yazmalısınız.
+Test odaklı geliştirme pratiği yaparken, her zaman bir test yazarak başlarsınız. Bu hemen şu soruyu gündeme getiriyor: İlk olarak hangi testi yazacağına nasıl karar verebilirsiniz? Bu soruyu yanıtlamak için, bir dizi [**kullanıcı hikayesi**](http://en.wikipedia.org/wiki/User_stories)yazmanız gerekir.
 
-Kullanıcı hikayesi, Yazılım gereksiniminin çok kısa (genellikle bir cümle) açıklamasıdır. Kullanıcı perspektifinden yazılmış bir gereksinimin teknik olmayan bir açıklaması olmalıdır.
+Kullanıcı hikayesi, yazılım gereksiniminin çok kısa (genellikle tek cümle) açıklamasıdır. Kullanıcı açısından yazılmış bir gereksinimin teknik olmayan bir açıklaması olmalıdır.
 
-Burada, yeni kişi grubu işlevinin gerektirdiği özellikleri tanımlayan Kullanıcı hikayeleri kümesi verilmiştir:
+Burada, yeni Kişi Grubu işlevinin gerektirdiği özellikleri açıklayan kullanıcı öyküleri kümesi verilmiştir:
 
-1. Kullanıcı, kişi gruplarının bir listesini görüntüleyebilir.
+1. Kullanıcı kişi gruplarının listesini görüntüleyebilir.
 2. Kullanıcı yeni bir kişi grubu oluşturabilir.
-3. Kullanıcı, var olan bir kişi grubunu silebilir.
+3. Kullanıcı varolan bir kişi grubunu silebilir.
 4. Kullanıcı, yeni bir kişi oluştururken bir kişi grubu seçebilir.
-5. Kullanıcı, mevcut bir kişiyi düzenlediğinizde bir kişi grubu seçebilir.
+5. Kullanıcı, varolan bir kişi düzenlerken bir kişi grubu seçebilir.
 6. Dizin görünümünde kişi gruplarının listesi görüntülenir.
-7. Kullanıcı bir kişi grubuna tıkladığında, eşleşen kişilerin listesi görüntülenir.
+7. Bir kullanıcı bir kişi grubunu tıklattığında, eşleşen kişilerin listesi görüntülenir.
 
-Bu Kullanıcı hikayeleri listesinin bir müşteri tarafından tamamen anlaşılır olduğunu fark edersiniz. Teknik uygulama ayrıntılarının bahsetmesi yoktur.
+Bu kullanıcı hikayeleri listesinin bir müşteri tarafından tamamen anlaşılabilir olduğuna dikkat edin. Teknik uygulama detaylarından söz edilememektedir.
 
-Uygulamanızı oluşturma sürecinde, Kullanıcı hikayeleri kümesi daha da görüntülenebilir. Bir kullanıcı hikayesini birden fazla hikaye (gereksinimler) ile kesebilirsiniz. Örneğin, yeni bir kişi grubu oluşturmanın doğrulamayı dahil etmesi gerektiğine karar verebilirsiniz. Bir kişi grubu adı olmadan gönderilmesi bir doğrulama hatası döndürmelidir.
+Uygulamanızı oluşturma sürecinde yken, kullanıcı öyküleri kümesi daha rafine hale gelebilir. Bir kullanıcı hikayesini birden çok öyküye (gereksinimlere) kırabilirsiniz. Örneğin, yeni bir kişi grubu oluşturmanın doğrulama içermesi gerektiğine karar verebilirsiniz. Adsız bir kişi grubu göndermek bir doğrulama hatası döndürmelidir.
 
-Kullanıcı hikayeleri listesini oluşturduktan sonra, ilk birim testinizi yazmaya hazırlanın. İletişim grupları listesini görüntülemek için bir birim testi oluşturarak başlayacağız.
+Kullanıcı öykülerinin bir listesini oluşturduktan sonra, ilk birim testinizi yazmaya hazırsınız. Kişi gruplarının listesini görüntülemek için bir birim testi oluşturarak başlayacağız.
 
-## <a name="listing-contact-groups"></a>Kişi gruplarını listeleme
+## <a name="listing-contact-groups"></a>Kişi Gruplarını Listeleme
 
-İlk Kullanıcı hikayemiz, kullanıcının kişi grupları listesini görüntüleyebilmelidir. Bu hikayeyi bir test ile ifade etmemiz gerekiyor.
+İlk kullanıcı hikayemiz, bir kullanıcının kişi gruplarının listesini görebilmeleridir. Bu hikayeyi bir testle ifade etmeliyiz.
 
-ContactManager 'daki Controllers klasörüne sağ tıklayarak yeni bir birim testi oluşturun. test projesi, **Ekle, yeni test**ve **birim testi** şablonunu seçme (bkz. Şekil 1). Yeni birim testi GroupControllerTest.cs adlandırın ve **Tamam** düğmesine tıklayın.
+ContactManager.Tests projesinde Denetleyiciler klasörüne sağ tıklayarak, **Ekle, Yeni Test'i**seçerek ve **Birim Testi** şablonuna bakarak yeni bir birim testi oluşturun (Bkz. Şekil 1). Yeni birim testinin GroupControllerTest.cs ve **Tamam** düğmesini tıklatın.
 
-[GroupControllerTest birim testi ekleme ![](iteration-6-use-test-driven-development-cs/_static/image1.jpg)](iteration-6-use-test-driven-development-cs/_static/image1.png)
+[![GroupControllerTest birim testi ekleme](iteration-6-use-test-driven-development-cs/_static/image1.jpg)](iteration-6-use-test-driven-development-cs/_static/image1.png)
 
-**Şekil 01**: groupcontrollertest birim testi ekleme ([tam boyutlu görüntüyü görüntülemek için tıklayın](iteration-6-use-test-driven-development-cs/_static/image2.png))
+**Şekil 01**: GroupControllerTest birim testinin eklenmesi([Tam boyutlu görüntüyü görüntülemek için tıklayınız](iteration-6-use-test-driven-development-cs/_static/image2.png))
 
-İlk birim testiniz Listeleme 1 ' de yer alır. Bu test, Grup denetleyicisinin Index () yönteminin bir grup kümesini döndürdüğünü doğrular. Test, görünüm verilerinde bir grup koleksiyonunun döndürüldüğünü doğrular.
+İlk ünite testimiz Listeleme 1'de yer almaktadır. Bu test, Grup denetleyicisinin Dizin() yönteminin bir grup kümesini döndürür olduğunu doğrular. Test, görünüm verilerinde gruplar koleksiyonunun döndürüldettiğini doğrular.
 
-**Listeleme 1-Controllers\GroupControllerTest.cs**
+**Listeleme 1 - Denetleyiciler\GroupControllerTest.cs**
 
 [!code-csharp[Main](iteration-6-use-test-driven-development-cs/samples/sample1.cs)]
 
-Kodu Visual Studio 'da liste 1 ' de ilk kez yazdığınızda, kırmızı dalgalı çizgi sayısı çok fazla olacaktır. GroupController veya Group sınıfları oluşturmadınız.
+Visual Studio'da Liste 1'e kodu ilk yazdığınızda, çok sayıda kırmızı kıvrımlı çizgi alırsınız. GroupController veya Grup sınıflarını oluşturmadık.
 
-Bu noktada, ilk birim testimizi yürütebilmemiz için uygulamamızı bile derliyoruz. Bu iyi. Bu, başarısız bir test olarak sayılır. Bu nedenle, artık uygulama kodu yazmaya başlama iznimiz var. Testimizi yürütmek için yeterli kod yazmamız gerekiyor.
+Bu noktada, uygulamamızı bile oluşturamıyorduk, bu yüzden ilk birim testimizi uygulayabiliyoruz. Bu iyi. Bu başarısız bir test sayılır. Bu nedenle, artık uygulama kodu yazmaya başlamak için iznimiz vardır. Testimizi uygulamak için yeterli kod yazmamız gerekiyor.
 
-Liste 2 ' deki Grup denetleyicisi sınıfı, birim testini geçirmek için gereken en düşük kodu içerir. Index () eylemi, statik olarak kodlanmış grupların listesini döndürür (Grup sınıfı, Listeleme 3 ' te tanımlanır).
+Listeleme 2'deki Grup denetleyici sınıfı, birim testini geçmek için gereken minimum kodu içerir. Index() eylemi, statik olarak kodlanmış gruplar listesini döndürür (Grup sınıfı Listeleme 3'te tanımlanır).
 
-**Listeleme 2-Controllers\GroupController.cs**
+**Listeleme 2 - Denetleyiciler\GroupController.cs**
 
 [!code-csharp[Main](iteration-6-use-test-driven-development-cs/samples/sample2.cs)]
 
-**Listeleme 3-Models\Group.cs**
+**Listeleme 3 - Modeller\Group.cs**
 
 [!code-csharp[Main](iteration-6-use-test-driven-development-cs/samples/sample3.cs)]
 
-Projenize GroupController ve Group sınıfları eklendikten sonra ilk birim testi başarıyla tamamlanır (bkz. Şekil 2). Testi geçirmek için gereken en düşük işi yaptık. Hadi kutlayalım.
+GroupController ve Grup sınıflarını projemize ekledikten sonra, ilk ünite testimiz başarıyla tamamlar (Bkz. Şekil 2). Testi geçmek için gereken minimum işi yaptık. Kutlama zamanı.
 
-[Başarılı ![!](iteration-6-use-test-driven-development-cs/_static/image2.jpg)](iteration-6-use-test-driven-development-cs/_static/image3.png)
+[![Başarı!](iteration-6-use-test-driven-development-cs/_static/image2.jpg)](iteration-6-use-test-driven-development-cs/_static/image3.png)
 
-**Şekil 02**: başarılı! ([Tam boyutlu görüntüyü görüntülemek Için tıklayın](iteration-6-use-test-driven-development-cs/_static/image4.png))
+**Şekil 02**: Başarı! ([Tam boyutlu görüntüyü görüntülemek için tıklayın](iteration-6-use-test-driven-development-cs/_static/image4.png))
 
-## <a name="creating-contact-groups"></a>Kişi grupları oluşturma
+## <a name="creating-contact-groups"></a>Kişi Grupları Oluşturma
 
-Şimdi ikinci kullanıcı hikayesine geçiş yapabilirsiniz. Yeni kişi grupları oluşturabilmemiz gerekiyor. Bu amacı bir test ile ifade etmemiz gerekiyor.
+Şimdi ikinci kullanıcı hikayesine geçebiliriz. Yeni kişi grupları oluşturabilmelidir. Bu niyeti bir testle ifade etmeliyiz.
 
-Listeleme 4 ' teki test, Create () yönteminin yeni bir grup ile çağrılmasını doğrular grubu, Index () yöntemi tarafından döndürülen gruplar listesine ekler. Başka bir deyişle, yeni bir grup oluştururum, dizin () yöntemi tarafından döndürülen gruplar listesinden yeni grubu geri gönderebilmelidir.
+Listeleme 4'teki test, Yeni Bir Grupla Oluştur() yöntemini aramanın Grubu Dizin() yöntemiyle döndürülen Gruplar listesine eklediği doğrular. Başka bir deyişle, yeni bir grup oluşturursam, yeni Grubu Index() yöntemiyle döndürülen Gruplar listesinden geri alabiliyorum.
 
-**Listeleme 4-Controllers\GroupControllerTest.cs**
+**Listeleme 4 - Denetleyiciler\GroupControllerTest.cs**
 
 [!code-csharp[Main](iteration-6-use-test-driven-development-cs/samples/sample4.cs)]
 
-Listeleme 4 ' teki test, Grup denetleyicisi oluştur () yöntemini yeni bir kişi grubuyla çağırır. Daha sonra, test, Grup denetleyicisi dizini () metodunu çağırmanın, görüntüleme verilerinde yeni grubu döndürdüğünü doğrular.
+Listeleme 4'teki test, Grup denetleyicisi Oluşturma() yöntemini yeni bir kişi Grubu ile çağırır. Daha sonra, test Grup denetleyicisi Index() yöntemini aramanın görünüm verilerinde yeni Grubu döndürür doğrular.
 
-5\. listede değiştirilen grup denetleyicisi, yeni testi geçirmek için gereken en düşük değişiklik sayısını içerir.
+Listeleme 5'teki değiştirilmiş Grup denetleyicisi, yeni testi geçmek için gereken en az değişikliği içerir.
 
-**Listeleme 5-Controllers\GroupController.cs**
+**Listeleme 5 - Denetleyiciler\GroupController.cs**
 
 [!code-csharp[Main](iteration-6-use-test-driven-development-cs/samples/sample5.cs)]
 
-## <a name="the-group-controller-in-listing-5-has-a-new-create-action-this-action-adds-a-group-to-a-collection-of-groups-notice-that-the-index-action-has-been-modified-to-return-the-contents-of-the-collection-of-groups"></a>Listeleme 5 ' teki Grup denetleyicisinde yeni bir Create () eylemi vardır. Bu eylem, gruplar koleksiyonuna bir grup ekler. Dizin () eyleminin grup koleksiyonunun içeriğini döndürecek şekilde değiştirildiğini unutmayın.
+## <a name="the-group-controller-in-listing-5-has-a-new-create-action-this-action-adds-a-group-to-a-collection-of-groups-notice-that-the-index-action-has-been-modified-to-return-the-contents-of-the-collection-of-groups"></a>Listeleme 5'teki Grup denetleyicisinin yeni bir Oluşturma() eylemi vardır. Bu eylem, Gruplar koleksiyonuna bir Grup ekler. Gruplar koleksiyonunun içeriğini döndürmek için Index() eyleminin değiştirildiğini unutmayın.
 
-Bir kez daha, birim testini geçirmek için gereken en düşük iş miktarını gerçekleştirdik. Grup denetleyicisinde bu değişiklikleri yaptıktan sonra, tüm birim testleriniz geçer.
+Bir kez daha, birim testini geçmek için gereken minimum iş miktarını gerçekleştirdik. Grup denetleyicisi için bu değişiklikleri yaptıktan sonra, tüm birim testlerimiz geçer.
 
 ## <a name="adding-validation"></a>Doğrulama Ekleme
 
-Bu gereksinim, Kullanıcı hikayesine açık olarak belirtilmedi. Ancak, bir grubun bir adı olması gerekir. Aksi takdirde, kişilerin gruplar halinde düzenlenmesi çok faydalı olmaz.
+Bu gereksinim kullanıcı hikayesinde açıkça belirtilmemiştir. Ancak, bir Grubun bir adı olmasını istemek makuldür. Aksi takdirde, kişileri Gruplar halinde düzenlemek çok yararlı olmaz.
 
-Liste 6, bu amacı ifade eden yeni bir test içerir. Bu test, bir ad vermeden bir grup oluşturmaya çalışan, model durumunda doğrulama hata iletisine neden olur.
+Listeleme 6 bu niyeti ifade eden yeni bir test içerir. Bu sınama, ad sağlamadan bir Grup oluşturmaya çalışırken model durumunda bir doğrulama hatası iletisi ile sonuçladığını doğrular.
 
-**6-Controllers\GroupControllerTest.cs listeleme**
+**Listeleme 6 - Denetleyiciler\GroupControllerTest.cs**
 
 [!code-csharp[Main](iteration-6-use-test-driven-development-cs/samples/sample6.cs)]
 
-Bu testi karşılamak için Grup sınıfmıza bir ad özelliği eklememiz gerekiyor (bkz. Listeleme 7). Ayrıca, Grup denetleyicisi oluşturma () eylemize (bkz. listeleme 8) çok küçük bir doğrulama mantığı eklememiz gerekiyor.
+Bu testi karşılamak için, Grup sınıfımıza bir Ad özelliği eklememiz gerekir (bkz. Ayrıca, Grup denetleyicimiz Create() eylemine biraz doğrulama mantığı eklememiz gerekir (bkz.
 
-**Listeleme 7-Models\Group.cs**
+**Listeleme 7 - Modeller\Group.cs**
 
 [!code-csharp[Main](iteration-6-use-test-driven-development-cs/samples/sample7.cs)]
 
-**8-Controllers\GroupController.cs listeleme**
+**Listeleme 8 - Denetleyiciler\GroupController.cs**
 
 [!code-csharp[Main](iteration-6-use-test-driven-development-cs/samples/sample8.cs)]
 
-Grup denetleyicisi oluşturma () eyleminin artık hem doğrulama hem de veritabanı mantığını içerdiğini unutmayın. Şu anda, Grup denetleyicisi tarafından kullanılan veritabanı, bellek içi bir koleksiyondan daha fazla şey içerir.
+Grup denetleyicisi Create() eyleminin artık hem doğrulama hem de veritabanı mantığı içerdiğine dikkat edin. Şu anda, Grup denetleyicisi tarafından kullanılan veritabanı bellek içi bir koleksiyondan başka bir şey oluşturmaz.
 
-## <a name="time-to-refactor"></a>Yeniden düzenleme süresi
+## <a name="time-to-refactor"></a>Refactor Zamanı
 
-Kırmızı/yeşil/yeniden düzenleme içinde üçüncü adım yeniden düzenleme bölümüdür. Bu noktada, kodumuza geri dönüp tasarımını geliştirmek için uygulamamızı nasıl yeniden tasarlayabileceğimizi göz önünde bulundurmanız gerekir. Yeniden düzenleme aşaması, yazılım tasarımı ilkelerini ve düzenlerini kullanmanın en iyi yolu hakkında daha fazla bilgi verdiğimiz aşamasıdır.
+Kırmızı / Yeşil / Refactor üçüncü adım Refactor parçasıdır. Bu noktada, kodumuzdan geri adım atmalıyız ve tasarımını geliştirmek için uygulamamızı nasıl yeniden değerlendirebileceğimizi düşünmeliyiz. Refactor aşaması, yazılım tasarım ilke ve desenlerini uygulamanın en iyi yolu hakkında çok düşündüğümüz aşamadır.
 
-Kodunuzun tasarımını geliştirmek için seçtiğimiz her şekilde kodumuzu değiştirmek ücretsizdir. Mevcut işlevselliği bozmamıza engel olan birim testlerinin bir güvenlik ağı vardır.
+Kodumuzu, kodun tasarımını geliştirmek için seçtiğimiz herhangi bir şekilde değiştirmekte özgüruz. Mevcut işlevleri kırmamızı engelleyen bir güvenlik birimi testağına sahibiz.
 
-Şu anda grup denetleyicimiz, iyi yazılım tasarımının perspektifinden bir mesgiydi. Grup denetleyicisi, doğrulama ve veri erişim kodu için bir tanınled iletisi içerir. Tek sorumluluğun ihlal edilmesini önlemek için, bu kaygıları farklı sınıflara ayırdık.
+Şu anda, Bizim Grup denetleyiciiyi yazılım tasarımı açısından bir karmaşa olduğunu. Grup denetleyicisi doğrulama ve veri erişim kodu karışık bir karmaşa içerir. Tek Sorumluluk İlkesi'ni ihlal etmekten kaçınmak için, bu endişeleri farklı sınıflara ayırmamız gerekir.
 
-Yeniden düzenlenmiş grup denetleyicisi sınıfınız, liste 9 ' da bulunur. Denetleyici ContactManager hizmet katmanını kullanacak şekilde değiştirilmiştir. Bu, Ilgili kişi denetleyicisiyle birlikte kullandığımız aynı hizmet katmanıdır.
+Refactored Grup denetleyici sınıfımız Listeleme 9'da yer almaktadır. Denetleyici, ContactManager hizmet katmanını kullanacak şekilde değiştirildi. Bu, İletişim denetleyicisi ile kullandığımız hizmet katmanıdır.
 
-10. liste, ContactManager hizmet katmanına eklenen ve grupların doğrulanması, listelenmesi ve oluşturulmasını destekleyen yeni yöntemler içerir. Itactmanagerservice arabirimi yeni yöntemleri içerecek şekilde güncelleştirildi.
+Liste 10, doğrulamayı, listelemeyi ve grupları oluşturmak için ContactManager hizmet katmanına eklenen yeni yöntemleri içerir. IContactManagerService arabirimi yeni yöntemleri içerecek şekilde güncelleştirildi.
 
-12. liste, ıtactmanagerrepository arabirimini uygulayan yeni bir FakeContactManagerRepository sınıfı içerir. Itactmanagerrepository arabirimini de uygulayan EntityContactManagerRepository sınıfından farklı olarak, yeni FakeContactManagerRepository sınıfınız veritabanıyla iletişim kurmaz. FakeContactManagerRepository sınıfı, veritabanı için bir ara sunucu olarak bellek içi bir koleksiyon kullanır. Bu sınıfı, birim testlerimizde sahte bir depo katmanı olarak kullanacağız.
+Listeleme 11, IContactManagerRepository arabirimini uygulayan yeni bir FakeContactManagerRepository sınıfı içerir. Ayrıca IContactManagerRepository arabirimini uygulayan EntityContactManagerRepository sınıfının aksine, yeni FakeContactManagerRepository sınıfımız veritabanı ile iletişim kurmaz. FakeContactManagerRepository sınıf veritabanı için bir proxy olarak bellek koleksiyonu kullanır. Bu sınıfı birim testlerimizde sahte depo katmanı olarak kullanacağız.
 
-**9-Controllers\GroupController.cs listeleme**
+**Listeleme 9 - Denetleyiciler\GroupController.cs**
 
 [!code-csharp[Main](iteration-6-use-test-driven-development-cs/samples/sample9.cs)]
 
-**10-Controllers\ContactManagerService.cs listeleme**
+**Listeleme 10 - Denetleyiciler\ContactManagerService.cs**
 
 [!code-csharp[Main](iteration-6-use-test-driven-development-cs/samples/sample10.cs)]
 
-**11-Controllers\fakecontactmanagerdepotory.cs listeleme**
+**Listeleme 11 - Denetleyiciler\FakeContactManagerRepository.cs**
 
 [!code-csharp[Main](iteration-6-use-test-driven-development-cs/samples/sample11.cs)]
 
-Itactmanagerrepository arabirimini değiştirmenin, EntityContactManagerRepository sınıfında CreateGroup () ve ListGroups () yöntemlerini uygulaması için kullanılması gerekir. Bunu yapmanın lazest ve en hızlı yolu şuna benzer bir saplama yöntemi eklemektir:   
+IContactManagerRepository arabiriminin değiştirilmesi, EntityContactManagerRepository sınıfında CreateGroup() ve ListGroups() yöntemlerini uygulamak için kullanım gerektirir. Bunu yapmanın en tembel ve en hızlı yolu şuna benzeyen saplama yöntemleri eklemektir:   
 
 [!code-csharp[Main](iteration-6-use-test-driven-development-cs/samples/sample12.cs)]
 
-Son olarak, uygulamamız üzerinde yapılan bu değişiklikler birim testlerimizde bazı değişiklikler yapmamızı gerektirir. Artık birim testlerini gerçekleştirirken FakeContactManagerRepository 'yi kullanmanız gerekir. Güncelleştirilmiş GroupControllerTest sınıfı, 12. listede yer alır.
+Son olarak, uygulamamızın tasarımında yapılan bu değişiklikler, birim testlerimizde bazı değişiklikler yapmamızı gerektirmektedir. Şimdi birim testleri yaparken FakeContactManagerRepository kullanmanız gerekir. Güncelleştirilmiş GroupControllerTest sınıfı Listeleme 12'de bulunur.
 
-**12-Controllers\GroupControllerTest.cs listeleme**
+**Listeleme 12 - Denetleyiciler\GroupControllerTest.cs**
 
 [!code-csharp[Main](iteration-6-use-test-driven-development-cs/samples/sample13.cs)]
 
-Bu değişiklikleri bir kez daha yaptıktan sonra, tüm birim testleriniz geçer. Kırmızı/yeşil/yeniden düzenleme döngüsünün tamamını tamamladık. İlk iki kullanıcı hikayesi uyguladık. Artık Kullanıcı hikayeleri için ifade edilen gereksinimlere yönelik birim testlerini destekliyoruz. Kullanıcı hikayelerinin geri kalanını uygulamak, aynı kırmızı/yeşil/yeniden düzenleme döngüsünü tekrarlamayı gerektirir.
+Tüm bu değişiklikleri yaptıktan sonra, bir kez daha, tüm birim testlerimiz geçer. Kırmızı/Yeşil/Refactor döngüsünün tamamını tamamladık. İlk iki kullanıcı öykülerini uyguladık. Artık kullanıcı hikayelerinde ifade edilen gereksinimler için destekleyici birim testlerine sahibiz. Kullanıcı öykülerinin geri kalanının uygulanması, aynı Kırmızı/Yeşil/Refactor döngüsünü yinelemeyi içerir.
 
-## <a name="modifying-our-database"></a>Veritabanımızı değiştirme
+## <a name="modifying-our-database"></a>Veritabanımızı Değiştirme
 
-Ne yazık ki, birim testlerimiz tarafından ifade edilen tüm gereksinimleri karşıladığımız halde çalışmamız yapılmadı. Hala veritabanımızı değiştirmemiz gerekiyor.
+Ne yazık ki, birim testlerimizin ifade ettiği tüm gereklilikleri yerine getirmiş olsak da, çalışmalarımız bitmedi. Hala veritabanımızı değiştirmemiz gerekiyor.
 
-Yeni bir grup veritabanı tablosu oluşturuyoruz. Aşağıdaki adımları uygulayın:
+Yeni bir Grup veritabanı tablosu oluşturmamız gerekiyor. Şu adımları uygulayın:
 
-1. Sunucu Gezgini penceresinde tablolar klasörüne sağ tıklayın ve **Yeni Tablo Ekle**menü seçeneğini belirleyin.
-2. Tablo Tasarımcısı aşağıda açıklanan iki sütunu girin.
-3. Kimlik sütununu birincil anahtar ve kimlik sütunu olarak işaretleyin.
-4. Disketin simgesine tıklayarak yeni tabloyu ad gruplarıyla kaydedin.
+1. Server Explorer penceresinde, Tablolar klasörüne sağ tıklayın ve **Yeni Tablo Ekle**seçeneğini seçin.
+2. Tablo Tasarımcısı'nda aşağıda açıklanan iki sütunu girin.
+3. Kimlik sütununu birincil anahtar ve Kimlik sütunu olarak işaretleyin.
+4. Disket simgesini tıklatarak ad Grupları ile yeni tablokaydedin.
 
 <a id="0.11_table01"></a>
 
-| **Sütun adı** | **Veri türü** | **Null değerlere izin ver** |
+| **Sütun Adı** | **Veri Türü** | **Nulls'a İzin Ver** |
 | --- | --- | --- |
 | Kimlik | int | False |
-| Adı | nvarchar (50) | False |
+| Adı | nvarchar(50) | False |
 
-Ardından, kişiler tablosundan tüm verileri silmemiz gerekir (Aksi takdirde, kişiler ve gruplar tabloları arasında bir ilişki oluşturmayacağız). Aşağıdaki adımları uygulayın:
+Ardından, Kişiler tablosundaki tüm verileri silmemiz gerekir (aksi takdirde Kişiler ve Gruplar tabloları arasında bir ilişki oluşturamayız). Şu adımları uygulayın:
 
-1. Kişiler tablosuna sağ tıklayın ve **tablo verilerini göster**menü seçeneğini belirleyin.
+1. Kişiler tablosuna sağ tıklayın ve **Tablo Verilerini Göster**menüsü seçeneğini seçin.
 2. Tüm satırları silin.
 
-Ardından, gruplar veritabanı tablosu ve var olan kişiler veritabanı tablosu arasında bir ilişki tanımlamanız gerekir. Aşağıdaki adımları uygulayın:
+Ardından, Gruplar veritabanı tablosu ile varolan Kişiler veritabanı tablosu arasında bir ilişki tanımlamamız gerekir. Şu adımları uygulayın:
 
-1. Tablo Tasarımcısı açmak için Sunucu Gezgini penceresindeki kişiler tablosuna çift tıklayın.
-2. GroupID adlı kişiler tablosuna yeni bir tamsayı sütunu ekleyin.
-3. Yabancı anahtar Ilişkileri iletişim kutusunu açmak için Ilişki düğmesine tıklayın (bkz. Şekil 3).
-4. Ekle düğmesine tıklayın.
-5. Tablo ve sütun belirtimi düğmesinin yanında görünen üç nokta düğmesine tıklayın.
-6. Tablolar ve sütunlar iletişim kutusunda grupları birincil anahtar tablosu ve kimlik olarak birincil anahtar sütunu olarak seçin. Yabancı anahtar tablosu ve GroupID olarak, yabancı anahtar sütunu olarak Kişiler ' i seçin (bkz. Şekil 4). Tamam düğmesine tıklayın.
-7. **Ekle ve Güncelleştir belirtimi**altında, **silme kuralı**için değer **basamakla** ' yı seçin.
-8. Yabancı anahtar Ilişkileri iletişim kutusunu kapatmak için Kapat düğmesine tıklayın.
-9. Değişiklikleri kişiler tablosuna kaydetmek için Kaydet düğmesine tıklayın.
+1. Tablo Tasarımcısı'nı açmak için Sunucu Gezgini penceresindeki Kişiler tablosunu çift tıklatın.
+2. Kişiler tablosuna GroupId adlı yeni bir tamsayı sütunu ekleyin.
+3. Yabancı Anahtar İlişkileri iletişim kutusunu açmak için İlişki düğmesini tıklatın (Bkz. Şekil 3).
+4. Ekle düğmesini tıklatın.
+5. Tablo ve Sütunlar Belirtimi düğmesinin yanında görünen elips düğmesini tıklatın.
+6. Tablolar ve Sütunlar iletişim kutusunda, birincil anahtar tablosu olarak Gruplar'ı ve birincil anahtar sütun olarak Id'yi seçin. Kişiler'i yabancı anahtar tablosu olarak seçin ve groupid yabancı anahtar sütunu olarak (Bkz. Şekil 4). Tamam düğmesine tıklayın.
+7. **INSERT ve UPDATE Belirtimi**altında, **Silme Kuralı**için **Basamaklı** değeri seçin.
+8. Yabancı Anahtar İlişkileri iletişim kutusunu kapatmak için Kapat düğmesini tıklatın.
+9. Kişiler tablosundaki değişiklikleri kaydetmek için Kaydet düğmesini tıklatın.
 
-[veritabanı tablosu ilişkisi oluşturma ![](iteration-6-use-test-driven-development-cs/_static/image3.jpg)](iteration-6-use-test-driven-development-cs/_static/image5.png)
+[![Veritabanı tablo ilişkisi oluşturma](iteration-6-use-test-driven-development-cs/_static/image3.jpg)](iteration-6-use-test-driven-development-cs/_static/image5.png)
 
-**Şekil 03**: veritabanı tablosu ilişkisi oluşturma ([tam boyutlu görüntüyü görüntülemek için tıklayın](iteration-6-use-test-driven-development-cs/_static/image6.png))
+**Şekil 03**: Veritabanı tablosu ilişkisi oluşturma ([Tam boyutlu görüntüyü görüntülemek için tıklayınız](iteration-6-use-test-driven-development-cs/_static/image6.png))
 
-[tablo ilişkilerini belirtme ![](iteration-6-use-test-driven-development-cs/_static/image4.jpg)](iteration-6-use-test-driven-development-cs/_static/image7.png)
+[![Tablo ilişkilerini belirtme](iteration-6-use-test-driven-development-cs/_static/image4.jpg)](iteration-6-use-test-driven-development-cs/_static/image7.png)
 
-**Şekil 04**: tablo ilişkilerini belirtme ([tam boyutlu görüntüyü görüntülemek için tıklayın](iteration-6-use-test-driven-development-cs/_static/image8.png))
+**Şekil 04**: Tablo ilişkilerini belirtme([Tam boyutlu görüntüyü görüntülemek için tıklayınız](iteration-6-use-test-driven-development-cs/_static/image8.png))
 
-### <a name="updating-our-data-model"></a>Veri modelimizi güncelleştirme
+### <a name="updating-our-data-model"></a>Veri Modelimizi Güncelleme
 
-Ardından, veri modelimizi yeni veritabanı tablosunu gösterecek şekilde güncelleştirmemiz gerekiyor. Aşağıdaki adımları uygulayın:
+Ardından, yeni veritabanı tablosunu temsil etmek için veri modelimizi güncelleştirmemiz gerekir. Şu adımları uygulayın:
 
-1. Entity Desisgner açmak için modeller klasöründeki ContactManagerModel. edmx dosyasına çift tıklayın.
-2. Tasarımcı yüzeyine sağ tıklayıp **modeli Güncelleştir**menü seçeneğini belirleyin.
-3. Güncelleştirme sihirbazında, gruplar tablosunu seçin ve son düğmesine tıklayın (bkz. Şekil 5).
-4. Gruplar varlığına sağ tıklayın ve **Yeniden Adlandır**seçeneğini belirleyin. *Gruplar* varlığının adını *Grup* (tekil) olarak değiştirin.
-5. Iletişim varlığının altında görünen gruplar gezintisi özelliğine sağ tıklayın. *Gruplar* gezintisi özelliğinin adını *Grup* (tekil) olarak değiştirin.
+1. Entity Designer'ı açmak için Modeller klasöründeki ContactManagerModel.edmx dosyasını çift tıklatın.
+2. Designer yüzeyine sağ tıklayın ve Veritabanından Menü seçeneği **Güncelleştirme Modelini**seçin.
+3. Güncelleştirme Sihirbazı'nda Gruplar tablosunu seçin ve Bitiş düğmesini tıklatın (Bkz. Şekil 5).
+4. Gruplar varlığına sağ tıklayın ve menü seçeneğini yeniden **adlandır'ı**seçin. *Gruplar* varlığının adını *Grup* (tekil) olarak değiştirin.
+5. İlgili Kişi varlığının alt kısmında görünen Gruplar gezinti özelliğini sağ tıklatın. *Gruplar* gezinti özelliğinin adını *Grup* (tekil) olarak değiştirin.
 
-[bir Entity Framework modelini veritabanından güncelleştirme ![](iteration-6-use-test-driven-development-cs/_static/image5.jpg)](iteration-6-use-test-driven-development-cs/_static/image9.png)
+[![Varlık Çerçevesi modelini veritabanından güncelleştirme](iteration-6-use-test-driven-development-cs/_static/image5.jpg)](iteration-6-use-test-driven-development-cs/_static/image9.png)
 
-**Şekil 05**: veritabanından bir Entity Framework modeli güncelleştirme ([tam boyutlu görüntüyü görüntülemek için tıklayın](iteration-6-use-test-driven-development-cs/_static/image10.png))
+**Şekil 05**: Varlık Çerçevesi modelini veritabanından güncelleştirme ([Tam boyutlu görüntüyü görüntülemek için tıklayınız](iteration-6-use-test-driven-development-cs/_static/image10.png))
 
-Bu adımları tamamladıktan sonra, veri modeliniz hem kişiler hem de gruplar tablolarını temsil eder. Entity Desisgner her iki varlığı de göstermelidir (bkz. Şekil 6).
+Bu adımları tamamladıktan sonra, veri modeliniz hem Kişiler hem de Gruplar tablolarını temsil edecektir. Varlık Tasarımcısı her iki varlığı da göstermelidir (bkz. Şekil 6).
 
-[Grup ve Iletişim ![Entity Desisgner görüntüleme](iteration-6-use-test-driven-development-cs/_static/image6.jpg)](iteration-6-use-test-driven-development-cs/_static/image11.png)
+[![Grup ve İlgili Kişi Görüntüleme Entity Designer](iteration-6-use-test-driven-development-cs/_static/image6.jpg)](iteration-6-use-test-driven-development-cs/_static/image11.png)
 
-**Şekil 06**: Grup ve ilgili kişi görüntüleme Entity Desisgner ([tam boyutlu görüntüyü görüntülemek için tıklayın](iteration-6-use-test-driven-development-cs/_static/image12.png))
+**Şekil 06**: Grup ve İletişim'i görüntüleyen Varlık Tasarımcısı([Tam boyutlu görüntüyü görüntülemek için tıklayınız)](iteration-6-use-test-driven-development-cs/_static/image12.png)
 
-### <a name="creating-our-repository-classes"></a>Depo Sınıflarımızı oluşturma
+### <a name="creating-our-repository-classes"></a>Depo Sınıflarımızı Oluşturma
 
-Ardından, depo sınıfınızı uygulamamız gerekir. Bu yineleme sırasında, birim testlerimizi karşılamak için kod yazarken ıtactmanagerrepository arabirimine birkaç yeni yöntem ekledik. Itactmanagerrepository arabiriminin son sürümü, 14. listede yer alır.
+Sonra, depo sınıfımızı uygulamamız gerekiyor. Bu yineleme boyunca, birim testlerimizi karşılamak için kod yazarken IContactManagerRepository arabirimine birkaç yeni yöntem ekledik. iContactManagerRepository arabiriminin son sürümü Listeleme 14'te bulunur.
 
-**14-Models\icontactmanagerdepotory.cs listeleme**
+**Listeleme 14 - Modeller\IContactManagerRepository.cs**
 
 [!code-csharp[Main](iteration-6-use-test-driven-development-cs/samples/sample14.cs)]
 
-Kişi gruplarıyla çalışma ile ilgili yöntemlerin gerçekten uygulanmamıştır. Şu anda EntityContactManagerRepository sınıfı, ıtactmanagerrepository arabiriminde listelenen her bir kişi grubu yönteminin saplama yöntemlerine sahiptir. Örneğin, ListGroups () yöntemi şu anda şöyle görünür:
+Aslında temas gruplarıyla çalışma yla ilgili yöntemlerin hiçbirini uygulamadık. Şu anda EntityContactManagerRepository sınıfı, IContactManagerRepository arabiriminde listelenen kişi grubu yöntemlerinin her biri için saplama yöntemlerine sahiptir. Örneğin, ListGroups() yöntemi şu anda şu şekilde görünür:
 
 [!code-csharp[Main](iteration-6-use-test-driven-development-cs/samples/sample15.cs)]
 
-Saplama yöntemleri, uygulamamızı derleyip birim testlerini iletmemize olanak sağlar. Ancak, bu yöntemlerin gerçekten uygulanması zaman alabilir. EntityContactManagerRepository sınıfının son sürümü, 13. listede yer alır.
+Saplama yöntemleri uygulamamızı derlememizi ve birim testlerini geçmemizi sağladı. Ancak, şimdi aslında bu yöntemleri uygulamak için zamanı. EntityContactManagerRepository sınıfının son sürümü Listeleme 13'te yer almaktadır.
 
-**13-Models\entitycontactmanagerdepotory.cs listeleme**
+**Listeleme 13 - Modeller\EntityContactManagerRepository.cs**
 
 [!code-csharp[Main](iteration-6-use-test-driven-development-cs/samples/sample16.cs)]
 
-### <a name="creating-the-views"></a>Görünümleri oluşturma
+### <a name="creating-the-views"></a>Görünümleri Oluşturma
 
-Varsayılan ASP.NET View altyapısını kullandığınızda ASP.NET MVC uygulaması. Bu nedenle, belirli bir birim testine yanıt olarak görünümler oluşturdon. Ancak, bir uygulama görünümler olmadan yararsız olacağından, bu yinelemeyi, Contact Manager uygulamasında yer alan görünümleri oluşturmadan ve değiştirmeden tamamlayabiliriz.
+Varsayılan ASP.NET görünüm altyapısını kullandığınızda MVC uygulamasını ASP.NET. Bu nedenle, belirli bir birim testine yanıt olarak görünüm oluşturmazsınız. Ancak, bir uygulama görünümler olmadan yararsız olacağından, İletişim Yöneticisi uygulamasında bulunan görünümleri oluşturmadan ve değiştirmeden bu yinelemeyi tamamlayamayız.
 
-Kişi gruplarını yönetmek için aşağıdaki yeni görünümleri oluşturmamız gerekir (bkz. Şekil 7):
+Kişi gruplarını yönetmek için aşağıdaki yeni görünümleri oluşturmamız gerekir (Bkz. Şekil 7):
 
-- Views\group\ındex.aspx-kişi gruplarının listesini görüntüler
-- Views\Group\Delete.aspx-bir kişi grubunu silmeye yönelik onay formunu görüntüler
+- Görünümler\Group\Index.aspx - Kişi gruplarının listesini görüntüler
+- Görünümler\Grup\Delete.aspx - Kişi grubunu silmek için onay formunu görüntüler
 
-[Grup dizini görünümünü ![](iteration-6-use-test-driven-development-cs/_static/image7.jpg)](iteration-6-use-test-driven-development-cs/_static/image13.png)
+[![Grup Dizini görünümü](iteration-6-use-test-driven-development-cs/_static/image7.jpg)](iteration-6-use-test-driven-development-cs/_static/image13.png)
 
-**Şekil 07**: Grup dizini görünümü ([tam boyutlu görüntüyü görüntülemek için tıklayın](iteration-6-use-test-driven-development-cs/_static/image14.png))
+**Şekil 07**: Grup Dizini görünümü([Tam boyutlu görüntüyü görüntülemek için tıklayınız](iteration-6-use-test-driven-development-cs/_static/image14.png))
 
-Aşağıdaki mevcut görünümleri, kişi grupları içerecek şekilde değiştirmemiz gerekiyor:
+Aşağıdaki varolan görünümleri, kişi gruplarını içerecek şekilde değiştirmemiz gerekir:
 
-- Views\Home\Create.aspx
-- Views\Home\Edit.aspx
-- Views\Home\Index.aspx
+- Görünümler\Ana Sayfa\Create.aspx
+- Görünümler\Ana Sayfa\Edit.aspx
+- Görünümler\Ana Sayfa\Index.aspx
 
-Bu öğreticiye eşlik eden Visual Studio uygulamasına bakarak değiştirilmiş görünümleri görebilirsiniz. Örneğin, Şekil 8 ' de kişi dizini görünümü gösterilmektedir.
+Bu öğreticiye eşlik eden Visual Studio uygulamasına bakarak değiştirilmiş görünümleri görebilirsiniz. Örneğin, Şekil 8 Kişi Dizini görünümünü göstermektedir.
 
-[Kişi dizini görünümünü ![](iteration-6-use-test-driven-development-cs/_static/image8.jpg)](iteration-6-use-test-driven-development-cs/_static/image15.png)
+[![Kişi Dizini görünümü](iteration-6-use-test-driven-development-cs/_static/image8.jpg)](iteration-6-use-test-driven-development-cs/_static/image15.png)
 
-**Şekil 08**: kişi dizini görünümü ([tam boyutlu görüntüyü görüntülemek için tıklayın](iteration-6-use-test-driven-development-cs/_static/image16.png))
+**Şekil 08**: İletişim Dizini görünümü([Tam boyutlu görüntüyü görüntülemek için tıklayınız](iteration-6-use-test-driven-development-cs/_static/image16.png))
 
 ## <a name="summary"></a>Özet
 
-Bu yinelemede, test odaklı bir geliştirme uygulaması tasarım yöntemi izleyerek, Contact Manager uygulamanıza yeni işlevsellik ekledik. Kullanıcı hikayeleri kümesi oluşturarak başladık. Kullanıcı hikayeleri tarafından ifade edilen gereksinimlere karşılık gelen bir birim testleri kümesi oluşturduk. Son olarak, birim testleriyle ifade edilen gereksinimleri karşılamak için yeterli kod yazdık.
+Bu yinelemede, test odaklı geliştirme uygulama tasarım metodolojisini izleyerek Contact Manager uygulamamıza yeni işlevler ekledik. Bir dizi kullanıcı hikayesi oluşturarak başladık. Kullanıcı hikayeleri tarafından ifade edilen gereksinimlere karşılık gelen bir birim testleri kümesi oluşturduk. Son olarak, birim testleri tarafından ifade edilen gereksinimleri karşılamak için yeterli kod yazdı.
 
-Birim testleriyle ifade edilen gereksinimleri karşılamak için yeterli kod yazmayı bitirdikten sonra veritabanı ve Görünümlerimizi güncelleştirdik. Veritabanınıza yeni bir gruplar tablosu ekledik ve Entity Framework veri modelimizi güncelleştirdik. Ayrıca bir görünüm kümesi oluşturulup değiştirdik.
+Birim testleri tarafından ifade edilen gereksinimleri karşılayacak kadar kod yazmayı bitirdikten sonra, veritabanımızı ve görünümlerimizi güncelledik. Veritabanımıza yeni bir Gruplar tablosu ekledik ve Varlık Çerçeve Veri Modelimizi güncelledik. Ayrıca bir dizi görünüm oluşturduk ve değiştirdik.
 
-Sonraki yinelemede--son yineleme--Ajax 'un avantajlarından yararlanmak için uygulamamızı yeniden yazdık. Ajax 'tan yararlanarak, Contact Manager uygulamasının yanıt hızını ve performansını iyileştireceğiz.
+Bir sonraki yinelemede -- son yinelemede -- Ajax'tan yararlanmak için başvurumuzu yeniden yazıyoruz. Ajax'tan yararlanarak, Contact Manager uygulamasının yanıt verme yeteneğini ve performansını artıracağız.
 
 > [!div class="step-by-step"]
 > [Önceki](iteration-5-create-unit-tests-cs.md)
-> [İleri](iteration-7-add-ajax-functionality-cs.md)
+> [Sonraki](iteration-7-add-ajax-functionality-cs.md)

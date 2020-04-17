@@ -1,146 +1,146 @@
 ---
 uid: mvc/overview/older-versions-1/models-data/validation-with-the-data-annotation-validators-cs
-title: Veri ek açıklama Doğrulayıcıları ile doğrulamaC#() | Microsoft Docs
-author: microsoft
-description: Bir ASP.NET MVC uygulaması içinde doğrulama gerçekleştirmek için veri ek açıklaması modeli ciltlerinden yararlanın. Farklı Doğrulayıcı türlerini nasıl kullanacağınızı öğrenin...
+title: Veri Ek Açıklama Doğrulayıcıları (C#) ile doğrulama | Microsoft Dokümanlar
+author: rick-anderson
+description: ASP.NET bir MVC uygulaması içinde doğrulama gerçekleştirmek için Veri Açıklama Modeli Bağlayıcısı'ndan yararlanın. Farklı doğrulama türlerini nasıl kullanacağınızı öğrenin...
 ms.author: riande
 ms.date: 05/29/2009
 ms.assetid: 7ca8013e-9dfc-4e33-8336-cdccfd5f9414
 msc.legacyurl: /mvc/overview/older-versions-1/models-data/validation-with-the-data-annotation-validators-cs
 msc.type: authoredcontent
-ms.openlocfilehash: e154384c08adf0c14920afff85e983a67b41707c
-ms.sourcegitcommit: e7e91932a6e91a63e2e46417626f39d6b244a3ab
+ms.openlocfilehash: 28ea52b9b412431d59d7afdd1c7cce93a50a7e2a
+ms.sourcegitcommit: 022f79dbc1350e0c6ffaa1e7e7c6e850cdabf9af
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/06/2020
-ms.locfileid: "78542135"
+ms.lasthandoff: 04/17/2020
+ms.locfileid: "81542683"
 ---
 # <a name="validation-with-the-data-annotation-validators-c"></a>Veri Ek Açıklama Doğrulayıcıları ile Doğrulama (C#)
 
 [Microsoft](https://github.com/microsoft) tarafından
 
-> Bir ASP.NET MVC uygulaması içinde doğrulama gerçekleştirmek için veri ek açıklaması modeli ciltlerinden yararlanın. Farklı türde Doğrulayıcı özniteliklerini kullanmayı ve bunlarla Microsoft Entity Framework nasıl çalışacağınızı öğrenin.
+> ASP.NET bir MVC uygulaması içinde doğrulama gerçekleştirmek için Veri Açıklama Modeli Bağlayıcısı'ndan yararlanın. Microsoft Entity Framework'de farklı doğrulama özniteliklerini nasıl kullanacağınızı ve bunlarla nasıl çalışacağınızı öğrenin.
 
-Bu öğreticide, ASP.NET MVC uygulamasında doğrulama gerçekleştirmek için veri ek açıklaması doğrulayıcılarının nasıl kullanılacağını öğrenirsiniz. Veri ek açıklama Doğrulayıcıları kullanmanın avantajı, bir sınıf özelliğine gerekli veya StringLength özniteliği gibi bir veya daha fazla öznitelik ekleyerek yalnızca doğrulama gerçekleştirmenize olanak sağlamaktır.
+Bu eğitimde, bir ASP.NET MVC uygulamasında doğrulama gerçekleştirmek için Veri Ek Açıklama doğrulayıcılarını nasıl kullanacağınızı öğrenirsiniz. Veri Ek Açıklama doğrulayıcılarını kullanmanın avantajı, bir sınıf özelliğine yalnızca bir veya daha fazla öznitelik (Gerekli veya StringLength özniteliği gibi) ekleyerek doğrulama gerçekleştirmenize olanak sağlamasıdır.
 
-Veri ek açıklama Doğrulayıcıları kullanabilmeniz için, veri ek açıklaması modeli cildi indirmeniz gerekir. Veri ek açıklama modeli Ciltçi örneğini [buraya](http://aspnet.codeplex.com/Release/ProjectReleases.aspx?ReleaseId=24471)tıklayarak CodePlex Web sitesinden indirebilirsiniz.
+Veri Ek Açıklama doğrulayıcılarını kullanamadan önce Veri Ek Açıklamaları Model Bağlayıcısını indirmeniz gerekir. [CodePlex](http://aspnet.codeplex.com/Release/ProjectReleases.aspx?ReleaseId=24471)web sitesinden Veri Ek Açıklamaları Model Bağlayıcı Örneğini buraya tıklayarak indirebilirsiniz.
 
-Veri ek açıklama modeli bağlayıcısının Microsoft ASP.NET MVC çerçevesinin resmi bir parçası olmadığı anlaşılması önemlidir. Veri ek açıklamaları model Bağlayıcısı Microsoft ASP.NET MVC ekibi tarafından oluşturulmuş olsa da, Microsoft bu öğreticide açıklanan ve kullanılan veri ek açıklaması modeli Bağlayıcısı için resmi ürün desteği sunmaz.
+Veri Ek Açıklamaları Modeli Bağlayıcısı'nın Microsoft ASP.NET MVC çerçevesinin resmi bir parçası olmadığını anlamak önemlidir. Veri Ek Açıklamaları Model Bağlayıcısı Microsoft ASP.NET MVC ekibi tarafından oluşturulmuş olsa da, Microsoft bu öğreticide açıklanan ve kullanılan Veri Ek Açıklamaları Modeli Bağlayıcısı için resmi ürün desteği sunmaz.
 
-## <a name="using-the-data-annotation-model-binder"></a>Veri ek açıklama modeli cildi kullanma
+## <a name="using-the-data-annotation-model-binder"></a>Veri Açıklama Modeli Bağlayıcısını Kullanma
 
-Veri ek açıklama modelini bir ASP.NET MVC uygulamasında kullanmak için, önce Microsoft. Web. Mvc. Dataaçıklamalarda. dll derlemesine ve System. ComponentModel. Dataaçıklamalarda. dll derlemesine bir başvuru eklemeniz gerekir. Menü seçeneği **projesi, başvuru Ekle ' yi**seçin. Ardından, **Gözden** geçirme sekmesine tıklayın ve veri ek açıklaması modeli Ciltçi örneğini indirdiğiniz (ve sıkıştırmışın) konumuna gidin (bkz. **Şekil 1**).
+Veri Ek Açıklamaları Model Bağlayıcısı'nı ASP.NET bir MVC uygulamasında kullanmak için öncelikle Microsoft.Web.Mvc.DataAnnotations.dll derlemesine ve System.ComponentModel.DataAnnotations.dll derlemesine bir başvuru eklemeniz gerekir. Menü seçeneğini seçin **Proje, Referans Ekle**. Sonraki **gözat** sekmesini tıklatın ve Veri Ek Açıklamaları Model Bağlayıcı örnek indirilen (ve günülünü) indirdiğiniz konuma göz atın **(Bkz. Şekil 1).**
 
 [![](validation-with-the-data-annotation-validators-cs/_static/image2.png)](validation-with-the-data-annotation-validators-cs/_static/image1.png)
 
-**Şekil 1**: veri ek açıklama modeli cilde başvuru ekleme ([tam boyutlu görüntüyü görüntülemek için tıklayın](validation-with-the-data-annotation-validators-cs/_static/image3.png))
+**Şekil 1**: Veri Ek Açıklamaları Model Bağlayıcısına başvuru ekleme ([Tam boyutlu görüntüyü görüntülemek için tıklayınız](validation-with-the-data-annotation-validators-cs/_static/image3.png))
 
-Hem Microsoft. Web. Mvc. Dataek açıklama. dll derlemesini hem de System. ComponentModel. Dataaçıklamalarda. dll derlemesini seçin ve **Tamam** düğmesine tıklayın.
+Hem Microsoft.Web.Mvc.DataAnnotations.dll derlemesini hem de System.ComponentModel.DataAnnotations.dll derlemesini seçin ve **Tamam** düğmesini tıklatın.
 
-.NET Framework Service Pack 1 ' de bulunan System. ComponentModel. Dataaçıklamalarda. dll derlemesini, veri ek açıklama modeli Bağlayıcısı ile kullanamazsınız. Veri ek açıklaması modeli Ciltçi örnek indirmesi ile birlikte bulunan System. ComponentModel. Dataaçıklamalarda. dll derlemesinin sürümünü kullanmanız gerekir.
+System.ComponentModel.DataAnnotations.dll derlemesi .NET Framework Service Pack 1 ile Birlikte Veri Ek Açıklamaları Model Bağlayıcısı ile kullanamazsınız. Data Ek Açıklamaları Model Bağlayıcı Örnek indir ile birlikte System.ComponentModel.DataAnnotations.dll derleme sürümünü kullanmanız gerekir.
 
-Son olarak, Dataek açıklama modeli cildi Global. asax dosyasına kaydetmeniz gerekir. Uygulama\_Start () yönteminin şöyle görünmesi için, uygulama\_Start () olay işleyicisine aşağıdaki kod satırını ekleyin:
+Son olarak, Global.asax dosyasına DataAnnotations Model Bağlayıcısı'nı kaydetmeniz gerekir. Uygulama\_Başlat() yönteminin\_aşağıdaki gibi görünmesi için Uygulama Başlat() olay işleyicisine aşağıdaki kod satırını ekleyin:
 
 [!code-csharp[Main](validation-with-the-data-annotation-validators-cs/samples/sample1.cs)]
 
-Bu kod satırı, Ataannotationsmodelciltçi 'yi tüm ASP.NET MVC uygulaması için varsayılan model Ciltçi olarak kaydeder.
+Bu kod satırı, tüm ASP.NET MVC uygulaması için varsayılan model bağlayıcısı olarak ataAnnotationsModelBinder kaydeder.
 
-## <a name="using-the-data-annotation-validator-attributes"></a>Veri ek açıklaması Doğrulayıcı özniteliklerini kullanma
+## <a name="using-the-data-annotation-validator-attributes"></a>Veri Ek Açıklama Doğrulaması Doğrulaması Özniteliklerini Kullanma
 
-Veri ek açıklama modeli cildi kullandığınızda doğrulama gerçekleştirmek için doğrulayıcı özniteliklerini kullanırsınız. System. ComponentModel. Dataaçıklamalarda ad alanı aşağıdaki Doğrulayıcı özniteliklerini içerir:
+Veri Ek Açıklamaları Model Bağlayıcısı'nı kullandığınızda, doğrulama gerçekleştirmek için doğrulayıcı öznitelikleri ni kullanırsınız. System.ComponentModel.DataAnnotations ad alanı aşağıdaki doğrulayıcı öznitelikleri içerir:
 
-- Aralık: bir özelliğin değerinin belirtilen bir değer aralığı arasında olup olmadığını doğrulamanızı sağlar.
-- Cevap içerisinde RegularExpression – bir özelliğin değerinin belirtilen bir normal ifade düzeniyle eşleşip eşleşmediğini doğrulamanızı sağlar.
-- Gerekli – bir özelliği gereken şekilde işaretlemenizi sağlar.
-- StringLength: dize özelliği için uzunluk üst sınırı belirtmenize olanak sağlar.
-- Doğrulama: tüm Doğrulayıcı öznitelikleri için temel sınıf.
+- Aralık – Bir özelliğin değerinin belirli bir değer aralığı arasında düşüp düşmediğini doğrulamanızı sağlar.
+- RegularExpression – Bir özelliğin değerinin belirli bir normal ifade deseniyle eşleşip eşleşmediğini doğrulamanızı sağlar.
+- Gerekli – Bir özelliği gerektiği gibi işaretlemenizi sağlar.
+- StringLength – Bir dize özelliği için maksimum uzunluk belirtmenizi sağlar.
+- Doğrulama – Tüm doğrulayıcı öznitelikleri için taban sınıf.
 
 > [!NOTE] 
 > 
-> Doğrulama gereksinimleriniz standart doğrulayıcılar tarafından karşılanmıyorsa, her zaman temel doğrulama özniteliğinden yeni bir doğrulayıcı özniteliği devralarak özel bir doğrulayıcı özniteliği oluşturma seçeneğiniz vardır.
+> Doğrulama gereksinimleriniz standart doğrulayıcılardan herhangi biri tarafından karşılanmadıysa, temel Doğrulama özniteliğinden yeni bir doğrulayıcı özniteliği devralarak her zaman özel bir doğrulayıcı özniteliği oluşturma seçeneğiniz vardır.
 
-**Liste 1** ' deki ürün sınıfı, Bu Doğrulayıcı özniteliklerinin nasıl kullanılacağını gösterir. Ad, açıklama ve BirimFiyat özellikleri gerekli olarak işaretlenir. Name özelliği 10 karakterden daha az bir dize uzunluğuna sahip olmalıdır. Son olarak, BirimFiyat özelliği bir para birimi miktarını temsil eden bir normal ifade düzeniyle eşleşmelidir.
+**Listeleme 1'deki** Ürün sınıfı, bu geçerliniteliklerin nasıl kullanılacağını gösterir. Ad, Açıklama ve UnitPrice özellikleri gerektiği gibi işaretlenir. Ad özelliği, 10 karakterden az bir dize uzunluğuna sahip olmalıdır. Son olarak, UnitPrice özelliği, para birimi tutarını temsil eden normal bir ifade deseniyle eşleşmelidir.
 
 [!code-csharp[Main](validation-with-the-data-annotation-validators-cs/samples/sample2.cs)]
 
-**Listeleme 1**: Models\product.cs
+**İlan 1**: Modeller\Product.cs
 
-Ürün sınıfı, bir ek özniteliğin nasıl kullanılacağını gösterir: DisplayName özniteliği. DisplayName özniteliği, özellik bir hata iletisinde görüntülenirken özelliğin adını değiştirmenize olanak sağlar. "BirimFiyat alanı gereklidir" hata iletisini görüntülemek yerine "fiyat alanı gereklidir" hata iletisini görüntüleyebilirsiniz.
+Ürün sınıfı, ek bir öznitelik olan DisplayName özniteliğinin nasıl kullanılacağını gösterir. DisplayName özniteliği, özellik bir hata iletisinde görüntülendiğinde özelliğin adını değiştirmenize olanak tanır. "UnitPrice alanı gereklidir" hata iletisini görüntülemek yerine hata iletisini görüntüleyebilirsiniz "Fiyat alanı gereklidir".
 
 > [!NOTE] 
 > 
-> Doğrulayıcı tarafından görünen hata mesajını tamamen özelleştirmek istiyorsanız, doğrulayıcının ErrorMessage özelliğine şu şekilde özel bir hata iletisi atayabilirsiniz: `<Required(ErrorMessage:="This field needs a value!")>`
+> Bir doğrulayıcı tarafından görüntülenen hata iletisini tamamen özelleştirmek istiyorsanız, geçerlinin ErrorMessage özelliğine şu şekilde özel bir hata iletisi atayabilirsiniz:`<Required(ErrorMessage:="This field needs a value!")>`
 
-Liste **2**' deki oluştur () denetleyici eylemi Ile, **liste 1** ' de ürün sınıfını kullanabilirsiniz. Bu denetleyici eylemi, model durumu herhangi bir hata içerdiğinde oluştur görünümünü yeniden görüntüler.
+**Listeleme 1'de** Ürün sınıfını, **Listeleme 2'deki**Create() denetleyici eylemiyle kullanabilirsiniz. Bu denetleyici eylem, model durumu herhangi bir hata içerdiğinde Oluştur görünümünü yeniden görüntüler.
 
 [!code-csharp[Main](validation-with-the-data-annotation-validators-cs/samples/sample3.cs)]
 
-**Listeleme 2**: Controllers\productcontroller.exe
+**Listeleme 2**: Denetleyiciler\ProductController.vb
 
-Son olarak, Create () eylemine sağ tıklayıp **Görünüm Ekle**menü seçeneğini belirleyerek **liste 3** ' te görünümü oluşturabilirsiniz. Model sınıfı olarak ürün sınıfıyla kesin türü belirtilmiş bir görünüm oluşturun. İçeriği görüntüle açılan listesinden **Oluştur** ' u seçin (bkz. **Şekil 2**).
+Son olarak, Create() eylemine sağ tıklayarak ve menü seçeneğini seçerek **Görünüm Ekle**seçeneğini seçerek **Listeleme 3'te** görünüm oluşturabilirsiniz. Model sınıfı olarak Ürün sınıfıyla güçlü bir şekilde yazılan bir görünüm oluşturun. Görünüm içeriği açılır listesinden **Oluştur'u** seçin **(Bkz. Şekil 2).**
 
 [![](validation-with-the-data-annotation-validators-cs/_static/image5.png)](validation-with-the-data-annotation-validators-cs/_static/image4.png)
 
-**Şekil 2**: oluşturma görünümü ekleme
+**Şekil 2**: Create View ekleme
 
 [!code-aspx[Main](validation-with-the-data-annotation-validators-cs/samples/sample4.aspx)]
 
-**Listeleme 3**: Views\product\create.aspx
+**Listeleme 3**: Görünümler\Ürün\Create.aspx
 
 > [!NOTE] 
 > 
-> **Görünüm Ekle** menü seçeneği tarafından oluşturulan oluştur formundaki ID alanını kaldırın. Kimlik alanı bir kimlik sütununa karşılık geldiğinden, kullanıcıların bu alan için bir değer girmelerini sağlamak istemezsiniz.
+> **Görünüm Ekle** seçeneği tarafından oluşturulan Oluştur formundan Id alanını kaldırın. Kimlik alanı bir Kimlik sütununa karşılık geldiği için, kullanıcıların bu alan için bir değer girmesine izin vermek istemezsiniz.
 
-Bir ürün oluşturmak için formu gönderirseniz ve gerekli alanlar için değer girmezseniz, **Şekil 3** ' teki doğrulama hatası iletileri görüntülenir.
+Bir Ürün oluşturma formunu gönderirseniz ve gerekli alanlar için değerler girmezseniz, Şekil **3'teki** doğrulama hatası iletileri görüntülenir.
 
 [![](validation-with-the-data-annotation-validators-cs/_static/image7.png)](validation-with-the-data-annotation-validators-cs/_static/image6.png)
 
-**Şekil 3**: gerekli alanlar eksik
+**Şekil 3**: Eksik gerekli alanlar
 
-Geçersiz bir para birimi miktarı girerseniz, **Şekil 4** ' te hata iletisi görüntülenir.
+Geçersiz bir para birimi tutarı girerseniz, **Şekil 4'teki** hata iletisi görüntülenir.
 
 [![](validation-with-the-data-annotation-validators-cs/_static/image9.png)](validation-with-the-data-annotation-validators-cs/_static/image8.png)
 
-**Şekil 4**: geçersiz para birimi tutarı
+**Şekil 4**: Geçersiz para birimi tutarı
 
-## <a name="using-data-annotation-validators-with-the-entity-framework"></a>Entity Framework veri ek açıklama Doğrulayıcıları kullanma
+## <a name="using-data-annotation-validators-with-the-entity-framework"></a>Varlık Çerçevesi ile Veri EkAçıklama Doğrulayıcıları Kullanma
 
-Veri modeli sınıflarınızı oluşturmak için Microsoft Entity Framework kullanıyorsanız, bu durumda Doğrulayıcı özniteliklerini doğrudan sınıflarınıza uygulayamazsınız. Entity Framework Designer model sınıfları oluşturduğundan, Tasarımcıda herhangi bir değişiklik yaptığınız sırada model sınıflarında yaptığınız tüm değişiklikler üzerine yazılır.
+Veri modeli sınıflarınızı oluşturmak için Microsoft Entity Framework'ü kullanıyorsanız, geçerlilik özniteliklerini doğrudan sınıflarınıza uygulayamazsınız. Varlık Çerçeve Tasarımcısı model sınıflarını oluşturduğundan, model sınıflarında yaptığınız değişiklikler, Tasarımcı'da bir sonraki değişiklik yaptığınızda üzerine yazılır.
 
-Doğrulayıcıları Entity Framework tarafından oluşturulan sınıflarla kullanmak istiyorsanız, meta veri sınıfları oluşturmanız gerekir. Doğrulayıcıları, gerçek sınıfa Doğrulayıcıları uygulamak yerine meta veri sınıfına uygularsınız.
+Varlık Çerçevesi tarafından oluşturulan sınıfları ile doğrulayıcıları kullanmak istiyorsanız, meta veri sınıfları oluşturmanız gerekir. Doğrulayıcıları gerçek sınıfa uygulamak yerine meta veri sınıfına uygularsınız.
 
-Örneğin, Entity Framework kullanarak bir film sınıfı oluşturduğunuzu düşünün (bkz. **Şekil 5**). Ayrıca, film başlığı ve yönetmen özelliklerinin gerekli özellikleri olmasını istediğinizi düşünün. Bu durumda, **Listeleme 4**' te kısmi sınıf ve meta veri sınıfını oluşturabilirsiniz.
+Örneğin, Varlık Çerçevesi'ni kullanarak bir Film sınıfı oluşturduğunuzu düşünün **(Bkz. Şekil 5).** Ayrıca, Film Başlığı ve Yönetmen özellikleri gerekli özellikleri yapmak istediğinizi düşünün. Bu durumda, **Listeleme 4'te**kısmi sınıf ve meta veri sınıfı oluşturabilirsiniz.
 
 [![](validation-with-the-data-annotation-validators-cs/_static/image11.png)](validation-with-the-data-annotation-validators-cs/_static/image10.png)
 
-**Şekil 5**: Entity Framework tarafından üretilen film sınıfı
+**Şekil 5**: Entity Framework tarafından oluşturulan film sınıfı
 
 [!code-csharp[Main](validation-with-the-data-annotation-validators-cs/samples/sample5.cs)]
 
-**Listeleme 4**: Models\movie.cs
+**İlan 4**: Modeller\Movie.cs
 
-**Listeleme 4** ' teki dosya, film ve MovieMetaData adlı iki sınıf içerir. Film sınıfı, kısmi bir sınıftır. DataModel. Designer. vb dosyasında bulunan Entity Framework tarafından oluşturulan kısmi sınıfa karşılık gelir.
+**Listeleme 4'teki** dosya, Film ve MovieMetaData adlı iki sınıf içerir. Film sınıfı kısmi bir sınıftır. DataModel.Designer.vb dosyasında yer alan Entity Framework tarafından oluşturulan kısmi sınıfa karşılık gelir.
 
-Şu anda, .NET Framework kısmi özellikleri desteklemiyor. Bu nedenle, doğrulama özniteliklerini, **Liste 4**' teki dosyada tanımlanan film sınıfının özelliklerine uygulayarak, doğrulama özniteliklerini DataModel. Designer. vb dosyasında tanımlanan film sınıfının özelliklerine uygulamanın bir yolu yoktur.
+Şu anda,.NET çerçevesi kısmi özellikleri desteklemez. Bu nedenle, **Listeleme 4'teki**dosyada tanımlanan Film sınıfının özelliklerine doğrulayıcı öznitelikleri ni uygulayarak DataModel.Designer.vb dosyasında tanımlanan Film sınıfının özelliklerine doğrulayıcı özniteliklerini uygulamanın bir yolu yoktur.
 
-Film kısmi sınıfının MovieMetaData sınıfına işaret eden bir MetadataType özniteliğiyle donatılmış olduğuna dikkat edin. MovieMetaData sınıfı, film sınıfının özellikleri için proxy özellikleri içerir.
+Film kısmi sınıfının MovieMetaData sınıfına işaret eden bir MetadataType özniteliği ile dekore edildiğine dikkat edin. MovieMetaData sınıfı, Film sınıfının özellikleri için proxy özellikleri içerir.
 
-Doğrulayıcı öznitelikleri, MovieMetaData sınıfının özelliklerine uygulanır. Başlık, yönetmen ve dadlı özellikler gerekli özellikler olarak işaretlenir. Director özelliğine 5 ' ten az karakter içeren bir dize atanmalıdır. Son olarak, DisplayName özniteliği, "Yayımlanma tarihi alanı gereklidir" gibi bir hata mesajı göstermek için, Dadterekiralık özelliğine uygulanır. "Dadterekiralık alanı gereklidir" hatası yerine
+Doğrulayıcı öznitelikleri MovieMetaData sınıfının özelliklerine uygulanır. Başlık, Müdür ve DateReleased özelliklerinin tümü gerekli özellikler olarak işaretlenir. Yönetmen özelliğine 5 karakterden az karakter içeren bir dize atanmalıdır. Son olarak, DisplayName özniteliği DateReleased özelliğine "Çıkış Tarihi alanı gereklidir" gibi bir hata iletisi görüntülemek için uygulanır. hata yerine "DateReleased alanı gereklidir."
 
 > [!NOTE] 
 > 
-> MovieMetaData sınıfındaki proxy özelliklerinin, film sınıfında karşılık gelen özelliklerle aynı türleri temsil etmesi gerekmediğini unutmayın. Örneğin, Director özelliği, film sınıfındaki bir String özelliğidir ve MovieMetaData sınıfında bir nesne özelliğidir.
+> MovieMetaData sınıfındaki proxy özelliklerinin Film sınıfındaki ilgili özelliklerle aynı türleri temsil etmesi gerekmediğini unutmayın. Örneğin, Yönetmen özelliği Film sınıfında bir dize özelliği ve MovieMetaData sınıfında bir nesne özelliğidir.
 
-**Şekil 6** ' daki sayfa, film özellikleri için geçersiz değerler girdiğinizde döndürülen hata iletilerini gösterir.
+**Şekil 6'daki** sayfa, Film özellikleri için geçersiz değerler girdiğinizde döndürülen hata iletilerini gösterir.
 
 [![](validation-with-the-data-annotation-validators-cs/_static/image13.png)](validation-with-the-data-annotation-validators-cs/_static/image12.png)
 
-**Şekil 6**: Entity Framework ile Doğrulayıcıları kullanma ([tam boyutlu görüntüyü görüntülemek için tıklayın](validation-with-the-data-annotation-validators-cs/_static/image14.png))
+**Şekil 6**: Varlık Çerçevesi ile doğrulayıcılar kullanma ([Tam boyutlu görüntüyü görüntülemek için tıklayınız](validation-with-the-data-annotation-validators-cs/_static/image14.png))
 
 ## <a name="summary"></a>Özet
 
-Bu öğreticide, bir ASP.NET MVC uygulaması içinde doğrulama gerçekleştirmek için veri ek açıklaması modeli ciltinin avantajlarından nasıl yararlanabilmeniz öğrendiniz. Gerekli ve StringLength öznitelikleri gibi farklı türde Doğrulayıcı özniteliklerinin nasıl kullanılacağını öğrendiniz. Ayrıca, Microsoft Entity Framework çalışırken bu özniteliklerin nasıl kullanılacağını öğrenirsiniz.
+Bu eğitimde, ASP.NET bir MVC uygulaması içinde doğrulama gerçekleştirmek için Veri Ek Açıklama Modeli Bağlayıcısı'ndan nasıl yararlanabileceğinizi öğrendiniz. Gerekli ve StringLength öznitelikleri gibi farklı doğrulama özniteliklerini kullanmayı öğrendiniz. Microsoft Entity Framework ile çalışırken bu öznitelikleri nasıl kullanacağınızı da öğrendiniz.
 
 > [!div class="step-by-step"]
 > [Önceki](validating-with-a-service-layer-cs.md)
-> [İleri](creating-model-classes-with-the-entity-framework-vb.md)
+> [Sonraki](creating-model-classes-with-the-entity-framework-vb.md)

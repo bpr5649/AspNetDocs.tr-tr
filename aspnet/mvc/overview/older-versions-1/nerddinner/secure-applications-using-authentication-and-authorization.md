@@ -1,156 +1,156 @@
 ---
 uid: mvc/overview/older-versions-1/nerddinner/secure-applications-using-authentication-and-authorization
-title: Kimlik doğrulama ve yetkilendirme kullanarak uygulamaları güvenli hale getirme | Microsoft Docs
-author: microsoft
-description: 9\. adımda, Nerdakşam yemeği uygulamamız için kimlik doğrulaması ve yetkilendirme ekleme ve kullanıcıların oluşturmak için siteye kaydolması ve sitede oturum açması gerekir...
+title: Kimlik Doğrulama ve Yetkilendirme Kullanarak Güvenli Uygulamalar | Microsoft Dokümanlar
+author: rick-anderson
+description: Adım 9, NerdDinner uygulamamızı güvenli hale getirmek için kimlik doğrulama ve yetkilendirmenin nasıl ekleyeceğinigösterir, böylece kullanıcıların siteye kaydolması ve siteye giriş yapabilmesi gerekir...
 ms.author: riande
 ms.date: 07/27/2010
 ms.assetid: 9e4d5cac-b071-440c-b044-20b6d0c964fb
 msc.legacyurl: /mvc/overview/older-versions-1/nerddinner/secure-applications-using-authentication-and-authorization
 msc.type: authoredcontent
-ms.openlocfilehash: 8d509c5f15bb4d5014e53b8dc2a736454238e72c
-ms.sourcegitcommit: e7e91932a6e91a63e2e46417626f39d6b244a3ab
+ms.openlocfilehash: d96f2763f6e62f9dd599fdb7977a97993d218305
+ms.sourcegitcommit: 022f79dbc1350e0c6ffaa1e7e7c6e850cdabf9af
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/06/2020
-ms.locfileid: "78600984"
+ms.lasthandoff: 04/17/2020
+ms.locfileid: "81542579"
 ---
 # <a name="secure-applications-using-authentication-and-authorization"></a>Kimlik Doğrulama ve Yetkilendirme Kullanarak Uygulamaların Güvenliğini Sağlama
 
 [Microsoft](https://github.com/microsoft) tarafından
 
-[PDF 'YI indir](http://aspnetmvcbook.s3.amazonaws.com/aspnetmvc-nerdinner_v1.pdf)
+[PDF’yi İndir](http://aspnetmvcbook.s3.amazonaws.com/aspnetmvc-nerdinner_v1.pdf)
 
-> Bu, ASP.NET MVC 1 kullanarak küçük, ancak tam bir Web uygulamasının nasıl oluşturulacağını gösteren ücretsiz bir ["Nerdakşam yemeği" uygulama öğreticisinin](introducing-the-nerddinner-tutorial.md) adım 9 ' u.
+> Bu adım 9 ücretsiz bir ["NerdDinner" uygulama öğretici](introducing-the-nerddinner-tutorial.md) nasıl küçük, ama tam, web uygulaması ASP.NET MVC 1 kullanarak oluşturmak için yürüyüşler olduğunu.
 > 
-> 9\. adımda, Nerdakşam yemeği uygulamamıza güvenli hale getirmek üzere kimlik doğrulaması ve yetkilendirme ekleme işlemi, kullanıcıların yeni yemek 'ler oluşturmak için siteye kaydolmaları ve oturum açması ve yalnızca bir akşam yemeği 'yi barındıran Kullanıcı tarafından düzenlenebilir olması gerektiğini gösterir.
+> Adım 9, kullanıcıların yeni akşam yemekleri oluşturmak için siteye kaydolması ve siteye giriş yapması gerektiği ve yalnızca akşam yemeği ne zaman ev sahipliği yapan kullanıcının daha sonra düzenleyebileceği için, NerdDinner uygulamamızın güvenliğini sağlamak için kimlik doğrulama ve yetkilendirmenin nasıl ekleyeceğini gösterir.
 > 
-> ASP.NET MVC 3 kullanıyorsanız, [MVC 3 Ile çalışmaya başlama](../../older-versions/getting-started-with-aspnet-mvc3/cs/intro-to-aspnet-mvc-3.md) veya [MVC müzik mağazası](../../older-versions/mvc-music-store/mvc-music-store-part-1.md) öğreticilerini izlemeniz önerilir.
+> MVC 3 ASP.NET kullanıyorsanız, [MVC 3](../../older-versions/getting-started-with-aspnet-mvc3/cs/intro-to-aspnet-mvc-3.md) veya [MVC Music Store](../../older-versions/mvc-music-store/mvc-music-store-part-1.md) eğitimlerini takip edersiniz.
 
-## <a name="nerddinner-step-9-authentication-and-authorization"></a>Nerdakşam yemeği adım 9: kimlik doğrulama ve yetkilendirme
+## <a name="nerddinner-step-9-authentication-and-authorization"></a>NerdDinner Adım 9: Kimlik doğrulama ve yetkilendirme
 
-Şu anda Nerdakşam yemeği uygulamamız, siteyi ziyaret eden kişilerin herhangi bir akşam yemeği için ayrıntıları oluşturma ve düzenleme olanağı veriyor. Bunu, kullanıcıların yeni dinlayıcıları oluşturmak ve siteye oturum açması ve yalnızca bir akşam yemeği 'yi barındıran kullanıcının düzenleyebilmesini sağlayacak bir kısıtlama eklemesi için bunu değiştirelim.
+Şu anda NerdDinner uygulamamız siteyi ziyaret eden herkese herhangi bir akşam yemeğinin ayrıntılarını oluşturma ve düzeltme olanağı veriyor. Bunu, kullanıcıların yeni akşam yemekleri oluşturmak için siteye kaydolması ve siteye giriş yapması gerekeceği şekilde değiştirelim ve yalnızca akşam yemeğine ev sahipliği yapan kullanıcının daha sonra düzenleyebileceği bir kısıtlama ekleyelim.
 
-Bunu etkinleştirmek için, uygulamamızı güvenli hale getirmek üzere kimlik doğrulaması ve yetkilendirme kullanacağız.
+Bunu etkinleştirmek için uygulamamızı güvence altına almak için kimlik doğrulama ve yetkilendirme kullanırız.
 
-### <a name="understanding-authentication-and-authorization"></a>Kimlik doğrulama ve yetkilendirmeyi anlama
+### <a name="understanding-authentication-and-authorization"></a>Kimlik Doğrulama ve Yetkilendirmeyi Anlama
 
-*Kimlik doğrulaması* , bir uygulamaya erişen istemcinin kimliğini belirleme ve doğrulama işlemidir. Daha fazlasını yapın, son kullanıcının bir Web sitesini ziyaret ettiğinde ne zaman olduğunu belirlemek. ASP.NET, tarayıcı kullanıcılarının kimlik doğrulamasının birden çok yolunu destekler. Internet Web uygulamaları için kullanılan en yaygın kimlik doğrulama yaklaşımına "form kimlik doğrulaması" adı verilir. Forms kimlik doğrulaması, bir geliştiricinin uygulama içinde HTML oturum açma formu yazarışını sağlar ve ardından bir veritabanı veya diğer parola kimlik bilgileri deposuna göre Son Kullanıcı gönderisin Kullanıcı adını/parolasını doğrular. Kullanıcı adı/parola birleşimi doğru ise, geliştirici daha sonra, ASP.NET sonraki isteklerde kullanıcıyı tanımlamak için şifrelenmiş bir HTTP tanımlama bilgisi vermesini isteyebilir. Form kimlik doğrulamasını Nerdakşam yemeği uygulamamız ile kullanacağız.
+*Kimlik doğrulaması,* bir uygulamaya erişen istemcinin kimliğini tanımlama ve doğrulama işlemidir. Daha basit bir ifadeyle, bir web sitesini ziyaret ettiklerinde son kullanıcının "kim" olduğunu belirlemekle ilgilidir. ASP.NET tarayıcı kullanıcılarının kimliğini doğrulamak için birden çok yolu destekler. Internet web uygulamaları için kullanılan en yaygın kimlik doğrulama yaklaşımı "Form kimlik doğrulaması" olarak adlandırılır. Form kimlik doğrulama, bir geliştiricinin uygulamaları içinde bir HTML giriş formu yazmasını ve ardından bir son kullanıcının veritabanıveya başka bir parola kimlik bilgisi deposuna karşı gönderdiği kullanıcı adını/parolasını doğrulamasını sağlar. Kullanıcı adı/parola birleşimi doğruysa, geliştirici ASP.NET gelecekteki istekler arasında kullanıcıyı tanımlamak için şifreli bir HTTP çerezi vermelerini isteyebilir. NerdDinner uygulamamızla form doğrulamasını kullanarak form doğrulamasını kullanacağız.
 
-*Yetkilendirme* , kimliği doğrulanmış bir kullanıcının belırlı bir URL/kaynağa erişme izni olup olmadığını belirleme veya bazı eylemler gerçekleştirme işlemidir. Örneğin, Nerdakşam yemeği uygulamamız içinde yalnızca oturum açan kullanıcıların */Dinners/Create* URL 'sine erişip yeni dinetleri oluşturabileceksiniz. Ayrıca, yalnızca bir akşam yemeği barındıran kullanıcının düzenleyebilmesini ve diğer tüm kullanıcılara düzenleme erişimini reddetmesi için yetkilendirme mantığı eklemek isteyeceksiniz.
+*Yetkilendirme,* kimlik doğrulaması yapılan bir kullanıcının belirli bir URL'ye/kaynağa erişme veya bazı eylemler gerçekleştirme iznine sahip olup olmadığını belirleme işlemidir. Örneğin, NerdDinner uygulamamızda yalnızca oturum açan kullanıcıların */Dinners/Create* URL'sine erişebileceğine ve yeni Akşam Yemekleri oluşturabilmesini yetkilendirmek isteriz. Ayrıca, yalnızca akşam yemeğine ev sahipliği yapan kullanıcının bunu düzenleyebilmeleri ve diğer tüm kullanıcılara erişimi reddedebilmeleri için yetkilendirme mantığı eklemek isteriz.
 
-### <a name="forms-authentication-and-the-accountcontroller"></a>Forms kimlik doğrulaması ve AccountController
+### <a name="forms-authentication-and-the-accountcontroller"></a>Formlar Kimlik Doğrulaması ve Hesap Kontrolörü
 
-Yeni ASP.NET MVC uygulamaları oluşturulduğunda ASP.NET MVC için varsayılan Visual Studio proje şablonu otomatik olarak form kimlik doğrulaması etkinleştirilir. Ayrıca, projeye önceden oluşturulmuş bir hesap oturum açma sayfası uygulamasını otomatik olarak ekler. Bu, bir site içinde güvenliği tümleştirmeyi gerçekten kolaylaştırır.
+ASP.NET MVC için varsayılan Visual Studio proje şablonu, yeni ASP.NET MVC uygulamaları oluşturulduğunda formların otomatik olarak kimlik doğrulamasını sağlar. Ayrıca projeye önceden oluşturulmuş bir hesap giriş sayfası uygulaması da ekler ve bu da bir site içinde güvenliği entegre etmeyi gerçekten kolaylaştırır.
 
-Varsayılan site. Master ana sayfası, erişimi doğrulanmadığı zaman sitenin sağ üst kısmında "oturum aç" bağlantısını görüntüler:
+Varsayılan Site.master ana sayfası, siteye erişen kullanıcı kimlik doğrulaması olmadığında sitenin sağ üst kısmında bir "Oturum Aç" bağlantısı görüntüler:
 
 ![](secure-applications-using-authentication-and-authorization/_static/image1.png)
 
-"Oturum aç" bağlantısına tıklanması bir kullanıcıyı */Account/Logon* URL 'sine götürür:
+"Oturum Aç" bağlantısını tıklattığınızda bir kullanıcı */Account/LogOn* URL'sine geçer:
 
 ![](secure-applications-using-authentication-and-authorization/_static/image2.png)
 
-Kaydolmayan ziyaretçiler bunu, */Account/Register* URL 'sine alacak ve hesap ayrıntılarını girmesine izin veren "Register" bağlantısına tıklayarak yapabilir:
+Kayıt yaptırmayan ziyaretçiler bunu */Account/Register* URL'sine götürecek ve hesap bilgilerini girmelerine olanak tanıyan "Kaydol" bağlantısını tıklayarak yapabilir:
 
 ![](secure-applications-using-authentication-and-authorization/_static/image3.png)
 
-"Kaydet" düğmesine tıklamak, ASP.NET üyelik sisteminde yeni bir kullanıcı oluşturur ve Forms kimlik doğrulamasını kullanarak kullanıcının site üzerinde kimliğini doğrular.
+"Kaydol" düğmesini tıklattığınızda, ASP.NET Üyelik sistemi içinde yeni bir kullanıcı oluşturulur ve form kimlik doğrulamasını kullanarak kullanıcının siteye doğruluğunu doğrular.
 
-Bir Kullanıcı oturum açtığında, site. Master sayfanın sağ üst köşesindeki "hoş geldiniz [Kullanıcı adı]!" çıktısını almak için sayfayı değiştirir ileti ve bir "oturum aç" bağlantısı yerine "oturum kapatma" bağlantısını işler. "Oturumu Kapat" bağlantısına tıklanması Kullanıcı oturumunu günlüğe kaydeder:
+Bir kullanıcı oturum açıldığında, Site.master sayfanın sağ üst hakkını değiştirarak "Hoş geldiniz [kullanıcı adı]" çıktısı elde eder. iletir ve "Oturum Açma" bağlantısı yerine "Oturum Kapat" bağlantısı açar. "Oturumu Kapat" bağlantısını tıklattığınızda kullanıcı çıkış larını kaydeder:
 
 ![](secure-applications-using-authentication-and-authorization/_static/image4.png)
 
-Yukarıdaki oturum açma, oturum kapatma ve kayıt işlevselliği, projeyi oluştururken Visual Studio tarafından projemizi eklenen AccountController sınıfı içinde uygulanır. AccountController için Kullanıcı arabirimi, \Views\Account dizinindeki Görünüm şablonları kullanılarak uygulanır:
+Yukarıdaki giriş, oturum açma ve kayıt işlevselliği, projeyi oluşturduğunda Visual Studio tarafından projemize eklenen AccountController sınıfı içinde uygulanmaktadır. Hesap Kontrolörü'nün Kullanıcı Arabirimi\Görünümler\Hesap dizini içindeki görünüm şablonları kullanılarak uygulanır:
 
 ![](secure-applications-using-authentication-and-authorization/_static/image5.png)
 
-AccountController sınıfı, şifreli kimlik doğrulama tanımlama bilgileri vermek için ASP.NET Forms kimlik doğrulama sistemini ve Kullanıcı adlarını/parolaları depolamak ve doğrulamak için ASP.NET üyelik API 'sini kullanır. ASP.NET üyelik API 'SI genişletilebilir ve parola kimlik bilgisi deposunun kullanılmasını sağlar. ASP.NET, bir SQL veritabanı içinde veya Active Directory içinde Kullanıcı adı/parolaları depolayan yerleşik üyelik sağlayıcısı uygulamalarıyla birlikte gelir.
+AccountController sınıfı, şifreli kimlik doğrulama tanımlama bilgilerini vermek için ASP.NET Forms Kimlik Doğrulama sistemini ve kullanıcı adlarını/parolaları depolamak ve doğrulamak için üyelik API'ASP.NET kullanır. üyelik API'ASP.NET genişletilebilir ve herhangi bir parola kimlik bilgisi deposunun kullanılmasını sağlar. kullanıcı adını/parolaları bir SQL veritabanında veya Active Directory içinde depolayan yerleşik üyelik sağlayıcısı uygulamalarına sahip ASP.NET.
 
-Nerdakşam yemeği uygulamamız, projenin kökündeki "Web. config" dosyasını açıp bunun içindeki &lt;üyelik&gt; bölümüne bakarak hangi üyelik sağlayıcısını kullanması gerektiğini yapılandırabiliriz. Proje oluşturulduğunda varsayılan Web. config eklenir ve SQL üyelik sağlayıcısını kaydeder ve veritabanı konumunu belirtmek için bunu "ApplicationServices" adlı bir bağlantı dizesi kullanacak şekilde yapılandırır.
+NerdDinner uygulamamızın hangi üyelik sağlayıcısını kullanması gerektiğini projenin kökündeki "web.config" dosyasını açarak ve içinde &lt;üyelik&gt; bölümünü arayarak yapılandırabiliriz. Varsayılan web.config, proje oluşturulduğunda SQL üyelik sağlayıcısını kaydeder ve veritabanı konumunu belirtmek için "ApplicationServices" adlı bir bağlantı dizesi kullanacak şekilde yapılandırır.
 
-Varsayılan "ApplicationServices" bağlantı dizesi (Web. config dosyasının &lt;connectionStrings&gt; bölümü içinde belirtilen) SQL Express kullanmak üzere yapılandırılmıştır. "ASPNETDB" adlı bir SQL Express veritabanına işaret eder. MDF "uygulamanın" uygulama\_verileri "dizini. Bu veritabanı, üyelik API 'SI uygulama içinde ilk kez kullanıldığında, ASP.NET otomatik olarak veritabanını oluşturur ve içinde uygun üyelik veritabanı şemasını sağlayacaktır:
+Varsayılan "ApplicationServices" bağlantı dizesi (web.config dosyasının &lt;bağlantıStrings&gt; bölümünde belirtilir) SQL Express kullanmak üzere yapılandırılmıştır. "ASPNETDB" adlı bir SQL Express veritabanına işaret ediyor. MDF" uygulamasının "Uygulama\_Verileri" dizini altında. Bu veritabanı uygulama içinde üyelik API'si ilk kez kullanıldığında yoksa, ASP.NET otomatik olarak veritabanını oluşturacak ve içindeki uygun üyelik veritabanı şemasını sağlayacaktır:
 
 ![](secure-applications-using-authentication-and-authorization/_static/image6.png)
 
-SQL Express kullanmak yerine tam bir SQL Server örneği kullanmak (veya uzak bir veritabanına bağlanmak) istiyoruz, tüm yapmanız gereken, Web. config dosyasındaki "ApplicationServices" bağlantı dizesini güncelleştirmek ve uygun üyelik şemasının olduğundan emin olmak için , işaret ettiği veritabanına eklenmiştir. Üyelik ve diğer ASP.NET uygulama hizmetleri için uygun şemayı bir veritabanına eklemek için \Windows\Microsoft.NET\Framework\v2.0.50727\ dizinindeki "ASPNET\_regsql. exe" yardımcı programını çalıştırabilirsiniz.
+SQL Express kullanmak yerine tam bir SQL Server örneğini (veya uzak bir veritabanına bağlanmak) kullanmak istiyorsak, tek yapmamız gereken web.config dosyasındaki "ApplicationServices" bağlantı dizesini güncelleştirmek ve işaret ettiği veritabanına uygun üyelik şemasının eklenmiş olduğundan emin olmaktır. \Windows\Microsoft.NET\Framework\v2.0.50727\ dizinindeki "aspnet\_regsql.exe" yardımcı programını çalıştırıp üyelik için uygun şemayı ve diğer ASP.NET uygulama hizmetlerini veritabanına ekleyebilirsiniz.
 
-### <a name="authorizing-the-dinnerscreate-url-using-the-authorize-filter"></a>[Yetkilendir] filtresi kullanılarak/Dinners/Create URL 'sini yetkilendirme
+### <a name="authorizing-the-dinnerscreate-url-using-the-authorize-filter"></a>[Authorize] filtresini kullanarak /Dinners/Create URL'sini yetkilendirme
 
-Nerdakşam yemeği uygulaması için güvenli kimlik doğrulama ve hesap yönetimi uygulamasını etkinleştirmek üzere kod yazmak zorunda yoktu. Kullanıcılar, uygulamamız ile yeni hesaplar kaydedebilir ve sitenin oturumunu açma/kapatma olabilir.
+NerdDinner uygulaması için güvenli bir kimlik doğrulaması ve hesap yönetimi uygulaması sağlamak için herhangi bir kod yazmamız gerekmedi. Kullanıcılar uygulamamıza yeni hesaplar kaydedebilir ve siteye giriş/çıkış yapabilir.
 
-Artık uygulamaya yetkilendirme mantığı ekleyebiliriz ve sitede ne yapabileceklerini ve yapabileceklerini denetlemek için ziyaretçilerin kimlik doğrulama durumunu ve Kullanıcı adını kullanabilirsiniz. DinnersController sınıfımız "oluşturma" eylem yöntemlerine yetkilendirme mantığı ekleyerek başlayalım. Özellikle, */Dinners/Create* URL 'sine erişen kullanıcıların oturum açması gerekir. Oturum açmadıysa, oturum açabilmek için bunları oturum açma sayfasına yönlendirirsiniz.
+Artık uygulamaya yetkilendirme mantığı ekleyebilir ve site içinde yapabileceklerini ve yapamayacaklarını kontrol etmek için ziyaretçilerin kimlik doğrulama durumunu ve kullanıcı adını kullanabiliriz. DinnersController sınıfımızın "Oluştur" eylem yöntemlerine yetkilendirme mantığı ekleyerek başlayalım. Özellikle, */Dinners/Create* URL'ye erişen kullanıcıların oturum açmalarını şart sayılacağız. Oturum açmazlarsa, oturum açabilmeleri için onları giriş sayfasına yönlendiririz.
 
-Bu mantığı uygulamak oldukça kolaydır. Her şey için bir [Yetkilendir] filtre özniteliği eklememiz gerekir, örneğin:
+Bu mantığı uygulamak oldukça kolaydır. Yapmamız gereken tek şey, gibi eylem oluştur yöntemlerimize bir [Authorize] filtresi özniteliği eklemektir:
 
 [!code-csharp[Main](secure-applications-using-authentication-and-authorization/samples/sample1.cs)]
 
-ASP.NET MVC, eylem yöntemlerine bildirimli olarak uygulanabilen, yeniden kullanılabilir mantığı uygulamak için kullanılabilen "eylem filtreleri" oluşturma özelliğini destekler. [Yetkilendir] filtresi, ASP.NET MVC tarafından sunulan yerleşik eylem filtrelerinden biridir ve bir geliştiricinin eylem yöntemlerine ve denetleyici sınıflarına bildirimli olarak yetkilendirme kuralları uygulamasını sağlar.
+ASP.NET MVC, eylem yöntemlerine bildirimsel olarak uygulanabilen yeniden kullanılabilir mantığı uygulamak için kullanılabilecek "eylem filtreleri" oluşturma yeteneğini destekler. [Authorize] filtresi, ASP.NET MVC tarafından sağlanan yerleşik eylem filtrelerinden biridir ve bir geliştiricinin eylem yöntemleri ve denetleyici sınıflarına yetkilendirme kurallarını bildirimsel olarak uygulamasına olanak tanır.
 
-Herhangi bir parametre olmadan uygulandığında (yukarıdaki gibi), [Yetkilendir] filtresi, eylem yöntemi isteğini yapan kullanıcının oturum açmış olması gerekir; Aksi takdirde tarayıcı, oturum açma URL 'sine otomatik olarak yönlendirilir. Bu yeniden yönlendirmeyi yaparken, ilk istenen URL bir QueryString bağımsız değişkeni olarak geçirilir (örneğin:/Account/LogOn? ReturnUrl =% 2Fınfıanlar% 2fCreate). AccountController daha sonra yeniden oturum açtıklarında kullanıcıyı istenen URL 'ye yeniden yönlendirir.
+Herhangi bir parametre olmadan (yukarıdaki gibi) uygulandığında [Authorize] filtresi, eylem yöntemi isteğinde bulunan kullanıcının oturum açması gerektiğini ve yoksa tarayıcıyı otomatik olarak giriş URL'sine yönlendirir. Bunu yaparken ilk istenen URL sorgubağımsız değişkeni olarak geçirilir (örneğin: /Account/LogOn? ReturnUrl=%2fDinners%2fCreate). AccountController daha sonra kullanıcıyı giriş yaptıktan sonra ilk istenen URL'ye yönlendirir.
 
-[Yetkilendir] filtresi, isteğe bağlı olarak, kullanıcının hem oturum açmasını hem de izin verilen bir güvenlik rolünün bir listesini içinde olmasını gerektirmek için kullanılabilecek bir "kullanıcılar" veya "Roller" özelliği belirtme özelliğini destekler. Örneğin, aşağıdaki kod,/Dinners/Create URL 'sine erişmek için yalnızca "ScottGu" ve "billg" olmak üzere iki özel kullanıcıya izin verir:
+[Yetkilendirme] filtresi isteğe bağlı olarak, kullanıcının hem oturum açmış olmasını gerektirecek bir "Kullanıcılar" veya "Roller" özelliğini belirtebilme yeteneğini destekler, hem izin verilen kullanıcılar listesinde hem de izin verilen bir güvenlik rolünün üyesi. Örneğin, aşağıdaki kod yalnızca iki belirli kullanıcıya , "scottgu" ve "billg", /Dinners/Create URL'sine erişmesine izin verir:
 
 [!code-csharp[Main](secure-applications-using-authentication-and-authorization/samples/sample2.cs)]
 
-Kod içinde belirli kullanıcı adlarının gömülmesi, oldukça mümkün değildir. Daha iyi bir yaklaşım, kodun tarafından kontrol edilen daha üst düzey "rolleri" tanımlamak ve ardından bir veritabanı ya da Active Directory sistemi kullanarak (gerçek Kullanıcı eşleme listesini koddan dışarıdan depolanmasını etkinleştirmek) Kullanıcı rolüne eşlemek için daha iyi bir yaklaşımdır. ASP.NET, yerleşik bir rol yönetim API 'SI ve bu kullanıcı/rol eşlemesini gerçekleştirmeye yardımcı olabilecek yerleşik bir rol sağlayıcıları kümesi (SQL ve Active Directory gibi) içerir. Daha sonra kodu yalnızca belirli bir "Yönetici" rolünde bulunan kullanıcıların/Dinners/Create URL 'sine erişmesine izin verecek şekilde güncelleştirebiliriz:
+Kod içinde belirli kullanıcı adlarını gömme oldukça un-maintainable olsa olma eğilimindedir. Daha iyi bir yaklaşım, kodun denetlenen üst düzey "rolleri" tanımlamak ve ardından kullanıcıları bir veritabanı veya etkin dizin sistemi kullanarak role eşlemektir (gerçek kullanıcı eşleme listesinin koddan harici olarak depolanmasına olanak sağlamak). ASP.NET, bu kullanıcı/rol eşleciliğini gerçekleştirmeye yardımcı olabilecek yerleşik bir rol yönetimi API'sının yanı sıra yerleşik bir rol sağlayıcıları (SQL ve Active Directory dahil) içerir. Daha sonra kodu yalnızca belirli bir "yönetici" rolündeki kullanıcıların /Dinners/Create URL'sine erişmesine izin verecek şekilde güncelleyebiliriz:
 
 [!code-csharp[Main](secure-applications-using-authentication-and-authorization/samples/sample3.cs)]
 
-### <a name="using-the-useridentityname-property-when-creating-dinners"></a>Dinlayıcıları oluştururken User.Identity.Name özelliğini kullanma
+### <a name="using-the-useridentityname-property-when-creating-dinners"></a>Akşam Yemeği Oluştururken User.Identity.Name özelliğini kullanma
 
-Bir isteğin oturum açmış olan kullanıcısının Kullanıcı adını, denetleyici temel sınıfında kullanıma sunulan User.Identity.Name özelliğini kullanarak alabiliriz.
+Denetleyici taban sınıfında açığa çıkan User.Identity.Name özelliğini kullanarak, şu anda oturum açmış olan bir isteğin kullanıcı adını alabiliriz.
 
-Daha önce, Create () eylem yönteminizin HTTP-POST sürümünü uyguladığımızda, akşam yemeği 'nin "HostedBy" özelliğini statik bir dizeye kodlıyoruz. Artık bu kodu, User.Identity.Name özelliğini kullanacak şekilde güncelleştirebilir, ayrıca akşam yemeği 'yi oluşturan ana bilgisayar için otomatik olarak bir RSVP ekleyebilirsiniz:
+Daha önce Create() eylem yöntemimizin HTTP-POST sürümünü uyguladığımızda Akşam Yemeği'nin "HostedBy" özelliğini statik bir dize yle kodlamıştık. Artık bu kodu, User.Identity.Name özelliğini kullanacak şekilde güncelleyebilir ve akşam yemeğini oluşturan ana bilgisayar için otomatik olarak bir RSVP ekleyebiliriz:
 
 [!code-csharp[Main](secure-applications-using-authentication-and-authorization/samples/sample4.cs)]
 
-Create () yöntemine bir [Yetkilendir] özniteliği eklediğimiz için, ASP.NET MVC eylem yönteminin yalnızca/Dinners/Create URL 'sini ziyaret eden kullanıcı sitede oturum açtıysa yürütülür olmasını sağlar. Bu nedenle, User.Identity.Name Özellik değeri her zaman geçerli bir Kullanıcı adı içerecektir.
+Create(] yöntemine bir [Yetkilendirme] özniteliği eklediğimiz için, ASP.NET MVC, eylem yönteminin yalnızca /Dinners/Create URL'yi ziyaret eden kullanıcı sitede oturum açtırDığı zaman yürütülmesini sağlar. Bu nedenle, User.Identity.Name özellik değeri her zaman geçerli bir kullanıcı adı içerir.
 
-### <a name="using-the-useridentityname-property-when-editing-dinners"></a>User.Identity.Name özelliğini, Dinlayıcıları düzenlenirken kullanma
+### <a name="using-the-useridentityname-property-when-editing-dinners"></a>Akşam Yemeklerini Düzenlerken User.Identity.Name özelliğini kullanma
 
-Şimdi, kullanıcıları sınırlayan bazı yetkilendirme mantığını ekleyelim, böylece kullanıcılar kendilerini barındırdığı dinyilerin özelliklerini düzenleyebilirler.
+Şimdi, yalnızca kendilerinin barındırdığı akşam yemeklerinin özelliklerini düzenleyebilmeleri için kullanıcıları kısıtlayan bazı yetkilendirme mantığı ekleyelim.
 
-Bu konuda yardım almak için önce akşam yemeği nesnemiz için bir "ıhostedby (Kullanıcı adı)" yardımcı yöntemi ekleyeceğiz (daha önce oluşturduğumuz Dinner.cs kısmi sınıfı içinde). Bu yardımcı yöntem, girilen bir kullanıcı adının akşam yemeği HostedBy özelliği ile eşleşip eşleşmediğini ve bir büyük küçük harfe duyarsız dize karşılaştırması gerçekleştirmek için gereken mantığı Kapsüller doğru veya yanlış döndürür:
+Bu şekilde yardımcı olmak için, ilk olarak Akşam Yemeği nesnemize (daha önce oluşturduğumuz Dinner.cs kısmi sınıf içinde) bir "IsHostedBy(kullanıcı adı)" yardımcı yöntemi ekleyeceğiz. Bu yardımcı yöntemi, sağlanan bir kullanıcı adının Barındırılan Akşam Yemeği özelliğiyle eşleşip eşleşmediğine bağlı olarak doğru veya yanlış döndürür ve bunların karşılanmasına karşı duyarsız bir dize karşılaştırması gerçekleştirmek için gereken mantığı kapsüller:
 
 [!code-csharp[Main](secure-applications-using-authentication-and-authorization/samples/sample5.cs)]
 
-Daha sonra DinnersController sınıfımızın içindeki Edit () eylem yöntemlerine bir [Yetkilendir] özniteliği ekleyeceğiz. Bu, */Dinners/Edit/[ID]* URL 'si istemek için kullanıcıların oturum açmasını sağlar.
+Daha sonra DinnersController sınıfımızdaki Edit() eylem yöntemlerine bir [Authorize] özniteliği ekleyeceğiz. Bu, kullanıcıların */Dinners/Edit/[id] URL'si* istemek için oturum açmalarını sağlar.
 
-Daha sonra, oturum açmış kullanıcının akşam yemeği ana bilgisayarıyla eşleştiğini doğrulamak üzere akşam yemeği. ıshostedby (Kullanıcı adı) yardımcı yöntemini kullanan düzenleme yöntemlerimize kod ekleyebiliriz. Kullanıcı ana bilgisayar değilse, "ınvalidowner" görünümü görüntülenir ve isteği sonlandırır. Bunu yapmak için kod aşağıdaki gibi görünür:
+Daha sonra, oturum açan kullanıcının Akşam Yemeği ana bilgisayarla eşleştiğini doğrulamak için Dinner.IsHostedBy(kullanıcı adı) yardımcı yöntemini kullanan Düzenleme yöntemlerimize kod ekleyebiliriz. Kullanıcı ana bilgisayar değilse, bir "Geçersiz Sahibi" görünümünü görüntüler ve isteği sonlandırırız. Bunu yapmak için kod aşağıdaki gibi görünür:
 
 [!code-csharp[Main](secure-applications-using-authentication-and-authorization/samples/sample6.cs)]
 
-Daha sonra \Views\dıntik dizinine sağ tıklayıp yeni bir "InvalidOwner" görünümü oluşturmak için Ekle-&gt;görünümü menü komutunu seçebilirsiniz. Aşağıdaki hata iletisiyle dolduracağız:
+Daha sonra \Views\Dinners dizinine sağ tıklayıp yeni&gt;bir "Geçersiz Sahip" görünümü oluşturmak için Ekle-Görüntüle menüsü komutunu seçebiliriz. Biz aşağıdaki hata mesajı ile doldurmak olacak:
 
 [!code-aspx[Main](secure-applications-using-authentication-and-authorization/samples/sample7.aspx)]
 
-Artık bir kullanıcı sahip olmadıkları bir akşam yemeği düzenlemeyi denediğinde bir hata mesajı alırlar:
+Ve şimdi bir kullanıcı sahip olmadığı bir akşam yemeğini yapmaya çalıştığında, bir hata iletisi alır:
 
 ![](secure-applications-using-authentication-and-authorization/_static/image7.png)
 
-Denetleyicimiz içindeki Delete () eylem yöntemleri için aynı adımları yineleyebiliriz ve ayrıca bir akşam yemeği 'nın yalnızca bir akşam yemeği 'nin silmesine izin vermek için.
+Denetleyicimizdeki Delete() eylem yöntemleriiçin akşam yemeklerini silme iznini de kilitlemek ve yalnızca akşam yemeğinin ana bilgisayarının silebilmesini sağlamak için aynı adımları yineleyebiliriz.
 
-### <a name="showinghiding-edit-and-delete-links"></a>Düzenle ve Sil bağlantılarını gösterme/gizleme
+### <a name="showinghiding-edit-and-delete-links"></a>Düzenle ve Sil Bağlantıları Gösterme/Gizleme
 
-Ayrıntılar URL 'imizde DinnersController sınıfımızın düzenleme ve silme eylemine bağlantı veriyoruz:
+DinnersController sınıfımızın Düzenle ve Sil eylem yöntemine Ayrıntılar URL'mizden bağlanıyoruz:
 
 ![](secure-applications-using-authentication-and-authorization/_static/image8.png)
 
-Şu anda, Ayrıntılar URL 'SI için ziyaretçinin akşam yemeği 'nin ana bilgisayarı olup olmamasına bakılmaksızın düzenleme ve silme eylemi bağlantılarını gösteriyoruz. Şimdi bağlantıları, ziyaret eden Kullanıcı akşam yemeği 'nin sahibi ise görüntülenmesini sağlayacak şekilde değiştirelim.
+Şu anda, ayrıntılar URL'nin ziyaretçisinin akşam yemeğinin ev sahibi olup olmadığına bakılmaksızın Düzenle ve Sil eylem bağlantılarını gösteriyoruz. Bunu, bağlantıların yalnızca akşam yemeğinin sahibi ziyaretçi kullanıcıysa görüntülenecek şekilde değiştirelim.
 
-DinnersController içindeki details () eylem yöntemi bir akşam yemeği nesnesi alır ve ardından bunu model nesnesi olarak görünüm şablonumuza geçirir:
+DinnersController'ımızdaki Ayrıntılar() eylem yöntemi bir Akşam Yemeği nesnesini alır ve ardından görünüm şablonumuza model nesnesi olarak geçirir:
 
 [!code-csharp[Main](secure-applications-using-authentication-and-authorization/samples/sample8.cs)]
 
-Aşağıdaki gibi akşam yemeği. ıshostedby () yardımcı yöntemini kullanarak Düzenle ve Sil bağlantılarını koşullu olarak göstermek/gizlemek için görünüm şablonumuzu güncelleştirebiliriz:
+Aşağıdaki gibi Dinner.IsHostedBy() yardımcı yöntemini kullanarak düzenleme ve silme bağlantılarını koşullu olarak göstermek/gizlemek için görünüm şablonumuzu güncelleyebiliriz:
 
 [!code-aspx[Main](secure-applications-using-authentication-and-authorization/samples/sample9.aspx)]
 
 #### <a name="next-steps"></a>Sonraki Adımlar
 
-Artık, kimlik doğrulamalı kullanıcıları AJAX kullanarak dinetleri için RSVP 'e nasıl etkinleştirelim bölümüne bakalım.
+Şimdi, ajax kullanarak akşam yemekleri için rsvp kimlik doğrulaması kullanıcıların etkinleştirebilirsiniz nasıl bakalım.
 
 > [!div class="step-by-step"]
 > [Önceki](implement-efficient-data-paging.md)
-> [İleri](use-ajax-to-deliver-dynamic-updates.md)
+> [Sonraki](use-ajax-to-deliver-dynamic-updates.md)

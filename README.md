@@ -1,10 +1,5 @@
-# <a name="aspnet-docs"></a>ASP.NET docs
+# <a name="aspnet-docs"></a>ASP.NET Dokümanları
 
-Bu depo, [docs.Microsoft.com/ASPNET](https://docs.microsoft.com/aspnet)adresinde barındırılan kavramsal ASP.NET 4. x belgelerini içerir. Yardım almak istiyorsanız [katkıda bulunan kılavuza](CONTRIBUTING.md) ve [sorunlar listesine](https://github.com/dotnet/AspNetDocs/issues) bakın.
+Bu depo, [docs.microsoft.com/aspnet](https://docs.microsoft.com/aspnet)barındırılan 4.x dokümantasyonun kavramsal ASP.NET içerir. Yardım etmek istiyorsanız [Katkıda Bulunan Rehber'e](CONTRIBUTING.md) ve [sorunlar listesine](https://github.com/dotnet/AspNetDocs/issues) bakın.
 
-API belge değişiklikleri, [Apıdoc deposunda](https://github.com/aspnet/ApiDocs) üç eğik çizgi `///` açıklamalara karşı yapılmalıdır.
-
-## <a name="microsoft-open-source-code-of-conduct"></a>Microsoft Açık Kaynak Kullanım Kuralları
-
-Bu proje [Microsoft Open Source Code of Conduct](https://opensource.microsoft.com/codeofconduct/) (Microsoft Açık Kaynak Kullanım Kuralları) belgesinde listelenen kurallara uygundur.
-Daha fazla bilgi için [Code of Conduct FAQ](https://opensource.microsoft.com/codeofconduct/faq/) (Kullanım Kuralları Hakkında SSS) konusuna bakın veya sorularınızı ya da görüşlerinizi bildirmek için [opencode@microsoft.com](mailto:opencode@microsoft.com) adresinden bize ulaşın.
+API dokümantasyon değişiklikleri, üçlü eğik çizgi `///` yorumlarına karşı [ApiDocs deposunda](https://github.com/aspnet/ApiDocs) yapılmalıdır.

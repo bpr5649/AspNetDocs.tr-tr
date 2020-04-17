@@ -1,82 +1,82 @@
 ---
 uid: mvc/overview/older-versions-1/overview/asp-net-mvc-overview
-title: ASP.NET MVC genel bakış | Microsoft Docs
-author: microsoft
-description: ASP.NET MVC uygulaması ve ASP.NET Web Forms uygulamaları arasındaki farklılıklar hakkında bilgi edinin. ASP.NET MVC uygulaması oluşturmaya ne zaman karar vereceğiniz hakkında bilgi edinin.
+title: ASP.NET MVC Genel Bakış | Microsoft Dokümanlar
+author: rick-anderson
+description: ASP.NET MVC uygulaması ile ASP.NET Web Formları uygulamaları arasındaki farklar hakkında bilgi edinin. ASP.NET MVC uygulamasını ne zaman oluşturacağına nasıl karar verebilirsiniz öğrenin.
 ms.author: riande
 ms.date: 01/27/2009
 ms.assetid: 2dcb44a4-5cbf-4d62-b363-718104082d86
 msc.legacyurl: /mvc/overview/older-versions-1/overview/asp-net-mvc-overview
 msc.type: authoredcontent
-ms.openlocfilehash: 73965c71f37de13e3813df089a253fde528ea7ee
-ms.sourcegitcommit: e7e91932a6e91a63e2e46417626f39d6b244a3ab
+ms.openlocfilehash: 84810f168faa2e79a65ff3fb75e3654828bdb58f
+ms.sourcegitcommit: 022f79dbc1350e0c6ffaa1e7e7c6e850cdabf9af
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/06/2020
-ms.locfileid: "78541561"
+ms.lasthandoff: 04/17/2020
+ms.locfileid: "81541019"
 ---
 # <a name="aspnet-mvc-overview"></a>ASP.NET MVC’ye Genel Bakış
 
 [Microsoft](https://github.com/microsoft) tarafından
 
-> ASP.NET MVC uygulaması ve ASP.NET Web Forms uygulamaları arasındaki farklılıklar hakkında bilgi edinin. ASP.NET MVC uygulaması oluşturmaya ne zaman karar vereceğiniz hakkında bilgi edinin.
+> ASP.NET MVC uygulaması ile ASP.NET Web Formları uygulamaları arasındaki farklar hakkında bilgi edinin. ASP.NET MVC uygulamasını ne zaman oluşturacağına nasıl karar verebilirsiniz öğrenin.
 
-Model-View-Controller (MVC) mimari modeli, bir uygulamayı üç ana bileşene ayırır: model, görünüm ve denetleyici. ASP.NET MVC Framework, MVC tabanlı Web uygulamaları oluşturmak için ASP.NET Web Forms düzenine bir alternatif sağlar. ASP.NET MVC çerçevesi; ana sayfalar ve üyelik tabanlı kimlik doğrulaması gibi mevcut ASP.NET özellikleriyle (Web Forms tabanlı uygulamalarda olduğu gibi) birleştirilebilen basit, yüksek düzeyde sınanabilir bir sunu çerçevesidir. MVC çerçevesi, **System. Web. Mvc** ad alanında tanımlanmıştır ve **System. Web** ad alanının temel ve desteklenen bir parçasıdır.   
+Model Görünümü Denetleyicisi (MVC) mimari deseni bir uygulamayı üç ana bileşene ayırır: model, görünüm ve denetleyici. ASP.NET MVC çerçevesi, MVC tabanlı Web uygulamaları oluşturmak için ASP.NET Web Forms desenine bir alternatif sağlar. ASP.NET MVC çerçevesi, (Web Formları tabanlı uygulamalarda olduğu gibi) ana sayfalar ve üyelik tabanlı kimlik doğrulama gibi mevcut ASP.NET özellikleriyle entegre edilmiş hafif ve son derece test edilebilir bir sunu çerçevesidir. MVC çerçevesi **System.Web.Mvc** ad alanında tanımlanır ve **System.Web** ad alanının temel, desteklenen bir parçasıdır.   
   
-MVC, çoğu geliştiricinin tanıdığı standart bir tasarım örüntüsüdür. Web uygulamalarının bazı türleri MVC çerçevesinden faydalanır. Diğer türler, Web Forms ve geri göndermelere dayanan geleneksel ASP.NET uygulama örüntüsünü kullanmaya devam eder. Web uygulamalarının diğer türleri iki yaklaşımı birleştirir; her iki yaklaşım da diğerini dışlamaz.   
+MVC, birçok geliştiricinin aşina olduğu standart bir tasarım desenidir. Bazı Web uygulamaları MVC çerçevesinden yararlanacaktır. Diğerleri Web Formları ve postbacks dayalı geleneksel ASP.NET uygulama deseni kullanmaya devam edecektir. Diğer Web uygulama türleri iki yaklaşımı birleştirir; ne yaklaşım diğer hariç.   
   
-MVC çerçevesinde aşağıdaki iki bileşen yer almaktadır:
+MVC çerçevesi aşağıdaki bileşenleri içerir:
 
-[bir parametre değeri bekleyen bir denetleyici eylemini çağırma ![](asp-net-mvc-overview/_static/image1.jpg)](asp-net-mvc-overview/_static/image1.png)
+[![Parametre değeri bekleyen bir denetleyici eylemi çağırmak](asp-net-mvc-overview/_static/image1.jpg)](asp-net-mvc-overview/_static/image1.png)
 
-**Şekil 01**: parametre değeri bekleyen bir denetleyici eylemi çağırma ([tam boyutlu görüntüyü görüntülemek için tıklayın](asp-net-mvc-overview/_static/image2.png))
+**Şekil 01**: Parametre değeri bekleyen bir denetleyici eylemi çağırmak ([Tam boyutlu görüntüyü görüntülemek için tıklayın](asp-net-mvc-overview/_static/image2.png))
 
-- **Modeller**. Model nesneleri uygulamanın, uygulama verileri etki alanı için mantığı uygulayan parçalarından oluşur. Model nesneleri sıklıkla model durumunu bir veritabanına alır ve burada depolar. Örneğin, bir ürün nesnesi bir veritabanından bilgi alabilir, üzerinde işlem yapar ve ardından SQL Server bir Ürünler tablosuna güncelleştirilmiş bilgileri geri yazabilir.
+- **Modeller**. Model nesneleri, uygulamanın veri etki alanı için mantığı uygulayan bölümleridir. Genellikle, model nesneleri bir veritabanında model durumunu alır ve depolar. Örneğin, bir Ürün nesnesi bir veritabanından bilgi alabilir, üzerinde çalışabilir ve güncelleştirilmiş bilgileri SQL Server'daki Ürünler tablosuna geri yazabilir.
 
-Küçük uygulamalarda, model, genellikle fiziksel ayrım yerine kavramsal bir ayrımdır. Örneğin, uygulama yalnızca bir veri kümesini okur ve görünüme gönderirse, uygulamanın bir fiziksel model katmanı ve ilişkili sınıfları yoktur. Bu durumda, veri kümesi bir model nesnesinin rolünü alır.
+Küçük uygulamalarda, model genellikle fiziksel bir yerine kavramsal bir ayrımdır. Örneğin, uygulama yalnızca bir veri kümesini okur ve görünüme gönderirse, uygulamanın fiziksel bir model katmanı ve ilişkili sınıfları yoktur. Bu durumda, veri kümesi bir model nesnesinin rolünü alır.
 
-- **Görünümler**. Görünümler, uygulama kullanıcı arabirimini (UI) görüntüleyen bileşenlerdir. Bu UI, genellikle model verilerinden oluşturulur. Bir ürün tablosunun, bir ürünler nesnesinin geçerli durumuna bağlı olarak metin kutularını, açılan listeleri ve onay kutularını gösteren bir düzenleme görünümü bir örnektir.
+- **Görünümler**. Görünümler, uygulamanın kullanıcı arabirimini (UI) görüntüleyen bileşenlerdir. Genellikle, bu ui model verilerinden oluşturulur. Bir örnek, Ürünler nesnesinin geçerli durumuna göre metin kutularını, açılır listeleri ve onay kutularını görüntüleyen Ürünler tablosunun bir edit görünümü olacaktır.
 
-- **Denetleyici**. Denetleyiciler; kullanıcı etkileşimini işleyen, modelle çalışan ve son olarak UI'ı görüntüleyecek görünümü seçerek işleyen bileşenlerdir. Bir MVC uygulamasında, görünüm yalnızca bilgileri görüntüler; denetleyici ise kullanıcı girişini ve etkileşimini işler ve bunlara yanıt verir. Örneğin, Denetleyici sorgu dize değerlerini işler ve bu değerleri modele geçirir, bu da değerleri kullanarak veritabanını sorgular.
+- **Denetleyiciler**. Denetleyiciler, kullanıcı etkileşimini işleyen, modelle çalışan ve sonuçta Kullanıcı Aracı'nı görüntüleyen bir görünüm seçen bileşenlerdir. Bir MVC uygulamasında, görünüm yalnızca bilgileri görüntüler; denetleyici, kullanıcı girişini ve etkileşimini işler ve yanıtlar. Örneğin, denetleyici sorgu dize değerlerini işler ve bu değerleri modele geçirir ve bu değerleri kullanarak veritabanını sorgular.
 
-MVC örüntüsü, öğeler arasında (giriş mantığı, iş mantığı ve UI mantığı) sıkı bir ilişki sağlarken, uygulamanın bu farklı yönlerini birbirlerinden ayıran uygulamalar oluşturmanıza yardımcı olur. Örüntü, her bir mantık türünün uygulamanın hangi konumunda yer alması gerektiğini belirtir. UI mantığı görünümde yer alır. Giriş mantığı denetleyicide yer alır. İş mantığı modelde yer alır. Bu ayrım, bir uygulama oluşturduğunuzda bir seferde uygulamanın tek bir yönüne odaklanmanızı sağladığı için karışıklığı yönetmenize yardımcı olur. Örneğin, iş mantığına bağlı kalmaksızın görünüme odaklanabilirsiniz.   
+MVC deseni, bu öğeler arasında gevşek bir bağlantı sağlarken uygulamanın farklı yönlerini (giriş mantığı, iş mantığı ve Kullanıcı Arabirimi mantığı) ayıran uygulamalar oluşturmanıza yardımcı olur. Desen, uygulamada her tür mantığın nerede bulunması gerektiğini belirtir. UI mantığı görünüme aittir. Giriş mantığı denetleyiciye aittir. İş mantığı modele aittir. Bu ayrım, bir uygulama oluştururken karmaşıklığı yönetmenize yardımcı olur, çünkü aynı anda uygulamanın bir boyutuna odaklanmanızı sağlar. Örneğin, iş mantığına bağlı olmadan görünüme odaklanabilirsiniz.   
   
-Karışıklığın yönetilmesine ek olarak, MVC örüntüsü, MVC kullanılarak geliştirilen uygulamaların sınanmasını, Web Form tabanlı ASP.NET Web uygulamalarının sınanmasından daha kolay bir hale getirmektedir. Örneğin, Web Forms tabanlı ASP.NET Web uygulamasında, hem çıkışı görüntülemek hem de kullanıcı girişine yanıt vermek için tek bir sınıf kullanılır. Web Forms tabanlı ASP.NET uygulamaları için otomatikleştirilmiş test yazılması, belirli bir sayfayı test etmek üzere sayfa sınıfı, sayfanın tüm alt denetimleri ve uygulamadaki ek bağımlı sınıfları başlatmanız gerektiği için karmaşık olabilir. Sayfayı çalıştırmak için çok sayıda sınıf çalıştırıldığı için uygulamanın belirli parçalarına özel olarak odaklanan testleri yazmak zor olabilir. Bu yüzden, Web Forms tabanlı ASP.NET uygulamalarına yönelik testlerinin uygulanması MVC uygulamasındaki testlere göre daha zor olabilir. Üstelik, Web Forms tabanlı ASP.NET uygulamasındaki testler için bir Web sunucusu gerekir. MVC çerçevesi bileşenleri ayrıştırır ve belirli bileşenlerin çerçevenin geri kalanındaki yalıtılmış bir şekilde test edilmelerini kolaylaştıracak şekilde, arabirimlerin kullanımına ağırlık verir.   
+Karmaşıklığı yönetmeye ek olarak, MVC deseni uygulamaları test etmeyi Web Formları tabanlı bir Web uygulaması ASP.NET test etmekten daha kolaylaştırır. Örneğin, Web Formları tabanlı bir ASP.NET Web uygulamasında, hem çıktıgörüntülemek hem de kullanıcı girişine yanıt vermek için tek bir sınıf kullanılır. Web Formları tabanlı ASP.NET uygulamaları için otomatik testler yazmak karmaşık olabilir, çünkü tek bir sayfayı test etmek için sayfa sınıfını, tüm alt denetimlerini ve uygulamadaki ek bağımlı sınıfları anında anlamanız gerekir. Sayfayı çalıştırmak için çok fazla sınıf anında olduğundan, yalnızca uygulamanın tek tek bölümlerine odaklanan testler yazmak zor olabilir. Bu nedenle, Web Formları tabanlı ASP.NET uygulamaları için testlerin uygulanması, Bir MVC uygulamasındaki testlerden daha zor olabilir. Ayrıca, Web Formları tabanlı bir ASP.NET uygulamasında yapılan testler bir Web sunucusu gerektirir. MVC çerçevesi bileşenleri ayırır ve arabirimleri yoğun olarak kullanır, bu da tek tek bileşenleri çerçevenin geri kalanından izole olarak test etmeyi mümkün kılar.   
   
-MVC uygulamasının ilgili üç ana bileşeni arasındaki bu sıkı bağ aynı zamanda paralel gelişimi de kolaylaştırır. Örneğin, bir geliştirici görünümde çalışırken, ikinci bir geliştirici denetleyici mantığı üzerinde çalışabilir ve üçüncü bir geliştirici modeldeki iş mantığına odaklanabilir.
+Bir MVC uygulamasının üç ana bileşeni arasındaki gevşek bağlantı da paralel gelişimi teşvik eder. Örneğin, bir geliştirici görünüm üzerinde çalışabilir, ikinci bir geliştirici denetleyici mantığı üzerinde çalışabilir ve üçüncü bir geliştirici modeldeki iş mantığına odaklanabilir.
 
-## <a name="deciding-when-to-create-an-mvc-application"></a>MVC uygulaması oluşturma ne zaman karar verme
+## <a name="deciding-when-to-create-an-mvc-application"></a>MVC UygulamasıNe Ne Zaman Oluşturulacağına Karar Verme
 
-Bir Web uygulamasını uygulamak için ASP.NET MVC çerçevesinin mi, yoksa ASP.NET Web Forms modelinin mi kullanılacağını dikkatli şekilde ele almanız gerekmektedir. MVC çerçevesi, Web Forms modelini değiştirmez; Web uygulamaları için ikisinden birini kullanabilirsiniz. (Mevcut Web Forms tabanlı uygulamalarınız varsa, bu uygulamalar her zamanki gibi düzgün şekilde çalışmaya devam eder.)   
+ASP.NET MVC çerçevesini veya ASP.NET Web Forms modelini kullanarak bir Web uygulamasını uygulayıp uygulamayacağınız konusunda dikkatlice düşünmelisiniz. MVC çerçevesi Web Formları modelinin yerini almaz; web uygulamaları için her iki çerçeveyi de kullanabilirsiniz. (Web Formları tabanlı varsa, bunlar her zaman olduğu gibi çalışmaya devam eder.)   
   
-Belirli bir Web sitesi için MVC çerçevesi veya Web Forms modeli kullanmaya karar vermeden önce, her iki yaklaşımın avantajlarını masaya yatırın.
+Belirli bir Web sitesi için MVC çerçevesini veya Web Formları modelini kullanmaya karar vermeden önce, her yaklaşımın avantajlarını tartın.
 
 ### <a name="advantages-of-an-mvc-based-web-application"></a>MVC Tabanlı Web Uygulamasının Avantajları
 
-ASP.NET MVC çerçevesi aşağıdaki avantajları sağlamaktadır:
+ASP.NET MVC çerçevesi aşağıdaki avantajları sunar:
 
-- Uygulamayı modele, görünüme ve denetleyiciye bölerek karışıklığın yönetilmesini kolaylaştırır.
-- Görünüm durumu veya sunucu tabanlı formlar kullanmaz. Bu, uygulamanın davranışı üzerinde tam denetim sağlamak isteyen geliştiriciler için MVC çerçevesini ideal kılar.
-- Tek bir denetleyici üzerinden Web uygulama isteklerini işleyen bir Front Controller örüntüsü kullanır. Zengin yönlendirme altyapısını destekleyen bir uygulama tasarlamanızı sağlar. Daha fazla bilgi için bkz. MSDN Web sitesindeki [ön denetleyici](https://go.microsoft.com/fwlink/?LinkId=106357 "Ön denetleyici") .
-- Teste dayalı geliştirme (TDD) için daha iyi destek sunar.
-- Büyük geliştiriciler ve uygulama davranışı üzerinde yüksek düzeyde denetim gerektiren web tasarımcıları tarafından desteklenen Web uygulamaları için iyi sonuç verir.
+- Bir uygulamayı modele, görünüme ve denetleyiciye bölerek karmaşıklığı yönetmeyi kolaylaştırır.
+- Görünüm durumu veya sunucu tabanlı formlar kullanmaz. Bu, MVC çerçevesini bir uygulamanın davranışı üzerinde tam denetim isteyen geliştiriciler için ideal hale getirir.
+- Web uygulama isteklerini tek bir denetleyici aracılığıyla işleyen bir Ön Denetleyici deseni kullanır. Bu, zengin bir yönlendirme altyapısını destekleyen bir uygulama tasarlamanızı sağlar. Daha fazla bilgi için MSDN Web sitesindeki [Ön Denetleyici'ye](https://go.microsoft.com/fwlink/?LinkId=106357 "Ön Kumanda") bakın.
+- Test odaklı geliştirme (TDD) için daha iyi destek sağlar.
+- Uygulama davranışı üzerinde yüksek derecede denetime ihtiyaç duyan büyük geliştirici ve Web tasarımcıları ekipleri tarafından desteklenen Web uygulamaları için iyi çalışır.
 
-### <a name="advantages-of-a-web-forms-based-web-application"></a>Web Forms Tabanlı Web Uygulamasının Avantajları
+### <a name="advantages-of-a-web-forms-based-web-application"></a>Web Formları Tabanlı Web Uygulamasının Avantajları
 
-Web Forms tabanlı çerçeve aşağıdaki avantajları sağlamaktadır:
+Web Formları tabanlı çerçeve aşağıdaki avantajları sunar:
 
-- İş dalına özel Web uygulaması geliştirmeleri için faydalı olan, HTTP üzerindeki durumu koruyan olay modelini destekler. Web Forms tabanlı uygulama, yüzlerce sunucu denetiminde desteklenen düzinelerce olayı sağlar.
-- Belirli sayfalara işlevsellik ekleyen Page Controller örüntüsünü kullanır. Daha fazla bilgi için MSDN Web sitesindeki [sayfa denetleyicisi](https://go.microsoft.com/fwlink/?LinkId=106359 "Sayfa denetleyicisi") ' ne bakın.
-- Durum bilgilerini yönetmeyi kolaylaştırmak için görünüm durumunu veya sunucu tabanlı formları kullanır.
-- Hızlı uygulama geliştirme için çok sayıdaki mevcut bileşenden faydalanmak isteyen küçük Web geliştiricileri ve tasarımcıları ekipleri için uygundur.
-- Genel olarak, uygulama geliştirme için daha az karmaşıktır çünkü bileşenler ( **sayfa** sınıfı, denetimler, vb.) sıkı bir şekilde tümleşiktir ve genellikle MVC modelinden daha az kod gerektirir.
+- Http üzerinden durumu koruyan ve iş hattı Web uygulaması geliştirmeden yararlanan bir olay modelini destekler. Web Formları tabanlı uygulama, yüzlerce sunucu denetiminde desteklenen düzinelerce olay sağlar.
+- Tek tek sayfalara işlevsellik katan bir Sayfa Denetleyicisi deseni kullanır. Daha fazla bilgi için MSDN Web sitesindeki [Sayfa Denetleyicisi](https://go.microsoft.com/fwlink/?LinkId=106359 "Sayfa Denetleyici") sayfasına bakın.
+- Durum bilgilerini yönetmeyi kolaylaştıran görünüm durumu veya sunucu tabanlı formlar kullanır.
+- Hızlı uygulama geliştirme için kullanılabilir bileşenlerin çok sayıda yararlanmak isteyen Web geliştiricileri ve tasarımcıları küçük ekipler için iyi çalışır.
+- Bileşenler **(Sayfa** sınıfı, denetimler vb.) sıkıca tümleştirilmeden ve genellikle MVC modelinden daha az kod gerektirdiğinden, genel olarak uygulama geliştirme için daha az karmaşıktır.
 
 ## <a name="features-of-the-aspnet-mvc-framework"></a>ASP.NET MVC Çerçevesinin Özellikleri
 
-ASP.NET MVC çerçevesi aşağıdaki özellikleri sunmaktadır:
+ASP.NET MVC çerçevesi aşağıdaki özellikleri sağlar:
 
-- Varsayılan olarak uygulama görevlerinin (Giriş mantığı, iş mantığı ve UI mantığı), yük kararlılığı ve test odaklı geliştirme (TDD) ayrımı. MVC çerçevesindeki tüm esas sözleşmeler arabirim tabanlı olup, uygulamadaki asıl nesnelerin davranışını taklit eden benzetimli nesneler olan sahte nesneler kullanılarak test edilebilir. ASP.NET işlemindeki denetleyicileri çalıştırmaksızın, hızlı ve esnek bir şekilde uygulamada birim testi gerçekleştirebilirsiniz. .NET Framework ile uyumlu olan her türlü birim testi çerçevesini kullanabilirsiniz.
-- Genişletilebilir ve eklenebilir bir çerçeve. ASP.NET MVC çerçevesinin bileşenleri kolay şekilde değiştirilebilmesi veya özelleştirilebilmesi için tasarlanır. Kendi görünüm altyapınızı, URL yönlendirme ilkenizi, eylem yöntemi parametrenizin serileştirilmesini ve diğer bileşenleri ekleyebilirsiniz. ASP.NET MVC çerçevesi aynı zamanda Bağımlılık Ekleme (DI) ve Denetimi Tersine Çevirme (IOC) kapsayıcı modellerinin kullanımını da destekler. Dı, nesne kendisini oluşturmak için sınıfa güvenmek yerine bir sınıfa nesneleri eklemenizi sağlar. IOC, bir nesne başka bir nesneyi gerektirirse, birinci nesnenin ikinci nesneyi yapılandırma dosyası gibi bir dış kaynaktan alınması gerektiğini belirtir. Bu işlem, testi kolaylaştırır.
-- Mantıklı ve aranabilir URL 'Ler içeren uygulamalar oluşturmanıza olanak tanıyan güçlü bir URL eşleme bileşeni. URL'lere dosya adı uzantıları dahil değildir ve URL'ler arama motoru iyileştirmesi (SEO) ve temsili durum aktarımı (REST) adreslemesiyle düzgün şeklide çalışan URL adlandırma modelleri için tasarlanır.
-- Görünüm şablonları olarak mevcut ASP.NET sayfası (.aspx dosyaları), kullanıcı denetimi (.ascx dosyaları) ve ana sayfa (.master dosyaları) biçimlendirme dosyalarında biçimlendirmeyi kullanma desteği. Mevcut ASP.NET özelliklerini, iç içe geçmiş ana sayfalar, satır içi ifadeler (&lt;% =%&gt;), bildirime dayalı sunucu denetimleri, şablonlar, veri bağlama, yerelleştirme vb. gibi ASP.NET MVC çerçevesiyle birlikte kullanabilirsiniz.
-- Mevcut ASP.NET özellikleri için destek. ASP.NET MVC; formların kimlik doğrulaması, Windows kimlik doğrulaması, URL yetkilendirmesi, üyelik ve roller, çıkış ve veri arabelleğe alma, oturum ve profil durumu yönetimi, sistem durumu izleme, yapılandırma sistemi ve sağlayıcı mimarisi gibi özellikleri kullanmanızı sağlar.
+- Uygulama görevlerinin (giriş mantığı, iş mantığı ve Kullanıcı Arası TümevarMantığı), sınanabilirlik ve test tabanlı geliştirme (TDD) varsayılan olarak ayrılması. MVC çerçevesindeki tüm temel sözleşmeler arayüz tabanlıdır ve uygulamadaki gerçek nesnelerin davranışını taklit eden simüle edilmiş nesneler olan sahte nesneler kullanılarak sınanabilir. Ünite testini hızlı ve esnek hale getiren ASP.NET bir işlemde denetleyicileri çalıştırmak zorunda kalmadan uygulamayı birim test edebilirsiniz. .NET Framework ile uyumlu herhangi bir birim test çerçevesi kullanabilirsiniz.
+- Genişletilebilir ve takılabilir bir çerçeve. ASP.NET MVC çerçevesinin bileşenleri kolayca değiştirilebilmeleri veya özelleştirilebilmeleri için tasarlanmıştır. Kendi görünüm altyapınızı, URL yönlendirme ilkenizi, eylem yöntemi parametre serileştirmenizi ve diğer bileşenleri takabilirsiniz. ASP.NET MVC çerçevesi bağımlılık enjeksiyonu (DI) ve Inversion of Control (IOC) konteyner modellerinin kullanımını da destekler. DI, nesnenin kendisini oluşturmak için sınıfa güvenmek yerine nesneleri bir sınıfa enjekte etmenizi sağlar. IOC, bir nesne başka bir nesne gerektiriyorsa, ilk nesnelerin ikinci nesneyi yapılandırma dosyası gibi bir dış kaynaktan alması gerektiğini belirtir. Bu, testi kolaylaştırır.
+- Anlaşılır ve aranabilir URL'lere sahip uygulamalar oluşturmanıza olanak tanıyan güçlü bir URL eşleme bileşeni. URL'ler dosya adı uzantıları içermemelidir ve arama motoru optimizasyonu (SEO) ve temsili durum aktarımı (REST) adresleme için iyi çalışan URL adlandırma desenleri desteklemek üzere tasarlanmıştır.
+- Varolan ASP.NET sayfasında (.aspx dosyaları), kullanıcı denetiminde (.ascx dosyaları) ve ana sayfa (.asıl dosyalar) biçimlendirme dosyalarında görünüm şablonları olarak biçimlendirme desteği. İç içe geçmiş ana sayfalar, satır içi ifadeler (&lt;%= %&gt;), bildirimsel sunucu denetimleri, şablonlar, veri bağlama, yerelleştirme vb. gibi ASP.NET MVC çerçevesi ile varolan ASP.NET özelliklerini kullanabilirsiniz.
+- Varolan ASP.NET özellikleri için destek. ASP.NET MVC form kimlik doğrulama ve Windows kimlik doğrulama, URL yetkilendirme, üyelik ve roller, çıktı ve veri önbelleğe alma, oturum ve profil durumu yönetimi, sistem durumu izleme, yapılandırma sistemi ve sağlayıcı mimarisi gibi özellikleri kullanmanıza olanak sağlar.

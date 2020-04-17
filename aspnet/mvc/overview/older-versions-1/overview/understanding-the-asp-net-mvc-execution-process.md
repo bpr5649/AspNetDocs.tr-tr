@@ -1,57 +1,57 @@
 ---
 uid: mvc/overview/older-versions-1/overview/understanding-the-asp-net-mvc-execution-process
-title: ASP.NET MVC yürütme Işlemini anlama | Microsoft Docs
-author: microsoft
-description: ASP.NET MVC çerçevesinin bir tarayıcı isteği adım adım nasıl işlem kullandığını öğrenin.
+title: MVC Yürütme Sürecinin ASP.NET Anlaşılması | Microsoft Dokümanlar
+author: rick-anderson
+description: ASP.NET MVC çerçevesinin tarayıcı isteğini adım adım nasıl işlediğini öğrenin.
 ms.author: riande
 ms.date: 01/27/2009
 ms.assetid: d1608db3-660d-4079-8c15-f452ff01f1db
 msc.legacyurl: /mvc/overview/older-versions-1/overview/understanding-the-asp-net-mvc-execution-process
 msc.type: authoredcontent
-ms.openlocfilehash: 28940947253e0af43886cf1231f8aaf4615526cc
-ms.sourcegitcommit: e7e91932a6e91a63e2e46417626f39d6b244a3ab
+ms.openlocfilehash: 48afbbe7349b80e0ed0b9bab987ae3ccda493aca
+ms.sourcegitcommit: 022f79dbc1350e0c6ffaa1e7e7c6e850cdabf9af
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/06/2020
-ms.locfileid: "78541519"
+ms.lasthandoff: 04/17/2020
+ms.locfileid: "81541032"
 ---
 # <a name="understanding-the-aspnet-mvc-execution-process"></a>ASP.NET MVC Yürütme İşlemini Anlama
 
 [Microsoft](https://github.com/microsoft) tarafından
 
-> ASP.NET MVC çerçevesinin bir tarayıcı isteği adım adım nasıl işlem kullandığını öğrenin.
+> ASP.NET MVC çerçevesinin tarayıcı isteğini adım adım nasıl işlediğini öğrenin.
 
-ASP.NET MVC tabanlı bir Web uygulamasına yönelik istekler, ilk olarak HTTP modülü olan **UrlRoutingModule** nesnesinden geçer. Bu modül, isteği ayrıştırır ve yol seçimini gerçekleştirir. **UrlRoutingModule** nesnesi, geçerli istekle eşleşen ilk yol nesnesini seçer. (Yol nesnesi, **RouteBase**uygulayan bir sınıftır ve genellikle **yol** sınıfının bir örneğidir.) Hiçbir yol eşleşmezse, **UrlRoutingModule** nesnesi hiçbir şey yapmaz ve isteğin normal ASP.NET veya IIS istek işlemeye geri dönmesine izin verir.
+MVC tabanlı bir web uygulaması ASP.NETna yapılan istekler ilk olarak bir HTTP modülü olan **UrlRoutingModule** nesnesi üzerinden geçer. Bu modül isteği ayrışdırır ve rota seçimini gerçekleştirir. **UrlRoutingModule** nesnesi geçerli istekle eşleşen ilk rota nesnesini seçer. (Rota nesnesi, **RouteBase'i**uygulayan bir sınıftır ve genellikle **Rota** sınıfının bir örneğidir.) Hiçbir rota eşleşmiyorsa, **UrlRoutingModule** nesnesi hiçbir şey yapmaz ve isteğin normal ASP.NET veya IIS istek işlemesine geri dönmesini sağlar.
 
-Seçili **yol** nesnesinden **UrlRoutingModule** nesnesi, **yol** nesnesiyle ilişkili **IRouteHandler** nesnesini alır. Genellikle, bir MVC uygulamasında bu bir **MvcRouteHandler**örneği olacaktır. **IRouteHandler** örneği bir **IHttpHandler** nesnesi oluşturur ve onu **IHttpContext** nesnesine geçirir. Varsayılan olarak, MVC için **IHttpHandler** örneği **MvcHandler** nesnesidir. **MvcHandler** nesnesi daha sonra isteği işleyecek olan denetleyiciyi seçer.
+**UrlRoutingModule** nesnesi, seçili **Rota** nesnesinden, **Rota** nesnesiyle ilişkili **IRouteHandler** nesnesini alır. Genellikle, bir MVC uygulamasında, bu **MvcRouteHandler**bir örneği olacaktır. **IRouteHandler** örneği bir **IHttpHandler** nesnesi oluşturur ve **ihttpcontext** nesnesini geçirir. Varsayılan olarak, MVC için **IHttpHandler** örneği **MvcHandler** nesnesidir. **MvcHandler** nesnesi daha sonra isteği sonunda işleyecek denetleyiciyi seçer.
 
 > [!NOTE]
-> ASP.NET MVC web uygulaması IIS 7,0 ' de çalıştığında, MVC projeleri için dosya adı uzantısı gerekli değildir. Ancak, IIS 6,0 ' de, işleyici. Mvc dosya adı uzantısını ASP.NET ISAPI DLL 'SI ile eşlemenizi gerektirir.
+> Bir ASP.NET MVC Web uygulaması IIS 7.0'da çalıştığında, MVC projeleri için dosya adı uzantısı gerekmez. Ancak, IIS 6.0'da işleyici, .mvc dosya adı uzantısını ASP.NET ISAPI DLL ile eşlenizi gerektirir.
 
-Modül ve işleyici, ASP.NET MVC çerçevesinin giriş noktalarıdır. Aşağıdaki eylemleri gerçekleştirir:
+Modül ve işleyici, ASP.NET MVC çerçevesinin giriş noktalarıdır. Aşağıdaki eylemleri gerçekleştirirler:
 
-- MVC web uygulamasında uygun denetleyiciyi seçin.
+- Bir MVC Web uygulamasında uygun denetleyiciyi seçin.
 - Belirli bir denetleyici örneği edinin.
-- Denetleyicinin **Execute** metodunu çağırın.
+- Denetleyicinin Yürüt **metodunu** arayın.
 
-Aşağıda bir MVC web projesi yürütme aşamaları listelenmektedir:
+Aşağıda, bir MVC Web projesinin yürütme aşamaları listelenebilmiştir:
 
-- Uygulama için ilk isteği al 
+- Uygulama için ilk isteği alma 
 
-    - Global. asax dosyasında, **route** nesneleri **RouteTable** nesnesine eklenir.
-- Yönlendirme gerçekleştir 
+    - Global.asax **dosyasında, Route** nesneleri **RouteTable** nesnesine eklenir.
+- Yönlendirme yapma 
 
-    - **UrlRoutingModule** modülü, daha sonra bir **RequestContext** (**IHttpContext**) nesnesi oluşturmak için kullanılan **RouteData** nesnesini oluşturmak için **RouteTable** koleksiyonundaki ilk eşleşen **yol** nesnesini kullanır.
-- MVC istek işleyicisi oluştur 
+    - **UrlRoutingModule** modülü, **RouteTable** koleksiyonundaki ilk eşleşen **Route** nesnesini kullanır ve daha sonra **bir İstek Bağlamı** **(IHttpContext)** nesnesi oluşturmak için kullandığı **RouteData** nesnesini oluşturur.
+- MVC istek işleyicisi oluşturma 
 
-    - **MvcRouteHandler** nesnesi, **MvcHandler** sınıfının bir örneğini oluşturur ve onu **RequestContext** örneğine geçirir.
-- Denetleyici oluştur 
+    - **MvcRouteHandler** nesnesi **MvcHandler** sınıfının bir örneğini oluşturur ve **RequestContext** örneğini geçirir.
+- Denetleyici oluşturma 
 
-    - **MvcHandler** nesnesi, ile denetleyici örneğini oluşturmak Için **IControllerFactory** nesnesini (genellikle **DefaultControllerFactory** sınıfının bir örneği) tanımlamak üzere **RequestContext** örneğini kullanır.
-- Denetleyiciyi yürütme- **MvcHandler** örneği Controller for **Execute** metodunu çağırır. |
-- Eylemi çağır 
+    - **MvcHandler** nesnesi, **iControllerFactory** nesnesini (genellikle **DefaultControllerFactory** sınıfının bir örneği) tanımlamak için **İstek Bağlamı** örneğini kullanır.
+- Yürütme denetleyicisi - **MvcHandler** örneği denetleyicinin **Execute** yöntemini çağırır. |
+- Eylemi çağırma 
 
-    - Çoğu denetleyici **Controller** temel sınıfından devralınır. Bunu yapan denetleyiciler için, denetleyici ile ilişkili olan **ControllerActionInvoker** nesnesi, denetleyici sınıfının hangi eylem yöntemini çağırılacağını belirler ve ardından bu yöntemi çağırır.
-- Sonucu Yürüt 
+    - Denetleyicilerin çoğu **Denetleyici** taban sınıfından devralır. Bunu yapan denetleyiciler için, denetleyiciyle ilişkili **ControllerActionInvoker** nesnesi, denetleyici sınıfının hangi eylem yöntemini çağırarak çağıracaklarını belirler ve sonra bu yöntemi çağırır.
+- Sonucu çalıştırma 
 
-    - Tipik bir eylem yöntemi kullanıcı girişi alabilir, uygun yanıt verilerini hazırlayabilir ve sonuç türünü döndürerek sonucu yürütebilir. Yürütülemeyen yerleşik sonuç türleri şunlardır: **ViewResult** (bir görünüm oluşturur ve en sık kullanılan sonuç türü olan), **RedirectToRouteResult**, **RedirectResult**, **ContentResult**, **JsonResult**ve **EmptyResult**.
+    - Tipik bir eylem yöntemi kullanıcı girişi alabilir, uygun yanıt verilerini hazırlayabilir ve sonuç türünü döndürerek sonucu çalıştırabilir. Yürütülebilir yerleşik sonuç türleri şunlardır: **ViewResult** (bir görünüm işler ve en sık kullanılan sonuç türüdür), **RedirectToRouteResult**, **ReDirectResult**, **ContentResult**, **JsonResult**, ve **EmptyResult**.

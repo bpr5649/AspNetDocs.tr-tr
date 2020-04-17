@@ -1,28 +1,28 @@
 ---
 uid: web-forms/videos/building-20-applications/lesson-2-creating-a-web-forms-user-interface
-title: '[2. ders:] Web Forms Kullanıcı arabirimi oluşturma | Microsoft Docs'
-author: microsoft
-description: Bu derste, Visual Web Developer Express Edition 'da bulunan&#160;çeşitli ASP.NET 2,0 Server denetimlerini keşfedecektir. Ayrıca, başlamadan önce...
+title: '[Ders 2:] Web Forms Kullanıcı Arabirimi Oluşturma | Microsoft Dokümanlar'
+author: rick-anderson
+description: Bu derste, Visual Web Developer Express Edition'da bulunan çeşitli ASP.NET&#160;2.0 sunucu denetimlerini inceleyeceksiniz. Buna ek olarak, başlayacak ...
 ms.author: riande
 ms.date: 11/25/2005
 ms.assetid: 7eac8f6b-6911-4585-87e8-ba662c1578fb
 msc.legacyurl: /web-forms/videos/building-20-applications/lesson-2-creating-a-web-forms-user-interface
 msc.type: video
-ms.openlocfilehash: bc4a4aeb6311c67e465068f507492bffd22c2b37
-ms.sourcegitcommit: e7e91932a6e91a63e2e46417626f39d6b244a3ab
+ms.openlocfilehash: 991a7694db8c41e7f0ca391a88988aa640e91801
+ms.sourcegitcommit: 022f79dbc1350e0c6ffaa1e7e7c6e850cdabf9af
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/06/2020
-ms.locfileid: "78565123"
+ms.lasthandoff: 04/17/2020
+ms.locfileid: "81539836"
 ---
 # <a name="lesson-2-creating-a-web-forms-user-interface"></a>[2. Ders:] Web Forms Kullanıcı Arabirimi Oluşturma
 
 [Microsoft](https://github.com/microsoft) tarafından
 
-Bu derste, Visual Web Developer Express Edition 'da bulunan çeşitli ASP. NET 2.0 sunucu denetimlerini keşfedecektir. Ayrıca, Visual Web Developer 'da Windows 'u tanımanız gerekir.
+Bu derste, Visual Web Developer Express Edition'da bulunan çeşitli ASP.NET2.0 sunucu denetimlerini inceleyeceksiniz. Buna ek olarak, Visual Web Developer'daki pencereleri tanımaya başlayacaksınız.
 
-[&#9654;Videoyu izleyin (49 dakika)](https://channel9.msdn.com/Blogs/ASP-NET-Site-Videos/lesson-2-creating-a-web-forms-user-interface)
+[&#9654; Videoyu izleyin (49 dakika)](https://channel9.msdn.com/Blogs/ASP-NET-Site-Videos/lesson-2-creating-a-web-forms-user-interface)
 
 > [!div class="step-by-step"]
 > [Önceki](lesson-1-getting-started-with-visual-web-developer-express.md)
-> [İleri](lesson-3-understanding-more-about-events-and-postback.md)
+> [Sonraki](lesson-3-understanding-more-about-events-and-postback.md)

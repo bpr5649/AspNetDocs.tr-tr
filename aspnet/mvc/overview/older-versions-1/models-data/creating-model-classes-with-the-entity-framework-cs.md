@@ -1,213 +1,213 @@
 ---
 uid: mvc/overview/older-versions-1/models-data/creating-model-classes-with-the-entity-framework-cs
-title: Entity Framework (C#) Ile model sınıfları oluşturma | Microsoft Docs
-author: microsoft
-description: Bu öğreticide, ASP.NET MVC 'yi Microsoft Entity Framework kullanmayı öğreneceksiniz. ADO.NET varlığı oluşturmak için varlık Sihirbazı 'nı nasıl kullanacağınızı öğrenirsiniz...
+title: Varlık Çerçevesi (C#) ile Model Sınıfları Oluşturma | Microsoft Dokümanlar
+author: rick-anderson
+description: Bu eğitimde, Microsoft Entity Framework ile ASP.NET MVC'yi nasıl kullanacağınızı öğrenirsiniz. Varlık Sihirbazı'nı ADO.NET Bir Varlık Da oluşturmak için nasıl kullanacağınızı öğrenirsiniz...
 ms.author: riande
 ms.date: 01/27/2009
 ms.assetid: 61644169-e8b1-45dd-bf96-9c2301b69879
 msc.legacyurl: /mvc/overview/older-versions-1/models-data/creating-model-classes-with-the-entity-framework-cs
 msc.type: authoredcontent
-ms.openlocfilehash: 2e0e365c287fc455015d237ea466301335805d14
-ms.sourcegitcommit: e7e91932a6e91a63e2e46417626f39d6b244a3ab
+ms.openlocfilehash: 716d34167258b1005b25b1cd11bfaa6d80763320
+ms.sourcegitcommit: 022f79dbc1350e0c6ffaa1e7e7c6e850cdabf9af
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/06/2020
-ms.locfileid: "78581167"
+ms.lasthandoff: 04/17/2020
+ms.locfileid: "81542670"
 ---
 # <a name="creating-model-classes-with-the-entity-framework-c"></a>Entity Framework ile Model Sınıfları Oluşturma (C#)
 
 [Microsoft](https://github.com/microsoft) tarafından
 
-> Bu öğreticide, ASP.NET MVC 'yi Microsoft Entity Framework kullanmayı öğreneceksiniz. ADO.NET Varlık Veri Modeli oluşturmak için varlık Sihirbazı 'nı nasıl kullanacağınızı öğrenirsiniz. Bu öğreticide, Entity Framework kullanarak veritabanı verilerini seçme, ekleme, güncelleştirme ve silmeyi gösteren bir Web uygulaması oluşturacağız.
+> Bu eğitimde, Microsoft Entity Framework ile ASP.NET MVC'yi nasıl kullanacağınızı öğrenirsiniz. ADO.NET varlık veri modeli oluşturmak için Varlık Sihirbazı'nı nasıl kullanacağınızı öğrenirsiniz. Bu öğretici boyunca, Varlık Çerçevesi'ni kullanarak veritabanı verilerinin nasıl seçil, eklen, güncelleştirilip silinileceklerini gösteren bir web uygulaması oluşturuyoruz.
 
-Bu öğreticinin amacı, bir ASP.NET MVC uygulaması oluştururken Microsoft Entity Framework kullanarak veri erişim sınıfları oluşturmayı açıklamaktır. Bu öğreticide, Microsoft Entity Framework 'in önceki bilgileri bulunmamaktadır. Bu öğreticinin sonuna kadar Entity Framework kullanarak veritabanı kayıtlarını seçme, ekleme, güncelleştirme ve silme işlemlerinin nasıl yapılacağını anlayacaksınız.
+Bu öğreticinin amacı, bir ASP.NET MVC uygulaması oluştururken Microsoft Entity Framework'ü kullanarak veri erişim sınıflarını nasıl oluşturabileceğinizi açıklamaktır. Bu öğretici, Microsoft Entity Framework hakkında daha önce hiçbir bilgi edinmez. Bu öğreticinin sonunda, veritabanı kayıtlarını seçmek, eklemek, güncelleştirmek ve silmek için Varlık Çerçevesi'ni nasıl kullanacağınızı anlamış olursunuz.
 
-Microsoft Entity Framework, bir veritabanından otomatik olarak veri erişim katmanı oluşturmanıza olanak sağlayan bir nesne Ilişkisel eşleme (O/RM) aracıdır. Entity Framework, veri erişim sınıflarınızı el ile oluşturmaya yönelik sıkıcı çalışmalardan kaçınmanızı sağlar.
+Microsoft Entity Framework, veritabanından otomatik olarak veri erişim katmanı oluşturmanıza olanak tanıyan bir Nesne İlişkisel Eşleme (O/RM) aracıdır. Varlık Çerçevesi, veri erişim sınıflarınızı elle oluşturma zahmetli çalışmalarından kaçınmanızı sağlar.
 
-ASP.NET MVC ile Microsoft Entity Framework nasıl kullanabileceğinizi göstermek için basit bir örnek uygulama oluşturacağız. Film veritabanı kayıtlarını görüntülemenizi ve düzenlemenizi sağlayan bir film veritabanı uygulaması oluşturacağız.
+Microsoft Entity Framework'ASP.NET MVC ile nasıl kullanabileceğinizi göstermek için basit bir örnek uygulama oluşturacağız. Film veritabanı kayıtlarını görüntülemenizi ve görüntülemenizi sağlayan bir Film Veritabanı uygulaması oluştururuz.
 
-Bu öğreticide, Service Pack 1 ile Visual Studio 2008 veya Visual Web Developer 2008 sahip olduğunuz varsayılır. Entity Framework kullanabilmeniz için hizmet paketi 1 ' i kullanmanız gerekir. Visual Studio 2008 Service Pack 1 veya Visual Web Developer with Service Pack 1 ' i aşağıdaki adresten indirebilirsiniz:
+Bu öğretici, Service Pack 1 ile Visual Studio 2008 veya Visual Web Developer 2008 sahip olduğunu varsayar. Varlık Çerçevesini kullanmak için Servis Paketi 1'e ihtiyacınız var. Visual Studio 2008 Service Pack 1 veya Visual Web Developer'ı Service Pack 1 ile aşağıdaki adresten indirebilirsiniz:
 
 > [https://www.asp.net/downloads/](https://www.asp.net/downloads)
 
 > [!NOTE] 
 > 
-> ASP.NET MVC ile Microsoft Entity Framework arasında önemli bir bağlantı yoktur. Entity Framework için ASP.NET MVC ile kullanabileceğiniz çeşitli alternatifler vardır. Örneğin, MVC model sınıflarınızı Microsoft LINQ to SQL, Nhazırda bekleme veya alt Sonic gibi diğer O/RM araçlarını kullanarak oluşturabilirsiniz.
+> ASP.NET MVC ile Microsoft Entity Framework arasında önemli bir bağlantı yoktur. Varlık Çerçevesi'nin ASP.NET MVC ile kullanabileceğiniz çeşitli alternatifler vardır. Örneğin, MVC Model sınıflarınızı Microsoft LINQ to SQL, NHibernate veya SubSonic gibi diğer O/RM araçlarını kullanarak oluşturabilirsiniz.
 
-## <a name="creating-the-movie-sample-database"></a>Film örnek veritabanı oluşturma
+## <a name="creating-the-movie-sample-database"></a>Film Örnek Veritabanı oluşturma
 
-Film veritabanı uygulaması, aşağıdaki sütunları içeren filmler adlı bir veritabanı tablosu kullanır:
+Film Veritabanı uygulaması, aşağıdaki sütunları içeren Filmler adlı bir veritabanı tablosu kullanır:
 
-| Sütun adı | Veri Türü | Null değerlere izin verilsin mi? | Birincil anahtar mi? |
+| Sütun Adı | Veri Türü | Nulls'a izin mi ver? | Birincil Anahtar mı? |
 | --- | --- | --- | --- |
-| Kimlik | int | False | Doğru |
-| Başlık | Nvarchar (100) | False | False |
-| Direktörü | Nvarchar (100) | False | False |
+| Kimlik | int | False | True |
+| Başlık | nvarchar(100) | False | False |
+| Yönetmen | nvarchar(100) | False | False |
 
-Aşağıdaki adımları izleyerek, bu tabloyu bir ASP.NET MVC projesine ekleyebilirsiniz:
+Aşağıdaki adımları izleyerek bu tabloyu ASP.NET bir MVC projesine ekleyebilirsiniz:
 
-1. Çözüm Gezgini penceresindeki uygulama\_veri klasörüne sağ tıklayın ve **Ekle, yeni öğe** menü seçeneğini belirleyin.
-2. **Yeni öğe Ekle** iletişim kutusunda **SQL Server veritabanı**' nı seçin, veritabanına MoviesDB. mdf adını verin ve **Ekle** düğmesine tıklayın.
-3. Sunucu Gezgini/Veritabanı Gezgini penceresini açmak için MoviesDB. mdf dosyasına çift tıklayın.
-4. MoviesDB. mdf veritabanı bağlantısını genişletin, tablolar klasörüne sağ tıklayın ve **Yeni Tablo Ekle**menü seçeneğini belirleyin.
-5. Tablo Tasarımcısı kimliği, başlığı ve yönetmen sütunlarını ekleyin.
-6. Yeni tabloyu film adı ile kaydetmek için **Kaydet** düğmesine (disketin simgesine sahiptir) tıklayın.
+1. Çözüm Gezgini\_penceresindeki Uygulama Verileri klasörüne sağ tıklayın ve **Ekle, Yeni Öğe** seçeneğini seçin.
+2. Yeni **Öğe Ekle** iletişim kutusundan **SQL Server Database'i**seçin, veritabanına MoviesDB.mdf adını verin ve **Ekle** düğmesini tıklatın.
+3. Server Explorer/Database Explorer penceresini açmak için MoviesDB.mdf dosyasını çift tıklatın.
+4. MoviesDB.mdf veritabanı bağlantısını genişletin, Tablolar klasörüne sağ tıklayın ve **Yeni Tablo Ekle**seçeneğini seçin.
+5. Tablo Tasarımcısı'na Kimlik, Başlık ve Yönetmen sütunlarını ekleyin.
+6. Filmler adlı yeni tabloyu kaydetmek için **Kaydet** düğmesini (disket simgesi vardır) tıklatın.
 
-Filmler veritabanı tablosunu oluşturduktan sonra tabloya bazı örnek veriler eklemelisiniz. Filmler tablosuna sağ tıklayın ve **tablo verilerini göster**menü seçeneğini belirleyin. Sahte film verilerini görüntülenen kılavuza girebilirsiniz.
+Filmler veritabanı tablosunu oluşturduktan sonra, tabloya bazı örnek veriler eklemeniz gerekir. Filmler tablosuna sağ tıklayın ve **Tablo Verilerini Göster**menüsü seçeneğini seçin. Görünen ızgaraya sahte film verileri girebilirsiniz.
 
 ## <a name="creating-the-adonet-entity-data-model"></a>ADO.NET Varlık Veri Modeli oluşturma
 
-Entity Framework kullanmak için bir Varlık Veri Modeli oluşturmanız gerekir. Bir veritabanından otomatik olarak bir Varlık Veri Modeli oluşturmak için Visual Studio *varlık veri modeli Sihirbazı* 'ndan yararlanabilirsiniz.
+Varlık Çerçevesini kullanmak için bir Varlık Veri Modeli oluşturmanız gerekir. Bir veritabanından otomatik olarak bir Varlık Veri Modeli oluşturmak için Visual Studio *Entity Data Model Wizard'dan* yararlanabilirsiniz.
 
-Aşağıdaki adımları uygulayın:
+Şu adımları uygulayın:
 
-1. Çözüm Gezgini penceresinde modeller klasörüne sağ tıklayın ve menü seçeneğini **Ekle, yeni öğe**' yi seçin.
-2. **Yeni öğe Ekle** Iletişim kutusunda veri kategorisini seçin (bkz. Şekil 1).
-3. **ADO.NET varlık veri modeli** şablonunu seçin, MoviesDBModel. edmx adını varlık veri modeli verin ve **Ekle** düğmesine tıklayın. **Ekle** düğmesine tıkladığınızda veri modeli Sihirbazı başlatılır.
-4. **Model Içeriğini seçin** adımında, **bir veritabanından oluştur** seçeneğini belirleyin ve **Ileri** düğmesine (bkz. Şekil 2) tıklayın.
-5. **Veri bağlantınızı seçin** adımında, MoviesDB. mdf veritabanı bağlantısını seçin, varlıklar bağlantı ayarları adı MoviesDBEntities yazın ve **İleri** düğmesine tıklayın (bkz. Şekil 3).
-6. **Veritabanı nesnelerinizi seçin** adımında, film veritabanı tablosunu seçin ve **son** düğmesine tıklayın (bkz. Şekil 4).
+1. Çözüm Gezgini penceresindeki Modeller klasörüne sağ tıklayın ve **Ekle, Yeni Öğe**seçeneğini seçin.
+2. Yeni **Öğe Ekle** iletişim kutusunda, Veri kategorisini seçin (Bkz. Şekil 1).
+3. ADO.NET **Varlık Veri Modeli** şablonunu seçin, Varlık Veri Modeli'ne MoviesDBModel.edmx adını verin ve **Ekle** düğmesini tıklatın. **Ekle** düğmesini tıklattığınızda Veri Modeli Sihirbazı başlatın.
+4. Model **İçeriği Seç** adımında, **veritabanından Oluştur** seçeneğini seçin ve **Sonraki** düğmesini tıklatın (Bkz. Şekil 2).
+5. Veri **Bağlantınızı Seçin** adımda, MoviesDB.mdf veritabanı bağlantısını seçin, varlıklar bağlantı ayarları adı MoviesDBEntities'ı girin ve **Sonraki** düğmesini tıklatın (Bkz. Şekil 3).
+6. Veritabanı **Nesnelerinizi Seç** adımında, Film veritabanı tablosunu seçin ve **Finish** düğmesini tıklatın (Bkz. Şekil 4).
 
-Bu adımları tamamladıktan sonra, ADO.NET Varlık Veri Modeli Tasarımcısı (Entity Desisgner) açılır.
+Bu adımları tamamladıktan sonra, varlık veri modeli tasarımcısı (Entity Designer) ADO.NET açılır.
 
-**Şekil 1 – yeni bir Varlık Veri Modeli oluşturma**
+**Şekil 1 – Yeni Bir Varlık Veri Modeli Oluşturma**
 
 ![clip_image002](creating-model-classes-with-the-entity-framework-cs/_static/image1.jpg)
 
-**Şekil 2 – model Içeriğini seçin adımı**
+**Şekil 2 – Model İçerikleri Adım Seçin**
 
 ![clip_image004](creating-model-classes-with-the-entity-framework-cs/_static/image2.jpg)
 
-**Şekil 3: veri bağlantınızı seçin**
+**Şekil 3 – Veri Bağlantınızı Seçin**
 
 ![clip_image006](creating-model-classes-with-the-entity-framework-cs/_static/image3.jpg)
 
-**Şekil 4: veritabanı nesnelerinizi seçin**
+**Şekil 4 – Veritabanı Nesnelerinizi Seçin**
 
 ![clip_image008](creating-model-classes-with-the-entity-framework-cs/_static/image4.jpg)
 
-#### <a name="modifying-the-adonet-entity-data-model"></a>ADO.NET Varlık Veri Modeli değiştirme
+#### <a name="modifying-the-adonet-entity-data-model"></a>ADO.NET Varlık Veri Modelinin Değiştirilmesi
 
-Bir Varlık Veri Modeli oluşturduktan sonra, Entity Desisgner avantajlarından yararlanarak modeli değiştirebilirsiniz (bkz. Şekil 5). Çözüm Gezgini penceresindeki modeller klasöründe bulunan MoviesDBModel. edmx dosyasını çift tıklayarak Entity Desisgner dilediğiniz zaman açabilirsiniz.
+Bir Varlık Veri Modeli oluşturduktan sonra, Varlık Tasarımcısı'ndan yararlanarak modeli değiştirebilirsiniz (Bkz. Şekil 5). Çözüm Gezgini penceresindeki Modeller klasöründe yer alan MoviesDBModel.edmx dosyasını çift tıklatarak Varlık Tasarımcısı'nı istediğiniz zaman açabilirsiniz.
 
 **Şekil 5 – ADO.NET Varlık Veri Modeli Tasarımcısı**
 
 ![clip_image010](creating-model-classes-with-the-entity-framework-cs/_static/image5.jpg)
 
-Örneğin, varlık modeli verileri Sihirbazının oluşturduğu sınıfların adlarını değiştirmek için Entity Desisgner kullanabilirsiniz. Sihirbaz, filmler adlı yeni bir veri erişim sınıfı oluşturdu. Diğer bir deyişle, sihirbaz sınıfı veritabanı tablosuyla aynı adı vermiştir. Belirli bir film örneğini temsil etmek için bu sınıfı kullanacağından, sınıfı filmlerden filme yeniden adlandırdık.
+Örneğin, Varlık Modeli Veri Sihirbazı'nın oluşturduğu sınıfların adlarını değiştirmek için Varlık Tasarımcısı'nı kullanabilirsiniz. Sihirbaz, Filmler adlı yeni bir veri erişim sınıfı oluşturdu. Başka bir deyişle, Sihirbaz sınıfa veritabanı tablosuyla aynı adı verdi. Bu sınıfı belirli bir Film örneğini temsil etmek için kullanacağımızdan, sınıfı Filmler'den Filme yeniden adlandırmalıyız.
 
-Bir varlık sınıfını yeniden adlandırmak isterseniz, Entity Desisgner sınıf adına çift tıklayıp yeni bir ad girebilirsiniz (bkz. Şekil 6). Alternatif olarak, Entity Desisgner bir varlık seçtikten sonra Özellikler penceresi varlığın adını değiştirebilirsiniz.
+Bir varlık sınıfını yeniden adlandırmak istiyorsanız, Varlık Tasarımcısı'ndaki sınıf adını çift tıklatıp yeni bir ad girebilirsiniz (Bkz. Şekil 6). Alternatif olarak, Varlık Tasarımcısı'nda bir varlık seçtikten sonra Özellikler penceresindeki bir varlığın adını değiştirebilirsiniz.
 
-**Şekil 6 – bir varlık adını değiştirme**
+**Şekil 6 – Varlık adını değiştirme**
 
 ![clip_image012](creating-model-classes-with-the-entity-framework-cs/_static/image6.jpg)
 
-Kaydet düğmesine (disketin simgesi) tıklayarak bir değişiklik yaptıktan sonra Varlık Veri Modeli kaydetmeyi unutmayın. Arka planda Entity Desisgner bir C# sınıf kümesi oluşturur. Bu sınıfları, Çözüm Gezgini penceresinden MoviesDBModel.Designer.cs dosyasını açarak görüntüleyebilirsiniz.
+Kaydet düğmesini (disketsimgesi) tıklatarak bir değişiklik yaptıktan sonra Varlık Veri Modelinizi kaydetmeyi unutmayın. Arka planda, Varlık Tasarımcısı c# sınıfları kümesi oluşturur. Çözüm Gezgini penceresinden MoviesDBModel.Designer.cs dosyasını açarak bu sınıfları görüntüleyebilirsiniz.
 
-Designer.cs dosyasındaki kodu değiştirmeyin çünkü değişikliklerinizin üzerine yazılacak çünkü Entity Desisgner bir sonraki sefer kullandığınızda yaptığınız değişiklikler geçersiz kılınır. Designer.cs dosyasında tanımlanan varlık sınıflarının işlevlerini genişletmek istiyorsanız, ayrı dosyalarda *kısmi sınıflar* oluşturabilirsiniz.
+Değişiklikleriniz Varlık Tasarımcısı'nı bir sonraki kullanımınızda üzerine yazılanınacağı için Designer.cs dosyasındaki kodu değiştirmeyin. Designer.cs dosyasında tanımlanan varlık sınıflarının işlevselliğini genişletmek istiyorsanız, ayrı dosyalarda *kısmi sınıflar* oluşturabilirsiniz.
 
-#### <a name="selecting-database-records-with-the-entity-framework"></a>Entity Framework ile veritabanı kayıtlarını seçme
+#### <a name="selecting-database-records-with-the-entity-framework"></a>Varlık Çerçevesi ile Veritabanı Kayıtlarını Seçme
 
-Film kayıtlarının listesini görüntüleyen bir sayfa oluşturarak film veritabanı uygulamamızı oluşturmaya başlayalım. Liste 1 ' deki ana denetleyici dizin () adlı bir eylem gösterir. Index () eylemi, Entity Framework avantajlarından yararlanarak film veritabanı tablosundan tüm film kayıtlarını döndürür.
+Film kayıtlarının listesini görüntüleyen bir sayfa oluşturarak Film Veritabanı uygulamamızı oluşturmaya başlayalım. Listeleme 1'deki Ev denetleyicisi Index() adlı bir eylemi ortaya çıkarır. Index() eylemi, Varlık Çerçevesi'nden yararlanarak film veritabanı tablosundaki tüm film kayıtlarını döndürür.
 
-**Listeleme 1 – Controllers\HomeController.cs**
+**Listeleme 1 – Denetleyiciler\HomeController.cs**
 
 [!code-csharp[Main](creating-model-classes-with-the-entity-framework-cs/samples/sample1.cs)]
 
-Listeleme 1 ' deki denetleyicinin bir Oluşturucu içerdiğine dikkat edin. Oluşturucu \_DB adlı bir sınıf düzeyi alanı başlatır. \_DB alanı, Microsoft Entity Framework tarafından oluşturulan veritabanı varlıklarını temsil eder. \_DB alanı, Entity Desisgner tarafından oluşturulan MoviesDBEntities sınıfının bir örneğidir.
+Listeleme 1'deki denetleyicinin bir oluşturucu içerdiğine dikkat edin. Oluşturucu db adlı sınıf düzeyinde \_bir alan başlatılmasını. db alanı, \_Microsoft Entity Framework tarafından oluşturulan veritabanı varlıklarını temsil eder. \_db alanı, Entity Designer tarafından oluşturulan MoviesDBEntities sınıfının bir örneğidir.
 
-TheMoviesDBEntities sınıfını ana denetleyicide kullanmak için, MovieEntityApp. model ad alanını (*Mvcprojectname*) içeri aktarmanız gerekir. Modeller).
+TheMoviesDBEntities sınıfını Ana Sayfa denetleyicisinde kullanmak için MovieEntityApp.Models ad alanını *(MVCProjectName)* almanız gerekir. Modeller).
 
-\_DB alanı, filmler veritabanı tablosundan kayıtları almak için dizin () eylemi içinde kullanılır. \_DB ifadesi. MovieSet, filmler veritabanı tablosundaki tüm kayıtları temsil eder. ToList () yöntemi, film kümesini genel bir film nesneleri koleksiyonuna dönüştürmek için kullanılır (liste&lt;film&gt;).
+DB alanı, \_Filmler veritabanı tablosundaki kayıtları almak için Index() eylemi içinde kullanılır. Db \_ifadesi. MovieSet, Filmler veritabanı tablosundaki tüm kayıtları temsil eder. ToList() yöntemi, film kümesini film nesnelerinin genel bir koleksiyonuna&lt;&gt;dönüştürmek için kullanılır (List Movie).
 
-Film kayıtları LINQ to Entities yardımıyla alınır. Liste 1 ' deki dizin () eylemi, veritabanı kayıtlarının kümesini almak için LINQ *yöntemi sözdizimini* kullanır. Tercih ederseniz, bunun yerine LINQ *sorgu söz dizimini* kullanabilirsiniz. Aşağıdaki iki deyim de aynı şeyi yapar:
+Film kayıtları LINQ'dan Varlıklara yardımıyla alınır. Listeleme 1'deki Dizin() eylemi, veritabanı kayıtları kümesini almak için LINQ *yöntemi sözdizimini* kullanır. İsterseniz, bunun yerine LINQ *sorgu sözdizimini* kullanabilirsiniz. Aşağıdaki iki ifadeler çok aynı şeyi yapmak:
 
 [!code-csharp[Main](creating-model-classes-with-the-entity-framework-cs/samples/sample2.cs)]
 
-En sezgisel bulduğunuz LINQ söz dizimi, yöntem sözdizimi veya sorgu söz dizimini kullanın. İki yaklaşım arasında performans farkı yoktur. tek fark stil olur.
+En sezgisel bulduğunuz linq sözdizimini (yöntem sözdizimi veya sorgu sözdizimi) hangisinde kullanın. İki yaklaşım arasında performans farkı yoktur – tek fark stildir.
 
-Kod 2 ' deki görünüm, film kayıtlarını görüntülemek için kullanılır.
+Listeleme 2'deki görünüm film kayıtlarını görüntülemek için kullanılır.
 
-**Listeleme 2 – Views\home\ındex.aspx**
+**Listeleme 2 – Görünümler\Ana Sayfa\Index.aspx**
 
 [!code-aspx[Main](creating-model-classes-with-the-entity-framework-cs/samples/sample3.aspx)]
 
-Liste 2 ' deki görünüm, her film kaydı boyunca yinelenen bir **foreach** döngüsü içerir ve film kaydının başlık ve yönetmen özelliklerinin değerlerini görüntüler. Her kaydın yanında bir Düzenle ve Sil bağlantısının görüntülendiğini unutmayın. Ayrıca, görünümün alt kısmında bir film ekle bağlantısı görünür (bkz. Şekil 7).
+Listeleme 2'deki görünüm, her film kaydında yineleyen ve film kaydının Başlık ve Yönetmen özelliklerinin değerlerini görüntüleyen **bir foreach** döngüsü içerir. Her kaydın yanında bir Düzenle ve Sil bağlantısının görüntülendiğine dikkat edin. Ayrıca, görünümün alt kısmında Film Ekle bağlantısı görünür (Bkz. Şekil 7).
 
-**Şekil 7 – dizin görünümü**
+**Şekil 7 – Endeks görünümü**
 
 ![clip_image014](creating-model-classes-with-the-entity-framework-cs/_static/image7.jpg)
 
-Dizin görünümü *türü belirlenmiş bir görünüm*. Dizin görünümü, model özelliğini bir film nesneleri türü kesin belirlenmiş genel liste koleksiyonuna (liste&lt;filmi) bağlayan bir *Inherits* özniteliğiyle birlikte &lt;% @ Page%&gt; yönergesini içerir.
+Dizin görünümü *yazılı*bir görünümdür. Dizin görünümü, &lt;Model özelliğini film nesnelerinin güçlü bir şekilde yazılan genel Liste koleksiyonuna (Film Listesi)&lt;atan *bir Devralma* özniteliğine sahip %@ Sayfa %&gt; yönergesi içerir.
 
-## <a name="inserting-database-records-with-the-entity-framework"></a>Entity Framework ile veritabanı kayıtları ekleme
+## <a name="inserting-database-records-with-the-entity-framework"></a>Veritabanı Kayıtlarını Varlık Çerçevesine Ekleme
 
-Yeni kayıtların bir veritabanı tablosuna eklenmesini kolaylaştırmak için Entity Framework kullanabilirsiniz. Kod 3 ' te, yeni kayıtları film veritabanı tablosuna eklemek için kullanabileceğiniz giriş denetleyicisi sınıfına eklenen iki yeni eylem bulunur.
+Veritabanı tablosuna yeni kayıtlar eklemeyi kolaylaştırmak için Varlık Çerçevesi'ni kullanabilirsiniz. Listeleme 3, Film veritabanı tablosuna yeni kayıtlar eklemek için kullanabileceğiniz Ev denetleyicisi sınıfına eklenen iki yeni eylem içerir.
 
-**Listeleme 3 – Controllers\HomeController.cs (yöntemleri ekleme)**
+**Listeleme 3 – Denetleyiciler\HomeController.cs (Yöntem ekle)**
 
 [!code-csharp[Main](creating-model-classes-with-the-entity-framework-cs/samples/sample4.cs)]
 
-İlk Add () eylemi yalnızca bir görünüm döndürür. Görünüm yeni bir film veritabanı kaydı eklemek için bir form içerir (bkz. Şekil 8). Formu gönderdiğinizde, ikinci Add () eylemi çağrılır.
+İlk Ekle() eylemi yalnızca bir görünümü döndürür. Görünüm, yeni bir film veritabanı kaydı eklemek için bir form içerir (Bkz. Şekil 8). Formu gönderdiğiniz zaman, ikinci Add() eylemi çağrılır.
 
-İkinci Add () eyleminin AcceptVerbs özniteliğiyle birlikte tasarlandığına dikkat edin. Bu eylem, yalnızca bir HTTP POST işlemi gerçekleştirilirken çağrılabilir. Diğer bir deyişle, bu eylem yalnızca bir HTML formu deftere nakledilirken çağrılabilir.
+İkinci Add() eyleminin AcceptVerbs özniteliği yle süslenmiş olduğuna dikkat edin. Bu eylem yalnızca bir HTTP POST işlemi gerçekleştirirken çağrılabilir. Başka bir deyişle, bu eylem yalnızca bir HTML formu gönderirken çağrılabilir.
 
-İkinci Add () eylemi, Entity Framework film sınıfının yeni bir örneğini oluşturur, ASP.NET MVC TryUpdateModel () yönteminin yardımıyla. TryUpdateModel () yöntemi, form koleksiyonundaki alanları Add () yöntemine geçirilir ve bu HTML form alanlarının değerlerini film sınıfına atar.
+İkinci Add() eylemi, ASP.NET MVC TryUpdateModel() yöntemi yardımıyla Entity Framework Movie sınıfının yeni bir örneğini oluşturur. TryUpdateModel() yöntemi, FormCollection'daki alanları Add() yöntemine aktarAn alanları alır ve bu HTML form alanlarının değerlerini Film sınıfına atar.
 
-Entity Framework kullanırken, bir varlık sınıfının özelliklerini güncelleştirmek için TryUpdateModel veya UpdateModel yöntemlerini kullanırken bir "beyaz liste" özelliği sağlamanız gerekir.
+Varlık Çerçevesi'ni kullanırken, bir varlık sınıfının özelliklerini güncelleştirmek için TryUpdateModel veya UpdateModel yöntemlerini kullanırken özelliklerin bir "beyaz listesini" sağlamanız gerekir.
 
-Sonra, Add () eylemi bazı basit form doğrulaması gerçekleştirir. Eylem hem başlık hem de yönetmen özelliklerinin değerleri olduğunu doğrular. Doğrulama hatası varsa, ModelState 'e bir doğrulama hata iletisi eklenir.
+Ardından, Ekle() eylemi bazı basit form doğrulama gerçekleştirir. Eylem, hem Başlık hem de Yönetici özelliklerinin değerleri olduğunu doğrular. Bir doğrulama hatası varsa, ModelState'e bir doğrulama hatası iletisi eklenir.
 
-Doğrulama hataları yoksa, filmler veritabanı tablosuna Entity Framework yardımıyla yeni bir film kaydı eklenir. Yeni kayıt veritabanına aşağıdaki iki kod satırı ile eklenir:
+Doğrulama hatası yoksa, Varlık Çerçevesi yardımıyla Filmler veritabanı tablosuna yeni bir film kaydı eklenir. Yeni kayıt, aşağıdaki iki kod satırıyla veritabanına eklenir:
 
 [!code-csharp[Main](creating-model-classes-with-the-entity-framework-cs/samples/sample5.cs)]
 
-Kodun ilk satırı yeni film varlığını Entity Framework tarafından izlenen Film kümesine ekler. İkinci kod satırı, arka plandaki veritabanına geri izlenmekte olan filmlerde yapılan tüm değişiklikleri kaydeder.
+Kodun ilk satırı, Varlık Çerçevesi tarafından izlenen film kümesine yeni Film varlığını ekler. İkinci kod satırı, temel veritabanına kadar izlenen Filmler'de yapılan değişikliklerden ne olursa olsun kaydeder.
 
-**Şekil 8 – ekleme görünümü**
+**Şekil 8 – Görünüm Ekle**
 
 ![clip_image016](creating-model-classes-with-the-entity-framework-cs/_static/image8.jpg)
 
-#### <a name="updating-database-records-with-the-entity-framework"></a>Veritabanı kayıtlarını Entity Framework güncelleştirme
+#### <a name="updating-database-records-with-the-entity-framework"></a>Veritabanı Kayıtlarını Varlık Çerçevesi ile Güncelleştirme
 
-Yeni bir veritabanı kaydı eklemek istediğimiz yaklaşımda, bir veritabanı kaydını Entity Framework düzenlemek için neredeyse aynı yaklaşımı izleyebilirsiniz. 4\. liste, Edit () adlı iki yeni denetleyici eylemi içerir. İlk düzenleme () eylemi, bir film kaydını düzenlemek için bir HTML formu döndürür. İkinci düzenleme () eylemi veritabanını güncelleştirmeye çalışır.
+Yeni bir veritabanı kaydı eklemek için izlediğimiz yaklaşım olarak Varlık Çerçevesi ile bir veritabanı kaydını yeniden oluşturmak için hemen hemen aynı yaklaşımı uygulayabilirsiniz. Listeleme 4, Edit() adlı iki yeni denetleyici eylemi içerir. İlk Edit() eylemi, bir film kaydını düzenlemek için bir HTML formu döndürür. İkinci Edit() eylemi veritabanını güncelleştirmeye çalışır.
 
-**Listeleme 4 – Controllers\HomeController.cs (düzenleme yöntemleri)**
+**Listeleme 4 – Denetleyiciler\HomeController.cs (Edit yöntemleri)**
 
 [!code-csharp[Main](creating-model-classes-with-the-entity-framework-cs/samples/sample6.cs)]
 
-İkinci düzenleme () eylemi, düzenlenmekte olan filmin kimliğiyle eşleşen veritabanından film kaydını alarak başlatılır. Aşağıdaki LINQ to Entities deyimleri, belirli bir kimlikle eşleşen ilk veritabanı kaydını ifade eden:
+İkinci Edit() eylemi, düzenlenen filmin kimliğiyle eşleşen veritabanından Film kaydını alarak başlar. Aşağıdaki LINQ to Ntities deyimi, belirli bir Id ile eşleşen ilk veritabanı kaydını kaplar:
 
 [!code-csharp[Main](creating-model-classes-with-the-entity-framework-cs/samples/sample7.cs)]
 
-Ardından, HTML form alanlarının değerlerini film varlığının özelliklerine atamak için TryUpdateModel () yöntemi kullanılır. Güncelleştirilecek özelliklerin tam olarak belirtilmesi için bir beyaz liste sağlandığına dikkat edin.
+Daha sonra, TryUpdateModel() yöntemi, HTML form alanlarının değerlerini film varlığının özelliklerine atamak için kullanılır. Güncelleştirilen tam özellikleri belirtmek için beyaz bir liste sağlandığına dikkat edin.
 
-Daha sonra, hem film başlığının hem de yönetmen özelliklerinin değerleri olduğunu doğrulamak için bazı basit doğrulama gerçekleştirilir. Herhangi bir özellikte bir değer eksikse, ModelState ve ModelState 'e bir doğrulama hata iletisi eklenir. IsValid, false değerini döndürür.
+Ardından, hem Film Başlığı hem de Yönetmen özelliklerinin değerleri olduğunu doğrulamak için bazı basit doğrulama gerçekleştirilir. Her iki özellikte de bir değer eksikse, ModelState'e bir doğrulama hatası iletisi eklenir ve ModelState.IsValid değeri yanlış döndürür.
 
-Son olarak, doğrulama hatası yoksa, temeldeki filmler veritabanı tablosu, SaveChanges () yöntemi çağırarak herhangi bir değişiklikle güncellenir.
+Son olarak, doğrulama hatası yoksa, temel Filmler veritabanı tablosu SaveChanges() yöntemini arayarak değişikliklerle güncelleştirilir.
 
-Veritabanı kayıtlarını düzenlediğinizde, düzenlenmekte olan kaydın kimliğini veritabanı güncelleştirmesini gerçekleştiren denetleyici eylemine geçirmeniz gerekir. Aksi takdirde, denetleyici eylemi temel alınan veritabanında hangi kaydın güncelleşeceğimizi bilmez. 5\. listede yer alan düzenleme görünümü, düzenlenmekte olan veritabanı kaydının kimliğini temsil eden bir gizli form alanı içerir.
+Veritabanı kayıtlarını düzenlerken, düzenlenen kaydın kimliğini veritabanı güncelleştirmesini gerçekleştiren denetleyici eylemine geçirmeniz gerekir. Aksi takdirde, denetleyici eylem altta yatan veritabanında güncelleştirmek için hangi kayıt bilemez. Listeleme 5'te yer alan Düzenle görünümü, düzenlenen veritabanı kaydının Kimliğini temsil eden gizli bir form alanı içerir.
 
-**Listeleme 5 – Views\Home\Edit.aspx**
+**Listeleme 5 – Görünümler\Ana Sayfa\Edit.aspx**
 
 [!code-aspx[Main](creating-model-classes-with-the-entity-framework-cs/samples/sample8.aspx)]
 
-## <a name="deleting-database-records-with-the-entity-framework"></a>Entity Framework ile veritabanı kayıtlarını silme
+## <a name="deleting-database-records-with-the-entity-framework"></a>Veritabanı Kayıtlarını Varlık Çerçevesi ile Silme
 
-Bu öğreticide yer açmanız gereken son veritabanı işlemi veritabanı kayıtlarını siliyor. Belirli bir veritabanı kaydını silmek için, liste 6 ' daki denetleyici eylemini kullanabilirsiniz.
+Bu öğreticide ele almamız gereken son veritabanı işlemi veritabanı kayıtlarını siler. Belirli bir veritabanı kaydını silmek için Listeleme 6'daki denetleyici eylemini kullanabilirsiniz.
 
-**Liste 6--\Controllers\HomeController.cs (silme eylemi)**
+**Listeleme 6 -- \Controllers\HomeController.cs (Eylemi sil)**
 
 [!code-csharp[Main](creating-model-classes-with-the-entity-framework-cs/samples/sample9.cs)]
 
-Delete () eylemi önce eyleme geçirilen kimlikle eşleşen film varlığını alır. Daha sonra, DeleteObject () yöntemi ve ardından SaveChanges () yöntemi çağırarak film veritabanından silinir. Son olarak, Kullanıcı dizin görünümüne yeniden yönlendirilir.
+Sil() eylemi önce eyleme geçen Id ile eşleşen Film varlığını alır. Daha sonra film, DeleteObject() yöntemini ve ardından SaveChanges() yöntemini arayarak veritabanından silinir. Son olarak, kullanıcı Dizin görünümüne geri yönlendirilir.
 
 ## <a name="summary"></a>Özet
 
-Bu öğreticinin amacı, ASP.NET MVC ve Microsoft Entity Framework avantajlarından yararlanarak veritabanı odaklı web uygulamaları nasıl oluşturacağınızı göstermektir. Veritabanı kayıtlarını seçmenizi, eklemenizi, güncelleştirmenizi ve silmenizi sağlayan bir uygulama oluşturmayı öğrendiniz.
+Bu öğreticinin amacı, mvc ve Microsoft Entity Framework ASP.NET yararlanarak veritabanı tabanlı web uygulamaları nasıl oluşturabileceğinizi göstermekti. Veritabanı kayıtlarını seçmenizi, eklemenizi, güncelleştirmenizi ve silmenizi sağlayan bir uygulamayı nasıl oluşturabileceğinizi öğrendiniz.
 
-İlk olarak, Visual Studio içinden bir Varlık Veri Modeli oluşturmak için Varlık Veri Modeli Sihirbazı 'nı nasıl kullanabileceğinizi tartıştık. Daha sonra, bir veritabanı tablosundan veritabanı kayıtları kümesini almak için LINQ to Entities kullanmayı öğreneceksiniz. Son olarak, veritabanı kayıtlarını eklemek, güncelleştirmek ve silmek için Entity Framework kullandık.
+İlk olarak, Visual Studio içinden bir Varlık Veri Modeli oluşturmak için Varlık Veri Modeli Sihirbazı'nı nasıl kullanabileceğinizi tartıştık. Ardından, bir veritabanı tablosundan bir veritabanı kaydı kümesi almak için LINQ to Ntities'ı nasıl kullanacağınızı öğrenirsiniz. Son olarak, veritabanı kayıtlarını eklemek, güncelleştirmek ve silmek için Varlık Çerçevesi'ni kullandık.
 
 > [!div class="step-by-step"]
-> [Next](creating-model-classes-with-linq-to-sql-cs.md)
+> [Sonraki](creating-model-classes-with-linq-to-sql-cs.md)

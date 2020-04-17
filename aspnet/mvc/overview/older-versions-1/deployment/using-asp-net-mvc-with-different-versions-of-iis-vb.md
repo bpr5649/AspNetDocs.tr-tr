@@ -1,213 +1,213 @@
 ---
 uid: mvc/overview/older-versions-1/deployment/using-asp-net-mvc-with-different-versions-of-iis-vb
-title: ASP.NET MVC 'yi farklı IIS sürümleriyle kullanma (VB) | Microsoft Docs
-author: microsoft
-description: Bu öğreticide, farklı Internet Information Services sürümleriyle ASP.NET MVC ve URL yönlendirmeyi nasıl kullanacağınızı öğreneceksiniz. Farklı stratejiler öğrenirsiniz...
+title: IIS (VB) Farklı Sürümleri ile ASP.NET MVC kullanma | Microsoft Dokümanlar
+author: rick-anderson
+description: Bu eğitimde, Internet Bilgi Hizmetleri'nin farklı sürümleriyle ASP.NET MVC ve URL Yönlendirme'yi nasıl kullanacağınızı öğreneceksiniz. Farklı stratejiler öğreniyorsunuz...
 ms.author: riande
 ms.date: 08/19/2008
 ms.assetid: 1c1283b2-6956-4937-b568-d30de432ce23
 msc.legacyurl: /mvc/overview/older-versions-1/deployment/using-asp-net-mvc-with-different-versions-of-iis-vb
 msc.type: authoredcontent
-ms.openlocfilehash: b754175c853c20eec6be3521376b62d62f33106d
-ms.sourcegitcommit: e7e91932a6e91a63e2e46417626f39d6b244a3ab
+ms.openlocfilehash: 5e04ae14026e6d5dd1e603be6c52ff6876a468cf
+ms.sourcegitcommit: 022f79dbc1350e0c6ffaa1e7e7c6e850cdabf9af
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/06/2020
-ms.locfileid: "78581839"
+ms.lasthandoff: 04/17/2020
+ms.locfileid: "81542007"
 ---
 # <a name="using-aspnet-mvc-with-different-versions-of-iis-vb"></a>ASP.NET MVC’yi Farklı IIS Sürümleriyle Kullanma (VB)
 
 [Microsoft](https://github.com/microsoft) tarafından
 
-> Bu öğreticide, farklı Internet Information Services sürümleriyle ASP.NET MVC ve URL yönlendirmeyi nasıl kullanacağınızı öğreneceksiniz. IIS 7,0 (klasik mod), IIS 6,0 ve IIS 'nin önceki sürümleriyle ASP.NET MVC 'yi kullanmak için farklı stratejiler öğrenirsiniz.
+> Bu eğitimde, Internet Bilgi Hizmetleri'nin farklı sürümleriyle ASP.NET MVC ve URL Yönlendirme'yi nasıl kullanacağınızı öğreneceksiniz. IIS 7.0 (klasik mod), IIS 6.0 ve IIS'nin önceki sürümleriyle ASP.NET MVC'yi kullanmak için farklı stratejiler öğrenirsiniz.
 
-ASP.NET MVC Framework, tarayıcı isteklerini denetleyici eylemlerine yönlendirmek için ASP.NET yönlendirmeye bağımlıdır. ASP.NET yönlendirmenin avantajlarından yararlanabilmek için Web sunucunuzda ek yapılandırma adımları gerçekleştirmeniz gerekebilir. Hepsi, uygulamanız için Internet Information Services (IIS) sürümüne ve istek işleme moduna bağlıdır.
+ASP.NET MVC çerçevesi, tarayıcı isteklerini denetleyici eylemlere yönlendirmek için yönlendirme ASP.NET yönlendirmesine bağlıdır. yönlendirmeASP.NET yararlanmak için web sunucunuzda ek yapılandırma adımları gerçekleştirmeniz gerekebilir. Her şey Internet Information Services (IIS) sürümüne ve uygulamanız için istek işleme moduna bağlıdır.
 
-Farklı IIS sürümlerinin özeti aşağıda verilmiştir:
+IIS'nin farklı sürümlerinin bir özeti aşağıda veda edebilirsiniz:
 
-- IIS 7,0 (tümleşik mod)-ASP.NET yönlendirmeyi kullanmak için özel yapılandırma gerekmez.
-- IIS 7,0 (klasik mod)-ASP.NET yönlendirmeyi kullanmak için özel yapılandırma gerçekleştirmeniz gerekir.
-- IIS 6,0 veya altı-ASP.NET Routing kullanmak için özel yapılandırma gerçekleştirmeniz gerekir.
+- IIS 7.0 (entegre mod) - ASP.NET Yönlendirme'yi kullanmak için özel bir yapılandırma gerekmez.
+- IIS 7.0 (klasik mod) - Yönlendirme ASP.NET kullanmak için özel yapılandırma yapmanız gerekir.
+- IIS 6.0 veya altında - ASP.NET Yönlendirme'yi kullanmak için özel yapılandırma yapmanız gerekir.
 
-En son IIS sürümü 7,5 sürümüdür (Win7). IIS 7 IIS, Windows Server 2008 ve VISTA/SP1 ve üzeri sürümlerde bulunur. Ayrıca, Home Basic dışında Vista işletim sisteminin herhangi bir sürümüne IIS 7,0 ' ü yükleyebilirsiniz (bkz. [https://technet.microsoft.com/library/cc731179%28WS.10%29.aspx](https://technet.microsoft.com/library/cc731179%28WS.10%29.aspx)).
+IIS en son sürümü sürüm 7.5 (Win7) olduğunu. IIS 7 IIS Windows Server 2008 VE VISTA/SP1 ve üstü ile birlikte verilir. Ayrıca IIS 7.0'ı Home Basic dışında Vista işletim sisteminin [https://technet.microsoft.com/library/cc731179%28WS.10%29.aspx](https://technet.microsoft.com/library/cc731179%28WS.10%29.aspx)herhangi bir sürümüne yükleyebilirsiniz (bkz.
 
-IIS 7,0, istekleri işlemek için iki modu destekler. Tümleşik mod veya klasik mod kullanabilirsiniz. Tümleşik modda IIS 7,0 kullanırken özel yapılandırma adımları gerçekleştirmeniz gerekmez. Ancak, Klasik modda IIS 7,0 kullanırken ek yapılandırma gerçekleştirmeniz gerekir.
+IIS 7.0, istekleri işlemek için iki modu destekler. Tümleşik modu veya klasik modu kullanabilirsiniz. Entegre modunda IIS 7.0 kullanırken özel yapılandırma adımları gerçekleştirmeniz gerekmez. Ancak, iis 7.0'ı klasik modda kullanırken ek yapılandırma gerçekleştirmeniz gerekir.
 
-Microsoft Windows Server 2003, IIS 6,0 içerir. Windows Server 2003 işletim sistemini kullanırken IIS 6,0 ' i IIS 7,0 ' e yükseltemezsiniz. IIS 6,0 kullanırken ek yapılandırma adımları gerçekleştirmeniz gerekir.
+Microsoft Windows Server 2003 IIS 6.0 içerir. Windows Server 2003 işletim sistemini kullanırken IIS 6.0'ı IIS 7.0'a yükseltemezsiniz. IIS 6.0 kullanırken ek yapılandırma adımları gerçekleştirmeniz gerekir.
 
-Microsoft Windows XP Professional, IIS 5,1 içerir. IIS 5,1 kullanırken ek yapılandırma adımları gerçekleştirmeniz gerekir.
+Microsoft Windows XP Professional, IIS 5.1 içerir. IIS 5.1 kullanırken ek yapılandırma adımları gerçekleştirmeniz gerekir.
 
-Son olarak, Microsoft Windows 2000 ve Microsoft Windows 2000 Professional, IIS 5,0 içerir. IIS 5,0 kullanırken ek yapılandırma adımları gerçekleştirmeniz gerekir.
+Son olarak, Microsoft Windows 2000 ve Microsoft Windows 2000 Professional IIS 5.0 içerir. IIS 5.0 kullanırken ek yapılandırma adımları gerçekleştirmeniz gerekir.
 
-## <a name="integrated-versus-classic-mode"></a>Klasik ve klasik moda karşı
+## <a name="integrated-versus-classic-mode"></a>Entegre karşı Klasik Mod
 
-IIS 7,0, istekleri iki farklı istek işleme modu kullanarak işleyebilir: tümleşik ve klasik. Tümleşik mod daha iyi performans ve daha fazla özellik sağlar. Klasik mod, önceki IIS sürümleriyle geriye dönük uyumluluk için eklenmiştir.
+IIS 7.0, iki farklı istek işleme modunu kullanarak istekleri işleyebilir: tümleşik ve klasik. Tümleşik mod daha iyi performans ve daha fazla özellik sağlar. Klasik mod, IIS'nin önceki sürümleriyle geriye dönük uyumluluk için dahildir.
 
-İstek işleme modu, uygulama havuzu tarafından belirlenir. Uygulamayla ilişkili uygulama havuzunu belirleyerek belirli bir Web uygulaması tarafından hangi işleme modunun kullanıldığını belirleyebilirsiniz. Aşağıdaki adımları uygulayın:
+İstek işleme modu uygulama havuzu tarafından belirlenir. Uygulamayla ilişkili uygulama havuzunu belirleyerek belirli bir web uygulaması tarafından hangi işlem modunun kullanıldığını belirleyebilirsiniz. Şu adımları uygulayın:
 
-1. Internet Information Services Yöneticisini başlatın
-2. Bağlantılar penceresinde bir uygulama seçin
-3. Eylemler penceresinde, **temel ayarlar** bağlantısına tıklayarak uygulamayı Düzenle iletişim kutusunu açın (bkz. Şekil 1)
-4. Seçili uygulama havuzunu bir yere göz atın.
+1. İnternet Bilgi Hizmetleri Yöneticisi'ni Başlatın
+2. Bağlantılar penceresinde, bir uygulama seçin
+3. Eylemler penceresinde, Uygulamayı Edit iletişim kutusunu açmak için **Temel Ayarlar** bağlantısını tıklatın (Bkz. Şekil 1)
+4. Seçilen Uygulama havuzuna dikkat edin.
 
-IIS, varsayılan olarak iki uygulama havuzunu destekleyecek şekilde yapılandırılmıştır: **DefaultAppPool** ve **Klasik .NET AppPool**. DefaultAppPool seçilirse, uygulamanız tümleşik istek işleme modunda çalışır. Klasik .NET AppPool seçilirse, uygulamanız klasik istek işleme modunda çalışmaktadır.
+Varsayılan olarak, IIS iki uygulama havuzudesteklemek için yapılandırılmıştır: **DefaultAppPool** ve **Classic .NET AppPool**. DefaultAppPool seçilirse, uygulamanız tümleşik istek işleme modunda çalışır. Klasik .NET AppPool seçilirse, uygulamanız klasik istek işleme modunda çalışır.
 
-[Yeni proje iletişim kutusunu ![](using-asp-net-mvc-with-different-versions-of-iis-vb/_static/image1.jpg)](using-asp-net-mvc-with-different-versions-of-iis-vb/_static/image1.png)
+[![Yeni Proje iletişim kutusu](using-asp-net-mvc-with-different-versions-of-iis-vb/_static/image1.jpg)](using-asp-net-mvc-with-different-versions-of-iis-vb/_static/image1.png)
 
-**Şekil 1**: istek işleme modu algılanıyor ([tam boyutlu görüntüyü görüntülemek için tıklayın](using-asp-net-mvc-with-different-versions-of-iis-vb/_static/image2.png))
+**Şekil 1**: İstek işleme modunu algılama ([Tam boyutlu görüntüyü görüntülemek için tıklayınız](using-asp-net-mvc-with-different-versions-of-iis-vb/_static/image2.png))
 
-İstek işleme modunu, uygulamayı Düzenle iletişim kutusunda değiştirebildiğinize dikkat edin. Seç düğmesine tıklayın ve uygulamayla ilişkili uygulama havuzunu değiştirin. ASP.NET uygulamasını klasik moddan tümleşik moda değiştirirken uyumluluk sorunları olduğunu unutmayın. Daha fazla bilgi için aşağıdaki makalelere bakın:
+Uygulamayı Edit iletişim kutusundaki istek işleme modunu değiştirebileceğinize dikkat edin. Seç düğmesini tıklatın ve uygulamayla ilişkili uygulama havuzunu değiştirin. bir ASP.NET uygulamasını klasikmoddan tümleşik moduna değiştirirken uyumluluk sorunları olduğunu fark edin. Daha fazla bilgi için aşağıdaki makalelere bakın:
 
-- ASP.NET 1,1 'i Windows Vista ve Windows Server 2008 'de IIS 7,0 'ye yükseltme-- [https://www.iis.net/learn/application-frameworks/building-and-running-aspnet-applications/upgrading-aspnet-11-to-iis-on-windows-vista-and-windows-server-2008](https://www.iis.net/learn/application-frameworks/building-and-running-aspnet-applications/upgrading-aspnet-11-to-iis-on-windows-vista-and-windows-server-2008)
+- Windows Vista ve Windows Server 2008'de ASP.NET 1.1'i IIS 7.0'a yükseltme --[https://www.iis.net/learn/application-frameworks/building-and-running-aspnet-applications/upgrading-aspnet-11-to-iis-on-windows-vista-and-windows-server-2008](https://www.iis.net/learn/application-frameworks/building-and-running-aspnet-applications/upgrading-aspnet-11-to-iis-on-windows-vista-and-windows-server-2008)
 
-- ASP.NET Integration with IIS 7,0- [https://www.iis.net/learn/application-frameworks/building-and-running-aspnet-applications/aspnet-integration-with-iis](https://www.iis.net/learn/application-frameworks/building-and-running-aspnet-applications/aspnet-integration-with-iis)
+- iis 7.0 ile ASP.NET Entegrasyonu -[https://www.iis.net/learn/application-frameworks/building-and-running-aspnet-applications/aspnet-integration-with-iis](https://www.iis.net/learn/application-frameworks/building-and-running-aspnet-applications/aspnet-integration-with-iis)
 
-Bir ASP.NET uygulaması DefaultAppPool kullanıyorsa, ASP.NET yönlendirme (ve bu nedenle ASP.NET MVC) almak için ek adımlar gerçekleştirmeniz gerekmez. Ancak, ASP.NET uygulaması klasik .NET AppPool 'ı kullanacak şekilde yapılandırıldıysa, daha fazla işe devam edebilirsiniz.
+ASP.NET bir uygulama DefaultAppPool kullanıyorsa, ASP.NET Yönlendirmesi'ni (ve dolayısıyla MVC'yi ASP.NET) işe almak için ek adımlar gerçekleştirmeniz gerekmez. Ancak, ASP.NET uygulaması Classic .NET AppPool'u kullanacak şekilde yapılandırılırsa okumaya devam edin, yapmanız gereken daha çok iş var.
 
-## <a name="using-aspnet-mvc-with-older-versions-of-iis"></a>Daha eski IIS sürümleriyle ASP.NET MVC kullanma
+## <a name="using-aspnet-mvc-with-older-versions-of-iis"></a>IIS'nin Eski Sürümleriyle ASP.NET MVC kullanma
 
-IIS 7,0 ' den daha eski bir IIS sürümüyle ASP.NET MVC kullanmanız gerekiyorsa veya IIS 7,0 ' nı Klasik modda kullanmanız gerekiyorsa, iki seçeneğiniz vardır. İlk olarak, yol tablosunu dosya uzantılarını kullanacak şekilde değiştirebilirsiniz. Örneğin,/Store/Details gibi bir URL istemek yerine,/Store.exe gibi bir URL istemeniz gerekir.
+IIS 7.0'dan daha eski bir IIS sürümüyle ASP.NET MVC kullanmanız gerekiyorsa veya Klasik modda IIS 7.0 kullanmanız gerekiyorsa, iki seçeneğiniz var demektir. İlk olarak, dosya uzantılarını kullanmak için rota tablosunu değiştirebilirsiniz. Örneğin, /Store/Details gibi bir URL istemek yerine, /Store.aspx/Details gibi bir URL istersiniz.
 
-İkinci seçenek *joker karakter betik eşlemesi*adlı bir şey oluşturmaktır. Joker karakter betik eşlemesi, her isteği ASP.NET çerçevesine eşlemenizi sağlar.
+İkinci seçenek *joker karakter komut dosyası eşlemi*olarak adlandırılan bir şey oluşturmaktır. Joker karakter komut dosyası eşlemi, her isteği ASP.NET çerçeveye dönüştürmenizi sağlar.
 
-Web sunucunuza erişiminiz yoksa (örneğin, ASP.NET MVC uygulamanız bir Internet hizmeti sağlayıcısı tarafından barındırılıyorsa), ilk seçeneği kullanmanız gerekir. URL 'nizin görünümünü değiştirmek istemiyorsanız ve Web sunucunuza erişiminiz varsa, ikinci seçeneği kullanabilirsiniz.
+Web sunucunuza erişiminiz yoksa (örneğin, ASP.NET MVC uygulamanız bir Internet Servis Sağlayıcısı tarafından barındırılıyorsa) ilk seçeneği kullanmanız gerekir. URL'lerinizin görünümünü değiştirmek istemiyorsanız ve web sunucunuza erişiminiz varsa, ikinci seçeneği kullanabilirsiniz.
 
-Her bir seçeneği aşağıdaki bölümlerde ayrıntılı olarak araştırıyoruz.
+Her seçeneği aşağıdaki bölümlerde ayrıntılı olarak inceleyeceğiz.
 
-## <a name="adding-extensions-to-the-route-table"></a>Yol tablosuna uzantı ekleme
+## <a name="adding-extensions-to-the-route-table"></a>Rota Tablosuna Uzantı Ekleme
 
-Daha eski IIS sürümleriyle çalışmak için ASP.NET yönlendirme almanın en kolay yolu, Global. asax dosyasındaki yol tablonuzu değiştirmektir. Listeleme 1 ' deki varsayılan ve değiştirilmemiş Global. asax dosyası varsayılan yol adlı bir yolu yapılandırır.
+ASP.NET Yönlendirme'yi IIS'nin eski sürümleriyle çalışmaya almanın en kolay yolu, Global.asax dosyasındaki rota tablonuzu değiştirmektir. Listeleme 1'deki varsayılan ve değiştirilmemiş Global.asax dosyası Varsayılan rota adlı bir rotayı yapılandırır.
 
-**Listeleme 1-Global. asax (değiştirilmemiş)**
+**Listeleme 1 - Global.asax (değiştirilmemiş)**
 
 [!code-vb[Main](using-asp-net-mvc-with-different-versions-of-iis-vb/samples/sample1.vb)]
 
-Liste 1 ' de yapılandırılan varsayılan yol, aşağıdaki gibi görünen URL 'Leri yönlendirmenizi sağlar:
+Listeleme 1'de yapılandırılan Varsayılan rota, aşağıdaki gibi görünen URL'leri yönlendirmenize olanak tanır:
 
-/Home/Index
+/Ana Sayfa/Dizin
 
-/Product/Details/3
+/Ürün/Ayrıntılar/3
 
 /Ürün
 
-Ne yazık ki IIS 'nin daha eski sürümleri bu istekleri ASP.NET çerçevesine geçirmez. Bu nedenle, bu istekler bir denetleyiciye yönlendirilmez. Örneğin,/Home/Index URL 'SI için bir tarayıcı isteği yaparsanız, Şekil 2 ' de hata sayfasını alırsınız.
+Ne yazık ki, IIS'nin eski sürümleri bu istekleri ASP.NET çerçevesine aktarmaz. Bu nedenle, bu istekler bir denetleyiciye yönlendirilemez. Örneğin, URL /Ev/Dizin için bir tarayıcı isteği nde bulunduysanız, Şekil 2'deki hata sayfasını alırsınız.
 
-[Yeni proje iletişim kutusunu ![](using-asp-net-mvc-with-different-versions-of-iis-vb/_static/image2.jpg)](using-asp-net-mvc-with-different-versions-of-iis-vb/_static/image3.png)
+[![Yeni Proje iletişim kutusu](using-asp-net-mvc-with-different-versions-of-iis-vb/_static/image2.jpg)](using-asp-net-mvc-with-different-versions-of-iis-vb/_static/image3.png)
 
-**Şekil 2**: 404 olmayan bir hata alma ([tam boyutlu görüntüyü görüntülemek için tıklayın](using-asp-net-mvc-with-different-versions-of-iis-vb/_static/image4.png))
+**Şekil 2**: 404 Bulunamadı hatası alma ([Tam boyutlu görüntüyü görüntülemek için tıklayınız](using-asp-net-mvc-with-different-versions-of-iis-vb/_static/image4.png))
 
-Daha eski IIS sürümleri yalnızca belirli istekleri ASP.NET çerçevesine eşler. İstek, doğru dosya uzantısına sahip bir URL için olmalıdır. Örneğin,/SomePage.aspx için bir istek ASP.NET çerçevesine eşlenir. Ancak,/SomePage.htm için bir istek değildir.
+IIS'nin eski sürümleri yalnızca belirli istekleri ASP.NET çerçeveyle eşler. İstek, doğru dosya uzantısına sahip bir URL için olmalıdır. Örneğin, /SomePage.aspx için bir istek ASP.NET çerçevesine eşlenir. Ancak, /SomePage.htm için bir istek yok.
 
-Bu nedenle, ASP.NET yönlendirmenin çalışmasını sağlamak için, varsayılan yolu ASP.NET çerçevesine eşlenmiş bir dosya uzantısı içerecek şekilde değiştirmemiz gerekir.
+Bu nedenle, ASP.NET Yönlendirme'nin çalışması için Varsayılan rotayı, ASP.NET çerçevesine eşlenen bir dosya uzantısı içerecek şekilde değiştirmemiz gerekir.
 
-Bu, `registermvc.wsf`adlı bir komut dosyası kullanılarak yapılır. Bu, `C:\Program Files\Microsoft ASP.NET\ASP.NET MVC\Scripts`'de ASP.NET MVC 1 sürümüne eklenmiştir, ancak ASP.NET 2 ' den itibaren bu betik [http://aspnet.codeplex.com/releases/view/39978](http://aspnet.codeplex.com/releases/view/39978)adresinde bulunan ASP.NET Futures 'a taşınmıştır.
+Bu, ". `registermvc.wsf` Bu ASP.NET MVC 1 sürümü ile `C:\Program Files\Microsoft ASP.NET\ASP.NET MVC\Scripts`dahil edildi , ama ASP.NET 2 bu komut dosyası [http://aspnet.codeplex.com/releases/view/39978](http://aspnet.codeplex.com/releases/view/39978)ASP.NET Futures taşındı, kullanılabilir .
 
-Bu betiği yürütmek, IIS ile yeni bir. Mvc uzantısını kaydeder. . Mvc uzantısını kaydettikten sonra, yolların. Mvc uzantısını kullanması için Global. asax dosyasındaki rotalarınızı değiştirebilirsiniz.
+Bu komut dosyasının yürütülmesi IIS ile yeni bir .mvc uzantısı kaydeder. .mvc uzantısını kaydettikten sonra, global.asax dosyasındaki rotalarınızı değiştirerek yolların .mvc uzantısını kullanmasını sağlayabilirsiniz.
 
-Listeleme 2 ' de değiştirilen Global. asax dosyası IIS 'in eski sürümleriyle birlikte çalışmaktadır.
+Listeleme 2'deki değiştirilmiş Global.asax dosyası IIS'nin eski sürümleriyle çalışır.
 
-**Listeleme 2-Global. asax (uzantılara göre değiştirilmiş)**
+**Listeleme 2 - Global.asax (uzantılarla değiştirilmiş)**
 
 [!code-vb[Main](using-asp-net-mvc-with-different-versions-of-iis-vb/samples/sample2.vb)]
 
-Önemli: Global. asax dosyasını değiştirdikten sonra ASP.NET MVC uygulamanızı derlemeyi unutmayın.
+Önemli: Global.asax dosyasını değiştirdikten sonra ASP.NET MVC Uygulamanızı yeniden oluşturmayı unutmayın.
 
-Liste 2 ' deki Global. asax dosyasında iki önemli değişiklik vardır. Artık Global. asax içinde tanımlanmış iki yol vardır. Varsayılan yolun URL 'SI, ilk yol, şu şekilde görünür:
+Listeleme 2'de Global.asax dosyasında iki önemli değişiklik vardır. Global.asax'ta tanımlanmış iki güzergah var. Varsayılan rotanın URL deseni, ilk rota şimdi aşağıdaki gibi görünüyor:
 
 {controller}.mvc/{action}/{id}
 
-. Mvc uzantısının eklenmesi, ASP.NET yönlendirme modülünün kesmesinin aldığı dosya türünü değiştirir. Bu değişiklik ile, ASP.NET MVC uygulaması şu şekilde istekleri yönlendirir:
+.mvc uzantısının eklenmesi, ASP.NET Yönlendirme modülünün engellenebilen dosya türünü değiştirir. Bu değişiklikle, ASP.NET MVC uygulaması artık aşağıdaki gibi istekleri yönlendirir:
 
 /Home.mvc/Index/
 
-/Product.mvc/Details/3
+/Product.mvc/Ayrıntılar/3
 
-/Product.exe Mvc/
+/Ürün.mvc/
 
-İkinci yol, kök yolu yenidir. Kök yolu için bu URL stili boş bir dizedir. Bu yol, uygulamanızın kökünde yapılan eşleşen istekler için gereklidir. Örneğin, kök yolu şuna benzer bir istekle eşleşir:
+İkinci rota, Kök rotası, yeni. Kök rotası için bu URL deseni boş bir dizedir. Bu yol, uygulamanızın köküne göre yapılan istekleri eşleştirmek için gereklidir. Örneğin, Kök yolu aşağıdaki gibi görünen bir istekle eşleşir:
 
 [http://www.YourApplication.com/](http://www.YourApplication.com/)
 
-Yol tablonuzda bu değişiklikleri yaptıktan sonra, uygulamanızdaki tüm bağlantıların bu yeni URL desenleriyle uyumlu olduğundan emin olmanız gerekir. Diğer bir deyişle, tüm bağlantılarınızın. Mvc uzantısını içerdiğinden emin olun. Bağlantılarınızı oluşturmak için HTML. ActionLink () yardımcı yöntemini kullanırsanız, herhangi bir değişiklik yapmanız gerekmez.
+Rota tablonuzda bu değişiklikleri yaptıktan sonra, uygulamanızdaki tüm bağlantıların bu yeni URL desenleri ile uyumlu olduğundan emin olmanız gerekir. Başka bir deyişle, tüm bağlantılarınızın .mvc uzantısını içerdiğinden emin olun. Bağlantılarınızı oluşturmak için Html.ActionLink() yardımcı yöntemini kullanıyorsanız, herhangi bir değişiklik yapmanız gerekmez.
 
-Registermvc. WCF betiğini kullanmak yerine, el ile ASP.NET Framework 'e eşlenmiş bir IIS 'e yeni bir uzantı ekleyebilirsiniz. Yeni bir uzantı eklerken, **dosyayı doğrula** etiketli onay kutusunun işaretli olmadığından emin olun.
+Registermvc.wcf komut dosyasını kullanmak yerine, IIS'ye ASP.NET çerçevesine elle eşlenen yeni bir uzantı ekleyebilirsiniz. Kendiniz yeni bir uzantı eklerken, **dosyanın var olduğunu doğrula** etiketli onay kutusunun işaretlenmediğinden emin olun.
 
-## <a name="hosted-server"></a>Barındırılan sunucu
+## <a name="hosted-server"></a>Barındırılan Sunucu
 
-Web sunucunuza her zaman erişemezsiniz. Örneğin, ASP.NET MVC uygulamanızı bir Internet barındırma sağlayıcısı kullanarak barındırıyorsanız, IIS 'ye erişiminizin olması gerekmez.
+Web sunucunuza her zaman erişiminiz yoktur. Örneğin, bir Internet Barındırma Sağlayıcısı kullanarak ASP.NET MVC uygulamanızı barındırırsanız, IIS'ye mutlaka erişiminiz gerekmez.
 
-Bu durumda, ASP.NET çerçevesine eşlenmiş mevcut dosya uzantılarından birini kullanmalısınız. ASP.NET ile eşlenen dosya uzantılarına örnek olarak. aspx,. axd ve. ashx uzantıları verilebilir.
+Bu durumda, ASP.NET çerçevesine eşlenen varolan dosya uzantılarından birini kullanmanız gerekir. ASP.NET eşlenen dosya uzantılarına örnek olarak .aspx, .axd ve .ashx uzantıları verilebilir.
 
-Örneğin, Listeleme 3 ' teki değiştirilen Global. asax dosyası. Mvc uzantısı yerine. aspx uzantısını kullanır.
+Örneğin, Listeleme 3'teki değiştirilmiş Global.asax dosyası .mvc uzantısı yerine .aspx uzantısını kullanır.
 
-**Listeleme 3-Global. asax (. aspx uzantıları ile değiştirilmiş)**
+**Listeleme 3 - Global.asax (.aspx uzantıları ile değiştirildi)**
 
 [!code-vb[Main](using-asp-net-mvc-with-different-versions-of-iis-vb/samples/sample3.vb)]
 
-Listeleme 3 ' teki Global. asax dosyası,. Mvc uzantısı yerine. aspx uzantısını kullanması dışında, önceki Global. asax dosyasıyla tamamen aynıdır. . Aspx uzantısını kullanmak için uzak Web sunucunuzda herhangi bir kurulum gerçekleştirmeniz gerekmez.
+Listeleme 3'teki Global.asax dosyası, .mvc uzantısı yerine .aspx uzantısını kullanması dışında önceki Global.asax dosyasıyla tamamen aynıdır. .aspx uzantısını kullanmak için uzak web sunucunuzda herhangi bir kurulum gerçekleştirmeniz gerekmez.
 
-## <a name="creating-a-wildcard-script-map"></a>Joker karakter betik eşlemesi oluşturma
+## <a name="creating-a-wildcard-script-map"></a>Joker Karakter Komut Dosyası Haritası Oluşturma
 
-ASP.NET MVC uygulamanız için URL 'Leri değiştirmek istemiyorsanız ve Web sunucunuza erişiminiz varsa, ek bir seçeneğiniz vardır. Web sunucusuna yapılan tüm istekleri ASP.NET Framework ile eşleyen bir joker karakter betik eşlemesi oluşturabilirsiniz. Bu şekilde, varsayılan ASP.NET MVC yol tablosunu IIS 7,0 (Klasik modda) veya IIS 6,0 ile kullanabilirsiniz.
+URL'leri ASP.NET MVC uygulamanız için değiştirmek istemiyorsanız ve web sunucunuza erişiminiz varsa, ek bir seçeneğiniz vardır. Web sunucusundaki tüm istekleri ASP.NET çerçeveyle eşleyen bir joker karakter komut dosyası eşlenebebilirsiniz. Bu şekilde, Varsayılan ASP.NET MVC rota tablosunu IIS 7.0 (klasik modda) veya IIS 6.0 ile kullanabilirsiniz.
 
-Bu seçeneğin, IIS 'nin Web sunucusunda yapılan her isteği ele almasına neden olduğunu unutmayın. Bu, görüntülerin, klasik ASP sayfalarının ve HTML sayfalarının isteklerini içerir. Bu nedenle, ASP.NET için joker karakter betik eşlemesinin etkinleştirilmesi performansı etkiler.
+Bu seçeneğin IIS'nin web sunucusuna karşı yapılan her isteği engellemesine neden olduğunu unutmayın. Buna resimler, klasik ASP sayfaları ve HTML sayfaları istekleri de dahildir. Bu nedenle, ASP.NET için bir joker komut dosyası eşlemi etkinleştirme performans etkileri vardır.
 
-IIS 7,0 için bir joker karakter betik haritasını nasıl etkinleştireceğinizi aşağıda bulabilirsiniz:
+IIS 7.0 için joker karakter komut dosyası haritasını şu şekilde etkinleştirebilirsiniz:
 
-1. Bağlantılar penceresinde uygulamanızı seçin
-2. **Özellikler** görünümünün seçili olduğundan emin olun
-3. **Işleyici eşlemeleri** düğmesine çift tıklayın
-4. **Joker Karakter Betik Eşlemesi Ekle** bağlantısına tıklayın (bkz. Şekil 3)
-5. ASPNET\_ISAPI. dll dosyasının yolunu girin (bu yolu PageHandlerFactory komut dosyası eşlemesinden kopyalayabilirsiniz)
+1. Uygulamalar penceresinde uygulamanızı seçin
+2. **Özellikler** görünümünün seçildiğinden emin olun
+3. **Işleyici Eşlemeler** düğmesini çift tıklatın
+4. Joker **Karakter Komut Dosyası Haritası Ekle** bağlantısını tıklayın (Bkz. Şekil 3)
+5. aspnet\_isapi.dll dosyasına giden yolu girin (Bu yolu PageHandlerFactory komut dosyası haritasından kopyalayabilirsiniz)
 6. MVC adını girin
-7. **Tamam** düğmesine tıklayın
+7. **Tamam** düğmesini tıklatın
 
-[Yeni proje iletişim kutusunu ![](using-asp-net-mvc-with-different-versions-of-iis-vb/_static/image3.jpg)](using-asp-net-mvc-with-different-versions-of-iis-vb/_static/image5.png)
+[![Yeni Proje iletişim kutusu](using-asp-net-mvc-with-different-versions-of-iis-vb/_static/image3.jpg)](using-asp-net-mvc-with-different-versions-of-iis-vb/_static/image5.png)
 
-**Şekil 3**: IIS 7,0 ile joker karakter betik haritası oluşturma ([tam boyutlu görüntüyü görüntülemek için tıklayın](using-asp-net-mvc-with-different-versions-of-iis-vb/_static/image6.png))
+**Şekil 3**: IIS 7.0 ile joker karakter komut dosyası haritası oluşturma ([Tam boyutlu görüntüyü görüntülemek için tıklayınız](using-asp-net-mvc-with-different-versions-of-iis-vb/_static/image6.png))
 
-IIS 6,0 ile bir joker karakter betik eşlemesi oluşturmak için aşağıdaki adımları izleyin:
+IIS 6.0 ile joker karakter komut dosyası haritası oluşturmak için aşağıdaki adımları izleyin:
 
-1. Bir Web sitesine sağ tıklayıp Özellikler ' i seçin
-2. **Giriş dizini** sekmesini seçin
-3. **Yapılandırma** düğmesine tıklayın
+1. Bir web sitesine sağ tıklayın ve Özellikler'i seçin
+2. Ana **Dizini** sekmesini seçin
+3. **Yapılandırma** düğmesini tıklatın
 4. **Eşlemeler** sekmesini seçin
-5. **Ekle** düğmesine tıklayın (bkz. Şekil 4)
-6. ASPNET\_ISAPI. dll ' ye yolu çalıştırılabilir alana yapıştırın (bu yolu. aspx dosyaları için komut dosyası eşlemesinden kopyalayabilirsiniz)
-7. **Dosyanın var olduğunu doğrulayın** etiketli onay kutusunun işaretini kaldırın
-8. **Tamam** düğmesine tıklayın
+5. **Ekle** düğmesini tıklatın (Bkz. Şekil 4)
+6. Yolu aspnet\_isapi.dll'ye yapıştırın (.aspx dosyaları için komut dosyası haritasından bu yolu kopyalayabilirsiniz)
+7. Etiketli onay kutusunun işaretli olarak işaretle **nivarı dosyanın var olduğunu doğrula**
+8. **Tamam** düğmesini tıklatın
 
-[Yeni proje iletişim kutusunu ![](using-asp-net-mvc-with-different-versions-of-iis-vb/_static/image4.jpg)](using-asp-net-mvc-with-different-versions-of-iis-vb/_static/image7.png)
+[![Yeni Proje iletişim kutusu](using-asp-net-mvc-with-different-versions-of-iis-vb/_static/image4.jpg)](using-asp-net-mvc-with-different-versions-of-iis-vb/_static/image7.png)
 
-**Şekil 4**: IIS 6,0 ile joker karakter betik haritası oluşturma ([tam boyutlu görüntüyü görüntülemek için tıklayın](using-asp-net-mvc-with-different-versions-of-iis-vb/_static/image8.png))
+**Şekil 4**: IIS 6.0 ile joker karakter komut dosyası haritası oluşturma ([Tam boyutlu görüntüyü görüntülemek için tıklayın](using-asp-net-mvc-with-different-versions-of-iis-vb/_static/image8.png))
 
-Joker karakter betik eşlemelerini etkinleştirdikten sonra, Global. asax dosyasındaki yol tablosunu bir kök yolu içerecek şekilde değiştirmeniz gerekir. Aksi takdirde, uygulamanızın kök sayfası için bir istek yaptığınızda Şekil 5 ' te hata sayfasını alırsınız. Değiştirilen Global. asax dosyasını liste 4 ' te kullanabilirsiniz.
+Joker karakter komut dosyası eşlemlerini etkinleştirdikten sonra, Global.asax dosyasındaki rota tablosunu Root rotası içerecek şekilde değiştirmeniz gerekir. Aksi takdirde, uygulamanızın kök sayfası için bir istekte bulunduğunuzda Şekil 5'teki hata sayfasını alırsınız. Değiştirilen Global.asax dosyasını Listeleme 4'te kullanabilirsiniz.
 
-[Yeni proje iletişim kutusunu ![](using-asp-net-mvc-with-different-versions-of-iis-vb/_static/image5.jpg)](using-asp-net-mvc-with-different-versions-of-iis-vb/_static/image9.png)
+[![Yeni Proje iletişim kutusu](using-asp-net-mvc-with-different-versions-of-iis-vb/_static/image5.jpg)](using-asp-net-mvc-with-different-versions-of-iis-vb/_static/image9.png)
 
-**Şekil 5**: eksik kök yol hatası ([tam boyutlu görüntüyü görüntülemek için tıklayın](using-asp-net-mvc-with-different-versions-of-iis-vb/_static/image10.png))
+**Şekil 5**: Eksik Kök rota hatası([Tam boyutlu görüntüyü görüntülemek için tıklayınız](using-asp-net-mvc-with-different-versions-of-iis-vb/_static/image10.png))
 
-**Listeleme 4-Global. asax (kök rotayla değiştirilir)**
+**Listeleme 4 - Global.asax (Root rotası ile değiştirildi)**
 
 [!code-vb[Main](using-asp-net-mvc-with-different-versions-of-iis-vb/samples/sample4.vb)]
 
-IIS 7,0 veya IIS 6,0 için bir joker karakter betik eşlemesini etkinleştirdikten sonra, aşağıdaki gibi görünen varsayılan yol tablosuyla çalışan istekler yapabilirsiniz:
+IIS 7.0 veya IIS 6.0 için joker karakter komut dosyası eşlemesini etkinleştirdikten sonra, varsayılan rota tablosuyla çalışan ve şu gibi görünen isteklerde bulunabilirsiniz:
 
 /
 
-/Home/Index
+/Ana Sayfa/Dizin
 
-/Product/Details/3
+/Ürün/Ayrıntılar/3
 
 /Ürün
 
 ## <a name="summary"></a>Özet
 
-Bu öğreticinin amacı, IIS 'nin daha eski bir sürümünü (veya Klasik modda IIS 7,0) kullanırken ASP.NET MVC 'yi nasıl kullanabileceğinizi açıklamaktır. ASP.NET yönlendirme 'yi IIS 'nin eski sürümleriyle çalışacak şekilde almanın iki yöntemi tartışıyoruz: varsayılan yol tablosunu değiştirme veya joker karakter betik eşlemesi oluşturma.
+Bu öğreticinin amacı, IIS'nin (veya klasik modda IIS 7.0)'in eski bir sürümünü kullanırken ASP.NET MVC'yi nasıl kullanabileceğinizi açıklamaktır. ASP.NET Yönlendirme'yi IIS'nin eski sürümleriyle çalışmaya almanın iki yöntemini tartıştık: Varsayılan rota tablosunu değiştirin veya joker karakter komut dosyası eşlemi oluşturun.
 
-İlk seçenek, ASP.NET MVC uygulamanızda kullanılan URL 'Leri değiştirmenizi gerektirir. Bu ilk seçenekten çok önemli bir avantajı, yol tablosunu değiştirmek için bir Web sunucusuna erişmeniz gerekmez. Bu, ASP.NET MVC uygulamanızı bir Internet barındırma şirketi ile barındırırken bile bu ilk seçeneği kullanabileceğiniz anlamına gelir.
+İlk seçenek, ASP.NET MVC uygulamanızda kullanılan URL'leri değiştirmenizi gerektirir. Bu ilk seçeneğin çok önemli bir avantajı, rota tablosunu değiştirmek için bir web sunucusuna erişmenize gerek kalmamasıdır. Bu, bir Internet barındırma şirketi ile ASP.NET MVC uygulama barındırma bile bu ilk seçeneği kullanabilirsiniz anlamına gelir.
 
-İkinci seçenek joker karakter betik eşlemesi oluşturmaktır. Bu ikinci seçeneğin avantajı, URL 'lerinizi değiştirmenize gerek kalmaz. Bu ikinci seçeneğin dezavantajı, ASP.NET MVC uygulamanızın performansını etkileyebilir.
+İkinci seçenek bir joker komut dosyası eşlemi oluşturmaktır. Bu ikinci seçeneğin avantajı, URL'lerinizi değiştirmeniz gerekmemesidir. Bu ikinci seçeneğin dezavantajı, ASP.NET MVC uygulamanızın performansını etkileyebilir.
 
 > [!div class="step-by-step"]
-> [Öncekini](using-asp-net-mvc-with-different-versions-of-iis-cs.md)
+> [Önceki](using-asp-net-mvc-with-different-versions-of-iis-cs.md)

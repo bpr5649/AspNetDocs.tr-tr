@@ -1,164 +1,164 @@
 ---
 uid: mvc/overview/older-versions-1/controllers-and-routing/improving-performance-with-output-caching-cs
-title: Çıktı önbelleğe alma ile performansı iyileştirmeC#() | Microsoft Docs
-author: microsoft
-description: Bu öğreticide, çıkış önbelleğe alma özelliğinden yararlanarak ASP.NET MVC web uygulamalarınızın performansını ciddi ölçüde iyileştirebileceğinizi öğreneceksiniz. Siz...
+title: Çıktı Önbelleğe Alma (C#) ile Performansı Artırma | Microsoft Dokümanlar
+author: rick-anderson
+description: Bu eğitimde, çıktı önbelleğe alma yararlanarak ASP.NET MVC web uygulamalarınızın performansını nasıl önemli ölçüde artırabileceğinizi öğrenirsiniz. Siz...
 ms.author: riande
 ms.date: 01/27/2009
 ms.assetid: 521c9117-81cd-4d8d-9d96-0256dc7bf50f
 msc.legacyurl: /mvc/overview/older-versions-1/controllers-and-routing/improving-performance-with-output-caching-cs
 msc.type: authoredcontent
-ms.openlocfilehash: 548c5bea2e9cf26e0574e72d2c0ea204dbd90f9c
-ms.sourcegitcommit: e7e91932a6e91a63e2e46417626f39d6b244a3ab
+ms.openlocfilehash: a6dd43320117e235d12a13aa894302bbc767727c
+ms.sourcegitcommit: 022f79dbc1350e0c6ffaa1e7e7c6e850cdabf9af
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/06/2020
-ms.locfileid: "78601271"
+ms.lasthandoff: 04/17/2020
+ms.locfileid: "81542722"
 ---
 # <a name="improving-performance-with-output-caching-c"></a>Çıktı Önbelleğe Alma ile Performansı İyileştirme (C#)
 
 [Microsoft](https://github.com/microsoft) tarafından
 
-> Bu öğreticide, çıkış önbelleğe alma özelliğinden yararlanarak ASP.NET MVC web uygulamalarınızın performansını ciddi ölçüde iyileştirebileceğinizi öğreneceksiniz. Bir denetleyici eyleminden döndürülen sonucun nasıl önbelleğe alınacağını öğrenirsiniz, böylece her yeni kullanıcı eylemi her çağırdığında aynı içeriğin her bir oluşturulması gerekmez.
+> Bu eğitimde, çıktı önbelleğe alma yararlanarak ASP.NET MVC web uygulamalarınızın performansını nasıl önemli ölçüde artırabileceğinizi öğrenirsiniz. Aynı içeriğin her bir yeni kullanıcı eylemi çağırdığında oluşturulmasıgerekmemesi için bir denetleyici eyleminden döndürülen sonucu nasıl önbelleğe aldığınızı öğrenirsiniz.
 
-Bu öğreticinin amacı, çıkış önbelleğinden yararlanarak bir ASP.NET MVC uygulamasının performansını ciddi ölçüde iyileştirebileceğinizi açıklamaktır. Çıktı önbelleği, bir denetleyici eylemi tarafından döndürülen içeriği önbelleğe almanıza olanak sağlar. Bu şekilde, aynı denetleyici eylemi her çağrıldığında aynı içeriğin her biri ve her seferinde oluşturulması gerekmez.
+Bu öğreticinin amacı, çıktı önbelleğinden yararlanarak ASP.NET bir MVC uygulamasının performansını nasıl önemli ölçüde artırabileceğinizi açıklamaktır. Çıktı önbelleği, denetleyici eylemi yle döndürülen içeriği önbelleğe almalarını sağlar. Bu şekilde, aynı denetleyici eylemi çağrıldığı her seferinde aynı içeriğin oluşturulması gerekmez.
 
-Örneğin, ASP.NET MVC uygulamanızın dizin adlı bir görünümdeki veritabanı kayıtlarının listesini görüntülediğini düşünün. Normalde, her biri ve bir Kullanıcı dizin görünümünü döndüren denetleyici eylemini her çağırdığında, veritabanı kayıtlarının bir veritabanı sorgusu yürütülerek veritabanından alınması gerekir.
+Örneğin, ASP.NET MVC uygulamanızın Dizin adlı bir görünümde veritabanı kayıtlarının listesini görüntülediğini düşünün. Normalde, bir kullanıcı Dizin görünümünü döndüren denetleyici eylemini her kez çağırınca, veritabanı kayıtları kümesi veritabanı sorgusu gerçekleştirerek veritabanından alınmalıdır.
 
-Diğer taraftan, çıkış önbelleğinden faydalanabilirsiniz, her kullanıcı aynı denetleyici eylemini her çağırdığında bir veritabanı sorgusunun yürütülmesinden kaçınabilirsiniz. Görünüm, denetleyici eyleminden yeniden oluşturulması yerine önbellekten alınabilir. Önbelleğe alma, sunucuda yedekli iş gerçekleştirmenizi önlemenize olanak sağlar.
+Diğer taraftan, çıktı önbelleğinden yararlanırsanız, herhangi bir kullanıcı aynı denetleyici eylemini her çağırdığında bir veritabanı sorgusuyürütmeyi önleyebilirsiniz. Görünüm denetleyici eyleminden yeniden oluşturulacak şekilde önbellekten alınabilir. Önbelleğe alma, sunucuda gereksiz çalışma yapmaktan kaçınmanızı sağlar.
 
-## <a name="enabling-output-caching"></a>Çıktı önbelleğe alma etkinleştiriliyor
+## <a name="enabling-output-caching"></a>Çıkış Önbelleğe Alma Etkinleştirme
 
-Tek bir denetleyici eylemine veya bir denetleyici sınıfına [OutputCache] özniteliği ekleyerek çıkış önbelleğe almayı etkinleştirirsiniz. Örneğin, liste 1 ' deki denetleyici dizin () adlı bir eylem gösterir. Dizin () eyleminin çıkışı 10 saniye için önbelleğe alınır.
+Tek bir denetleyici eylemine veya tüm denetleyici sınıfına bir [OutputCache] özniteliği ekleyerek çıktı önbelleğe alma özelliğini etkinleştirin. Örneğin, Listeleme 1'deki denetleyici, Index() adlı bir eylemi ortaya çıkarır. Dizin() eyleminin çıktısı 10 saniye önbelleğe alınır.
 
-**Listeleme 1 – Controllers\HomeController.cs**
+**Listeleme 1 – Denetleyiciler\HomeController.cs**
 
 [!code-csharp[Main](improving-performance-with-output-caching-cs/samples/sample1.cs)]
 
-ASP.NET MVC 'nin Beta sürümlerinde, çıkış önbelleği [http://www.MySite.com/](http://www.mysite.com/)gıbı bir URL için çalışmaz. Bunun yerine, [http://www.MySite.com/Home/Index](http://www.mysite.com/Home/Index)gıbı bir URL girmeniz gerekir. 
+ASP.NET MVC'nin Beta sürümlerinde, çıktı önbelleğe [http://www.MySite.com/](http://www.mysite.com/)alma gibi bir URL için çalışmaz. Bunun yerine, gibi [http://www.MySite.com/Home/Index](http://www.mysite.com/Home/Index)bir URL girmeniz gerekir. 
 
-Liste 1 ' de, dizin () eyleminin çıkışı 10 saniye için önbelleğe alınır. İsterseniz, daha uzun bir önbellek süresi belirtebilirsiniz. Örneğin, bir gün için bir denetleyici eyleminin çıkışını önbelleğe almak istiyorsanız, 86400 saniyelik bir önbellek süresi (60 saniye \* 60 dakika \* 24 saat) belirtebilirsiniz.
+Listeleme 1'de, Dizin() eyleminin çıktısı 10 saniye önbelleğe alınır. İsterseniz, çok daha uzun bir önbellek süresi belirtebilirsiniz. Örneğin, bir denetleyici eyleminin çıktısını bir gün için önbelleğe almak isterseniz, önbellek süresi 86400 saniye \* (60 saniye 60 dakika \* 24 saat) belirtebilirsiniz.
 
-Belirlediğiniz zaman miktarı için içeriğin önbelleğe alınacağını garanti etmez. Bellek kaynakları azaldığında, önbellek içeriği otomatik olarak çıkarma başlar.
+İçeriğin belirttiğiniz süre boyunca önbelleğe alınacağının garantisi yoktur. Bellek kaynakları azaldığında, önbellek içeriği otomatik olarak tahliye etmeye başlar.
 
-Liste 1 ' deki giriş denetleyicisi, liste 2 ' de dizin görünümünü döndürür. Bu görünüm hakkında özel bir şey yok. Dizin görünümü yalnızca geçerli saati görüntüler (bkz. Şekil 1).
+Listeleme 1'deki Ev denetleyicisi, Listeleme 2'deki Dizin görünümünü döndürür. Bu manzaranın özel bir özelliği yok. Dizin görünümü yalnızca geçerli zamanı görüntüler (Bkz. Şekil 1).
 
-**Listeleme 2 – Views\home\ındex.aspx**
+**Listeleme 2 – Görünümler\Ana Sayfa\Index.aspx**
 
 [!code-aspx[Main](improving-performance-with-output-caching-cs/samples/sample2.aspx)]
 
-**Şekil 1 – önbelleğe alınmış dizin görünümü**
+**Şekil 1 – Önbelleğe Alınmış Dizin görünümü**
 
 ![clip_image002](improving-performance-with-output-caching-cs/_static/image1.jpg)
 
-Tarayıcınızın adres çubuğuna/Home/Index URL 'sini girerek dizin () eylemini birden çok kez çağırırsanız ve tarayıcınızdaki Yenile/yeniden yükle düğmesine sürekli olarak geçiş yaparsanız, dizin görünümü tarafından Görüntülenme zamanı 10 saniye değişmez. Aynı zaman görüntülenir, çünkü görünüm önbelleğe alınır.
+Tarayıcınızın adres çubuğuna URL /Home/Index'i girerek ve tarayıcınızdaki Yenile/Yeniden Yükle düğmesine tekrar tekrar basarak Index() eylemini birden çok kez çağırırsanız, Dizin görünümünde görüntülenen süre 10 saniye boyunca değişmez. Görünüm önbelleğe alındığından aynı süre görüntülenir.
 
-Uygulamanızı ziyaret eden herkes için aynı görünümün önbelleğe alındığını anlamak önemlidir. Dizin () eylemini çağıran herkes, Dizin görünümünün önbelleğe alınmış sürümünü alır. Bu, Web sunucusunun dizin görünümüne hizmeti sağlamak için gerçekleştirmesi gereken iş miktarının önemli ölçüde azaltıldığı anlamına gelir.
+Aynı görünümün uygulamanızı ziyaret eden herkes için önbelleğe alınmış olduğunu anlamak önemlidir. Index() eylemini çağıran herkes, Dizin görünümünün önbelleğe alınmış sürümünü alır. Bu, web sunucusunun Dizin görünümüne hizmet etmek için gerçekleştirmesi gereken çalışma miktarının önemli ölçüde azaldığı anlamına gelir.
 
-Liste 2 ' deki görünüm aslında basit bir şekilde yapılıyor. Görünüm yalnızca geçerli saati görüntüler. Ancak, bir dizi veritabanı kaydını görüntüleyen bir görünümü kolayca önbelleğe alabilirsiniz. Bu durumda, veritabanı kayıtlarının her biri veritabanından alınması gerekmez ve bu da görünümü döndüren denetleyici eylemi çağrılır. Önbelleğe alma, hem Web sunucunuzun hem de veritabanı sunucunuzun gerçekleştirmesi gereken iş miktarını azaltabilir.
+Listeleme 2 görünümü gerçekten basit bir şey yapıyor olur. Görünüm yalnızca geçerli saati görüntüler. Ancak, veritabanı kayıtları kümesini görüntüleyen bir görünümü kolayca önbelleğe alabilirsiniz. Bu durumda, veritabanı kayıtları kümesiveritabanından her ve görünümü döndüren denetleyici eylem çağrıldı her zaman alınması gerekmez. Önbelleğe alma, hem web sunucunuzun hem de veritabanı sunucunuzun gerçekleştirmesi gereken çalışma miktarını azaltabilir.
 
-MVC görünümünde% @ OutputCache%&gt; yönergesini &lt;sayfasını kullanmayın. Bu yönerge Web Forms dünyadan erişilebilir ve bir ASP.NET MVC uygulamasında kullanılmamalıdır.
+MVC görünümünde &lt;%@ OutputCache&gt; % yönergesini kullanmayın. Bu yönerge, Web Formlar dünyasından kanayan ve ASP.NET bir MVC uygulamasında kullanılmamalıdır.
 
-## <a name="where-content-is-cached"></a>Içeriğin önbelleğe alındığı yer
+## <a name="where-content-is-cached"></a>İçeriğin Önbelleğe Aldığı Yerler
 
-Varsayılan olarak, [OutputCache] özniteliğini kullandığınızda içerik üç konumda önbelleğe alınır: Web sunucusu, tüm proxy sunucular ve Web tarayıcısı. [OutputCache] özniteliğinin Location özelliğini değiştirerek içeriğin önbelleğe alındığını tam olarak denetleyebilirsiniz.
+Varsayılan olarak, [OutputCache] özniteliğini kullandığınızda, içerik üç konumda önbelleğe alınır: web sunucusu, tüm proxy sunucuları ve web tarayıcısı. [OutputCache] özniteliğinin Konum özelliğini değiştirerek içeriğin önbelleğe alınacağı yeri tam olarak denetleyebilirsiniz.
 
-Location özelliğini aşağıdaki değerlerden herhangi birine ayarlayabilirsiniz:
+Konum özelliğini aşağıdaki değerlerden herhangi birine ayarlayabilirsiniz:
 
-> · Kaydedilmemiş
+> · Herhangi bir
 > 
-> · İstemcilerinin
+> · Istemci
 > 
-> · Akış
+> · Aşağı akım
 > 
-> · Server
+> · Sunucu
 > 
-> · Seçim
+> · Hiçbiri
 > 
-> · Sunucuandclient
+> · ServerAndClient
 
-Varsayılan olarak, Location özelliği herhangi bir değere sahiptir. Ancak, yalnızca tarayıcıda veya yalnızca sunucuda önbelleğe almak isteyebileceğiniz durumlar vardır. Örneğin, her kullanıcı için kişiselleştirilmiş bilgileri önbelleğe alırsanız, bu bilgileri sunucuda önbelleğe almalısınız. Farklı kullanıcılara farklı bilgiler görüntülüyorsanız, bu bilgileri yalnızca istemcide önbelleğe almalısınız.
+Varsayılan olarak, Konum özelliği Any değerine sahiptir. Ancak, yalnızca tarayıcıda veya yalnızca sunucuda önbellek yapmak isteyebileceğiniz durumlar vardır. Örneğin, her kullanıcı için kişiselleştirilmiş bilgileri önbelleğe alıyorsanız, sunucudaki bilgileri önbelleğe almamalısınız. Farklı kullanıcılara farklı bilgiler görüntülüyorsanız, bilgileri yalnızca istemci üzerinde önbelleğe almanız gerekir.
 
-Örneğin, Listeleme 3 ' teki denetleyici, geçerli kullanıcı adını döndüren GetName () adlı bir eylem gösterir. Jak Web sitesinde oturum açar ve GetName () eylemini çağırsa, eylem "Hi jak" dizesini döndürür. Daha sonra, Jill Web sitesinde oturum açar ve GetName () eylemini çağırsa, "Hi jak" dizesini de alır. Bu dize, jak ilk olarak denetleyici eylemini çağırdıktan sonra tüm kullanıcılar için Web sunucusunda önbelleğe alınır.
+Örneğin, Listeleme 3'teki denetleyici, geçerli kullanıcı adını döndüren GetName() adlı bir eylemi ortaya çıkarır. Jack web sitesine giriş yaparsa ve GetName() eylemini çağırırsa, eylem "Merhaba Jack" dizesini döndürür. Eğer, daha sonra, Jill web sitesine giriş ve GetName () eylem çağırır o zaman o da dize "Hi Jack" alırsınız. Jak başlangıçta denetleyici eylemini çağırdıktan sonra dize tüm kullanıcılar için web sunucusunda önbelleğe alınır.
 
-**Listeleme 3 – Controllers\BadUserController.cs**
+**Listeleme 3 – Denetleyiciler\BadUserController.cs**
 
 [!code-csharp[Main](improving-performance-with-output-caching-cs/samples/sample3.cs)]
 
-Büyük olasılıkla, Listeleme 3 ' teki denetleyici istediğiniz şekilde çalışmaz. "Hi jak" iletisini Jill 'e göstermek istemezsiniz.
+Büyük olasılıkla, Listeleme 3'teki denetleyici istediğiniz şekilde çalışmaz. Jill'e "Merhaba Jack" mesajını göstermek istemezsin.
 
-Kişiselleştirilmiş içeriği hiçbir şekilde sunucu önbelleğinde önbelleğe almalısınız. Ancak, performansı artırmak için tarayıcı önbelleğindeki kişiselleştirilmiş içeriği önbelleğe almak isteyebilirsiniz. İçeriği tarayıcıda önbelleğe alırsanız ve bir kullanıcı aynı denetleyici eylemini birden çok kez çağırdıysanız, içerik sunucu yerine tarayıcı önbelleğinden alınabilir.
+Sunucu önbelleğinde kişiselleştirilmiş içeriği asla önbelleğe almamalısınız. Ancak, performansı artırmak için tarayıcı önbelleğinde kişiselleştirilmiş içeriği önbelleğe almak isteyebilirsiniz. İçeriği tarayıcıda önbelleğe alırsanız ve bir kullanıcı aynı denetleyici eylemini birden çok kez çağırırsa, içerik sunucu yerine tarayıcı önbelleğinden alınabilir.
 
-4\. listede değiştirilen denetleyici, GetName () eyleminin çıkışını önbelleğe alır. Ancak, içerik sunucuda değil yalnızca tarayıcıda önbelleğe alınır. Bu şekilde, birden çok Kullanıcı GetName () yöntemini çağırdığında, her kişi başka birinin Kullanıcı adını değil kendi kullanıcı adlarını alır.
+Listeleme 4'teki değiştirilmiş denetleyici GetName() eyleminin çıktısını önbelleğe alır. Ancak, içerik yalnızca tarayıcıda önbelleğe alınır ve sunucuda değil. Bu şekilde, birden çok kullanıcı GetName() yöntemini çağırdığında, her kişi başka bir kişinin kullanıcı adını değil, kendi kullanıcı adını alır.
 
-**Listeleme 4 – Controllers\UserController.cs**
+**Listeleme 4 – Denetleyiciler\UserController.cs**
 
 [!code-csharp[Main](improving-performance-with-output-caching-cs/samples/sample4.cs)]
 
-Kod 4 ' teki [OutputCache] özniteliğinin OutputCacheLocation. Client değerine ayarlanmış bir Location özelliği içerdiğine dikkat edin. [OutputCache] özniteliği bir NoStore özelliği de içerir. NoStore özelliği, proxy sunuculara ve tarayıcıya önbelleğe alınmış içeriğin kalıcı bir kopyasını saklamamasını sağlamak için kullanılır.
+Listeleme 4'teki [OutputCache] özniteliğinin OutputCacheLocation.Client değerine ayarlanmış bir Konum özelliği içerdiğine dikkat edin. [OutputCache] özniteliği de bir NoStore özelliği içerir. NoStore özelliği, proxy sunucularına ve tarayıcıya önbelleğe alınmış içeriğin kalıcı bir kopyasını saklamamaları gerektiğini bildirmek için kullanılır.
 
-## <a name="varying-the-output-cache"></a>Çıktı önbelleğini değiştirme
+## <a name="varying-the-output-cache"></a>Çıktı Önbelleğini Değiştirme
 
-Bazı durumlarda, aynı içeriğin farklı önbelleğe alınmış sürümlerini isteyebilirsiniz. Örneğin, ana/ayrıntı sayfası oluşturduğunuzu düşünün. Ana sayfa, film başlıklarının bir listesini görüntüler. Bir başlığa tıkladığınızda, seçili filmin ayrıntılarını alırsınız.
+Bazı durumlarda, aynı içeriğin farklı önbelleğe alınmış sürümlerini isteyebilirsiniz. Örneğin, bir ana/ayrıntı sayfası oluşturduğunuzu düşünün. Ana sayfada film başlıklarının bir listesi görüntülenir. Bir başlığı tıklattığınızda, seçili filmin ayrıntılarını alırsınız.
 
-Ayrıntılar sayfasını önbelleğe alırsanız, aynı filmin ayrıntıları hangi filmi tıkladıysanız olsun görüntülenir. İlk Kullanıcı tarafından seçilen ilk film, gelecekteki tüm kullanıcılara görüntülenecektir.
+Ayrıntılar sayfasını önbelleğe alırsak, hangi filme tıklarsanız tıklayın aynı filmin ayrıntıları görüntülenir. İlk kullanıcı tarafından seçilen ilk film gelecekteki tüm kullanıcılara görüntülenir.
 
-[OutputCache] özniteliğinin VaryByParam özelliğinden yararlanarak bu sorunu çözebilirsiniz. Bu özellik, bir form parametresi veya sorgu dizesi parametresi değiştiğinde çok aynı içeriğin önbelleğe alınmış farklı sürümlerini oluşturmanızı sağlar.
+[OutputÖnbellek] özniteliğinin VaryByParam özelliğinden yararlanarak bu sorunu çözebilirsiniz. Bu özellik, form parametresi veya sorgu dize parametresi değiştiğinde aynı içeriğin farklı önbelleğe alınmış sürümlerini oluşturmanıza olanak tanır.
 
-Örneğin, Listeleme 5 ' teki denetleyici ana () ve ayrıntılar () adlı iki eylemi ortaya koyar. Master () eylemi bir film başlıkları listesi döndürür ve ayrıntılar () eylemi seçili filmin ayrıntılarını döndürür.
+Örneğin, Listeleme 5'teki denetleyici, Master() ve Details() adlı iki eylemi ortaya çıkarır. Master() eylemi film başlıklarının bir listesini döndürür ve Ayrıntılar() eylemi seçilen filmin ayrıntılarını döndürür.
 
-**Listeleme 5 – Controllers\MoviesController.cs**
+**Listeleme 5 – Denetleyiciler\MoviesController.cs**
 
 [!code-csharp[Main](improving-performance-with-output-caching-cs/samples/sample5.cs)]
 
-Master () eylemi, "none" değerine sahip bir VaryByParam özelliği içerir. Master () eylemi çağrıldığında, ana görünümün aynı önbelleğe alınmış sürümü döndürülür. Herhangi bir form parametresi veya sorgu dizesi parametresi yok sayılır (bkz. Şekil 2).
+Master() eylemi "yok" değerine sahip bir VaryByParam özelliği içerir. Master() eylemi çağrıldığında, Master görünümünün aynı önbelleğe alınmış sürümü döndürülür. Form parametreleri veya sorgu dize parametreleri yoksayılır (Bkz. Şekil 2).
 
-**Şekil 2 –/Movies/Master görünümü**
+**Şekil 2 – /Filmler/Ana görünüm**
 
 ![clip_image004](improving-performance-with-output-caching-cs/_static/image2.jpg)
 
-**Şekil 3 –/Movies/Details görünümü**
+**Şekil 3 – /Filmler/Ayrıntılar görünümü**
 
 ![clip_image006](improving-performance-with-output-caching-cs/_static/image3.jpg)
 
-Details () eylemi, "ID" değerine sahip bir VaryByParam özelliği içerir. Kimlik parametresinin farklı değerleri denetleyici eylemine geçirildiğinde, Ayrıntılar görünümünün farklı önbelleğe alınmış sürümleri oluşturulur.
+Ayrıntılar() eylemi, "Id" değerine sahip bir VaryByParam özelliğini içerir. Id parametresinin farklı değerleri denetleyici eylemine aktarıldığında, Ayrıntılar görünümünün farklı önbelleğe alınmış sürümleri oluşturulur.
 
-VaryByParam özelliğini kullanarak daha fazla önbelleğe alma ve daha az bilgi elde edilmesi gerektiğini anlamak önemlidir. Her farklı kimlik parametresinin sürümü için Ayrıntılar görünümünün farklı bir önbelleğe alınmış sürümü oluşturulur.
+Bu VaryByParam özelliği kullanarak daha fazla önbelleğe alma ve daha az sonuçları anlamak önemlidir. Id parametresinin her farklı sürümü için Ayrıntılar görünümünün farklı bir önbelleğe alınmış sürümü oluşturulur.
 
 VaryByParam özelliğini aşağıdaki değerlere ayarlayabilirsiniz:
 
-> \* = bir form veya sorgu dizesi parametresi değiştiğinde farklı bir önbelleğe alınmış sürüm oluşturun.
+> \*= Form veya sorgu dizesi parametresi değiştiğinde farklı önbelleğe alınmış bir sürüm oluşturun.
 > 
-> hiçbiri = hiçbir şekilde farklı önbelleğe alınmış sürümler oluşturma
+> none = Asla farklı önbelleğe alınmış sürümler oluşturma
 > 
-> Parametrelerin noktalı virgül listesi = bir form veya sorgu dizesi parametrelerinden herhangi biri değiştiğinde farklı önbelleğe alınmış sürümler oluştur
+> Parametrelerin semicolon listesi = Listedeki form veya sorgu dize parametrelerinden herhangi biri değiştiğinde farklı önbelleğe alınmış sürümler oluşturun
 
-## <a name="creating-a-cache-profile"></a>Önbellek profili oluşturma
+## <a name="creating-a-cache-profile"></a>Önbellek Profili Oluşturma
 
-[OutputCache] özniteliğinin özelliklerini değiştirerek çıktı önbelleği özelliklerini yapılandırmaya alternatif olarak, Web yapılandırma (Web. config) dosyasında bir önbellek profili oluşturabilirsiniz. Web yapılandırma dosyasında bir önbellek profili oluşturmak birkaç önemli avantaj sunar.
+[OutputCache] özniteliğinin özelliklerini değiştirerek çıktı önbelleği özelliklerini yapılandırmaya alternatif olarak, web yapılandırmasında (web.config) dosyada bir önbellek profili oluşturabilirsiniz. Web yapılandırma dosyasında önbellek profili oluşturmak birkaç önemli avantaj sunar.
 
-İlk olarak, Web yapılandırma dosyasında çıktı önbelleği yapılandırarak, denetleyici eylemlerinin içeriği tek bir merkezi konumda nasıl önbelleğe kullandığını denetleyebilirsiniz. Tek bir önbellek profili oluşturabilir ve profili çeşitli denetleyicilere veya denetleyici eylemlerine uygulayabilirsiniz.
+İlk olarak, web yapılandırma dosyasında çıktı önbelleğe alma yapılandırarak, denetleyici eylemleri tek bir merkezi konumda içeriği nasıl önbelleğe denetleyebilirsiniz. Bir önbellek profili oluşturabilir ve profili birkaç denetleyiciye veya denetleyici eylemlere uygulayabilirsiniz.
 
-İkincisi, uygulamanızı yeniden derlemeden Web yapılandırma dosyasını değiştirebilirsiniz. Üretime zaten dağıtılan bir uygulama için önbelleğe almayı devre dışı bırakmanız gerekirse, Web yapılandırma dosyasında tanımlanan önbellek profillerini de değiştirebilirsiniz. Web yapılandırma dosyasında yapılan tüm değişiklikler otomatik olarak algılanır ve uygulanır.
+İkinci olarak, uygulamanızı yeniden derlemeden web yapılandırma dosyasını değiştirebilirsiniz. Üretime zaten dağıtılmış bir uygulama için önbelleği devre dışı balmanız gerekiyorsa, web yapılandırma dosyasında tanımlanan önbellek profillerini değiştirebilirsiniz. Web yapılandırma dosyasındaki tüm değişiklikler otomatik olarak algılanır ve uygulanır.
 
-Örneğin &lt;, liste 6 ' daki önbelleğe alma&gt; Web yapılandırması bölümü, Cache1Hour adlı bir önbellek profilini tanımlar. &lt;önbelleğe alma&gt; bölümü, bir Web yapılandırma dosyasının &lt;System. Web&gt; bölümü içinde yer almalıdır.
+Örneğin, Listeleme &lt;&gt; 6'daki önbelleğe alma web yapılandırması bölümü Cache1Hour adlı bir önbellek profili tanımlar. &lt;Önbelleğe&gt; alma bölümü, &lt;bir&gt; web yapılandırma dosyasının system.web bölümünde görünmelidir.
 
-**Listeleme 6 – Web. config için önbelleğe alma bölümü**
+**Listeleme 6 – web.config için önbelleğe alma bölümü**
 
 [!code-xml[Main](improving-performance-with-output-caching-cs/samples/sample6.xml)]
 
-7 dökümdeki denetleyici, Cache1Hour profilini [OutputCache] özniteliğiyle bir denetleyici eylemine nasıl uygulayacağınızı gösterir.
+Listeleme 7'deki denetleyici, Önbellek 1Saat profilini [OutputCache] özniteliğiyle bir denetleyici eylemine nasıl uygulayabileceğinizi gösterir.
 
-**Listeleme 7 – Controllers\ProfileController.cs**
+**Listeleme 7 – Denetleyiciler\ProfileController.cs**
 
 [!code-csharp[Main](improving-performance-with-output-caching-cs/samples/sample7.cs)]
 
-Döküm 7 ' de denetleyicinin açığa çıkarılan dizin () eylemini çağırırsanız, 1 saat boyunca aynı süre döndürülür.
+Listeleme 7'de denetleyici tarafından ortaya çıkarılan Index() eylemini çağırırsanız, aynı süre 1 saat boyunca döndürülür.
 
 ## <a name="summary"></a>Özet
 
-Çıktı önbelleği, ASP.NET MVC uygulamalarınızın performansını önemli ölçüde iyileştirmeye yönelik çok kolay bir yöntem sağlar. Bu öğreticide, denetleyici eylemlerinin çıkışını önbelleğe almak için [OutputCache] özniteliğini nasıl kullanacağınızı öğrendiniz. Ayrıca, içeriğin nasıl önbelleğe alınacağını değiştirmek için Duration ve VaryByParam özellikleri gibi [OutputCache] özniteliğinin özelliklerinin nasıl değiştirileceğini öğrenirsiniz. Son olarak, Web yapılandırma dosyasında önbellek profillerinin nasıl tanımlanacağını öğrendiniz.
+Çıkış önbelleğe alma, ASP.NET MVC uygulamalarınızın performansını önemli ölçüde artırmanın çok kolay bir yöntemini sağlar. Bu eğitimde, denetleyici eylemlerin çıktısını önbelleğe almak için [OutputCache] özniteliğini nasıl kullanacağınızı öğrendiniz. Ayrıca, içeriğin önbelleğe nasıl alındığını değiştirmek için Süre ve VaryByParam özellikleri gibi [OutputCache] özniteliğinin özelliklerini nasıl değiştireceğinizi de öğrendiniz. Son olarak, web yapılandırma dosyasındaki önbellek profillerini nasıl tanımlayabilirsiniz.
 
 > [!div class="step-by-step"]
 > [Önceki](understanding-action-filters-cs.md)
-> [İleri](adding-dynamic-content-to-a-cached-page-cs.md)
+> [Sonraki](adding-dynamic-content-to-a-cached-page-cs.md)
