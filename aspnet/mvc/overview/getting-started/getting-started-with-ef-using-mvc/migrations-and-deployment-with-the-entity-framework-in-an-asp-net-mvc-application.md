@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.assetid: d4dfc435-bda6-4621-9762-9ba270f8de4e
 msc.legacyurl: /mvc/overview/getting-started/getting-started-with-ef-using-mvc/migrations-and-deployment-with-the-entity-framework-in-an-asp-net-mvc-application
 msc.type: authoredcontent
-ms.openlocfilehash: 989dd0f0e18b338be057b9c5657586eff996d8ea
-ms.sourcegitcommit: e7e91932a6e91a63e2e46417626f39d6b244a3ab
+ms.openlocfilehash: 21a3efa865e5b5498dfb0f2adec199800fc70c58
+ms.sourcegitcommit: a4c3c7e04e5f53cf8cd334f036d324976b78d154
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/06/2020
-ms.locfileid: "78616083"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84172983"
 ---
 # <a name="tutorial-use-ef-migrations-in-an-aspnet-mvc-app-and-deploy-to-azure"></a>Öğretici: bir ASP.NET MVC uygulamasında EF geçişlerini kullanma ve Azure 'a dağıtma
 
@@ -31,17 +31,17 @@ Bu öğreticide şunları yaptınız:
 > * Code First geçişlerini etkinleştir
 > * Uygulamayı Azure 'da dağıtma (isteğe bağlı)
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 - [Bağlantı Dayanıklılığı ve Komut Durdurma](connection-resiliency-and-command-interception-with-the-entity-framework-in-an-asp-net-mvc-application.md)
 
 ## <a name="enable-code-first-migrations"></a>Code First geçişlerini etkinleştir
 
-Yeni bir uygulama geliştirirken, veri modeliniz sıklıkla değişir ve model her değiştiğinde veritabanıyla eşitlenmemiş olur. Veri modelini her değiştirişinizde veritabanını otomatik olarak bırakıp yeniden oluşturmak için Entity Framework yapılandırdınız. Varlık sınıfları eklediğinizde, kaldırdığınızda veya değiştirdiğinizde veya `DbContext` sınıfınızı değiştirdiğinizde, uygulamayı bir sonraki çalıştırışınızda, otomatik olarak mevcut veritabanınızı siler, modelle eşleşen yeni bir tane oluşturur ve test verileriyle birlikte gelir.
+Yeni bir uygulama geliştirirken, veri modeliniz sıklıkla değişir ve model her değiştiğinde veritabanıyla eşitlenmemiş olur. Veri modelini her değiştirişinizde veritabanını otomatik olarak bırakıp yeniden oluşturmak için Entity Framework yapılandırdınız. Varlık sınıfları eklediğinizde, kaldırdığınızda veya değiştirdiğinizde ya da sınıfınızı değiştirdiğinizde, `DbContext` uygulamayı bir sonraki çalıştırışınızda, otomatik olarak mevcut veritabanınızı siler, modelle eşleşen yeni bir tane oluşturur ve test verileriyle birlikte olur.
 
 Veritabanını veri modeliyle eşitlenmiş halde tutma yöntemi, uygulamayı üretime dağıtana kadar iyi çalışır. Uygulama üretimde çalışırken, genellikle tutmak istediğiniz verileri saklar ve yeni sütun ekleme gibi her değişiklik yaptığınızda her şeyi kaybetmek istemezsiniz. [Code First Migrations](https://msdn.microsoft.com/data/jj591621) özelliği, veritabanını bırakıp yeniden oluşturmak yerine veritabanı şemasını güncelleştirmesine Code First etkinleştirerek bu sorunu çözer. Bu öğreticide, uygulamayı dağıtırsınız ve geçişleri etkinleştireceksiniz.
 
-1. Daha önce ayarladığınız başlatıcısı devre dışı bırakarak uygulama Web. config dosyasına eklediğiniz `contexts` öğesini açıklama ekleyerek veya silin.
+1. `contexts`Uygulama Web. config dosyasına eklediğiniz öğeyi açıklama ekleyerek veya silerek daha önce ayarladığınız başlatıcıyı devre dışı bırakın.
 
     [!code-xml[Main](migrations-and-deployment-with-the-entity-framework-in-an-asp-net-mvc-application/samples/sample1.xml?highlight=2,6)]
 2. Ayrıca, uygulama *Web. config* dosyasında, bağlantı dizesindeki veritabanının adını ContosoUniversity2 olarak değiştirin.
@@ -49,20 +49,20 @@ Veritabanını veri modeliyle eşitlenmiş halde tutma yöntemi, uygulamayı ür
     [!code-xml[Main](migrations-and-deployment-with-the-entity-framework-in-an-asp-net-mvc-application/samples/sample2.xml?highlight=2)]
 
     Bu değişiklik, ilk geçişin yeni bir veritabanı oluşturması için projeyi ayarlar. Bu gerekli değildir ancak daha sonra iyi bir fikir olduğunu göreceksiniz.
-3. **Araçlar** menüsünde **NuGet Paket Yöneticisi** > **Paket Yöneticisi konsolu**' nu seçin.
+3. **Araçlar** menüsünde **NuGet Paket Yöneticisi**  >  **Paket Yöneticisi konsolu**' nu seçin.
 
-1. `PM>` istemine aşağıdaki komutları girin:
+1. `PM>`İsteminde aşağıdaki komutları girin:
 
     ```text
     enable-migrations
     add-migration InitialCreate
     ```
 
-    `enable-migrations` komutu ContosoUniversity projesinde bir *geçişler* klasörü oluşturur ve bu klasöre geçişleri yapılandırmak için düzenleyebileceğiniz bir *Configuration.cs* dosyası koyar.
+    `enable-migrations`Komut, ContosoUniversity projesinde bir *geçişler* klasörü oluşturur ve bu klasöre geçişleri yapılandırmak için düzenleyebileceğiniz bir *Configuration.cs* dosyası koyar.
 
-    (Yukarıdaki adımı kaçırdıysanız, veritabanı adını değiştirmenizi yönlendirirsiniz, geçişler var olan veritabanını bulur ve `add-migration` komutunu otomatik olarak gerçekleştirecek. Bu sorun, veritabanını dağıtmadan önce geçiş kodunun bir testini çalıştırmayacağınızı gösterir. Daha sonra `update-database` komutu çalıştırdığınızda veritabanı zaten mevcut olduğundan hiçbir şey olmaz.)
+    (Yukarıdaki adımı kaçırdıysanız, veritabanı adını değiştirmenizi yönlendirirsiniz, geçişler var olan veritabanını bulur ve komutu otomatik olarak kullanacaktır `add-migration` . Bu sorun, veritabanını dağıtmadan önce geçiş kodunun bir testini çalıştırmayacağınızı gösterir. Daha sonra `update-database` komutu çalıştırdığınızda hiçbir şey gerçekleşmeyecektir çünkü veritabanı zaten var.)
 
-    *Contosoüniversıty\migrations\configuration.cs* dosyasını açın. Daha önce gördüğünüz Başlatıcı sınıfı gibi `Configuration` sınıfı `Seed` bir yöntemi içerir.
+    *Contosoüniversıty\migrations\configuration.cs* dosyasını açın. Daha önce gördüğünüz Başlatıcı sınıfı gibi, `Configuration` sınıfı bir `Seed` yöntemi içerir.
 
     [!code-csharp[Main](migrations-and-deployment-with-the-entity-framework-in-an-asp-net-mvc-application/samples/sample3.cs)]
 
@@ -70,9 +70,9 @@ Veritabanını veri modeliyle eşitlenmiş halde tutma yöntemi, uygulamayı ür
 
 ### <a name="set-up-the-seed-method"></a>Çekirdek yöntemi ayarlama
 
-Her veri modeli değişikliği için veritabanını bırakıp yeniden oluşturduğunuzda, test verilerini eklemek için Başlatıcı sınıfının `Seed` yöntemini kullanırsınız, çünkü her model değişiklik yapıldıktan sonra tüm test verileri kaybedilir. Code First Migrations ile test verileri, veritabanı değişikliklerinden sonra tutulur, bu nedenle [temel](https://msdn.microsoft.com/library/hh829453(v=vs.103).aspx) yöntemde test verilerinin dahil edilmesi genellikle gerekli değildir. Aslında, `Seed` yöntemi üretimde çalışacağı için veritabanını üretime dağıtmak üzere geçişler kullanacaksanız, `Seed` yönteminin test verileri eklemesini istemezsiniz. Bu durumda, `Seed` yönteminin yalnızca üretimde ihtiyacınız olan verileri veritabanına eklemesini istersiniz. Örneğin, uygulama üretimde kullanılabilir hale geldiğinde, veritabanının `Department` tablosuna gerçek bölüm adlarını içermesini isteyebilirsiniz.
+Her veri modeli değişikliği için veritabanını bırakıp yeniden oluşturduğunuzda, `Seed` test verilerini eklemek için Başlatıcı sınıfının yöntemini kullanırsınız, çünkü her model, veritabanını değiştirdikten sonra tüm test verileri kaybedilir. Code First Migrations ile test verileri, veritabanı değişikliklerinden sonra tutulur, bu nedenle [temel](https://msdn.microsoft.com/library/hh829453(v=vs.103).aspx) yöntemde test verilerinin dahil edilmesi genellikle gerekli değildir. Aslında, `Seed` yöntemi üretimde çalışacak şekilde veritabanını üretime dağıtmak Için geçişler kullanacaksanız, yöntemi test verileri eklemek istemezsiniz `Seed` . Bu durumda, `Seed` yönteminin yalnızca üretimde ihtiyacınız olan verileri veritabanına eklemesini istersiniz. Örneğin, `Department` uygulama üretimde kullanılabilir hale geldiğinde veritabanının gerçek bölüm adlarını tabloya dahil etmek isteyebilirsiniz.
 
-Bu öğreticide, dağıtım için geçişler kullanacaksınız, ancak `Seed` yöntemi test verilerini el ile çok sayıda veri eklemek zorunda kalmadan nasıl çalıştığını görmenizi kolaylaştırmak için de test verileri ekleyecektir.
+Bu öğreticide, dağıtım için geçişler kullanacaksınız, ancak `Seed` Yöntem test verilerini el ile çok sayıda veri eklemek zorunda kalmadan nasıl çalıştığını görmeyi kolaylaştırmak için de test verileri ekleyecektir.
 
 1. *Configuration.cs* dosyasının içeriğini, test verilerini yeni veritabanına yükleyen aşağıdaki kodla değiştirin.
 
@@ -80,9 +80,9 @@ Bu öğreticide, dağıtım için geçişler kullanacaksınız, ancak `Seed` yö
 
     [Çekirdek](https://msdn.microsoft.com/library/hh829453(v=vs.103).aspx) yöntemi, veritabanı bağlamı nesnesini bir giriş parametresi olarak alır ve yöntemdeki kod bu nesneyi veritabanına yeni varlıklar eklemek için kullanır. Her varlık türü için, kod yeni varlıkların bir koleksiyonunu oluşturur, bunları uygun [Dbset](https://msdn.microsoft.com/library/system.data.entity.dbset(v=vs.103).aspx) özelliğine ekler ve değişiklikleri veritabanına kaydeder. Burada yapılan her bir varlık grubundan sonra [SaveChanges](https://msdn.microsoft.com/library/system.data.entity.dbcontext.savechanges(v=VS.103).aspx) yöntemini çağırmak gerekmez, ancak bu, kod veritabanına yazılırken bir özel durum oluşursa bir sorunun kaynağını bulmanıza yardımcı olur.
 
-    Veri ekleyen deyimlerden bazıları, "upsert" bir işlem gerçekleştirmek için [AddOrUpdate](https://msdn.microsoft.com/library/system.data.entity.migrations.idbsetextensions.addorupdate(v=vs.103).aspx) yöntemini kullanır. `Seed` `update-database` yöntemi, her geçişten sonra, genellikle her geçişten sonra, eklemeye çalıştığınız satırlar veritabanını oluşturan ilk geçişten sonra mevcut olacağı için yalnızca verileri ekleyemezsiniz. "Upsert" işlemi, zaten var olan bir satır eklemeye çalışırsanız, ancak uygulamayı test ederken yapmış olduğunuz verilerde yapılan değişiklikleri ***geçersiz kılar*** . Bazı tablolardaki test verileri ile bu durum oluşmasını istemeyebilirsiniz: bazı durumlarda verileri değiştirirken değişiklikler veritabanı güncelleştirmelerinden sonra kalmasını istiyor. Bu durumda, bir koşullu ekleme işlemi yapmak istiyorsanız, yalnızca mevcut değilse bir satır ekleyin. Çekirdek yöntemi her iki yaklaşımı kullanır.
+    Veri ekleyen deyimlerden bazıları, "upsert" bir işlem gerçekleştirmek için [AddOrUpdate](https://msdn.microsoft.com/library/system.data.entity.migrations.idbsetextensions.addorupdate(v=vs.103).aspx) yöntemini kullanır. `Seed`Yöntemi komutu her yürüttüğünüzde çalışır `update-database` , genellikle her geçişten sonra, eklemeye çalıştığınız satırlar veritabanını oluşturan ilk geçişten sonra zaten mevcut olacağı için yalnızca veri ekleyemezsiniz. "Upsert" işlemi, zaten var olan bir satır eklemeye çalışırsanız, ancak uygulamayı test ederken yapmış olduğunuz verilerde yapılan değişiklikleri ***geçersiz kılar*** . Bazı tablolardaki test verileri ile bu durum oluşmasını istemeyebilirsiniz: bazı durumlarda verileri değiştirirken değişiklikler veritabanı güncelleştirmelerinden sonra kalmasını istiyor. Bu durumda, bir koşullu ekleme işlemi yapmak istiyorsanız, yalnızca mevcut değilse bir satır ekleyin. Çekirdek yöntemi her iki yaklaşımı kullanır.
 
-    [AddOrUpdate](https://msdn.microsoft.com/library/system.data.entity.migrations.idbsetextensions.addorupdate(v=vs.103).aspx) metoduna geçirilen ilk parametre, bir satırın zaten var olup olmadığını denetlemek için kullanılacak özelliği belirtir. Sağladınız test öğrenci verileri için, listedeki her bir ad benzersiz olduğundan bu amaçla `LastName` özelliği kullanılabilir:
+    [AddOrUpdate](https://msdn.microsoft.com/library/system.data.entity.migrations.idbsetextensions.addorupdate(v=vs.103).aspx) metoduna geçirilen ilk parametre, bir satırın zaten var olup olmadığını denetlemek için kullanılacak özelliği belirtir. Sağladınız test öğrenci verileri için, `LastName` listedeki her bir ad benzersiz olduğundan bu amaçla özellik kullanılabilir:
 
     [!code-csharp[Main](migrations-and-deployment-with-the-entity-framework-in-an-asp-net-mvc-application/samples/sample5.cs)]
 
@@ -90,50 +90,50 @@ Bu öğreticide, dağıtım için geçişler kullanacaksınız, ancak `Seed` yö
 
     **Sıra birden fazla öğe içeriyor**
 
-    "Alexander Carson" adlı iki öğrenci gibi gereksiz verilerin nasıl işleneceği hakkında daha fazla bilgi için, bkz. Rick Anderson 'ın blogu üzerinde [Entity Framework (EF) DBs](https://blogs.msdn.com/b/rickandy/archive/2013/02/12/seeding-and-debugging-entity-framework-ef-dbs.aspx) . `AddOrUpdate` yöntemi hakkında daha fazla bilgi için bkz. Julie Lerman 'ın blogundan [EF 4,3 AddOrUpdate yöntemiyle dikkatli olunmalıdır](http://thedatafarm.com/blog/data-access/take-care-with-ef-4-3-addorupdate-method/) .
+    "Alexander Carson" adlı iki öğrenci gibi gereksiz verilerin nasıl işleneceği hakkında daha fazla bilgi için, bkz. Rick Anderson 'ın blogu üzerinde [Entity Framework (EF) DBs](https://blogs.msdn.com/b/rickandy/archive/2013/02/12/seeding-and-debugging-entity-framework-ef-dbs.aspx) . Yöntemi hakkında daha fazla bilgi için `AddOrUpdate` bkz. Julie Lerman 'ın BLOGDA [EF 4,3 AddOrUpdate yöntemiyle dikkatli olunmalıdır](http://thedatafarm.com/blog/data-access/take-care-with-ef-4-3-addorupdate-method/) .
 
-    `Enrollment` varlıkları oluşturan kod, koleksiyonu oluşturan kodda bu özelliği belirtmediğiniz halde, `students` koleksiyonundaki varlıklarda `ID` değere sahip olduğunuzu varsayar.
+    Varlıkları oluşturan kod, koleksiyondaki `Enrollment` varlıklarda bulunan değer olduğunu varsayar `ID` `students` , ancak bu özelliği koleksiyonu oluşturan kodda ayarlayamazsınız.
 
     [!code-csharp[Main](migrations-and-deployment-with-the-entity-framework-in-an-asp-net-mvc-application/samples/sample6.cs?highlight=2)]
 
-    `ID` özelliğini, `students` koleksiyonu için `SaveChanges` çağırdığınızda `ID` değeri ayarlandığı için kullanabilirsiniz. EF, veritabanına bir varlık eklediğinde, birincil anahtar değerini otomatik olarak alır ve varlığın `ID` özelliğini bellekte güncelleştirir.
+    Bu `ID` özelliği, `ID` koleksiyonu çağırdığınızda değer ayarlandığı için kullanabilirsiniz `SaveChanges` `students` . EF, veritabanına bir varlık eklediğinde, birincil anahtar değerini otomatik olarak alır ve bu `ID` varlık, belleğin özelliğini bellekte güncelleştirir.
 
-    Her `Enrollment` varlığını `Enrollments` varlık kümesine ekleyen kod `AddOrUpdate` metodunu kullanmaz. Bir varlığın zaten var olup olmadığını denetler ve varlık yoksa varlığı ekler. Bu yaklaşım, uygulama kullanıcı arabirimini kullanarak bir kayıt sınıfı üzerinde yaptığınız değişiklikleri korur. Kod `Enrollment`[listesinin](https://msdn.microsoft.com/library/6sh2ey19.aspx) her bir üyesi boyunca döngü yapar ve kayıt veritabanında bulunamazsa kaydı veritabanına ekler. Veritabanını ilk güncelleştirdiğinizde, veritabanı boş olur, bu nedenle her bir kayıt eklenir.
+    Her `Enrollment` varlığı `Enrollments` varlık kümesine ekleyen kod `AddOrUpdate` yöntemini kullanmaz. Bir varlığın zaten var olup olmadığını denetler ve varlık yoksa varlığı ekler. Bu yaklaşım, uygulama kullanıcı arabirimini kullanarak bir kayıt sınıfı üzerinde yaptığınız değişiklikleri korur. Kod, listedeki her üye boyunca döngü yapar `Enrollment` [List](https://msdn.microsoft.com/library/6sh2ey19.aspx) ve kayıt veritabanında bulunmazsa kaydı veritabanına ekler. Veritabanını ilk güncelleştirdiğinizde, veritabanı boş olur, bu nedenle her bir kayıt eklenir.
 
     [!code-csharp[Main](migrations-and-deployment-with-the-entity-framework-in-an-asp-net-mvc-application/samples/sample7.cs)]
 
-2. Projeyi oluşturun.
+2. Projeyi derleyin.
 
 ### <a name="execute-the-first-migration"></a>İlk geçişi yürütme
 
-`add-migration` komutunu çalıştırdığınızda geçişler, veritabanını sıfırdan oluşturacak kodu oluşturmuş olur. Bu kod ayrıca, *&lt;zaman damgası&gt;\_InitialCreate.cs*adlı dosyada *geçişler* klasöründe bulunur. `InitialCreate` sınıfının `Up` yöntemi, veri modeli varlık kümelerine karşılık gelen veritabanı tablolarını oluşturur ve `Down` yöntemi onları siler.
+`add-migration`Komutunu çalıştırdığınızda geçişler, veritabanını sıfırdan oluşturacak kodu oluşturdu. Bu kod ayrıca, * &lt; zaman damgası &gt; \_ InitialCreate.cs*adlı dosyadaki *geçişler* klasöründedir. `Up`Sınıfının yöntemi, `InitialCreate` veri modeli varlık kümelerine karşılık gelen veritabanı tablolarını oluşturur ve `Down` yöntemi onları siler.
 
 [!code-csharp[Main](migrations-and-deployment-with-the-entity-framework-in-an-asp-net-mvc-application/samples/sample8.cs)]
 
-Geçişler, bir geçiş için veri modeli değişikliklerini uygulamak üzere `Up` yöntemini çağırır. Güncelleştirmeyi geri almak için bir komut girdiğinizde, geçişler `Down` yöntemini çağırır.
+Geçişler, `Up` geçiş için veri modeli değişikliklerini uygulamak üzere yöntemini çağırır. Güncelleştirmeyi geri almak için bir komut girdiğinizde, geçişler `Down` yöntemini çağırır.
 
-Bu, `add-migration InitialCreate` komutunu girdiğinizde oluşturulan ilk geçişdir. Parametre (örnekteki`InitialCreate`) dosya adı için kullanılır ve istediğiniz her şey olabilir; Genellikle, geçişte nelerin yapıldığını özetleyen bir sözcük veya tümcecik seçersiniz. Örneğin, daha sonraki bir geçişe &quot;AddDepartmentTable&quot;adını yazabilirsiniz.
+Bu, komutu girdiğinizde oluşturulan ilk geçişdir `add-migration InitialCreate` . Parametresi ( `InitialCreate` örnekteki) dosya adı için kullanılır ve istediğiniz her şey olabilir; genellikle, geçişte nelerin yapıldığını özetleyen bir sözcük veya tümcecik seçersiniz. Örneğin, daha sonra bir geçiş AddDepartmentTable adı yazabilirsiniz &quot; &quot; .
 
-Veritabanı zaten mevcut olduğunda ilk geçişi oluşturduysanız veritabanı oluşturma kodu oluşturulur, ancak veritabanı veri modeliyle zaten eşleştiğinden çalıştırması gerekmez. Uygulamayı, veritabanının mevcut olmadığı başka bir ortama dağıttığınızda, bu kod veritabanınızı oluşturmak için çalışır, bu nedenle ilk önce test etmek iyi bir fikirdir. Bu nedenle, geçişlerin sıfırdan yeni bir tane oluşturabilmesi için bağlantı dizesindeki veritabanının adını daha önce&mdash;değiştirmenizin nedeni budur.
+Veritabanı zaten mevcut olduğunda ilk geçişi oluşturduysanız veritabanı oluşturma kodu oluşturulur, ancak veritabanı veri modeliyle zaten eşleştiğinden çalıştırması gerekmez. Uygulamayı, veritabanının mevcut olmadığı başka bir ortama dağıttığınızda, bu kod veritabanınızı oluşturmak için çalışır, bu nedenle ilk önce test etmek iyi bir fikirdir. Bu nedenle, &mdash; geçişlerin sıfırdan yeni bir tane oluşturabilmesi için bağlantı dizesindeki veritabanının adını daha önce değiştirmiş olursunuz.
 
 1. **Paket Yöneticisi konsolu** penceresinde, aşağıdaki komutu girin:
 
     `update-database`
 
-    `update-database` komutu veritabanını oluşturmak için `Up` yöntemini çalıştırır ve sonra veritabanını doldurmak için `Seed` metodunu çalıştırır. Aynı işlem, uygulamayı dağıttıktan sonra, aşağıdaki bölümde göreceğiniz gibi otomatik olarak çalıştırılır.
+    `update-database`Komutu `Up` veritabanını oluşturmak için yöntemini çalıştırır ve sonra `Seed` veritabanını doldurmak için yöntemini çalıştırır. Aynı işlem, uygulamayı dağıttıktan sonra, aşağıdaki bölümde göreceğiniz gibi otomatik olarak çalıştırılır.
 2. İlk öğreticide yaptığınız gibi veritabanını incelemek için **Sunucu Gezgini** kullanın ve uygulamayı çalıştırarak her şeyin daha önce olduğu gibi çalıştığını doğrulayın.
 
-## <a name="deploy-to-azure"></a>Azure’a dağıtma
+## <a name="deploy-to-azure"></a>Azure’a dağıtın
 
 Şimdiye kadar uygulama, geliştirme bilgisayarınızda IIS Express yerel olarak çalışıyor. Diğer kişilerin Internet üzerinden kullanmasını sağlamak için, bir Web barındırma sağlayıcısına dağıtmanız gerekir. Öğreticinin bu bölümünde Azure 'a dağıtırsınız. Bu bölüm isteğe bağlıdır; Bu adımı atlayabilir ve aşağıdaki öğreticiye devam edebilir ya da seçtiğiniz farklı bir barındırma sağlayıcısı için bu bölümdeki yönergeleri uyarlayabilirsiniz.
 
 ### <a name="use-code-first-migrations-to-deploy-the-database"></a>Veritabanını dağıtmak için Code First geçişleri kullanma
 
-Veritabanını dağıtmak için Code First Migrations kullanırsınız. Visual Studio 'dan dağıtma ayarlarını yapılandırmak için kullandığınız yayımlama profilini oluşturduğunuzda, **veritabanını güncelleştir**etiketli bir onay kutusunu seçersiniz. Bu ayar, dağıtım işleminin, Code First `MigrateDatabaseToLatestVersion` Başlatıcı sınıfını kullanması için hedef sunucudaki uygulama *Web. config* dosyasını otomatik olarak yapılandırmasına neden olur.
+Veritabanını dağıtmak için Code First Migrations kullanırsınız. Visual Studio 'dan dağıtma ayarlarını yapılandırmak için kullandığınız yayımlama profilini oluşturduğunuzda, **veritabanını güncelleştir**etiketli bir onay kutusunu seçersiniz. Bu ayar, dağıtım işleminin, Code First Başlatıcı sınıfını kullanması için hedef sunucudaki uygulama *Web. config* dosyasını otomatik olarak yapılandırmasına neden olur `MigrateDatabaseToLatestVersion` .
 
-Visual Studio, projenizi hedef sunucuya kopyalarken dağıtım işlemi sırasında veritabanıyla hiçbir şey yapmaz. Dağıtılan uygulamayı çalıştırdığınızda ve dağıtımdan sonra veritabanına ilk kez eriştiğinde, veritabanının veri modeliyle eşleşip eşleşmediğini denetler Code First. Bir uyumsuzluk varsa, Code First otomatik olarak veritabanını oluşturur (henüz yoksa) veya veritabanı şemasını en son sürüme güncelleştirir (bir veritabanı varsa ancak modelle eşleşmezse). Uygulama bir geçişler `Seed` yöntemi uygularsa, yöntem veritabanı oluşturulduktan sonra veya şema güncelleştirildikten sonra çalışır.
+Visual Studio, projenizi hedef sunucuya kopyalarken dağıtım işlemi sırasında veritabanıyla hiçbir şey yapmaz. Dağıtılan uygulamayı çalıştırdığınızda ve dağıtımdan sonra veritabanına ilk kez eriştiğinde, veritabanının veri modeliyle eşleşip eşleşmediğini denetler Code First. Bir uyumsuzluk varsa, Code First otomatik olarak veritabanını oluşturur (henüz yoksa) veya veritabanı şemasını en son sürüme güncelleştirir (bir veritabanı varsa ancak modelle eşleşmezse). Uygulama bir geçişler yöntemi uygularsa `Seed` , yöntem veritabanı oluşturulduktan sonra veya şema güncelleştirildikten sonra çalışır.
 
-Geçişlerinizin `Seed` yöntemi test verileri ekler. Bir üretim ortamına dağıtım yaptıysanız, `Seed` yöntemini yalnızca üretim veritabanınıza eklemek istediğiniz verileri eklemek üzere değiştirmeniz gerekir. Örneğin, geçerli veri modelinizde gerçek kurslar olmasını, ancak geliştirme veritabanında öğrenci öğrencilerine sahip olmak isteyebilirsiniz. Geliştirme sırasında yüklemek için bir `Seed` yöntemi yazabilir ve ardından üretime dağıtmadan önce kurgusal öğrencileri açıklama olarak girebilirsiniz. Ya da yalnızca kursları yüklemek için bir `Seed` yöntemi yazabilir ve uygulamanın kullanıcı arabirimini kullanarak test veritabanına kurgusal öğrencileri el ile girebilirsiniz.
+Geçişler `Seed` yönteminiz test verileri ekler. Bir üretim ortamına dağıtım yapıyorsanız, `Seed` yöntemi yalnızca üretim veritabanınıza eklemek istediğiniz verileri içerecek şekilde değiştirmeniz gerekir. Örneğin, geçerli veri modelinizde gerçek kurslar olmasını, ancak geliştirme veritabanında öğrenci öğrencilerine sahip olmak isteyebilirsiniz. `Seed`Geliştirme sırasında her ikisini de yüklemek için bir yöntem yazabilir ve ardından üretime dağıtmadan önce kurgusal öğrencileri açıklama olarak girebilirsiniz. Ya da `Seed` yalnızca kursları yüklemek için bir yöntem yazabilir ve uygulamanın kullanıcı arabirimini kullanarak test veritabanına kurgusal öğrencileri el ile girebilirsiniz.
 
 ### <a name="get-an-azure-account"></a>Azure hesabı alın
 
@@ -182,7 +182,7 @@ Veritabanını Azure SQL veritabanı 'na dağıtırsınız. SQL veritabanı, SQL
 
 2. **Bir yayımlama hedefi seçin** sayfasında **App Service** ' yi seçin ve ardından **var**' ı seçin ve ardından **Yayımla**' yı seçin.
 
-    ![Bir yayımlama hedefi sayfası seçin](migrations-and-deployment-with-the-entity-framework-in-an-asp-net-mvc-application/_static/publish-select-existing-azure-app-service.png)
+    ![Bir yayımlama hedefi sayfası seçin](migrations-and-deployment-with-the-entity-framework-in-an-asp-net-mvc-application/_static/select-existing-app-service.png)
 
 3. Daha önce Azure aboneliğinizi Visual Studio 'ya eklemediyseniz, ekrandaki adımları uygulayın. Bu adımlar, Visual Studio 'nun Azure aboneliğinize bağlanmasını sağlayarak **uygulama hizmetleri** listesinin Web sitenizi içermesini sağlar.
 
@@ -200,7 +200,7 @@ Bu noktada, **Execute Code First Migrations (uygulama başlangıcında çalış�
 
 ![Web. config dosyası alıntısı](https://asp.net/media/4367421/mig.png)
 
-Dağıtım işlemi, veritabanı şemasını güncelleştirmek ve veritabanını dengeli yapmak için Code First Migrations için yeni bir bağlantı dizesi *(SchoolContext\_DatabasePublish*) de oluşturmuştur.
+Dağıtım işlemi ayrıca, veritabanı şemasını güncelleştirmek ve veritabanını dengeli yapmak için Code First Migrations için yeni bir bağlantı dizesi *(SchoolContext \_ databasepublish*) oluşturmuştur.
 
 ![Web. config dosyasında bağlantı dizesi](migrations-and-deployment-with-the-entity-framework-in-an-asp-net-mvc-application/_static/image26.png)
 
@@ -221,17 +221,17 @@ Diğer geçiş senaryoları hakkında daha fazla bilgi için bkz. [geçişleri e
 
 `update-database -target MigrationName`
 
-`update-database -target MigrationName` komutu hedeflenen geçişi çalıştırır.
+`update-database -target MigrationName`Komut, hedeflenen geçişi çalıştırır.
 
 ## <a name="ignore-migration-changes-to-database"></a>Veritabanına yapılan geçiş değişikliklerini yoksay
 
 `Add-migration MigrationName -ignoreChanges`
 
-`ignoreChanges` geçerli modelle anlık görüntü olarak boş bir geçiş oluşturur.
+`ignoreChanges`geçerli modelle anlık görüntü olarak boş bir geçiş oluşturur.
 
 ## <a name="code-first-initializers"></a>Code First başlatıcıları
 
-Dağıtım bölümünde, kullanılmakta olan [Migratedatabasetolatestversion](https://msdn.microsoft.com/library/hh829476(v=vs.103).aspx) başlatıcısı 'nı gördünüz. Code First Ayrıca, [Createdatabaseifnotexists](https://msdn.microsoft.com/library/gg679221(v=vs.103).aspx) (varsayılan), [Dropcreatedatabaseifmodelchanges](https://msdn.microsoft.com/library/gg679604(v=VS.103).aspx) (daha önce kullandığınız) ve [dropcreatedatabaseher zaman](https://msdn.microsoft.com/library/gg679506(v=VS.103).aspx)dahil diğer başlatıcıları da sağlar. `DropCreateAlways` başlatıcısı, birim testlerinin koşullarını ayarlamak için yararlı olabilir. Ayrıca kendi başlatıcılarınızı yazabilir ve uygulamanın veritabanından okuma veya veritabanına yazma işlemlerini beklemek istemiyorsanız bir başlatıcıyı açıkça çağırabilirsiniz.
+Dağıtım bölümünde, kullanılmakta olan [Migratedatabasetolatestversion](https://msdn.microsoft.com/library/hh829476(v=vs.103).aspx) başlatıcısı 'nı gördünüz. Code First Ayrıca, [Createdatabaseifnotexists](https://msdn.microsoft.com/library/gg679221(v=vs.103).aspx) (varsayılan), [Dropcreatedatabaseifmodelchanges](https://msdn.microsoft.com/library/gg679604(v=VS.103).aspx) (daha önce kullandığınız) ve [dropcreatedatabaseher zaman](https://msdn.microsoft.com/library/gg679506(v=VS.103).aspx)dahil diğer başlatıcıları da sağlar. `DropCreateAlways`Başlatıcı, birim testlerine yönelik koşulları ayarlamak için yararlı olabilir. Ayrıca kendi başlatıcılarınızı yazabilir ve uygulamanın veritabanından okuma veya veritabanına yazma işlemlerini beklemek istemiyorsanız bir başlatıcıyı açıkça çağırabilirsiniz.
 
 Başlatıcılar hakkında daha fazla bilgi için bkz. [Entity Framework Code First veritabanı başlatıcıları anlama](http://www.codeguru.com/csharp/article.php/c19999/Understanding-Database-Initializers-in-Entity-Framework-Code-First.htm) ve kitap [programlama Entity Framework](http://shop.oreilly.com/product/0636920022220.do) Bölüm 6: Julie Lerman ve rowan Miller tarafından Code First.
 

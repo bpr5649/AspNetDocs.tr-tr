@@ -8,12 +8,12 @@ ms.date: 06/11/2014
 ms.assetid: 43a6cce7-a3ef-42aa-ad06-90d36d49f098
 msc.legacyurl: /web-api/overview/testing-and-debugging/unit-testing-controllers-in-web-api
 msc.type: authoredcontent
-ms.openlocfilehash: cdb1700537021e276669de1a9e0330a62659746c
-ms.sourcegitcommit: e7e91932a6e91a63e2e46417626f39d6b244a3ab
+ms.openlocfilehash: 3b89009a375e766f1c5b439dfe3fffd43b4963b3
+ms.sourcegitcommit: a4c3c7e04e5f53cf8cd334f036d324976b78d154
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/06/2020
-ms.locfileid: "78554994"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84172932"
 ---
 # <a name="unit-testing-controllers-in-aspnet-web-api-2"></a>ASP.NET Web API 2’deki Birim Testi Denetleyicileri
 
@@ -30,7 +30,7 @@ ms.locfileid: "78554994"
 > [!NOTE]
 > Moq kullandım, ancak aynı fikir herhangi bir sahte işlem çerçevesi için de geçerlidir. Moq 4.5.30 (ve üzeri), Visual Studio 2017, Roslyn ve .NET 4,5 ve sonraki sürümlerini destekler.
 
-Birim testlerinde ortak bir model &quot;düzenleme-işlem onaylama&quot;:
+Birim testlerinde ortak bir model, &quot; düzenleme-işlem onayı &quot; :
 
 - Düzenle: testin çalıştırılacağı önkoşulları ayarlayın.
 - Davran: testi gerçekleştirin.
@@ -53,7 +53,7 @@ Eylemleri **HttpResponseMessage**döndüren bir denetleyiciye örnek aşağıda 
 
 [!code-csharp[Main](unit-testing-controllers-in-web-api/samples/sample1.cs)]
 
-Denetleyicinin bir `IProductRepository`eklemek için bağımlılık ekleme işlemini kullandığını unutmayın. Bu, bir sahte depo ekleyebildiğinden denetleyiciyi daha kararlı hale getirir. Aşağıdaki birim testi, `Get` yönteminin yanıt gövdesine bir `Product` yazdığını doğrular. `repository` bir sahte `IProductRepository`olduğunu varsayalım.
+Denetleyicinin bir eklemek için bağımlılık ekleme işlemini kullandığını unutmayın `IProductRepository` . Bu, bir sahte depo ekleyebildiğinden denetleyiciyi daha kararlı hale getirir. Aşağıdaki birim testi, `Get` yönteminin yanıt gövdesine yazdığını doğrular `Product` . `repository`Bir sahte olduğunu varsayın `IProductRepository` .
 
 [!code-csharp[Main](unit-testing-controllers-in-web-api/samples/sample2.cs)]
 
@@ -61,13 +61,13 @@ Denetleyici üzerinde **istek** ve **yapılandırma** ayarlamak önemlidir. Aksi
 
 ## <a name="testing-link-generation"></a>Bağlantı oluşturma test ediliyor
 
-`Post` yöntemi, yanıtta bağlantı oluşturmak için **UrlHelper. Link** öğesini çağırır. Bu, birim testinde biraz daha fazla kurulum gerektirir:
+`Post`Yöntemi, yanıtta bağlantı oluşturmak Için **UrlHelper. Link** öğesini çağırır. Bu, birim testinde biraz daha fazla kurulum gerektirir:
 
 [!code-csharp[Main](unit-testing-controllers-in-web-api/samples/sample3.cs)]
 
 **UrlHelper** sınıfı için istek URL 'si ve rota verileri gerekir, bu nedenle testin bu değerler için değerleri ayarlaması gerekir. Diğer bir seçenek de sahte veya saplama **UrlHelper**. Bu yaklaşımda, [Apicontroller. URL](https://msdn.microsoft.com/library/system.web.http.apicontroller.url.aspx) ' nin varsayılan değerini sabit bir değer döndüren bir sahte veya saplama sürümüyle değiştirirsiniz.
 
-[Moq](https://github.com/Moq) çerçevesini kullanarak testi yeniden yazalım. `Moq` NuGet paketini test projesine yükler.
+[Moq](https://github.com/Moq) çerçevesini kullanarak testi yeniden yazalım. `Moq`NuGet paketini test projesine yükler.
 
 [!code-csharp[Main](unit-testing-controllers-in-web-api/samples/sample4.cs)]
 
@@ -85,7 +85,7 @@ Bu örnekte, **ıhttpactionresult**kullanılarak bazı yaygın desenler gösteri
 
 ### <a name="action-returns-200-ok-with-a-response-body"></a>Eylem, yanıt gövdesi ile 200 (Tamam) döndürür
 
-`Get` yöntemi, ürün bulunursa `Ok(product)` çağırır. Birim testinde, dönüş türünün **Oknegoti, ContentResult** olduğundan ve döndürülen ürünün doğru kimliğe sahip olduğundan emin olun.
+`Get`Yöntemi, `Ok(product)` ürün bulunursa çağrılır. Birim testinde, dönüş türünün **Oknegoti, ContentResult** olduğundan ve döndürülen ürünün doğru kimliğe sahip olduğundan emin olun.
 
 [!code-csharp[Main](unit-testing-controllers-in-web-api/samples/sample6.cs)]
 
@@ -93,30 +93,30 @@ Birim testinin eylem sonucunu yürütmediğine dikkat edin. Eylem sonucunun HTTP
 
 ### <a name="action-returns-404-not-found"></a>Eylem 404 döndürüyor (bulunamadı)
 
-`Get` yöntemi, ürün bulunamazsa `NotFound()` çağırır. Bu durumda, birim testi yalnızca dönüş türünün **Notfoundsonucu**olup olmadığını denetler.
+`Get` `NotFound()` Ürün bulunamazsa yöntemi çağırır. Bu durumda, birim testi yalnızca dönüş türünün **Notfoundsonucu**olup olmadığını denetler.
 
 [!code-csharp[Main](unit-testing-controllers-in-web-api/samples/sample7.cs)]
 
 ### <a name="action-returns-200-ok-with-no-response-body"></a>Eylem, yanıt gövdesi olmayan 200 (Tamam) döndürür
 
-`Delete` yöntemi, boş bir HTTP 200 yanıtı döndürmek için `Ok()` çağırır. Önceki örnekte olduğu gibi, birim testi dönüş türünü denetler, bu durumda **Okresult**.
+`Delete`Yöntemi, `Ok()` boş bir http 200 yanıtı döndürmek için çağırır. Önceki örnekte olduğu gibi, birim testi dönüş türünü denetler, bu durumda **Okresult**.
 
 [!code-csharp[Main](unit-testing-controllers-in-web-api/samples/sample8.cs)]
 
 ### <a name="action-returns-201-created-with-a-location-header"></a>Eylem, konum üst bilgisi ile 201 (oluşturuldu) döndürüyor
 
-`Post` yöntemi, konum üstbilgisinde bir URI ile HTTP 201 yanıtı döndürmek için `CreatedAtRoute` çağırır. Birim testinde, eylemin doğru yönlendirme değerlerini ayarladiğini doğrulayın.
+`Post`Yöntemi, `CreatedAtRoute` konum ÜSTBILGISINDE bir URI ile http 201 yanıtı döndürmek için çağırır. Birim testinde, eylemin doğru yönlendirme değerlerini ayarladiğini doğrulayın.
 
 [!code-csharp[Main](unit-testing-controllers-in-web-api/samples/sample9.cs)]
 
 ### <a name="action-returns-another-2xx-with-a-response-body"></a>Eylem, yanıt gövdesi olan bir 2xx döndürür
 
-`Put` yöntemi bir yanıt gövdesi ile HTTP 202 (kabul edildi) yanıtı döndürmek için `Content` çağırır. Bu durum 200 (Tamam) döndürmeye benzer, ancak birim testi de durum kodunu denetlemelidir.
+`Put`Yöntemi `Content` bir yanıt GÖVDESI ile http 202 (kabul edildi) yanıtı döndürmek için çağırır. Bu durum 200 (Tamam) döndürmeye benzer, ancak birim testi de durum kodunu denetlemelidir.
 
 [!code-csharp[Main](unit-testing-controllers-in-web-api/samples/sample10.cs)]
 
 ## <a name="additional-resources"></a>Ek Kaynaklar
 
 - [Birim testi ASP.NET Web API 2 ' de Entity Framework Mocking](mocking-entity-framework-when-unit-testing-aspnet-web-api-2.md)
-- [Bir ASP.NET Web API hizmeti için testler yazma](https://blogs.msdn.com/b/youssefm/archive/2013/01/28/writing-tests-for-an-asp-net-webapi-service.aspx) (Youssef Moussaouı tarafından blog gönderisi).
+- [Bir ASP.NET Web API hizmeti için testler yazma](https://docs.microsoft.com/en-gb/archive/blogs/youssefm/writing-tests-for-an-asp-net-web-api-service) (Youssef Moussaouı tarafından blog gönderisi).
 - [Yol hata ayıklayıcı ile ASP.NET Web API 'SI hata ayıklaması](https://blogs.msdn.com/b/webdev/archive/2013/04/04/debugging-asp-net-web-api-with-route-debugger.aspx)

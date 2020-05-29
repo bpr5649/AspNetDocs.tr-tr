@@ -8,14 +8,14 @@ ms.date: 11/24/2017
 ms.custom: seoapril2019
 msc.legacyurl: /web-api/overview/advanced/calling-a-web-api-from-a-net-client
 msc.type: authoredcontent
-ms.openlocfilehash: ab3ba71839123e848dffaa59871f9dac8c1a88d0
-ms.sourcegitcommit: e7e91932a6e91a63e2e46417626f39d6b244a3ab
+ms.openlocfilehash: 484d927eeb0ba49f5f00d476f4658ebc081d0a4a
+ms.sourcegitcommit: a4c3c7e04e5f53cf8cd334f036d324976b78d154
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/06/2020
-ms.locfileid: "78622621"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84172945"
 ---
-# <a name="call-a-web-api-from-a-net-client-c"></a>.NET Istemcisinden bir Web API 'SI çağırma (C#)
+# <a name="call-a-web-api-from-a-net-client-c"></a>.NET Istemcisinden Web API 'SI çağırma (C#)
 
 , [Mike, son](https://github.com/MikeWasson) ve [Rick Anderson](https://twitter.com/RickAndMSFT) tarafından
 
@@ -25,7 +25,7 @@ Bu öğreticide, [System .net. http. HttpClient](https://msdn.microsoft.com/libr
 
 Bu öğreticide, aşağıdaki Web API 'sini tüketen bir istemci uygulaması yazılmıştır:
 
-| Eylem | HTTP yöntemi | Göreli URI'si |
+| Eylem | HTTP yöntemi | Göreli URI |
 | --- | --- | --- |
 | KIMLIĞE göre ürün al | GET | /api/Products/*ID* |
 | Yeni ürün oluştur | POST | /api/Products |
@@ -37,6 +37,11 @@ Bu API 'yi ASP.NET Web API 'SI ile nasıl uygulayacağınızı öğrenmek için 
 
 Kolaylık olması için, bu öğreticideki istemci uygulaması bir Windows konsol uygulamasıdır. **HttpClient** , Windows Phone ve Windows Mağazası uygulamaları için de desteklenir. Daha fazla bilgi için bkz. [Taşınabilir kitaplıkları kullanarak birden çok platform Için Web API Istemci kodu yazma](https://blogs.msdn.com/b/webdev/archive/2013/07/19/writing-web-api-client-code-for-multiple-platforms-using-portable-libraries.aspx)
 
+**Note:** Temel URL 'Leri ve göreli URI 'Leri sabit kodlanmış değerler olarak geçirirseniz, API 'yi kullanmak için kuralların en az olması gerekir `HttpClient` . `HttpClient.BaseAddress`Özelliği sondaki eğik çizgi () içeren bir adrese ayarlanmalıdır `/` . Örneğin, sabit kodlanmış kaynak URI 'Lerini `HttpClient.GetAsync` yönteme geçirirken önünde eğik çizgi eklemeyin. `Product`Kimliğe göre almak için:
+
+1. Kurmak`client.BaseAddress = new Uri("https://localhost:5001/");`
+1. İstek a `Product` . Örneğin, `client.GetAsync<Product>("api/products/4");`.
+
 <a id="CreateConsoleApp"></a>
 ## <a name="create-the-console-application"></a>Konsol uygulaması oluşturma
 
@@ -46,7 +51,7 @@ Visual Studio 'da **Httpclientsample** adlı yeni bir Windows konsol uygulaması
 
 Yukarıdaki kod, tüm istemci uygulamasıdır.
 
-`RunAsync` çalışır ve bloklar tamamlanana kadar engeller. Ağ g/ç gerçekleştirdiklerinden, çoğu **HttpClient** yöntemi zaman uyumsuz. Tüm zaman uyumsuz görevler `RunAsync`içinde yapılır. Normalde bir uygulama ana iş parçacığını engellemez, ancak bu uygulama hiçbir etkileşime izin vermez.
+`RunAsync`çalışır ve tamamlanana kadar engeller. Ağ g/ç gerçekleştirdiklerinden, çoğu **HttpClient** yöntemi zaman uyumsuz. Tüm zaman uyumsuz görevler içinde yapılır `RunAsync` . Normalde bir uygulama ana iş parçacığını engellemez, ancak bu uygulama hiçbir etkileşime izin vermez.
 
 [!code-csharp[Main](calling-a-web-api-from-a-net-client/sample/client/Program.cs?name=snippet_run)]
 
@@ -55,13 +60,13 @@ Yukarıdaki kod, tüm istemci uygulamasıdır.
 
 Web API Istemci kitaplıkları paketini yüklemek için NuGet Paket Yöneticisi 'Ni kullanın.
 
-**Araçlar** menüsünde **NuGet Paket Yöneticisi** > **Paket Yöneticisi konsolu**' nu seçin. Paket Yöneticisi konsolunda (PMC), aşağıdaki komutu yazın:
+**Araçlar** menüsünde **NuGet Paket Yöneticisi**  >  **Paket Yöneticisi konsolu**' nu seçin. Paket Yöneticisi konsolunda (PMC), aşağıdaki komutu yazın:
 
 `Install-Package Microsoft.AspNet.WebApi.Client`
 
 Yukarıdaki komut, projeye aşağıdaki NuGet paketlerini ekler:
 
-* Microsoft.AspNet.WebApi.Client
+* Microsoft. AspNet. WebApi. Client
 * Newtonsoft.Json
 
 Netmerak Soft. JSON (Json.NET olarak da bilinir), .NET için popüler bir yüksek performanslı JSON çerçevesidir.
@@ -69,11 +74,11 @@ Netmerak Soft. JSON (Json.NET olarak da bilinir), .NET için popüler bir yükse
 <a id="AddModelClass"></a>
 ## <a name="add-a-model-class"></a>Model sınıfı ekleme
 
-`Product` sınıfını inceleyin:
+Sınıfı inceleyin `Product` :
 
 [!code-csharp[Main](calling-a-web-api-from-a-net-client/sample/client/Program.cs?name=snippet_prod)]
 
-Bu sınıf, Web API 'SI tarafından kullanılan veri modeliyle eşleşir. Bir uygulama, HTTP yanıtından bir `Product` örneğini okumak için **HttpClient** kullanabilir. Uygulamanın seri durumdan çıkarma kodu yazmak zorunda değildir.
+Bu sınıf, Web API 'SI tarafından kullanılan veri modeliyle eşleşir. Bir uygulama, HTTP yanıtından bir örnek okumak için **HttpClient** kullanabilir `Product` . Uygulamanın seri durumdan çıkarma kodu yazmak zorunda değildir.
 
 <a id="InitClient"></a>
 ## <a name="create-and-initialize-httpclient"></a>HttpClient oluşturma ve başlatma
@@ -105,9 +110,9 @@ Aşağıdaki kod, bir ürün için GET isteği gönderir:
 
 [!code-csharp[Main](calling-a-web-api-from-a-net-client/sample/client/Program.cs?name=snippet_GetProductAsync)]
 
-**GetAsync** YÖNTEMI http get isteğini gönderir. Yöntem tamamlandığında, HTTP yanıtını içeren bir **HttpResponseMessage** döndürür. Yanıttaki durum kodu bir başarı kodu ise, yanıt gövdesi bir ürünün JSON gösterimini içerir. JSON yükünün `Product` örneğine serisini kaldırmak için **Readasasync** çağrısı yapın. Yanıt gövdesi çok büyük olabileceğinden **Readasasync** yöntemi zaman uyumsuzdur.
+**GetAsync** YÖNTEMI http get isteğini gönderir. Yöntem tamamlandığında, HTTP yanıtını içeren bir **HttpResponseMessage** döndürür. Yanıttaki durum kodu bir başarı kodu ise, yanıt gövdesi bir ürünün JSON gösterimini içerir. JSON yükünün bir örneğe serisini kaldırmak için **Readasasync** çağrısı yapın `Product` . Yanıt gövdesi çok büyük olabileceğinden **Readasasync** yöntemi zaman uyumsuzdur.
 
-HTTP yanıtı bir hata kodu içerdiğinde **HttpClient** bir özel durum oluşturmaz. Bunun yerine, durum bir hata kodu ise **IsSuccessStatusCode** özelliği **false 'tur** . HTTP hata kodlarını özel durumlar olarak kabul etmek isterseniz, yanıt nesnesinde [HttpResponseMessage. EnsureSuccessStatusCode](https://msdn.microsoft.com/library/system.net.http.httpresponsemessage.ensuresuccessstatuscode(v=vs.110).aspx) öğesini çağırın. `EnsureSuccessStatusCode` durum kodu 200&ndash;299 aralığının dışında kalırsa bir özel durum oluşturur. **HttpClient** 'ın, istek zaman aşımına uğrarsa başka nedenlerle &mdash; özel durumlar oluşturduğunu unutmayın.
+HTTP yanıtı bir hata kodu içerdiğinde **HttpClient** bir özel durum oluşturmaz. Bunun yerine, durum bir hata kodu ise **IsSuccessStatusCode** özelliği **false 'tur** . HTTP hata kodlarını özel durumlar olarak kabul etmek isterseniz, yanıt nesnesinde [HttpResponseMessage. EnsureSuccessStatusCode](https://msdn.microsoft.com/library/system.net.http.httpresponsemessage.ensuresuccessstatuscode(v=vs.110).aspx) öğesini çağırın. `EnsureSuccessStatusCode`durum kodu 200 299 aralığının dışında kalırsa bir özel durum oluşturur &ndash; . **HttpClient** &mdash; , istek zaman aşımına uğrarsa diğer nedenlerle özel durumlar oluşturabilir.
 
 <a id="MediaTypeFormatters"></a>
 ### <a name="media-type-formatters-to-deserialize"></a>Seri durumdan çıkarılacak medya türü Formatlayıcıları
@@ -129,7 +134,7 @@ Daha fazla bilgi için bkz. [ASP.NET Web API 2 ' de medya biçimleri](../formats
 
 ## <a name="sending-a-post-request-to-create-a-resource"></a>Kaynak oluşturmak için POST Isteği gönderme
 
-Aşağıdaki kod, JSON biçiminde bir `Product` örneği içeren bir POST isteği gönderir:
+Aşağıdaki kod, JSON biçiminde bir örnek içeren bir POST isteği gönderir `Product` :
 
 [!code-csharp[Main](calling-a-web-api-from-a-net-client/sample/client/Program.cs?name=snippet_CreateProductAsync)]
 
