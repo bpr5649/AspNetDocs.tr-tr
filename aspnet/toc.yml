@@ -1,4 +1,4 @@
-- name: ASP.NET belgeleri
+- name: ASP.NET Core belgeleri
   href: /aspnet/core/
 - name: ASP.NET’e genel bakış
   href: overview.md
@@ -74,7 +74,7 @@
           items:
             - name: 'Kullanıcı kaydı, e-posta onayı ve parola sıfırlama özellikli, güvenli bir ASP.NET Web Forms uygulaması oluşturma (C#)'
               href: web-forms/overview/security/create-a-secure-aspnet-web-forms-app-with-user-registration-email-confirmation-and-password-reset.md
-            - name: 'SMS İki Öğeli Kimlik Doğrulama özellikli bir ASP.NET Web Forms uygulaması oluşturma (C#)'
+            - name: SMS İki Öğeli Kimlik Doğrulama özellikli bir ASP.NET Web Forms uygulaması oluşturma (C#)
               href: web-forms/overview/security/create-an-aspnet-web-forms-app-with-sms-two-factor-authentication.md
         - name: Performans
           href: web-forms/overview/performance-and-caching/index.md
@@ -154,7 +154,7 @@
                   href: web-forms/overview/deployment/configuring-server-environments-for-web-deployment/choosing-the-right-approach-to-web-deployment.md
                 - name: 'Senaryo: Web Dağıtımı için Test Ortamı Yapılandırma'
                   href: web-forms/overview/deployment/configuring-server-environments-for-web-deployment/scenario-configuring-a-test-environment-for-web-deployment.md
-                - name: 'Senaryo: Web Dağıtımı için Hazırlama Ortamı Yapılandırma'
+                - name: 'Senaryo: Web Dağıtımı için Hazırlık Ortamı Yapılandırma'
                   href: web-forms/overview/deployment/configuring-server-environments-for-web-deployment/scenario-configuring-a-staging-environment-for-web-deployment.md
                 - name: 'Senaryo: Web Dağıtımı için Üretim Ortamı Yapılandırma'
                   href: web-forms/overview/deployment/configuring-server-environments-for-web-deployment/scenario-configuring-a-production-environment-for-web-deployment.md
@@ -219,21 +219,21 @@
             - name: ASP.NET 4 - Tailspin Spyworks
               href: web-forms/overview/older-versions-getting-started/tailspin-spyworks/index.md
               items:
-                - name: '1. Bölüm: Dosya -> Yeni Proje'
+                - name: 'Bölüm 1: Dosya-> Yeni Proje'
                   href: web-forms/overview/older-versions-getting-started/tailspin-spyworks/tailspin-spyworks-part-1.md
-                - name: '2. Bölüm: Veri Erişim Katmanı'
+                - name: 'Bölüm 2: Veri Erişim Katmanı'
                   href: web-forms/overview/older-versions-getting-started/tailspin-spyworks/tailspin-spyworks-part-2.md
-                - name: '3. Bölüm: Düzen ve Kategori Menüsü'
+                - name: 'Bölüm 3: Düzen ve Kategori Menüsü'
                   href: web-forms/overview/older-versions-getting-started/tailspin-spyworks/tailspin-spyworks-part-3.md
-                - name: '4. Bölüm: Ürünleri Listeleme'
+                - name: 'Bölüm 4: Ürünleri Listeleme'
                   href: web-forms/overview/older-versions-getting-started/tailspin-spyworks/tailspin-spyworks-part-4.md
-                - name: '5. Bölüm: İş Mantığı'
+                - name: 'Bölüm 5: İş Mantığı'
                   href: web-forms/overview/older-versions-getting-started/tailspin-spyworks/tailspin-spyworks-part-5.md
-                - name: '6. Bölüm: ASP.NET Üyeliği'
+                - name: 'Bölüm 6: ASP.NET Üyeliği'
                   href: web-forms/overview/older-versions-getting-started/tailspin-spyworks/tailspin-spyworks-part-6.md
-                - name: '7. Bölüm: Özellik Ekleme'
+                - name: 'Bölüm 7: Özellik Ekleme'
                   href: web-forms/overview/older-versions-getting-started/tailspin-spyworks/tailspin-spyworks-part-7.md
-                - name: '8. Bölüm: Son Sayfalar, Özel Durum İşleme ve Sonuç'
+                - name: 'Bölüm 8: Son Sayfalar, Özel Durum İşleme ve Sonuç'
                   href: web-forms/overview/older-versions-getting-started/tailspin-spyworks/tailspin-spyworks-part-8.md
             - name: ASP.NET 4 - Entity Framework 4 ve Web Forms ile Çalışmaya Başlama
               href: web-forms/overview/older-versions-getting-started/getting-started-with-ef/index.md
@@ -257,11 +257,11 @@
             - name: ASP.NET 4 - Entity Framework 4 ve Web Forms ile Devam Etme
               href: web-forms/overview/older-versions-getting-started/continuing-with-ef/index.md
               items:
-                - name: 'Entity Framework 4.0 ve ObjectDataSource Denetimi, 1. Bölüm: Başlarken'
+                - name: 'Entity Framework 4.0 ve ObjectDataSource Denetimi, Bölüm 1: Başlarken'
                   href: web-forms/overview/older-versions-getting-started/continuing-with-ef/using-the-entity-framework-and-the-objectdatasource-control-part-1-getting-started.md
-                - name: 'Entity Framework 4.0 ve ObjectDataSource Denetimi, 2. Bölüm: İş Mantığı Katmanı ve Birim Testleri Ekleme'
+                - name: 'Entity Framework 4.0 ve ObjectDataSource Denetimi, Bölüm 2: İş Mantığı Katmanı ve Birim Testleri Ekleme'
                   href: web-forms/overview/older-versions-getting-started/continuing-with-ef/using-the-entity-framework-and-the-objectdatasource-control-part-2-adding-a-business-logic-layer-and-unit-tests.md
-                - name: 'Entity Framework 4.0 ve ObjectDataSource Denetimi, 3. Bölüm: Sıralama ve Filtreleme'
+                - name: 'Entity Framework 4.0 ve ObjectDataSource Denetimi, Bölüm 3: Sıralama ve Filtreleme'
                   href: web-forms/overview/older-versions-getting-started/continuing-with-ef/using-the-entity-framework-and-the-objectdatasource-control-part-3-sorting-and-filtering.md
                 - name: ASP.NET 4 Sürümünde Entity Framework 4.0 ile Eş Zamanlılığı İşleme
                   href: web-forms/overview/older-versions-getting-started/continuing-with-ef/handling-concurrency-with-the-entity-framework-in-an-asp-net-web-application.md
@@ -314,25 +314,25 @@
             - name: ASP.NET 3.5 - Web Forms Ana Sayfaları
               href: web-forms/overview/older-versions-getting-started/master-pages/index.md
               items:
-                - name: 'Ana Sayfaları Kullanarak Site Geneli Bir Düzen Oluşturma (C#)'
+                - name: Ana Sayfaları Kullanarak Site Geneli Bir Düzen Oluşturma (C#)
                   href: web-forms/overview/older-versions-getting-started/master-pages/creating-a-site-wide-layout-using-master-pages-cs.md
-                - name: 'Birden Çok ContentPlaceHolder ve Varsayılan İçerik (C#)'
+                - name: Birden Çok ContentPlaceHolder ve Varsayılan İçerik (C#)
                   href: web-forms/overview/older-versions-getting-started/master-pages/multiple-contentplaceholders-and-default-content-cs.md
                 - name: 'Ana Sayfada Başlık, Meta Etiketler ve Diğer HTML Üst Bilgilerini Belirtme (C#)'
                   href: web-forms/overview/older-versions-getting-started/master-pages/specifying-the-title-meta-tags-and-other-html-headers-in-the-master-page-cs.md
-                - name: 'Ana Sayfalardaki URL''ler (C#)'
+                - name: Ana Sayfalardaki URL'ler (C#)
                   href: web-forms/overview/older-versions-getting-started/master-pages/urls-in-master-pages-cs.md
-                - name: 'İçerik Sayfalarında Denetim Kimliği Adlandırma (C#)'
+                - name: İçerik Sayfalarında Denetim Kimliği Adlandırma (C#)
                   href: web-forms/overview/older-versions-getting-started/master-pages/control-id-naming-in-content-pages-cs.md
-                - name: 'Ana Sayfadan İçerik Sayfası ile Etkileşim Kurma (C#)'
+                - name: Ana Sayfadan İçerik Sayfası ile Etkileşim Kurma (C#)
                   href: web-forms/overview/older-versions-getting-started/master-pages/interacting-with-the-master-page-from-the-content-page-cs.md
-                - name: 'İçerik Sayfasından Ana Sayfa ile Etkileşim Kurma (C#)'
+                - name: İçerik Sayfasından Ana Sayfa ile Etkileşim Kurma (C#)
                   href: web-forms/overview/older-versions-getting-started/master-pages/interacting-with-the-content-page-from-the-master-page-cs.md
-                - name: 'Ana Sayfalar ve ASP.NET AJAX (C#)'
+                - name: Ana Sayfalar ve ASP.NET AJAX (C#)
                   href: web-forms/overview/older-versions-getting-started/master-pages/master-pages-and-asp-net-ajax-cs.md
-                - name: 'Ana Sayfayı Programlı Olarak Belirtme (C#)'
+                - name: Ana Sayfayı Programlı Olarak Belirtme (C#)
                   href: web-forms/overview/older-versions-getting-started/master-pages/specifying-the-master-page-programmatically-cs.md
-                - name: 'İç İçe Geçmiş Ana Sayfalar (C#)'
+                - name: İç İçe Geçmiş Ana Sayfalar (C#)
                   href: web-forms/overview/older-versions-getting-started/master-pages/nested-master-pages-cs.md
                 - name: Ana Sayfaları Kullanarak Site Geneli Bir Düzen Oluşturma (VB)
                   href: web-forms/overview/older-versions-getting-started/master-pages/creating-a-site-wide-layout-using-master-pages-vb.md
@@ -357,37 +357,37 @@
             - name: Visual Studio 2008 ve Önceki Sürümlerde Web Sitesi Projeleri Dağıtma
               href: web-forms/overview/older-versions-getting-started/deploying-web-site-projects/index.md
               items:
-                - name: 'ASP.NET Barındırma Seçenekleri (C#)'
+                - name: ASP.NET Barındırma Seçenekleri (C#)
                   href: web-forms/overview/older-versions-getting-started/deploying-web-site-projects/asp-net-hosting-options-cs.md
-                - name: 'Hangi Dosyaların Dağıtılması Gerektiğini Belirleme (C#)'
+                - name: Hangi Dosyaların Dağıtılması Gerektiğini Belirleme (C#)
                   href: web-forms/overview/older-versions-getting-started/deploying-web-site-projects/determining-what-files-need-to-be-deployed-cs.md
-                - name: 'Sitenizi FTP İstemcisi Kullanarak Dağıtma (C#)'
+                - name: Sitenizi FTP İstemcisi Kullanarak Dağıtma (C#)
                   href: web-forms/overview/older-versions-getting-started/deploying-web-site-projects/deploying-your-site-using-an-ftp-client-cs.md
-                - name: 'Sitenizi Visual Studio Kullanarak Dağıtma (C#)'
+                - name: Sitenizi Visual Studio Kullanarak Dağıtma (C#)
                   href: web-forms/overview/older-versions-getting-started/deploying-web-site-projects/deploying-your-site-using-visual-studio-cs.md
-                - name: 'Geliştirme ile Üretim Arasındaki Yaygın Yapılandırma Farklılıkları (C#)'
+                - name: Geliştirme ile Üretim Arasındaki Yaygın Yapılandırma Farklılıkları (C#)
                   href: web-forms/overview/older-versions-getting-started/deploying-web-site-projects/common-configuration-differences-between-development-and-production-cs.md
-                - name: 'IIS ile ASP.NET Geliştirme Sunucusu Arasındaki Temel Farklılıklar (C#)'
+                - name: IIS ile ASP.NET Geliştirme Sunucusu Arasındaki Temel Farklılıklar (C#)
                   href: web-forms/overview/older-versions-getting-started/deploying-web-site-projects/core-differences-between-iis-and-the-asp-net-development-server-cs.md
-                - name: 'Veritabanı Dağıtma (C#)'
+                - name: Veritabanı Dağıtma (C#)
                   href: web-forms/overview/older-versions-getting-started/deploying-web-site-projects/deploying-a-database-cs.md
-                - name: 'Üretim Web Uygulamasını Üretim Veritabanını Kullanacak Şekilde Yapılandırma (C#)'
+                - name: Üretim Web Uygulamasını Üretim Veritabanını Kullanacak Şekilde Yapılandırma (C#)
                   href: web-forms/overview/older-versions-getting-started/deploying-web-site-projects/configuring-the-production-web-application-to-use-the-production-database-cs.md
-                - name: 'Uygulama Hizmetleri Kullanan Bir Web Sitesi Yapılandırma (C#)'
+                - name: Uygulama Hizmetleri Kullanan Bir Web Sitesi Yapılandırma (C#)
                   href: web-forms/overview/older-versions-getting-started/deploying-web-site-projects/configuring-a-website-that-uses-application-services-cs.md
-                - name: 'Veritabanı Geliştirme ve Dağıtma Stratejileri (C#)'
+                - name: Veritabanı Geliştirme ve Dağıtma Stratejileri (C#)
                   href: web-forms/overview/older-versions-getting-started/deploying-web-site-projects/strategies-for-database-development-and-deployment-cs.md
-                - name: 'Özel Hata Sayfası Görüntüleme (C#)'
+                - name: Özel Hata Sayfası Görüntüleme (C#)
                   href: web-forms/overview/older-versions-getting-started/deploying-web-site-projects/displaying-a-custom-error-page-cs.md
-                - name: 'İşlenmemiş Özel Durumları İşleme (C#)'
+                - name: İşlenmemiş Özel Durumları İşleme (C#)
                   href: web-forms/overview/older-versions-getting-started/deploying-web-site-projects/processing-unhandled-exceptions-cs.md
-                - name: 'ASP.NET Durum İzleme ile Hata Ayrıntılarını Günlüğe Kaydetme (C#)'
+                - name: ASP.NET Durum İzleme ile Hata Ayrıntılarını Günlüğe Kaydetme (C#)
                   href: web-forms/overview/older-versions-getting-started/deploying-web-site-projects/logging-error-details-with-asp-net-health-monitoring-cs.md
-                - name: 'ELMAH ile Hata Ayrıntılarını Günlüğe Kaydetme (C#)'
+                - name: ELMAH ile Hata Ayrıntılarını Günlüğe Kaydetme (C#)
                   href: web-forms/overview/older-versions-getting-started/deploying-web-site-projects/logging-error-details-with-elmah-cs.md
-                - name: 'Web Sitenizi Önceden Derleme (C#)'
+                - name: Web Sitenizi Önceden Derleme (C#)
                   href: web-forms/overview/older-versions-getting-started/deploying-web-site-projects/precompiling-your-website-cs.md
-                - name: 'Üretim Web Sitesindeki Kullanıcılar ve Roller (C#)'
+                - name: Üretim Web Sitesindeki Kullanıcılar ve Roller (C#)
                   href: web-forms/overview/older-versions-getting-started/deploying-web-site-projects/users-and-roles-on-the-production-website-cs.md
                 - name: ASP.NET Barındırma Seçenekleri (VB)
                   href: web-forms/overview/older-versions-getting-started/deploying-web-site-projects/asp-net-hosting-options-vb.md
@@ -427,11 +427,11 @@
             - name: Başlarken
               href: web-forms/overview/ajax-control-toolkit/getting-started/index.md
               items:
-                - name: 'AJAX Denetim Araç Seti ile Çalışmaya Başlama (C#)'
+                - name: AJAX Denetim Araç Seti ile Çalışmaya Başlama (C#)
                   href: web-forms/overview/ajax-control-toolkit/getting-started/get-started-with-the-ajax-control-toolkit-cs.md
-                - name: 'AJAX Denetim Araç Seti Denetimlerini ve Denetim Genişleticilerini Kullanma (C#)'
+                - name: AJAX Denetim Araç Seti Denetimlerini ve Denetim Genişleticilerini Kullanma (C#)
                   href: web-forms/overview/ajax-control-toolkit/getting-started/using-ajax-control-toolkit-controls-and-control-extenders-cs.md
-                - name: 'Özel AJAX Denetim Araç Seti Denetim Genişleticisi Oluşturma (C#)'
+                - name: Özel AJAX Denetim Araç Seti Denetim Genişleticisi Oluşturma (C#)
                   href: web-forms/overview/ajax-control-toolkit/getting-started/creating-a-custom-ajax-control-toolkit-control-extender-cs.md
                 - name: AJAX Denetim Araç Seti ile Çalışmaya Başlama (VB)
                   href: web-forms/overview/ajax-control-toolkit/getting-started/get-started-with-the-ajax-control-toolkit-vb.md
@@ -442,9 +442,9 @@
             - name: Accordion
               href: web-forms/overview/ajax-control-toolkit/accordion/index.md
               items:
-                - name: 'Bir Accordion’a Veri Bağlama (C#)'
+                - name: Bir Accordion’a Veri Bağlama (C#)
                   href: web-forms/overview/ajax-control-toolkit/accordion/databinding-to-an-accordion-cs.md
-                - name: 'Dinamik Olarak Accordion Bölmesi Ekleme (C#)'
+                - name: Dinamik Olarak Accordion Bölmesi Ekleme (C#)
                   href: web-forms/overview/ajax-control-toolkit/accordion/dynamically-adding-an-accordion-pane-cs.md
                 - name: Bir Accordion’a Veri Bağlama (VB)
                   href: web-forms/overview/ajax-control-toolkit/accordion/databinding-to-an-accordion-vb.md
@@ -453,31 +453,31 @@
             - name: Animasyon
               href: web-forms/overview/ajax-control-toolkit/animation/index.md
               items:
-                - name: 'Bir Denetime Animasyon Ekleme (C#)'
+                - name: Bir Denetime Animasyon Ekleme (C#)
                   href: web-forms/overview/ajax-control-toolkit/animation/adding-animation-to-a-control-cs.md
-                - name: 'Aynı Anda Birkaç Animasyon Yürütme (C#)'
+                - name: Aynı Anda Birkaç Animasyon Yürütme (C#)
                   href: web-forms/overview/ajax-control-toolkit/animation/executing-several-animations-at-the-same-time-cs.md
-                - name: 'Arka Arkaya Birkaç Animasyon Yürütme (C#)'
+                - name: Arka Arkaya Birkaç Animasyon Yürütme (C#)
                   href: web-forms/overview/ajax-control-toolkit/animation/executing-several-animations-after-each-other-cs.md
-                - name: 'Bir Koşula Bağlı Animasyon (C#)'
+                - name: Bir Koşula Bağlı Animasyon (C#)
                   href: web-forms/overview/ajax-control-toolkit/animation/animation-depending-on-a-condition-cs.md
-                - name: 'Bir Listeden Animasyon Seçme (C#)'
+                - name: Bir Listeden Animasyon Seçme (C#)
                   href: web-forms/overview/ajax-control-toolkit/animation/picking-one-animation-out-of-a-list-cs.md
-                - name: 'Kullanıcı Etkileşimine Karşılık Olarak Animasyon Ekleme (C#)'
+                - name: Kullanıcı Etkileşimine Karşılık Olarak Animasyon Ekleme (C#)
                   href: web-forms/overview/ajax-control-toolkit/animation/animating-in-response-to-user-interaction-cs.md
-                - name: 'Animasyon Sırasında Eylemleri Devre Dışı Bırakma (C#)'
+                - name: Animasyon Sırasında Eylemleri Devre Dışı Bırakma (C#)
                   href: web-forms/overview/ajax-control-toolkit/animation/disabling-actions-during-animation-cs.md
-                - name: 'Başka bir Denetimde Animasyon Tetikleme (C#)'
+                - name: Başka bir Denetimde Animasyon Tetikleme (C#)
                   href: web-forms/overview/ajax-control-toolkit/animation/triggering-an-animation-in-another-control-cs.md
-                - name: 'Sunucu Tarafından Animasyonları Değiştirme (C#)'
+                - name: Sunucu Tarafından Animasyonları Değiştirme (C#)
                   href: web-forms/overview/ajax-control-toolkit/animation/modifying-animations-from-the-server-side-cs.md
-                - name: 'Animasyonları İstemci Tarafı Kod Kullanarak Yürütme (C#)'
+                - name: Animasyonları İstemci Tarafı Kod Kullanarak Yürütme (C#)
                   href: web-forms/overview/ajax-control-toolkit/animation/executing-animations-using-client-side-code-cs.md
-                - name: 'İstemci Tarafı Kod Kullanarak Bir Animasyonu Değiştirme (C#)'
+                - name: İstemci Tarafı Kod Kullanarak Bir Animasyonu Değiştirme (C#)
                   href: web-forms/overview/ajax-control-toolkit/animation/changing-an-animation-using-client-side-code-cs.md
-                - name: 'Bir UpdatePanel Denetimine Animasyon Ekleme (C#)'
+                - name: Bir UpdatePanel Denetimine Animasyon Ekleme (C#)
                   href: web-forms/overview/ajax-control-toolkit/animation/animating-an-updatepanel-control-cs.md
-                - name: 'UpdatePanel Animasyonlarını Dinamik Olarak Denetleme (C#)'
+                - name: UpdatePanel Animasyonlarını Dinamik Olarak Denetleme (C#)
                   href: web-forms/overview/ajax-control-toolkit/animation/dynamically-controlling-updatepanel-animations-cs.md
                 - name: Bir Denetime Animasyon Ekleme (VB)
                   href: web-forms/overview/ajax-control-toolkit/animation/adding-animation-to-a-control-vb.md
@@ -508,13 +508,13 @@
             - name: CascadingDropdown
               href: web-forms/overview/ajax-control-toolkit/cascadingdropdown/index.md
               items:
-                - name: 'CascadingDropDown Kullanarak Liste Doldurma (C#)'
+                - name: CascadingDropDown Kullanarak Liste Doldurma (C#)
                   href: web-forms/overview/ajax-control-toolkit/cascadingdropdown/filling-a-list-using-cascadingdropdown-cs.md
-                - name: 'Veritabanı ile CascadingDropDown Kullanma (C#)'
+                - name: Veritabanı ile CascadingDropDown Kullanma (C#)
                   href: web-forms/overview/ajax-control-toolkit/cascadingdropdown/using-cascadingdropdown-with-a-database-cs.md
-                - name: 'CascadingDropDown ile Liste Girişlerini Önceden Ayarlama (C#)'
+                - name: CascadingDropDown ile Liste Girişlerini Önceden Ayarlama (C#)
                   href: web-forms/overview/ajax-control-toolkit/cascadingdropdown/presetting-list-entries-with-cascadingdropdown-cs.md
-                - name: 'CascadingDropDown ile Otomatik Geri Gönderme Kullanma (C#)'
+                - name: CascadingDropDown ile Otomatik Geri Gönderme Kullanma (C#)
                   href: web-forms/overview/ajax-control-toolkit/cascadingdropdown/using-auto-postback-with-cascadingdropdown-cs.md
                 - name: CascadingDropDown Kullanarak Liste Doldurma (VB)
                   href: web-forms/overview/ajax-control-toolkit/cascadingdropdown/filling-a-list-using-cascadingdropdown-vb.md
@@ -527,37 +527,37 @@
             - name: CollapsiblePanel
               href: web-forms/overview/ajax-control-toolkit/collapsiblepanel/index.md
               items:
-                - name: 'JavaScript’ten Bir Paneli Daraltma ve Genişletme (C#)'
+                - name: JavaScript’ten Bir Paneli Daraltma ve Genişletme (C#)
                   href: web-forms/overview/ajax-control-toolkit/collapsiblepanel/collapsing-and-expanding-a-panel-from-javascript-cs.md
                 - name: JavaScript’ten Bir Paneli Daraltma ve Genişletme (VB)
                   href: web-forms/overview/ajax-control-toolkit/collapsiblepanel/collapsing-and-expanding-a-panel-from-javascript-vb.md
             - name: ColorPicker
               href: web-forms/overview/ajax-control-toolkit/colorpicker/index.md
               items:
-                - name: 'ColorPicker Denetim Genişletici (C#)'
+                - name: ColorPicker Denetim Genişletici (C#)
                   href: web-forms/overview/ajax-control-toolkit/colorpicker/using-the-colorpicker-control-extender-cs.md
                 - name: ColorPicker Denetim Genişletici (VB)
                   href: web-forms/overview/ajax-control-toolkit/colorpicker/using-the-colorpicker-control-extender-vb.md
             - name: ComboBox
               href: web-forms/overview/ajax-control-toolkit/combobox/index.md
               items:
-                - name: 'ComboBox Denetimi (C#)'
+                - name: ComboBox Denetimi (C#)
                   href: web-forms/overview/ajax-control-toolkit/combobox/how-do-i-use-the-combobox-control-cs.md
                 - name: ComboBox Denetimi (VB)
                   href: web-forms/overview/ajax-control-toolkit/combobox/how-do-i-use-the-combobox-control-vb.md
             - name: ConfirmButton
               href: web-forms/overview/ajax-control-toolkit/confirmbutton/index.md
               items:
-                - name: 'Repeater’da ConfirmButton Kullanma (C#)'
+                - name: Repeater’da ConfirmButton Kullanma (C#)
                   href: web-forms/overview/ajax-control-toolkit/confirmbutton/using-a-confirmbutton-in-a-repeater-cs.md
                 - name: Repeater’da ConfirmButton Kullanma (VB)
                   href: web-forms/overview/ajax-control-toolkit/confirmbutton/using-a-confirmbutton-in-a-repeater-vb.md
             - name: DropShadow
               href: web-forms/overview/ajax-control-toolkit/dropshadow/index.md
               items:
-                - name: 'Bir DropShadow’un Z Dizinini Ayarlama (C#)'
+                - name: Bir DropShadow’un Z Dizinini Ayarlama (C#)
                   href: web-forms/overview/ajax-control-toolkit/dropshadow/adjusting-the-z-index-of-a-dropshadow-cs.md
-                - name: 'İstemci Kodundan DropShadow Özelliklerini Düzenleme (C#)'
+                - name: İstemci Kodundan DropShadow Özelliklerini Düzenleme (C#)
                   href: web-forms/overview/ajax-control-toolkit/dropshadow/manipulating-dropshadow-properties-from-client-code-cs.md
                 - name: Bir DropShadow’un Z Dizinini Ayarlama (VB)
                   href: web-forms/overview/ajax-control-toolkit/dropshadow/adjusting-the-z-index-of-a-dropshadow-vb.md
@@ -566,11 +566,11 @@
             - name: DynamicPopulate
               href: web-forms/overview/ajax-control-toolkit/dynamicpopulate/index.md
               items:
-                - name: 'Bir Denetimi Dinamik Olarak Doldurma (C#)'
+                - name: Bir Denetimi Dinamik Olarak Doldurma (C#)
                   href: web-forms/overview/ajax-control-toolkit/dynamicpopulate/dynamically-populating-a-control-cs.md
-                - name: 'JavaScript Kodu Kullanarak Bir Denetimi Dinamik Olarak Doldurma (C#)'
+                - name: JavaScript Kodu Kullanarak Bir Denetimi Dinamik Olarak Doldurma (C#)
                   href: web-forms/overview/ajax-control-toolkit/dynamicpopulate/dynamically-populating-a-control-using-javascript-code-cs.md
-                - name: 'Kullanıcı Denetimi ve JavaScript ile DynamicPopulate Kullanma (C#)'
+                - name: Kullanıcı Denetimi ve JavaScript ile DynamicPopulate Kullanma (C#)
                   href: web-forms/overview/ajax-control-toolkit/dynamicpopulate/using-dynamicpopulate-with-a-user-control-and-javascript-cs.md
                 - name: Bir Denetimi Dinamik Olarak Doldurma (VB)
                   href: web-forms/overview/ajax-control-toolkit/dynamicpopulate/dynamically-populating-a-control-vb.md
@@ -581,34 +581,34 @@
             - name: FilteredTextBox
               href: web-forms/overview/ajax-control-toolkit/filteredtextbox/index.md
               items:
-                - name: 'Bir Metin Kutusunda Yalnızca Belirli Karakterlere İzin Verme (C#)'
+                - name: Bir Metin Kutusunda Yalnızca Belirli Karakterlere İzin Verme (C#)
                   href: web-forms/overview/ajax-control-toolkit/filteredtextbox/allowing-only-certain-characters-in-a-text-box-cs.md
                 - name: Bir Metin Kutusunda Yalnızca Belirli Karakterlere İzin Verme (VB)
                   href: web-forms/overview/ajax-control-toolkit/filteredtextbox/allowing-only-certain-characters-in-a-text-box-vb.md
             - name: HoverMenu
               href: web-forms/overview/ajax-control-toolkit/hovermenu/index.md
               items:
-                - name: 'Repeater Denetimiyle HoverMenu Kullanma (C#)'
+                - name: Repeater Denetimiyle HoverMenu Kullanma (C#)
                   href: web-forms/overview/ajax-control-toolkit/hovermenu/using-hovermenu-with-a-repeater-control-cs.md
                 - name: Repeater Denetimiyle HoverMenu Kullanma (VB)
                   href: web-forms/overview/ajax-control-toolkit/hovermenu/using-hovermenu-with-a-repeater-control-vb.md
             - name: HTMLEditor
               href: web-forms/overview/ajax-control-toolkit/htmleditor/index.md
               items:
-                - name: 'HTML Düzenleyicisi Denetimi (C#)'
+                - name: HTML Düzenleyicisi Denetimi (C#)
                   href: web-forms/overview/ajax-control-toolkit/htmleditor/how-do-i-use-the-html-editor-control-cs.md
                 - name: HTML Düzenleyicisi Denetimi (VB)
                   href: web-forms/overview/ajax-control-toolkit/htmleditor/how-do-i-use-the-html-editor-control-vb.md
             - name: ModalPopup
               href: web-forms/overview/ajax-control-toolkit/modalpopup/index.md
               items:
-                - name: 'Sunucu Kodundan Kalıcı Açılan Pencere Başlatma (C#)'
+                - name: Sunucu Kodundan Kalıcı Açılan Pencere Başlatma (C#)
                   href: web-forms/overview/ajax-control-toolkit/modalpopup/launching-a-modal-popup-window-from-server-code-cs.md
-                - name: 'Repeater Denetimiyle ModalPopup Kullanma (C#)'
+                - name: Repeater Denetimiyle ModalPopup Kullanma (C#)
                   href: web-forms/overview/ajax-control-toolkit/modalpopup/using-modalpopup-with-a-repeater-control-cs.md
-                - name: 'ModalPopup’tan Gelen Geri Göndermeleri İşleme (C#)'
+                - name: ModalPopup’tan Gelen Geri Göndermeleri İşleme (C#)
                   href: web-forms/overview/ajax-control-toolkit/modalpopup/handling-postbacks-from-a-modalpopup-cs.md
-                - name: 'Bir ModalPopup’ı Konumlandırma (C#)'
+                - name: Bir ModalPopup’ı Konumlandırma (C#)
                   href: web-forms/overview/ajax-control-toolkit/modalpopup/positioning-a-modalpopup-cs.md
                 - name: Sunucu Kodundan Kalıcı Açılan Pencere Başlatma (VB)
                   href: web-forms/overview/ajax-control-toolkit/modalpopup/launching-a-modal-popup-window-from-server-code-vb.md
@@ -621,39 +621,39 @@
             - name: MutuallyExclusiveCheckbox
               href: web-forms/overview/ajax-control-toolkit/mutuallyexclusivecheckbox/index.md
               items:
-                - name: 'Birbirini Dışlayan Onay Kutuları Oluşturma (C#)'
+                - name: Birbirini Dışlayan Onay Kutuları Oluşturma (C#)
                   href: web-forms/overview/ajax-control-toolkit/mutuallyexclusivecheckbox/creating-mutually-exclusive-checkboxes-cs.md
                 - name: Birbirini Dışlayan Onay Kutuları Oluşturma (VB)
                   href: web-forms/overview/ajax-control-toolkit/mutuallyexclusivecheckbox/creating-mutually-exclusive-checkboxes-vb.md
             - name: NoBot
               href: web-forms/overview/ajax-control-toolkit/nobot/index.md
               items:
-                - name: 'Mücadele Botları (C#)'
+                - name: Mücadele Botları (C#)
                   href: web-forms/overview/ajax-control-toolkit/nobot/fighting-bots-cs.md
                 - name: Mücadele Botları (VB)
                   href: web-forms/overview/ajax-control-toolkit/nobot/fighting-bots-vb.md
             - name: NumericUpDown
               href: web-forms/overview/ajax-control-toolkit/numericupdown/index.md
               items:
-                - name: 'Web Hizmeti Arka Ucuna Sahip Sayısal Yukarı/Aşağı Denetimi Oluşturma (C#)'
+                - name: Web Hizmeti Arka Ucuna Sahip Sayısal Yukarı/Aşağı Denetimi Oluşturma (C#)
                   href: web-forms/overview/ajax-control-toolkit/numericupdown/creating-a-numeric-up-down-control-with-a-web-service-backend-cs.md
                 - name: Web Hizmeti Arka Ucuna Sahip Sayısal Yukarı/Aşağı Denetimi Oluşturma (VB)
                   href: web-forms/overview/ajax-control-toolkit/numericupdown/creating-a-numeric-up-down-control-with-a-web-service-backend-vb.md
             - name: PasswordStrength
               href: web-forms/overview/ajax-control-toolkit/passwordstrength/index.md
               items:
-                - name: 'Bir Parolanın Güçlülüğünü Test Etme (C#)'
+                - name: Bir Parolanın Güçlülüğünü Test Etme (C#)
                   href: web-forms/overview/ajax-control-toolkit/passwordstrength/testing-the-strength-of-a-password-cs.md
                 - name: Bir Parolanın Güçlülüğünü Test Etme (VB)
                   href: web-forms/overview/ajax-control-toolkit/passwordstrength/testing-the-strength-of-a-password-vb.md
             - name: Açılan Pencere
               href: web-forms/overview/ajax-control-toolkit/popup/index.md
               items:
-                - name: 'Birden Çok Açılan Denetim Kullanma (C#)'
+                - name: Birden Çok Açılan Denetim Kullanma (C#)
                   href: web-forms/overview/ajax-control-toolkit/popup/using-multiple-popup-controls-cs.md
-                - name: 'UpdatePanel ile Bir Açılan Denetimden Gelen Geri Göndermeleri İşleme (C#)'
+                - name: UpdatePanel ile Bir Açılan Denetimden Gelen Geri Göndermeleri İşleme (C#)
                   href: web-forms/overview/ajax-control-toolkit/popup/handling-postbacks-from-a-popup-control-with-an-updatepanel-cs.md
-                - name: 'UpdatePanel Olmadan Bir Açılan Denetimden Gelen Geri Göndermeleri İşleme (C#)'
+                - name: UpdatePanel Olmadan Bir Açılan Denetimden Gelen Geri Göndermeleri İşleme (C#)
                   href: web-forms/overview/ajax-control-toolkit/popup/handling-postbacks-from-a-popup-control-without-an-updatepanel-cs.md
                 - name: Birden Çok Açılan Denetim Kullanma (VB)
                   href: web-forms/overview/ajax-control-toolkit/popup/using-multiple-popup-controls-vb.md
@@ -664,16 +664,16 @@
             - name: Derecelendirme
               href: web-forms/overview/ajax-control-toolkit/rating/index.md
               items:
-                - name: 'Derecelendirme Denetimi Oluşturma (C#)'
+                - name: Derecelendirme Denetimi Oluşturma (C#)
                   href: web-forms/overview/ajax-control-toolkit/rating/creating-a-rating-control-cs.md
                 - name: Derecelendirme Denetimi Oluşturma (VB)
                   href: web-forms/overview/ajax-control-toolkit/rating/creating-a-rating-control-vb.md
             - name: ReorderList
               href: web-forms/overview/ajax-control-toolkit/reorderlist/index.md
               items:
-                - name: 'ReorderList ile Geri Gönderme Kullanma (C#)'
+                - name: ReorderList ile Geri Gönderme Kullanma (C#)
                   href: web-forms/overview/ajax-control-toolkit/reorderlist/using-postbacks-with-reorderlist-cs.md
-                - name: 'ReorderList Aracılığıyla Sürükle ve Bırak (C#)'
+                - name: ReorderList Aracılığıyla Sürükle ve Bırak (C#)
                   href: web-forms/overview/ajax-control-toolkit/reorderlist/drag-and-drop-via-reorderlist-cs.md
                 - name: ReorderList ile Geri Gönderme Kullanma (VB)
                   href: web-forms/overview/ajax-control-toolkit/reorderlist/using-postbacks-with-reorderlist-vb.md
@@ -682,9 +682,9 @@
             - name: Kaydırıcı
               href: web-forms/overview/ajax-control-toolkit/slider/index.md
               items:
-                - name: 'Otomatik Geri Gönderme Özellikli Kaydırıcı Denetimi (C#)'
+                - name: Otomatik Geri Gönderme Özellikli Kaydırıcı Denetimi (C#)
                   href: web-forms/overview/ajax-control-toolkit/slider/using-the-slider-control-with-auto-postback-cs.md
-                - name: 'Kaydırıcı Denetiminde Veri Bağlama (C#)'
+                - name: Kaydırıcı Denetiminde Veri Bağlama (C#)
                   href: web-forms/overview/ajax-control-toolkit/slider/databinding-the-slider-control-cs.md
                 - name: Otomatik Geri Gönderme Özellikli Kaydırıcı Denetimi (VB)
                   href: web-forms/overview/ajax-control-toolkit/slider/using-the-slider-control-with-auto-postback-vb.md
@@ -693,9 +693,9 @@
             - name: TextBoxWatermark
               href: web-forms/overview/ajax-control-toolkit/textboxwatermark/index.md
               items:
-                - name: 'Bir FormView’da TextBoxWatermark Kullanma (C#)'
+                - name: Bir FormView’da TextBoxWatermark Kullanma (C#)
                   href: web-forms/overview/ajax-control-toolkit/textboxwatermark/using-textboxwatermark-in-a-formview-cs.md
-                - name: 'Doğrulama Denetimleri ile TextBoxWatermark Kullanma (C#)'
+                - name: Doğrulama Denetimleri ile TextBoxWatermark Kullanma (C#)
                   href: web-forms/overview/ajax-control-toolkit/textboxwatermark/using-textboxwatermark-with-validation-controls-cs.md
                 - name: Bir FormView’da TextBoxWatermark Kullanma (VB)
                   href: web-forms/overview/ajax-control-toolkit/textboxwatermark/using-textboxwatermark-in-a-formview-vb.md
@@ -707,11 +707,11 @@
             - name: Giriş
               href: web-forms/overview/data-access/introduction/index.md
               items:
-                - name: 'Veri Erişim Katmanını Oluşturma (C#)'
+                - name: Veri Erişim Katmanını Oluşturma (C#)
                   href: web-forms/overview/data-access/introduction/creating-a-data-access-layer-cs.md
-                - name: 'İş Mantığı Katmanı Oluşturma (C#)'
+                - name: İş Mantığı Katmanı Oluşturma (C#)
                   href: web-forms/overview/data-access/introduction/creating-a-business-logic-layer-cs.md
-                - name: 'Ana Sayfalar ve Site Gezintisi (C#)'
+                - name: Ana Sayfalar ve Site Gezintisi (C#)
                   href: web-forms/overview/data-access/introduction/master-pages-and-site-navigation-cs.md
                 - name: Veri Erişim Katmanını Oluşturma (VB)
                   href: web-forms/overview/data-access/introduction/creating-a-data-access-layer-vb.md
@@ -722,11 +722,11 @@
             - name: Temel Raporlama
               href: web-forms/overview/data-access/basic-reporting/index.md
               items:
-                - name: 'ObjectDataSource ile Verileri Görüntüleme (C#)'
+                - name: ObjectDataSource ile Verileri Görüntüleme (C#)
                   href: web-forms/overview/data-access/basic-reporting/displaying-data-with-the-objectdatasource-cs.md
-                - name: 'Bildirim Temelli Parametreler (C#)'
+                - name: Bildirim Temelli Parametreler (C#)
                   href: web-forms/overview/data-access/basic-reporting/declarative-parameters-cs.md
-                - name: 'ObjectDataSource Parametre Değerlerini Programlı Olarak Ayarlama (C#)'
+                - name: ObjectDataSource Parametre Değerlerini Programlı Olarak Ayarlama (C#)
                   href: web-forms/overview/data-access/basic-reporting/programmatically-setting-the-objectdatasource-s-parameter-values-cs.md
                 - name: ObjectDataSource ile Verileri Görüntüleme (VB)
                   href: web-forms/overview/data-access/basic-reporting/displaying-data-with-the-objectdatasource-vb.md
@@ -737,13 +737,13 @@
             - name: Ana/Ayrıntı
               href: web-forms/overview/data-access/masterdetail/index.md
               items:
-                - name: 'Bir DropDownList ile Ana/Ayrıntı Filtreleme (C#)'
+                - name: Bir DropDownList ile Ana/Ayrıntı Filtreleme (C#)
                   href: web-forms/overview/data-access/masterdetail/master-detail-filtering-with-a-dropdownlist-cs.md
-                - name: 'İki DropDownList ile Ana/Ayrıntı Filtreleme (C#)'
+                - name: İki DropDownList ile Ana/Ayrıntı Filtreleme (C#)
                   href: web-forms/overview/data-access/masterdetail/master-detail-filtering-with-two-dropdownlists-cs.md
-                - name: 'İki Sayfada Ana/Ayrıntı Filtreleme (C#)'
+                - name: İki Sayfada Ana/Ayrıntı Filtreleme (C#)
                   href: web-forms/overview/data-access/masterdetail/master-detail-filtering-across-two-pages-cs.md
-                - name: 'Ayrıntılar DetailView’u ile Seçilebilir Bir Ana GridView Kullanan Ana/Ayrıntı (C#)'
+                - name: Ayrıntılar DetailView’u ile Seçilebilir Bir Ana GridView Kullanan Ana/Ayrıntı (C#)
                   href: web-forms/overview/data-access/masterdetail/master-detail-using-a-selectable-master-gridview-with-a-details-detailview-cs.md
                 - name: Bir DropDownList ile Ana/Ayrıntı Filtreleme (VB)
                   href: web-forms/overview/data-access/masterdetail/master-detail-filtering-with-a-dropdownlist-vb.md
@@ -756,15 +756,15 @@
             - name: Özel Biçimlendirme
               href: web-forms/overview/data-access/custom-formatting/index.md
               items:
-                - name: 'Verileri Temel Alan Özel Biçimlendirme (C#)'
+                - name: Verileri Temel Alan Özel Biçimlendirme (C#)
                   href: web-forms/overview/data-access/custom-formatting/custom-formatting-based-upon-data-cs.md
-                - name: 'GridView Denetiminde TemplateField Kullanma (C#)'
+                - name: GridView Denetiminde TemplateField Kullanma (C#)
                   href: web-forms/overview/data-access/custom-formatting/using-templatefields-in-the-gridview-control-cs.md
-                - name: 'DetailsView Denetiminde TemplateField Kullanma (C#)'
+                - name: DetailsView Denetiminde TemplateField Kullanma (C#)
                   href: web-forms/overview/data-access/custom-formatting/using-templatefields-in-the-detailsview-control-cs.md
-                - name: 'FormView Şablonları (C#)'
+                - name: FormView Şablonları (C#)
                   href: web-forms/overview/data-access/custom-formatting/using-the-formview-s-templates-cs.md
-                - name: 'GridView''ın Alt Bilgisinde Özet Bilgiler Görüntüleme (C#)'
+                - name: GridView'ın Alt Bilgisinde Özet Bilgiler Görüntüleme (C#)
                   href: web-forms/overview/data-access/custom-formatting/displaying-summary-information-in-the-gridview-s-footer-cs.md
                 - name: Verileri Temel Alan Özel Biçimlendirme (VB)
                   href: web-forms/overview/data-access/custom-formatting/custom-formatting-based-upon-data-vb.md
@@ -783,17 +783,17 @@
                   href: web-forms/overview/data-access/editing-inserting-and-deleting-data/an-overview-of-inserting-updating-and-deleting-data-cs.md
                 - name: 'Ekleme, Güncelleştirme ve Silme ile İlişkili Olayları İnceleme (C#)'
                   href: web-forms/overview/data-access/editing-inserting-and-deleting-data/examining-the-events-associated-with-inserting-updating-and-deleting-cs.md
-                - name: 'Bir ASP.NET Sayfasında BLL ve DAL Düzeyi Özel Durumları İşleme (C#)'
+                - name: Bir ASP.NET Sayfasında BLL ve DAL Düzeyi Özel Durumları İşleme (C#)
                   href: web-forms/overview/data-access/editing-inserting-and-deleting-data/handling-bll-and-dal-level-exceptions-in-an-asp-net-page-cs.md
-                - name: 'Düzenleme ve Ekleme Arabirimlerine Doğrulama Denetimleri Ekleme (C#)'
+                - name: Düzenleme ve Ekleme Arabirimlerine Doğrulama Denetimleri Ekleme (C#)
                   href: web-forms/overview/data-access/editing-inserting-and-deleting-data/adding-validation-controls-to-the-editing-and-inserting-interfaces-cs.md
-                - name: 'Veri Değişikliği Arabirimini Özelleştirme (C#)'
+                - name: Veri Değişikliği Arabirimini Özelleştirme (C#)
                   href: web-forms/overview/data-access/editing-inserting-and-deleting-data/customizing-the-data-modification-interface-cs.md
-                - name: 'İyimser Eşzamanlılık Uygulama (C#)'
+                - name: İyimser Eşzamanlılık Uygulama (C#)
                   href: web-forms/overview/data-access/editing-inserting-and-deleting-data/implementing-optimistic-concurrency-cs.md
-                - name: 'Silerken İstemci Tarafı Doğrulama Ekleme (C#)'
+                - name: Silerken İstemci Tarafı Doğrulama Ekleme (C#)
                   href: web-forms/overview/data-access/editing-inserting-and-deleting-data/adding-client-side-confirmation-when-deleting-cs.md
-                - name: 'Kullanıcıya Bağlı Olarak Veri Değişikliği İşlevselliğini Sınırlama (C#)'
+                - name: Kullanıcıya Bağlı Olarak Veri Değişikliği İşlevselliğini Sınırlama (C#)
                   href: web-forms/overview/data-access/editing-inserting-and-deleting-data/limiting-data-modification-functionality-based-on-the-user-cs.md
                 - name: 'Veri Ekleme, Güncelleştirme ve Silmeye Genel Bakış (VB)'
                   href: web-forms/overview/data-access/editing-inserting-and-deleting-data/an-overview-of-inserting-updating-and-deleting-data-vb.md
@@ -814,13 +814,13 @@
             - name: Sayfalama ve Sıralama
               href: web-forms/overview/data-access/paging-and-sorting/index.md
               items:
-                - name: 'Rapor Verilerini Sayfalama ve Sıralama (C#)'
+                - name: Rapor Verilerini Sayfalama ve Sıralama (C#)
                   href: web-forms/overview/data-access/paging-and-sorting/paging-and-sorting-report-data-cs.md
-                - name: 'Büyük Miktarlı Verileri Etkili Bir Şekilde Sayfalama (C#)'
+                - name: Büyük Miktarlı Verileri Etkili Bir Şekilde Sayfalama (C#)
                   href: web-forms/overview/data-access/paging-and-sorting/efficiently-paging-through-large-amounts-of-data-cs.md
-                - name: 'Özel Sayfalanmış Verileri Sıralama (C#)'
+                - name: Özel Sayfalanmış Verileri Sıralama (C#)
                   href: web-forms/overview/data-access/paging-and-sorting/sorting-custom-paged-data-cs.md
-                - name: 'Özelleştirilmiş Sıralama Kullanıcı Arabirimi Oluşturma (C#)'
+                - name: Özelleştirilmiş Sıralama Kullanıcı Arabirimi Oluşturma (C#)
                   href: web-forms/overview/data-access/paging-and-sorting/creating-a-customized-sorting-user-interface-cs.md
                 - name: Rapor Verilerini Sayfalama ve Sıralama (VB)
                   href: web-forms/overview/data-access/paging-and-sorting/paging-and-sorting-report-data-vb.md
@@ -833,20 +833,20 @@
             - name: Özel Düğme Eylemleri
               href: web-forms/overview/data-access/custom-button-actions/index.md
               items:
-                - name: 'GridView’a Düğme Ekleme ve Bunları Yanıtlama (C#)'
+                - name: GridView’a Düğme Ekleme ve Bunları Yanıtlama (C#)
                   href: web-forms/overview/data-access/custom-button-actions/adding-and-responding-to-buttons-to-a-gridview-cs.md
                 - name: GridView’a Düğme Ekleme ve Bunları Yanıtlama (VB)
                   href: web-forms/overview/data-access/custom-button-actions/adding-and-responding-to-buttons-to-a-gridview-vb.md
             - name: DataList ve Repeater ile Verileri Görüntüleme
               href: web-forms/overview/data-access/displaying-data-with-the-datalist-and-repeater/index.md
               items:
-                - name: 'DataList ve Repeater Denetimleri ile Verileri Görüntüleme (C#)'
+                - name: DataList ve Repeater Denetimleri ile Verileri Görüntüleme (C#)
                   href: web-forms/overview/data-access/displaying-data-with-the-datalist-and-repeater/displaying-data-with-the-datalist-and-repeater-controls-cs.md
-                - name: 'DataList ve Repeater’ı Verileri Temel Alarak Biçimlendirme (C#)'
+                - name: DataList ve Repeater’ı Verileri Temel Alarak Biçimlendirme (C#)
                   href: web-forms/overview/data-access/displaying-data-with-the-datalist-and-repeater/formatting-the-datalist-and-repeater-based-upon-data-cs.md
-                - name: 'DataList Denetimi ile Satır Başına Birden Çok Kayıt Gösterme (C#)'
+                - name: DataList Denetimi ile Satır Başına Birden Çok Kayıt Gösterme (C#)
                   href: web-forms/overview/data-access/displaying-data-with-the-datalist-and-repeater/showing-multiple-records-per-row-with-the-datalist-control-cs.md
-                - name: 'İç İçe Veri Web Denetimleri (C#)'
+                - name: İç İçe Veri Web Denetimleri (C#)
                   href: web-forms/overview/data-access/displaying-data-with-the-datalist-and-repeater/nested-data-web-controls-cs.md
                 - name: DataList ve Repeater Denetimleri ile Verileri Görüntüleme (VB)
                   href: web-forms/overview/data-access/displaying-data-with-the-datalist-and-repeater/displaying-data-with-the-datalist-and-repeater-controls-vb.md
@@ -859,11 +859,11 @@
             - name: DataList ve Repeater ile Senaryoları Filtreleme
               href: web-forms/overview/data-access/filtering-scenarios-with-the-datalist-and-repeater/index.md
               items:
-                - name: 'Bir DropDownList ile Ana/Ayrıntı Filtreleme (C#)'
+                - name: Bir DropDownList ile Ana/Ayrıntı Filtreleme (C#)
                   href: web-forms/overview/data-access/filtering-scenarios-with-the-datalist-and-repeater/master-detail-filtering-with-a-dropdownlist-datalist-cs.md
-                - name: 'İki Sayfada Ana/Ayrıntı Filtreleme (C#)'
+                - name: İki Sayfada Ana/Ayrıntı Filtreleme (C#)
                   href: web-forms/overview/data-access/filtering-scenarios-with-the-datalist-and-repeater/master-detail-filtering-acess-two-pages-datalist-cs.md
-                - name: 'Bir Ayrıntılar DataList’i ile Madde İşaretli Ana Kayıt Listesi Kullanan Ana/Ayrıntı (C#)'
+                - name: Bir Ayrıntılar DataList’i ile Madde İşaretli Ana Kayıt Listesi Kullanan Ana/Ayrıntı (C#)
                   href: web-forms/overview/data-access/filtering-scenarios-with-the-datalist-and-repeater/master-detail-using-a-bulleted-list-of-master-records-with-a-details-datalist-cs.md
                 - name: Bir DropDownList ile Ana/Ayrıntı Filtreleme (VB)
                   href: web-forms/overview/data-access/filtering-scenarios-with-the-datalist-and-repeater/master-detail-filtering-with-a-dropdownlist-datalist-vb.md
@@ -874,15 +874,15 @@
             - name: DataList Aracılığıyla Verileri Düzenleme ve Silme
               href: web-forms/overview/data-access/editing-and-deleting-data-through-the-datalist/index.md
               items:
-                - name: 'DataList’te Verileri Düzenleme ve Silmeye Genel Bakış (C#)'
+                - name: DataList’te Verileri Düzenleme ve Silmeye Genel Bakış (C#)
                   href: web-forms/overview/data-access/editing-and-deleting-data-through-the-datalist/an-overview-of-editing-and-deleting-data-in-the-datalist-cs.md
-                - name: 'Toplu Güncelleştirmeler Gerçekleştirme (C#)'
+                - name: Toplu Güncelleştirmeler Gerçekleştirme (C#)
                   href: web-forms/overview/data-access/editing-and-deleting-data-through-the-datalist/performing-batch-updates-cs.md
-                - name: 'BLL ve DAL Düzeyi Özel Durumları İşleme (C#)'
+                - name: BLL ve DAL Düzeyi Özel Durumları İşleme (C#)
                   href: web-forms/overview/data-access/editing-and-deleting-data-through-the-datalist/handling-bll-and-dal-level-exceptions-cs.md
-                - name: 'DataList’in Düzenleme Arabirimine Doğrulama Denetimleri Ekleme (C#)'
+                - name: DataList’in Düzenleme Arabirimine Doğrulama Denetimleri Ekleme (C#)
                   href: web-forms/overview/data-access/editing-and-deleting-data-through-the-datalist/adding-validation-controls-to-the-datalist-s-editing-interface-cs.md
-                - name: 'DataList''in Düzenleme Arabirimini Özelleştirme (C#)'
+                - name: DataList'in Düzenleme Arabirimini Özelleştirme (C#)
                   href: web-forms/overview/data-access/editing-and-deleting-data-through-the-datalist/customizing-the-datalist-s-editing-interface-cs.md
                 - name: DataList’te Verileri Düzenleme ve Silmeye Genel Bakış (VB)
                   href: web-forms/overview/data-access/editing-and-deleting-data-through-the-datalist/an-overview-of-editing-and-deleting-data-in-the-datalist-vb.md
@@ -897,9 +897,9 @@
             - name: DataList ve Repeater ile Sayfalama ve Sıralama
               href: web-forms/overview/data-access/paging-and-sorting-with-the-datalist-and-repeater/index.md
               items:
-                - name: 'DataList veya Repeater Denetiminde Rapor Verilerini Sayfalama (C#)'
+                - name: DataList veya Repeater Denetiminde Rapor Verilerini Sayfalama (C#)
                   href: web-forms/overview/data-access/paging-and-sorting-with-the-datalist-and-repeater/paging-report-data-in-a-datalist-or-repeater-control-cs.md
-                - name: 'DataList veya Repeater Denetiminde Verileri Sıralama (C#)'
+                - name: DataList veya Repeater Denetiminde Verileri Sıralama (C#)
                   href: web-forms/overview/data-access/paging-and-sorting-with-the-datalist-and-repeater/sorting-data-in-a-datalist-or-repeater-control-cs.md
                 - name: DataList veya Repeater Denetiminde Rapor Verilerini Sayfalama (VB)
                   href: web-forms/overview/data-access/paging-and-sorting-with-the-datalist-and-repeater/paging-report-data-in-a-datalist-or-repeater-control-vb.md
@@ -908,20 +908,20 @@
             - name: DataList ve Repeater ile Özel Düğme Eylemleri
               href: web-forms/overview/data-access/custom-button-actions-with-the-datalist-and-repeater/index.md
               items:
-                - name: 'DataList ve Repeater’daki Özel Düğmeler (C#)'
+                - name: DataList ve Repeater’daki Özel Düğmeler (C#)
                   href: web-forms/overview/data-access/custom-button-actions-with-the-datalist-and-repeater/custom-buttons-in-the-datalist-and-repeater-cs.md
                 - name: DataList ve Repeater’daki Özel Düğmeler (VB)
                   href: web-forms/overview/data-access/custom-button-actions-with-the-datalist-and-repeater/custom-buttons-in-the-datalist-and-repeater-vb.md
             - name: Bir ASP.NET Sayfasından Doğrudan Veritabanına Erişme
               href: web-forms/overview/data-access/accessing-the-database-directly-from-an-aspnet-page/index.md
               items:
-                - name: 'SqlDataSource Denetimi ile Veri Sorgulama (C#)'
+                - name: SqlDataSource Denetimi ile Veri Sorgulama (C#)
                   href: web-forms/overview/data-access/accessing-the-database-directly-from-an-aspnet-page/querying-data-with-the-sqldatasource-control-cs.md
-                - name: 'SqlDataSource ile Parametreli Sorgular Kullanma (C#)'
+                - name: SqlDataSource ile Parametreli Sorgular Kullanma (C#)
                   href: web-forms/overview/data-access/accessing-the-database-directly-from-an-aspnet-page/using-parameterized-queries-with-the-sqldatasource-cs.md
                 - name: 'SqlDataSource ile Veri Ekleme, Güncelleştirme ve Silme (C#)'
                   href: web-forms/overview/data-access/accessing-the-database-directly-from-an-aspnet-page/inserting-updating-and-deleting-data-with-the-sqldatasource-cs.md
-                - name: 'SqlDataSource ile İyimser Eşzamanlılık Uygulama (C#)'
+                - name: SqlDataSource ile İyimser Eşzamanlılık Uygulama (C#)
                   href: web-forms/overview/data-access/accessing-the-database-directly-from-an-aspnet-page/implementing-optimistic-concurrency-with-the-sqldatasource-cs.md
                 - name: SqlDataSource Denetimi ile Veri Sorgulama (VB)
                   href: web-forms/overview/data-access/accessing-the-database-directly-from-an-aspnet-page/querying-data-with-the-sqldatasource-control-vb.md
@@ -934,11 +934,11 @@
             - name: GridView’u Geliştirme
               href: web-forms/overview/data-access/enhancing-the-gridview/index.md
               items:
-                - name: 'Radyo Düğmelerinden Oluşan GridView Sütunu Ekleme (C#)'
+                - name: Radyo Düğmelerinden Oluşan GridView Sütunu Ekleme (C#)
                   href: web-forms/overview/data-access/enhancing-the-gridview/adding-a-gridview-column-of-radio-buttons-cs.md
-                - name: 'Onay Kutularından Oluşan GridView Sütunu Ekleme (C#)'
+                - name: Onay Kutularından Oluşan GridView Sütunu Ekleme (C#)
                   href: web-forms/overview/data-access/enhancing-the-gridview/adding-a-gridview-column-of-checkboxes-cs.md
-                - name: 'GridView''ın Alt Bilgisinden Yeni Kayıt Ekleme (C#)'
+                - name: GridView'ın Alt Bilgisinden Yeni Kayıt Ekleme (C#)
                   href: web-forms/overview/data-access/enhancing-the-gridview/inserting-a-new-record-from-the-gridview-s-footer-cs.md
                 - name: Radyo Düğmelerinden Oluşan GridView Sütunu Ekleme (VB)
                   href: web-forms/overview/data-access/enhancing-the-gridview/adding-a-gridview-column-of-radio-buttons-vb.md
@@ -949,13 +949,13 @@
             - name: İkili Dosyalarla Çalışma
               href: web-forms/overview/data-access/working-with-binary-files/index.md
               items:
-                - name: 'Karşıya Dosya Yükleme (C#)'
+                - name: Karşıya Dosya Yükleme (C#)
                   href: web-forms/overview/data-access/working-with-binary-files/uploading-files-cs.md
-                - name: 'Veri Web Denetimlerinde İkili Verileri Görüntüleme (C#)'
+                - name: Veri Web Denetimlerinde İkili Verileri Görüntüleme (C#)
                   href: web-forms/overview/data-access/working-with-binary-files/displaying-binary-data-in-the-data-web-controls-cs.md
-                - name: 'Yeni Kayıt Eklerken Karşıya Dosya Yükleme Seçeneği Ekleme (C#)'
+                - name: Yeni Kayıt Eklerken Karşıya Dosya Yükleme Seçeneği Ekleme (C#)
                   href: web-forms/overview/data-access/working-with-binary-files/including-a-file-upload-option-when-adding-a-new-record-cs.md
-                - name: 'Mevcut İkili Verileri Güncelleştirme ve Silme (C#)'
+                - name: Mevcut İkili Verileri Güncelleştirme ve Silme (C#)
                   href: web-forms/overview/data-access/working-with-binary-files/updating-and-deleting-existing-binary-data-cs.md
                 - name: Karşıya Dosya Yükleme (VB)
                   href: web-forms/overview/data-access/working-with-binary-files/uploading-files-vb.md
@@ -968,13 +968,13 @@
             - name: Verileri Önbelleğe Alma
               href: web-forms/overview/data-access/caching-data/index.md
               items:
-                - name: 'ObjectDataSource ile Verileri Önbelleğe Alma (C#)'
+                - name: ObjectDataSource ile Verileri Önbelleğe Alma (C#)
                   href: web-forms/overview/data-access/caching-data/caching-data-with-the-objectdatasource-cs.md
-                - name: 'Mimaride Verileri Önbelleğe Alma (C#)'
+                - name: Mimaride Verileri Önbelleğe Alma (C#)
                   href: web-forms/overview/data-access/caching-data/caching-data-in-the-architecture-cs.md
-                - name: 'Uygulama Başlangıcında Verileri Önbelleğe Alma (C#)'
+                - name: Uygulama Başlangıcında Verileri Önbelleğe Alma (C#)
                   href: web-forms/overview/data-access/caching-data/caching-data-at-application-startup-cs.md
-                - name: 'SQL Önbellek Bağımlılıklarını Kullanma (C#)'
+                - name: SQL Önbellek Bağımlılıklarını Kullanma (C#)
                   href: web-forms/overview/data-access/caching-data/using-sql-cache-dependencies-cs.md
                 - name: ObjectDataSource ile Verileri Önbelleğe Alma (VB)
                   href: web-forms/overview/data-access/caching-data/caching-data-with-the-objectdatasource-vb.md
@@ -987,20 +987,20 @@
             - name: Veritabanı Odaklı Site Haritaları
               href: web-forms/overview/data-access/database-driven-site-maps/index.md
               items:
-                - name: 'Özel Bir Veritabanı Odaklı Site Haritası Sağlayıcısı Oluşturma (C#)'
+                - name: Özel Bir Veritabanı Odaklı Site Haritası Sağlayıcısı Oluşturma (C#)
                   href: web-forms/overview/data-access/database-driven-site-maps/building-a-custom-database-driven-site-map-provider-cs.md
                 - name: Özel Bir Veritabanı Odaklı Site Haritası Sağlayıcısı Oluşturma (VB)
                   href: web-forms/overview/data-access/database-driven-site-maps/building-a-custom-database-driven-site-map-provider-vb.md
             - name: Toplu Verilerle Çalışma
               href: web-forms/overview/data-access/working-with-batched-data/index.md
               items:
-                - name: 'Veritabanı Değişikliklerini Bir İşlemin İçinde Sarmalama (C#)'
+                - name: Veritabanı Değişikliklerini Bir İşlemin İçinde Sarmalama (C#)
                   href: web-forms/overview/data-access/working-with-batched-data/wrapping-database-modifications-within-a-transaction-cs.md
-                - name: 'Toplu Güncelleştirme (C#)'
+                - name: Toplu Güncelleştirme (C#)
                   href: web-forms/overview/data-access/working-with-batched-data/batch-updating-cs.md
-                - name: 'Toplu Silme (C#)'
+                - name: Toplu Silme (C#)
                   href: web-forms/overview/data-access/working-with-batched-data/batch-deleting-cs.md
-                - name: 'Toplu Ekleme (C#)'
+                - name: Toplu Ekleme (C#)
                   href: web-forms/overview/data-access/working-with-batched-data/batch-inserting-cs.md
                 - name: Veritabanı Değişikliklerini Bir İşlemin İçinde Sarmalama (VB)
                   href: web-forms/overview/data-access/working-with-batched-data/wrapping-database-modifications-within-a-transaction-vb.md
@@ -1013,23 +1013,23 @@
             - name: Gelişmiş Veri Erişimi Senaryoları
               href: web-forms/overview/data-access/advanced-data-access-scenarios/index.md
               items:
-                - name: 'Türü Belirtilmiş DataSet''in TableAdapter’ları için Yeni Saklı Yordam Oluşturma (C#)'
+                - name: Türü Belirtilmiş DataSet'in TableAdapter’ları için Yeni Saklı Yordam Oluşturma (C#)
                   href: web-forms/overview/data-access/advanced-data-access-scenarios/creating-new-stored-procedures-for-the-typed-dataset-s-tableadapters-cs.md
-                - name: 'Türü Belirtilmiş DataSet''in TableAdapter’ları için Mevcut Saklı Yordamları Kullanma (C#)'
+                - name: Türü Belirtilmiş DataSet'in TableAdapter’ları için Mevcut Saklı Yordamları Kullanma (C#)
                   href: web-forms/overview/data-access/advanced-data-access-scenarios/using-existing-stored-procedures-for-the-typed-dataset-s-tableadapters-cs.md
-                - name: 'TableAdapter’ı JOIN Kullanacak Biçimde Güncelleştirme (C#)'
+                - name: TableAdapter’ı JOIN Kullanacak Biçimde Güncelleştirme (C#)
                   href: web-forms/overview/data-access/advanced-data-access-scenarios/updating-the-tableadapter-to-use-joins-cs.md
-                - name: 'Ek DataTable Sütunları Ekleme (C#)'
+                - name: Ek DataTable Sütunları Ekleme (C#)
                   href: web-forms/overview/data-access/advanced-data-access-scenarios/adding-additional-datatable-columns-cs.md
-                - name: 'Hesaplanan Sütunlar ile Çalışma (C#)'
+                - name: Hesaplanan Sütunlar ile Çalışma (C#)
                   href: web-forms/overview/data-access/advanced-data-access-scenarios/working-with-computed-columns-cs.md
-                - name: 'Veri Erişim Katmanının Bağlantısını ve Komut Düzeyi Ayarlarını Yapılandırma (C#)'
+                - name: Veri Erişim Katmanının Bağlantısını ve Komut Düzeyi Ayarlarını Yapılandırma (C#)
                   href: web-forms/overview/data-access/advanced-data-access-scenarios/configuring-the-data-access-layer-s-connection-and-command-level-settings-cs.md
-                - name: 'Bağlantı Dizelerini ve Diğer Yapılandırma Bilgilerini Koruma (C#)'
+                - name: Bağlantı Dizelerini ve Diğer Yapılandırma Bilgilerini Koruma (C#)
                   href: web-forms/overview/data-access/advanced-data-access-scenarios/protecting-connection-strings-and-other-configuration-information-cs.md
-                - name: 'Saklı Yordamların Hatalarını Ayıklama (C#)'
+                - name: Saklı Yordamların Hatalarını Ayıklama (C#)
                   href: web-forms/overview/data-access/advanced-data-access-scenarios/debugging-stored-procedures-cs.md
-                - name: 'Yönetilen Kod ile Saklı Yordamlar ve Kullanıcı Tanımlı İşlevler Oluşturma (C#)'
+                - name: Yönetilen Kod ile Saklı Yordamlar ve Kullanıcı Tanımlı İşlevler Oluşturma (C#)
                   href: web-forms/overview/data-access/advanced-data-access-scenarios/creating-stored-procedures-and-user-defined-functions-with-managed-code-cs.md
                 - name: Türü Belirtilmiş DataSet'in TableAdapter’ları için Yeni Saklı Yordam Oluşturma (VB)
                   href: web-forms/overview/data-access/advanced-data-access-scenarios/creating-new-stored-procedures-for-the-typed-dataset-s-tableadapters-vb.md
@@ -1055,11 +1055,11 @@
             - name: ASP.NET 3.5 - Güvenliğe Giriş
               href: web-forms/overview/older-versions-security/introduction/index.md
               items:
-                - name: 'Temel Güvenlik Kavramları ve ASP.NET Desteği (C#)'
+                - name: Temel Güvenlik Kavramları ve ASP.NET Desteği (C#)
                   href: web-forms/overview/older-versions-security/introduction/security-basics-and-asp-net-support-cs.md
-                - name: 'Forms Kimlik Doğrulamasına Genel Bakış (C#)'
+                - name: Forms Kimlik Doğrulamasına Genel Bakış (C#)
                   href: web-forms/overview/older-versions-security/introduction/an-overview-of-forms-authentication-cs.md
-                - name: 'Forms Kimlik Doğrulaması Yapılandırması ve Gelişmiş Konular (C#)'
+                - name: Forms Kimlik Doğrulaması Yapılandırması ve Gelişmiş Konular (C#)
                   href: web-forms/overview/older-versions-security/introduction/forms-authentication-configuration-and-advanced-topics-cs.md
                 - name: Temel Güvenlik Kavramları ve ASP.NET Desteği (VB)
                   href: web-forms/overview/older-versions-security/introduction/security-basics-and-asp-net-support-vb.md
@@ -1070,15 +1070,15 @@
             - name: ASP.NET 3.5 - Üyelik
               href: web-forms/overview/older-versions-security/membership/index.md
               items:
-                - name: 'SQL Server’da Üyelik Şeması Oluşturma (C#)'
+                - name: SQL Server’da Üyelik Şeması Oluşturma (C#)
                   href: web-forms/overview/older-versions-security/membership/creating-the-membership-schema-in-sql-server-cs.md
-                - name: 'Kullanıcı Hesapları Oluşturma (C#)'
+                - name: Kullanıcı Hesapları Oluşturma (C#)
                   href: web-forms/overview/older-versions-security/membership/creating-user-accounts-cs.md
-                - name: 'Üyelik Kullanıcı Deposu ile Karşılaştırarak Kullanıcı Kimlik Bilgilerini Doğrulama (C#)'
+                - name: Üyelik Kullanıcı Deposu ile Karşılaştırarak Kullanıcı Kimlik Bilgilerini Doğrulama (C#)
                   href: web-forms/overview/older-versions-security/membership/validating-user-credentials-against-the-membership-user-store-cs.md
-                - name: 'Kullanıcı Tabanlı Yetkilendirme (C#)'
+                - name: Kullanıcı Tabanlı Yetkilendirme (C#)
                   href: web-forms/overview/older-versions-security/membership/user-based-authorization-cs.md
-                - name: 'Ek Kullanıcı Bilgileri Depolama (C#)'
+                - name: Ek Kullanıcı Bilgileri Depolama (C#)
                   href: web-forms/overview/older-versions-security/membership/storing-additional-user-information-cs.md
                 - name: SQL Server’da Üyelik Şeması Oluşturma (VB)
                   href: web-forms/overview/older-versions-security/membership/creating-the-membership-schema-in-sql-server-vb.md
@@ -1093,11 +1093,11 @@
             - name: ASP.NET 3.5 - Roller
               href: web-forms/overview/older-versions-security/roles/index.md
               items:
-                - name: 'Rolleri Oluşturma ve Yönetme (C#)'
+                - name: Rolleri Oluşturma ve Yönetme (C#)
                   href: web-forms/overview/older-versions-security/roles/creating-and-managing-roles-cs.md
-                - name: 'Kullanıcılara Rol Atama (C#)'
+                - name: Kullanıcılara Rol Atama (C#)
                   href: web-forms/overview/older-versions-security/roles/assigning-roles-to-users-cs.md
-                - name: 'Rol Tabanlı Yetkilendirme (C#)'
+                - name: Rol Tabanlı Yetkilendirme (C#)
                   href: web-forms/overview/older-versions-security/roles/role-based-authorization-cs.md
                 - name: Rolleri Oluşturma ve Yönetme (VB)
                   href: web-forms/overview/older-versions-security/roles/creating-and-managing-roles-vb.md
@@ -1108,11 +1108,11 @@
             - name: ASP.NET 3.5 - Güvenlik Yönetimi
               href: web-forms/overview/older-versions-security/admin/index.md
               items:
-                - name: 'Çok Sayıda Kullanıcı Hesabından Birinin Seçilmesi için Bir Arabirim Oluşturma (C#)'
+                - name: Çok Sayıda Kullanıcı Hesabından Birinin Seçilmesi için Bir Arabirim Oluşturma (C#)
                   href: web-forms/overview/older-versions-security/admin/building-an-interface-to-select-one-user-account-from-many-cs.md
-                - name: 'Parolaları Kurtarma ve Değiştirme (C#)'
+                - name: Parolaları Kurtarma ve Değiştirme (C#)
                   href: web-forms/overview/older-versions-security/admin/recovering-and-changing-passwords-cs.md
-                - name: 'Kullanıcı Hesaplarının Kilidini Açma ve Kullanıcı Hesaplarını Onaylama (C#)'
+                - name: Kullanıcı Hesaplarının Kilidini Açma ve Kullanıcı Hesaplarını Onaylama (C#)
                   href: web-forms/overview/older-versions-security/admin/unlocking-and-approving-user-accounts-cs.md
                 - name: Çok Sayıda Kullanıcı Hesabından Birinin Seçilmesi için Bir Arabirim Oluşturma (VB)
                   href: web-forms/overview/older-versions-security/admin/building-an-interface-to-select-one-user-account-from-many-vb.md
@@ -1551,7 +1551,7 @@
               href: web-forms/videos/migrating/intro-to-aspnet-for-jsp-developers-welcome-to-aspnet-20.md
             - name: 'JSP Geliştiricileri için ASP.NET’e Giriş: Uygulama Oluşturma'
               href: web-forms/videos/migrating/intro-to-aspnet-for-jsp-developers-building-applications.md
-            - name: 'ColdFusion Geliştiricileri için ASP.NET’e Giriş: ASP.NET’i Repertuarınıza Ekleme'
+            - name: 'ColdFusion Geliştiricileri için ASP.NET’e Giriş: ASP.NET’i Repertuvarınıza Ekleme'
               href: web-forms/videos/migrating/intro-to-aspnet-for-coldfusion-developers-adding-aspnet-to-your-repertoire.md
             - name: 'ColdFusion Geliştiricileri için ASP.NET’e Giriş: ASP.NET Uygulaması Oluşturma'
               href: web-forms/videos/migrating/introduction-to-aspnet-for-coldfusion-developers-building-an-aspnet-application.md
@@ -1815,7 +1815,7 @@
                   href: web-forms/videos/data-access/how-do-i-with-linq/how-do-i-linq-to-sql-linqdatasource.md
                 - name: 'LINQ to SQL: Özel LinqDataSource'
                   href: web-forms/videos/data-access/how-do-i-with-linq/how-do-i-linq-to-sql-custom-linqdatasource.md
-                - name: 'LINQ to SQL: Saklı Yordamlar Kullanma'
+                - name: 'LINQ to SQL: Saklı Yordamları Kullanma'
                   href: web-forms/videos/data-access/how-do-i-with-linq/how-do-i-linq-to-sql-using-stored-procedures.md
                 - name: 'LINQ to SQL: Saklı Yordamlarla Güncelleştirme'
                   href: web-forms/videos/data-access/how-do-i-with-linq/how-do-i-linq-to-sql-updating-with-stored-procedures.md
@@ -1867,7 +1867,7 @@
               href: web-forms/videos/aspnet-dynamic-data/how-to-enable-table-specific-routing-in-dynamic-data-applications.md
             - name: ASP.NET Dinamik Veri Uygulamalarında Öznitelik Doğrulamayı Kullanma
               href: web-forms/videos/aspnet-dynamic-data/how-to-use-attribute-validation-in-aspnet-dynamic-data-applications.md
-            - name: 'C# veya VB’de Kesin Mantık ile Özel Alan Doğrulama Uygulama'
+            - name: C# veya VB’de Kesin Mantık ile Özel Alan Doğrulama Uygulama
               href: web-forms/videos/aspnet-dynamic-data/how-to-implement-custom-field-validation-with-imperative-logic-in-vb-or-c.md
             - name: DynamicData Veri Kılavuzlarınızdan Sütunları Kaldırma
               href: web-forms/videos/aspnet-dynamic-data/how-to-remove-columns-from-your-dynamicdata-data-grids.md
@@ -2158,7 +2158,7 @@
               href: mvc/overview/security/aspnet-mvc-5-app-with-sms-and-email-two-factor-authentication.md
             - name: ASP.NET MVC ve Web Sayfalarında XSRF/CSRF Önleme
               href: mvc/overview/security/xsrfcsrf-prevention-in-aspnet-mvc-and-web-pages.md
-            - name: 'Açık Yeniden Yönlendirme Saldırılarını Önleme (C#)'
+            - name: Açık Yeniden Yönlendirme Saldırılarını Önleme (C#)
               href: mvc/overview/security/preventing-open-redirection-attacks.md
         - name: Dağıtım
           href: mvc/overview/deployment/index.md
@@ -2261,26 +2261,26 @@
             - name: .NET MVC 3 ile Çalışmaya Başlama
               href: mvc/overview/older-versions/getting-started-with-aspnet-mvc3/index.md
               items:
-                - name: '.NET MVC 3 ile Çalışmaya Başlama (C#)'
+                - name: .NET MVC 3 ile Çalışmaya Başlama (C#)
                   href: mvc/overview/older-versions/getting-started-with-aspnet-mvc3/cs/index.md
                   items:
-                    - name: 'ASP.NET MVC 3 Sürümüne Giriş (C#)'
+                    - name: ASP.NET MVC 3 Sürümüne Giriş (C#)
                       href: mvc/overview/older-versions/getting-started-with-aspnet-mvc3/cs/intro-to-aspnet-mvc-3.md
-                    - name: 'Denetleyici Ekleme (C#)'
+                    - name: Denetleyici Ekleme (C#)
                       href: mvc/overview/older-versions/getting-started-with-aspnet-mvc3/cs/adding-a-controller.md
-                    - name: 'Görünüm Ekleme (C#)'
+                    - name: Görünüm Ekleme (C#)
                       href: mvc/overview/older-versions/getting-started-with-aspnet-mvc3/cs/adding-a-view.md
-                    - name: 'Model Ekleme (C#)'
+                    - name: Model Ekleme (C#)
                       href: mvc/overview/older-versions/getting-started-with-aspnet-mvc3/cs/adding-a-model.md
-                    - name: 'Bir Denetleyiciden Modelinizin Verilerine Erişme (C#)'
+                    - name: Bir Denetleyiciden Modelinizin Verilerine Erişme (C#)
                       href: mvc/overview/older-versions/getting-started-with-aspnet-mvc3/cs/accessing-your-models-data-from-a-controller.md
-                    - name: 'Düzenleme Metotlarını ve Düzenleme Görünümünü İnceleme (C#)'
+                    - name: Düzenleme Metotlarını ve Düzenleme Görünümünü İnceleme (C#)
                       href: mvc/overview/older-versions/getting-started-with-aspnet-mvc3/cs/examining-the-edit-methods-and-edit-view.md
-                    - name: 'Film Modeli ve Tablosuna Yeni Alan Ekleme (C#)'
+                    - name: Film Modeli ve Tablosuna Yeni Alan Ekleme (C#)
                       href: mvc/overview/older-versions/getting-started-with-aspnet-mvc3/cs/adding-a-new-field.md
-                    - name: 'Modele Doğrulama Ekleme (C#)'
+                    - name: Modele Doğrulama Ekleme (C#)
                       href: mvc/overview/older-versions/getting-started-with-aspnet-mvc3/cs/adding-validation-to-the-model.md
-                    - name: 'Details ve Delete Metotlarını Geliştirme (C#)'
+                    - name: Details ve Delete Metotlarını Geliştirme (C#)
                       href: mvc/overview/older-versions/getting-started-with-aspnet-mvc3/cs/improving-the-details-and-delete-methods.md
                 - name: ASP.NET MVC 3 ile Çalışmaya Başlama (VB.NET)
                   href: mvc/overview/older-versions/getting-started-with-aspnet-mvc3/vb/index.md
@@ -2308,25 +2308,25 @@
             - name: MVC 3 Müzik Deposu
               href: mvc/overview/older-versions/mvc-music-store/index.md
               items:
-                - name: '1. Bölüm: Genel Bakış ve Dosya->Yeni Proje'
+                - name: 'Bölüm 1: Genel Bakış ve Dosya->Yeni Proje'
                   href: mvc/overview/older-versions/mvc-music-store/mvc-music-store-part-1.md
-                - name: '2. Bölüm: Denetleyiciler'
+                - name: 'Bölüm 2: Denetleyiciler'
                   href: mvc/overview/older-versions/mvc-music-store/mvc-music-store-part-2.md
-                - name: '3. Bölüm: Görünümler ve ViewModel’lar'
+                - name: 'Bölüm 3: Görünümler ve Görünüm Modelleri'
                   href: mvc/overview/older-versions/mvc-music-store/mvc-music-store-part-3.md
-                - name: '4. Bölüm: Modeller ve Veri Erişimi'
+                - name: 'Bölüm 4: Modeller ve Veri Erişimi'
                   href: mvc/overview/older-versions/mvc-music-store/mvc-music-store-part-4.md
-                - name: '5. Bölüm: Formları Düzenleme ve Şablon Oluşturma'
+                - name: 'Bölüm 5: Formları Düzenleme ve Şablon Oluşturma'
                   href: mvc/overview/older-versions/mvc-music-store/mvc-music-store-part-5.md
-                - name: '6. Bölüm: Model Doğrulama için Veri Ek Açıklamalarını Kullanma'
+                - name: 'Bölüm 6: Model Doğrulama için Veri Açıklamalarını Kullanma'
                   href: mvc/overview/older-versions/mvc-music-store/mvc-music-store-part-6.md
-                - name: '7. Bölüm: Üyelik ve Yetkilendirme'
+                - name: 'Bölüm 7: Üyelik ve Yetkilendirme'
                   href: mvc/overview/older-versions/mvc-music-store/mvc-music-store-part-7.md
-                - name: '8. Bölüm: Ajax Güncelleştirmeleriyle Alışveriş Sepeti'
+                - name: 'Bölüm 8: Ajax Güncelleştirmeleriyle Alışveriş Sepeti'
                   href: mvc/overview/older-versions/mvc-music-store/mvc-music-store-part-8.md
-                - name: '9. Bölüm: Kayıt ve Kasa İşlemleri'
+                - name: 'Bölüm 9: Kayıt ve Kasa İşlemleri'
                   href: mvc/overview/older-versions/mvc-music-store/mvc-music-store-part-9.md
-                - name: '10. Bölüm: Gezinti ve Site Tasarımına Yönelik Son Güncelleştirmeler, Sonuç'
+                - name: 'Bölüm 10: Gezinti ve Site Tasarımına Yönelik Son Güncelleştirmeler, Sonuç'
                   href: mvc/overview/older-versions/mvc-music-store/mvc-music-store-part-10.md
             - name: MVC 3 - HTML5 ve jQuery Kullanıcı Arabirimi Tarih Seçici Açılan Takvimi
               href: mvc/overview/older-versions/using-the-html5-and-jquery-ui-datepicker-popup-calendar-with-aspnet-mvc/index.md
@@ -2349,7 +2349,7 @@
         - name: Eski Sürümler - MVC 1 ve 2
           href: mvc/overview/older-versions-1/index.md
           items:
-            - name: Genel bakış
+            - name: Genel Bakış
               href: mvc/overview/older-versions-1/overview/index.md
               items:
                 - name: ASP.NET MVC’ye Genel Bakış
@@ -2382,19 +2382,19 @@
             - name: Modeller (Veriler)
               href: mvc/overview/older-versions-1/models-data/index.md
               items:
-                - name: 'Entity Framework ile Model Sınıfları Oluşturma (C#)'
+                - name: Entity Framework ile Model Sınıfları Oluşturma (C#)
                   href: mvc/overview/older-versions-1/models-data/creating-model-classes-with-the-entity-framework-cs.md
-                - name: 'LINQ to SQL ile Model Sınıfları Oluşturma (C#)'
+                - name: LINQ to SQL ile Model Sınıfları Oluşturma (C#)
                   href: mvc/overview/older-versions-1/models-data/creating-model-classes-with-linq-to-sql-cs.md
-                - name: 'Veritabanı Verilerinin Tablosunu Görüntüleme (C#)'
+                - name: Veritabanı Verilerinin Tablosunu Görüntüleme (C#)
                   href: mvc/overview/older-versions-1/models-data/displaying-a-table-of-database-data-cs.md
-                - name: 'Basit Doğrulama Gerçekleştirme (C#)'
+                - name: Basit Doğrulama Gerçekleştirme (C#)
                   href: mvc/overview/older-versions-1/models-data/performing-simple-validation-cs.md
-                - name: 'IDataErrorInfo Arabirimi ile Doğrulama (C#)'
+                - name: IDataErrorInfo Arabirimi ile Doğrulama (C#)
                   href: mvc/overview/older-versions-1/models-data/validating-with-the-idataerrorinfo-interface-cs.md
-                - name: 'Hizmet Katmanı ile Doğrulama (C#)'
+                - name: Hizmet Katmanı ile Doğrulama (C#)
                   href: mvc/overview/older-versions-1/models-data/validating-with-a-service-layer-cs.md
-                - name: 'Veri Ek Açıklama Doğrulayıcıları ile Doğrulama (C#)'
+                - name: Veri Ek Açıklama Doğrulayıcıları ile Doğrulama (C#)
                   href: mvc/overview/older-versions-1/models-data/validation-with-the-data-annotation-validators-cs.md
                 - name: Entity Framework ile Model Sınıfları Oluşturma (VB)
                   href: mvc/overview/older-versions-1/models-data/creating-model-classes-with-the-entity-framework-vb.md
@@ -2413,15 +2413,15 @@
             - name: ASP.NET MVC Görünümleri
               href: mvc/overview/older-versions-1/views/index.md
               items:
-                - name: 'ASP.NET MVC Görünümlerine Genel Bakış (C#)'
+                - name: ASP.NET MVC Görünümlerine Genel Bakış (C#)
                   href: mvc/overview/older-versions-1/views/asp-net-mvc-views-overview-cs.md
-                - name: 'Özel HTML Yardımcıları Oluşturma (C#)'
+                - name: Özel HTML Yardımcıları Oluşturma (C#)
                   href: mvc/overview/older-versions-1/views/creating-custom-html-helpers-cs.md
-                - name: 'HTML Yardımcıları Oluşturmak için TagBuilder Sınıfı (C#)'
+                - name: HTML Yardımcıları Oluşturmak için TagBuilder Sınıfı (C#)
                   href: mvc/overview/older-versions-1/views/using-the-tagbuilder-class-to-build-html-helpers-cs.md
-                - name: 'Görünüm Ana Sayfalarıyla Sayfa Düzenleri Oluşturma (C#)'
+                - name: Görünüm Ana Sayfalarıyla Sayfa Düzenleri Oluşturma (C#)
                   href: mvc/overview/older-versions-1/views/creating-page-layouts-with-view-master-pages-cs.md
-                - name: 'Görünüm Ana sayfalarına Veri Geçirme (C#)'
+                - name: Görünüm Ana sayfalarına Veri Geçirme (C#)
                   href: mvc/overview/older-versions-1/views/passing-data-to-view-master-pages-cs.md
                 - name: ASP.NET MVC Görünümlerine Genel Bakış (VB)
                   href: mvc/overview/older-versions-1/views/asp-net-mvc-views-overview-vb.md
@@ -2436,17 +2436,17 @@
             - name: Denetleyiciler ve Yönlendirme
               href: mvc/overview/older-versions-1/controllers-and-routing/index.md
               items:
-                - name: 'ASP.NET MVC Yönlendirmesine Genel Bakış (C#)'
+                - name: ASP.NET MVC Yönlendirmesine Genel Bakış (C#)
                   href: mvc/overview/older-versions-1/controllers-and-routing/asp-net-mvc-routing-overview-cs.md
-                - name: 'Eylem Filtrelerini Anlama (C#)'
+                - name: Eylem Filtrelerini Anlama (C#)
                   href: mvc/overview/older-versions-1/controllers-and-routing/understanding-action-filters-cs.md
-                - name: 'Çıktı Önbelleğe Alma ile Performansı İyileştirme (C#)'
+                - name: Çıktı Önbelleğe Alma ile Performansı İyileştirme (C#)
                   href: mvc/overview/older-versions-1/controllers-and-routing/improving-performance-with-output-caching-cs.md
-                - name: 'Önbelleğe Alınmış Bir Sayfaya Dinamik İçerik Ekleme (C#)'
+                - name: Önbelleğe Alınmış Bir Sayfaya Dinamik İçerik Ekleme (C#)
                   href: mvc/overview/older-versions-1/controllers-and-routing/adding-dynamic-content-to-a-cached-page-cs.md
-                - name: 'Denetleyici Oluşturma (C#)'
+                - name: Denetleyici Oluşturma (C#)
                   href: mvc/overview/older-versions-1/controllers-and-routing/creating-a-controller-cs.md
-                - name: 'Eylem Oluşturma (C#)'
+                - name: Eylem Oluşturma (C#)
                   href: mvc/overview/older-versions-1/controllers-and-routing/creating-an-action-cs.md
                 - name: ASP.NET MVC Yönlendirmesine Genel Bakış (VB)
                   href: mvc/overview/older-versions-1/controllers-and-routing/asp-net-mvc-routing-overview-vb.md
@@ -2460,13 +2460,13 @@
                   href: mvc/overview/older-versions-1/controllers-and-routing/creating-a-controller-vb.md
                 - name: Eylem Oluşturma (VB)
                   href: mvc/overview/older-versions-1/controllers-and-routing/creating-an-action-vb.md
-                - name: 'ASP.NET MVC Denetleyicisine Genel Bakış (C#)'
+                - name: ASP.NET MVC Denetleyicisine Genel Bakış (C#)
                   href: mvc/overview/older-versions-1/controllers-and-routing/aspnet-mvc-controllers-overview-cs.md
-                - name: 'Özel Rotalar Oluşturma (C#)'
+                - name: Özel Rotalar Oluşturma (C#)
                   href: mvc/overview/older-versions-1/controllers-and-routing/creating-custom-routes-cs.md
-                - name: 'Rota Kısıtlaması Oluşturma (C#)'
+                - name: Rota Kısıtlaması Oluşturma (C#)
                   href: mvc/overview/older-versions-1/controllers-and-routing/creating-a-route-constraint-cs.md
-                - name: 'Özel Rota Kısıtlaması Oluşturma (C#)'
+                - name: Özel Rota Kısıtlaması Oluşturma (C#)
                   href: mvc/overview/older-versions-1/controllers-and-routing/creating-a-custom-route-constraint-cs.md
                 - name: ASP.NET MVC Denetleyicisine Genel Bakış (VB)
                   href: mvc/overview/older-versions-1/controllers-and-routing/asp-net-mvc-controller-overview-vb.md
@@ -2479,18 +2479,18 @@
             - name: Dağıtım
               href: mvc/overview/older-versions-1/deployment/index.md
               items:
-                - name: 'ASP.NET MVC’yi Farklı IIS Sürümleriyle Kullanma (C#)'
+                - name: ASP.NET MVC’yi Farklı IIS Sürümleriyle Kullanma (C#)
                   href: mvc/overview/older-versions-1/deployment/using-asp-net-mvc-with-different-versions-of-iis-cs.md
                 - name: ASP.NET MVC’yi Farklı IIS Sürümleriyle Kullanma (VB)
                   href: mvc/overview/older-versions-1/deployment/using-asp-net-mvc-with-different-versions-of-iis-vb.md
             - name: Güvenlik
               href: mvc/overview/older-versions-1/security/index.md
               items:
-                - name: 'Forms Kimlik Doğrulaması ile Kullanıcıların Kimliğini Doğrulama (C#)'
+                - name: Forms Kimlik Doğrulaması ile Kullanıcıların Kimliğini Doğrulama (C#)
                   href: mvc/overview/older-versions-1/security/authenticating-users-with-forms-authentication-cs.md
-                - name: 'Windows Kimlik Doğrulaması ile Kullanıcıların Kimliğini Doğrulama (C#)'
+                - name: Windows Kimlik Doğrulaması ile Kullanıcıların Kimliğini Doğrulama (C#)
                   href: mvc/overview/older-versions-1/security/authenticating-users-with-windows-authentication-cs.md
-                - name: 'JavaScript Ekleme Saldırılarını Engelleme (C#)'
+                - name: JavaScript Ekleme Saldırılarını Engelleme (C#)
                   href: mvc/overview/older-versions-1/security/preventing-javascript-injection-attacks-cs.md
                 - name: Forms Kimlik Doğrulaması ile Kullanıcıların Kimliğini Doğrulama (VB)
                   href: mvc/overview/older-versions-1/security/authenticating-users-with-forms-authentication-vb.md
@@ -2501,7 +2501,7 @@
             - name: Birim Testi
               href: mvc/overview/older-versions-1/unit-testing/index.md
               items:
-                - name: 'ASP.NET MVC Uygulamaları için Birim Testleri Oluşturma (C#)'
+                - name: ASP.NET MVC Uygulamaları için Birim Testleri Oluşturma (C#)
                   href: mvc/overview/older-versions-1/unit-testing/creating-unit-tests-for-asp-net-mvc-applications-cs.md
                 - name: ASP.NET MVC Uygulamaları için Birim Testleri Oluşturma (VB)
                   href: mvc/overview/older-versions-1/unit-testing/creating-unit-tests-for-asp-net-mvc-applications-vb.md
@@ -2570,7 +2570,7 @@
             - name: Film Veritabanı
               href: mvc/overview/older-versions-1/movie-database/index.md
               items:
-                - name: 'ASP.NET MVC ile 15 Dakika İçinde Bir Film Veritabanı Uygulaması Oluşturma (C#)'
+                - name: ASP.NET MVC ile 15 Dakika İçinde Bir Film Veritabanı Uygulaması Oluşturma (C#)
                   href: mvc/overview/older-versions-1/movie-database/create-a-movie-database-application-in-15-minutes-with-asp-net-mvc-cs.md
                 - name: ASP.NET MVC ile 15 Dakika İçinde Bir Film Veritabanı Uygulaması Oluşturma (VB)
                   href: mvc/overview/older-versions-1/movie-database/create-a-movie-database-application-in-15-minutes-with-asp-net-mvc-vb.md
@@ -2599,7 +2599,7 @@
               items:
                 - name: ASP.NET MVC ile Görev Listesi Uygulaması Oluşturma
                   href: mvc/videos/mvc-2/how-do-i/creating-a-tasklist-application-with-aspnet-mvc.md
-                - name: 'ASP.NET MVC ile 15 dakika içinde bir Film Veritabanı Uygulaması oluşturma (C#)'
+                - name: ASP.NET MVC ile 15 dakika içinde bir Film Veritabanı Uygulaması oluşturma (C#)
                   href: mvc/videos/mvc-2/how-do-i/creating-a-movie-database-application-in-15-minutes-with-aspnet-mvc.md
                 - name: 'Modelleri, Görünümleri ve Denetleyicileri Anlama'
                   href: mvc/videos/mvc-2/how-do-i/understanding-models-views-and-controllers.md
@@ -2658,22 +2658,22 @@
             - name: Geri Kalanımız için ASP.NET MVC
               href: mvc/videos/mvc-2/aspnet-mvc-for-the-rest-of-us/index.md
               items:
-                - name: 'Geri Kalanımız için ASP.NET MVC: 1. Bölüm'
+                - name: 'Geri Kalanımız için ASP.NET MVC: Bölüm 1'
                   href: mvc/videos/mvc-2/aspnet-mvc-for-the-rest-of-us/aspnet-mvc-for-the-rest-of-us-part-1.md
-                - name: 'Geri Kalanımız için ASP.NET MVC: 2. Bölüm'
+                - name: 'Geri Kalanımız için ASP.NET MVC: Bölüm 2'
                   href: mvc/videos/mvc-2/aspnet-mvc-for-the-rest-of-us/aspnet-mvc-for-the-rest-of-us-part-2.md
-                - name: 'Geri Kalanımız için ASP.NET MVC: 3. Bölüm'
+                - name: 'Geri Kalanımız için ASP.NET MVC: Bölüm 3'
                   href: mvc/videos/mvc-2/aspnet-mvc-for-the-rest-of-us/aspnet-mvc-for-the-rest-of-us-part-3.md
-                - name: 'Geri Kalanımız için ASP.NET MVC: 4. Bölüm'
+                - name: 'Geri Kalanımız için ASP.NET MVC: Bölüm 4'
                   href: mvc/videos/mvc-2/aspnet-mvc-for-the-rest-of-us/aspnet-mvc-for-the-rest-of-us-part-4.md
             - name: Müzik Deposu
               href: mvc/videos/mvc-2/music-store/index.md
               items:
-                - name: 'MVC Müzik Deposu 1. Bölüm: Giriş, Araçlar ve Proje Yapısı'
+                - name: 'MVC Müzik Deposu Bölüm 1: Giriş, Araçlar ve Proje Yapısı'
                   href: mvc/videos/mvc-2/music-store/mvc-music-store-part-1-intro-tools-and-project-structure.md
-                - name: 'MVC Müzik Deposu 2. Bölüm: Denetleyiciler'
+                - name: 'MVC Müzik Deposu Bölüm 2: Denetleyiciler'
                   href: mvc/videos/mvc-2/music-store/mvc-music-store-part-2-controllers.md
-                - name: 'MVC Müzik Deposu 3. Bölüm: Görünümler ve ViewModel’lar'
+                - name: 'MVC Müzik Deposu Bölüm 3: Görünümler ve Görünüm Modelleri'
                   href: mvc/videos/mvc-2/music-store/mvc-music-store-part-3-views-and-viewmodels.md
         - name: ASP.NET MVC 1
           href: mvc/videos/mvc-1/index.md
@@ -2681,55 +2681,55 @@
             - name: ASP.NET MVC Storefront
               href: mvc/videos/mvc-1/aspnet-mvc-storefront/index.md
               items:
-                - name: 'ASP.NET MVC Storefront 1. Bölüm: Mimari Tartışma ve Genel Bakış'
+                - name: 'ASP.NET MVC Storefront Bölüm 1: Mimari Tartışması ve Genel Bakış'
                   href: mvc/videos/mvc-1/aspnet-mvc-storefront/aspnet-mvc-storefront-part-1-architectural-discussion-and-overview.md
-                - name: 'ASP.NET MVC Storefront 2. Bölüm: Depo Deseni'
+                - name: 'ASP.NET MVC Storefront Bölüm 2: Depo Düzeni'
                   href: mvc/videos/mvc-1/aspnet-mvc-storefront/aspnet-mvc-storefront-part-2-the-repository-pattern.md
-                - name: 'ASP.NET MVC Storefront 3. Bölüm: Kanallar ve Filtreler'
+                - name: 'ASP.NET MVC Storefront Bölüm 3: Kanallar ve Filtreler'
                   href: mvc/videos/mvc-1/aspnet-mvc-storefront/aspnet-mvc-storefront-part-3-pipes-and-filters.md
-                - name: 'ASP.NET MVC Storefront 4. Bölüm: Linq To zSql Ani Artışı'
+                - name: 'ASP.NET MVC Storefront Bölüm 4: Linq To Sql Değişikliği'
                   href: mvc/videos/mvc-1/aspnet-mvc-storefront/aspnet-mvc-storefront-part-4-linq-to-sql-spike.md
-                - name: 'ASP.NET MVC Storefront 5. Bölüm: Genelleştirme'
+                - name: 'ASP.NET MVC Storefront Bölüm 5: Genelleştirme'
                   href: mvc/videos/mvc-1/aspnet-mvc-storefront/aspnet-mvc-storefront-part-5-globalization.md
-                - name: 'ASP.NET MVC Storefront 6. Bölüm: Depoyu Tamamlama ve İlk Kullanıcı Arabirimi İşi'
+                - name: 'ASP.NET MVC Storefront Bölüm 6: Depoyu Tamamlama ve İlk Kullanıcı Arabirimi İşi'
                   href: mvc/videos/mvc-1/aspnet-mvc-storefront/aspnet-mvc-storefront-part-6-finishing-the-repository-and-initial-ui-work.md
-                - name: 'ASP.NET MVC Storefront 7. Bölüm: Yönlendirme ve Kullanıcı Arabirimi İşi'
+                - name: 'ASP.NET MVC Storefront Bölüm 7: Yönlendirme ve Kullanıcı Arabirimi işi'
                   href: mvc/videos/mvc-1/aspnet-mvc-storefront/aspnet-mvc-storefront-part-7-routing-and-ui-work.md
-                - name: 'ASP.NET MVC Storefront 8. Bölüm: Denetleyiciler Test Ediliyor, 1. Yineleme Tamamlandı'
+                - name: 'ASP.NET MVC Storefront Bölüm 8: Test Denetleyicileri, 1. Yineleme Tamamlandı'
                   href: mvc/videos/mvc-1/aspnet-mvc-storefront/aspnet-mvc-storefront-part-8-testing-controllers-iteration-1-complete.md
-                - name: 'ASP.NET MVC Storefront 9. Bölüm: Alışverişi Sepeti'
+                - name: 'ASP.NET MVC Storefront Bölüm 9: Alışveriş Sepeti'
                   href: mvc/videos/mvc-1/aspnet-mvc-storefront/aspnet-mvc-storefront-part-9-the-shopping-cart.md
-                - name: 'ASP.NET MVC Storefront 10. Bölüm: Alışveriş Sepeti Yeniden Düzenleme ve Yetkilendirme'
+                - name: 'ASP.NET MVC Storefront Bölüm 10: Alışveriş Sepetini Yeniden Düzenleme ve Yetkilendirme'
                   href: mvc/videos/mvc-1/aspnet-mvc-storefront/aspnet-mvc-storefront-part-10-shopping-cart-refactor-and-authorization.md
-                - name: 'ASP.NET MVC Storefront 11. Bölüm: Alışveriş Sepetini Ayarlama ve Bileşenleri Kullanma'
+                - name: 'ASP.NET MVC Storefront Bölüm 11: Alışveriş Sepetini Ayarlama ve Bileşenleri Kullanma'
                   href: mvc/videos/mvc-1/aspnet-mvc-storefront/aspnet-mvc-storefront-part-11-hooking-up-the-shopping-cart-and-using-components.md
-                - name: 'ASP.NET MVC Storefront 12. Bölüm: Sahte İşlem'
+                - name: 'ASP.NET MVC Storefront Bölüm 12: Sahte işlem'
                   href: mvc/videos/mvc-1/aspnet-mvc-storefront/aspnet-mvc-storefront-part-12-mocking.md
-                - name: 'ASP.NET MVC Storefront 13. Bölüm: Bağımlılık Ekleme'
+                - name: 'ASP.NET MVC Storefront Bölüm 13: Bağımlılık Ekleme'
                   href: mvc/videos/mvc-1/aspnet-mvc-storefront/aspnet-mvc-storefront-part-13-dependency-injection.md
-                - name: 'ASP.NET MVC Storefront 14. Bölüm: İstemci Etkileşimi'
+                - name: 'ASP.NET MVC Storefront Bölüm 14: Zengin İstemci Etkileşimi'
                   href: mvc/videos/mvc-1/aspnet-mvc-storefront/aspnet-mvc-storefront-part-14-rich-client-interaction.md
-                - name: 'ASP.NET MVC Mağaza 15. Bölüm: Genel Kod gözden geçirme'
+                - name: 'ASP.NET MVC Storefront Bölüm 15: Genel Kod İncelemesi'
                   href: mvc/videos/mvc-1/aspnet-mvc-storefront/aspnet-mvc-storefront-part-15-public-code-review.md
-                - name: 'ASP.NET MVC Storefront 16. Bölüm: OpenID ile Üyelik Yineleme'
+                - name: 'ASP.NET MVC Storefront Bölüm 16: OpenID ile Üyelik Yineleme'
                   href: mvc/videos/mvc-1/aspnet-mvc-storefront/aspnet-mvc-storefront-part-16-membership-redo-with-openid.md
-                - name: 'ASP.NET MVC Storefront 17. Bölüm: Jeff Atwood ile Kasa İşlemleri'
+                - name: 'ASP.NET MVC Storefront Bölüm 17: Jeff Atwood ile Kasa İşlemleri'
                   href: mvc/videos/mvc-1/aspnet-mvc-storefront/aspnet-mvc-storefront-part-17-checkout-with-jeff-atwood.md
-                - name: 'ASP.NET MVC Storefront 18. Bölüm: Deneyimi Oluşturma'
+                - name: 'ASP.NET MVC Storefront Bölüm 18: Oluşturma Deneyimi'
                   href: mvc/videos/mvc-1/aspnet-mvc-storefront/aspnet-mvc-storefront-part-18-creating-an-experience.md
-                - name: 'ASP.NET MVC Storefront 19. Bölüm: Windows Workflow ile Siparişleri İşleme'
+                - name: 'ASP.NET MVC Storefront Bölüm 19: Windows Workflow ile Siparişleri İşleme'
                   href: mvc/videos/mvc-1/aspnet-mvc-storefront/aspnet-mvc-storefront-part-19-processing-orders-with-windows-workflow.md
-                - name: 'ASP.NET MVC Storefront 19a Bölümü: Windows Workflow izleme'
+                - name: 'ASP.NET MVC Storefront Bölüm 19a: Windows Workflow İzleme'
                   href: mvc/videos/mvc-1/aspnet-mvc-storefront/aspnet-mvc-storefront-part-19a-windows-workflow-followup.md
-                - name: 'ASP.NET MVC Storefront 20. Bölüm: Günlüğe Kaydetme'
+                - name: 'ASP.NET MVC Storefront Bölüm 20: Günlüğe Kaydetme'
                   href: mvc/videos/mvc-1/aspnet-mvc-storefront/aspnet-mvc-storefront-part-20-logging.md
-                - name: 'ASP.NET MVC Storefront 21. Bölüm: Sipariş Yöneticisi ve Kişiselleştirme'
+                - name: 'ASP.NET MVC Storefront Bölüm 21: Sipariş Yöneticisi ve Kişiselleştirme'
                   href: mvc/videos/mvc-1/aspnet-mvc-storefront/aspnet-mvc-storefront-part-21-order-manager-and-personalization.md
-                - name: 'ASP.NET MVC Storefront 22. Bölüm: Yeniden Yapılandırma, Yeniden Yönlendirme ve PayPal'
+                - name: 'ASP.NET MVC Storefront Bölüm 22: Yeniden Yapılandırma, Yeniden Yönlendirme ve PayPal'
                   href: mvc/videos/mvc-1/aspnet-mvc-storefront/aspnet-mvc-storefront-part-22-restructuring-rerouting-and-paypal.md
-                - name: 'ASP.NET MVC Storefront 23. Bölüm: Etki Alanı Odaklı Tasarım ile Çalışmaya Başlama'
+                - name: 'ASP.NET MVC Storefront Bölüm 23: Etki Alanı Odaklı Tasarım ile Çalışmaya Başlama'
                   href: mvc/videos/mvc-1/aspnet-mvc-storefront/aspnet-mvc-storefront-part-23-getting-started-with-domain-driven-design.md
-                - name: 'ASP.NET MVC Storefront 24. Bölüm: Son'
+                - name: 'ASP.NET MVC Storefront Bölüm 24: Finis'
                   href: mvc/videos/mvc-1/aspnet-mvc-storefront/aspnet-mvc-storefront-part-24-finis.md
             - name: Konuşmalar
               href: mvc/videos/mvc-1/conference-presentations/index.md
@@ -2757,7 +2757,7 @@
         - name: Başlarken
           href: web-api/overview/getting-started-with-aspnet-web-api/index.md
           items:
-            - name: 'Web API 2 ile Çalışmaya Başlama (C#)'
+            - name: Web API 2 ile Çalışmaya Başlama (C#)
               href: web-api/overview/getting-started-with-aspnet-web-api/tutorial-your-first-web-api.md
             - name: Web API 2’de Eylem Sonuçları
               href: web-api/overview/getting-started-with-aspnet-web-api/action-results.md
@@ -2765,7 +2765,7 @@
               href: web-api/overview/getting-started-with-aspnet-web-api/using-web-api-with-aspnet-web-forms.md
             - name: Web API Yardım Sayfaları Oluşturma
               href: web-api/overview/getting-started-with-aspnet-web-api/creating-api-help-pages.md
-            - name: 'Uygulamalı Laboratuvar: ASP.NET Web API ve Angular.js ile Tek Sayfalı Uygulama (SPA) Oluşturma'
+            - name: 'Uygulamalı Laboratuvar: ASP.NET Web API’si ve Angular.js ile Tek Sayfalı Uygulama (SPA) Oluşturma'
               href: web-api/overview/getting-started-with-aspnet-web-api/build-a-single-page-application-spa-with-aspnet-web-api-and-angularjs.md
         - name: Yönlendirme
           href: web-api/overview/web-api-routing-and-actions/index.md
@@ -2807,7 +2807,7 @@
         - name: Mobil İstemciler
           href: web-api/overview/mobile-clients/index.md
           items:
-            - name: 'Windows Phone 8 Uygulamasından Web API''sine Çağrı Yapma (C#)'
+            - name: Windows Phone 8 Uygulamasından Web API'sine Çağrı Yapma (C#)
               href: web-api/overview/mobile-clients/calling-web-api-from-a-windows-phone-8-application.md
         - name: OData
           href: web-api/overview/odata-support-in-aspnet-web-api/index.md
@@ -2817,7 +2817,7 @@
               items:
                 - name: OData v4 Uç Noktası Oluşturma
                   href: web-api/overview/odata-support-in-aspnet-web-api/odata-v4/create-an-odata-v4-endpoint.md
-                - name: 'OData v4 İstemci Uygulaması Oluşturma (C#)'
+                - name: OData v4 İstemci Uygulaması Oluşturma (C#)
                   href: web-api/overview/odata-support-in-aspnet-web-api/odata-v4/create-an-odata-v4-client-app.md
                 - name: OData v4 Sürümünde Varlık İlişkileri
                   href: web-api/overview/odata-support-in-aspnet-web-api/odata-v4/entity-relations-in-odata-v4.md
@@ -2840,7 +2840,7 @@
                   href: web-api/overview/odata-support-in-aspnet-web-api/odata-v3/working-with-entity-relations.md
                 - name: Web API 2’de OData Eylemleri
                   href: web-api/overview/odata-support-in-aspnet-web-api/odata-v3/odata-actions.md
-                - name: 'Bir .NET İstemcisinden OData Hizmetine Çağrı Yapma (C#)'
+                - name: Bir .NET İstemcisinden OData Hizmetine Çağrı Yapma (C#)
                   href: web-api/overview/odata-support-in-aspnet-web-api/odata-v3/calling-an-odata-service-from-a-net-client.md
             - name: Web API 2’de OData Sorgu Seçeneklerini Destekleme
               href: web-api/overview/odata-support-in-aspnet-web-api/supporting-odata-query-options.md
@@ -2892,7 +2892,7 @@
               href: web-api/overview/security/authentication-and-authorization-in-aspnet-web-api.md
             - name: Web API 2.2 Sürümünde Bireysel Hesaplarla Web API’nin Güvenliğini Sağlama
               href: web-api/overview/security/individual-accounts-in-web-api.md
-            - name: 'Web API ile Dış Kimlik Doğrulama Hizmetleri (C#)'
+            - name: Web API ile Dış Kimlik Doğrulama Hizmetleri (C#)
               href: web-api/overview/security/external-authentication-services.md
             - name: Web API'de Siteler Arası İstek Sahteciliği (CSRF) Saldırılarını Önleme
               href: web-api/overview/security/preventing-cross-site-request-forgery-csrf-attacks.md
@@ -2922,15 +2922,15 @@
               href: web-api/overview/advanced/configuring-aspnet-web-api.md
             - name: Web API 2’de Bağımlılık Ekleme
               href: web-api/overview/advanced/dependency-injection.md
-            - name: 'Bir .NET İstemcisinden Web API''ye Çağrı Yapma (C#)'
+            - name: Bir .NET İstemcisinden Web API'ye Çağrı Yapma (C#)
               href: web-api/overview/advanced/calling-a-web-api-from-a-net-client.md
             - name: Web API’de HTTP İleti İşleyicileri
               href: web-api/overview/advanced/http-message-handlers.md
             - name: Web API’de HttpClient İleti İşleyicileri
               href: web-api/overview/advanced/httpclient-message-handlers.md
-            - name: 'Web API’de HTML Form Verileri Gönderme: Form-urlencoded Verileri'
+            - name: 'Web API’sinde HTML Form Verileri Gönderme: Form-urlencoded Verileri'
               href: web-api/overview/advanced/sending-html-form-data-part-1.md
-            - name: 'Web API’de HTML Form Verileri Gönderme: Karşıya Dosya Yükleme ve Çok Parçalı MIME'
+            - name: 'Web API’sinde HTML Form Verileri Gönderme: Karşıya Dosya Yükleme ve Çok Parçalı MIME'
               href: web-api/overview/advanced/sending-html-form-data-part-2.md
             - name: ASP.NET Web API’de HTTP Tanımlama Bilgileri
               href: web-api/overview/advanced/http-cookies.md
@@ -2965,7 +2965,7 @@
                   href: web-api/overview/older-versions/using-web-api-1-with-entity-framework-5/using-web-api-with-entity-framework-part-6.md
                 - name: Ana Sayfayı Oluşturma
                   href: web-api/overview/older-versions/using-web-api-1-with-entity-framework-5/using-web-api-with-entity-framework-part-7.md
-            - name: 'Şirket İçinde Web API 1 Barındırma (C#)'
+            - name: Şirket İçinde Web API 1 Barındırma (C#)
               href: web-api/overview/older-versions/self-host-a-web-api.md
             - name: ASP.NET Web API ile RESTful API’ler Oluşturma
               href: web-api/overview/older-versions/build-restful-apis-with-aspnet-web-api.md
@@ -2977,17 +2977,17 @@
           items:
             - name: ASP.NET Web API
               href: web-api/videos/getting-started/aspnet-web-api.md
-            - name: 'ASP.NET Web API, 1. Bölüm: İlke Web API’niz'
+            - name: 'ASP.NET Web API’si, Bölüm 1: İlk Web API’niz'
               href: web-api/videos/getting-started/your-first-web-api.md
-            - name: 'ASP.NET Web API, 2. Bölüm: Verileri Alma'
+            - name: 'ASP.NET Web API’si, Bölüm 2: Veri Alma'
               href: web-api/videos/getting-started/getting-data.md
-            - name: 'ASP.NET Web API, 3. Bölüm: Silme ve Güncelleştirme'
+            - name: 'ASP.NET Web API’si, Bölüm 3: Silme ve Güncelleştirme'
               href: web-api/videos/getting-started/delete-and-update.md
-            - name: 'ASP.NET Web API, 4. Bölüm: Sayfalama ve Sorgulama'
+            - name: 'ASP.NET Web API’si, Bölüm 4: Sayfalandırma ve Sorgulama'
               href: web-api/videos/getting-started/paging-and-querying.md
-            - name: 'ASP.NET Web API, 5. Bölüm: Özel Doğrulama'
+            - name: 'ASP.NET Web API’si, Bölüm 5: Özel Doğrulama'
               href: web-api/videos/getting-started/custom-validation.md
-            - name: 'ASP.NET Web API, 6. Bölüm: Yetkilendirme'
+            - name: 'ASP.NET Web API’si, Bölüm 6: Yetkilendirme'
               href: web-api/videos/getting-started/authorization.md
     - name: Web API Örnekleri Listesi
       href: web-api/samples-list.md
@@ -3220,11 +3220,11 @@
         - name: API Kılavuzu
           href: signalr/overview/guide-to-the-api/index.md
           items:
-            - name: 'Hubs API Kılavuzu - Sunucu (C#)'
+            - name: Hubs API Kılavuzu - Sunucu (C#)
               href: signalr/overview/guide-to-the-api/hubs-api-guide-server.md
             - name: Hubs API Kılavuzu - JavaScript İstemcisi
               href: signalr/overview/guide-to-the-api/hubs-api-guide-javascript-client.md
-            - name: 'Hubs API Kılavuzu - .NET İstemcisi (C#)'
+            - name: Hubs API Kılavuzu - .NET İstemcisi (C#)
               href: signalr/overview/guide-to-the-api/hubs-api-guide-net-client.md
             - name: SignalR’da Bağlantı Ömrü Olaylarını Anlama ve İşleme
               href: signalr/overview/guide-to-the-api/handling-connection-lifetime-events.md
@@ -3339,7 +3339,7 @@
               href: signalr/videos/getting-started/signalr-and-web-sockets.md
 - name: Mobil
   items:
-    - name: Genel bakış
+    - name: Genel Bakış
       href: mobile/overview.md
     - name: Denetimler - Test Edilen Cihazlar
       href: mobile/tested-devices.md
@@ -3348,7 +3348,7 @@
 - name: Tek Sayfalı Uygulama
   href: single-page-application/index.md
   items:
-    - name: Genel bakış
+    - name: Genel Bakış
       href: single-page-application/overview/index.md
       items:
         - name: Giriş
@@ -3428,7 +3428,7 @@
       href: visual-studio/overview/2013/aspnet-and-web-tools-20132-preview-for-visual-studio-2013-release-notes.md
     - name: 'Uygulamalı Laboratuvar: Visual Studio 2013 Web Araçları'
       href: visual-studio/overview/2013/visual-studio-2013-web-tools.md
-    - name: 'Uygulamalı Laboratuvar: Tek ASP.NET: ASP.NET Web Forms, MVC ve Web API’yi Tümleştirme'
+    - name: 'Uygulamalı Laboratuvar: Tek ASP.NET: ASP.NET Web Forms, MVC ve Web API’sini Tümleştirme'
       href: visual-studio/overview/2013/one-aspnet-integrating-aspnet-web-forms-mvc-and-web-api.md
 - name: Visual Studio 2012
   href: visual-studio/overview/2012/index.md
@@ -3466,7 +3466,7 @@
 - name: Kimlik
   href: identity/index.md
   items:
-    - name: Genel bakış
+    - name: Genel Bakış
       href: identity/overview/index.md
       items:
         - name: ASP.NET Identity ile Çalışmaya Başlama
@@ -3487,7 +3487,7 @@
           items:
             - name: Parolaların ve diğer hassas verilerin ASP.NET ve Azure App Service’e dağıtılması için en iyi yöntemler
               href: identity/overview/features-api/best-practices-for-deploying-passwords-and-other-sensitive-data-to-aspnet-and-azure.md
-            - name: 'ASP.NET Identity ile Hesap Onaylama ve Parola Kurtarma (C#)'
+            - name: ASP.NET Identity ile Hesap Onaylama ve Parola Kurtarma (C#)
               href: identity/overview/features-api/account-confirmation-and-password-recovery-with-aspnet-identity.md
             - name: ASP.NET Identity ile SMS ve e-posta kullanılan iki öğeli kimlik doğrulaması
               href: identity/overview/features-api/two-factor-authentication-using-sms-and-email-with-aspnet-identity.md
@@ -3505,7 +3505,7 @@
           items:
             - name: Mevcut Bir Web Sitesini SQL Üyeliğinden ASP.NET Identity’ye Geçirme
               href: identity/overview/migrations/migrating-an-existing-website-from-sql-membership-to-aspnet-identity.md
-            - name: 'Üyelik ve Kullanıcı Profilleri için Evrensel Sağlayıcı Verilerini ASP.NET Identity’ye Geçirme (C#)'
+            - name: Üyelik ve Kullanıcı Profilleri için Evrensel Sağlayıcı Verilerini ASP.NET Identity’ye Geçirme (C#)
               href: identity/overview/migrations/migrating-universal-provider-data-for-membership-and-user-profiles-to-aspnet-identity.md
 - name: Ajax
   href: ajax/index.md
@@ -3743,7 +3743,7 @@
           href: aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/more-patterns-and-guidance.md
         - name: 'Ek: Düzelt Örnek Uygulaması'
           href: aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/the-fix-it-sample-application.md
-    - name: 'Uygulamalı Laboratuvar: Sürdürülebilir Azure Web Siteleri: Değişiklikleri ve Ölçeği Yönetme'
+    - name: 'Uygulamalı Laboratuvar: Sürdürülebilir Azure Web Siteleri: Değişikliği ve Ölçeği Yönetme'
       href: aspnet/overview/developing-apps-with-windows-azure/maintainable-azure-websites-managing-change-and-scale.md
 - name: OWIN ve Katana
   href: aspnet/overview/owin-and-katana/index.md
@@ -3775,9 +3775,9 @@
           href: SameSite/system-web-samesite.md
         - name: SameSite KB makaleleri
           uid: samesite/kbs-samesite
-        - name: 'C# MVC'
+        - name: C# MVC
           uid: samesite/csMVC
-        - name: 'C# WebForms'
+        - name: C# WebForms
           uid: samesite/CSharpWebForms
         - name: VB WebForms
           uid: samesite/vbWF
@@ -3802,7 +3802,7 @@
       href: whitepapers/mvc4-beta-release-notes.md
     - name: IIS 6.0 ile Çalışan ASP.NET 1.1
       href: whitepapers/aspnet-and-iis6.md
-    - name: 'Nasıl Yapılır: ASP.NET Web Forms/MVC Uygulamanıza Mobil Sayfalar Ekleme'
+    - name: 'Nasıl yapılır: ASP.NET Web Forms/MVC Uygulamanıza Mobil Sayfalar Ekleme'
       href: whitepapers/add-mobile-pages-to-your-aspnet-web-forms-mvc-application.md
     - name: IE için Güvenlik Güncelleştirmesi Uygulandıktan Sonra Oluşan 'Sunucu Uygulaması Kullanılamıyor' Hatasının Çözümü
       href: whitepapers/ms03-32-issue.md
