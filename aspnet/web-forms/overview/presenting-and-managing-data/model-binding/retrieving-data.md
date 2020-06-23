@@ -8,12 +8,12 @@ ms.date: 02/27/2014
 ms.assetid: 9f24fb82-c7ac-48da-b8e2-51b3da17e365
 msc.legacyurl: /web-forms/overview/presenting-and-managing-data/model-binding/retrieving-data
 msc.type: authoredcontent
-ms.openlocfilehash: 81cca22cb4752d071d2a68986ae9ac2bed737594
-ms.sourcegitcommit: e7e91932a6e91a63e2e46417626f39d6b244a3ab
+ms.openlocfilehash: d5f1982196c5985b001ca42c2711174e036bb1ec
+ms.sourcegitcommit: 0cf7d06071a8ff986e6c028ac9daf0c0e7490412
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/06/2020
-ms.locfileid: "78640198"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85240745"
 ---
 # <a name="retrieving-and-displaying-data-with-model-binding-and-web-forms"></a>Model bağlama ve Web formları ile verileri alma ve görüntüleme
 
@@ -23,10 +23,10 @@ ms.locfileid: "78640198"
 > 
 > Bu yöntemde, verileri alma mantığını sağlarsınız. Sonraki öğreticide, UpdateMethod, DeleteMethod ve InsertMethod değerlerini ayarlayacaksınız.
 >
-> Tüm projeyi [](https://go.microsoft.com/fwlink/?LinkId=286116) C# veya Visual Basic yükleyebilirsiniz. İndirilebilir kod, Visual Studio 2012 ve üzeri sürümlerle birlikte kullanılabilir. Bu öğreticide gösterilen Visual Studio 2017 şablonundan biraz farklı olan Visual Studio 2012 şablonunu kullanır.
+> C# veya Visual Basic tüm projeyi [indirebilirsiniz](https://go.microsoft.com/fwlink/?LinkId=286116) . İndirilebilir kod, Visual Studio 2012 ve üzeri sürümlerle birlikte kullanılabilir. Bu öğreticide gösterilen Visual Studio 2017 şablonundan biraz farklı olan Visual Studio 2012 şablonunu kullanır.
 > 
 > Öğreticide, uygulamayı Visual Studio 'da çalıştırırsınız. Ayrıca, uygulamayı bir barındırma sağlayıcısına dağıtabilir ve internet üzerinden kullanılabilir hale getirebilirsiniz. Microsoft, en fazla 10 Web sitesi için ücretsiz web barındırma hizmeti sunar.  
-> [ücretsiz Azure deneme hesabı](https://azure.microsoft.com/free/?WT.mc_id=A443DD604). Azure App Service Web Apps bir Visual Studio Web projesinin nasıl dağıtılacağı hakkında daha fazla bilgi için bkz. [Visual Studio Series kullanarak ASP.NET Web dağıtımı](../../deployment/visual-studio-web-deployment/introduction.md) . Bu öğretici Ayrıca, SQL Server veritabanınızı Azure SQL veritabanı 'na dağıtmak için Entity Framework Code First Migrations nasıl kullanacağınızı gösterir.
+> [ücretsiz Azure deneme hesabı](https://azure.microsoft.com/free/dotnet/). Azure App Service Web Apps bir Visual Studio Web projesinin nasıl dağıtılacağı hakkında daha fazla bilgi için bkz. [Visual Studio Series kullanarak ASP.NET Web dağıtımı](../../deployment/visual-studio-web-deployment/introduction.md) . Bu öğretici Ayrıca, SQL Server veritabanınızı Azure SQL veritabanı 'na dağıtmak için Entity Framework Code First Migrations nasıl kullanacağınızı gösterir.
 > 
 > ## <a name="software-versions-used-in-the-tutorial"></a>Öğreticide kullanılan yazılım sürümleri
 > 
@@ -43,7 +43,7 @@ Bu öğreticide şunları yapmanız gerekir:
 * Veritabanını test verileriyle doldur
 * Verileri bir Web formunda görüntüleme
 
-## <a name="create-the-project"></a>Projeyi oluşturma
+## <a name="create-the-project"></a>Proje oluşturma
 
 1. Visual Studio 2017 ' de, **Contosoüniversıtymodelbinding**adlı bir **ASP.NET Web uygulaması (.NET Framework)** projesi oluşturun.
 
@@ -89,7 +89,7 @@ Bu öğreticide şunları yapmanız gerekir:
 
       ![sayfa oluştur](retrieving-data/_static/image5.png)
 
-   3. **Add (Ekle)** seçeneğini belirleyin.
+   3. **Ekle**'yi seçin.
    
    4. Web formunun ana sayfasında, **site. Master**' u seçin.
    
@@ -107,13 +107,13 @@ Bu öğreticide şunları yapmanız gerekir:
 
    3. Sınıfı **UniversityModels.cs** olarak adlandırın ve **Ekle**' yi seçin.
 
-      Bu dosyada `SchoolContext`, `Student`, `Enrollment`ve `Course` sınıflarını aşağıdaki gibi tanımlayın:
+      Bu dosyada,,, `SchoolContext` `Student` `Enrollment` ve `Course` sınıflarını aşağıdaki gibi tanımlayın:
 
       [!code-csharp[Main](retrieving-data/samples/sample4.cs)]
 
-      `SchoolContext` sınıfı, veritabanı bağlantısını ve verilerdeki değişiklikleri yöneten `DbContext`türetilir.
+      `SchoolContext`Sınıfı, `DbContext` veritabanı bağlantısını ve verilerdeki değişiklikleri yöneten öğesinden türetilir.
 
-      `Student` sınıfında, `FirstName`, `LastName`ve `Year` özelliklerine uygulanan özniteliklere dikkat edin. Bu öğretici, veri doğrulama için bu öznitelikleri kullanır. Kodu basitleştirmek için, yalnızca bu özellikler veri doğrulama öznitelikleriyle işaretlenir. Gerçek bir projede, doğrulama gerektiren tüm özelliklere doğrulama öznitelikleri uygularsınız.
+      Sınıfında,, `Student` ve özelliklerine uygulanan özniteliklere dikkat edin `FirstName` `LastName` `Year` . Bu öğretici, veri doğrulama için bu öznitelikleri kullanır. Kodu basitleştirmek için, yalnızca bu özellikler veri doğrulama öznitelikleriyle işaretlenir. Gerçek bir projede, doğrulama gerektiren tüm özelliklere doğrulama öznitelikleri uygularsınız.
 
    4. UniversityModels.cs Kaydet.
 
@@ -121,7 +121,7 @@ Bu öğreticide şunları yapmanız gerekir:
 
 Bu öğretici, nesne ve veritabanı tabloları oluşturmak için [Code First Migrations](https://docs.microsoft.com/ef/ef6/modeling/code-first/migrations/) kullanır. Bu tablolar, öğrenciler ve kurslarıyla ilgili bilgileri depolar.
 
-   1. **Araçlar** > **NuGet Paket Yöneticisi** > **Paket Yöneticisi konsolu**' nu seçin.
+   1. **Araçlar**  >  **NuGet Paket Yöneticisi**  >  **Paket Yöneticisi konsolu**' nu seçin.
 
    2. **Paket Yöneticisi konsolu**'nda şu komutu çalıştırın:  
       `enable-migrations -ContextTypeName ContosoUniversityModelBinding.Models.SchoolContext`
@@ -130,13 +130,13 @@ Bu öğretici, nesne ve veritabanı tabloları oluşturmak için [Code First Mig
 
       ![geçişleri etkinleştir](retrieving-data/_static/image8.png)
 
-      *Configuration.cs* adlı bir dosyanın oluşturulduğunu unutmayın. `Configuration` sınıfı bir `Seed` yöntemine sahiptir ve bu, veritabanı tablolarını test verileriyle önceden doldurabilir.
+      *Configuration.cs* adlı bir dosyanın oluşturulduğunu unutmayın. `Configuration`Sınıfı bir yöntemine sahiptir `Seed` ve bu, veritabanı tablolarını test verileriyle önceden doldurabilir.
 
 ## <a name="pre-populate-the-database"></a>Veritabanını önceden doldur
 
    1. Configuration.cs 'i açın.
    
-   2. `Seed` yöntemine aşağıdaki kodu ekleyin. Ayrıca, `ContosoUniversityModelBinding. Models` ad alanı için `using` bir ifade ekleyin.
+   2. `Seed` yöntemine aşağıdaki kodu ekleyin. Ayrıca, `using` ad alanı için bir ifade ekleyin `ContosoUniversityModelBinding. Models` .
 
       [!code-csharp[Main](retrieving-data/samples/sample5.cs)]
 
@@ -146,7 +146,7 @@ Bu öğretici, nesne ve veritabanı tabloları oluşturmak için [Code First Mig
 
    5. **Update-Database**komutunu çalıştırın.
 
-      Bu komutu çalıştırırken bir özel durum alırsanız, `StudentID` ve `CourseID` değerleri `Seed` Yöntem değerlerinden farklı olabilir. Bu veritabanı tablolarını açın ve `StudentID` ve `CourseID`için varolan değerleri bulun. `Enrollments` tablosunun temelini eklemek için bu değerleri koda ekleyin.
+      Bu komutu çalıştırırken bir özel durum alırsanız, `StudentID` ve `CourseID` değerleri `Seed` Yöntem değerlerinden farklı olabilir. Bu veritabanı tablolarını açın ve ve için varolan değerleri `StudentID` bulun `CourseID` . Bu değerleri tablo için sağlama koduna ekleyin `Enrollments` .
 
 ## <a name="add-a-gridview-control"></a>GridView denetimi ekleme
 
@@ -154,36 +154,36 @@ Doldurulmuş veritabanı verileriyle, artık bu verileri almaya ve görüntülem
 
 1. Öğrenciler. aspx ' i açın.
 
-2. `MainContent` yer tutucusunu bulun. Bu yer tutucunun içinde, bu kodu içeren bir **GridView** denetimi ekleyin.
+2. `MainContent`Yer tutucuyu bulun. Bu yer tutucunun içinde, bu kodu içeren bir **GridView** denetimi ekleyin.
 
    [!code-aspx-csharp[Main](retrieving-data/samples/sample6.aspx)]
 
    Dikkat edilmesi gerekenler:
-   * GridView öğesindeki `SelectMethod` özelliği için ayarlanan değere dikkat edin. Bu değer, bir sonraki adımda oluşturduğunuz GridView verilerini almak için kullanılan yöntemi belirtir. 
+   * GridView öğesinde özelliği için ayarlanan değere dikkat edin `SelectMethod` . Bu değer, bir sonraki adımda oluşturduğunuz GridView verilerini almak için kullanılan yöntemi belirtir. 
    
-   * `ItemType` özelliği, daha önce oluşturulan `Student` sınıfına ayarlanır. Bu ayar, İşaretlemede Sınıf özelliklerine başvurmasına olanak tanır. Örneğin, `Student` sınıfında `Enrollments`adlı bir koleksiyon vardır. `Item.Enrollments` kullanarak bu koleksiyonu alabilir ve ardından her öğrencinin kayıtlı kredilerinin toplamını almak için [LINQ sözdizimini](https://docs.microsoft.com/dotnet/csharp/programming-guide/concepts/linq/query-syntax-and-method-syntax-in-linq) kullanabilirsiniz.
+   * `ItemType`Özelliği `Student` daha önce oluşturulan sınıfa ayarlanır. Bu ayar, İşaretlemede Sınıf özelliklerine başvurmasına olanak tanır. Örneğin, `Student` sınıfında adlı bir koleksiyon vardır `Enrollments` . `Item.Enrollments`Bu koleksiyonu almak için öğesini kullanabilir ve ardından her öğrencinin kayıtlı kredilerinin toplamını almak Için [LINQ sözdizimini](https://docs.microsoft.com/dotnet/csharp/programming-guide/concepts/linq/query-syntax-and-method-syntax-in-linq) kullanabilirsiniz.
    
 3. Öğrenciler. aspx ' i kaydedin.
 
 ## <a name="add-code-to-retrieve-data"></a>Verileri almak için kod ekleme
 
-   Öğrenciler. aspx arka plan kod dosyasında, `SelectMethod` değeri için belirtilen yöntemi ekleyin. 
+   Öğrenciler. aspx arka plan kod dosyasında, değer için belirtilen yöntemi ekleyin `SelectMethod` . 
    
    1. Students.aspx.cs 'i açın.
    
-   2. `ContosoUniversityModelBinding. Models` ve `System.Data.Entity` ad alanları için `using` deyimleri ekleyin.
+   2. `using` `ContosoUniversityModelBinding. Models` Ve ad alanları için deyimler ekleyin `System.Data.Entity` .
 
       [!code-csharp[Main](retrieving-data/samples/sample7.cs)]
 
-   3. `SelectMethod`için belirttiğiniz yöntemi ekleyin:
+   3. Belirttiğiniz yöntemi ekleyin `SelectMethod` :
 
       [!code-csharp[Main](retrieving-data/samples/sample8.cs)]
 
-      `Include` yan tümcesi sorgu performansını geliştirir, ancak gerekli değildir. `Include` yan tümcesi olmadan veriler, ilgili verilerin her alındığı her seferinde veritabanına ayrı bir sorgu göndermeyi içeren [*yavaş yükleme*](https://en.wikipedia.org/wiki/Lazy_loading)kullanılarak alınır. `Include` yan tümcesiyle, veriler *Eager yüklemesi*kullanılarak alınır ve bu, tek bir veritabanı sorgusunun ilgili tüm verileri aldığı anlamına gelir. İlgili veriler kullanılmıyorsa, daha fazla veri alındığından Eager yüklemesi daha az verimlidir. Ancak, bu durumda, her bir kayıt için ilgili veriler görüntülendiğinden, Eager yüklemesi size en iyi performansı sağlar.
+      `Include`Yan tümce sorgu performansını geliştirir, ancak gerekli değildir. `Include`Yan tümcesi olmadan veriler, ilgili verilerin alındığı her seferinde veritabanına ayrı bir sorgu göndermeyi içeren [*yavaş yükleme*](https://en.wikipedia.org/wiki/Lazy_loading)kullanılarak alınır. `Include`Yan tümcesiyle, veriler *Eager yüklemesi*kullanılarak alınır, yani tek bir veritabanı sorgusu ilgili tüm verileri alır. İlgili veriler kullanılmıyorsa, daha fazla veri alındığından Eager yüklemesi daha az verimlidir. Ancak, bu durumda, her bir kayıt için ilgili veriler görüntülendiğinden, Eager yüklemesi size en iyi performansı sağlar.
 
       İlgili verileri yüklerken performans konuları hakkında daha fazla bilgi için, [ASP.NET MVC uygulamasındaki Entity Framework Ile ilgili verileri okuma](../../../../mvc/overview/getting-started/getting-started-with-ef-using-mvc/reading-related-data-with-the-entity-framework-in-an-asp-net-mvc-application.md) bölümünde Ilgili **verileri geç, Eager ve açık yükleme** bölümüne bakın.
 
-      Varsayılan olarak, veriler anahtar olarak işaretlenen özelliğin değerlerine göre sıralanır. Farklı bir sıralama değeri belirtmek için `OrderBy` bir yan tümce ekleyebilirsiniz. Bu örnekte, sıralama için varsayılan `StudentID` özelliği kullanılır. [Sıralama, sayfalama ve verileri filtreleme](sorting-paging-and-filtering-data.md) makalesinde, kullanıcı sıralama için bir sütun seçmek üzere etkinleştirilir.
+      Varsayılan olarak, veriler anahtar olarak işaretlenen özelliğin değerlerine göre sıralanır. `OrderBy`Farklı bir sıralama değeri belirtmek için bir yan tümce ekleyebilirsiniz. Bu örnekte, `StudentID` sıralama için varsayılan özellik kullanılır. [Sıralama, sayfalama ve verileri filtreleme](sorting-paging-and-filtering-data.md) makalesinde, kullanıcı sıralama için bir sütun seçmek üzere etkinleştirilir.
  
    4. Students.aspx.cs Kaydet.
 
@@ -197,11 +197,11 @@ Web uygulamanızı çalıştırın (**F5**) ve aşağıdakiler görüntülenen *
 
 Bu öğretici serisi ile çalışırken öğreticiden projenize yalnızca kodu kopyalamanız yeterlidir. Ancak, bu yaklaşımın bir dezavantajı, Visual Studio tarafından model bağlama yöntemlerine yönelik kodu otomatik olarak oluşturmak için sunulan özelliği bilmeyebilirsiniz. Kendi projeleriniz üzerinde çalışırken, otomatik kod üretimi size zaman kazandırabilir ve bir işlemin nasıl uygulanacağını anladığınızda size yardımcı olabilir. Bu bölümde otomatik kod oluşturma özelliği açıklanmaktadır. Bu bölüm yalnızca bilgilendirme amaçlıdır ve projenizde uygulamanız gereken herhangi bir kod içermez. 
 
-Biçimlendirme kodundaki `SelectMethod`, `UpdateMethod`, `InsertMethod`veya `DeleteMethod` özellikleri için bir değer ayarlarken **Yeni Yöntem Oluştur** seçeneğini belirleyebilirsiniz.
+`SelectMethod`Biçimlendirme kodundaki,, veya özellikleri için bir değer ayarlarken `UpdateMethod` `InsertMethod` `DeleteMethod` **Yeni Yöntem Oluştur** seçeneğini belirleyebilirsiniz.
 
 ![Yöntem oluşturma](retrieving-data/_static/image18.png)
 
-Visual Studio, doğru imzayla kodda arka planda bir yöntem oluşturmaz, ancak işlemi gerçekleştirmek için uygulama kodu da oluşturur. İlk olarak `ItemType` özelliğini otomatik kod oluşturma özelliğini kullanmadan önce ayarlarsanız, oluşturulan kod işlemler için bu türü kullanır. Örneğin, `UpdateMethod` özelliği ayarlanırken, otomatik olarak aşağıdaki kod oluşturulur:
+Visual Studio, doğru imzayla kodda arka planda bir yöntem oluşturmaz, ancak işlemi gerçekleştirmek için uygulama kodu da oluşturur. İlk `ItemType` olarak özelliği otomatik kod oluşturma özelliğini kullanmadan önce ayarlarsanız, oluşturulan kod işlemler için bu türü kullanır. Örneğin, `UpdateMethod` özelliği ayarlarken aşağıdaki kod otomatik olarak oluşturulur:
 
 [!code-csharp[Main](retrieving-data/samples/sample9.cs)]
 
@@ -214,4 +214,4 @@ Bu öğreticide, veri modeli sınıfları oluşturdunuz ve bu sınıflardan bir 
 Bu serinin sonraki [öğreticide](updating-deleting-and-creating-data.md) , güncelleştirme, silme ve veri oluşturmayı etkinleştireceksiniz.
 
 > [!div class="step-by-step"]
-> [Next](updating-deleting-and-creating-data.md)
+> [Sonraki](updating-deleting-and-creating-data.md)

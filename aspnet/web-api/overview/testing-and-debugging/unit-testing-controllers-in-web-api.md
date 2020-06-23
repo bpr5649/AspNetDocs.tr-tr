@@ -8,12 +8,12 @@ ms.date: 06/11/2014
 ms.assetid: 43a6cce7-a3ef-42aa-ad06-90d36d49f098
 msc.legacyurl: /web-api/overview/testing-and-debugging/unit-testing-controllers-in-web-api
 msc.type: authoredcontent
-ms.openlocfilehash: 3b89009a375e766f1c5b439dfe3fffd43b4963b3
-ms.sourcegitcommit: a4c3c7e04e5f53cf8cd334f036d324976b78d154
+ms.openlocfilehash: ee933cfc736a07b91c8f7feea2c4a2c64d200942
+ms.sourcegitcommit: 0cf7d06071a8ff986e6c028ac9daf0c0e7490412
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84172932"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85240657"
 ---
 # <a name="unit-testing-controllers-in-aspnet-web-api-2"></a>ASP.NET Web API 2’deki Birim Testi Denetleyicileri
 
@@ -118,5 +118,5 @@ Birim testinin eylem sonucunu yürütmediğine dikkat edin. Eylem sonucunun HTTP
 ## <a name="additional-resources"></a>Ek Kaynaklar
 
 - [Birim testi ASP.NET Web API 2 ' de Entity Framework Mocking](mocking-entity-framework-when-unit-testing-aspnet-web-api-2.md)
-- [Bir ASP.NET Web API hizmeti için testler yazma](https://docs.microsoft.com/en-gb/archive/blogs/youssefm/writing-tests-for-an-asp-net-web-api-service) (Youssef Moussaouı tarafından blog gönderisi).
+- [Bir ASP.NET Web API hizmeti için testler yazma](https://docs.microsoft.com/archive/blogs/youssefm/writing-tests-for-an-asp-net-web-api-service) (Youssef Moussaouı tarafından blog gönderisi).
 - [Yol hata ayıklayıcı ile ASP.NET Web API 'SI hata ayıklaması](https://blogs.msdn.com/b/webdev/archive/2013/04/04/debugging-asp-net-web-api-with-route-debugger.aspx)

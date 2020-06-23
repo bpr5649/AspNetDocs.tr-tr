@@ -8,12 +8,12 @@ ms.date: 02/20/2013
 ms.assetid: a3cef801-a54b-4ebd-93c3-55764e2e14b1
 msc.legacyurl: /visual-studio/overview/2012/windows-azure-authentication
 msc.type: authoredcontent
-ms.openlocfilehash: ce98effe18dd739504fb0d5453bae8a46c3ba102
-ms.sourcegitcommit: e7e91932a6e91a63e2e46417626f39d6b244a3ab
+ms.openlocfilehash: ab75218cbe3817c14a064e9816388aebc7e431f7
+ms.sourcegitcommit: 0cf7d06071a8ff986e6c028ac9daf0c0e7490412
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/06/2020
-ms.locfileid: "78557864"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85240561"
 ---
 # <a name="windows-azure-authentication"></a>Windows Azure Kimlik Doğrulaması
 
@@ -25,7 +25,7 @@ ms.locfileid: "78557864"
 >
 > Şirket içi Active Directory ve Windows Azure Active Directory kiracınız arasında eşitlemeyi ayarlama hakkında daha fazla bilgi için lütfen bkz. [AD FS 2,0 kullanarak çoklu oturum açmayı uygulama ve yönetme](https://technet.microsoft.com/library/jj205462.aspx).
 >
-> Windows Azure Active Directory şu anda [ücretsiz bir önizleme hizmeti](https://azure.microsoft.com/free/?WT.mc_id=A443DD604)olarak sunulmaktadır.
+> Windows Azure Active Directory şu anda [ücretsiz bir önizleme hizmeti](https://azure.microsoft.com/free/dotnet/)olarak sunulmaktadır.
 
 ## <a name="requirements"></a>Gereksinimler:
 
@@ -65,7 +65,7 @@ Windows Azure Active Directory kiracınız için genel yönetici ayrıcalıklar�
 ![](windows-azure-authentication/_static/image6.png)
 
 İletişim kutusunda, Azure Active Directory Tenet ile uygulamayı sağlamak için gereken **etki alanı**, **uygulama sorumlusu kimliği** ve **yanıt URL 'si** görüntülenir. Bu bilgileri uygulamayı sağlamak için yeterli ayrıcalığa sahip olan birine vermeniz gerekir. Hizmet sorumlusunu el ile oluşturmak için cmdlet 'i kullanma hakkında ayrıntılı bilgi için bkz.[Windows Azure Active Directory-ASP.NET uygulaması ile çoklu oturum açmayı](https://github.com/Azure-Samples/active-directory-dotnet-webapp-openidconnect) uygulama.
-Uygulama başarılı bir şekilde sağlandıktan sonra, **Web. config 'i seçili ayarlarla güncelleştirmek Için devam**' a tıklayabilirsiniz. Hazırlama işleminin gerçekleşmesini beklerken uygulamayı geliştirmeye devam etmek istiyorsanız, **Proje dosyasındaki ayarları hatırlamak Için kapat**' a tıklayabilirsiniz. Windows Azure kimlik doğrulamasını etkinleştirin ve sağlama onay kutusunun işaretini kaldırın, aynı ayarları görürsünüz ve **devam**' a tıklayıp, **Bu ayarları Web. config dosyasına uygulayabilirsiniz**.
+Uygulama başarıyla sağlandıktan sonra, **web.config seçili ayarlarla güncelleştirmek Için devam**' a tıklayabilirsiniz. Hazırlama işleminin gerçekleşmesini beklerken uygulamayı geliştirmeye devam etmek istiyorsanız, **Proje dosyasındaki ayarları hatırlamak Için kapat**' a tıklayabilirsiniz. Windows Azure kimlik doğrulamasını etkinleştirin ve sağlama onay kutusunun işaretini kaldırın, aynı ayarları görürsünüz ve **devam**' a tıklayıp, **Bu ayarları web.configUygula **' ya tıklayabilirsiniz.
 
 1. Uygulamanız Windows Azure kimlik doğrulaması için yapılandırılırken bekleyin ve Windows Azure Active Directory sağlandı.
 2. Uygulamanız için Windows Azure kimlik doğrulaması etkinleştirildikten sonra Kapat ' a tıklayın **.**
@@ -85,9 +85,9 @@ Uygulama başarılı bir şekilde sağlandıktan sonra, **Web. config 'i seçili
 
 Windows Azure kimlik doğrulamasını etkinleştirmek uygulamanızda aşağıdaki değişiklikleri yapar:
 
-- Bir çapraz site Isteği forgery ([CSRF](https://www.owasp.org/index.php/Cross-Site_Request_Forgery_(CSRF))) Sınıfı ( *App\_Start\AntiXsrfConfig.cs* ), projenize eklenir.
+- Bir çapraz site Isteği forgery ([CSRF](https://www.owasp.org/index.php/Cross-Site_Request_Forgery_(CSRF))) Sınıfı ( *App \_ Start\antixsrfconfig.cs* ) projenize eklenir.
 - NuGet paketleri `System.IdentityModel.Tokens.ValidatingIssuerNameRegistry` projenize eklenir.
-- Uygulamanızdaki Windows Identity Foundation ayarları, Windows Azure Active Directory kiracınızdan güvenlik belirteçlerini kabul edecek şekilde yapılandırılacaktır. *Web. config* dosyasında yapılan değişikliklerin genişletilmiş görünümünü görmek için aşağıdaki görüntüye tıklayın.
+- Uygulamanızdaki Windows Identity Foundation ayarları, Windows Azure Active Directory kiracınızdan güvenlik belirteçlerini kabul edecek şekilde yapılandırılacaktır. *Web.config* dosyasında yapılan değişikliklerin genişletilmiş görünümünü görmek için aşağıdaki görüntüye tıklayın.
 
      ![](windows-azure-authentication/_static/image9.png)
 - Windows Azure Active Directory kiracınızdaki uygulamanız için bir hizmet sorumlusu sağlanacak.
@@ -141,7 +141,7 @@ Windows Azure kimlik doğrulaması, rol tabanlı yetkilendirmenin gerçekleştir
 
 #### <a name="browsing-to-an-application-with-windows-azure-authentication-results-in-the-error-acs20016-the-domain-of-the-logged-in-user-livecom-does-not-match-any-allowed-domain-of-this-sts"></a>Windows Azure kimlik doğrulaması ile bir uygulamaya gözatılırken "ACS20016 oturum açan kullanıcının etki alanı (live.com), bu STS 'nin izin verilen etki alanıyla eşleşmez" hatası ile sonuçlanır.
 
-Zaten bir Microsoft hesabında oturum açtıysanız (örneğin, hotmail.com, live.com, outlook.com) ve Windows Azure kimlik doğrulamasını etkinleştirmiş bir uygulamaya erişmeye çalışırsanız, Microsoft hesabınızın etki alanı nedeniyle 400 hata yanıtını alabilirsiniz Windows Azure Active Directory tarafından tanınmıyor. Uygulamada oturum açmak için önce Microsoft hesabınızda oturumunuzu açın.
+Zaten bir Microsoft hesabında oturum açtıysanız (örneğin, hotmail.com, live.com, outlook.com) ve Windows Azure kimlik doğrulamasını etkinleştirmiş bir uygulamaya erişmeye çalışırsanız, Microsoft hesabınızın etki alanı Windows Azure Active Directory tarafından tanınmadığından 400 hata yanıtı alabilirsiniz. Uygulamada oturum açmak için önce Microsoft hesabınızda oturumunuzu açın.
 
 #### <a name="logging-into-an-application-with-windows-azure-authentication-enabled-and-a-x509certificatevalidationmode-other-than-none-results-in-certificate-validation-errors-for-the-accountsaccesscontrolwindowsnet-certificate"></a>Windows Azure kimlik doğrulaması etkinken bir uygulamada oturum açmak ve accounts.accesscontrol.windows.net sertifikası için sertifika doğrulama hatalarına neden olmayan bir X509CertificateValidationMode
 

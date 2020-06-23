@@ -8,16 +8,16 @@ ms.date: 05/28/2015
 ms.assetid: a36d3bdf-ef1b-47a4-b932-3a0cf4cad716
 msc.legacyurl: /web-pages/overview/getting-started/introducing-aspnet-web-pages-2/getting-started
 msc.type: authoredcontent
-ms.openlocfilehash: bb863f8605e6f8faca3b285607b63a3e88e83012
-ms.sourcegitcommit: e7e91932a6e91a63e2e46417626f39d6b244a3ab
+ms.openlocfilehash: ac2111980e6393388a0530375fb9ef78dbbfaff6
+ms.sourcegitcommit: 0cf7d06071a8ff986e6c028ac9daf0c0e7490412
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/06/2020
-ms.locfileid: "78547105"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85240759"
 ---
 # <a name="getting-started"></a>Başlarken
 
-[Tom FitzMacken](https://github.com/tfitzmac) tarafından
+ yazan: [Tom FitzMacken](https://github.com/tfitzmac)
 
 [!INCLUDE[](~/includes/rp.md)]
 
@@ -59,10 +59,10 @@ ms.locfileid: "78547105"
 Hakkında bilgi sahibi olduğunuzu varsayıyoruz:
 
 - **HTML**. Ayrıntılı uzmanlık gerekli değildir. HTML açıklanmayacağız, ancak karmaşık bir şeyi de kullanmıyoruz. Yararlı olduğunu düşündüğdiğimiz HTML öğreticilerine bağlantılar sağlıyoruz.
-- **Geçişli stil sayfaları (CSS)** . HTML ile aynı.
+- **Geçişli stil sayfaları (CSS)**. HTML ile aynı.
 - **Temel veritabanı fikirleri**. Veriler için bir elektronik tablo kullandıysanız ve verileri sıraladıysanız ve filtrelediyseniz bu, genellikle bu öğretici kümesini kabul ettiğimiz uzmanlık düzeyidir.
 
-Ayrıca temel programlama hakkında bilgi edinmek istediğinizi varsayıyoruz. ASP.NET Web sayfaları adlı C#bir programlama dili kullanır. Yalnızca bir ilgilendiğiniz bir arka plana sahip olmanız gerekmez. Bir Web sayfasında daha önce hiç JavaScript yazdıysanız, çok sayıda arka plana sahip olursunuz.
+Ayrıca temel programlama hakkında bilgi edinmek istediğinizi varsayıyoruz. ASP.NET Web sayfaları C# adlı bir programlama dili kullanır. Yalnızca bir ilgilendiğiniz bir arka plana sahip olmanız gerekmez. Bir Web sayfasında daha önce hiç JavaScript yazdıysanız, çok sayıda arka plana sahip olursunuz.
 
 Programlama hakkında bilginiz varsa, yeni programcılar hızla hızlanırken Bu öğreticinin başlangıçta yavaş taşındığını fark edebilirsiniz. Ancak ilk birkaç öğreticiden yararlandığımız için, açıklanmanız gereken daha az temel programlama olacaktır ve diğer bir deyişle daha hızlı bir klibe göre hareket eder.
 
@@ -133,7 +133,7 @@ Web sayfalarını kullanmak için, SP3 yüklü en az Windows XP veya Windows Ser
 
 ASP.NET Web sitesinin [Web sayfaları sayfasında](../../../index.md) , **yükler**' e tıklayın.
 
-![ASP.NET &quot;&quot; düğmesini gösteren Web sitesi](getting-started/_static/image3.png)
+![&quot;WebMatrix Install düğmesini gösteren ASP.NET Web &quot; sitesi](getting-started/_static/image3.png)
 
 WebMatrix 'i yüklemeden önce lisans koşullarını ve gizlilik bildirimini kabul etmeniz istenir.
 
@@ -143,7 +143,7 @@ Yüklemeyi başlatmak için **Çalıştır** ' a tıklayın. (Yükleyiciyi kayde
 
 ![](getting-started/_static/image5.png)
 
-Web Platformu Yükleyicisi, WebMatrix yüklenmeye hazırlanmaya yönelik olarak görünür. **Yükle**'ye tıklatın.
+Web Platformu Yükleyicisi, WebMatrix yüklenmeye hazırlanmaya yönelik olarak görünür. **Install**'a tıklayın.
 
 ![](getting-started/_static/image6.png)
 
@@ -153,7 +153,7 @@ Yükleme işlemi, bilgisayarınıza yüklemek için neler olduğunu ve işlemi b
 
 İşlem tamamlandığında, yükleme işlemi WebMatrix 'i otomatik olarak başlatabilir. Değilse, Windows 'ta, **Başlat** menüsünde **Microsoft WebMatrix**' i başlatın.
 
-WebMatrix 'i ilk kez başlattığınızda, Microsoft hesabı Microsoft Azure için oturum açma şansı vermiş olursunuz. Oturum açarak, Azure üzerinden 10 Ücretsiz Web uygulaması alacaksınız. Bu ücretsiz web uygulamaları, uygulamalarınızı test etmek için kullanışlı bir yol sağlar. Henüz bir Azure hesabınız yoksa ancak bir MSDN aboneliğiniz varsa, [MSDN abonelik avantajlarınızı etkinleştirebilirsiniz](https://www.windowsazure.com/pricing/member-offers/msdn-benefits-details/?WT.mc_id=A443DD604). Aksi takdirde, yalnızca birkaç dakika içinde ücretsiz bir deneme hesabı oluşturabilirsiniz. Ayrıntılı bilgi için bkz. [Azure Ücretsiz Deneme Sürümü](https://azure.microsoft.com/free/?WT.mc_id=A443DD604).
+WebMatrix 'i ilk kez başlattığınızda, Microsoft hesabı Microsoft Azure için oturum açma şansı vermiş olursunuz. Oturum açarak, Azure üzerinden 10 Ücretsiz Web uygulaması alacaksınız. Bu ücretsiz web uygulamaları, uygulamalarınızı test etmek için kullanışlı bir yol sağlar. Henüz bir Azure hesabınız yoksa ancak bir MSDN aboneliğiniz varsa, [MSDN abonelik avantajlarınızı etkinleştirebilirsiniz](https://www.windowsazure.com/pricing/member-offers/msdn-benefits-details/?WT.mc_id=A443DD604). Aksi takdirde, yalnızca birkaç dakika içinde ücretsiz bir deneme hesabı oluşturabilirsiniz. Ayrıntılı bilgi için bkz. [Azure Ücretsiz Deneme Sürümü](https://azure.microsoft.com/free/dotnet/).
 
 Bu öğreticiye devam etmek için hemen oturum açmanız gerekmez. Şimdi oturum açmanız durumunda daha sonra oturum açma seçeneğiniz de vardır. Bu öğretici serisindeki son [Konu](publishing.md) , Web sitenizin Azure 'a nasıl dağıtılacağını anlatmaktadır; Bu nedenle, bu konuyu tamamlayabilmeniz için oturum açmanız gerekir.
 
@@ -175,7 +175,7 @@ Başlat penceresinde **Yeni**' ye tıklayın.
 
 ![Boş site şablonu seçiliyken WebMatrix hızlı başlangıç penceresi](getting-started/_static/image10.png)
 
-**İleri**'ye tıklayın.
+**İleri**’ye tıklayın.
 
 Microsoft hesabı oturum açtıysanız, Azure 'da site oluşturma fırsatı vermiş olursunuz. Sitenizin adına bağlı olarak, **WebPagesMovies.azurewebsites.net** varsayılan adı önerilir; Ancak, ünlem işareti bu adın Microsoft Azure 'da mevcut olmadığını gösterir. Basitlik için, şimdi Web sitesini Azure 'da oluşturmayı atlamak için **Atla** ' yı seçin. Bu serinin ilerleyen kısımlarında, siteyi Azure 'da yayımlayacağız.
 
@@ -199,13 +199,13 @@ WebMatrix ve ASP.NET Web sayfalarıyla ilgili bilgi almak için basit bir sayfa 
 
 Şeritte, **Yeni** ' nin altındaki oka ve ardından **yeni dosya**' ya tıklayın.
 
-![Yeni bir dosya oluşturmak için Şeritteki &quot;yeni&quot; komutunu kullanma](getting-started/_static/image14.png)
+![&quot; &quot; Yeni bir dosya oluşturmak için Şeritteki yeni komutunu kullanma](getting-started/_static/image14.png)
 
 WebMatrix, dosya türlerinin bir listesini görüntüler. **Cshtml**'yi seçin ve **ad** kutusuna "HelloWorld" yazın. CSHTML sayfası bir ASP.NET Web sayfaları sayfasıdır.
 
 ![HelloWorld. cshtml adlı yeni bir CSHTML sayfası oluşturuluyor](getting-started/_static/image15.png)
 
-**Tamam**’a tıklayın.
+**Tamam**'a tıklayın.
 
 WebMatrix sayfayı oluşturur ve düzenleyicide açar.
 
@@ -217,9 +217,9 @@ Gördüğünüz gibi, en üstte yer alan bir blok haricinde, sayfada çoğunlukl
 
 Bu, kısa süre içinde göreceğiniz gibi kod ekleme içindir.
 
-Sayfanın farklı bölümlerinin öğe adlarının, özniteliklerin ve metinlerin yanı sıra üstteki bloğun de &mdash; farklı renklerde olduğunu unutmayın. Buna *sözdizimi vurgulama*denir ve her şeyin açık kalmasını kolaylaştırır. WebMatrix 'te Web sayfalarıyla çalışmayı kolaylaştıran özelliklerden biridir.
+Sayfanın farklı bölümlerinde &mdash; öğe adları, öznitelikler ve metin, ve üstteki blok öğelerinin tümünün farklı renklerde olduğunu unutmayın. Buna *sözdizimi vurgulama*denir ve her şeyin açık kalmasını kolaylaştırır. WebMatrix 'te Web sayfalarıyla çalışmayı kolaylaştıran özelliklerden biridir.
 
-Aşağıdaki örnekte olduğu gibi `<head>` ve `<body>` öğeleri için içerik ekleyin. (İsterseniz, yalnızca aşağıdaki bloğu kopyalayabilir ve var olan sayfanın tamamını bu kodla değiştirebilirsiniz.)
+`<head>` `<body>` Aşağıdaki örnekteki gibi ve öğeleri için içerik ekleyin. (İsterseniz, yalnızca aşağıdaki bloğu kopyalayabilir ve var olan sayfanın tamamını bu kodla değiştirebilirsiniz.)
 
 [!code-cshtml[Main](getting-started/samples/sample2.cshtml)]
 
@@ -235,13 +235,13 @@ Hızlı erişim araç çubuğunda veya **Dosya** menüsünde **Kaydet**' e tıkl
 
 WebMatrix, bilgisayarınızdaki sayfaları test etmek için kullanabileceğiniz yerleşik bir Web sunucusu (IIS Express) başlatır. (WebMatrix 'te IIS Express olmadan, test etmeden önce sayfanızı bir Web sunucusuna yayımlamanız gerekir.) Sayfa varsayılan tarayıcınızda görüntülenir.
 
-![tarayıcıda çalışan &quot;Merhaba Dünya&quot; sayfası](getting-started/_static/image19.png)
+![&quot;&quot;Tarayıcıda çalışan Merhaba Dünya sayfası](getting-started/_static/image19.png)
 
-WebMatrix 'te bir sayfayı test ettiğinizde, tarayıcıdaki URL, *localhost* adının yerel bir sunucuya başvurduğu `http://localhost:33651/HelloWorld.cshtml.` gibi bir şeydir, yani sayfanın kendi bilgisayarınızdaki bir Web sunucusu tarafından hizmet verdiği anlamına gelir. Belirtildiği gibi, WebMatrix bir sayfa başlattığınızda çalışan IIS Express adlı bir Web sunucusu programı içerir.
+WebMatrix 'te bir sayfa test ettiğinizde, tarayıcıdaki URL, `http://localhost:33651/HelloWorld.cshtml.` *localhost* adının yerel bir sunucuya başvurduğu, yani sayfanın kendi bilgisayarınızdaki bir Web sunucusu tarafından hizmet verdiği bir şeydir. Belirtildiği gibi, WebMatrix bir sayfa başlattığınızda çalışan IIS Express adlı bir Web sunucusu programı içerir.
 
 *Localhost* 'tan sonraki sayı (örneğin, *localhost: 33651*) bilgisayarınızdaki bir *bağlantı noktası numarasını* belirtir. Bu, bu Web sitesi için IIS Express kullandığı "kanal" sayısıdır. Bağlantı noktası numarası, sitenizi oluştururken 1024 ile 65536 arasındaki aralıktan rastgele seçilir ve oluşturduğunuz her site için farklıdır. (Kendi sitenizi test ettiğinizde, bağlantı noktası numarası neredeyse tamamen 33561 ' den farklı bir sayı olacaktır.) Her Web sitesi için farklı bir bağlantı noktası kullanarak IIS Express, Sitelerim 'in konuştuğu bir şekilde devam edebilir.
 
-Daha sonra, sitenizi ortak bir Web sunucusuna yayımladığınızda artık URL 'de *localhost* görmezsiniz. Bu noktada, `http://myhostingsite/mywebsite/HelloWorld.cshtml` gibi daha tipik bir URL veya sayfanın ne olduğunu görürsünüz. Bu öğretici serisinde daha sonra bir site yayımlama hakkında daha fazla bilgi edineceksiniz.
+Daha sonra, sitenizi ortak bir Web sunucusuna yayımladığınızda artık URL 'de *localhost* görmezsiniz. Bu noktada, gibi daha tipik bir URL `http://myhostingsite/mywebsite/HelloWorld.cshtml` veya sayfanın ne olduğunu görürsünüz. Bu öğretici serisinde daha sonra bir site yayımlama hakkında daha fazla bilgi edineceksiniz.
 
 ## <a name="adding-some-server-side-code"></a>Sunucu tarafı kod ekleme
 
@@ -251,17 +251,17 @@ Kod bloğuna aşağıdaki kod gibi görünmesi için bir satır ekleyin:
 
 [!code-cshtml[Main](getting-started/samples/sample3.cshtml)]
 
-Bu, çok sayıda Razor kodudur. Bu, geçerli tarih ve saati aldığından ve bu değeri `currentDateTime`adlı bir *değişkene* yerleştirdiğinden büyük olasılıkla temizleyebilir. Sonraki öğreticide Razor söz dizimi hakkında daha fazla bilgi edineceksiniz.
+Bu, çok sayıda Razor kodudur. Bu, geçerli tarih ve saati aldığından ve bu değeri adlı bir *değişkene* yerleştirdiğinden büyük olasılıkla temizleyebilir `currentDateTime` . Sonraki öğreticide Razor söz dizimi hakkında daha fazla bilgi edineceksiniz.
 
 Sayfanın gövdesinde, `<p>Hello World!</p>` öğesinden sonra aşağıdakileri ekleyin:
 
 [!code-html[Main](getting-started/samples/sample4.html)]
 
-Bu kod, üstteki `currentDateTime` değişkenine yerleştirdiğiniz değeri alır ve sayfanın biçimlendirmesine ekler. `@` karakteri sayfadaki ASP.NET Web sayfaları kodunu işaretler.
+Bu kod, `currentDateTime` en üstteki değişkenine yerleştirdiğiniz değeri alır ve sayfanın biçimlendirmesine ekler. `@`Karakter, sayfadaki ASP.NET Web sayfaları kodunu işaretler.
 
 Sayfayı yeniden çalıştırın (WebMatrix, sayfayı çalıştırmadan önce değişiklikleri sizin için kaydeder). Bu kez, sayfada tarih ve saati görürsünüz.
 
-![dinamik olarak üretilen zaman görüntüsü ile tarayıcıda çalışan &quot;Merhaba Dünya&quot; sayfası](getting-started/_static/image20.png)
+![&quot;&quot;Dinamik olarak üretilen zaman görüntüsü ile tarayıcıda çalışan Merhaba Dünya sayfası](getting-started/_static/image20.png)
 
 Birkaç dakika bekleyin ve ardından tarayıcıda sayfayı yenileyin. Tarih ve saat görünümü güncellenir.
 
@@ -269,7 +269,7 @@ Tarayıcıda, sayfa kaynağına bakın. Aşağıdaki biçimlendirme gibi görün
 
 [!code-html[Main](getting-started/samples/sample5.html)]
 
-Üstteki `@{ }` bloğunun orada olmadığını unutmayın. Ayrıca, tarih ve saat görüntülemenin, *. cshtml* sayfasında sahip olduğunuz gibi `@currentDateTime` değil, gerçek bir karakter dizesi (`1/18/2012 2:49:50 PM` veya herhangi bir) gösterdiğine dikkat edin. Burada ne olur, sayfayı çalıştırdığınızda, ASP.NET `@`işaretlenen tüm kodları (Bu durumda çok küçük) işledi. Kod çıktı üretir ve bu çıktı sayfaya eklenmiştir.
+`@{ }`Üstteki bloğun orada olmadığını unutmayın. Ayrıca, tarih ve saat görüntülemenin, `1/18/2012 2:49:50 PM` `@currentDateTime` *. cshtml* sayfasında sahip olduğunuz gibi gerçek bir karakter dizesini (veya herhangi bir şekilde) gösterdiğine dikkat edin. Burada ne oldu, sayfayı çalıştırdığınızda ASP.NET, ile işaretlenen tüm kodu (Bu durumda çok küçük) işledi `@` . Kod çıktı üretir ve bu çıktı sayfaya eklenmiştir.
 
 ## <a name="this-is-what-aspnet-web-pages-are-about"></a>Bu, ASP.NET Web sayfaları hakkında
 
@@ -288,4 +288,4 @@ Bu serinin bir sonraki öğreticide, ASP.NET Web sayfaları programlamayı biraz
 [Sıfırdan bir ASP.NET Web sitesi oluşturun](https://www.microsoft.com/web/post/create-an-aspnet-website-from-scratch). Bu, özellikle WebMatrix (ASP.NET Web sayfaları değil) kullanımı hakkında bir öğreticidir. Bu öğretici kümesinin kapsamayacağız bazı WebMatrix özellikleri hakkında biraz daha ayrıntıya gider.
 
 > [!div class="step-by-step"]
-> [Next](intro-to-web-pages-programming.md)
+> [Sonraki](intro-to-web-pages-programming.md)

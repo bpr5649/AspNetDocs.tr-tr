@@ -8,12 +8,12 @@ ms.date: 10/14/2017
 ms.assetid: 8935bf14-ca6d-4a4e-9dbe-b96ce74cef49
 msc.legacyurl: /ajax/cdn
 msc.type: content
-ms.openlocfilehash: 27b1ca8567e29fa4bca0ae9f32e0c904ad54ba8f
-ms.sourcegitcommit: a4c3c7e04e5f53cf8cd334f036d324976b78d154
+ms.openlocfilehash: b66e812f0324be95effdd8d232baa6a59302b9df
+ms.sourcegitcommit: 0cf7d06071a8ff986e6c028ac9daf0c0e7490412
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84172958"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85240606"
 ---
 # <a name="microsoft-ajax-content-delivery-network"></a>Microsoft Ajax Content Delivery Network
 
@@ -48,7 +48,7 @@ ms.locfileid: "84172958"
  [CDN 'deki yanıt verme yayınları](#Respond_Releases_on_the_CDN_13)  
  [CDN 'de önyükleme yayınları](#Bootstrap_Releases_on_the_CDN_14)  
  [CDN 'de önyükleme TouchCarousel sürümleri](#BootstrapTouchCarousel_Releases_on_the_CDN_18)  
- [CDN 'de hakökü. js yayınları](#Hammerjs_Releases_on_the_CDN_19)  
+ [CDN üzerinde yayınlarHammer.js](#Hammerjs_Releases_on_the_CDN_19)  
  [CDN 'de ASP.NET Web Forms ve Ajax sürümleri](#ASPNET_Web_Forms_and_Ajax_Releases_on_the_CDN_15)  
  [CDN 'de ASP.NET MVC yayınları](#ASPNET_MVC_Releases_on_the_CDN_16)  
  [CDN üzerinde ASP.NET SignalR yayınları](#ASPNET_SignalR_Releases_on_the_CDN_17)
@@ -627,6 +627,7 @@ JQuery kullanıcı arabirimi kitaplığı 'nın aşağıdaki sürümleri bu CDN 
 
 [JQuery doğrulama](https://jqueryvalidation.org/ "jQuery doğrulama eklentisi") eklentisinin aşağıdaki SÜRÜMLERI bu CDN üzerinde barındırılır. Dosyaların gerçek listesini görmek için her bağlantıya tıklayın.
 
+- [jQuery Validate 1.19.2](jquery-validate/cdnjqueryvalidate1192.md "jQuery doğrulama 1.19.2")
 - [jQuery Validate 1.19.1](jquery-validate/cdnjqueryvalidate1191.md "jQuery doğrulama 1.19.1")
 - [jQuery Validate 1.19.0](jquery-validate/cdnjqueryvalidate1190.md "jQuery doğrulama 1.19.0")
 - [jQuery Validate 1.17.0](jquery-validate/cdnjqueryvalidate1170.md "jQuery doğrulama 1.17.0")
@@ -779,7 +780,7 @@ Aşağıdaki [globalize](https://github.com/jquery/globalize "Globalize") sürü
     - tüm kültürler
 - https://ajax.aspnetcdn.com/ajax/globalize/0.1.1/cultures/globalize.culture.{culture-code}.js
 
-    - "{Culture-Code}" öğesini istenen kültür koduyla değiştirin, örn. globalize. Culture. en-GB. js = = Microsoft tarafından CDN = = bu kitaplıklar Microsoft tarafından karşıya yüklendi.
+    - "{Culture-Code}" öğesini istenen kültür koduyla değiştirin; globalize.culture.en-GB.jsÖrneğin, CDN = = Microsoft dosyaları, Microsoft tarafından karşıya yüklendi.
 
 <a id="Respond_Releases_on_the_CDN_13"></a>
 
@@ -1186,11 +1187,11 @@ Aşağıdaki [https://github.com/ixisio/bootstrap-touch-carousel](https://github
 
 <a id="Hammerjs_Releases_on_the_CDN_19"></a>
 
-### <a name="hammerjs-releases-on-the-cdn"></a>CDN 'de hakökü. js yayınları
+### <a name="hammerjs-releases-on-the-cdn"></a>CDN üzerinde yayınlar Hammer.js
 
-Aşağıdaki [http://hammerjs.github.io/](http://hammerjs.github.io/ "http://hammerjs.github.io/") hayoz. js sürümleri, CDN üzerinde barındırılır:
+Hammer.js sürümlerinin aşağıdaki sürümleri [http://hammerjs.github.io/](http://hammerjs.github.io/ "http://hammerjs.github.io/") CDN üzerinde barındırılır:
 
-#### <a name="hammerjs-version-204"></a>Hayoz. js sürüm 2.0.4
+#### <a name="hammerjs-version-204"></a>Hammer.js Version 2.0.4
 
 - https://ajax.aspnetcdn.com/ajax/hammer.js/2.0.4/hammer.js
 - https://ajax.aspnetcdn.com/ajax/hammer.js/2.0.4/hammer.min.js

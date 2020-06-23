@@ -8,20 +8,18 @@ ms.date: 06/10/2014
 ms.assetid: 400db427-27af-4f2f-abf0-5486d5e024b5
 msc.legacyurl: /signalr/overview/deployment/tutorial-signalr-self-host
 msc.type: authoredcontent
-ms.openlocfilehash: 41c8c3803923e76ef238a5c5937cbe7f81e6aa82
-ms.sourcegitcommit: e7e91932a6e91a63e2e46417626f39d6b244a3ab
+ms.openlocfilehash: 7470e0d6b68772ccfd979c834b7db81fbba3ca78
+ms.sourcegitcommit: 0cf7d06071a8ff986e6c028ac9daf0c0e7490412
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/06/2020
-ms.locfileid: "78558683"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85240620"
 ---
 # <a name="tutorial-signalr-self-host"></a>Öğretici: Şirket İçinde SignalR Barındırma
 
 , [Patrick Fleti](https://github.com/pfletcher) tarafından
 
 [!INCLUDE [Consider ASP.NET Core SignalR](~/includes/signalr/signalr-version-disambiguation.md)]
-
-[Tamamlanmış projeyi indir](https://code.msdn.microsoft.com/SignalR-Self-Host-Sample-6da0f383)
 
 > Bu öğreticide, şirket içinde barındırılan bir SignalR 2 sunucusu oluşturma ve bir JavaScript istemcisiyle buna bağlanma işlemlerinin nasıl yapılacağı gösterilmektedir.
 >
@@ -49,7 +47,7 @@ ms.locfileid: "78558683"
 >
 > Lütfen bu öğreticiyi nasıl beğentireceğiniz ve sayfanın en altındaki açıklamalarda İyileştiğimiz hakkında geri bildirimde bulunun. Öğreticiyle doğrudan ilgili olmayan sorularınız varsa, bunları [ASP.NET SignalR forumuna](https://forums.asp.net/1254.aspx/1?ASP+NET+SignalR) veya [StackOverflow.com](http://stackoverflow.com/)'e gönderebilirsiniz.
 
-## <a name="overview"></a>Genel bakış
+## <a name="overview"></a>Genel Bakış
 
 Bir SignalR sunucusu, genellikle IIS 'deki bir ASP.NET uygulamasında barındırılır, ancak Self-Host kitaplığını kullanarak kendiliğinden barındırılabilen (bir konsol uygulaması veya Windows hizmeti gibi). Bu kitaplık, SignalR 2 ' nin tümü gibi, OWıN üzerinde oluşturulmuştur ([.net Için açık Web arabirimi](http://owin.org)). OWIN, .NET Web sunucuları ile Web uygulamaları arasında bir soyutlama tanımlar. OWIN, Web uygulamasını sunucusundan ayırır, bu da bir Web uygulamasını kendi işleminizde IIS dışında bir Web uygulaması barındırmak için ideal hale getirir.
 
@@ -72,10 +70,10 @@ Bu öğretici aşağıdaki bölümleri içerir:
 
 Bu öğreticide, bir konsol uygulamasında barındırılan bir sunucu oluşturacaksınız, ancak sunucu, Windows hizmeti veya Azure çalışan rolü gibi herhangi bir işlem sıralaması içinde barındırılabilir. Bir Windows hizmetinde bir SignalR sunucusunu barındırmak için örnek kod için, bkz. [bir Windows hizmetinde kendi kendine barındırma SignalR](https://code.msdn.microsoft.com/SignalR-self-hosted-in-6ff7e6c3).
 
-1. Yönetici ayrıcalıklarıyla Visual Studio 2013 açın. **Dosya**, **Yeni proje**' yi seçin. **Şablonlar** bölmesindeki **görsel C#**  düğümü altında **Windows** ' u seçin ve **konsol uygulaması** şablonunu seçin. "SignalRSelfHost" adlı yeni projeyi adlandırın ve **Tamam**' a tıklayın.
+1. Yönetici ayrıcalıklarıyla Visual Studio 2013 açın. **Dosya**, **Yeni proje**' yi seçin. **Şablonlar** bölmesinde **Visual C#** düğümünün altında **Windows** ' u seçin ve **konsol uygulaması** şablonunu seçin. "SignalRSelfHost" adlı yeni projeyi adlandırın ve **Tamam**' a tıklayın.
 
     ![](tutorial-signalr-self-host/_static/image1.png)
-2. **Araçlar** > **nuget** Paket Yöneticisi > **Paket Yöneticisi konsolu**' nu seçerek NuGet Paket Yöneticisi konsolunu açın.
+2. **Araçlar**  >  **NuGet paket**Yöneticisi  >  **Paket Yöneticisi konsolu**' nu seçerek NuGet Paket Yöneticisi konsolunu açın.
 3. Paket Yöneticisi konsolunda aşağıdaki komutu girin:
 
     [!code-powershell[Main](tutorial-signalr-self-host/samples/sample1.ps1)]
@@ -92,13 +90,13 @@ Bu öğreticide, bir konsol uygulamasında barındırılan bir sunucu oluşturac
 
     Yukarıdaki kod üç sınıf içerir:
 
-    - **Program**, yürütmenin birincil yolunu tanımlayan **Main** yöntemi de dahil. Bu yöntemde, **Başlangıç** türü bir Web UYGULAMASı belirtilen URL 'de başlatılır (`http://localhost:8080`). Uç noktada güvenlik gerekliyse, SSL uygulanabilir. Daha fazla bilgi için bkz. [nasıl yapılır: SSL sertifikası Ile bağlantı noktası yapılandırma](https://msdn.microsoft.com/library/ms733791.aspx) .
-    - **Başlangıç**, SignalR Server için yapılandırmayı içeren sınıf (Bu öğreticinin kullandığı tek yapılandırma `UseCors`) ve `MapSignalR`çağrısı, projedeki tüm Hub nesneleri için yollar oluşturur.
+    - **Program**, yürütmenin birincil yolunu tanımlayan **Main** yöntemi de dahil. Bu yöntemde, **Başlangıç** türü bir Web UYGULAMASı belirtilen URL 'de ( `http://localhost:8080` ) başlatılır. Uç noktada güvenlik gerekliyse, SSL uygulanabilir. Daha fazla bilgi için bkz. [nasıl yapılır: SSL sertifikası Ile bağlantı noktası yapılandırma](https://msdn.microsoft.com/library/ms733791.aspx) .
+    - **Başlangıç**, SignalR Server yapılandırmasını içeren sınıf (Bu öğreticinin kullandığı tek yapılandırma `UseCors` ) ve ' a yapılan çağrı, `MapSignalR` projedeki tüm Hub nesneleri için yollar oluşturur.
     - Uygulamanın istemcilere sağlayacağız SignalR hub sınıfı olan **Myhub**. Bu sınıf tek bir yönteme **sahiptir ve istemcileri, diğer**tüm bağlı istemcilere bir ileti yayınlamak için çağıracaktır.
 6. Uygulamayı derleyin ve çalıştırın. Sunucunun çalıştırıldığı adresin bir konsol penceresinde gösterilmesi gerekir.
 
     ![](tutorial-signalr-self-host/_static/image2.png)
-7. Yürütme `System.Reflection.TargetInvocationException was unhandled`özel durumla başarısız olursa, Visual Studio 'Yu yönetici ayrıcalıklarıyla yeniden başlatmanız gerekir.
+7. Yürütme özel durumla başarısız olursa `System.Reflection.TargetInvocationException was unhandled` , Visual Studio 'yu yönetici ayrıcalıklarıyla yeniden başlatmanız gerekir.
 8. Sonraki bölüme geçmeden önce uygulamayı durdurun.
 
 <a id="js"></a>
@@ -118,7 +116,7 @@ Bu bölümde, Başlangıç [öğreticisinde](../getting-started/tutorial-getting
     [!code-powershell[Main](tutorial-signalr-self-host/samples/sample4.ps1)]
 
     Bu komut, istemcisinde ihtiyacınız olan SignalR ve JQuery kitaplıklarını yükleme.
-4. Projenize sağ tıklayın ve **Ekle**, **Yeni öğe**' yi seçin. **Web** düğümünü SEÇIN ve HTML sayfası ' nı seçin. Sayfayı **default. html**olarak adlandırın.
+4. Projenize sağ tıklayın ve **Ekle**, **Yeni öğe**' yi seçin. **Web** düğümünü SEÇIN ve HTML sayfası ' nı seçin. Sayfayı **lDefault.htm**olarak adlandırın.
 
     ![](tutorial-signalr-self-host/_static/image5.png)
 5. Yeni HTML sayfasının içeriğini aşağıdaki kodla değiştirin. Buradaki betik başvurularının, projenin betikler klasöründeki betiklerin eşleştiğini doğrulayın.
@@ -131,6 +129,6 @@ Bu bölümde, Başlangıç [öğreticisinde](../getting-started/tutorial-getting
 6. Çözüme sağ tıklayın ve **Başlangıç projelerini ayarla...** seçeneğini belirleyin. **Birden çok başlangıç projesi** radyo düğmesini seçin ve her Iki projenin **eylemini** **Başlat**olarak ayarlayın.
 
     ![](tutorial-signalr-self-host/_static/image6.png)
-7. "Default. html" öğesine sağ tıklayın ve **Başlangıç sayfası olarak ayarla**' yı seçin.
+7. "Default.html" öğesine sağ tıklayın ve **Başlangıç sayfası olarak ayarla**' yı seçin.
 8. Uygulamayı çalıştırın. Sunucu ve sayfa başlatılır. Sayfa sunucu başlatılmadan önce yüklenirse Web sayfasını yeniden yüklemeniz gerekebilir (veya hata ayıklayıcıda **devam et** ' i seçin).
 9. Tarayıcıda, sorulduğunda bir Kullanıcı adı girin. Sayfanın URL 'sini başka bir tarayıcı sekmesine veya pencereye kopyalayın ve farklı bir Kullanıcı adı belirtin. Başlangıç öğreticisinde olduğu gibi, bir tarayıcı bölmesinden diğerine ileti gönderebileceksiniz.
