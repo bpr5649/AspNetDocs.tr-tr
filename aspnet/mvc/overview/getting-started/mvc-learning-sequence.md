@@ -8,12 +8,12 @@ ms.date: 05/22/2015
 ms.assetid: 8513a57a-2d45-4d6b-881c-15a01c5cbb1c
 msc.legacyurl: /mvc/overview/getting-started/mvc-learning-sequence
 msc.type: authoredcontent
-ms.openlocfilehash: 46b089a896c6b1b92437ff1f5488214a3a0a9838
-ms.sourcegitcommit: e7e91932a6e91a63e2e46417626f39d6b244a3ab
+ms.openlocfilehash: 7dc81cf09309194df4471fedfc74d4051f0fdb78
+ms.sourcegitcommit: 8d34fb54e790cfba2d64097afc8276da5b22283e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/06/2020
-ms.locfileid: "78602517"
+ms.lasthandoff: 06/27/2020
+ms.locfileid: "85484223"
 ---
 # <a name="mvc-recommended-tutorials-and-articles"></a>MVC tarafından önerilen öğreticiler ve makaleler
 
@@ -40,7 +40,7 @@ ms.locfileid: "78602517"
 - [Oturum açma, e-posta onayı ve parola sıfırlama ile güvenli bir ASP.NET MVC 5 Web uygulaması oluşturma](../security/create-an-aspnet-mvc-5-web-app-with-email-confirmation-and-password-reset.md) İlk olarak, kimlik üzerindeki bir seride, [bir onay bağlantısını yeniden göndermek](../security/create-an-aspnet-mvc-5-web-app-with-email-confirmation-and-password-reset.md#rsend)için kod içerir.
 - [SMS ve e-posta Iki öğeli kimlik doğrulaması ile ASP.NET MVC 5 uygulaması](../security/aspnet-mvc-5-app-with-sms-and-email-two-factor-authentication.md) İkinci kimlik serisi.
 - [Parolaların ve diğer hassas verilerin ASP.NET ve Azure App Service’e dağıtılması için en iyi yöntemler](../../../identity/overview/features-api/best-practices-for-deploying-passwords-and-other-sensitive-data-to-aspnet-and-azure.md)
-- ASP.NET Identity `isPersistent` ve güvenlik tanımlama bilgisi [Ile SMS ve e-posta kullanarak iki öğeli kimlik doğrulama](../../../identity/overview/features-api/two-factor-authentication-using-sms-and-email-with-aspnet-identity.md) , oturum açmadan önce kullanıcının doğrulanan bir e-posta hesabına sahip olmasını gerektirmek için kod, SignInManager 'ıN 2FA gereksinimini nasıl denetlediğinde ve daha fazlasını yapın.
+- [ASP.NET Identity Ile SMS ve e-posta kullanarak iki öğeli kimlik doğrulama](../../../identity/overview/features-api/two-factor-authentication-using-sms-and-email-with-aspnet-identity.md) `isPersistent` ve güvenlik tanımlama bilgisi, oturum açmadan önce bir kullanıcının doğrulanan bir e-posta hesabına sahip olmasını gerektiren kod, SignInManager 'ın 2FA gereksinimini denetleme ve daha fazlası.
 - [ASP.NET Identity Ile hesap onaylama ve parola kurtarma](../../../identity/overview/features-api/account-confirmation-and-password-recovery-with-aspnet-identity.md) [Oturum açma, e-posta onayı ve parola sıfırlama gibi güvenli bir ASP.NET MVC 5 Web uygulaması oluşturma](../security/create-an-aspnet-mvc-5-web-app-with-email-confirmation-and-password-reset.md) bölümünde bulunmayan kimlik hakkında ayrıntılı bilgi sağlar.
 
 <a id="da"></a>
@@ -53,3 +53,16 @@ ms.locfileid: "78602517"
 ## <a name="performance-and-debugging"></a>Performans ve hata ayıklama
 
 - [Glimpse ile ASP.NET MVC uygulamanızın profilini oluşturma ve hatalarını ayıklama](../performance/profile-and-debug-your-aspnet-mvc-app-with-glimpse.md)
+
+## <a name="aspnet-mvc-dropdownlistfor-with-selectlistitem"></a>SelectListItem ile ASP.NET MVC DropDownList
+
+<xref:System.Web.Mvc.Html.SelectExtensions.DropDownListFor%2A>Yardımcısı kullanılırken ve bu koleksiyonun `SelectListItem` doldurulduğu koleksiyon, `DropdownListFor` çağrıldıktan sonra geçen koleksiyonu değiştirir. `DropdownListFor``SelectListItems`Seçili özellikleri, açılan liste tarafından seçili olan her şey olarak değiştirir. Bu, beklenmeyen davranışa yol açar.
+
+,,, <xref:System.Web.Mvc.Html.SelectExtensions.DropDownListFor%2A> <xref:System.Web.Mvc.Html.SelectExtensions.DropDownList%2A> Ve, <xref:System.Web.Mvc.Html.SelectExtensions.EnumDropDownListFor%2A> <xref:System.Web.Mvc.Html.SelectExtensions.ListBox%2A> <xref:System.Web.Mvc.Html.SelectExtensions.ListBoxFor%2A> `IEnumerable<SelectListItem>` ViewData içinde geçirilen veya bulunan seçili özelliğini güncelleştirir.
+
+Geçici çözüm, modeldeki her bir özellik için ayrı örnekler içeren ayrı bir numaralar oluşturmaktır `SelectListItem` .
+
+Daha fazla bilgi için bkz.
+
+* [DropdownListFor, kendisine geçirilen SelectListItem koleksiyonunu değiştirir](http://web.archive.org/web/20140902031437/http://aspnetwebstack.codeplex.com/workitem/1913)
+* [GetSelectListWithDefaultValue IEnumerable <SelectListItem> SelectList öğesini değiştirir](https://github.com/aspnet/AspNetWebStack/issues/271)

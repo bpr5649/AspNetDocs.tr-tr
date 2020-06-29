@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.assetid: d4dfc435-bda6-4621-9762-9ba270f8de4e
 msc.legacyurl: /mvc/overview/getting-started/getting-started-with-ef-using-mvc/migrations-and-deployment-with-the-entity-framework-in-an-asp-net-mvc-application
 msc.type: authoredcontent
-ms.openlocfilehash: 21a3efa865e5b5498dfb0f2adec199800fc70c58
-ms.sourcegitcommit: a4c3c7e04e5f53cf8cd334f036d324976b78d154
+ms.openlocfilehash: 2f3a6d57a7963eb7aafde62e344ae6b970af87e2
+ms.sourcegitcommit: 8d34fb54e790cfba2d64097afc8276da5b22283e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84172983"
+ms.lasthandoff: 06/27/2020
+ms.locfileid: "85484236"
 ---
 # <a name="tutorial-use-ef-migrations-in-an-aspnet-mvc-app-and-deploy-to-azure"></a>Öğretici: bir ASP.NET MVC uygulamasında EF geçişlerini kullanma ve Azure 'a dağıtma
 
@@ -41,10 +41,10 @@ Yeni bir uygulama geliştirirken, veri modeliniz sıklıkla değişir ve model h
 
 Veritabanını veri modeliyle eşitlenmiş halde tutma yöntemi, uygulamayı üretime dağıtana kadar iyi çalışır. Uygulama üretimde çalışırken, genellikle tutmak istediğiniz verileri saklar ve yeni sütun ekleme gibi her değişiklik yaptığınızda her şeyi kaybetmek istemezsiniz. [Code First Migrations](https://msdn.microsoft.com/data/jj591621) özelliği, veritabanını bırakıp yeniden oluşturmak yerine veritabanı şemasını güncelleştirmesine Code First etkinleştirerek bu sorunu çözer. Bu öğreticide, uygulamayı dağıtırsınız ve geçişleri etkinleştireceksiniz.
 
-1. `contexts`Uygulama Web. config dosyasına eklediğiniz öğeyi açıklama ekleyerek veya silerek daha önce ayarladığınız başlatıcıyı devre dışı bırakın.
+1. Daha önce ayarladığınız başlatıcıyı, `contexts` uygulama Web.config dosyasına eklediğiniz öğeyi açıklama ekleyerek veya silerek devre dışı bırakın.
 
     [!code-xml[Main](migrations-and-deployment-with-the-entity-framework-in-an-asp-net-mvc-application/samples/sample1.xml?highlight=2,6)]
-2. Ayrıca, uygulama *Web. config* dosyasında, bağlantı dizesindeki veritabanının adını ContosoUniversity2 olarak değiştirin.
+2. Ayrıca, uygulama *Web.config* dosyasında, bağlantı dizesindeki veritabanının adını ContosoUniversity2 olarak değiştirin.
 
     [!code-xml[Main](migrations-and-deployment-with-the-entity-framework-in-an-asp-net-mvc-application/samples/sample2.xml?highlight=2)]
 
@@ -129,7 +129,7 @@ Veritabanı zaten mevcut olduğunda ilk geçişi oluşturduysanız veritabanı o
 
 ### <a name="use-code-first-migrations-to-deploy-the-database"></a>Veritabanını dağıtmak için Code First geçişleri kullanma
 
-Veritabanını dağıtmak için Code First Migrations kullanırsınız. Visual Studio 'dan dağıtma ayarlarını yapılandırmak için kullandığınız yayımlama profilini oluşturduğunuzda, **veritabanını güncelleştir**etiketli bir onay kutusunu seçersiniz. Bu ayar, dağıtım işleminin, Code First Başlatıcı sınıfını kullanması için hedef sunucudaki uygulama *Web. config* dosyasını otomatik olarak yapılandırmasına neden olur `MigrateDatabaseToLatestVersion` .
+Veritabanını dağıtmak için Code First Migrations kullanırsınız. Visual Studio 'dan dağıtma ayarlarını yapılandırmak için kullandığınız yayımlama profilini oluşturduğunuzda, **veritabanını güncelleştir**etiketli bir onay kutusunu seçersiniz. Bu ayar dağıtım işleminin, Code First Başlatıcı sınıfını kullanması için hedef sunucudaki uygulama *Web.config* dosyasını otomatik olarak yapılandırmasına neden olur `MigrateDatabaseToLatestVersion` .
 
 Visual Studio, projenizi hedef sunucuya kopyalarken dağıtım işlemi sırasında veritabanıyla hiçbir şey yapmaz. Dağıtılan uygulamayı çalıştırdığınızda ve dağıtımdan sonra veritabanına ilk kez eriştiğinde, veritabanının veri modeliyle eşleşip eşleşmediğini denetler Code First. Bir uyumsuzluk varsa, Code First otomatik olarak veritabanını oluşturur (henüz yoksa) veya veritabanı şemasını en son sürüme güncelleştirir (bir veritabanı varsa ancak modelle eşleşmezse). Uygulama bir geçişler yöntemi uygularsa `Seed` , yöntem veritabanı oluşturulduktan sonra veya şema güncelleştirildikten sonra çalışır.
 
@@ -138,7 +138,7 @@ Geçişler `Seed` yönteminiz test verileri ekler. Bir üretim ortamına dağıt
 ### <a name="get-an-azure-account"></a>Azure hesabı alın
 
 Bir Azure hesabınız olması gerekir. Henüz bir tane yoksa ancak Visual Studio aboneliğiniz varsa, [abonelik avantajlarınızı etkinleştirebilirsiniz](https://azure.microsoft.com/pricing/member-offers/credit-for-visual-studio-subscribers/
-). Aksi takdirde, yalnızca birkaç dakika içinde ücretsiz bir deneme hesabı oluşturabilirsiniz. Ayrıntılı bilgi için bkz. [Azure Ücretsiz Deneme Sürümü](https://azure.microsoft.com/free/).
+). Aksi takdirde, yalnızca birkaç dakika içinde ücretsiz bir deneme hesabı oluşturabilirsiniz. Ayrıntılı bilgi için bkz. [Azure Ücretsiz Deneme Sürümü](https://azure.microsoft.com/free/dotnet/).
 
 ### <a name="create-a-web-site-and-a-sql-database-in-azure"></a>Azure 'da bir Web sitesi ve SQL veritabanı oluşturma
 
@@ -196,15 +196,15 @@ Veritabanını Azure SQL veritabanı 'na dağıtırsınız. SQL veritabanı, SQL
 
     Uygulamanız artık bulutta çalışmaktadır.
 
-Bu noktada, **Execute Code First Migrations (uygulama başlangıcında çalışır)** öğesini SEÇTIĞINIZDEN Azure SQL veritabanında *SchoolContext* veritabanı oluşturulmuştur. Dağıtılmış Web sitesindeki *Web. config* dosyası, kodunuzun veritabanına veri okuması veya yazması ( **öğrenciler** sekmesini seçtiğinizde meydana gelir) Için [Migratedatabasetolatestversion](https://msdn.microsoft.com/library/hh829476(v=vs.103).aspx) başlatıcısı 'nın ilk kez çalışması için değiştirilmiştir:
+Bu noktada, **Execute Code First Migrations (uygulama başlangıcında çalışır)** öğesini SEÇTIĞINIZDEN Azure SQL veritabanında *SchoolContext* veritabanı oluşturulmuştur. Dağıtılan Web sitesindeki *Web.config* dosyası, kodunuzun veritabanına veri okuması veya yazması ( **öğrenciler** sekmesini seçtiğinizde meydana gelir) Için [Migratedatabasetolatestversion](https://msdn.microsoft.com/library/hh829476(v=vs.103).aspx) başlatıcısı 'nın ilk kez çalışması için değiştirilmiştir:
 
-![Web. config dosyası alıntısı](https://asp.net/media/4367421/mig.png)
+![Web.config dosya alıntısı](https://asp.net/media/4367421/mig.png)
 
 Dağıtım işlemi ayrıca, veritabanı şemasını güncelleştirmek ve veritabanını dengeli yapmak için Code First Migrations için yeni bir bağlantı dizesi *(SchoolContext \_ databasepublish*) oluşturmuştur.
 
-![Web. config dosyasında bağlantı dizesi](migrations-and-deployment-with-the-entity-framework-in-an-asp-net-mvc-application/_static/image26.png)
+![Web.config dosyadaki bağlantı dizesi](migrations-and-deployment-with-the-entity-framework-in-an-asp-net-mvc-application/_static/image26.png)
 
-Web. config dosyasının dağıtılan sürümünü *ContosoUniversity\obj\Release\Package\PackageTmp\Web.config*' de kendi bilgisayarınızda bulabilirsiniz. Dağıtılmış *Web. config* dosyasının kendisini FTP kullanarak erişebilirsiniz. Yönergeler için bkz. [Visual Studio kullanarak ASP.NET Web dağıtımı: kod güncelleştirme dağıtma](xref:web-forms/overview/deployment/visual-studio-web-deployment/deploying-a-code-update). "FTP aracını kullanmak Için" ile başlayan yönergeleri izleyin: FTP URL 'SI, Kullanıcı adı ve parola. "
+Web.config dosyanın dağıtılan sürümünü *ContosoUniversity\obj\Release\Package\PackageTmp\Web.config*kendi bilgisayarınızda bulabilirsiniz. Dağıtılan *Web.config* dosyasına FTP kullanarak erişebilirsiniz. Yönergeler için bkz. [Visual Studio kullanarak ASP.NET Web dağıtımı: kod güncelleştirme dağıtma](xref:web-forms/overview/deployment/visual-studio-web-deployment/deploying-a-code-update). "FTP aracını kullanmak Için" ile başlayan yönergeleri izleyin: FTP URL 'SI, Kullanıcı adı ve parola. "
 
 > [!NOTE]
 > Web uygulaması güvenlik uygulamaz, böylece URL 'YI bulan herkes verileri değiştirebilir. Web sitesinin güvenliğini sağlama hakkında yönergeler için bkz. Membership, [OAuth ve SQL veritabanı Ile güvenli bir ASP.NET MVC uygulamasını Azure 'A dağıtma](/aspnet/core/security/authorization/secure-data). Visual Studio 'da Azure Yönetim Portalı veya **Sunucu Gezgini** kullanarak hizmeti durdurarak diğer kişilerin siteyi kullanmasını engelleyebilirsiniz.
@@ -213,7 +213,7 @@ Web. config dosyasının dağıtılan sürümünü *ContosoUniversity\obj\Releas
 
 ## <a name="advanced-migrations-scenarios"></a>Gelişmiş geçiş senaryoları
 
-Bu öğreticide gösterildiği gibi geçişleri otomatik olarak çalıştırarak bir veritabanını dağıtırsanız ve birden çok sunucu üzerinde çalışan bir Web sitesine dağıtıyorsanız, geçişleri aynı anda çalıştırmaya çalışan birden fazla sunucu alabilirsiniz. Geçişler atomik olduğundan, iki sunucu aynı geçişi çalıştırmaya çalışırsanız, biri başarılı olur ve diğeri başarısız olur (işlemlerin iki kez yapılamaması durumunda). Bu senaryoda, bu sorunlardan kaçınmak istiyorsanız geçişleri el ile çağırabilir ve yalnızca bir kez gerçekleşmeleri için kendi kodunuzu ayarlayabilirsiniz. Daha fazla bilgi için bkz. Rowa Miller 'in blogu ve [migrate. exe](/ef/ef6/modeling/code-first/migrations/migrate-exe) ' de [Koddan çalıştırılan ve betik geçişleri](http://romiller.com/2012/02/09/running-scripting-migrations-from-code/) (komut satırından geçişleri yürütmek için).
+Bu öğreticide gösterildiği gibi geçişleri otomatik olarak çalıştırarak bir veritabanını dağıtırsanız ve birden çok sunucu üzerinde çalışan bir Web sitesine dağıtıyorsanız, geçişleri aynı anda çalıştırmaya çalışan birden fazla sunucu alabilirsiniz. Geçişler atomik olduğundan, iki sunucu aynı geçişi çalıştırmaya çalışırsanız, biri başarılı olur ve diğeri başarısız olur (işlemlerin iki kez yapılamaması durumunda). Bu senaryoda, bu sorunlardan kaçınmak istiyorsanız geçişleri el ile çağırabilir ve yalnızca bir kez gerçekleşmeleri için kendi kodunuzu ayarlayabilirsiniz. Daha fazla bilgi için bkz. Rowa Miller 'un blogundan [Koddan çalışan ve betik geçişleri](http://romiller.com/2012/02/09/running-scripting-migrations-from-code/) ve [Migrate.exe](/ef/ef6/modeling/code-first/migrations/migrate-exe) (komut satırından geçişleri yürütmek için).
 
 Diğer geçiş senaryoları hakkında daha fazla bilgi için bkz. [geçişleri ekran kaydı serisi](https://blogs.msdn.com/b/adonet/archive/2014/03/12/migrations-screencast-series.aspx).
 
