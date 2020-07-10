@@ -10,11 +10,11 @@ ms.assetid: f35a9b0c-49ef-4cde-b06d-19d1543feb0b
 msc.legacyurl: /mvc/overview/getting-started/getting-started-with-ef-using-mvc/advanced-entity-framework-scenarios-for-an-mvc-web-application
 msc.type: authoredcontent
 ms.openlocfilehash: d7cc83a5b78a60f575f5c3065079679189296a0c
-ms.sourcegitcommit: 4b324a11131e38f920126066b94ff478aa9927f8
+ms.sourcegitcommit: ce28244209db8615bc9bdd576a2e2c88174d318d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/16/2019
-ms.locfileid: "58425281"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "86188733"
 ---
 # <a name="tutorial-learn-about-advanced-ef-scenarios-for-an-mvc-5-web-app"></a>Öğretici: MVC 5 Web uygulaması için gelişmiş EF senaryoları hakkında bilgi edinin
 
@@ -47,11 +47,11 @@ Bu öğreticide şunları yaptınız:
 
 ## <a name="perform-raw-sql-queries"></a>Ham SQL sorguları gerçekleştirme
 
-Entity Framework Code First API 'SI, SQL komutlarını doğrudan veritabanına geçirmenize olanak sağlayan yöntemleri içerir. Şu seçenekleriniz vardır:
+Entity Framework Code First API 'SI, SQL komutlarını doğrudan veritabanına geçirmenize olanak sağlayan yöntemleri içerir. Aşağıdaki seçenekler mevcuttur:
 
-- Varlık türleri döndüren sorgular için [Dbset. SQLQuery](https://msdn.microsoft.com/library/system.data.entity.dbset.sqlquery.aspx) yöntemini kullanın. Döndürülen nesneler `DbSet` nesne tarafından beklenen türde olmalıdır ve izlemeyi kapatmadığınız takdirde veritabanı bağlamı tarafından otomatik olarak izlenir. ( [Asnotracking](https://msdn.microsoft.com/library/system.data.entity.dbextensions.asnotracking.aspx) yöntemi hakkında aşağıdaki bölüme bakın.)
+- Varlık türleri döndüren sorgular için [Dbset. SQLQuery](https://msdn.microsoft.com/library/system.data.entity.dbset.sqlquery.aspx) yöntemini kullanın. Döndürülen nesneler nesne tarafından beklenen türde olmalıdır `DbSet` ve izlemeyi kapatmadığınız takdirde veritabanı bağlamı tarafından otomatik olarak izlenir. ( [Asnotracking](https://msdn.microsoft.com/library/system.data.entity.dbextensions.asnotracking.aspx) yöntemi hakkında aşağıdaki bölüme bakın.)
 - Varlık olmayan türler döndüren sorgular için [Database. SqlQuery](https://msdn.microsoft.com/library/system.data.entity.database.sqlquery.aspx) yöntemini kullanın. Döndürülen veriler, varlık türlerini almak için bu yöntemi kullanıyor olsanız bile veritabanı bağlamı tarafından izlenmez.
-- Sorgu olmayan komutlar için [Database. ExecuteSqlCommand](https://msdn.microsoft.com/library/gg679456.aspx) komutunu kullanın.
+- Sorgu olmayan komutlar için [Database.ExecuteSqlCommand](https://msdn.microsoft.com/library/gg679456.aspx) kullanın.
 
 Entity Framework kullanmanın avantajlarından biri, kodunuzun veri depolarken belirli bir yönteme çok benzemesidir. Bunu sizin için SQL sorguları ve komutları oluşturarak yapar, bu da sizi kendiniz yazmak zorunda kalmaktan kurtarır. Ancak, el ile oluşturduğunuz belirli SQL sorgularını çalıştırmanız gerektiğinde olağanüstü senaryolar vardır ve bu yöntemler bu tür özel durumları idare etmek için bu yöntemleri mümkün kılar.
 
@@ -59,9 +59,9 @@ Her zaman doğru olduğu gibi, bir Web uygulamasında SQL komutları yürüttü�
 
 ### <a name="calling-a-query-that-returns-entities"></a>Varlıkları döndüren bir sorgu çağırma
 
-[&lt;DbsetTEntity&gt; ](https://msdn.microsoft.com/library/gg696460.aspx) sınıfı, türünde `TEntity`bir varlık döndüren bir sorguyu yürütmek için kullanabileceğiniz bir yöntem sağlar. Bunun nasıl çalıştığını görmek için, `Details` `Department` denetleyicinin yöntemindeki kodu değiştirirsiniz.
+[Dbset &lt; &gt; TEntity](https://msdn.microsoft.com/library/gg696460.aspx) sınıfı, türünde bir varlık döndüren bir sorguyu yürütmek için kullanabileceğiniz bir yöntem sağlar `TEntity` . Bunun nasıl çalıştığını görmek için, `Details` denetleyicinin yöntemindeki kodu değiştirirsiniz `Department` .
 
-`db.Departments.FindAsync` *DepartmentController.cs* `Details` ' de, yönteminde aşağıdaki vurgulanmış kodda gösterildiği gibi yöntem çağrısını bir `db.Departments.SqlQuery` yöntem çağrısıyla değiştirin:
+*DepartmentController.cs*' de, `Details` yönteminde `db.Departments.FindAsync` `db.Departments.SqlQuery` aşağıdaki vurgulanmış kodda gösterildiği gibi yöntem çağrısını bir yöntem çağrısıyla değiştirin:
 
 [!code-csharp[Main](advanced-entity-framework-scenarios-for-an-mvc-web-application/samples/sample1.cs?highlight=8-14)]
 
@@ -75,7 +75,7 @@ Daha önce, yaklaşık bir kayıt tarihi için öğrenci sayısını gösteren h
 
 LINQ kullanmak yerine, bu verileri doğrudan SQL 'de alan kodu yazmak istediğinizi varsayalım. Bunu yapmak için, varlık nesneleri dışında bir şey döndüren bir sorgu çalıştırmanız gerekir, bu da [Database. SqlQuery](https://msdn.microsoft.com/library/system.data.entity.database.sqlquery(v=VS.103).aspx) yöntemini kullanmanız gereken anlamına gelir.
 
-*HomeController.cs*içinde, aşağıdaki vurgulanmış kodda gösterildiği gibi, `About` yöntemindeki LINQ ifadesini bir SQL ifadesiyle değiştirin:
+*HomeController.cs*içinde, `About` aşağıdaki vurgulanmış kodda gösterildiği gıbı, yöntemindeki LINQ ifadesini bir SQL ifadesiyle değiştirin:
 
 [!code-csharp[Main](advanced-entity-framework-scenarios-for-an-mvc-web-application/samples/sample3.cs?highlight=3-18)]
 
@@ -83,27 +83,27 @@ Hakkında sayfasını çalıştırın. Daha önce yaptığı verilerin aynısın
 
 ### <a name="calling-an-update-query"></a>Güncelleştirme sorgusu çağırma
 
-Contoso Üniversitesi yöneticilerinin veritabanında toplu değişiklikler gerçekleştirebilmesini istediğini varsayalım (her kurs için kredilerin sayısını değiştirme gibi). Üniversitenin çok sayıda kursu varsa, bunların tümünü varlıklar olarak almak ve tek tek değiştirmek verimsiz olur. Bu bölümde, kullanıcının tüm kurslar için kredi sayısını değiştirecek bir faktör belirtmesini sağlayan bir Web sayfası uygulayacaksınız ve bir SQL `UPDATE` ifadesini yürüterek değişikliği yaparsınız. 
+Contoso Üniversitesi yöneticilerinin veritabanında toplu değişiklikler gerçekleştirebilmesini istediğini varsayalım (her kurs için kredilerin sayısını değiştirme gibi). Üniversitenin çok sayıda kursu varsa, bunların tümünü varlıklar olarak almak ve tek tek değiştirmek verimsiz olur. Bu bölümde, kullanıcının tüm kurslar için kredi sayısını değiştirecek bir faktör belirtmesini sağlayan bir Web sayfası uygulayacaksınız ve bir SQL ifadesini yürüterek değişikliği yaparsınız `UPDATE` . 
 
-*CourseController.cs*' de, `UpdateCourseCredits` ve `HttpPost`için `HttpGet` yöntemleri ekleyin:
+*CourseController.cs*' de, `UpdateCourseCredits` ve için yöntemleri ekleyin `HttpGet` `HttpPost` :
 
 [!code-csharp[Main](advanced-entity-framework-scenarios-for-an-mvc-web-application/samples/sample4.cs)]
 
-Denetleyici bir `HttpGet` isteği işlediğinde, `ViewBag.RowsAffected` değişkende hiçbir şey döndürülmez ve Görünüm boş bir metin kutusu ve bir Gönder düğmesi görüntüler.
+Denetleyici bir isteği işlediğinde, `HttpGet` değişkende hiçbir şey döndürülmez `ViewBag.RowsAffected` ve Görünüm boş bir metin kutusu ve bir Gönder düğmesi görüntüler.
 
-**Güncelleştirme** düğmesine tıklandığında `HttpPost` , yöntemi çağrılır ve `multiplier` metin kutusuna girilen değere sahiptir. Kod daha sonra, kursları güncelleştiren SQL 'i yürütür ve etkilenen satır sayısını `ViewBag.RowsAffected` değişkende görünüme döndürür. Görünüm söz konusu değişkende bir değer aldığında, metin kutusu ve Gönder düğmesi yerine, güncellenen satır sayısını görüntüler.
+**Güncelleştirme** düğmesine tıklandığında, `HttpPost` yöntemi çağrılır ve `multiplier` metin kutusuna girilen değere sahiptir. Kod daha sonra, kursları güncelleştiren SQL 'i yürütür ve etkilenen satır sayısını değişkende görünüme döndürür `ViewBag.RowsAffected` . Görünüm söz konusu değişkende bir değer aldığında, metin kutusu ve Gönder düğmesi yerine, güncellenen satır sayısını görüntüler.
 
-*CourseController.cs*' de, `UpdateCourseCredits` yöntemlerden birine sağ tıklayın ve ardından **Görünüm Ekle**' ye tıklayın. **Görünüm Ekle** iletişim kutusu görünür. Varsayılanları bırakın ve **Ekle**' yi seçin.
+*CourseController.cs*' de, yöntemlerden birine sağ tıklayın `UpdateCourseCredits` ve ardından **Görünüm Ekle**' ye tıklayın. **Görünüm Ekle** iletişim kutusu görünür. Varsayılanları bırakın ve **Ekle**' yi seçin.
 
 *Views\course\updatecoursecredıts.exe*' de, şablon kodunu şu kodla değiştirin:
 
 [!code-cshtml[Main](advanced-entity-framework-scenarios-for-an-mvc-web-application/samples/sample5.cshtml)]
 
-**Kurs sekmesini** seçerek `http://localhost:50205/Course/UpdateCourseCredits`yöntemi çalıştırın, sonra tarayıcının adres çubuğundaki URL 'nin sonuna "/UpdateCourseCredits" ekleyin (örneğin:). `UpdateCourseCredits` Metin kutusuna bir sayı girin:
+`UpdateCourseCredits` **Kurs** sekmesini seçerek yöntemi çalıştırın, sonra TARAYıCıNıN adres çubuğundaki URL 'nin sonuna "/UpdateCourseCredits" ekleyin (örneğin: `http://localhost:50205/Course/UpdateCourseCredits` ). Metin kutusuna bir sayı girin:
 
 ![Update_Course_Credits_initial_page_with_2_entered](advanced-entity-framework-scenarios-for-an-mvc-web-application/_static/image1.png)
 
-Tıklayın **güncelleştirme**. Etkilenen satır sayısını görürsünüz.
+**Güncelleştir**’e tıklayın. Etkilenen satır sayısını görürsünüz.
 
 Düzeltilen kredi sayısına sahip kurslar listesini görmek için **listeye geri** ' ye tıklayın.
 
@@ -116,19 +116,19 @@ Bir veritabanı bağlamı tablo satırları aldığında ve bunları temsil eden
 [Asnotracking](https://msdn.microsoft.com/library/gg679352(v=vs.103).aspx) metodunu kullanarak bellekte varlık nesnelerinin izlenmesini devre dışı bırakabilirsiniz. Bunu yapmak isteyebileceğiniz tipik senaryolar şunlardır:
 
 - Bir sorgu, izlemeyi kapatan büyük miktarda veriyi alır, performansı önemli ölçüde artırabilir.
-- Bir varlığı güncelleştirmek için eklemek istiyorsunuz, ancak daha önce aynı varlığı farklı bir amaç için elde edersiniz. Varlık veritabanı bağlamı tarafından zaten izlenmekte olduğundan, değiştirmek istediğiniz varlığı iliştiremiyoruz. Bu durumu işlemenin bir yolu, önceki sorguyla birlikte `AsNoTracking` seçeneğini kullanmaktır.
+- Bir varlığı güncelleştirmek için eklemek istiyorsunuz, ancak daha önce aynı varlığı farklı bir amaç için elde edersiniz. Varlık veritabanı bağlamı tarafından zaten izlenmekte olduğundan, değiştirmek istediğiniz varlığı iliştiremiyoruz. Bu durumu işlemenin bir yolu, `AsNoTracking` önceki sorguyla birlikte seçeneğini kullanmaktır.
 
-[Asnotracking](https://msdn.microsoft.com/library/gg679352(v=vs.103).aspx) yönteminin nasıl kullanılacağını gösteren bir örnek için, [Bu öğreticinin önceki sürümüne](../../older-versions/getting-started-with-ef-5-using-mvc-4/advanced-entity-framework-scenarios-for-an-mvc-web-application.md)bakın. Öğreticinin bu sürümü, düzenleme yönteminde model cilt tarafından oluşturulan bir varlıkta değiştirilen bayrağı ayarlanmamış, bu nedenle gerekli `AsNoTracking`değildir.
+[Asnotracking](https://msdn.microsoft.com/library/gg679352(v=vs.103).aspx) yönteminin nasıl kullanılacağını gösteren bir örnek için, [Bu öğreticinin önceki sürümüne](../../older-versions/getting-started-with-ef-5-using-mvc-4/advanced-entity-framework-scenarios-for-an-mvc-web-application.md)bakın. Öğreticinin bu sürümü, düzenleme yönteminde model cilt tarafından oluşturulan bir varlıkta değiştirilen bayrağı ayarlanmamış, bu nedenle gerekli değildir `AsNoTracking` .
 
 ## <a name="examine-sql-sent-to-database"></a>Veritabanına gönderilen SQL 'i İncele
 
 Bazen veritabanına gönderilen gerçek SQL sorgularını görmeniz yararlı olabilir. Önceki bir öğreticide, bunu yakalayıcısı kodunda nasıl yapılacağını gördünüz; Şimdi de bunu, yakalayıcısı kodu yazmadan yapmak için bazı yollar göreceksiniz. Bunu denemek için, basit bir sorguya bakacaksınız ve sonra yükleme, filtreleme ve sıralama gibi seçenekleri eklerken ne olacağı hakkında bilgi edineceksiniz.
 
-*Denetleyici/kurs secontroller*' da, `Index` yöntemi geçici olarak durdurmak için yöntemi aşağıdaki kodla değiştirin:
+*Denetleyici/kurs Secontroller*' da, `Index` yöntemi geçici olarak durdurmak için yöntemi aşağıdaki kodla değiştirin:
 
 [!code-csharp[Main](advanced-entity-framework-scenarios-for-an-mvc-web-application/samples/sample6.cs)]
 
-Şimdi `return` ifadede bir kesme noktası ayarlayın (bu satırdaki imleç ile F9). Projeyi hata ayıklama modunda çalıştırmak için **F5** tuşuna basın ve kurs dizini sayfasını seçin. Kod kesme noktasına ulaştığında, `sql` değişkeni inceleyin. SQL Server gönderilen sorguyu görürsünüz. Bu basit `Select` bir ifadedir.
+Şimdi ifadede bir kesme noktası ayarlayın `return` (bu satırdaki imleç Ile F9). Projeyi hata ayıklama modunda çalıştırmak için **F5** tuşuna basın ve kurs dizini sayfasını seçin. Kod kesme noktasına ulaştığında, `sql` değişkeni inceleyin. SQL Server gönderilen sorguyu görürsünüz. Bu basit bir `Select` ifadedir.
 
 [!code-json[Main](advanced-entity-framework-scenarios-for-an-mvc-web-application/samples/sample7.json)]
 
@@ -136,33 +136,33 @@ Bazen veritabanına gönderilen gerçek SQL sorgularını görmeniz yararlı ola
 
 ![](advanced-entity-framework-scenarios-for-an-mvc-web-application/_static/image10.png)
 
-Şimdi, kullanıcıların belirli bir departmanı filtreleyebilmesi için kurslar dizin sayfasına açılan bir liste ekleyeceksiniz. Kursları başlığa göre sıralarsınız ve `Department` gezinti özelliği için bir Eager yüklemesi belirlersiniz.
+Şimdi, kullanıcıların belirli bir departmanı filtreleyebilmesi için kurslar dizin sayfasına açılan bir liste ekleyeceksiniz. Kursları başlığa göre sıralarsınız ve gezinti özelliği için bir Eager yüklemesi belirlersiniz `Department` .
 
 *CourseController.cs*içinde, `Index` yöntemini aşağıdaki kodla değiştirin:
 
 [!code-csharp[Main](advanced-entity-framework-scenarios-for-an-mvc-web-application/samples/sample8.cs)]
 
-`return` Deyimdeki kesme noktasını geri yükleyin.
+Deyimdeki kesme noktasını geri yükleyin `return` .
 
-Yöntemi, `SelectedDepartment` parametresindeki açılan listenin seçili değerini alır. Hiçbir şey seçilmezse, bu parametre null olur.
+Yöntemi, parametresindeki açılan listenin seçili değerini alır `SelectedDepartment` . Hiçbir şey seçilmezse, bu parametre null olur.
 
-Tüm `SelectList` departmanları içeren bir koleksiyon, açılan listenin görünümüne geçirilir. `SelectList` Oluşturucuya geçirilen parametreler değer alanı adını, metin alanı adını ve seçilen öğeyi belirtin.
+`SelectList`Tüm departmanları içeren bir koleksiyon, açılan listenin görünümüne geçirilir. Oluşturucuya geçirilen parametreler `SelectList` değer alanı adını, metin alanı adını ve seçilen öğeyi belirtin.
 
-Deponun yöntemi için kod, `Department` gezinti özelliği için bir filtre ifadesi, bir sıralama düzeni ve bir Eager yüklemesi belirtir. `Get` `Course` Filtre ifadesi her zaman, `true` açılan listede hiçbir şey seçilmezse (yani, null) ' i `SelectedDepartment` döndürür.
+`Get`Deponun yöntemi için kod, `Course` gezinti özelliği için bir filtre ifadesi, bir sıralama düzeni ve bir Eager yüklemesi belirtir `Department` . Filtre ifadesi her zaman, `true` açılan listede hiçbir şey seçilmezse (yani, null) ' i döndürür `SelectedDepartment` .
 
-*Views\course\ındex.cshtml*içinde, açılış `table` etiketinden hemen önce, açılan listeyi ve bir Gönder düğmesini oluşturmak için aşağıdaki kodu ekleyin:
+*Views\course\ındex.cshtml*içinde, açılış etiketinden hemen önce, `table` açılan listeyi ve bir Gönder düğmesini oluşturmak için aşağıdaki kodu ekleyin:
 
 [!code-cshtml[Main](advanced-entity-framework-scenarios-for-an-mvc-web-application/samples/sample9.cshtml)]
 
 Kesme noktası hala ayarlanmış durumdayken kurs dizini sayfasını çalıştırın. Sayfanın tarayıcıda görüntülenebilmesi için kodun bir kesme noktasıyla ilk kez devam etmesini sağlayın. Açılan listeden bir departman seçin ve **Filtrele**' ye tıklayın.
 
-Bu kez, ilk kesme noktası, açılan liste için departmanlar sorgusu olacaktır. Bu `Course` sorguyu atlayın ve bir `query` sonraki kod, şimdi sorgunun nasıl göründüğünü görmek için kesme noktasına bir sonraki sefer ulaştığında değişkeni görüntüleyin. Aşağıdakine benzer bir şey göreceksiniz:
+Bu kez, ilk kesme noktası, açılan liste için departmanlar sorgusu olacaktır. Bu sorguyu atlayın ve bir `query` sonraki kod, şimdi sorgunun nasıl göründüğünü görmek için kesme noktasına bir sonraki sefer ulaştığında değişkeni görüntüleyin `Course` . Aşağıdakine benzer bir şey göreceksiniz:
 
 [!code-sql[Main](advanced-entity-framework-scenarios-for-an-mvc-web-application/samples/sample10.sql)]
 
-Sorgunun artık verileri `JOIN` verilerle birlikte `Course` yükleyen `Department` bir sorgu olduğunu ve bir `WHERE` yan tümce içerdiğine bakabilirsiniz.
+Sorgunun artık verileri verilerle `JOIN` birlikte yükleyen bir sorgu olduğunu `Department` `Course` ve bir `WHERE` yan tümce içerdiğine bakabilirsiniz.
 
-`var sql = courses.ToString()` Satırı kaldırın.
+Satırı kaldırın `var sql = courses.ToString()` .
 
 ## <a name="create-an-abstraction-layer"></a>Soyutlama katmanı oluşturma
 
@@ -182,7 +182,7 @@ Deponun ve iş düzeni birimlerinin nasıl uygulanacağı hakkında daha fazla b
 
 ## <a name="proxy-classes"></a>Proxy sınıfları
 
-Entity Framework varlık örnekleri oluşturduğunda (örneğin, bir sorgu yürüttüğünüzde), bu, genellikle varlık için proxy görevi gören dinamik olarak oluşturulan türetilmiş türün örnekleri olarak oluşturulur. Örneğin, aşağıdaki iki hata ayıklayıcı görüntüsünü inceleyin. İlk görüntüde, varlığın örneği oluşturulduktan hemen sonra `student` değişkenin beklenen `Student` tür olduğunu görürsünüz. İkinci görüntüde, veritabanından bir öğrenci varlığını okumak için EF kullanıldıktan sonra proxy sınıfını görürsünüz.
+Entity Framework varlık örnekleri oluşturduğunda (örneğin, bir sorgu yürüttüğünüzde), bu, genellikle varlık için proxy görevi gören dinamik olarak oluşturulan türetilmiş türün örnekleri olarak oluşturulur. Örneğin, aşağıdaki iki hata ayıklayıcı görüntüsünü inceleyin. İlk görüntüde, `student` `Student` varlığın örneği oluşturulduktan hemen sonra değişkenin beklenen tür olduğunu görürsünüz. İkinci görüntüde, veritabanından bir öğrenci varlığını okumak için EF kullanıldıktan sonra proxy sınıfını görürsünüz.
 
 ![Proxy sınıfından önce](advanced-entity-framework-scenarios-for-an-mvc-web-application/_static/image12.png)
 
@@ -193,8 +193,8 @@ Bu proxy sınıfı, özelliği erişildiği zaman otomatik olarak eylem gerçekl
 Çoğu zaman, bu proxy kullanımını bilmeniz gerekmez, ancak özel durumlar vardır:
 
 - Bazı senaryolarda Entity Framework proxy örnekleri oluşturmasını engellemek isteyebilirsiniz. Örneğin, varlıkları Serileştirmeye başladığınızda, proxy sınıfları değil, genellikle POCO sınıflarının olmasını istersiniz. Serileştirme sorunlarından kaçınmak için bir yol, varlık nesneleri yerine veri aktarımı nesneleri (DTOs) seri hale getirmenin yanı [Entity Framework, Web API 'Sini kullanma](../../../../web-api/overview/data/using-web-api-with-entity-framework/part-1.md) öğreticisinde gösterildiği gibi. Başka bir yöntem de [proxy oluşturmayı devre dışı bırakmanız](https://msdn.microsoft.com/data/jj592886.aspx).
-- `new` İşlecini kullanarak bir varlık sınıfını örneklediğinizde, proxy örneği edinmezsiniz. Bu, yavaş yükleme ve otomatik değişiklik izleme gibi işlevleri edinmeyeceğiniz anlamına gelir. Bu genellikle normaldir; Genellikle, veritabanında olmayan yeni bir varlık oluşturmakta olduğunuz ve genellikle varlığı `Added`açıkça işaretlemezseniz değişiklik izlemeye ihtiyaç duymadığınızı, genellikle geç yüklemeye gerek kalmaz. Ancak, geç yüklemeye ihtiyacınız varsa ve değişiklik izlemeye ihtiyacınız varsa, `DbSet` sınıfının [Create](https://msdn.microsoft.com/library/gg679504.aspx) yöntemini kullanarak proxy ile yeni varlık örnekleri oluşturabilirsiniz.
-- Bir proxy türünden gerçek bir varlık türü almak isteyebilirsiniz. Bir proxy türü örneğinin gerçek varlık türünü almak için `ObjectContext` sınıfının [GetObjectType](https://msdn.microsoft.com/library/system.data.objects.objectcontext.getobjecttype.aspx) yöntemini kullanabilirsiniz.
+- İşlecini kullanarak bir varlık sınıfını örneklediğinizde `new` , proxy örneği edinmezsiniz. Bu, yavaş yükleme ve otomatik değişiklik izleme gibi işlevleri edinmeyeceğiniz anlamına gelir. Bu genellikle normaldir; Genellikle, veritabanında olmayan yeni bir varlık oluşturmakta olduğunuz ve genellikle varlığı açıkça işaretlemezseniz değişiklik izlemeye ihtiyaç duymadığınızı, genellikle geç yüklemeye gerek kalmaz `Added` . Ancak, geç yüklemeye ihtiyacınız varsa ve değişiklik izlemeye ihtiyacınız varsa, sınıfının [Create](https://msdn.microsoft.com/library/gg679504.aspx) yöntemini kullanarak proxy ile yeni varlık örnekleri oluşturabilirsiniz `DbSet` .
+- Bir proxy türünden gerçek bir varlık türü almak isteyebilirsiniz. [GetObjectType](https://msdn.microsoft.com/library/system.data.objects.objectcontext.getobjecttype.aspx) `ObjectContext` Bir proxy türü örneğinin gerçek varlık türünü almak Için sınıfının GetObjectType yöntemini kullanabilirsiniz.
 
 Daha fazla bilgi için bkz. MSDN 'de [proxy Ile çalışma](https://msdn.microsoft.com/data/JJ592886.aspx) .
 
@@ -216,7 +216,7 @@ Entity Framework bir varlığın geçerli değerlerini özgün değerlerle karş
 
 ## <a name="automatic-validation"></a>Otomatik doğrulama
 
-`SaveChanges` Yöntemini çağırdığınızda, varsayılan olarak Entity Framework, veritabanını güncelleştirmeden önce tüm değiştirilen varlıkların tüm özelliklerindeki verileri doğrular. Çok sayıda varlığı güncelleştirdiyseniz ve verileri zaten doğruladıysanız, bu çalışma gereksizdir ve değişiklikleri kaydetme sürecini geçici olarak doğrulamayı devre dışı bırakarak daha az zaman alabilir. Bunu, [Validateonsaveenabled](https://msdn.microsoft.com/library/system.data.entity.infrastructure.dbcontextconfiguration.validateonsaveenabled.aspx) özelliğini kullanarak yapabilirsiniz. Daha fazla bilgi için bkz. MSDN 'de [doğrulama](https://msdn.microsoft.com/data/gg193959) .
+`SaveChanges`Yöntemini çağırdığınızda, varsayılan olarak Entity Framework, veritabanını güncelleştirmeden önce tüm değiştirilen varlıkların tüm özelliklerindeki verileri doğrular. Çok sayıda varlığı güncelleştirdiyseniz ve verileri zaten doğruladıysanız, bu çalışma gereksizdir ve değişiklikleri kaydetme sürecini geçici olarak doğrulamayı devre dışı bırakarak daha az zaman alabilir. Bunu, [Validateonsaveenabled](https://msdn.microsoft.com/library/system.data.entity.infrastructure.dbcontextconfiguration.validateonsaveenabled.aspx) özelliğini kullanarak yapabilirsiniz. Daha fazla bilgi için bkz. MSDN 'de [doğrulama](https://msdn.microsoft.com/data/gg193959) .
 
 ## <a name="entity-framework-power-tools"></a>Entity Framework güç araçları
 
@@ -230,19 +230,19 @@ Entity Framework 6 ' nın kaynak kodu [GitHub](https://github.com/aspnet/EntityF
 
 Kaynak kodu açık olsa da Entity Framework, Microsoft ürünü olarak tam olarak desteklenmektedir. Microsoft Entity Framework ekibi, her bir yayının kalitesini sağlamak için, hangi katkıların kabul edildiğini denetler ve tüm kod değişikliklerini sınar.
 
-## <a name="acknowledgments"></a>Bilgilendirme
+## <a name="acknowledgments"></a>İlgili kaynaklar
 
 - Tom Dykstra, Bu öğreticinin orijinal sürümünü yazdı, EF 5 güncelleştirmesini birlikte yazdı ve EF 6 güncelleştirmesini yazdı. Tom, Microsoft Web platformu ve araçlar Içerik ekibi üzerinde bir üst düzey programlama yazdır.
-- [Rick Anderson](https://blogs.msdn.com/b/rickandy/) (Twitter [@RickAndMSFT](http://twitter.com/RickAndMSFT)), EF 5 ve MVC 4 için öğreticiyi güncelleştirti ve EF 6 güncelleştirmesini birlikte yazdı. Rick, Microsoft 'un Azure ve MVC 'ye odaklanarak bir üst düzey programlama yazdır.
+- [Rick Anderson](https://blogs.msdn.com/b/rickandy/) (Twitter [@RickAndMSFT](http://twitter.com/RickAndMSFT) ), EF 5 ve MVC 4 için öğreticiyi güncelleştirti ve EF 6 güncelleştirmesini birlikte yazdı. Rick, Microsoft 'un Azure ve MVC 'ye odaklanarak bir üst düzey programlama yazdır.
 - [Rowa Miller](http://www.romiller.com) ve kod incelemeleriyle Entity Framework ekip yardımlı diğer üyeleri, ve EF 5 ve EF 6 için öğreticiyi güncelleştirtiğimiz sırada çok sayıda sorunu ayıklamada yardımcı oldu.
 
 ## <a name="troubleshoot-common-errors"></a>Sık karşılaşılan hataları giderme
 
 ### <a name="cannot-createshadow-copy"></a>Gölge kopya oluşturulamıyor
 
-Hata Iletisi:
+Hata İletisi:
 
-> Bu dosya zaten mevcutsa, '&lt;filename&gt;' kopyası oluşturulamıyor/gölge kopyası oluşturulamıyor.
+> &lt;Bu dosya zaten mevcutsa, ' filename ' kopyası oluşturulamıyor/gölge kopyası oluşturulamıyor &gt; .
 
 Çözüm
 
@@ -250,7 +250,7 @@ Birkaç saniye bekleyin ve sayfayı yenileyin.
 
 ### <a name="update-database-not-recognized"></a>Güncelleştirme-veritabanı tanınmıyor
 
-Hata iletisi ( `Update-Database` PMC 'deki komuttan):
+Hata Iletisi ( `Update-Database` PMC 'deki komuttan):
 
 > ' Update-Database ' terimi bir cmdlet, işlev, betik dosyası veya çalıştırılabilir programının adı olarak tanınmıyor. Adın yazımını denetleyin veya bir yol içerilip yolun doğru olduğundan emin olun ve yeniden deneyin.
 
@@ -260,17 +260,17 @@ Visual Studio 'dan çıkın. Projeyi yeniden açın ve yeniden deneyin.
 
 ### <a name="validation-failed"></a>Doğrulama başarısız oldu
 
-Hata iletisi ( `Update-Database` PMC 'deki komuttan):
+Hata Iletisi ( `Update-Database` PMC 'deki komuttan):
 
 > Bir veya daha fazla varlık için doğrulama başarısız oldu. Daha fazla ayrıntı için bkz. ' EntityValidationErrors ' özelliği.
 
 Çözüm
 
-`Seed` Yöntem çalışırken bu sorunun bir nedeni doğrulama hatalardır. `Seed` Yöntemi hata ayıklamayla ilgili ipuçları için bkz. [dağıtım ve hata ayıklama Entity Framework (EF) DBS](https://blogs.msdn.com/b/rickandy/archive/2013/02/12/seeding-and-debugging-entity-framework-ef-dbs.aspx) .
+Yöntem çalışırken bu sorunun bir nedeni doğrulama hatalardır `Seed` . Yöntemi hata ayıklamayla ilgili ipuçları için bkz. [dağıtım ve hata ayıklama Entity Framework (EF) DBs](https://blogs.msdn.com/b/rickandy/archive/2013/02/12/seeding-and-debugging-entity-framework-ef-dbs.aspx) `Seed` .
 
 ### <a name="http-50019-error"></a>HTTP 500,19 hatası
 
-Hata Iletisi:
+Hata İletisi:
 
 > HTTP hatası 500,19-Iç sunucu hatası istenen sayfaya erişilemiyor çünkü sayfa için ilgili yapılandırma verileri geçersiz.
 
@@ -280,15 +280,15 @@ Bu hatanın tek bir yolu, her biri aynı bağlantı noktası numarasını kullan
 
 ### <a name="error-locating-sql-server-instance"></a>SQL Server örneği bulunurken hata oluştu
 
-Hata Iletisi:
+Hata İletisi:
 
-> SQL Server bağlantı kurulurken ağla ilgili veya örneğe özgü bir hata oluştu. Sunucu bulunamadı veya erişilebilir durumda değil. Örnek adının doğru olduğundan ve SQL Server uzak bağlantılara izin verecek şekilde yapılandırıldığından emin olun. sağlayıcısını SQL ağ arabirimleri, hata: 26-belirtilen sunucu/örnek bulunurken hata oluştu)
+> SQL Server ile bağlantı kurulmaya çalışılırken ağ ile ilişkili veya örneğe özgü bir hata oluştu. Sunucu bulunamadı veya erişilebilir değildi. Örnek adının doğru olduğundan ve SQL Server uzak bağlantılara izin verecek şekilde yapılandırıldığından emin olun. (sağlayıcı: SQL ağ arabirimleri, hata: 26-belirtilen sunucu/örnek bulunurken hata oluştu)
 
 Çözüm
 
 Bağlantı dizesini denetleyin. Veritabanını el ile sildiyseniz, oluşturulmakta olan dizedeki veritabanının adını değiştirin.
 
-## <a name="get-the-code"></a>Kodu alın
+## <a name="get-the-code"></a>Kodu alma
 
 [Tamamlanmış projeyi indir](https://webpifeed.blob.core.windows.net/webpifeed/Partners/ASP.NET%20MVC%20Application%20Using%20Entity%20Framework%20Code%20First.zip)
 

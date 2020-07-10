@@ -1,6 +1,6 @@
 ---
 uid: mvc/overview/getting-started/introduction/adding-search
-title: Arama | Microsoft Docs
+title: Ara | Microsoft Docs
 author: Rick-Anderson
 description: ''
 ms.author: riande
@@ -8,139 +8,137 @@ ms.date: 01/17/2019
 ms.assetid: df001954-18bf-4550-b03d-43911a0ea186
 msc.legacyurl: /mvc/overview/getting-started/introduction/adding-search
 msc.type: authoredcontent
-ms.openlocfilehash: 7b49c1e6425080693229c6c132df3879504c835c
-ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
+ms.openlocfilehash: f6d6d32a648fed453be924790a1b55698c9cf209
+ms.sourcegitcommit: 0d583ed9253103f3e50b6d729276e667591cdd41
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/09/2019
-ms.locfileid: "59379540"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86211470"
 ---
-# <a name="search"></a>Ara
+# <a name="search"></a>Arama
 
+[!INCLUDE [Tutorial Note](index.md)]
 
-[!INCLUDE [Tutorial Note](sample/code-location.md)]
+## <a name="adding-a-search-method-and-search-view"></a>Arama yöntemi ve arama görünümü ekleme
 
-## <a name="adding-a-search-method-and-search-view"></a>Bir arama yöntemi ve arama görünümü ekleme
-
-Bu bölümde, arama özelliği ekleyeceksiniz `Index` olanak sağlayan bir eylem yöntemi filmler Tarz veya adı arayın.
+Bu bölümde, `Index` bir türe veya ada göre filmlere göre arama yapmanızı sağlayan eylem yöntemine arama özelliği ekleyeceksiniz.
 
 ## <a name="prerequisites"></a>Önkoşullar
 
-Bu bölümün ekran görüntüleri eşleştirmek için uygulamayı (F5) çalıştırın ve aşağıdaki filmler veritabanına eklenmesi gerekir.
+Bu bölümün ekran görüntülerini eşleştirmek için, uygulamayı (F5) çalıştırmanız ve aşağıdaki filmleri veritabanına eklemeniz gerekir.
 
-| Başlık | Yayınlanma Tarihi | Tarzı | Fiyat |
+| Title | Yayın Tarihi | Tarzı | Fiyat |
 | ----- | ------------ | ----- | ----- |
-| Ghostbusters | 6/8/1984 | Komedi | 6.99 |
-| Ghostbusters II | 6/16/1989 | Komedi | 6.99 |
-| Apes, çok büyük | 3/27/1986 | Eylem | 5.99 |
+| Ghostbusters | 6/8/1984 | Komedi | 6,99 |
+| Ghostbusters II | 6/16/1989 | Komedi | 6,99 |
+| Apes 'nin Planet | 3/27/1986 | Eylem | 5,99 |
 
+## <a name="updating-the-index-form"></a>Dizin formunu güncelleştirme
 
-## <a name="updating-the-index-form"></a>Dizin formun güncelleştiriliyor
-
-Başlangıç güncelleştirerek `Index` mevcut eylem yöntemine `MoviesController` sınıfı. Kod aşağıdaki gibidir:
+`Index`Eylem yöntemini mevcut sınıfa güncelleştirerek başlayın `MoviesController` . Kod şu şekildedir:
 
 [!code-csharp[Main](adding-search/samples/sample1.cs?highlight=1,6-9)]
 
-İlk satırı `Index` yöntemi oluşturur aşağıdaki [LINQ](https://msdn.microsoft.com/library/bb397926.aspx) filmler seçmek için sorgu:
+Yöntemin ilk satırı, `Index` filmleri seçmek için aşağıdaki [LINQ](https://msdn.microsoft.com/library/bb397926.aspx) sorgusunu oluşturur:
 
 [!code-csharp[Main](adding-search/samples/sample2.cs)]
 
-Sorgu, bu noktada tanımlanır ancak veritabanında henüz çalıştırılmadı.
+Sorgu bu noktada tanımlandı, ancak henüz veritabanında çalıştırılmadı.
 
-Varsa `searchString` parametresi içeren bir dize, filmler sorgu aşağıdaki kodu kullanarak, bir arama dizesi değerini temel filtrelemek için değiştirilir:
+`searchString`Parametresi bir dize içeriyorsa, filmler sorgusu, aşağıdaki kodu kullanarak arama dizesinin değerine göre filtreleyecek şekilde değiştirilir:
 
 [!code-csharp[Main](adding-search/samples/sample3.cs)]
 
-`s => s.Title` Kodu yukarıdaki bir [Lambda ifadesi](https://msdn.microsoft.com/library/bb397687.aspx). Lambda ifadeleri yöntem tabanlı kullanılan [LINQ](https://msdn.microsoft.com/library/bb397926.aspx) gibi sorgularında standart sorgu işleci yöntemlerinin bağımsız değişkenleri olarak [burada](https://msdn.microsoft.com/library/system.linq.enumerable.where.aspx) Yukarıdaki kod içinde kullanılan yöntem. LINQ sorguları tanımlandıkları veya bunlar bir yöntemi çağırarak değiştirildiğinde yürütülmez `Where` veya `OrderBy`. Bunun yerine, sorgu yürütmesi, üzerinden gerçekleştirilen değeri gerçekten yinelendiğinde kadar bir ifade değerlendirmesi ertelendi anlamına gelir ertelenmiştir veya [ `ToList` ](https://msdn.microsoft.com/library/bb342261.aspx) yöntemi çağrılır. İçinde `Search` örnek, sorgu yürütülürse *Index.cshtml* görünümü. Ertelenen sorgu yürütme hakkında daha fazla bilgi için bkz. [sorgu yürütme](https://msdn.microsoft.com/library/bb738633.aspx).
+`s => s.Title`Yukarıdaki kod bir [lambda ifadesidir](https://msdn.microsoft.com/library/bb397687.aspx). Lambdalar, yukarıdaki kodda kullanılan [WHERE](https://msdn.microsoft.com/library/system.linq.enumerable.where.aspx) yöntemi gibi standart sorgu işleci yöntemlerine bağımsız değişkenler olarak Yöntem tabanlı [LINQ](https://msdn.microsoft.com/library/bb397926.aspx) sorgularında kullanılır. LINQ sorguları tanımlandıklarında veya veya gibi bir yöntem çağırarak değiştirildiklerinde yürütülmez `Where` `OrderBy` . Bunun yerine, sorgu yürütmesi ertelenir, bu da bir ifadenin değerlendirmesinin, gerçekleştirilmiş değeri gerçekten üzerinde yinelenene veya yöntem çağrılana kadar gecikildiği anlamına gelir [`ToList`](https://msdn.microsoft.com/library/bb342261.aspx) . `Search`Örnekte, sorgu *Index. cshtml* görünümünde yürütülür. Ertelenmiş sorgu yürütme hakkında daha fazla bilgi için bkz. [sorgu yürütme](https://msdn.microsoft.com/library/bb738633.aspx).
 
 > [!NOTE]
-> [İçerir](https://msdn.microsoft.com/library/bb155125.aspx) yöntemi, veritabanı, c# kodunda değil yukarıdaki çalıştırılır. Veritabanında [içerir](https://msdn.microsoft.com/library/bb155125.aspx) eşlendiği [SQL gibi](https://msdn.microsoft.com/library/ms179859.aspx), büyük küçük harfe duyarlı olduğu.
+> [Contains](https://msdn.microsoft.com/library/bb155125.aspx) yöntemi, yukarıdaki c# kodu değil, veritabanında çalıştırılır. Veritabanında [SQL gibi](https://msdn.microsoft.com/library/ms179859.aspx)eşlemeler [içerir](https://msdn.microsoft.com/library/bb155125.aspx) , büyük/küçük harfe duyarsız olur.
 
-Şimdi güncelleştirebilirsiniz `Index` kullanıcıya form görüntüleyecek görünümü.
+Artık `Index` formu kullanıcıya görüntüleyecek görünümü güncelleştirebilirsiniz.
 
-Uygulamayı çalıştırmak ve gidin */filmler/dizin*. Bir sorgu dizesi gibi ekleme `?searchString=ghost` URL'si. Filtrelenmiş filmler görüntülenir.
+Uygulamayı çalıştırın ve */movies/Index*adresine gidin. URL 'ye gibi bir sorgu dizesi ekleyin `?searchString=ghost` . Filtrelenmiş filmler görüntülenir.
 
 ![SearchQryStr](adding-search/_static/image1.png)
 
-İmzası değiştirirseniz `Index` adlı bir parametreye sahip yöntemi `id`, `id` parametresi eşleşir `{id}` varsayılan için yer tutucu yönlendiren kümesinde *uygulama\_Start\ RouteConfig.cs* dosya.
+`Index`Yönteminin imzasını adlı bir parametreye sahip olacak şekilde değiştirirseniz `id` , `id` parametresi `{id}` *App \_ start\routeconfig.cs* dosyasında ayarlanan varsayılan yolların yer tutucusuyla eşleşir.
 
 [!code-json[Main](adding-search/samples/sample4.json)]
 
-Özgün `Index` yöntemi aşağıdaki gibi görünür:
+Özgün `Index` Yöntem şöyle görünür::
 
 [!code-csharp[Main](adding-search/samples/sample5.cs)]
 
-Değiştirilmiş `Index` yöntemi şu şekilde görünür:
+Değiştirilen `Index` Yöntem şöyle görünür:
 
 [!code-csharp[Main](adding-search/samples/sample6.cs?highlight=1,3)]
 
-Arama başlığı olarak bir sorgu dizesi değeri olarak rota verilerini (URL kesimi) yerine artık geçirebilirsiniz.
+Artık arama başlığını sorgu dizesi değeri yerine rota verileri (bir URL segmenti) olarak geçirebilirsiniz.
 
 ![](adding-search/_static/image2.png)
 
-Ancak, bunlar bir filmi için arama yapmak istediğiniz her zaman URL'sini değiştirmek için kullanıcıların beklediğiniz olamaz. Şimdi, filmler filtre yardımcı olmak için kullanıcı Arabirimi ekleyeceksiniz. İmzası değiştirdiyseniz `Index` metodu rota bağlı ID parametresine geçirilecek nasıl test etmek için değiştirme geri böylece, `Index` yöntemi adlı bir dize parametresi alır `searchString`:
+Ancak, kullanıcıların bir filmi her arayışınızda URL 'YI değiştirmesini beklemeniz gerekmez. Böylece, filmlerin filtrelemesine yardımcı olmak için Kullanıcı arabirimi ekleyeceğiz. `Index`Yol ile bağlantılı kimlik parametresinin nasıl geçirileceğini test etmek için yönteminin imzasını değiştirdiyseniz, `Index` yönteminizin adlı bir dize parametresi alması için geri değiştirin `searchString` :
 
 [!code-csharp[Main](adding-search/samples/sample7.cs)]
 
-Açık *Views\Movies\Index.cshtml* dosyasını açın ve sonra yalnızca `@Html.ActionLink("Create New", "Create")`, aşağıda Vurgulanan form biçimlendirme ekleyin:
+*Views\Movies\Index.cshtml* dosyasını açın ve hemen sonra `@Html.ActionLink("Create New", "Create")` vurgulanan form işaretlemesini ekleyin:
 
 [!code-cshtml[Main](adding-search/samples/sample8.cshtml?highlight=12-15)]
 
-`Html.BeginForm` Yardımcısı oluşturur açılış `<form>` etiketi. `Html.BeginForm` Yardımcısı neden tıklayarak kullanıcı formu gönderdiğinde, kendisine göndermek form **filtre** düğmesi.
+`Html.BeginForm`Yardımcı, bir açılış `<form>` etiketi oluşturur. `Html.BeginForm`Yardımcı, Kullanıcı **filtre** düğmesine tıklayarak formu gönderdiğinde formun kendine göndermesine neden olur.
 
-Visual Studio 2013, görüntüleme ve düzenleme görünümü dosyaları iyi bir gelişme vardır. Bir görünümü dosyasıyla uygulamayı açık çalıştırdığınızda Visual Studio 2013 görüntülemek için doğru denetleyici eylem yöntemi çağırır.
+Visual Studio 2013, görüntüleme dosyalarını görüntülerken ve düzenlenirken iyi bir iyileştirmedir. Uygulamayı bir görünüm dosyası açıkken çalıştırdığınızda Visual Studio 2013, görünümü görüntülemek için doğru denetleyici eylemi yöntemini çağırır.
 
 ![](adding-search/_static/image3.png)
 
-Dizin görünümünün (yukarıdaki görüntüde gösterildiği gibi), Visual Studio'da açın, uygulamayı çalıştırın ve ardından bir filmi için aramayı deneyin için CTRL-F5 veya F5'e dokunun.
+Visual Studio 'da (yukarıdaki görüntüde gösterildiği gibi) dizin görünümü açık olduğunda, uygulamayı çalıştırmak için Mrk F5 veya F5 ' e dokunun ve ardından bir filmi aramayı deneyin.
 
 ![](adding-search/_static/image4.png)
 
-Var olan hiçbir `HttpPost` aşırı yükünü `Index` yöntemi. Yöntemi uygulama durumunu değiştirme değildir çünkü, yalnızca verileri filtreleme gerekmez.
+`HttpPost`Metodun aşırı yüklemesi yoktur `Index` . Bunun için gerekli değildir çünkü yöntem uygulamanın durumunu değiştirmediğinden verileri filtrelememeniz yeterlidir.
 
-Aşağıdaki ekleyebilirsiniz `HttpPost Index` yöntemi. Bu durumda, eylem çağırıcısını BC `HttpPost Index` yöntemi ve `HttpPost Index` yöntemi aşağıdaki resimde gösterildiği gibi çalıştırın.
+Aşağıdaki `HttpPost Index` yöntemi ekleyebilirsiniz. Bu durumda, çalıştırılan eylem `HttpPost Index` yöntemiyle eşleşir ve `HttpPost Index` yöntemi aşağıdaki görüntüde gösterildiği gibi çalışır.
 
 [!code-csharp[Main](adding-search/samples/sample9.cs)]
 
-![SearchPostGhost](adding-search/_static/image5.png)
+![Searchposthayalet](adding-search/_static/image5.png)
 
-Ancak, bu eklediğiniz bile `HttpPost` sürümünü `Index` yöntemi nasıl bu tüm uygulanmıştır içinde bir sınırlama yoktur. Belirli bir arama yer işareti koymak istediğiniz veya bunlar filmler aynı filtrelenmiş listesini görmek için tıklayabilirsiniz arkadaşlarınıza bağlantı göndermek istediğiniz düşünün. HTTP POST isteği URL'sini GET isteği (localhost:xxxxx filmler/dizin) URL'si ile aynıdır; URL içinde hiçbir arama bilgisi dikkat edin. Sağ artık, arama dizesi bilgilerini sunucuya biçiminde alan değeri gönderilir. Bu, yer işareti veya bir URL içinde arkadaş göndermek için bu arama bilgileri yakalayamazsınız anlamına gelir.
+Ancak, bu yöntemin bu sürümünü eklemeseniz bile `HttpPost` `Index` , tümünün nasıl uygulandığını gösteren bir sınırlama vardır. Belirli bir arama için yer işareti koymak istediğinizi veya aynı film filtrelenmiş listesini görmek için onlara tıklabilecekleri bir bağlantı göndermek istediğinizi düşünün. HTTP POST isteğinin URL 'SI GET isteğinin URL 'siyle (localhost: xxxxx/filmler/dizin) aynı olduğunu ve URL 'de arama bilgisi olmadığını unutmayın. Şu anda arama dizesi bilgileri sunucuya form alanı değeri olarak gönderilir. Bu, arama bilgilerini bir URL 'de yer işaretine veya arkadaşlara göndermek için yakalayamazsınız.
 
-Çözüm bir aşırı yüklemesini kullanmaktır `BeginForm` POST isteği URL'sini arama bilgilerini eklemeniz gerekir ve bunun için yönlendirileceğini belirtir `HttpGet` sürümünü `Index` yöntemi. Parametresiz varolan `BeginForm` aşağıdaki işaretlemeyle yöntemi:
+Çözüm, `BeginForm` Post ISTEĞININ URL 'ye arama bilgilerini eklemesi gerektiğini ve yöntemin sürümüne yönlendirilmesini belirten bir aşırı yüklemesi kullanmaktır `HttpGet` `Index` . Mevcut parametresiz `BeginForm` yöntemi aşağıdaki biçimlendirme ile değiştirin:
 
 [!code-cshtml[Main](adding-search/samples/sample10.cshtml)]
 
 ![BeginFormPost_SM](adding-search/_static/image6.png)
 
-Artık bir arama gönderdiğinizde, URL'yi bir arama sorgu dizesi içerir. Arama de gider için `HttpGet Index` eylem yöntemi, varsa bile bir `HttpPost Index` yöntemi.
+Artık bir arama gönderdiğinizde URL bir arama sorgu dizesi içerir. `HttpGet Index`Bir yönteminiz olsa da, arama eylem yöntemine de gidecektir `HttpPost Index` .
 
-![IndexWithGetURL](adding-search/_static/image7.png)
+![Indexwithgeturl](adding-search/_static/image7.png)
 
 ## <a name="adding-search-by-genre"></a>Türe göre arama ekleme
 
-Eklediyseniz `HttpPost` sürümünü `Index` yöntemi, şimdi silin.
+`HttpPost`Yöntemin sürümünü eklediyseniz `Index` , şimdi silin.
 
-Ardından, kullanıcıların filmler için türe göre arama bir özellik ekleyeceksiniz. Değiştirin `Index` yöntemini aşağıdaki kod ile:
+Daha sonra, kullanıcıların film tarza göre aramasını sağlamak için bir özellik ekleyeceksiniz. `Index` yöntemini aşağıdaki kod ile değiştirin:
 
 [!code-csharp[Main](adding-search/samples/sample11.cs)]
 
-Bu sürümü `Index` yöntemi alır ek bir parametre, yani `movieGenre`. İlk birkaç kod satırlarının bir `List` film türleri veritabanından tutacak nesne.
+Yöntemin bu sürümü `Index` ek bir parametre alır, yani `movieGenre` . İlk birkaç kod satırı, `List` veritabanından film tarzları tutacak bir nesne oluşturur.
 
-Tüm türleri veritabanından alır bir LINQ Sorgu kodudur.
+Aşağıdaki kod, veritabanından tüm tarzları alan bir LINQ sorgusudur.
 
 [!code-csharp[Main](adding-search/samples/sample12.cs)]
 
-Kod `AddRange` genel yöntemini `List` farklı türleri listesine eklemek için koleksiyonu. (Olmadan `Distinct` değiştiricisi, yinelenen tür eklenecek — Örneğin, iki kez örneğimizi Komedi eklenir). Kod içinde türleri listesini ardından depolar `ViewBag.MovieGenre` nesne. (Bu tür bir film türleri) kategori verilerinizi depolamanıza bir [SelectList](https://msdn.microsoft.cus/library/system.web.mvc.selectlist(v=vs.108).aspx) nesnesine bir `ViewBag`, MVC uygulamaları için tipik bir yaklaşım ise bir açılan liste kutusunda kategori verilere erişme.
+Kod, `AddRange` `List` tüm benzersiz tarzları listeye eklemek için genel koleksiyonun yöntemini kullanır. (Değiştirici olmadan `Distinct` yinelenen tarzlar eklenir — Örneğin, örneğimizde komedi iki kez eklenir). Daha sonra kod, nesne içindeki tarzların listesini depolar `ViewBag.MovieGenre` . Kategori verilerini (film tarzları) içinde bir [SelectList](https://msdn.microsoft.cus/library/system.web.mvc.selectlist(v=vs.108).aspx) nesnesi olarak depolama `ViewBag` , sonra bir açılan liste kutusunda Kategori VERILERINE erişme, MVC uygulamaları için tipik bir yaklaşımdır.
 
-Aşağıdaki kod nasıl kontrol edileceğini göstermektedir `movieGenre` parametresi. Boş değilse, belirtilen türe seçili film sınırlamak için filmler sorgu kodu daha ayrıntılı kısıtlar.
+Aşağıdaki kod, parametresinin nasıl kontrol alınacağını gösterir `movieGenre` . Boş değilse, kod, seçili filmleri belirtilen tarzya sınırlamak için film sorgusunu daha da kısıtlar.
 
 [!code-csharp[Main](adding-search/samples/sample13.cs)]
 
-Film listesi üzerinden yinelenir kadar daha önce bahsedildiği gibi sorgu veritabanında çalıştırılmaz (hangi olur Görünümü'nde sonra `Index` eylem yöntemine döndürür).
+Daha önce belirtildiği gibi, bir sorgu, film listesi üzerinde yinelenene kadar (görünümde, eylem yöntemi döndürüldüğünde gerçekleşen) veritabanı üzerinde çalışmaz `Index` .
 
-## <a name="adding-markup-to-the-index-view-to-support-search-by-genre"></a>Biçimlendirme türe göre ara desteklemek için dizini görünümü ekleme
+## <a name="adding-markup-to-the-index-view-to-support-search-by-genre"></a>Türe göre aramayı desteklemek için dizin görünümüne biçimlendirme ekleme
 
-Ekleme bir `Html.DropDownList` yardımcıya *Views\Movies\Index.cshtml* hemen önce dosya `TextBox` Yardımcısı. Tamamlanan biçimlendirme aşağıda gösterilmiştir:
+`Html.DropDownList` *Views\Movies\Index.cshtml* dosyasına yardımcı olan bir yardımcı ekleyin `TextBox` . Tamamlanan biçimlendirme aşağıda gösterilmektedir:
 
 [!code-cshtml[Main](adding-search/samples/sample14.cshtml?highlight=11)]
 
@@ -148,22 +146,22 @@ Aşağıdaki kodda:
 
 [!code-cshtml[Main](adding-search/samples/sample15.cshtml)]
 
-"MovieGenre" parametresi için anahtar sağlar `DropDownList` bulmaya yardımcı bir `IEnumerable<SelectListItem>` içinde `ViewBag`. `ViewBag` Eylem yönteminde doldurulup doldurulmadığına:
+"Movietarz" parametresi `DropDownList` , içinde bir içinde bulunacak yardımcı için anahtar sağlar `IEnumerable<SelectListItem>` `ViewBag` . `ViewBag`Eylem yönteminde doldurulmıştı:
 
 [!code-csharp[Main](adding-search/samples/sample16.cs?highlight=10)]
 
-Parametre bir seçenek etiketini "Tüm" sağlar. Bu seçenek, tarayıcınızda inceleyin, kendi "value" özniteliği boş olduğunu görürsünüz. Denetleyici yalnızca filtreler bu yana `if` dize değil `null` veya göndermek için boş değer boş, `movieGenre` tüm türleri gösterir.
+"All" parametresi bir seçenek etiketi sağlar. Bu seçimi tarayıcınızda inceleyebilirsiniz, "Value" özniteliğinin boş olduğunu görürsünüz. Denetleyicimiz yalnızca dizeyi filtreleyerek `if` `null` veya boş olduğundan, için boş bir değer gönderilmesi `movieGenre` Tüm tarzları gösterir.
 
-Varsayılan olarak seçilecek bir seçenek de ayarlayabilirsiniz. Varsayılan seçenek olarak "Komedi" istediyseniz, denetleyici kodda değiştirirsiniz şu şekilde:
+Ayrıca, varsayılan olarak seçilecek bir seçenek de ayarlayabilirsiniz. Varsayılan seçenek olarak "komedi" isterseniz, denetleyicideki kodu şöyle değiştirirsiniz:
 
 [!code-cshtml[Main](adding-search/samples/sample17.cshtml)]
 
-Uygulamayı çalıştırmak ve göz atın */filmler/dizin*. Türe, film adı ve her iki ölçütlere göre bir arama deneyin.
+Uygulamayı çalıştırın ve */movies/Index*konumuna gidin. Türe göre, film adına ve her iki ölçüte göre arama yapmayı deneyin.
 
 ![](adding-search/_static/image8.png)
 
-Bu bölümde bir arama eylem yöntemi ve kullanıcıların filmi Tarz arama görünüm oluşturuldu. Sonraki bölümde, bir özelliğin ekleneceği nasıl şu konuları inceleyeceğiz `Movie` modeli ve bir test veritabanı otomatik olarak oluşturacak bir başlatıcı ekleme.
+Bu bölümde, kullanıcıların film başlığına ve tarzya göre arama yapmasına izin veren bir arama eylemi yöntemi ve görünümü oluşturdunuz. Sonraki bölümde, modele nasıl özellik ekleneceğini `Movie` ve otomatik olarak bir test veritabanı oluşturacak Başlatıcı nasıl ekleneceğini inceleyeceğiz.
 
 > [!div class="step-by-step"]
-> [Önceki](examining-the-edit-methods-and-edit-view.md)
-> [İleri](adding-a-new-field.md)
+> [Önceki](examining-the-edit-methods-and-edit-view.md) 
+>  [Sonraki](adding-a-new-field.md)

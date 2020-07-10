@@ -1,214 +1,212 @@
 ---
 uid: mvc/overview/older-versions/getting-started-with-aspnet-mvc4/examining-the-edit-methods-and-edit-view
-title: Düzenleme metotlarını ve düzenleme görünümünü İnceleme | Microsoft Docs
+title: Düzenleme yöntemleri ve düzenleme görünümü inceleniyor | Microsoft Docs
 author: Rick-Anderson
-description: 'Not: Bu öğreticide güncelleştirilmiş bir sürümünü burada ASP.NET MVC 5 ve Visual Studio 2013 kullanan kullanılabilir. Bu, daha güvenli ve izleyin ve tanıtım çok daha kolay...'
+description: 'Note: ASP.NET MVC 5 ve Visual Studio 2013 kullanan Bu öğreticinin güncelleştirilmiş bir sürümü mevcuttur. Daha güvenlidir, izleme ve tanıtım için çok daha kolay...'
 ms.author: riande
 ms.date: 08/28/2012
 ms.assetid: 41eb99ca-e88f-4720-ae6d-49a958da8116
 msc.legacyurl: /mvc/overview/older-versions/getting-started-with-aspnet-mvc4/examining-the-edit-methods-and-edit-view
 msc.type: authoredcontent
-ms.openlocfilehash: d22b6a02a211e61707e9660c64b87a8c08388e58
-ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
+ms.openlocfilehash: 85ad9a5758d70b5fe4ed792efb80217d7b3e2132
+ms.sourcegitcommit: e7e91932a6e91a63e2e46417626f39d6b244a3ab
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/09/2019
-ms.locfileid: "59392098"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "86163059"
 ---
 # <a name="examining-the-edit-methods-and-edit-view"></a>Düzenleme Metotlarını ve Düzenleme Görünümünü İnceleme
 
-Tarafından [Rick Anderson]((https://twitter.com/RickAndMSFT))
+[Rick Anderson](https://twitter.com/RickAndMSFT) tarafından
 
 > > [!NOTE]
-> > Bu öğreticide güncelleştirilmiş bir sürümü kullanılabilir [burada](../../getting-started/introduction/getting-started.md) ASP.NET MVC 5 ve Visual Studio 2013'ü kullanır. Bu, daha güvenli ve izlemek çok daha kolay ve daha fazla özelliklerini gösterir.
+> > [Burada](../../getting-started/introduction/getting-started.md) ASP.NET MVC 5 ve Visual Studio 2013 kullanan Bu öğreticinin güncelleştirilmiş bir sürümü mevcuttur. Daha güvenlidir, daha kolay hale gelir ve daha fazla özellik gösterir.
 
+Bu bölümde, film denetleyicisi için oluşturulan eylem yöntemlerini ve görünümlerini inceleyeceksiniz. Ardından özel bir arama sayfası ekleyeceksiniz.
 
-Bu bölümde, oluşturulan eylem metotları ve görünümleri film denetleyicisi inceleyeceğiz. Ardından, özel arama sayfası ekleyeceksiniz.
-
-Uygulamayı çalıştırmak ve göz atın `Movies` ekleyerek denetleyicisi */Movies* tarayıcınızın adres çubuğundaki URL. Fare işaretçisini tutun bir **Düzenle** bağlantı URL'sini görmek için bağlantı.
+Uygulamayı çalıştırın ve `Movies` tarayıcınızın adres ÇUBUĞUNDAKI URL 'ye */filmler* ekleyerek denetleyiciye gidin. Bağlantı yaptığı URL 'yi görmek için fare işaretçisini bir **düzenleme** bağlantısı üzerine tutun.
 
 ![EditLink_sm](examining-the-edit-methods-and-edit-view/_static/image1.png)
 
-**Düzenle** bağlantı tarafından oluşturulan `Html.ActionLink` yönteminde *Views\Movies\Index.cshtml* görüntüle:
+**Düzenleme** bağlantısı, `Html.ActionLink` *Views\Movies\Index.cshtml* görünümündeki yöntemi tarafından oluşturulmuştur:
 
 [!code-cshtml[Main](examining-the-edit-methods-and-edit-view/samples/sample1.cshtml)]
 
-![Html.ActionLink](examining-the-edit-methods-and-edit-view/_static/image2.png)
+![HTML. ActionLink](examining-the-edit-methods-and-edit-view/_static/image2.png)
 
-`Html` Nesnesi üzerinde bir özelliği kullanılarak açığa çıkarılır bir yardımcı olan [System.Web.Mvc.WebViewPage](https://msdn.microsoft.com/library/gg402107(VS.98).aspx) temel sınıfı. `ActionLink` Yardımcı yöntemini dinamik olarak HTML köprüler, eylem yöntemlerine denetleyicilerde bağlantı oluşturmak kolaylaştırır. İlk bağımsız değişkeni `ActionLink` yöntemdir işlemek için bağlantı metni (örneğin, `<a>Edit Me</a>`). İkinci bağımsız değişkeni çağrılacak eylem yöntemi adıdır. Son bağımsız değişken bir [anonim nesne](https://weblogs.asp.net/scottgu/archive/2007/05/15/new-orcas-language-feature-anonymous-types.aspx) , rota verilerini (Bu durumda 4 kimliği) oluşturur.
+`Html`Nesnesi, [System. Web. Mvc. WebViewPage](https://msdn.microsoft.com/library/gg402107(VS.98).aspx) temel sınıfında özelliği kullanılarak ortaya çıkarılan bir yardımcıdır. `ActionLink`Yardımcı yöntemi, denetleyicilerde eylem yöntemlerine bağlantı sağlayan HTML köprülerini dinamik olarak oluşturmayı kolaylaştırır. Yöntemin ilk bağımsız değişkeni, `ActionLink` işlenecek bağlantı metindir (örneğin, `<a>Edit Me</a>` ). İkinci bağımsız değişken çağrılacak eylem yönteminin adıdır. Son bağımsız değişken, yol verilerini üreten [anonim bir nesnedir](https://weblogs.asp.net/scottgu/archive/2007/05/15/new-orcas-language-feature-anonymous-types.aspx) (Bu durumda, 4 ' ün kimliği).
 
-Önceki görüntüde verilen oluşturulan bağlantı `http://localhost:xxxxx/Movies/Edit/4`. Varsayılan yol (içinde belirlenen *uygulama\_Start\RouteConfig.cs*) URL deseni alan `{controller}/{action}/{id}`. Bu nedenle, ASP.NET çevirir `http://localhost:xxxxx/Movies/Edit/4` bir istek halinde `Edit` eylem yöntemi `Movies` denetleyicisi parametresiyle `ID` 4 eşittir. Aşağıdaki kod İnceleme *uygulama\_Start\RouteConfig.cs* dosya.
+Önceki görüntüde gösterilen oluşturulan bağlantı `http://localhost:xxxxx/Movies/Edit/4` . Varsayılan yol ( *App \_ Start\routeconfig.cs*IÇINDE kurulan) URL modelini alır `{controller}/{action}/{id}` . Bu nedenle, ASP.NET, `http://localhost:xxxxx/Movies/Edit/4` `Edit` denetleyicinin Action metoduna 4 ' e eşit olan bir isteğe çevirir `Movies` `ID` . Aşağıdaki kodu *App \_ Start\routeconfig.cs* dosyasından inceleyin.
 
 [!code-csharp[Main](examining-the-edit-methods-and-edit-view/samples/sample2.cs)]
 
-Sorgu dizesi kullanarak bir eylem yöntemi parametrelerine de geçirebilirsiniz. Örneğin, URL `http://localhost:xxxxx/Movies/Edit?ID=4` ayrıca parametresini geçirir `ID` için 4'ün `Edit` eylem yöntemi `Movies` denetleyicisi.
+Ayrıca, bir sorgu dizesi kullanarak eylem yöntemi parametrelerini geçirebilirsiniz. Örneğin, URL `http://localhost:xxxxx/Movies/Edit?ID=4` Ayrıca `ID` 4 parametresini `Edit` denetleyicinin Action yöntemine geçirir `Movies` .
 
 ![EditQueryString](examining-the-edit-methods-and-edit-view/_static/image3.png)
 
-Açık `Movies` denetleyicisi. İki `Edit` eylem yöntemleri aşağıda gösterilmektedir.
+Denetleyiciyi açın `Movies` . İki `Edit` eylem yöntemi aşağıda gösterilmiştir.
 
 [!code-csharp[Main](examining-the-edit-methods-and-edit-view/samples/sample3.cs)]
 
-İkinci fark `Edit` eylem yöntemine öncesinde `HttpPost` özniteliği. Bu öznitelik Bu aşırı yüklemesini belirtir `Edit` yöntemi yalnızca POST istekleri için çağrılan. Geçerli olabilir `HttpGet` ilk özniteliği Düzenle yöntemi, ancak bu gerekli değildir, varsayılan olduğundan. (Biz örtük olarak atanmış olan eylem yöntemleri için başvuracağınız `HttpGet` olarak özniteliği `HttpGet` yöntemler.)
+İkinci `Edit` eylem yönteminin önünde özniteliği olduğuna dikkat edin `HttpPost` . Bu öznitelik, yöntemin aşırı yüklemesinin `Edit` yalnızca post istekleri için çağrılabileceğini belirtir. `HttpGet`Özniteliği ilk düzenleme yöntemine uygulayabilirsiniz, ancak varsayılan değer olduğundan bu gerekli değildir. (Özniteliği Yöntem olarak örtük olarak atanmış eylem yöntemlerine başvuracağız `HttpGet` `HttpGet` .)
 
-`HttpGet` `Edit` Yöntemi film kimliği parametre alır, Entity Framework kullanarak filmi arar `Find` yöntemi ve düzenleme görünümü seçili film döndürür. ID parametresi belirtir bir [varsayılan değer](https://msdn.microsoft.com/library/dd264739.aspx) biri sıfır `Edit` yöntemi, bir parametre olmadan çağrılır. Bir filmi bulunamazsa [HttpNotFound](https://msdn.microsoft.com/library/gg453938(VS.98).aspx) döndürülür. Yapı iskelesi sistem düzenleme görünümü oluşturduğunuzda, onu incelenirken `Movie` sınıfı ve işlemek için oluşturulan kodu `<label>` ve `<input>` sınıfın her bir özellik için öğeleri. Aşağıdaki örnek, oluşturulan düzenleme görünümünü gösterir:
+`HttpGet` `Edit` Yöntemi, film kimliği parametresini alır, Entity Framework yöntemini kullanarak filmi arar `Find` ve seçili filmi düzenleme görünümüne döndürür. Yöntem parametre olmadan çağrılırsa, ID parametresi [varsayılan değeri](https://msdn.microsoft.com/library/dd264739.aspx) sıfır olarak belirler `Edit` . Bir film bulunamazsa, [Httpnotfound](https://msdn.microsoft.com/library/gg453938(VS.98).aspx) döndürülür. Scafkatlama sistemi düzenleme görünümü oluştururken, sınıfını ve `Movie` `<label>` `<input>` sınıfının her bir özelliği için işlenecek kodu ve öğelerini inceledi. Aşağıdaki örnek, oluşturulan düzenleme görünümünü göstermektedir:
 
 [!code-cshtml[Main](examining-the-edit-methods-and-edit-view/samples/sample4.cshtml)]
 
-Şablonu Görüntüle nasıl olduğunu fark bir `@model MvcMovie.Models.Movie` deyimini dosyanın üst — bu görünüm model görünüm şablonu türünde olmasını bekliyor belirtir `Movie`.
+Görünüm şablonunun dosyanın en üstünde bir ifadeye sahip olduğuna dikkat edin `@model MvcMovie.Models.Movie` ; Bu, görünümün görünüm şablonu için modelin tür olmasını beklediğini belirtir `Movie` .
 
-İskele kurulan kodu birkaç kullanan *yardımcı yöntemler* HTML biçimlendirmeyi basitleştirmek için. [ `Html.LabelFor` ](https://msdn.microsoft.com/library/gg401864(VS.98).aspx) Yardımcı, alan adını görüntüler (&quot;başlık&quot;, &quot;ReleaseDate&quot;, &quot;Tarz&quot;, veya &quot;fiyat &quot;). [ `Html.EditorFor` ](https://msdn.microsoft.com/library/system.web.mvc.html.editorextensions.editorfor(VS.98).aspx) İşleyen bir HTML Yardımcısı `<input>` öğesi. [ `Html.ValidationMessageFor` ](https://msdn.microsoft.com/library/system.web.mvc.html.validationextensions.validationmessagefor(VS.98).aspx) Yardımcısı, bu özellikle ilişkili herhangi bir doğrulama iletisi görüntüler.
+Scafkatlanmış kod, HTML işaretlemesini kolaylaştırmak için çeşitli *yardımcı yöntemler* kullanır. [`Html.LabelFor`](https://msdn.microsoft.com/library/gg401864(VS.98).aspx)Yardımcı, alanın adını ( &quot; başlık &quot; , &quot; ReleaseDate &quot; , &quot; tarz &quot; veya &quot; Fiyat) görüntüler &quot; . [`Html.EditorFor`](https://msdn.microsoft.com/library/system.web.mvc.html.editorextensions.editorfor(VS.98).aspx)Yardımcı BIR HTML öğesi işler `<input>` . [`Html.ValidationMessageFor`](https://msdn.microsoft.com/library/system.web.mvc.html.validationextensions.validationmessagefor(VS.98).aspx)Yardımcı, bu özellikle ilişkili tüm doğrulama iletilerini görüntüler.
 
-Uygulamayı çalıştırmak ve gidin */Movies* URL'si. ' A tıklayın bir **Düzenle** bağlantı. Tarayıcıda, sayfa için kaynağı görüntüleyin. HTML form öğesi için aşağıda gösterilmiştir.
+Uygulamayı çalıştırın ve */filmler* URL 'sine gidin. Bir **düzenleme** bağlantısına tıklayın. Tarayıcıda, sayfanın kaynağını görüntüleyin. Form öğesi için HTML aşağıda gösterilmiştir.
 
 [!code-html[Main](examining-the-edit-methods-and-edit-view/samples/sample5.html?highlight=7,10-11)]
 
-`<input>` Öğeleri olan bir HTML `<form>` öğesi olan `action` özniteliğinin ayarlanmış gönderinin yayımlanacağı */filmler/düzenleme* URL'si. Form verileri sunucuya yayımlanacak olduğunda **Düzenle** düğmesine tıklandığında.
+`<input>`Öğeleri `<form>` `action` özniteliği */movies/Edit* URL 'SINE postala olarak ayarlanmış bir HTML öğesi. Form verileri, **Düzenle** düğmesine tıklandığında sunucuya gönderilir.
 
-## <a name="processing-the-post-request"></a>POST isteğini işleme
+## <a name="processing-the-post-request"></a>POST Isteği işleniyor
 
-Aşağıdaki liste gösterildiği `HttpPost` sürümünü `Edit` eylem yöntemi.
+Aşağıdaki listede `HttpPost` `Edit` eylem yönteminin sürümü gösterilmektedir.
 
 [!code-csharp[Main](examining-the-edit-methods-and-edit-view/samples/sample6.cs)]
 
-[ASP.NET MVC model bağlayıcı](https://msdn.microsoft.com/magazine/hh781022.aspx) gönderilen form değerlerini alır ve oluşturur bir `Movie` olarak geçirilen nesne `movie` parametresi. `ModelState.IsValid` Yöntemi doğrular (düzenleme veya güncelleştirme) değiştirileceğini biçiminde gönderilen veriler kullanılabilir bir `Movie` nesne. Veriler geçerliyse, film verileri kaydedilen `Movies` koleksiyonunu `db(MovieDBContext` örnek). Çağrı yaparak yeni film verileri veritabanına kaydedilir `SaveChanges` yöntemi `MovieDBContext`. Verileri kaydettikten sonra kodu kullanıcı için yönlendiren `Index` eylem yöntemi `MoviesController` sınıfı, görüntüleyen yaptığınız değişiklikleri içeren film koleksiyonun.
+[ASP.NET MVC model Ciltçi](https://msdn.microsoft.com/magazine/hh781022.aspx) , postalanan form değerlerini alır ve `Movie` parametresi olarak geçirilmiş bir nesne oluşturur `movie` . `ModelState.IsValid`Yöntemi, formda gönderilen verilerin bir nesneyi değiştirmek (düzenlemek veya güncelleştirmek) için kullanılabileceğini doğrular `Movie` . Veriler geçerliyse, film verileri `Movies` örnek koleksiyonuna kaydedilir `db(MovieDBContext` ). Yeni film verileri, yöntemi çağırarak veritabanına kaydedilir `SaveChanges` `MovieDBContext` . Veriler kaydedildikten sonra, kod, `Index` `MoviesController` Yeni yapılan değişiklikler dahil olmak üzere film koleksiyonunu görüntüleyen sınıfının Action yöntemine kullanıcıyı yönlendirir.
 
-Gönderilen değerlerden geçerli değilse, formda yeniden görüntülenir. `Html.ValidationMessageFor` Yardımcılar olarak *Edit.cshtml* görünüm şablonu uygun hata iletilerini görüntüleme ilgileniriz.
+Postalanan değerler geçerli değilse, formda yeniden görüntülenir. `Html.ValidationMessageFor` *Edit. cshtml* görünüm şablonundaki yardımcılar, uygun hata iletilerini görüntülemeyi dikkate alır.
 
 ![abcNotValid](examining-the-edit-methods-and-edit-view/_static/image4.png)
 
 > [!NOTE]
-> jQuery doğrulama virgül İngilizce olmayan yerel ayara yönelik desteği için (&quot;,&quot;) için bir ondalık noktası eklemeniz gerekir *globalize.js* ve size özgü *cultures/globalize.cultures.js* dosyası (gelen [ https://github.com/jquery/globalize ](https://github.com/jquery/globalize) ) ve kullanmak için JavaScript'i `Globalize.parseFloat`. Aşağıdaki kod ile çalışmak için Views\Movies\Edit.cshtml dosya için yapılan değişiklikleri gösterir &quot;fr-FR&quot; kültür:
-
+> ondalık bir nokta için virgül (,) kullanan Ingilizce olmayan yerel ayarlarda jQuery doğrulamasını desteklemek için &quot; &quot; , *globalize.js* ve belirli *kültürlerini/globalize.cultures.js* dosyanızı (Kimden [https://github.com/jquery/globalize](https://github.com/jquery/globalize) ) ve kullanılacak JavaScript 'i dahil etmeniz gerekir `Globalize.parseFloat` . Aşağıdaki kod, &quot; fr-FR kültürü ile çalışmak için Views\Movies\Edit.cshtml dosyasındaki değişiklikleri gösterir &quot; :
 
 [!code-cshtml[Main](examining-the-edit-methods-and-edit-view/samples/sample7.cshtml)]
 
-Ondalık alanın, virgül, ondalık noktası gerektirebilir. Geçici bir düzeltme projelerin kök web.config dosyasının Genelleştirme öğe ekleyebilirsiniz. Aşağıdaki kodu, ABD İngilizcesi olarak ayarlamak kültürüyle Genelleştirme öğeyi gösterir.
+Decimal alanı ondalık bir nokta değil virgül gerektirebilir. Geçici bir çözüm olarak, Genelleştirme öğesini projeler kök web.config dosyasına ekleyebilirsiniz. Aşağıdaki kod, kültürü Birleşik Devletler Ingilizce olarak ayarlanan Genelleştirme öğesini gösterir.
 
 [!code-xml[Main](examining-the-edit-methods-and-edit-view/samples/sample8.xml)]
 
-Tüm `HttpGet` benzer bir desen yöntemleri uygulayın. Bir film nesnesi aldıkları (veya durumunda bir nesneler listesi `Index`) ve model görünümüne geçirin. `Create` Yöntemi bir boş film nesne oluşturma görünümüne geçirir. Bu nedenle, oluşturmak, düzenlemek, silmek veya aksi halde verileri değiştiren tüm yöntemler yapmak `HttpPost` yöntemi aşırı yüklemesi. Bir HTTP GET yöntemi verileri değiştirmek, bir güvenlik riski blog gönderisi girişi açıklandığı [ASP.NET MVC ipucu #46 – bunlar güvenlik açıkları oluşturduğundan Sil bağlantılarını kullanmayın](http://stephenwalther.com/blog/archive/2009/01/21/asp.net-mvc-tip-46-ndash-donrsquot-use-delete-links-because.aspx). Bir GET yöntemi verilerde değişiklik de ihlal HTTP en iyi yöntemler ve mimari [REST](http://en.wikipedia.org/wiki/Representational_State_Transfer) desen, GET istekleri, uygulamanızın durumunu değiştirmemesi gerekir belirtir. Diğer bir deyişle, bir GET işlemi gerçekleştirilirken yan etkileri olan ve verilerinizi kalıcı değiştirmez güvenli bir işlem olmalıdır.
+Tüm `HttpGet` Yöntemler benzer bir düzene uyar. Bir film nesnesi (veya bunun durumunda nesne listesi `Index` ) alır ve modeli görünüme iletir. `Create`Yöntemi, oluşturma görünümüne boş bir film nesnesi geçirir. Verileri oluşturan, düzenleme, silme veya başka bir şekilde değiştiren tüm yöntemler `HttpPost` , yönteminin aşırı yüküne neden olacak. HTTP GET yöntemindeki verileri değiştirmek, Web günlüğü gönderi girişi [ASP.NET MVC ipucu #46 – güvenlik delikleri oluşturdukları Için silme bağlantılarını kullanmayın](http://stephenwalther.com/blog/archive/2009/01/21/asp.net-mvc-tip-46-ndash-donrsquot-use-delete-links-because.aspx). GET yöntemindeki verileri değiştirmek, HTTP en iyi uygulamalarını ve bu GET isteklerinin uygulamanızın [REST](http://en.wikipedia.org/wiki/Representational_State_Transfer) durumunu değiştirmemelidir. Diğer bir deyişle, bir GET işleminin gerçekleştirilmesi, yan etkileri olmayan ve kalıcı verilerinizi değiştirmeyen bir güvenli işlem olmalıdır.
 
-## <a name="adding-a-search-method-and-search-view"></a>Bir arama yöntemi ve arama görünümü ekleme
+## <a name="adding-a-search-method-and-search-view"></a>Arama yöntemi ve arama görünümü ekleme
 
-Bu bölümde, ekleyeceksiniz bir `SearchIndex` olanak sağlayan bir eylem yöntemi filmler Tarz veya adı arayın. Bu kullanılarak kullanılabilir olacaktır */filmler/SearchIndex* URL'si. İstek, bir kullanıcı için bir filmi aramak amacıyla girebilir, giriş öğelerini içeren bir HTML formu görüntülenir. Kullanıcı formu gönderdiğinde, eylem yöntemi, kullanıcı tarafından gönderilen arama değerlerini alın ve veritabanı aramak için değerleri kullanın.
+Bu bölümde, `SearchIndex` film tarzında veya ada göre arama yapmanızı sağlayan bir eylem yöntemi ekleyeceksiniz. Bu, */movies/SearchIndex* URL 'si kullanılarak kullanılabilir. İstek, bir kullanıcının filmi arayacaktır girebileceği giriş öğelerini içeren bir HTML formu görüntüler. Bir Kullanıcı formu gönderdiğinde, eylem yöntemi kullanıcı tarafından gönderilen arama değerlerini alır ve bu verileri veritabanında aramak için kullanır.
 
-## <a name="displaying-the-searchindex-form"></a>SearchIndex Form görüntüleme
+## <a name="displaying-the-searchindex-form"></a>Searchındex formunu görüntüleme
 
-Başlangıç ekleyerek bir `SearchIndex` mevcut eylem yöntemine `MoviesController` sınıfı. Yöntemi, bir HTML formu içeren bir görünümü döndürülür. Kod aşağıdaki gibidir:
+`SearchIndex`Varolan sınıfa bir eylem yöntemi ekleyerek başlayın `MoviesController` . Yöntemi, HTML formu içeren bir görünüm döndürür. Kod şu şekildedir:
 
 [!code-csharp[Main](examining-the-edit-methods-and-edit-view/samples/sample9.cs)]
 
-İlk satırı `SearchIndex` yöntemi oluşturur aşağıdaki [LINQ](https://msdn.microsoft.com/library/bb397926.aspx) filmler seçmek için sorgu:
+Yöntemin ilk satırı, `SearchIndex` filmleri seçmek için aşağıdaki [LINQ](https://msdn.microsoft.com/library/bb397926.aspx) sorgusunu oluşturur:
 
 [!code-csharp[Main](examining-the-edit-methods-and-edit-view/samples/sample10.cs)]
 
-Sorgu, bu noktada tanımlanır, ancak veri deposuna karşı henüz çalıştırılmadı.
+Sorgu bu noktada tanımlandı, ancak henüz veri deposunda çalıştırılmadı.
 
-Varsa `searchString` parametresi içeren bir dize, filmler sorgu aşağıdaki kodu kullanarak, bir arama dizesi değerini temel filtrelemek için değiştirilir:
+`searchString`Parametresi bir dize içeriyorsa, filmler sorgusu, aşağıdaki kodu kullanarak arama dizesinin değerine göre filtreleyecek şekilde değiştirilir:
 
 [!code-csharp[Main](examining-the-edit-methods-and-edit-view/samples/sample11.cs)]
 
-`s => s.Title` Kodu yukarıdaki bir [Lambda ifadesi](https://msdn.microsoft.com/library/bb397687.aspx). Lambda ifadeleri yöntem tabanlı kullanılan [LINQ](https://msdn.microsoft.com/library/bb397926.aspx) gibi sorgularında standart sorgu işleci yöntemlerinin bağımsız değişkenleri olarak [burada](https://msdn.microsoft.com/library/system.linq.enumerable.where.aspx) Yukarıdaki kod içinde kullanılan yöntem. LINQ sorguları tanımlandıkları veya bunlar bir yöntemi çağırarak değiştirildiğinde yürütülmez `Where` veya `OrderBy`. Bunun yerine, sorgu yürütmesi, üzerinden gerçekleştirilen değeri gerçekten yinelendiğinde kadar bir ifade değerlendirmesi ertelendi anlamına gelir ertelenmiştir veya [ `ToList` ](https://msdn.microsoft.com/library/bb342261.aspx) yöntemi çağrılır. İçinde `SearchIndex` örnek SearchIndex Görünümü'nde sorgu yürütülür. Ertelenen sorgu yürütme hakkında daha fazla bilgi için bkz. [sorgu yürütme](https://msdn.microsoft.com/library/bb738633.aspx).
+`s => s.Title`Yukarıdaki kod bir [lambda ifadesidir](https://msdn.microsoft.com/library/bb397687.aspx). Lambdalar, yukarıdaki kodda kullanılan [WHERE](https://msdn.microsoft.com/library/system.linq.enumerable.where.aspx) yöntemi gibi standart sorgu işleci yöntemlerine bağımsız değişkenler olarak Yöntem tabanlı [LINQ](https://msdn.microsoft.com/library/bb397926.aspx) sorgularında kullanılır. LINQ sorguları tanımlandıklarında veya veya gibi bir yöntem çağırarak değiştirildiklerinde yürütülmez `Where` `OrderBy` . Bunun yerine, sorgu yürütmesi ertelenir, bu da bir ifadenin değerlendirmesinin, gerçekleştirilmiş değeri gerçekten üzerinde yinelenene veya yöntem çağrılana kadar gecikildiği anlamına gelir [`ToList`](https://msdn.microsoft.com/library/bb342261.aspx) . `SearchIndex`Örnekte, sorgu Searchındex görünümünde yürütülür. Ertelenmiş sorgu yürütme hakkında daha fazla bilgi için bkz. [sorgu yürütme](https://msdn.microsoft.com/library/bb738633.aspx).
 
-Şimdi, uygulayabileceğiniz `SearchIndex` kullanıcıya form görüntüleyecek görünümü. İçinde sağ `SearchIndex` yöntemi ve ardından **Görünüm Ekle**. İçinde **Görünüm Ekle** iletişim kutusunda, geçirilecek gideceğinizi belirtin bir `Movie` model sınıfı olarak görünümü şablon nesnesi. İçinde **İskele şablon** listesinde **listesi**, ardından **Ekle**.
+Artık `SearchIndex` formu kullanıcıya görüntüleyecek görünümü uygulayabilirsiniz. Metodun içine sağ tıklayın `SearchIndex` ve ardından **Görünüm Ekle**' ye tıklayın. **Görünüm Ekle** iletişim kutusunda, bir `Movie` nesneyi model sınıfı olarak görünüm şablonuna geçileyeceksiniz. **Scaffold şablonu** listesinde **liste**' yi seçin ve ardından **Ekle**' ye tıklayın.
 
 ![AddSearchView](examining-the-edit-methods-and-edit-view/_static/image5.png)
 
-Tıkladığınızda **Ekle** düğmesi *Views\Movies\SearchIndex.cshtml* görünüm şablonu oluşturulur. Seçtiğiniz çünkü **listesi** içinde **İskele şablon** listesinde, otomatik olarak oluşturulan Visual Studio (iskele kurulmuş) görünümünde bazı varsayılan biçimlendirme. Bir HTML formuna yapı iskelesi oluşturulur. Denetlenen `Movie` sınıfı ve işlemek için oluşturulan kodu `<label>` sınıfın her bir özellik için öğeleri. Listenin altında oluşturulan Oluştur görünümünün gösterir:
+**Ekle** düğmesine tıkladığınızda, *Views\Movies\SearchIndex.cshtml* View şablonu oluşturulur. **Yapı iskelesi şablon** listesinde **liste** ' yi seçtiğiniz için, Visual Studio otomatik olarak (scafkatlamalı) görünümdeki bazı varsayılan biçimlendirmeleri otomatik olarak oluşturdu. Scafkatlama bir HTML formu oluşturdu. Sınıfı inceledi `Movie` ve `<label>` sınıfın her özelliği için öğeleri işlemek üzere kod oluşturdu. Aşağıdaki listede, oluşturulan oluşturma görünümü gösterilmektedir:
 
 [!code-cshtml[Main](examining-the-edit-methods-and-edit-view/samples/sample12.cshtml)]
 
-Uygulamayı çalıştırmak ve gidin */filmler/SearchIndex*. Bir sorgu dizesi gibi ekleme `?searchString=ghost` URL'si. Filtrelenmiş filmler görüntülenir.
+Uygulamayı çalıştırın ve */movies/SearchIndex*adresine gidin. URL 'ye gibi bir sorgu dizesi ekleyin `?searchString=ghost` . Filtrelenmiş filmler görüntülenir.
 
 ![SearchQryStr](examining-the-edit-methods-and-edit-view/_static/image6.png)
 
-İmzası değiştirirseniz `SearchIndex` adlı bir parametreye sahip yöntemi `id`, `id` parametresi eşleşir `{id}` varsayılan için yer tutucu yönlendiren kümesinde *Global.asax* dosya.
+`SearchIndex`Yönteminin imzasını adlı bir parametreye sahip olacak şekilde değiştirirseniz `id` , `id` parametresi `{id}` *Global. asax* dosyasında ayarlanan varsayılan yolların yer tutucusuyla eşleşir.
 
 [!code-json[Main](examining-the-edit-methods-and-edit-view/samples/sample13.json)]
 
-Özgün `SearchIndex` yöntemi aşağıdaki gibi görünür:
+Özgün `SearchIndex` Yöntem şöyle görünür::
 
 [!code-csharp[Main](examining-the-edit-methods-and-edit-view/samples/sample14.cs)]
 
-Değiştirilmiş `SearchIndex` yöntemi şu şekilde görünür:
+Değiştirilen `SearchIndex` Yöntem şöyle görünür:
 
 [!code-csharp[Main](examining-the-edit-methods-and-edit-view/samples/sample15.cs?highlight=1,3)]
 
-Arama başlığı olarak bir sorgu dizesi değeri olarak rota verilerini (URL kesimi) yerine artık geçirebilirsiniz.
+Artık arama başlığını sorgu dizesi değeri yerine rota verileri (bir URL segmenti) olarak geçirebilirsiniz.
 
 ![SearchRouteData](examining-the-edit-methods-and-edit-view/_static/image7.png)
 
-Ancak, bunlar bir filmi için arama yapmak istediğiniz her zaman URL'sini değiştirmek için kullanıcıların beklediğiniz olamaz. Artık, yardımcı olmak için kullanıcı Arabirimi ekleyeceksiniz filmler filtreleyebilirsiniz. İmzası değiştirdiyseniz `SearchIndex` metodu rota bağlı ID parametresine geçirilecek nasıl test etmek için değiştirme geri böylece, `SearchIndex` yöntemi adlı bir dize parametresi alır `searchString`:
+Ancak, kullanıcıların bir filmi her arayışınızda URL 'YI değiştirmesini beklemeniz gerekmez. Böylece, filmlerin filtrelemesine yardımcı olmak için Kullanıcı arabirimi ekleyeceğiz. `SearchIndex`Yol ile bağlantılı kimlik parametresinin nasıl geçirileceğini test etmek için yönteminin imzasını değiştirdiyseniz, `SearchIndex` yönteminizin adlı bir dize parametresi alması için geri değiştirin `searchString` :
 
 [!code-csharp[Main](examining-the-edit-methods-and-edit-view/samples/sample16.cs)]
 
-Açık *Views\Movies\SearchIndex.cshtml* dosyasını açın ve sonra yalnızca `@Html.ActionLink("Create New", "Create")`, aşağıdakileri ekleyin:
+*Views\Movies\SearchIndex.cshtml* dosyasını açın ve hemen sonra `@Html.ActionLink("Create New", "Create")` aşağıdakileri ekleyin:
 
 [!code-cshtml[Main](examining-the-edit-methods-and-edit-view/samples/sample17.cshtml?highlight=2)]
 
-Aşağıdaki örnek bir bölümü gösterilmektedir *Views\Movies\SearchIndex.cshtml* dosyasıyla eklenen filtreleme biçimlendirme.
+Aşağıdaki örnek, eklenen filtreleme işaretlemesi ile *Views\Movies\SearchIndex.cshtml* dosyasının bir bölümünü gösterir.
 
 [!code-cshtml[Main](examining-the-edit-methods-and-edit-view/samples/sample18.cshtml?highlight=12-15)]
 
-`Html.BeginForm` Yardımcısı oluşturur açılış `<form>` etiketi. `Html.BeginForm` Yardımcısı neden tıklayarak kullanıcı formu gönderdiğinde, kendisine göndermek form **filtre** düğmesi.
+`Html.BeginForm`Yardımcı, bir açılış `<form>` etiketi oluşturur. `Html.BeginForm`Yardımcı, Kullanıcı **filtre** düğmesine tıklayarak formu gönderdiğinde formun kendine göndermesine neden olur.
 
-Uygulamayı çalıştırmak ve bir filmi için arama yapmayı deneyin.
+Uygulamayı çalıştırın ve bir filmi aramayı deneyin.
 
 ![](examining-the-edit-methods-and-edit-view/_static/image8.png)
 
-Var olan hiçbir `HttpPost` aşırı yükünü `SearchIndex` yöntemi. Yöntemi uygulama durumunu değiştirme değildir çünkü, yalnızca verileri filtreleme gerekmez.
+`HttpPost`Metodun aşırı yüklemesi yoktur `SearchIndex` . Bunun için gerekli değildir çünkü yöntem uygulamanın durumunu değiştirmediğinden verileri filtrelememeniz yeterlidir.
 
-Aşağıdaki ekleyebilirsiniz `HttpPost SearchIndex` yöntemi. Bu durumda, eylem çağırıcısını BC `HttpPost SearchIndex` yöntemi ve `HttpPost SearchIndex` yöntemi aşağıdaki resimde gösterildiği gibi çalıştırın.
+Aşağıdaki `HttpPost SearchIndex` yöntemi ekleyebilirsiniz. Bu durumda, çalıştırılan eylem `HttpPost SearchIndex` yöntemiyle eşleşir ve `HttpPost SearchIndex` yöntemi aşağıdaki görüntüde gösterildiği gibi çalışır.
 
 [!code-csharp[Main](examining-the-edit-methods-and-edit-view/samples/sample19.cs)]
 
-![SearchPostGhost](examining-the-edit-methods-and-edit-view/_static/image9.png)
+![Searchposthayalet](examining-the-edit-methods-and-edit-view/_static/image9.png)
 
-Ancak, bu eklediğiniz bile `HttpPost` sürümünü `SearchIndex` yöntemi nasıl bu tüm uygulanmıştır içinde bir sınırlama yoktur. Belirli bir arama yer işareti koymak istediğiniz veya bunlar filmler aynı filtrelenmiş listesini görmek için tıklayabilirsiniz arkadaşlarınıza bağlantı göndermek istediğiniz düşünün. HTTP POST isteği URL'sini GET isteği (localhost:xxxxx filmler/SearchIndex) URL'si ile aynıdır; URL içinde hiçbir arama bilgisi dikkat edin. Sağ artık, arama dizesi bilgilerini sunucuya biçiminde alan değeri gönderilir. Bu, yer işareti veya bir URL içinde arkadaş göndermek için bu arama bilgileri yakalayamazsınız anlamına gelir.
+Ancak, bu yöntemin bu sürümünü eklemeseniz bile `HttpPost` `SearchIndex` , tümünün nasıl uygulandığını gösteren bir sınırlama vardır. Belirli bir arama için yer işareti koymak istediğinizi veya aynı film filtrelenmiş listesini görmek için onlara tıklabilecekleri bir bağlantı göndermek istediğinizi düşünün. HTTP POST isteğinin URL 'SI GET isteğinin URL 'siyle (localhost: xxxxx/filmler/Searchındex) aynı olduğunu ve URL 'de arama bilgisi olmadığını unutmayın. Şu anda arama dizesi bilgileri sunucuya form alanı değeri olarak gönderilir. Bu, arama bilgilerini bir URL 'de yer işaretine veya arkadaşlara göndermek için yakalayamazsınız.
 
-Çözüm bir aşırı yüklemesini kullanmaktır `BeginForm` POST isteği URL'sini arama bilgilerini eklemeniz gerekir ve HttpGet sürümüne yönlendirileceğini belirtir `SearchIndex` yöntemi. Parametresiz varolan `BeginForm` aşağıdaki yöntemi:
+Çözüm, `BeginForm` Post ISTEĞININ URL 'ye arama bilgilerini eklemesi gerektiğini ve yöntemin HttpGet sürümüne yönlendirilmesini belirten bir aşırı yüklemesi kullanmaktır `SearchIndex` . Mevcut parametresiz `BeginForm` yöntemi aşağıdaki kodla değiştirin:
 
 [!code-cshtml[Main](examining-the-edit-methods-and-edit-view/samples/sample20.cshtml)]
 
 ![BeginFormPost_SM](examining-the-edit-methods-and-edit-view/_static/image10.png)
 
-Artık bir arama gönderdiğinizde, URL'yi bir arama sorgu dizesi içerir. Arama de gider için `HttpGet SearchIndex` eylem yöntemi, varsa bile bir `HttpPost SearchIndex` yöntemi.
+Artık bir arama gönderdiğinizde URL bir arama sorgu dizesi içerir. `HttpGet SearchIndex`Bir yönteminiz olsa da, arama eylem yöntemine de gidecektir `HttpPost SearchIndex` .
 
-![SearchIndexWithGetURL](examining-the-edit-methods-and-edit-view/_static/image11.png)
+![Searchındexwithgeturl](examining-the-edit-methods-and-edit-view/_static/image11.png)
 
 ## <a name="adding-search-by-genre"></a>Türe göre arama ekleme
 
-Eklediyseniz `HttpPost` sürümünü `SearchIndex` yöntemi, şimdi silin.
+`HttpPost`Yöntemin sürümünü eklediyseniz `SearchIndex` , şimdi silin.
 
-Ardından, kullanıcıların filmler için türe göre arama bir özellik ekleyeceksiniz. Değiştirin `SearchIndex` yöntemini aşağıdaki kod ile:
+Daha sonra, kullanıcıların film tarza göre aramasını sağlamak için bir özellik ekleyeceksiniz. `SearchIndex` yöntemini aşağıdaki kod ile değiştirin:
 
 [!code-csharp[Main](examining-the-edit-methods-and-edit-view/samples/sample21.cs)]
 
-Bu sürümü `SearchIndex` yöntemi alır ek bir parametre, yani `movieGenre`. İlk birkaç kod satırlarının bir `List` film türleri veritabanından tutacak nesne.
+Yöntemin bu sürümü `SearchIndex` ek bir parametre alır, yani `movieGenre` . İlk birkaç kod satırı, `List` veritabanından film tarzları tutacak bir nesne oluşturur.
 
-Tüm türleri veritabanından alır bir LINQ Sorgu kodudur.
+Aşağıdaki kod, veritabanından tüm tarzları alan bir LINQ sorgusudur.
 
 [!code-csharp[Main](examining-the-edit-methods-and-edit-view/samples/sample22.cs)]
 
-Kod `AddRange` genel yöntemini `List` farklı türleri listesine eklemek için koleksiyonu. (Olmadan `Distinct` değiştiricisi, yinelenen tür eklenecek — Örneğin, iki kez örneğimizi Komedi eklenir). Kod içinde türleri listesini ardından depolar `ViewBag` nesne.
+Kod, `AddRange` `List` tüm benzersiz tarzları listeye eklemek için genel koleksiyonun yöntemini kullanır. (Değiştirici olmadan `Distinct` yinelenen tarzlar eklenir — Örneğin, örneğimizde komedi iki kez eklenir). Daha sonra kod, nesne içindeki tarzların listesini depolar `ViewBag` .
 
-Aşağıdaki kod nasıl kontrol edileceğini göstermektedir `movieGenre` parametresi. Boş değilse, belirtilen türe seçili film sınırlamak için filmler sorgu kodu daha ayrıntılı kısıtlar.
+Aşağıdaki kod, parametresinin nasıl kontrol alınacağını gösterir `movieGenre` . Boş değilse, kod, seçili filmleri belirtilen tarzya sınırlamak için film sorgusunu daha da kısıtlar.
 
 [!code-csharp[Main](examining-the-edit-methods-and-edit-view/samples/sample23.cs)]
 
-## <a name="adding-markup-to-the-searchindex-view-to-support-search-by-genre"></a>Türe göre ara desteklemek için SearchIndex görünümü biçimlendirme ekleme
+## <a name="adding-markup-to-the-searchindex-view-to-support-search-by-genre"></a>Tarza göre aramayı desteklemek için Searchındex görünümüne biçimlendirme ekleme
 
-Ekleme bir `Html.DropDownList` yardımcıya *Views\Movies\SearchIndex.cshtml* hemen önce dosya `TextBox` Yardımcısı. Tamamlanan biçimlendirme aşağıda gösterilmiştir:
+`Html.DropDownList` *Views\Movies\SearchIndex.cshtml* dosyasına yardımcı olan bir yardımcı ekleyin `TextBox` . Tamamlanan biçimlendirme aşağıda gösterilmektedir:
 
 [!code-cshtml[Main](examining-the-edit-methods-and-edit-view/samples/sample24.cshtml?highlight=4)]
 
-Uygulamayı çalıştırmak ve göz atın */filmler/SearchIndex*. Türe, film adı ve her iki ölçütlere göre bir arama deneyin.
+Uygulamayı çalıştırın ve */movies/SearchIndex*konumuna gidin. Türe göre, film adına ve her iki ölçüte göre arama yapmayı deneyin.
 
 ![](examining-the-edit-methods-and-edit-view/_static/image12.png)
 
-Bu bölümde CRUD eylem yöntemleri ve framework tarafından oluşturulan görünümler incelenir. Bir arama eylem yöntemi ve kullanıcıların filmi Tarz arama görünümü oluşturduğunuz. Sonraki bölümde, bir özelliğin ekleneceği nasıl şu konuları inceleyeceğiz `Movie` modeli ve bir test veritabanı otomatik olarak oluşturacak bir başlatıcı ekleme.
+Bu bölümde, çerçeve tarafından oluşturulan CRUD eylem yöntemlerini ve görünümlerini inceledi. Kullanıcıların film başlığına ve tarzına göre arama yapmasına izin veren bir arama eylemi yöntemi ve görünümü oluşturdunuz. Sonraki bölümde, modele nasıl özellik ekleneceğini `Movie` ve otomatik olarak bir test veritabanı oluşturacak Başlatıcı nasıl ekleneceğini inceleyeceğiz.
 
 > [!div class="step-by-step"]
-> [Önceki](accessing-your-models-data-from-a-controller.md)
-> [İleri](adding-a-new-field-to-the-movie-model-and-table.md)
+> [Önceki](accessing-your-models-data-from-a-controller.md) 
+>  [Sonraki](adding-a-new-field-to-the-movie-model-and-table.md)
