@@ -1,6 +1,6 @@
 ---
 uid: web-api/overview/web-api-routing-and-actions/create-a-rest-api-with-attribute-routing
-title: ASP.NET Web API 2'de öznitelik yönlendirme ile REST API oluşturma | Microsoft Docs
+title: ASP.NET Web API 2 ' de öznitelik yönlendirme ile REST API oluşturma | Microsoft Docs
 author: MikeWasson
 description: ''
 ms.author: riande
@@ -8,249 +8,248 @@ ms.date: 06/26/2013
 ms.assetid: 23fc77da-2725-4434-99a0-ff872d96336b
 msc.legacyurl: /web-api/overview/web-api-routing-and-actions/create-a-rest-api-with-attribute-routing
 msc.type: authoredcontent
-ms.openlocfilehash: a58daa96410de734619bf65f84346137c7d3cf44
-ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
+ms.openlocfilehash: 6eac36767bf34857d5341188d0653e7fec7cade2
+ms.sourcegitcommit: e7e91932a6e91a63e2e46417626f39d6b244a3ab
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/09/2019
-ms.locfileid: "59393307"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "86188917"
 ---
-# <a name="create-a-rest-api-with-attribute-routing-in-aspnet-web-api-2"></a>ASP.NET Web API 2 yönlendirme özniteliğine sahip bir REST API'si oluşturma
+# <a name="create-a-rest-api-with-attribute-routing-in-aspnet-web-api-2"></a>ASP.NET Web API 2 ' de öznitelik yönlendirme ile REST API oluşturma
 
-tarafından [Mike Wasson](https://github.com/MikeWasson)
+, [Mike te son](https://github.com/MikeWasson)
 
-Web API 2 destekleyen yeni bir tür adı yönlendirme *öznitelik yönlendirme*. Öznitelik yönlendirme genel bakış için bkz: [Web API 2'de öznitelik yönlendirme](attribute-routing-in-web-api-2.md). Bu öğreticide, öznitelik yönlendirme books koleksiyonu için bir REST API oluşturmak için kullanın. API aşağıdaki eylemleri destekler:
+Web API 2 ' de *öznitelik yönlendirme*adı verilen yeni bir yönlendirme türü desteklenir. Öznitelik yönlendirmeye genel bir bakış için bkz. [Web API 2 ' de öznitelik yönlendirme](attribute-routing-in-web-api-2.md). Bu öğreticide, bir kitap koleksiyonu için REST API oluşturmak üzere öznitelik yönlendirmeyi kullanacaksınız. API aşağıdaki eylemleri destekler:
 
 | Eylem | Örnek URI |
 | --- | --- |
-| Tüm Kitaplar bir listesini alın. | / api/kitaplar |
-| Bir kitap kimliğe göre Al | /api/Books/1 |
-| Bir kitap ayrıntılarını alın. | /api/Books/1/details |
-| Kitap listesi türe göre alın. | /api/Books/fantasy |
-| Kitap listesi, yayın tarihe göre alın. | /api/Books/Date/2013-02-16 /api/books/date/2013/02/16 (alternatif formu) |
-| Belirli bir yazar tarafından books bir listesini alın. | /api/Authors/1/Books |
+| Tüm kitapların bir listesini alın. | /api/Books |
+| KIMLIĞE göre bir kitap alın. | /api/Books/1 |
+| Bir kitabın ayrıntılarını alın. | /api/Books/1/details |
+| Türe göre kitap listesini alın. | /api/Books/fantei |
+| Yayın tarihine göre Kitaplar listesini alın. | /api/Books/Date/2013-02-16/api/Books/Date/2013/02/16 (alternatif form) |
+| Belirli bir yazarın kitap listesini alın. | /api/Authors/1/Books |
 
-Salt okunur (HTTP GET isteklerini) tüm yöntemlerdir.
+Tüm yöntemler salt okunurdur (HTTP GET istekleri).
 
-Entity Framework veri katmanı için kullanacağız. Kitap kayıtlarını, aşağıdaki alanları olacaktır:
+Veri katmanı için Entity Framework kullanacağız. Kitap kayıtları aşağıdaki alanlara sahip olacaktır:
 
-- Kimlik
-- Başlık
+- ID
+- Title
 - Tarzı
 - Yayın tarihi
 - Fiyat
 - Açıklama
-- AuthorID (yazarlar tabloya yabancı anahtar)
+- AuthorId (bir yazarlar tablosuna yabancı anahtar)
 
-İsteklerin çoğuna ancak API (başlık, yazar ve Tarz) bu verilerin bir alt kümesini döndürür. Tam kayıt, istemci isteklerini almak için `/api/books/{id}/details`.
+Ancak, çoğu istek için, API bu verilerin bir alt kümesini döndürür (başlık, yazar ve tarz). Tüm kayıtları almak için istemci istekleri `/api/books/{id}/details` .
 
 ## <a name="prerequisites"></a>Önkoşullar
 
-[Visual Studio 2017](https://visualstudio.microsoft.com/downloads/?utm_medium=microsoft&utm_source=docs.microsoft.com&utm_campaign=button+cta&utm_content=download+vs2017) Community, Professional veya Enterprise edition.
+[Visual Studio 2017](https://visualstudio.microsoft.com/downloads/?utm_medium=microsoft&utm_source=docs.microsoft.com&utm_campaign=button+cta&utm_content=download+vs2017) Community, Professional veya Enterprise Edition.
 
 ## <a name="create-the-visual-studio-project"></a>Visual Studio projesi oluşturma
 
-Visual Studio çalıştırarak başlayın. Gelen **dosya** menüsünde **yeni** seçip **proje**.
+Visual Studio 'Yu çalıştırarak başlayın. **Dosya** menüsünde **Yeni** ' yi ve ardından **Proje**' yi seçin.
 
-Genişletin **yüklü** > **Visual C#** kategorisi. Altında **Visual C#** seçin **Web**. Proje şablonları listesinde seçin **ASP.NET Web uygulaması (.NET Framework)**. Projeyi adlandırın &quot;BooksAPI&quot;.
+**Yüklü**  >  **Visual C#** kategorisini genişletin. **Visual C#** altında **Web**' i seçin. Proje şablonları listesinde **ASP.NET Web uygulaması (.NET Framework)** öğesini seçin. Projeyi &quot; booksapı olarak adlandırın &quot; .
 
 ![](create-a-rest-api-with-attribute-routing/_static/image1.png)
 
-İçinde **yeni ASP.NET Web uygulaması** iletişim kutusunda **boş** şablonu. "Klasör eklemek ve çekirdek başvuruları için" altında seçin **Web API** onay kutusu. **Tamam**'ı tıklatın.
+**Yeni ASP.NET Web uygulaması** Iletişim kutusunda **boş** şablonu seçin. "Klasör ve çekirdek başvuruları Ekle" altında **Web API** onay kutusunu seçin. **Tamam** düğmesine tıklayın.
 
 ![](create-a-rest-api-with-attribute-routing/_static/image2.png)
 
-Bu, Web API işlevleri için yapılandırılmış bir çatı projesini oluşturur.
+Bu, Web API işlevselliği için yapılandırılmış bir iskelet projesi oluşturur.
 
 ### <a name="domain-models"></a>Etki alanı modelleri
 
-Ardından, etki alanı modelleri sınıfları ekleyin. Çözüm Gezgini'nde modeller klasörü sağ tıklatın. Seçin **Ekle**, ardından **sınıfı**. Sınıf adını `Author`.
+Daha sonra, etki alanı modelleri için sınıflar ekleyin. Çözüm Gezgini modeller klasörüne sağ tıklayın. **Ekle**' yi ve ardından **sınıf**' ı seçin. Sınıfı adlandırın `Author` .
 
 ![](create-a-rest-api-with-attribute-routing/_static/image3.png)
 
-Author.cs kodu aşağıdakiyle değiştirin:
+Author.cs içindeki kodu aşağıdaki kodla değiştirin:
 
 [!code-csharp[Main](create-a-rest-api-with-attribute-routing/samples/sample1.cs)]
 
-Şimdi adlı başka bir sınıf ekleyin `Book`.
+Şimdi adlı başka bir sınıf ekleyin `Book` .
 
 [!code-csharp[Main](create-a-rest-api-with-attribute-routing/samples/sample2.cs)]
 
-### <a name="add-a-web-api-controller"></a>Web API denetleyici ekleme
+### <a name="add-a-web-api-controller"></a>Web API denetleyicisi ekleme
 
 Bu adımda, veri katmanı olarak Entity Framework kullanan bir Web API denetleyicisi ekleyeceğiz.
 
-Projeyi oluşturmak için CTRL+SHIFT+B tuşlarına basın. Entity Framework veritabanı şeması oluşturmak derlenmiş bir bütünleştirilmiş kod gerektirir böylece modellerinin özelliklerini bulmak için yansıtma kullanır.
+Projeyi oluşturmak için CTRL+SHIFT+B tuşlarına basın. Entity Framework, modellerin özelliklerini saptamak için yansıma kullanır, bu nedenle veritabanı şemasını oluşturmak için derlenmiş bir bütünleştirilmiş kod gerektirir.
 
-Çözüm Gezgini'nde denetleyicileri klasörüne sağ tıklayın. Seçin **Ekle**, ardından **denetleyicisi**.
+Çözüm Gezgini, denetleyiciler klasörüne sağ tıklayın. **Ekle**' yi ve ardından **Denetleyici**' yi seçin.
 
 ![](create-a-rest-api-with-attribute-routing/_static/image4.png)
 
-İçinde **İskele Ekle** iletişim kutusunda **Web API 2 denetleyici Entity Framework kullanarak Eylemler ile**.
+**Yapı Iskelesi Ekle** iletişim kutusunda, **ENTITY Framework kullanarak Web API 2 denetleyiciyi eylemlerle '** yi seçin.
 
 [![](create-a-rest-api-with-attribute-routing/_static/image6.png)](create-a-rest-api-with-attribute-routing/_static/image5.png)
 
-İçinde **denetleyici Ekle** iletişim için **Denetleyici adı**, girin &quot;BooksController&quot;. Seçin &quot;zaman uyumsuz denetleyici eylemlerini kullanmak&quot; onay kutusu. İçin **Model sınıfı**seçin &quot;kitap&quot;. (Görmüyorsanız `Book` sınıfı listelenen açılır menüde, proje oluşturulan emin olun.) Ardından, "+" düğmesine tıklayın.
+**Denetleyici Ekle** iletişim kutusunda, **Denetleyici adı**için, &quot; bookscontroller yazın &quot; . &quot;Zaman uyumsuz denetleyici eylemlerini kullan &quot; onay kutusunu seçin. **Model sınıfı**için kitap ' ı seçin &quot; &quot; . ( `Book` Açılan listede sınıfı görmüyorsanız, projeyi derlediğinizden emin olun.) Ardından "+" düğmesine tıklayın.
 
 ![](create-a-rest-api-with-attribute-routing/_static/image7.png)
 
-Tıklayın **Ekle** içinde **yeni veri bağlamı** iletişim.
+**Yeni veri bağlamı** Iletişim kutusunda **Ekle** ' ye tıklayın.
 
 ![](create-a-rest-api-with-attribute-routing/_static/image8.png)
 
-Tıklayın **Ekle** içinde **denetleyici Ekle** iletişim. Yapı iskelesi adlı bir sınıf ekler `BooksController` tanımlayan bir API denetleyicisi. Ayrıca adlı bir sınıf ekler `BooksAPIContext` için Entity Framework veri bağlamı tanımlar modelleri klasöründe.
+**Denetleyici Ekle** Iletişim kutusunda **Ekle** ' ye tıklayın. Scafkatlama, API denetleyicisini tanımlayan adlı bir sınıf ekler `BooksController` . Ayrıca `BooksAPIContext` , Entity Framework için veri bağlamını tanımlayan modeller klasörüne adlı bir sınıfı ekler.
 
 ![](create-a-rest-api-with-attribute-routing/_static/image9.png)
 
 ### <a name="seed-the-database"></a>Veritabanının Çekirdeğini Oluşturma
 
-Araçlar menüsü'nden seçin **NuGet Paket Yöneticisi**ve ardından **Paket Yöneticisi Konsolu**.
+Araçlar menüsünde, **NuGet Paket Yöneticisi**' ni seçin ve ardından **Paket Yöneticisi konsolu**' nu seçin.
 
 Paket Yöneticisi konsolu penceresinde, aşağıdaki komutu girin:
 
 [!code-powershell[Main](create-a-rest-api-with-attribute-routing/samples/sample3.ps1)]
 
-Bu komut, geçişler klasörü oluşturur ve Configuration.cs adlı yeni bir kod dosyası ekler. Bu dosyayı açın ve aşağıdaki kodu ekleyin `Configuration.Seed` yöntemi.
+Bu komut bir geçişler klasörü oluşturur ve Configuration.cs adlı yeni bir kod dosyası ekler. Bu dosyayı açın ve yöntemine aşağıdaki kodu ekleyin `Configuration.Seed` .
 
 [!code-csharp[Main](create-a-rest-api-with-attribute-routing/samples/sample4.cs)]
 
-Paket Yöneticisi konsolu penceresinde, aşağıdaki komutları yazın.
+Paket Yöneticisi konsolu penceresinde aşağıdaki komutları yazın.
 
 [!code-powershell[Main](create-a-rest-api-with-attribute-routing/samples/sample5.ps1)]
 
-Bu komutlar, yerel bir veritabanı oluşturun ve veritabanını doldurmak için Seed yöntemi çağırır.
+Bu komutlar yerel bir veritabanı oluşturur ve veritabanını doldurmak için çekirdek yöntemini çağırır.
 
 ![](create-a-rest-api-with-attribute-routing/_static/image10.png)
 
 ## <a name="add-dto-classes"></a>DTO sınıfları ekleme
 
-Şimdi uygulamayı çalıştırın ve bir GET isteği göndermek için /api/books/1, yanıtı aşağıdaki gibi görünür. (Okunabilirlik için Girintileme ekledim.)
+Uygulamayı şimdi çalıştırırsanız ve/api/Books/1 öğesine bir GET isteği gönderirseniz, yanıt aşağıdakine benzer şekilde görünür. (Okunabilirlik için girinti ekledim.)
 
 [!code-json[Main](create-a-rest-api-with-attribute-routing/samples/sample6.json)]
 
-Bunun yerine, alanların bir alt kümesini döndürmek için bu istek için istiyorum. Ayrıca, Yazar Kimliği yerine, yazarın adı döndürülecek istediğim Bunu yapmak için biz döndürülecek denetleyicisi yöntemi değiştireceksiniz bir *veri aktarımı nesnesi* (DTO) yerine EF modeli. Bir DTO, yalnızca veri taşımak üzere tasarlanmış bir nesnedir.
+Bunun yerine, bu isteğin, alanların bir alt kümesini döndürmesini istiyorum. Ayrıca, yazar KIMLIĞI yerine yazarın adını döndürmesini istiyorum. Bunu gerçekleştirmek için, denetleyici yöntemlerini EF modeli yerine bir *veri aktarımı nesnesi* (DTO) döndürecek şekilde değiştireceksiniz. Bir DTO yalnızca verileri taşımak için tasarlanan bir nesnedir.
 
-Çözüm Gezgini'nde projeye sağ tıklayıp seçin **Ekle** | **yeni klasör**. Klasör adı &quot;Dto'lar&quot;. Adlı bir sınıf ekleyin `BookDto` Dto'lar klasörüne aşağıdaki tanımıyla:
+Çözüm Gezgini, projeye sağ tıklayın ve **Add**  |  **Yeni klasör**Ekle ' yi seçin. &quot;DTOS klasörünü adlandırın &quot; . `BookDto`Aşağıdaki tanıma sahip DTOs klasörüne adlı bir sınıf ekleyin:
 
 [!code-csharp[Main](create-a-rest-api-with-attribute-routing/samples/sample7.cs)]
 
-Adlı başka bir sınıf ekleyin `BookDetailDto`.
+Adlı başka bir sınıf ekleyin `BookDetailDto` .
 
 [!code-csharp[Main](create-a-rest-api-with-attribute-routing/samples/sample8.cs)]
 
-Ardından, güncelleştirme `BooksController` döndürülecek sınıfı `BookDto` örnekleri. Kullanacağız [Queryable.Select](https://msdn.microsoft.com/library/system.linq.queryable.select.aspx) projesine yöntemi `Book` için örnekler `BookDto` örnekleri. Denetleyici sınıfı için güncelleştirilmiş kod aşağıdaki gibidir.
+Sonra, `BooksController` örnekleri döndürecek şekilde sınıfı güncelleştirin `BookDto` . Örneklere örnek olarak proje örnekleri eklemek için [sorgulanabilir. Select](https://msdn.microsoft.com/library/system.linq.queryable.select.aspx) yöntemini kullanacağız `Book` `BookDto` . Controller sınıfının güncelleştirilmiş kodu aşağıda verilmiştir.
 
 [!code-csharp[Main](create-a-rest-api-with-attribute-routing/samples/sample9.cs)]
 
 > [!NOTE]
-> Sildim `PutBook`, `PostBook`, ve `DeleteBook` yöntemleri, çünkü bu öğretici için gerekli değildir.
+> `PutBook`, `PostBook` Ve yöntemlerini sildim, `DeleteBook` çünkü bu öğretici için gerekli değildir.
 
-
-Şimdi uygulamayı çalıştırabilir ve /api/books/1 istek, yanıt gövdesi şöyle görünmelidir:
+Şimdi uygulamayı çalıştırırsanız ve/api/Books/1 isteğinde bulunursa yanıt gövdesi şöyle görünmelidir:
 
 [!code-json[Main](create-a-rest-api-with-attribute-routing/samples/sample10.json)]
 
-## <a name="add-route-attributes"></a>Rota özniteliklerini ekleme
+## <a name="add-route-attributes"></a>Rota öznitelikleri Ekle
 
-Ardından, biz özniteliği yönlendirmeyi kullanmak için denetleyici dönüştürmeniz. İlk olarak, ekleme bir **routeprefix öğesi** özniteliği denetleyiciye. Bu öznitelik, bu denetleyici üzerinde tüm yöntemleri için başlangıç URI kesimleri tanımlar.
+Ardından, denetleyiciyi öznitelik yönlendirmeyi kullanacak şekilde dönüştürüyoruz. İlk olarak, denetleyiciye bir **Routeprefix** özniteliği ekleyin. Bu öznitelik, bu denetleyicideki tüm yöntemler için ilk URI segmentlerini tanımlar.
 
 [!code-csharp[Main](create-a-rest-api-with-attribute-routing/samples/sample11.cs?highlight=1)]
 
-Ardından Ekle **[yol]** denetleyici eylemleri için aşağıdaki gibi öznitelikleri:
+Ardından aşağıdaki gibi, denetleyici eylemlerine **[Route]** öznitelikleri ekleyin:
 
 [!code-csharp[Main](create-a-rest-api-with-attribute-routing/samples/sample12.cs?highlight=1,7)]
 
-Her denetleyici yöntemi için rota şablonu önekidir ve dizeyi belirtilen **rota** özniteliği. İçin `GetBook` parametreli dizeyi includes yöntemi, rota şablonu &quot;{kimliği: int}&quot;, URI segmenti bir tamsayı değeri içeriyorsa eşleşir.
+Her bir Controller yöntemi için yol şablonu, önek artı **yol** özniteliğinde belirtilen dizedir. Yöntemi için `GetBook` yol şablonu, &quot; &quot; URI segmentinin bir tamsayı değer içermesi durumunda eşleşen parametre parametreli {ID: int} dizesini içerir.
 
 | Yöntem | Rota şablonu | Örnek URI |
 | --- | --- | --- |
-| `GetBooks` | "API/books" | `http://localhost/api/books` |
-| `GetBook` | "api/books/{id:int}" | `http://localhost/api/books/5` |
+| `GetBooks` | "API/Kitaplar" | `http://localhost/api/books` |
+| `GetBook` | "API/kitaplar/{id: int}" | `http://localhost/api/books/5` |
 
-## <a name="get-book-details"></a>Kitap ayrıntılarını Al
+## <a name="get-book-details"></a>Kitap ayrıntılarını al
 
-Kitap ayrıntıları almak için istemci, bir GET isteği gönderir `/api/books/{id}/details`burada *{id}* kitabın kimliğidir.
+Kitap ayrıntılarını almak için, istemci öğesine bir GET isteği gönderir `/api/books/{id}/details` ; burada *{id}* , kitabın kimliğidir.
 
-Aşağıdaki yöntemi ekleyin `BooksController` sınıfı.
+Sınıfına aşağıdaki yöntemi ekleyin `BooksController` .
 
 [!code-csharp[Main](create-a-rest-api-with-attribute-routing/samples/sample13.cs)]
 
-Eğer istenmişse `/api/books/1/details`, yanıt şöyle görünür:
+İstek yaptıysanız `/api/books/1/details` Yanıt şöyle görünür:
 
 [!code-json[Main](create-a-rest-api-with-attribute-routing/samples/sample14.json)]
 
-## <a name="get-books-by-genre"></a>Türe göre kitap alma
+## <a name="get-books-by-genre"></a>Türe göre kitap al
 
-Belirli bir tarzında books listesini almak için istemci, bir GET isteği gönderir `/api/books/genre`burada *Tarz* Tarz adıdır. (Örneğin, `/api/books/fantasy`.)
+Belirli bir tarz kitap listesini almak için, istemci öğesine bir GET isteği gönderir `/api/books/genre` , burada *tarz* tarz adıdır. (Örneğin, `/api/books/fantasy` .)
 
-Aşağıdaki yöntemi ekleyin `BooksController`.
+Aşağıdaki yöntemi öğesine ekleyin `BooksController` .
 
 [!code-csharp[Main](create-a-rest-api-with-attribute-routing/samples/sample15.cs)]
 
-Biz bir URI şablonu {Tarz} parametresi içeren bir yol burada tanımlarsınız. Web API'si bu iki bir URI'leri ayırmak ve bunları farklı yöntemleri için yol olduğuna dikkat edin:
+Burada URI şablonunda bir {tarzı} parametresi içeren bir yol tanımlanıyoruz. Web API 'sinin bu iki URI 'yi ayırt edebildiğine ve bunları farklı yöntemlere yönlendirdiğine dikkat edin:
 
 `/api/books/1`
 
 `/api/books/fantasy`
 
-Çünkü `GetBook` yöntemi içeren bir kısıtlama "id" segment bir tamsayı değeri olmalıdır:
+Bunun nedeni, `GetBook` yöntemi "ID" segmentinin bir tamsayı değeri olması gereken bir kısıtlama içerir:
 
 [!code-csharp[Main](create-a-rest-api-with-attribute-routing/samples/sample16.cs?highlight=1)]
 
-/Api/books/fantasy istek, yanıt şöyle görünür:
+/Api/Books/FI isteğinde karşılaşırsanız, yanıt şöyle görünür:
 
 `[ { "Title": "Midnight Rain", "Author": "Ralls, Kim", "Genre": "Fantasy" }, { "Title": "Maeve Ascendant", "Author": "Corets, Eva", "Genre": "Fantasy" }, { "Title": "The Sundered Grail", "Author": "Corets, Eva", "Genre": "Fantasy" } ]`
 
-## <a name="get-books-by-author"></a>Yazara göre kitapları alın
+## <a name="get-books-by-author"></a>Yazara göre kitaplar alın
 
-Belirli bir yazar için bir kitap listesi almak için istemci, bir GET isteği gönderir `/api/authors/id/books`burada *kimliği* Yazar kimliğidir.
+Belirli bir yazarın kitaplarının listesini almak için, istemci öğesine bir GET isteği gönderir `/api/authors/id/books` ; burada *KIMLIK* yazarın kimliğidir.
 
-Aşağıdaki yöntemi ekleyin `BooksController`.
+Aşağıdaki yöntemi öğesine ekleyin `BooksController` .
 
 [!code-csharp[Main](create-a-rest-api-with-attribute-routing/samples/sample17.cs)]
 
-Bu örnekte ilginç, çünkü &quot;books&quot; olan bir alt kaynağın kabul &quot;yazarlar&quot;. Bu düzen, RESTful API'leri oldukça yaygındır.
+Bu örnek, &quot; kitaplar &quot; yazarların bir alt kaynağını kabul ettiğinden ilgi çekici bir örnektir &quot; &quot; . Bu model, yeniden gerçekleştirilen API 'lerde oldukça yaygındır.
 
-Yol şablonunda tilde (~) yol ön eki geçersiz kılmalar **routeprefix öğesi** özniteliği.
+Yol şablonundaki tilde (~), **routeprefix** özniteliğinde rota önekini geçersiz kılar.
 
-## <a name="get-books-by-publication-date"></a>Kitap Yayını tarihe göre Al
+## <a name="get-books-by-publication-date"></a>Yayın tarihine göre kitap al
 
-Yayın tarihe göre kitap listesi almak için istemci, bir GET isteği gönderir `/api/books/date/yyyy-mm-dd`burada *yyyy-aa-gg* tarihtir.
+Yayın tarihine göre Kitaplar listesini almak için, istemci öğesine bir GET isteği gönderir `/api/books/date/yyyy-mm-dd` ; burada *yyyy-aa-gg* tarih olur.
 
 Bunu yapmanın bir yolu aşağıda verilmiştir:
 
 [!code-csharp[Main](create-a-rest-api-with-attribute-routing/samples/sample18.cs)]
 
-`{pubdate:datetime}` Eşleştirilecek parametresi kısıtlı bir **DateTime** değeri. Bu çalışır, ancak çok isteriz gerçekten daha fazla izin veremez. Örneğin, bu bir URI'leri rota eşleşir:
+`{pubdate:datetime}`Parametresi bir **Tarih saat** değeriyle eşleşecek şekilde kısıtlanıyor. Bu işe yarar, ancak beğenmekten daha fazla izin veriyoruz. Örneğin, bu URI 'Ler rotayla de eşleşir:
 
 `/api/books/date/Thu, 01 May 2008`
 
 `/api/books/date/2000-12-16T00:00:00`
 
-Bu bir URI'leri vermekle yanlış bir şey yoktur. Ancak bir normal ifade kısıtlaması için rota şablonu ekleyerek belirli bir biçime rota kısıtlayabilirsiniz:
+Bu URI 'Lere izin veren bir sorun yok. Ancak, yol şablonuna normal ifade kısıtlaması ekleyerek yolu belirli bir biçimle kısıtlayabilirsiniz:
 
 [!code-csharp[Main](create-a-rest-api-with-attribute-routing/samples/sample19.cs?highlight=1)]
 
-Artık yalnızca tarih biçiminde &quot;yyyy-aa-gg&quot; eşleşir. Biz regex gerçek tarih yapılandırdığımıza doğrulamak için kullanmayın dikkat edin. Web API uygulamasına URI segmenti Dönüştür çalıştığında işlenen bir **DateTime** örneği. Geçersiz bir tarih gibi ' 2012-47-99' başarısız olur dönüştürülecek ve istemci bir 404 hatası alırsınız.
+Şimdi yalnızca &quot; YYYY-AA-GG biçiminde olan tarihler &quot; eşleşir. Gerçek bir tarih olduğunu doğrulamak için Regex kullandığımıza dikkat edin. Web API 'SI, URI segmentini bir **DateTime** örneğine dönüştürmeye çalıştığında işlenir. ' 2012-47-99 ' gibi geçersiz bir tarih dönüştürülemeyecek ve istemci 404 hatası alacak.
 
-Bir eğik çizgi ayırıcı de destekleyebilir (`/api/books/date/yyyy/mm/dd`) diğerine ekleyerek **[yol]** farklı bir regex ile özniteliği.
+Ayrıca, `/api/books/date/yyyy/mm/dd` farklı bir Regex ile başka bir **[Route]** özniteliği ekleyerek eğik çizgi ayırıcısını () de destekleyebilirsiniz.
 
 [!code-html[Main](create-a-rest-api-with-attribute-routing/samples/sample20.html)]
 
-Burada küçük ancak önemli ayrıntı yok. İkinci rota şablonu olan bir joker karakter (\*) {pubdate} parametresi başlangıcı:
+Burada hafif ancak önemli bir ayrıntı vardır. İkinci yol şablonunda \* {pubdate} parametresinin başlangıcında bir joker karakter () vardır:
 
 [!code-json[Main](create-a-rest-api-with-attribute-routing/samples/sample21.json)]
 
-Bu, yönlendirme altyapısını {pubdate} URI'ın geri kalan eşleşmelidir bildirir. Varsayılan olarak, bir şablon parametresi, tek bir URI segmenti eşleşir. Bu durumda, {pubdate} birkaç URI segmentleri span istiyoruz:
+Bu, yönlendirme altyapısına {pubdate} uygulamasının URI 'nin geri kalanı ile eşleştiğinden emin olduğunu söyler. Varsayılan olarak, bir şablon parametresi tek bir URI segmentiyle eşleşir. Bu durumda, {pubdate} ' nin birkaç URI kesimini yaymasına istiyoruz:
 
 `/api/books/date/2013/06/17`
 
-## <a name="controller-code"></a>Denetleyici kodlarının
+## <a name="controller-code"></a>Denetleyici kodu
 
-BooksController sınıf için tam kod aşağıda verilmiştir.
+BooksController sınıfının tüm kodu aşağıda verilmiştir.
 
 [!code-csharp[Main](create-a-rest-api-with-attribute-routing/samples/sample22.cs)]
 
 ## <a name="summary"></a>Özet
 
-Öznitelik yönlendirme, daha fazla denetim ve esneklik, API'niz için bir URI'leri tasarlarken sunar.
+Öznitelik yönlendirme API 'niz için URI 'Leri tasarlarken daha fazla denetim ve daha fazla esneklik sağlar.
