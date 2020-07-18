@@ -8,12 +8,12 @@ ms.date: 12/18/2012
 ms.assetid: 71ee4c78-c500-4d1c-b761-b4e161a291b5
 msc.legacyurl: /web-api/overview/security/integrated-windows-authentication
 msc.type: authoredcontent
-ms.openlocfilehash: e4f31f191f3c0fabff308ea5dadb0f1d9ce7d448
-ms.sourcegitcommit: e7e91932a6e91a63e2e46417626f39d6b244a3ab
+ms.openlocfilehash: c5fe57c4a20e28fa434659a75484e3a4c37195f8
+ms.sourcegitcommit: 000cbcd1de66fe8a766f203ef2d6f009e4435f53
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/06/2020
-ms.locfileid: "78621746"
+ms.lasthandoff: 07/16/2020
+ms.locfileid: "86424787"
 ---
 # <a name="integrated-windows-authentication"></a>Tümleşik Windows Kimlik Doğrulaması
 
@@ -21,14 +21,16 @@ ms.locfileid: "78621746"
 
 Tümleşik Windows kimlik doğrulaması, kullanıcıların Kerberos veya NTLM kullanarak Windows kimlik bilgileriyle oturum açmasına olanak sağlar. İstemci kimlik bilgilerini yetkilendirme üst bilgisinde gönderir. Windows kimlik doğrulaması, intranet ortamı için idealdir. Daha fazla bilgi için bkz. [Windows kimlik doğrulaması](https://www.iis.net/configreference/system.webserver/security/authentication/windowsauthentication).
 
-| Yararları | Dezavantajlar |
+| Avantajlar | Dezavantajlar |
 | --- | --- |
-| -IIS içinde yerleşik. -İstekte Kullanıcı kimlik bilgilerini göndermez. -İstemci bilgisayar etki alanına aitse (örneğin, intranet uygulaması), kullanıcının kimlik bilgilerini girmesi gerekmez. | -Internet uygulamaları için önerilmez. -İstemcide Kerberos veya NTLM desteği gerektirir. -İstemci Active Directory etki alanında olmalıdır. |
+| IIS 'de yerleşik olarak. | Internet uygulamaları için önerilmez. | 
+| İstekte Kullanıcı kimlik bilgilerini göndermez. | İstemcide Kerberos veya NTLM desteği gerektirir. |
+| İstemci bilgisayar etki alanına aitse (örneğin, intranet uygulaması), kullanıcının kimlik bilgilerini girmesi gerekmez. | İstemci Active Directory etki alanında olmalıdır. |
 
 > [!NOTE]
 > Uygulamanız Azure üzerinde barındırılıyorsa ve şirket içi Active Directory etki alanınız varsa, şirket içi AD 'nizi Azure Active Directory ile federasyona eklemeyi düşünün. Bu şekilde, kullanıcılar şirket içi kimlik bilgileriyle oturum açabilirler, ancak kimlik doğrulaması Azure AD tarafından gerçekleştirilir. Daha fazla bilgi için bkz. [Azure kimlik doğrulaması](../../../visual-studio/overview/2012/windows-azure-authentication.md).
 
-Tümleşik Windows kimlik doğrulaması kullanan bir uygulama oluşturmak için, MVC 4 proje sihirbazında "Intranet uygulaması" şablonunu seçin. Bu proje şablonu, Web. config dosyasına aşağıdaki ayarı koyar:
+Tümleşik Windows kimlik doğrulaması kullanan bir uygulama oluşturmak için, MVC 4 proje sihirbazında "Intranet uygulaması" şablonunu seçin. Bu proje şablonu Web.config dosyasına aşağıdaki ayarı koyar:
 
 [!code-xml[Main](integrated-windows-authentication/samples/sample1.xml)]
 
