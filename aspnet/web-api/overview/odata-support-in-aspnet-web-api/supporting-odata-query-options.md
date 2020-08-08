@@ -119,7 +119,7 @@ Denetleyiciniz OData biçimi döndürürse, yanıt gövdesi sonraki veri sayfas�
 > [!NOTE]
 > Sonraki sayfa bağlantıları ve satır içi sayısı her ikisi de OData biçimi gerektirir. Bunun nedeni, OData 'in bağlantıyı ve saymayı tutmak için yanıt gövdesinde özel alanlar tanımlamasının nedenidir.
 
-OData olmayan biçimler için, sorgu sonuçlarını bir **PageResult &lt; &gt; ** nesnesine sarmalayarak, sonraki sayfa bağlantılarını ve satır içi sayıyı desteklemek yine de mümkündür. Ancak, biraz daha fazla kod gerektirir. Örnek aşağıda verilmiştir:
+OData olmayan biçimler için, sorgu sonuçlarını bir **PageResult &lt; &gt; ** nesnesine sarmalayarak, sonraki sayfa bağlantılarını ve satır içi sayıyı desteklemek yine de mümkündür. Ancak, biraz daha fazla kod gerektirir. Aşağıda bir örnek verilmiştir:
 
 [!code-csharp[Main](supporting-odata-query-options/samples/sample6.cs)]
 
