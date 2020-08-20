@@ -9,10 +9,10 @@ ms.assetid: 64906a1d-f734-41cf-9615-ee95f8740996
 msc.legacyurl: /mvc/overview/older-versions/getting-started-with-ef-5-using-mvc-4/advanced-entity-framework-scenarios-for-an-mvc-web-application
 msc.type: authoredcontent
 ms.openlocfilehash: f8f079f6d8ea663c6888456be422a2bae93a4b87
-ms.sourcegitcommit: ce28244209db8615bc9bdd576a2e2c88174d318d
+ms.sourcegitcommit: c9d9210e0d16fbb3829b7688cfb832dc263c79cc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/06/2020
+ms.lasthandoff: 08/20/2020
 ms.locfileid: "86163577"
 ---
 # <a name="advanced-entity-framework-scenarios-for-an-mvc-web-application-10-of-10"></a>MVC web uygulaması için gelişmiş Entity Framework senaryoları (10/10)
@@ -267,7 +267,7 @@ Kimlik doğrulama ve yetkilendirme gibi MVC ile ilgili diğer konular hakkında 
 
 <a id="acknowledgments"></a>
 
-## <a name="acknowledgments"></a>İlgili kaynaklar
+## <a name="acknowledgments"></a>Teşekkürler
 
 - Tom Dykstra, Bu öğreticinin orijinal sürümünü yazdı ve Microsoft Web platformu ve araçlar Içerik ekibi üzerinde bir kıdemli programlama yazdır.
 - [Rick Anderson](https://blogs.msdn.com/b/rickandy/) (Twitter [@RickAndMSFT](http://twitter.com/RickAndMSFT) ) bu öğreticiyi yazdı ve en fazla iş bu ÖĞRETICIYI, EF 5 ve MVC 4 için güncelleştirti. Rick, Microsoft 'un Azure ve MVC 'ye odaklanarak bir üst düzey programlama yazdır.

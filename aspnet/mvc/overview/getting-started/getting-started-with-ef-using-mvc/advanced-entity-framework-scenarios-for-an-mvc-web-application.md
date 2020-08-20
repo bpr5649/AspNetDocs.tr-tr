@@ -10,10 +10,10 @@ ms.assetid: f35a9b0c-49ef-4cde-b06d-19d1543feb0b
 msc.legacyurl: /mvc/overview/getting-started/getting-started-with-ef-using-mvc/advanced-entity-framework-scenarios-for-an-mvc-web-application
 msc.type: authoredcontent
 ms.openlocfilehash: d7cc83a5b78a60f575f5c3065079679189296a0c
-ms.sourcegitcommit: ce28244209db8615bc9bdd576a2e2c88174d318d
+ms.sourcegitcommit: c9d9210e0d16fbb3829b7688cfb832dc263c79cc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/06/2020
+ms.lasthandoff: 08/20/2020
 ms.locfileid: "86188733"
 ---
 # <a name="tutorial-learn-about-advanced-ef-scenarios-for-an-mvc-5-web-app"></a>Öğretici: MVC 5 Web uygulaması için gelişmiş EF senaryoları hakkında bilgi edinin
@@ -230,7 +230,7 @@ Entity Framework 6 ' nın kaynak kodu [GitHub](https://github.com/aspnet/EntityF
 
 Kaynak kodu açık olsa da Entity Framework, Microsoft ürünü olarak tam olarak desteklenmektedir. Microsoft Entity Framework ekibi, her bir yayının kalitesini sağlamak için, hangi katkıların kabul edildiğini denetler ve tüm kod değişikliklerini sınar.
 
-## <a name="acknowledgments"></a>İlgili kaynaklar
+## <a name="acknowledgments"></a>Teşekkürler
 
 - Tom Dykstra, Bu öğreticinin orijinal sürümünü yazdı, EF 5 güncelleştirmesini birlikte yazdı ve EF 6 güncelleştirmesini yazdı. Tom, Microsoft Web platformu ve araçlar Içerik ekibi üzerinde bir üst düzey programlama yazdır.
 - [Rick Anderson](https://blogs.msdn.com/b/rickandy/) (Twitter [@RickAndMSFT](http://twitter.com/RickAndMSFT) ), EF 5 ve MVC 4 için öğreticiyi güncelleştirti ve EF 6 güncelleştirmesini birlikte yazdı. Rick, Microsoft 'un Azure ve MVC 'ye odaklanarak bir üst düzey programlama yazdır.
