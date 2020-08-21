@@ -8,12 +8,12 @@ ms.date: 01/27/2011
 ms.assetid: 0cbd88da-0da6-4605-b222-2835c6478304
 msc.legacyurl: /mvc/overview/views/dynamic-v-strongly-typed-views
 msc.type: authoredcontent
-ms.openlocfilehash: 3e81c6381b1e280e3b74cb7eb6ea6e6c3224e655
-ms.sourcegitcommit: e7e91932a6e91a63e2e46417626f39d6b244a3ab
+ms.openlocfilehash: 30b84c71c86e455f15a659abf566750f1c6eea90
+ms.sourcegitcommit: feb88edfb01b32f6fc9488f0f0ddb3c5b34e6ff0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/06/2020
-ms.locfileid: "78538159"
+ms.lasthandoff: 08/21/2020
+ms.locfileid: "88702952"
 ---
 # <a name="dynamic-v-strongly-typed-views"></a>Dinamik ve Kesin Türü Belirtilmiş Görünümler
 
@@ -22,7 +22,7 @@ ms.locfileid: "78538159"
 Bir denetleyiciden ASP.NET MVC 3 ' teki bir görünüme bilgi geçirmenin üç yolu vardır:
 
 1. Türü kesin belirlenmiş bir model nesnesi.
-2. Dinamik bir tür olarak (@model dinamik kullanarak)
+2. Dinamik bir tür olarak ( @model dinamik kullanarak)
 3. ViewBag kullanma
 
 Dinamik ve kesin belirlenmiş görünümleri karşılaştırmak ve karşılaştırmak için basit bir MVC 3 üst Blog uygulaması yazdım. Denetleyici basit bir blog listesi ile başlar:
@@ -56,5 +56,3 @@ Tam olarak aynı dönüş görünümüne (Topblogları) dikkat edin; kesin olmay
 Yeni görünüm şablonunun içinde IntelliSense desteği alırız.
 
 [![7002. IntelliSense [1]](dynamic-v-strongly-typed-views/_static/image8.png)](dynamic-v-strongly-typed-views/_static/image7.png)
-
-C# projesi [buradan](https://blogs.msdn.com/cfs-file.ashx/__key/CommunityServer-Blogs-Components-WeblogFiles/00-00-01-11-73-SSMS/1817.Mvc3ViewDemo.zip)indirilebilir.

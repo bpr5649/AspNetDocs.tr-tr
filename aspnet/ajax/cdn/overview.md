@@ -8,12 +8,12 @@ ms.date: 10/14/2017
 ms.assetid: 8935bf14-ca6d-4a4e-9dbe-b96ce74cef49
 msc.legacyurl: /ajax/cdn
 msc.type: content
-ms.openlocfilehash: 58e2d62da2181108f34bbf3e1e948977241e1dee
-ms.sourcegitcommit: b3c0e67bb231dbb0db9e8dfccd51cf715481edcc
+ms.openlocfilehash: 9eebe0e52af2a0fca967a51afb58c7db174d9fdb
+ms.sourcegitcommit: feb88edfb01b32f6fc9488f0f0ddb3c5b34e6ff0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/12/2020
-ms.locfileid: "88161363"
+ms.lasthandoff: 08/21/2020
+ms.locfileid: "88702926"
 ---
 # <a name="microsoft-ajax-content-delivery-network"></a>Microsoft Ajax Content Delivery Network
 
@@ -48,7 +48,7 @@ ms.locfileid: "88161363"
  [CDN 'deki yanıt verme yayınları](#Respond_Releases_on_the_CDN_13)  
  [CDN 'de önyükleme yayınları](#Bootstrap_Releases_on_the_CDN_14)  
  [CDN 'de önyükleme TouchCarousel sürümleri](#BootstrapTouchCarousel_Releases_on_the_CDN_18)  
- [CDN üzerinde yayınlarHammer.js](#Hammerjs_Releases_on_the_CDN_19)  
+ [ CDN üzerinde yayınlarHammer.js](#Hammerjs_Releases_on_the_CDN_19)  
  [CDN 'de ASP.NET Web Forms ve Ajax sürümleri](#ASPNET_Web_Forms_and_Ajax_Releases_on_the_CDN_15)  
  [CDN 'de ASP.NET MVC yayınları](#ASPNET_MVC_Releases_on_the_CDN_16)  
  [CDN üzerinde ASP.NET SignalR yayınları](#ASPNET_SignalR_Releases_on_the_CDN_17)
@@ -84,8 +84,8 @@ JavaScript kitaplığınızı göndermek isterseniz ve kitaplığınız en üst 
 
 Microsoft.com etki alanı adını kullanmak için kullanılan CDN, aspnetcdn.com etki alanı adını kullanacak şekilde değiştirilmiştir. Bu değişiklik performansı artırmak için yapılmıştır çünkü bir tarayıcı microsoft.com etki alanına başvurduğu zaman, her istekle birlikte bu etki alanındaki herhangi bir tanımlama bilgisini gönderir. Microsoft.com performansının dışındaki bir etki alanı adına yeniden adlandırarak, %25 ' e kadar artırılabilir. Note ajax.microsoft.com çalışmaya devam edecektir ancak ajax.aspnetcdn.com önerilir.
 
-- Eski biçim:https://ajax.microsoft.com/ajax/jQuery/jquery-1.8.0.js
-- Yeni biçim:https://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.8.0.js
+- Eski biçim: https://ajax.microsoft.com/ajax/jQuery/jquery-1.8.0.js
+- Yeni biçim: https://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.8.0.js
 
 <a id="Visual_Studio_vsdoc_Support_19"></a>
 
@@ -830,6 +830,21 @@ Aşağıdaki [yanıt verme](https://github.com/scottjehl/Respond "Yanıtlama") s
 ### <a name="bootstrap-releases-on-the-cdn"></a>CDN 'de önyükleme yayınları
 
 Aşağıdaki [getbootstrap.com](http://getbootstrap.com "getbootstrap.com") Bootstrap sürümleri CDN üzerinde barındırılır:
+
+#### <a name="bootstrap-version-452"></a>Önyükleme sürümü 4.5.2
+
+- https://ajax.aspnetcdn.com/ajax/bootstrap/4.5.2/bootstrap.js
+- https://ajax.aspnetcdn.com/ajax/bootstrap/4.5.2/bootstrap.min.js
+- https://ajax.aspnetcdn.com/ajax/bootstrap/4.5.2/bootstrap.bundle.js
+- https://ajax.aspnetcdn.com/ajax/bootstrap/4.5.2/css/bootstrap.css
+- https://ajax.aspnetcdn.com/ajax/bootstrap/4.5.2/css/bootstrap.css.map
+- https://ajax.aspnetcdn.com/ajax/bootstrap/4.5.2/css/bootstrap.min.css
+- https://ajax.aspnetcdn.com/ajax/bootstrap/4.5.2/css/bootstrap-grid.css
+- https://ajax.aspnetcdn.com/ajax/bootstrap/4.5.2/css/bootstrap-grid.min.css
+- https://ajax.aspnetcdn.com/ajax/bootstrap/4.5.2/css/bootstrap-grid.css.map
+- https://ajax.aspnetcdn.com/ajax/bootstrap/4.5.2/css/bootstrap-reboot.css
+- https://ajax.aspnetcdn.com/ajax/bootstrap/4.5.2/css/bootstrap-reboot.min.css
+- https://ajax.aspnetcdn.com/ajax/bootstrap/4.5.2/css/bootstrap-reboot.css.map
 
 #### <a name="bootstrap-version-450"></a>Önyükleme sürümü 4.5.0
 
