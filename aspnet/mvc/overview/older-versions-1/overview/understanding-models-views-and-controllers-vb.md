@@ -8,12 +8,12 @@ ms.date: 08/19/2008
 ms.assetid: a106374a-5e74-4fd0-9ac0-1a32280e5d0d
 msc.legacyurl: /mvc/overview/older-versions-1/overview/understanding-models-views-and-controllers-vb
 msc.type: authoredcontent
-ms.openlocfilehash: cc7988e0c9802e8cd376396eb5da15b5393d6088
-ms.sourcegitcommit: e7e91932a6e91a63e2e46417626f39d6b244a3ab
+ms.openlocfilehash: e11487cbb863bae230ccb9dfdaf7172c65ec4d43
+ms.sourcegitcommit: ffd0f59ef9b7d221a5b2010c32aa61c89c14f406
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/06/2020
-ms.locfileid: "78600452"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89042098"
 ---
 # <a name="understanding-models-views-and-controllers-vb"></a>Modelleri, Görünümleri ve Denetleyicileri Anlama (VB)
 
@@ -29,15 +29,15 @@ Bu öğreticiyi okuduktan sonra, bir ASP.NET MVC uygulamasının farklı bölüm
 
 ASP.NET MVC web uygulamaları oluşturmaya yönelik varsayılan Visual Studio şablonu, bir ASP.NET MVC uygulamasının farklı parçalarını anlamak için kullanılabilecek son derece basit bir örnek uygulama içerir. Bu öğreticide bu basit uygulamadan faydalanabilir.
 
-Visual Studio 2008 ' i başlatarak ve menü seçenek dosyası, yeni proje ' yi seçerek MVC şablonuyla yeni bir ASP.NET MVC uygulaması oluşturursunuz (bkz. Şekil 1). Yeni proje iletişim kutusunda, proje türleri altında sık kullandığınız programlama dilini seçin (Visual Basic veya C#) ve şablonlar altında **ASP.NET MVC web uygulaması** ' nı seçin. Tamam düğmesine tıklayın.
+Visual Studio 2008 ' i başlatarak ve menü seçenek dosyası, yeni proje ' yi seçerek MVC şablonuyla yeni bir ASP.NET MVC uygulaması oluşturursunuz (bkz. Şekil 1). Yeni proje iletişim kutusunda, proje türleri (Visual Basic veya C#) altında en sevdiğiniz programlama dilini seçin ve Şablonlar altında **ASP.NET MVC web uygulaması** ' nı seçin. Tamam düğmesine tıklayın.
 
-[Yeni proje Iletişim kutusunu ![](understanding-models-views-and-controllers-vb/_static/image1.jpg)](understanding-models-views-and-controllers-vb/_static/image1.png)
+[![Yeni proje Iletişim kutusu](understanding-models-views-and-controllers-vb/_static/image1.jpg)](understanding-models-views-and-controllers-vb/_static/image1.png)
 
 **Şekil 01**: yeni proje iletişim kutusu ([tam boyutlu görüntüyü görüntülemek için tıklayın](understanding-models-views-and-controllers-vb/_static/image2.png))
 
 Yeni bir ASP.NET MVC uygulaması oluşturduğunuzda, **birim test projesi oluştur** iletişim kutusu görüntülenir (bkz. Şekil 2). Bu iletişim kutusu, çözümünüzde ASP.NET MVC uygulamanızı test etmek için ayrı bir proje oluşturmanıza olanak sağlar. Hayır seçeneğini belirleyin **, birim testi projesi oluşturmayın** ve **Tamam** düğmesine tıklayın.
 
-[![birim testi oluştur Iletişim kutusu](understanding-models-views-and-controllers-vb/_static/image2.jpg)](understanding-models-views-and-controllers-vb/_static/image3.png)
+[![Birim testi oluştur Iletişim kutusu](understanding-models-views-and-controllers-vb/_static/image2.jpg)](understanding-models-views-and-controllers-vb/_static/image3.png)
 
 **Şekil 02**: birim testi iletişim kutusu oluşturma ([tam boyutlu görüntüyü görüntülemek için tıklayın](understanding-models-views-and-controllers-vb/_static/image4.png))
 
@@ -45,7 +45,7 @@ Yeni ASP.NET MVC uygulaması oluşturulduktan sonra. Çözüm Gezgini penceresin
 
 Controllers klasörünü genişletirseniz AccountController. vb adlı bir dosya ve HomeController. vb adlı bir dosya görmeniz gerekir. Görünümler klasörünü genişletirseniz, hesap, giriş ve paylaşılan adlı üç alt klasör görmeniz gerekir. Giriş klasörünü genişletirseniz,. aspx ve Index. aspx adlı iki ek dosya görürsünüz (bkz. Şekil 3). Bu dosyalar, varsayılan ASP.NET MVC şablonuna eklenen örnek uygulamayı yapar.
 
-[Çözüm Gezgini pencereyi ![](understanding-models-views-and-controllers-vb/_static/image3.jpg)](understanding-models-views-and-controllers-vb/_static/image5.png)
+[![Çözüm Gezgini penceresi](understanding-models-views-and-controllers-vb/_static/image3.jpg)](understanding-models-views-and-controllers-vb/_static/image5.png)
 
 **Şekil 03**: Çözüm Gezgini penceresi ([tam boyutlu görüntüyü görüntülemek için tıklayın](understanding-models-views-and-controllers-vb/_static/image6.png))
 
@@ -53,19 +53,19 @@ Controllers klasörünü genişletirseniz AccountController. vb adlı bir dosya 
 
 Bir ASP.NET uygulamasını ilk kez çalıştırdığınızda, Şekil 4 ' te iletişim kutusu, hata ayıklama modunu etkinleştirmenizi öneren görünür. Tamam düğmesine tıklayın ve uygulama çalışacaktır.
 
-[![hata ayıklama etkin değil iletişim kutusu](understanding-models-views-and-controllers-vb/_static/image4.jpg)](understanding-models-views-and-controllers-vb/_static/image7.png)
+[![Hata ayıklama etkin değil iletişim kutusu](understanding-models-views-and-controllers-vb/_static/image4.jpg)](understanding-models-views-and-controllers-vb/_static/image7.png)
 
 **Şekil 04**: hata ayıklama etkin değil iletişim kutusu ([tam boyutlu görüntüyü görüntülemek için tıklayın](understanding-models-views-and-controllers-vb/_static/image8.png))
 
 Bir ASP.NET MVC uygulaması çalıştırdığınızda, Visual Studio uygulamayı Web tarayıcınızda başlatır. Örnek uygulama yalnızca iki sayfadan oluşur: Dizin sayfası ve hakkında sayfası. Uygulama ilk kez başladığında Dizin sayfası görünür (bkz. Şekil 5). Uygulamanın sağ üst köşesindeki menü bağlantısına tıklayarak hakkında sayfasına gidebilirsiniz.
 
-[Dizin sayfasını ![](understanding-models-views-and-controllers-vb/_static/image5.jpg)](understanding-models-views-and-controllers-vb/_static/image9.png)
+[![Dizin sayfası](understanding-models-views-and-controllers-vb/_static/image5.jpg)](understanding-models-views-and-controllers-vb/_static/image9.png)
 
 **Şekil 05**: Dizin sayfası ([tam boyutlu görüntüyü görüntülemek için tıklayın](understanding-models-views-and-controllers-vb/_static/image10.png))
 
 Tarayıcınızın adres çubuğundaki URL 'Lere dikkat edin. Örneğin, hakkında menüsü bağlantısına tıkladığınızda, tarayıcı adres çubuğundaki URL, **/Home/about**olarak değişir.
 
-Tarayıcı penceresini kapatır ve Visual Studio 'ya dönerseniz, giriş/hakkında yolunda bir dosya bulamayabileceksiniz. Dosyalar yok. Nasıl bu mümkün mü?
+Tarayıcı penceresini kapatır ve Visual Studio 'ya dönerseniz, giriş/hakkında yolunda bir dosya bulamayabileceksiniz. Dosyalar yok. Bu nasıl mümkün?
 
 ## <a name="a-url-does-not-equal-a-page"></a>Bir URL bir sayfaya eşit değil
 
@@ -85,7 +85,7 @@ ASP.NET yönlendirme, gelen istekleri işlemek için bir yol tablosu kullanır. 
 
 [!code-vb[Main](understanding-models-views-and-controllers-vb/samples/sample1.vb)]
 
-Bir ASP.NET uygulaması ilk kez başlatıldığında, uygulama\_Start () yöntemi çağrılır. Bu yöntem, liste 1 ' de RegisterRoutes () yöntemini çağırır ve RegisterRoutes () yöntemi varsayılan yol tablosunu oluşturur.
+Bir ASP.NET uygulaması ilk kez başlatıldığında, uygulama \_ Başlat () yöntemi çağrılır. Bu yöntem, liste 1 ' de RegisterRoutes () yöntemini çağırır ve RegisterRoutes () yöntemi varsayılan yol tablosunu oluşturur.
 
 Varsayılan yol tablosu bir rotadan oluşur. Bu varsayılan yol, tüm gelen istekleri üç parçaya ayırır (bir URL segmenti, eğik çizgiler arasındaki herhangi bir şeydir). İlk kesim bir denetleyici adına eşlenir, ikinci segment bir eylem adıyla eşlenir ve son segment ID adlı eyleme geçirilen bir parametreye eşlenir.
 
@@ -99,7 +99,7 @@ Controller = ürün
 
 Eylem = Ayrıntılar
 
-kimlik = 3
+Kimlik = 3
 
 Global. asax dosyasında tanımlanan varsayılan yol, üç parametre için varsayılan değerleri içerir. Varsayılan denetleyici ana, varsayılan eylem dizindir ve varsayılan kimlik boş bir dizedir. Bu varsayılan varsayılanlar göz önünde bulundurularak aşağıdaki URL 'nin nasıl ayrıştırılabileceğini düşünün:
 
@@ -109,17 +109,17 @@ Bu URL, aşağıdaki gibi üç parametreye ayrıştırılır:
 
 Denetleyici = çalışan
 
-eylem = Dizin
+Eylem = Dizin
 
-Kimlik =
+Kimlik =?
 
-Son olarak, herhangi bir URL (örneğin, `http://localhost`) vermeden bir ASP.NET MVC uygulaması açarsanız, URL şöyle ayrıştırılır:
+Son olarak, herhangi bir URL (örneğin,) sağlamadan bir ASP.NET MVC uygulaması açarsanız `http://localhost` , URL şöyle ayrıştırılır:
 
-denetleyici = ana
+Denetleyici = ana
 
-eylem = Dizin
+Eylem = Dizin
 
-Kimlik =
+Kimlik =?
 
 İstek, HomeController sınıfında dizin () eylemine yönlendirilir.
 
@@ -127,7 +127,7 @@ Kimlik =
 
 Bir denetleyici, bir kullanıcının MVC uygulamasıyla etkileşim kurma şeklini denetmaktan sorumludur. Bir denetleyici, bir ASP.NET MVC uygulaması için akış denetim mantığını içerir. Bir denetleyici, bir Kullanıcı bir tarayıcı isteği yaptığında kullanıcıya hangi yanıtın geri gönderileceğini belirler.
 
-Denetleyici yalnızca bir sınıf (örneğin, bir Visual Basic veya C# sınıf). Örnek ASP.NET MVC uygulaması, denetleyiciler klasöründe bulunan HomeController. vb adlı bir denetleyici içerir. HomeController. vb dosyasının içeriği, liste 2 ' de yeniden oluşturulur.
+Denetleyici yalnızca bir sınıftır (örneğin, bir Visual Basic veya C# sınıfı). Örnek ASP.NET MVC uygulaması, denetleyiciler klasöründe bulunan HomeController. vb adlı bir denetleyici içerir. HomeController. vb dosyasının içeriği, liste 2 ' de yeniden oluşturulur.
 
 **Listeleme 2-HomeController.cs**
 
@@ -143,7 +143,7 @@ HomeController sınıfı, Index () ve About () tarafından kullanıma sunulan ik
 
 Görünümlerinizi doğru yerde oluşturmanız gerekir. HomeController. Index () eylemi aşağıdaki yolda bulunan bir görünüm döndürür:
 
-\Views\Home\Index.aspx
+\Views\home\ındex.aspx
 
 HomeController. About () eylemi aşağıdaki yolda bulunan bir görünüm döndürür:
 
@@ -159,7 +159,7 @@ Listeleme 3 ' teki dosya about. aspx görünümünü içerir.
 
 Liste 3 ' teki ilk satırı yoksayabilirsiniz, görünümün geri kalanının çoğu standart HTML 'den oluşur. Burada istediğiniz HTML 'yi girerek görünümün içeriğini değiştirebilirsiniz.
 
-Bir görünüm, Active Server sayfalarındaki veya ASP.NET Web Forms bir sayfaya çok benzer. Bir görünüm, HTML içeriği ve betikleri içerebilir. Betikleri, en sevdiğiniz .NET programlama dilinde (örneğin, C# veya Visual Basic .net) yazabilirsiniz. Veritabanı verileri gibi dinamik içerikleri göstermek için betikleri kullanın.
+Bir görünüm, Active Server sayfalarındaki veya ASP.NET Web Forms bir sayfaya çok benzer. Bir görünüm, HTML içeriği ve betikleri içerebilir. Betikleri, en sevdiğiniz .NET programlama dilinde (örneğin, C# veya Visual Basic .NET) yazabilirsiniz. Veritabanı verileri gibi dinamik içerikleri göstermek için betikleri kullanın.
 
 ## <a name="understanding-models"></a>Modelleri anlama
 

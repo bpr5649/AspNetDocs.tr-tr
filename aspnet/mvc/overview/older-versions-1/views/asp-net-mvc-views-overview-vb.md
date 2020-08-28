@@ -8,12 +8,12 @@ ms.date: 02/16/2008
 ms.assetid: c28ba88d-3a93-47f5-a306-049bd766714d
 msc.legacyurl: /mvc/overview/older-versions-1/views/asp-net-mvc-views-overview-vb
 msc.type: authoredcontent
-ms.openlocfilehash: f02728ed248f29b09d654e509977ed43889cbb83
-ms.sourcegitcommit: e7e91932a6e91a63e2e46417626f39d6b244a3ab
+ms.openlocfilehash: a07d15cb14e9ef90b62c5a8702dee53f1a0a6032
+ms.sourcegitcommit: 4e6d586faadbe4d9ef27122f86335ec9385134af
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/06/2020
-ms.locfileid: "78541309"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89044675"
 ---
 # <a name="aspnet-mvc-views-overview-vb"></a>ASP.NET MVC Görünümlerine Genel Bakış (VB)
 
@@ -51,7 +51,7 @@ Görüntüleme ()
 
 Bu kod satırı, Web sunucunuzdaki aşağıdaki yolda bulunması gereken bir görünüm döndürür:
 
-\Views\Home\Index.aspx
+\Views\home\ındex.aspx
 
 Görünümün yolu, denetleyicinin adından ve denetleyici eyleminin adıyla algılanır.
 
@@ -81,15 +81,15 @@ Liste 2 ' deki HTML sayfasının gövdesi aşağıdaki betiği içerir:
 
 &lt;% Response. Write (DateTime. Now)%&gt;
 
-Bir betiğin başlangıcını ve sonunu işaretlemek için% &lt;% ve%&gt; komut dosyası sınırlayıcılarını kullanın. Bu betik, Visual Basic 'te yazılmıştır. İçeriği tarayıcıya işlemek için Response. Write () yöntemini çağırarak geçerli tarih ve saati görüntüler. &lt;% ve%&gt; betik sınırlayıcıları bir veya daha fazla deyimi yürütmek için kullanılabilir.
+&lt; &gt; Bir betiğin başlangıcını ve sonunu işaretlemek için% ve% komut dosyası sınırlayıcılarını kullanın. Bu betik, Visual Basic 'te yazılmıştır. İçeriği tarayıcıya işlemek için Response. Write () yöntemini çağırarak geçerli tarih ve saati görüntüler. &lt;% Ve% komut dosyası sınırlayıcıları &gt; bir veya daha fazla deyimi yürütmek için kullanılabilir.
 
-Genellikle Response. Write () çağrısı yaptığından, Microsoft size Response. Write () metodunu çağırma için bir kısayol sağlar. Listeleme 3 ' teki görünüm, yanıt. Write () çağrısı için bir kısayol olarak &lt;% = ve%&gt; sınırlayıcılarını kullanır.
+Genellikle Response. Write () çağrısı yaptığından, Microsoft size Response. Write () metodunu çağırma için bir kısayol sağlar. Listeleme 3 ' teki görünüm, &lt; &gt; Response. Write () çağrısı için bir kısayol olarak% = ve% sınırlayıcılarını kullanır.
 
 **Listeleme 3-Views\home\ındex2,aspx**
 
 [!code-aspx[Main](asp-net-mvc-views-overview-vb/samples/sample3.aspx)]
 
-Bir görünümde dinamik içerik oluşturmak için herhangi bir .NET dili kullanabilirsiniz. Normalde, Visual Basic .NET veya C# denetleyicilerinizi ve görünümlerinizi yazmak için kullanın.
+Bir görünümde dinamik içerik oluşturmak için herhangi bir .NET dili kullanabilirsiniz. Normalde, denetleyicilerinizi ve görünümlerinizi yazmak Için Visual Basic .NET veya C# kullanın.
 
 ## <a name="using-html-helpers-to-generate-view-content"></a>Görünüm Içeriği oluşturmak için HTML Yardımcıları kullanma
 
@@ -101,13 +101,13 @@ Bir görünüme içerik eklemenizi kolaylaştırmak için, *HTML Yardımcısı*a
 
 [!code-aspx[Main](asp-net-mvc-views-overview-vb/samples/sample4.aspx)]
 
-[Yeni proje iletişim kutusunu ![](asp-net-mvc-views-overview-vb/_static/image1.jpg)](asp-net-mvc-views-overview-vb/_static/image1.png)
+[![Yeni Proje iletişim kutusu](asp-net-mvc-views-overview-vb/_static/image1.jpg)](asp-net-mvc-views-overview-vb/_static/image1.png)
 
 **Şekil 01**: standart bir oturum açma formu ([tam boyutlu görüntüyü görüntülemek için tıklayın](asp-net-mvc-views-overview-vb/_static/image2.png))
 
 HTML yardımcılarının tümü, görünümün HTML özelliğinde çağrılır. Örneğin, HTML. TextBox () yöntemini çağırarak bir metin kutusunu işleyebilirsiniz.
 
-Hem HTML. TextBox () hem de HTML. Password () yardımcıları çağrılırken% = ve%&gt; &lt;komut dosyası sınırlayıcılarının kullanıldığına dikkat edin. Bu yardımcılar yalnızca bir dize döndürür. Dizeyi tarayıcıya işlemek için Response. Write () çağrısı yapmanız gerekir.
+&lt; &gt; Hem HTML. TextBox () hem de HTML. Password () yardımcıları çağrılırken% = ve% komut dosyası sınırlayıcılarını kullanacağınızı unutmayın. Bu yardımcılar yalnızca bir dize döndürür. Dizeyi tarayıcıya işlemek için Response. Write () çağrısı yapmanız gerekir.
 
 HTML Yardımcısı yöntemlerini kullanmak isteğe bağlıdır. Yazmanız gereken HTML ve betiğin miktarını azaltarak yaşamınızı daha kolay hale getirir. Listeleme 5 ' teki görünüm, HTML Yardımcıları kullanmadan liste 4 ' teki görünümle tam olarak aynı formu işler.
 
@@ -133,9 +133,9 @@ Liste 7 ' deki görünüm, verileri görünüm verilerinden alır ve iletiyi tar
 
 [!code-aspx[Main](asp-net-mvc-views-overview-vb/samples/sample7.aspx)]
 
-Görünümün, iletiyi işlerken HTML. Encode () HTML yardımcı yönteminden yararlandığına dikkat edin. HTML. Encode () HTML Yardımcısı, &lt; gibi özel karakterleri ve bir Web sayfasında görüntülenmek üzere güvenli karakterler halinde &gt; kodlar. Bir kullanıcının bir Web sitesine gönderdiği içeriği her oluşturduğunuzda, JavaScript ekleme saldırılarını engellemek için içeriği kodlamanız gerekir.
+Görünümün, iletiyi işlerken HTML. Encode () HTML yardımcı yönteminden yararlandığına dikkat edin. HTML. Encode () HTML Yardımcısı, ve gibi özel karakterleri, &lt; &gt; bir Web sayfasında görüntülenmek üzere güvenli karakterler olarak kodlar. Bir kullanıcının bir Web sitesine gönderdiği içeriği her oluşturduğunuzda, JavaScript ekleme saldırılarını engellemek için içeriği kodlamanız gerekir.
 
-(ProductController 'da kendimize iletisini oluşturduğumuz için, gerçekten iletiyi kodlamak zorunda kalmaz. Ancak, görünümün içindeki verilerden alınan içeriği görüntülerken, her zaman HTML. Encode () yöntemini çağırmak iyi bir alışkanlıktır.)
+(Kendimize iletisini ProductController 'da oluşturduğumuz için gerçekten iletiyi kodlayamıyoruz. Ancak, görünümün içindeki verilerden alınan içeriği görüntülerken, her zaman HTML. Encode () yöntemini çağırmak iyi bir alışkanlıktır.)
 
 Liste 7 ' de, bir denetleyiciden bir görünüme basit bir dize iletisi geçirmek için verileri görüntüle ' den faydalanır. Ayrıca, veritabanı kayıtlarının bir koleksiyonu gibi diğer veri türlerini bir denetleyiciden bir görünüme geçirmek için verileri görüntüle ' yi de kullanabilirsiniz. Örneğin, Products veritabanı tablosunun içeriğini bir görünümde görüntülemek istiyorsanız, veritabanı kayıtlarının koleksiyonunu görünüm verilerinde geçitirsiniz.
 
@@ -146,5 +146,5 @@ Bir denetleyiciden bir görünüme kesin olarak belirlenmiş görünüm verisi g
 Bu öğreticide, ASP.NET MVC görünümleri, verileri görüntüleme ve HTML Yardımcıları hakkında kısa bir giriş sunulmaktadır. İlk bölümde, projenize yeni görünümler eklemeyi öğrendiniz. Belirli bir denetleyiciden çağırmak için doğru klasöre bir görünüm eklemeniz gerektiğini öğrendiniz. Daha sonra, HTML yardımcılarını ele aldık. HTML yardımcıların standart HTML içeriğini kolayca oluşturmanıza nasıl imkan sağladığını öğrendiniz. Son olarak, bir denetleyiciden bir görünüme veri geçirmek için verileri görüntüleme özelliğinden nasıl yararlanırsınız hakkında öğrenirsiniz.
 
 > [!div class="step-by-step"]
-> [Önceki](passing-data-to-view-master-pages-cs.md)
-> [İleri](creating-custom-html-helpers-vb.md)
+> [Önceki](passing-data-to-view-master-pages-cs.md) 
+>  [Sonraki](creating-custom-html-helpers-vb.md)

@@ -1,96 +1,96 @@
 ---
 uid: web-forms/overview/ajax-control-toolkit/getting-started/using-ajax-control-toolkit-controls-and-control-extenders-vb
-title: AJAX Kontrol Araç Kiti Kontrolve Kontrol Genişleticileri Kullanma (VB) | Microsoft Dokümanlar
+title: AJAX denetim araç seti denetimlerini ve denetim Genişleticilerini kullanma (VB) | Microsoft Docs
 author: rick-anderson
-description: ASP.NET sayfalarınıza AJAX Control Toolkit denetimlerini ve genişleticileri nasıl ekleyeceğinizi öğrenin.
+description: ASP.NET sayfalarınıza AJAX denetim araç seti denetimleri ve Extender 'ların nasıl ekleneceğini öğrenin.
 ms.author: riande
 ms.date: 05/12/2009
 ms.assetid: 763650a9-ffde-46a9-b779-7a9145dd5d88
 msc.legacyurl: /web-forms/overview/ajax-control-toolkit/getting-started/using-ajax-control-toolkit-controls-and-control-extenders-vb
 msc.type: authoredcontent
-ms.openlocfilehash: 129d6841bc4db62ecbe5f26c4830d1ce2f199bff
-ms.sourcegitcommit: 022f79dbc1350e0c6ffaa1e7e7c6e850cdabf9af
+ms.openlocfilehash: 416ee0d4931a3850c1e9bb4ba28db43f5e1647bf
+ms.sourcegitcommit: 4e6d586faadbe4d9ef27122f86335ec9385134af
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "81540018"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89044369"
 ---
 # <a name="using-ajax-control-toolkit-controls-and-control-extenders-vb"></a>AJAX Denetim Araç Seti Denetimlerini ve Denetim Genişleticilerini Kullanma (VB)
 
 [Microsoft](https://github.com/microsoft) tarafından
 
-> ASP.NET sayfalarınıza AJAX Control Toolkit denetimlerini ve genişleticileri nasıl ekleyeceğinizi öğrenin.
+> ASP.NET sayfalarınıza AJAX denetim araç seti denetimleri ve Extender 'ların nasıl ekleneceğini öğrenin.
 
-AJAX Control Toolkit bir dizi kontrol ve kontrol genişletici içerir. Bu kısa öğreticide, ASP.NET sayfasına hem denetimhem de denetim genişleticileri eklemeyi öğrenirsiniz.
+AJAX denetim araç seti bir denetimler kümesi ve denetim Genişleticileri içerir. Bu kısa öğreticide, bir ASP.NET sayfasına hem denetimleri hem de denetim Genişleticilerini nasıl ekleyeceğinizi öğreneceksiniz.
 
 > [!NOTE] 
 > 
-> AJAX Control Toolkit'in yüklenmesi ve Visual Studio/Visual Web Developer araç kutusuna AJAX Control Toolkit'in eklenmesi yle ilgili talimatlar için, [ajax Control Toolkit ile başlayın](get-started-with-the-ajax-control-toolkit-vb.md)öğreticiye bakın.
+> AJAX denetim araç setini yükleme ve AJAX denetim araç setini Visual Studio/Visual Web Developer araç kutusu 'na ekleme hakkında yönergeler için bkz. [AJAX denetim araç seti Ile çalışmaya başlama](get-started-with-the-ajax-control-toolkit-vb.md)öğreticisi.
 
-## <a name="using-ajax-control-toolkit-controls"></a>AJAX Kontrol Araç Seti Kontrollerini Kullanma
+## <a name="using-ajax-control-toolkit-controls"></a>AJAX denetim araç seti denetimlerini kullanma
 
-Ajax Control Toolkit kontrolü normal bir ASP.NET kontrolü gibi çalışır. Denetimi araç kutusundan ASP.NET bir sayfaya sürükleyebilirsiniz. Denetimi sayfaya Tasarım görünümü veya Kaynak görünümünde ekleyebilirsiniz.
+AJAX denetim araç seti denetimi normal bir ASP.NET denetimi gibi çalışmaktadır. Denetimi araç kutusundan bir ASP.NET sayfasına sürükleyebilirsiniz. Denetimi sayfaya Tasarım görünümü veya kaynak görünümünde ekleyebilirsiniz.
 
-AJAX Control Toolkit'in kontrollerini kullanırken özel bir gereksinim vardır. Sayfa bir ScriptManager denetimi içermelidir. ScriptManager denetimi, AJAX Control Toolkit denetimleri tarafından gerekli olan tüm gerekli JavaScript'i de dahil etmekle yükümlüdür.
+AJAX denetim araç setinde denetimleri kullanırken bir özel gereksinim vardır. Sayfa bir ScriptManager denetimi içermelidir. ScriptManager Denetim araç seti denetimleri için gerekli tüm JavaScript 'ı dahil etmek için ScriptManager denetimi sorumludur.
 
-Örneğin, AJAX Denetim Araç Kiti sekmesi Düzenleyici denetimi adlı bir denetim içerir. Bu denetim zengin bir HTML düzenleyicisi görüntüler. Editör denetimini bir sayfaya eklemek için aşağıdaki adımları izleyin:
+Örneğin, AJAX denetim araç seti sekmesi, düzenleyici denetimi adında bir denetim içerir. Bu denetim zengin bir HTML Düzenleyicisi görüntüler. Bir sayfaya düzenleyici denetimi eklemek için aşağıdaki adımları izleyin:
 
-1. ShowEditor.aspx adlı yeni bir ASP.NET sayfası oluşturma
-2. Araç kutusundaki AJAX Uzantıları sekmesinin altından ScriptManager denetimini seçin ve denetimi sayfaya sürükleyin.
-3. Araç kutusundaki AJAX Control Toolkit sekmesinin altından Düzenleyici denetimini seçin ve denetimi sayfaya sürükleyin (Bkz. Şekil 1). Tasarımcı Şekil 2 gibi görünmelidir.
-4. Menü seçeneğini seçerek web sitesini çalıştırın **Hata Ayıklama, Hata Ayıklamaya Başla** veya F5 tuşuna basarak.
-5. Sayfayı Şekil 3'te görmelisiniz.
+1. Showweditor. aspx adlı yeni bir ASP.NET sayfası oluşturun
+2. Araç kutusundaki AJAX Uzantıları sekmesinin altında bulunan ScriptManager denetimini seçin ve denetimi sayfaya sürükleyin.
+3. Araç kutusundaki AJAX denetim araç seti sekmesinin altındaki düzenleyici denetimini seçin ve denetimi sayfaya sürükleyin (bkz. Şekil 1). Tasarımcı Şekil 2 gibi görünmelidir.
+4. Web sitesini **Hata Ayıkla, hata ayıklamayı Başlat** veya F5 tuşuna basarak menü seçeneğini belirleyerek çalıştırın.
+5. Şekil 3 ' te sayfayı görmeniz gerekir.
 
-[![HTML Düzenleyici denetimini seçme](using-ajax-control-toolkit-controls-and-control-extenders-vb/_static/image1.jpg)](using-ajax-control-toolkit-controls-and-control-extenders-vb/_static/image1.png)
+[![HTML düzenleyici denetimini seçme](using-ajax-control-toolkit-controls-and-control-extenders-vb/_static/image1.jpg)](using-ajax-control-toolkit-controls-and-control-extenders-vb/_static/image1.png)
 
-**Şekil 01**: HTML Düzenleyicisi denetimini seçme ([Tam boyutlu görüntüyü görüntülemek için tıklayınız](using-ajax-control-toolkit-controls-and-control-extenders-vb/_static/image2.png))
+**Şekil 01**: HTML düzenleyici denetimini seçme ([tam boyutlu görüntüyü görüntülemek için tıklayın](using-ajax-control-toolkit-controls-and-control-extenders-vb/_static/image2.png))
 
-[![ScriptManager ve Edit denetimi ile Visual Studio Designer](using-ajax-control-toolkit-controls-and-control-extenders-vb/_static/image2.jpg)](using-ajax-control-toolkit-controls-and-control-extenders-vb/_static/image3.png)
+[![ScriptManager ve düzenleme denetimiyle Visual Studio Tasarımcısı](using-ajax-control-toolkit-controls-and-control-extenders-vb/_static/image2.jpg)](using-ajax-control-toolkit-controls-and-control-extenders-vb/_static/image3.png)
 
-**Şekil 02**: Visual Studio Designer ile ScriptManager ve Edit control[(Tam boyutlu görüntüyü görüntülemek için tıklayınız)](using-ajax-control-toolkit-controls-and-control-extenders-vb/_static/image4.png)
+**Şekil 02**: ScriptManager Ile Visual Studio Tasarımcısı ve düzenleme denetimi ([tam boyutlu görüntüyü görüntülemek için tıklayın](using-ajax-control-toolkit-controls-and-control-extenders-vb/_static/image4.png))
 
-[![DisplayEditor.aspx sayfası](using-ajax-control-toolkit-controls-and-control-extenders-vb/_static/image3.jpg)](using-ajax-control-toolkit-controls-and-control-extenders-vb/_static/image5.png)
+[![DisplayEditor. aspx sayfası](using-ajax-control-toolkit-controls-and-control-extenders-vb/_static/image3.jpg)](using-ajax-control-toolkit-controls-and-control-extenders-vb/_static/image5.png)
 
-**Şekil 03**: DisplayEditor.aspx sayfası([Tam boyutlu görüntüyü görüntülemek için tıklayınız](using-ajax-control-toolkit-controls-and-control-extenders-vb/_static/image6.png))
+**Şekil 03**: displayeditor. aspx sayfası ([tam boyutlu görüntüyü görüntülemek için tıklayın](using-ajax-control-toolkit-controls-and-control-extenders-vb/_static/image6.png))
 
-## <a name="using-ajax-control-toolkit-control-extenders"></a>AJAX Kontrol Araç Seti Kontrol Genişleticiler kullanma
+## <a name="using-ajax-control-toolkit-control-extenders"></a>AJAX denetim araç seti denetim Genişleticilerini kullanma
 
-AJAX Control Toolkit ayrıca kontrol genişleticiler içerir. Adından da anlaşılacağı gibi, bir denetim genişletici varolan bir denetimişlevselliğini genişletir. Örneğin, ConfirmButton denetim genişletici standart ASP.NET Düğme denetimini genişletir. Genişletici, Düğme denetiminin davranışını değiştirir, böylece Düğme'yi tıklattığınızda bir onay iletişim kutusu görüntüler.
+AJAX denetim araç seti ayrıca denetim Genişleticilerini içerir. Adından da anlaşılacağı gibi, bir denetim genişletici var olan bir denetimin işlevselliğini genişletir. Örneğin, ConfirmButton denetim genişletici standart ASP.NET düğme denetimini genişletir. Genişletici düğme denetiminin davranışını değiştirir, böylece düğme, düğmesine tıkladığınızda bir onay iletişim kutusu görüntüler.
 
-Bir kontrol genişletici, bir AJAX Control Toolkit kontrolü gibi, bir ScriptManager denetimi gerektirir. Sayfadaki denetim genişleticilerini kullanmaya başlamadan önce bir sayfaya ScriptManager denetimi eklemeniz gerekir.
+AJAX denetim araç seti denetiminde olduğu gibi bir denetim Genişleticisi, ScriptManager denetimi gerektirir. Sayfada denetim Genişleticilerini kullanmaya başlamadan önce sayfaya bir ScriptManager denetimi eklemeniz gerekir.
 
-ConfirmButton denetim genişleticisini kullanmak için aşağıdaki adımları izleyin:
+ConfirmButton denetim genişletici 'i kullanmak için şu adımları izleyin:
 
-1. ShowConfirmButton.aspx adlı yeni bir ASP.NET sayfası oluşturma
-2. Denetimi AJAX Uzantıları sekmesinin altından sayfaya sürükleyerek sayfaya bir ScriptManager denetimi ekleyin.
-3. Düğmeyi araç kutusundaki Standart sekmesinin altından Tasarımcı yüzeyine sürükleyerek sayfaya standart bir Düğme denetimi ekleyin.
-4. **Genişletici Ekle** görev seçeneğini tıklatın (Bkz. Şekil 4).
-5. Genişletici'yi seç iletişim kutusunda, Onayla Düğme Genişletici'yi seçin (Şekil 5'e bakın) ve Tamam düğmesini tıklatın.
-6. Tasarımcı'daki Düğme denetimini seçin ve Genişleticiler'i genişletin, Button1\_ConfirmButtonExtender düğümünü Özellikler penceresinde (Bkz. Şekil 6). Değeri *ConfirmText* özelliğine gerçekten atayın.
-7. Menü seçeneğini seçerek sayfayı çalıştırın **Hata Ayıklama, Hata Ayıklama başlat** ın veya F5 tuşuna basın.
+1. ShowConfirmButton. aspx adlı yeni bir ASP.NET sayfası oluşturun
+2. Denetimi, AJAX Uzantıları sekmesinin altındaki sayfaya sürükleyerek sayfaya bir ScriptManager denetimi ekleyin.
+3. Araç kutusundaki Standart Sekmenin altındaki düğmeyi tasarımcı yüzeyine sürükleyerek sayfaya standart düğme denetimi ekleyin.
+4. Genişletici görevi **Ekle** seçeneğine tıklayın (bkz. Şekil 4).
+5. Genişletici Seç iletişim kutusunda ConfirmButtonExtender (Şekil 5 ' e bakın) öğesini seçin ve Tamam düğmesine tıklayın.
+6. Tasarımcıda düğme denetimini seçin ve Özellikler penceresi genişleticiler, Button1 \_ ConfirmButtonExtender düğümünü genişletin (bkz. Şekil 6). *' Gerçekten? '* değerini ata ConfirmText özelliğine.
+7. **Hata Ayıkla, hata ayıklamayı Başlat** veya F5 tuşuna basın menü seçeneğini belirleyerek sayfayı çalıştırın.
 
-[![Genişletici Ekle görev seçeneği](using-ajax-control-toolkit-controls-and-control-extenders-vb/_static/image4.jpg)](using-ajax-control-toolkit-controls-and-control-extenders-vb/_static/image7.png)
+[![Genişletici görevi Ekle seçeneği](using-ajax-control-toolkit-controls-and-control-extenders-vb/_static/image4.jpg)](using-ajax-control-toolkit-controls-and-control-extenders-vb/_static/image7.png)
 
-**Şekil 04**: Genişletici Ekle görev seçeneği([Tam boyutlu görüntüyü görüntülemek için tıklayın](using-ajax-control-toolkit-controls-and-control-extenders-vb/_static/image8.png))
+**Şekil 04**: Genişletici görevi Ekle seçeneği ([tam boyutlu görüntüyü görüntülemek için tıklayın](using-ajax-control-toolkit-controls-and-control-extenders-vb/_static/image8.png))
 
-[![Onay düğmesi kontrol genişleticisini seçme](using-ajax-control-toolkit-controls-and-control-extenders-vb/_static/image5.jpg)](using-ajax-control-toolkit-controls-and-control-extenders-vb/_static/image9.png)
+[![ConfirmButton denetim genişletici 'i seçme](using-ajax-control-toolkit-controls-and-control-extenders-vb/_static/image5.jpg)](using-ajax-control-toolkit-controls-and-control-extenders-vb/_static/image9.png)
 
-**Şekil 05**: ConfirmButton kontrol genişleticisini seçme ([Tam boyutlu görüntüyü görüntülemek için tıklayınız](using-ajax-control-toolkit-controls-and-control-extenders-vb/_static/image10.png))
+**Şekil 05**: ConfirmButton Control genişletici seçme ([tam boyutlu görüntüyü görüntülemek için tıklayın](using-ajax-control-toolkit-controls-and-control-extenders-vb/_static/image10.png))
 
 [![ConfirmButton özelliğini ayarlama](using-ajax-control-toolkit-controls-and-control-extenders-vb/_static/image6.jpg)](using-ajax-control-toolkit-controls-and-control-extenders-vb/_static/image11.png)
 
-**Şekil 06**: ConfirmButton özelliğinin ayarlanması([Tam boyutlu görüntüyü görüntülemek için tıklayın](using-ajax-control-toolkit-controls-and-control-extenders-vb/_static/image12.png))
+**Şekil 06**: ConfirmButton özelliğini ayarlama ([tam boyutlu görüntüyü görüntülemek için tıklayın](using-ajax-control-toolkit-controls-and-control-extenders-vb/_static/image12.png))
 
-Sayfa açıldığında, bir düğme görmeniz gerekir. Düğmeyi tıklattığınızda, Şekil 7'deki onay iletişim kutusunu alırsınız.
+Sayfa açıldığında bir düğme görmeniz gerekir. Düğmeye tıkladığınızda, Şekil 7 ' de onay iletişim kutusunu alırsınız.
 
 [![Onay iletişim kutusunu görüntüleme](using-ajax-control-toolkit-controls-and-control-extenders-vb/_static/image7.jpg)](using-ajax-control-toolkit-controls-and-control-extenders-vb/_static/image13.png)
 
-**Şekil 07**: Onay iletişim kutusunugörüntüleme ([Tam boyutlu görüntüyü görüntülemek için tıklayınız](using-ajax-control-toolkit-controls-and-control-extenders-vb/_static/image14.png))
+**Şekil 07**: onay iletişim kutusunu görüntüleme ([tam boyutlu görüntüyü görüntülemek için tıklayın](using-ajax-control-toolkit-controls-and-control-extenders-vb/_static/image14.png))
 
-Normalde bir denetim genişleticisini bir sayfaya sürüklemediğinize dikkat edin. Bunun yerine, sayfaya zaten eklediğiniz bir denetime genişletici eklemek için **Genişletici Ekle** görev seçeneğini kullanırsınız. Ayrıca, denetim inanış süresini uzatmak için özellik sayfasını açarak denetim genişletici özelliklerini ayarladığınıza dikkat edin.
+Normalde bir denetim genişleticisini bir sayfaya sürükleytiğine dikkat edin. Bunun yerine, bir sayfaya daha önce eklediğiniz bir denetime genişletici eklemek için **genişletici görevi Ekle** seçeneğini kullanın. Ayrıca, denetim Genişletici özelliklerini genişletmekte olan denetimin özellik sayfasını açarak ayarlayabildiğinize de dikkat edin.
 
-Tek bir ASP.NET denetimi birden çok kontrol genişletici tarafından genişletilebilir. Genişletilmiş denetim için özellik sayfası, denetimle ilişkili tüm denetim genişleticilerini listeler.
+Tek bir ASP.NET denetimi, birden çok denetim Genişleticileri tarafından genişletilebilir. Genişletilmekte olan denetimin özellik sayfası denetimle ilişkili tüm denetim Genişleticilerini listeler.
 
 > [!div class="step-by-step"]
-> [Önceki](get-started-with-the-ajax-control-toolkit-vb.md)
-> [Sonraki](creating-a-custom-ajax-control-toolkit-control-extender-vb.md)
+> [Önceki](get-started-with-the-ajax-control-toolkit-vb.md) 
+>  [Sonraki](creating-a-custom-ajax-control-toolkit-control-extender-vb.md)

@@ -8,12 +8,12 @@ ms.date: 06/26/2013
 ms.assetid: 23fc77da-2725-4434-99a0-ff872d96336b
 msc.legacyurl: /web-api/overview/web-api-routing-and-actions/create-a-rest-api-with-attribute-routing
 msc.type: authoredcontent
-ms.openlocfilehash: 6eac36767bf34857d5341188d0653e7fec7cade2
-ms.sourcegitcommit: e7e91932a6e91a63e2e46417626f39d6b244a3ab
+ms.openlocfilehash: f6ff5fa18a44b3e6717ec0141ebe101bcdc0bee4
+ms.sourcegitcommit: 4e6d586faadbe4d9ef27122f86335ec9385134af
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/06/2020
-ms.locfileid: "86188917"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89045188"
 ---
 # <a name="create-a-rest-api-with-attribute-routing-in-aspnet-web-api-2"></a>ASP.NET Web API 2 ' de öznitelik yönlendirme ile REST API oluşturma
 
@@ -35,7 +35,7 @@ Tüm yöntemler salt okunurdur (HTTP GET istekleri).
 Veri katmanı için Entity Framework kullanacağız. Kitap kayıtları aşağıdaki alanlara sahip olacaktır:
 
 - ID
-- Title
+- Başlık
 - Tarzı
 - Yayın tarihi
 - Fiyat
@@ -238,7 +238,7 @@ Ayrıca, `/api/books/date/yyyy/mm/dd` farklı bir Regex ile başka bir **[Route]
 
 Burada hafif ancak önemli bir ayrıntı vardır. İkinci yol şablonunda \* {pubdate} parametresinin başlangıcında bir joker karakter () vardır:
 
-[!code-json[Main](create-a-rest-api-with-attribute-routing/samples/sample21.json)]
+[!code-json[Main](create-a-rest-api-with-attribute-routing/samples/sample21.txt)]
 
 Bu, yönlendirme altyapısına {pubdate} uygulamasının URI 'nin geri kalanı ile eşleştiğinden emin olduğunu söyler. Varsayılan olarak, bir şablon parametresi tek bir URI segmentiyle eşleşir. Bu durumda, {pubdate} ' nin birkaç URI kesimini yaymasına istiyoruz:
 

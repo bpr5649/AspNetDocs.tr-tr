@@ -8,16 +8,16 @@ ms.date: 01/17/2019
 ms.assetid: df001954-18bf-4550-b03d-43911a0ea186
 msc.legacyurl: /mvc/overview/getting-started/introduction/adding-search
 msc.type: authoredcontent
-ms.openlocfilehash: f6d6d32a648fed453be924790a1b55698c9cf209
-ms.sourcegitcommit: 0d583ed9253103f3e50b6d729276e667591cdd41
+ms.openlocfilehash: be4e4d13e574b0fcb77d2d0fb8c6f58041b1ece2
+ms.sourcegitcommit: 4e6d586faadbe4d9ef27122f86335ec9385134af
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86211470"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89044927"
 ---
 # <a name="search"></a>Arama
 
-[!INCLUDE [Tutorial Note](index.md)]
+[!INCLUDE [consider RP](~/includes/razor.md)]
 
 ## <a name="adding-a-search-method-and-search-view"></a>Arama yöntemi ve arama görünümü ekleme
 
@@ -27,7 +27,7 @@ Bu bölümde, `Index` bir türe veya ada göre filmlere göre arama yapmanızı 
 
 Bu bölümün ekran görüntülerini eşleştirmek için, uygulamayı (F5) çalıştırmanız ve aşağıdaki filmleri veritabanına eklemeniz gerekir.
 
-| Title | Yayın Tarihi | Tarzı | Fiyat |
+| Başlık | Yayın Tarihi | Tarzı | Fiyat |
 | ----- | ------------ | ----- | ----- |
 | Ghostbusters | 6/8/1984 | Komedi | 6,99 |
 | Ghostbusters II | 6/16/1989 | Komedi | 6,99 |
@@ -62,7 +62,7 @@ Uygulamayı çalıştırın ve */movies/Index*adresine gidin. URL 'ye gibi bir s
 
 `Index`Yönteminin imzasını adlı bir parametreye sahip olacak şekilde değiştirirseniz `id` , `id` parametresi `{id}` *App \_ start\routeconfig.cs* dosyasında ayarlanan varsayılan yolların yer tutucusuyla eşleşir.
 
-[!code-json[Main](adding-search/samples/sample4.json)]
+[!code-json[Main](adding-search/samples/sample4.txt)]
 
 Özgün `Index` Yöntem şöyle görünür::
 

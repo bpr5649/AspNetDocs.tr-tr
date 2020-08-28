@@ -8,12 +8,12 @@ ms.date: 04/20/2010
 ms.assetid: 69a8d6f8-4b10-4602-8822-2d6c05fc432b
 msc.legacyurl: /whitepapers/what-is-new-in-aspnet-mvc
 msc.type: content
-ms.openlocfilehash: 1a0a29241d8afecd295b11013b27621b21c9ed52
-ms.sourcegitcommit: e7e91932a6e91a63e2e46417626f39d6b244a3ab
+ms.openlocfilehash: ecc840c33714aa04bebcd9e413cb548eca8cc058
+ms.sourcegitcommit: 4e6d586faadbe4d9ef27122f86335ec9385134af
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/06/2020
-ms.locfileid: "86162727"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89045045"
 ---
 # <a name="whats-new-in-aspnet-mvc-2"></a>ASP.NET MVC 2 Sürümündeki Yenilikler
 
@@ -37,10 +37,10 @@ ms.locfileid: "86162727"
 [Şablonlu Yardımcılar için yeni HiddenInputAttribute sınıfı](#_TOC3_13)   
 [HTML. ValidationSummary yardımcı yöntemi model düzeyi hataları gösterebilir](#_TOC3_14)   
 [Visual Studio 'Daki T4 şablonları .NET Framework](#_TOC3_15)[API 'si geliştirmelerinden](#_TOC4) oluşan hedef sürüme özel kod oluşturur  
-[Hataya Neden Olan Değişiklikler](#_TOC5)  
+[Son değişiklikler](#_TOC5)  
 [Disclaimer](#_TOC6)  
 
-## <a name="introduction"></a><a id="_TOC1"></a>Giriş
+## <a name="introduction"></a><a id="_TOC1"></a>  Giriş
 
 ASP.NET MVC 2 ASP.NET MVC 1,0 üzerinde yapılar ve üretkenliği arttırmaya odaklanan büyük bir geliştirme ve özellik kümesi sunar. Bu sürüm, ASP.NET MVC 1,0 ile uyumludur; Bu nedenle ASP.NET MVC 1,0 için tüm bilgi, beceriler, kodunuz ve uzantılar uygulanmaya devam eder.
 
@@ -50,19 +50,19 @@ ASP.NET MVC hakkında daha fazla bilgi için aşağıdaki kaynakları ziyaret ed
 - [ASP.NET MVC web sitesi](https://asp.net/mvc/)
 - [ASP.NET MVC forumları](https://forums.asp.net/1146.aspx)
 
-## <a name="upgrading-an-aspnet-mvc-10-project-to-aspnet-mvc-2"></a><a id="_TOC2"></a>ASP.NET MVC 1,0 projesini ASP.NET MVC 2 ' ye yükseltme
+## <a name="upgrading-an-aspnet-mvc-10-project-to-aspnet-mvc-2"></a><a id="_TOC2"></a>  ASP.NET MVC 1,0 projesini ASP.NET MVC 2 ' ye yükseltme
 
 ASP.NET MVC 2 aynı sunucuda ASP.NET MVC 1,0 ile yan yana yüklenebilir. Bu, uygulama geliştiricilerinin bir ASP.NET MVC 1,0 uygulamasının ASP.NET MVC 2 ' ye ne zaman yükseltileceğini seçme esnekliği sağlar. Yükseltme hakkında daha fazla bilgi için, [ASP.net mvc 1,0 uygulamasını ASP.NET MVC 2 ' ye yükseltme](https://go.microsoft.com/fwlink/?LinkID=185459)belgesine bakın.
 
-## <a name="new-features"></a><a id="_TOC3"></a>Yeni özellikler
+## <a name="new-features"></a><a id="_TOC3"></a>  Yeni özellikler
 
 Bu bölümde, MVC 2 sürümünde tanıtılan özellikler açıklanmaktadır.
 
-### <a name="templated-helpers"></a><a id="_TOC3_1"></a>Şablonlu yardımcılar
+### <a name="templated-helpers"></a><a id="_TOC3_1"></a>  Şablonlu yardımcılar
 
 Şablonlu yardımcılar, veri türleriyle düzenleme ve görüntüleme için HTML öğelerini otomatik olarak ilişkilendirmenize olanak tanır. Örneğin, System. DateTime türündeki veriler bir görünümde görüntülenirken, tarih seçici UI öğesi otomatik olarak işlenebilir. Bu, alan şablonlarının ASP.NET dinamik verilerinde çalışmasına benzer. Daha fazla bilgi için bkz. verileri MSDN Web sitesinde [görüntülemek Için şablonlu yardımcıları kullanma](https://go.microsoft.com/fwlink/?LinkId=159062) .
 
-### <a name="areas"></a><a id="_TOC3_2"></a>Alanları
+### <a name="areas"></a><a id="_TOC3_2"></a>  Alanları
 
 Alan, büyük bir projeyi daha küçük bir Web uygulamasının karmaşıklığını yönetmek için birden çok daha küçük bölüme düzenlemenizi sağlar. Her bölüm ("Area") genellikle büyük bir Web sitesinin ayrı bir bölümünü temsil eder ve ilgili denetleyici ve görünüm kümelerini gruplandırmak için kullanılır. Daha fazla bilgi için bkz. [Izlenecek yol: msdn Web sitesindeki alanlara göre ASP.NET MVC uygulamasını düzenleme](https://go.microsoft.com/fwlink/?LinkId=158978) .
 
@@ -82,15 +82,15 @@ ASP.NET MVC 2 için varsayılan proje şablonu, Global. asax dosyası kodunda Re
 
 Bağlamı çağırarak RegisterArea yönteminde ad alanı belirtmeyin. Namespaces. Add yöntemi, kayıt sınıfının ad alanı varsayılan olarak kullanılır.
 
-### <a name="support-for-asynchronous-controllers"></a><a id="_TOC3_3"></a>Zaman uyumsuz denetleyiciler için destek
+### <a name="support-for-asynchronous-controllers"></a><a id="_TOC3_3"></a>  Zaman uyumsuz denetleyiciler için destek
 
 ASP.NET MVC 2 artık denetleyicilerin istekleri zaman uyumsuz olarak işlemesini sağlar. Bu, genellikle engelleme işlemlerini çağırma (ağ istekleri gibi) sunucuların, engellenmeyen karşılıkların çağırmasına izin vererek performans kazanmasına yol açabilir. Daha fazla bilgi için MSDN 'de [ASP.NET MVC 'de zaman uyumsuz denetleyici kullanma](https://msdn.microsoft.com/library/ee728598(v=VS.100).aspx) konusuna bakın.
 
-### <a name="support-for-defaultvalueattribute-in-action-method-parameters"></a><a id="_TOC3_4"></a>Işlem yöntemi parametrelerinde DefaultValueAttribute desteği
+### <a name="support-for-defaultvalueattribute-in-action-method-parameters"></a><a id="_TOC3_4"></a>  Işlem yöntemi parametrelerinde DefaultValueAttribute desteği
 
 System. ComponentModel. DefaultValueAttribute sınıfı, bağımsız değişken parametresi için bir eylem yöntemine varsayılan bir değer verilmesini sağlar. Örneğin, aşağıdaki varsayılan yolun tanımlandığını varsayalım:
 
-[!code-json[Main](what-is-new-in-aspnet-mvc/samples/sample3.json)]
+[!code-json[Main](what-is-new-in-aspnet-mvc/samples/sample3.txt)]
 
 Ayrıca, aşağıdaki denetleyicinin ve eylem yönteminin tanımlandığını de varsayın:
 
@@ -108,7 +108,7 @@ Kodunuz Visual Basic 2010 veya Visual C# 2010 ' de yazılmışsa, aşağıdaki �
 
 [!code-vb[Main](what-is-new-in-aspnet-mvc/samples/sample5.vb)]
 
-### <a name="support-for-binding-binary-data-with-model-binders"></a><a id="_TOC3_5"></a>Model ciltleri ile Ikili verileri bağlama desteği
+### <a name="support-for-binding-binary-data-with-model-binders"></a><a id="_TOC3_5"></a>  Model ciltleri ile Ikili verileri bağlama desteği
 
 İkili değerleri Base-64 kodlu dizeler olarak kodlayan HTML. Hidden Yardımcısı 'nın iki yeni aşırı yüklemesi vardır:
 
@@ -132,7 +132,7 @@ Bu form, aşağıdaki örnekte gösterildiği gibi ürün türünde bir bağıms
 
 Action yönteminde, postalanan Base-64 kodlu dize bir bayt dizisine dönüştürüldüğü için TimeStamp özelliği doğru doldurulur.
 
-### <a name="modelmetadata-and-modelmetadataprovider-classes"></a><a id="_TOC3_6"></a>ModelMetadata ve ModelMetadataProvider sınıfları
+### <a name="modelmetadata-and-modelmetadataprovider-classes"></a><a id="_TOC3_6"></a>  ModelMetadata ve ModelMetadataProvider sınıfları
 
 ModelMetadataProvider sınıfı, bir görünüm içindeki model için meta verileri almak üzere bir soyutlama sağlar. MVC 2, System. ComponentModel. Dataaçıklamalarda ad alanındaki öznitelikler tarafından açığa çıkarılan meta verileri kullanılabilir hale getiren bir varsayılan sağlayıcı içerir. Veritabanları veya XML dosyaları gibi diğer veri depolarından meta veriler sağlayan meta veri sağlayıcıları oluşturmak mümkündür.
 
@@ -140,29 +140,29 @@ ViewDataDictionary sınıfı, ModelMetadataProvider sınıfı tarafından modeld
 
 Daha fazla bilgi için bkz. [ModelMetadata](https://msdn.microsoft.com/library/system.web.mvc.modelmetadataprovider(VS.100).aspx) ve [ModelMetadataProvider](https://msdn.microsoft.com/library/system.web.mvc.modelmetadataprovider(VS.100).aspx) sınıfları için belgeler.
 
-### <a name="support-for-dataannotations-attributes"></a><a id="_TOC3_7"></a>Dataek açıklama öznitelikleri için destek
+### <a name="support-for-dataannotations-attributes"></a><a id="_TOC3_7"></a>  Dataek açıklama öznitelikleri için destek
 
 ASP.NET MVC 2, giriş doğrulaması sağlamak üzere bir modele bağladığınızda RangeAttribute, RequiredAttribute, StringLengthAttribute ve RegexAttribute doğrulama özniteliklerinin (System. ComponentModel. Dataaçıklamalarda tanımlanmıştır) kullanılmasını destekler.
 
 Daha fazla bilgi için bkz. [nasıl yapılır: msdn Web sitesindeki Dataaçıklamaların özniteliklerini kullanarak model verilerini doğrulama](https://go.microsoft.com/fwlink/?LinkId=159063) . Bu özniteliklerin kullanımını gösteren örnek bir proje ' de indirilebilir [https://go.microsoft.com/fwlink/?LinkId=157753](https://go.microsoft.com/fwlink/?LinkId=157753) .
 
-### <a name="model-validator-providers"></a><a id="_TOC3_8"></a>Model doğrulayıcı sağlayıcıları
+### <a name="model-validator-providers"></a><a id="_TOC3_8"></a>  Model doğrulayıcı sağlayıcıları
 
 Model doğrulama sağlayıcısı sınıfı, model için doğrulama mantığı sağlayan bir soyutlamayı temsil eder. ASP.NET MVC, System. ComponentModel. Dataaçıklamalarda ad alanına dahil olan doğrulama özniteliklerini temel alan bir varsayılan sağlayıcı içerir. Ayrıca, özel doğrulama kurallarını tanımlayan kendi doğrulama sağlayıcılarınızı ve bu modele doğrulama kurallarının özel eşlemelerini de oluşturabilirsiniz. Daha fazla bilgi için bkz. [ModelValidatorProvider](https://msdn.microsoft.com/library/system.web.mvc.ModelValidatorProvider(VS.100).aspx) sınıfı için belgeler.
 
-### <a name="client-side-validation"></a><a id="_TOC3_9"></a>İstemci tarafı doğrulaması
+### <a name="client-side-validation"></a><a id="_TOC3_9"></a>  İstemci tarafı doğrulaması
 
 Model-doğrulayıcı sağlayıcısı sınıfı, bir istemci tarafı doğrulama kitaplığı tarafından tüketilen JSON seri hale getirilmiş veriler biçiminde tarayıcıya doğrulama meta verilerini gösterir. ASP.NET MVC 2, daha önce belirtilen Dataaçıklamalarda ad alanı doğrulama özniteliklerini destekleyen bir istemci doğrulama kitaplığı ve bağdaştırıcısı içerir. Sağlayıcı sınıfı, JSON verilerini işleyen bir bağdaştırıcı yazarak diğer istemci doğrulama kitaplıklarını ve alternatif kitaplığa çağrıları kullanmanıza da olanak sağlar.
 
-### <a name="new-code-snippets-for-visual-studio-2010"></a><a id="_TOC3_10"></a>Visual Studio 2010 için yeni kod parçacıkları
+### <a name="new-code-snippets-for-visual-studio-2010"></a><a id="_TOC3_10"></a>  Visual Studio 2010 için yeni kod parçacıkları
 
 ASP.NET MVC 2 için bir dizi HTML kod parçacığı, Visual Studio 2010 ile birlikte yüklenir. Bu kod parçacıklarının bir listesini görüntülemek için, Araçlar menüsünde kod parçacıkları Yöneticisi ' ni seçin. Dil için HTML ' i seçin ve konum için ASP.NET MVC 2 ' yi seçin. Kod parçacıklarını kullanma hakkında daha fazla bilgi için bkz. Visual Studio belgeleri.
 
-### <a name="new-requirehttpsattribute-action-filter"></a><a id="_TOC3_11"></a>Yeni RequireHttpsAttribute eylem filtresi
+### <a name="new-requirehttpsattribute-action-filter"></a><a id="_TOC3_11"></a>  Yeni RequireHttpsAttribute eylem filtresi
 
 ASP.NET MVC 2, eylem yöntemlerine ve denetleyicilerine uygulanabilen yeni bir RequireHttpsAttribute sınıfı içerir. Varsayılan olarak filtre, SSL olmayan (HTTP) isteği SSL etkin (HTTPS) eşdeğerine yeniden yönlendirir.
 
-### <a name="overriding-the-http-method-verb"></a><a id="_TOC3_12"></a>HTTP yöntemi fiilini geçersiz kılma
+### <a name="overriding-the-http-method-verb"></a><a id="_TOC3_12"></a>  HTTP yöntemi fiilini geçersiz kılma
 
 REST mimari stilini kullanarak bir Web sitesi oluşturduğunuzda, bir kaynak için hangi eylemin gerçekleştirileceğini belirleyen HTTP fiilleri kullanılır. REST, uygulamaların al, koy, POST ve DELETE dahil olmak üzere ortak HTTP fiillerinin tam aralığını desteklemesini gerektirir.
 
@@ -188,7 +188,7 @@ Gizli giriş öğesinin adı X-HTTP-Method-override ve değeri benzetimi yapıla
 
 Geçersiz kılma yalnızca gerçek istek bir POST isteği olduğunda kullanılabilir. Herhangi bir HTTP fiilini kullanan isteklerde geçersiz kılma değeri yok sayılır.
 
-### <a name="new-hiddeninputattribute-class-for-templated-helpers"></a><a id="_TOC3_13"></a>Şablonlu Yardımcılar için yeni HiddenInputAttribute sınıfı
+### <a name="new-hiddeninputattribute-class-for-templated-helpers"></a><a id="_TOC3_13"></a>  Şablonlu Yardımcılar için yeni HiddenInputAttribute sınıfı
 
 Model bir düzenleyici şablonunda görüntülenirken bir gizli giriş öğesinin işlenip işlenmeyeceğini göstermek için yeni HiddenInputAttribute özniteliğini bir model özelliğine uygulayabilirsiniz. (Öznitelik, Hiddenınput öğesinin örtük Uııınt değerini ayarlar). Özniteliğin DisplayValue özelliği, değerin düzenleyici ve görüntüleme modlarında görüntülenip görüntülenmeyeceğini belirtmenize olanak tanır. DisplayValue değeri false olarak ayarlandığında, normalde bir alanı çevreleyecek HTML biçimlendirmesi olmasa da hiçbir şey görüntülenmez. DisplayValue için varsayılan değer true 'dur.
 
@@ -211,15 +211,15 @@ Aşağıdaki örnek, HiddenInputAttribute sınıfının nasıl kullanılacağın
 - Görüntüleme şablonlarında, bu alan için hiçbir şey işlenmez.
 - Düzenleyici şablonlarında, hiçbir etiket işlenmez ve değer gizli bir giriş öğesinde işlenir.
 
-### <a name="htmlvalidationsummary-helper-method-can-display-model-level-errors"></a><a id="_TOC3_14"></a>HTML. ValidationSummary yardımcı yöntemi model düzeyi hataları gösterebilir
+### <a name="htmlvalidationsummary-helper-method-can-display-model-level-errors"></a><a id="_TOC3_14"></a>  HTML. ValidationSummary yardımcı yöntemi model düzeyi hataları gösterebilir
 
 Tüm doğrulama hatalarını her zaman görüntülemek yerine, HTML. ValidationSummary yardımcı yönteminin yalnızca model düzeyi hataları görüntülemek için yeni bir seçeneği vardır. Bu, her alanın yanında görüntülenmek üzere doğrulama özetinde ve alana özgü hatalarda model düzeyi hataların görüntülenmesini sağlar.
 
-### <a name="t4-templates-in-visual-studio-generate-code-that-is-specific-to-the-target-version-of-the-net-framework"></a><a id="_TOC3_15"></a>Visual Studio 'daki T4 şablonları .NET Framework hedef sürümüne özel kod oluşturur
+### <a name="t4-templates-in-visual-studio-generate-code-that-is-specific-to-the-target-version-of-the-net-framework"></a><a id="_TOC3_15"></a>  Visual Studio 'daki T4 şablonları .NET Framework hedef sürümüne özel kod oluşturur
 
 ASP.NET MVC T4 ana bilgisayardan, uygulama tarafından kullanılan .NET Framework sürümünü belirten yeni bir özellik kullanılabilir. Bu, T4 şablonlarının .NET Framework bir sürümüne özgü kod ve biçimlendirme oluşturmasına olanak sağlar. Visual Studio 2008 ' de, değer her zaman .NET 3,5 ' dir. Visual Studio 2010 ' de, değer .NET 3,5 veya .NET 4 ' dir.
 
-## <a name="api-improvements"></a><a id="_TOC4"></a>API geliştirmeleri
+## <a name="api-improvements"></a><a id="_TOC4"></a>  API geliştirmeleri
 
 Bu bölümde, var olan ASP.NET MVC türleri ve üyelerinde yapılan değişiklikler açıklanmaktadır.
 
@@ -233,7 +233,7 @@ Bu bölümde, var olan ASP.NET MVC türleri ve üyelerinde yapılan değişiklik
 - AuthorizationContext sınıfına bir ActionDescriptor özelliği eklendi.
 - Bir URL parametresi eklendi. bir ID özelliği içeren bir modele bağlama yaparken sorunları geçici olarak çözmek için kullanılabilen, özellik form gönderisini olmadığında bu belirteç. Daha fazla ayrıntı için bkz. PHIL Haack 'in blogu üzerinde [ASP.NET MVC 2 Isteğe bağlı URL parametreleri](http://haacked.com/archive/2010/02/12/asp-net-mvc-2-optional-url-parameters.aspx) .
 
-## <a name="breaking-changes"></a><a id="_TOC5"></a>Son değişiklikler
+## <a name="breaking-changes"></a><a id="_TOC5"></a>  Son değişiklikler
 
 Aşağıdaki değişiklikler, var olan ASP.NET MVC 1,0 uygulamalarında hatalara neden olabilir.
 
@@ -284,7 +284,7 @@ Yol değerlerindeki "Area" dizesinin "Controller" ve "Action" ile aynı şekilde
 
 Alanlar özelliğini kullanıyorsanız, rota URL 'nizin bir parçası olarak {Area} ' ı kullandığınızdan emin olun.
 
-## <a name="disclaimer"></a><a id="_TOC6"></a>Sorumluluk reddi
+## <a name="disclaimer"></a><a id="_TOC6"></a>  Sorumluluk reddi
 
 Bu bir ön belgedir ve burada açıklanan yazılımın son ticari sürümünden önce önemli ölçüde değiştirilebilir.
 
@@ -298,7 +298,7 @@ Microsoft 'un bu belgede ilgili konuyu kapsayan patentler, patent uygulamaları,
 
 Aksi belirtilmedikçe, burada adı geçen örnek şirketler, kuruluşlar, ürünler, etki alanı adları, e-posta adresleri, logolar, kişiler, konumlar ve olaylar kurgusaldır ve gerçek şirket, kuruluş, ürün, etki alanı adı, e-posta adresi, logo, kişi, yer veya olayla hiçbir ilişki amaçlanmamıştır.
 
-© 2010 Microsoft Corporation. Tüm hakları saklıdır.
+© 2010 Microsoft Corporation. All rights reserved.
 
 Microsoft ve Windows, Microsoft Corporation 'ın Birleşik Devletler ve/veya diğer ülkelerde kayıtlı ticari markaları veya ticari markalarıdır.
 

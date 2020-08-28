@@ -8,48 +8,48 @@ ms.date: 03/26/2015
 ms.assetid: f1d2a916-626c-4a54-8df4-77e6b9fff355
 msc.legacyurl: /mvc/overview/getting-started/introduction/examining-the-details-and-delete-methods
 msc.type: authoredcontent
-ms.openlocfilehash: da06815b5c1d76a939fdfb77ce11774081dfb881
-ms.sourcegitcommit: e7e91932a6e91a63e2e46417626f39d6b244a3ab
+ms.openlocfilehash: 9c4e66454d6995bd750b62ef8b461bcfbdfb4b4f
+ms.sourcegitcommit: 4e6d586faadbe4d9ef27122f86335ec9385134af
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/06/2020
-ms.locfileid: "78582511"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89045097"
 ---
 # <a name="examining-the-details-and-delete-methods"></a>Details ve Delete Metotlarını inceleme
 
 [Rick Anderson](https://twitter.com/RickAndMSFT) tarafından
 
-[!INCLUDE [Tutorial Note](index.md)]
+[!INCLUDE [consider RP](~/includes/razor.md)]
 
-Öğreticinin bu bölümünde otomatik olarak oluşturulan `Details` ve `Delete` yöntemlerini inceleyeceksiniz.
+Öğreticinin bu bölümünde otomatik olarak oluşturulan `Details` ve yöntemleri inceleyeceksiniz `Delete` .
 
 ## <a name="examining-the-details-and-delete-methods"></a>Details ve Delete Metotlarını inceleme
 
-`Movie` denetleyiciyi açın ve `Details` metodunu inceleyin.
+Denetleyiciyi açın `Movie` ve `Details` metodunu inceleyin.
 
 ![](examining-the-details-and-delete-methods/_static/image1.png)
 
 [!code-csharp[Main](examining-the-details-and-delete-methods/samples/sample1.cs)]
 
-Bu eylem yöntemini oluşturan MVC yapı iskelesi altyapısı, yöntemi çağıran bir HTTP isteğini gösteren bir açıklama ekler. Bu durumda, üç URL segmentine, `Movies` denetleyicisine, `Details` yöntemine ve `ID` bir değere sahip `GET` bir istek vardır.
+Bu eylem yöntemini oluşturan MVC yapı iskelesi altyapısı, yöntemi çağıran bir HTTP isteğini gösteren bir açıklama ekler. Bu durumda `GET` , üç URL segmentine, `Movies` denetleyiciye, `Details` yönteme ve bir değere sahip bir istek vardır `ID` .
 
-Code First, `Find` yöntemini kullanarak verileri aramanızı kolaylaştırır. Yöntemi içinde yerleşik olarak bulunan önemli bir güvenlik özelliği, kodun, kod ile herhangi bir şey yapmayı denemeden önce `Find` yönteminin bir filmi buldığını doğruladığından emin değildir. Örneğin, bir korsan `http://localhost:xxxx/Movies/Details/1` bağlantıları tarafından oluşturulan URL 'yi `http://localhost:xxxx/Movies/Details/12345` (veya gerçek bir filmi temsil eden başka bir değer) gibi bir şeye değiştirerek siteye hata verebilir. Null bir filmi denetmediyseniz, null bir film bir veritabanı hatasına neden olur.
+Code First yöntemi kullanarak verileri aramanızı kolaylaştırır `Find` . Yöntemi içinde yerleşik olarak bulunan önemli bir güvenlik özelliği, kodun, `Find` kod ile herhangi bir şey yapmayı denemeden önce yöntemin bir filmi buldığını doğruladığından emin değildir. Örneğin, bir korsan bağlantıları tarafından oluşturulan URL 'yi `http://localhost:xxxx/Movies/Details/1` `http://localhost:xxxx/Movies/Details/12345` (veya gerçek bir filmi temsil eden başka bir değer) gibi bir konuma değiştirerek siteye hata verebilir. Null bir filmi denetmediyseniz, null bir film bir veritabanı hatasına neden olur.
 
-`Delete` ve `DeleteConfirmed` yöntemlerini inceleyin.
+`Delete`Ve yöntemlerini inceleyin `DeleteConfirmed` .
 
 [!code-csharp[Main](examining-the-details-and-delete-methods/samples/sample2.cs?highlight=17)]
 
-HTTP GET `Delete` yönteminin belirtilen filmi silmediğini unutmayın. Bu, silme işlemini gönderebileceğiniz (`HttpPost`) filmin bir görünümünü döndürür. Bir GET isteğine yanıt olarak silme işlemi gerçekleştirme (veya bu konuyla ilgili olarak, düzenleme işlemi gerçekleştirme, oluşturma işlemi yapma veya verileri değiştiren başka bir işlem) bir güvenlik deliği açılır. Bunun hakkında daha fazla bilgi için bkz. Stephen Walther Web günlüğü girdisi [ASP.NET MVC ipucu #46 — güvenlik delikleri oluşturdıklarından, silme bağlantılarını kullanmayın](http://stephenwalther.com/blog/archive/2009/01/21/asp.net-mvc-tip-46-ndash-donrsquot-use-delete-links-because.aspx).
+HTTP GET `Delete` yönteminin belirtilen filmi silmediğini unutmayın. Bu, silme işlemini gönderebileceğiniz () filmin bir görünümünü döndürür `HttpPost` . Bir GET isteğine yanıt olarak silme işlemi gerçekleştirme (veya bu konuyla ilgili olarak, düzenleme işlemi gerçekleştirme, oluşturma işlemi yapma veya verileri değiştiren başka bir işlem) bir güvenlik deliği açılır. Bunun hakkında daha fazla bilgi için bkz. Stephen Walther Web günlüğü girdisi [ASP.NET MVC ipucu #46 — güvenlik delikleri oluşturdıklarından, silme bağlantılarını kullanmayın](http://stephenwalther.com/blog/archive/2009/01/21/asp.net-mvc-tip-46-ndash-donrsquot-use-delete-links-because.aspx).
 
-Verileri silen `HttpPost` yöntemi, HTTP POST yöntemine benzersiz bir imza veya ad vermek için `DeleteConfirmed` olarak adlandırılır. İki yöntem imzası aşağıda gösterilmiştir:
+`HttpPost`Verileri silen yöntemi, `DeleteConfirmed` http post yöntemine benzersiz bir imza veya ad vermek için olarak adlandırılır. İki yöntem imzası aşağıda gösterilmiştir:
 
 [!code-csharp[Main](examining-the-details-and-delete-methods/samples/sample3.cs)]
 
 Ortak dil çalışma zamanı (CLR), aşırı yüklenmiş yöntemlerin benzersiz bir parametre imzasına sahip olmasını gerektirir (aynı yöntem adı ancak farklı parametre listesi). Bununla birlikte, her ikisi de aynı parametre imzasına sahip olan--GET için bir tane olmak üzere iki silme yöntemine ihtiyacınız vardır. (Her ikisi de parametre olarak tek bir tamsayıyı kabul etmelidir.)
 
-Bunu sıralamak için birkaç şey yapabilirsiniz. Bunlardan biri, yöntemlere farklı adlar vermektir. Bu, önceki örnekte bulunan yapı iskelesi mekanizmasına göre yapılır. Ancak, bu küçük bir sorun ortaya çıkarır: ASP.NET bir URL 'nin segmentlerini ada göre eylem yöntemlerine eşler ve bir yöntemi yeniden adlandırırsanız, yönlendirme normalde bu yöntemi bulamaz. Çözüm, örnekte gördüğünüz şeydir. Bu, `DeleteConfirmed` yöntemine `ActionName("Delete")` özniteliğini eklemektir. Bu, bir POST isteği için */Delete/* IÇEREN bir URL 'nin `DeleteConfirmed` yöntemini bulabilmesi için yönlendirme sistemi için eşlemeyi etkili bir şekilde gerçekleştirir.
+Bunu sıralamak için birkaç şey yapabilirsiniz. Bunlardan biri, yöntemlere farklı adlar vermektir. Bu, önceki örnekte bulunan yapı iskelesi mekanizmasına göre yapılır. Ancak, bu küçük bir sorun ortaya çıkarır: ASP.NET bir URL 'nin segmentlerini ada göre eylem yöntemlerine eşler ve bir yöntemi yeniden adlandırırsanız, yönlendirme normalde bu yöntemi bulamaz. Çözüm, örnekte gördüğünüz şeydir. Bu, `ActionName("Delete")` yöntemine özniteliği eklemektir `DeleteConfirmed` . Bu, bir POST isteği için */Delete/* IÇEREN bir URL 'nin yöntemini bulabilmesi için yönlendirme sistemi için eşlemeyi etkili bir şekilde gerçekleştirir `DeleteConfirmed` .
 
-Özdeş adlara ve imzalara sahip Yöntemler ile ilgili bir sorunu önlemenin diğer yaygın bir yolu, yapay for the POST yönteminin imzasını kullanılmayan bir parametre içerecek şekilde değiştirmaktır. Örneğin, bazı geliştiriciler POST yöntemine geçirilen `FormCollection` bir parametre türü ekler ve sonra yalnızca parametresini kullanmaz:
+Özdeş adlara ve imzalara sahip Yöntemler ile ilgili bir sorunu önlemenin diğer yaygın bir yolu, yapay for the POST yönteminin imzasını kullanılmayan bir parametre içerecek şekilde değiştirmaktır. Örneğin, bazı geliştiriciler POST yöntemine geçirilen bir parametre türü ekler `FormCollection` ve sonra yalnızca parametresini kullanmayın:
 
 [!code-csharp[Main](examining-the-details-and-delete-methods/samples/sample4.cs)]
 
@@ -65,8 +65,8 @@ Bir Web uygulaması oluşturup test ettikten sonra, bir sonraki adım, diğer ki
 
 Geribildirim hoş geldiniz.
 
-— [Rick Anderson](https://blogs.msdn.com/rickAndy) twitter: [@RickAndMSFT](https://twitter.com/RickAndMSFT)  
-— [Scott Hanselman](http://www.hanselman.com/blog/) twitter: [@shanselman](https://twitter.com/shanselman)
+— [Rick Anderson](https://blogs.msdn.com/rickAndy) Twitter: [@RickAndMSFT](https://twitter.com/RickAndMSFT)  
+— [Scott Hanselman](http://www.hanselman.com/blog/) Twitter: [@shanselman](https://twitter.com/shanselman)
 
 > [!div class="step-by-step"]
-> [Öncekini](adding-validation.md)
+> [Önceki](adding-validation.md)

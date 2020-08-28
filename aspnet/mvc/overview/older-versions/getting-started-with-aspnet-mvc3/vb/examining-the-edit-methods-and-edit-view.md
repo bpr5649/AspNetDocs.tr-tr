@@ -8,12 +8,12 @@ ms.date: 01/12/2011
 ms.assetid: 5cb3c59b-1e96-464b-b3a8-c55607201872
 msc.legacyurl: /mvc/overview/older-versions/getting-started-with-aspnet-mvc3/vb/examining-the-edit-methods-and-edit-view
 msc.type: authoredcontent
-ms.openlocfilehash: db9f6bc9edfba7d4ece575aad4c9cdc029abb7f1
-ms.sourcegitcommit: e7e91932a6e91a63e2e46417626f39d6b244a3ab
+ms.openlocfilehash: fc4d59323ab3cc1e4a454676a0ec498f3c5246fd
+ms.sourcegitcommit: 4e6d586faadbe4d9ef27122f86335ec9385134af
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/06/2020
-ms.locfileid: "86163208"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89044603"
 ---
 # <a name="examining-the-edit-methods-and-edit-view-vb"></a>Düzenleme Metotlarını ve Düzenleme Görünümünü İnceleme (VB)
 
@@ -137,7 +137,7 @@ Uygulamayı çalıştırın ve */movies/SearchIndex*adresine gidin. URL 'ye gibi
 
 `SearchIndex`Yönteminin imzasını adlı bir parametreye sahip olacak şekilde değiştirirseniz `id` , `id` parametresi `{id}` *Global. asax* dosyasında ayarlanan varsayılan yolların yer tutucusuyla eşleşir.
 
-[!code-json[Main](examining-the-edit-methods-and-edit-view/samples/sample11.json)]
+[!code-json[Main](examining-the-edit-methods-and-edit-view/samples/sample11.txt)]
 
 Değiştirilen `SearchIndex` Yöntem şöyle görünür:
 

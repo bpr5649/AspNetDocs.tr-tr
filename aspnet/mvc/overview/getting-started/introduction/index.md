@@ -8,18 +8,18 @@ ms.date: 06/10/2013
 ms.assetid: 9afe7454-f1bd-4e81-8ecf-12fe54d080c1
 msc.legacyurl: /mvc/overview/getting-started/introduction
 msc.type: chapter
-ms.openlocfilehash: ca751a5b0eb43b9fa2ad26493b4a627bb964332f
-ms.sourcegitcommit: e7e91932a6e91a63e2e46417626f39d6b244a3ab
+ms.openlocfilehash: 9dc77b4a5b9d9e2e528428c3c4f440ae120756c9
+ms.sourcegitcommit: 4e6d586faadbe4d9ef27122f86335ec9385134af
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/06/2020
-ms.locfileid: "78582518"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89045327"
 ---
 # <a name="getting-started-with-aspnet-mvc-5"></a>.NET MVC 5 ile Çalışmaya Başlama
 
 > ASP.NET MVC 5 ' e giriş
 
-[!INCLUDE [consider RP](../../../../includes/razor.md)]
+[!INCLUDE [consider RP](~/includes/razor.md)]
 
 Bu öğretici serisi ASP.NET MVC: [GitHub](https://github.com/dotnet/AspNetDocs/tree/master/aspnet/mvc/overview/getting-started/introduction/sample/MvcMovie/MvcMovie) 'Da bulunan kaynağı içerir
 
@@ -28,9 +28,9 @@ Bu öğretici serisi ASP.NET MVC: [GitHub](https://github.com/dotnet/AspNetDocs/
 - [Görünüm Ekleme](adding-a-view.md)
 - [Model Ekleme](adding-a-model.md)
 - [Bağlantı Dizesi Oluşturma ve SQL Server LocalDB ile Çalışma](creating-a-connection-string.md)
-- [Bir Denetleyiciden Modelinizin Verilerine Erişme](accessing-your-models-data-from-a-controller.md)
+- [Bir denetleyiciden modelinizin verilerine erişme](accessing-your-models-data-from-a-controller.md)
 - [Düzenleme Metotlarını ve Düzenleme Görünümünü İnceleme](examining-the-edit-methods-and-edit-view.md)
 - [Arama Ekleme](adding-search.md)
 - [Yeni Alan Ekleme](adding-a-new-field.md)
 - [Doğrulama Ekleme](adding-validation.md)
-- [Details ve Delete Metotlarını İnceleme](examining-the-details-and-delete-methods.md)
+- [Details ve Delete Metotlarını inceleme](examining-the-details-and-delete-methods.md)

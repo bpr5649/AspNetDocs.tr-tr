@@ -8,12 +8,12 @@ ms.date: 07/30/2013
 ms.assetid: 64906a1d-f734-41cf-9615-ee95f8740996
 msc.legacyurl: /mvc/overview/older-versions/getting-started-with-ef-5-using-mvc-4/advanced-entity-framework-scenarios-for-an-mvc-web-application
 msc.type: authoredcontent
-ms.openlocfilehash: f8f079f6d8ea663c6888456be422a2bae93a4b87
-ms.sourcegitcommit: c9d9210e0d16fbb3829b7688cfb832dc263c79cc
+ms.openlocfilehash: 85dd59016d904a9f654c438db977b5ae2c0187d2
+ms.sourcegitcommit: 4e6d586faadbe4d9ef27122f86335ec9385134af
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "86163577"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89045058"
 ---
 # <a name="advanced-entity-framework-scenarios-for-an-mvc-web-application-10-of-10"></a>MVC web uygulaması için gelişmiş Entity Framework senaryoları (10/10)
 
@@ -191,7 +191,7 @@ Bazen veritabanına gönderilen gerçek SQL sorgularını görmeniz yararlı ola
 
 Şimdi ve içindeki *GenericRepository.cs* içinde bir kesme noktası ayarlayın `return query.ToList();` `return orderBy(query).ToList();` `Get` . Projeyi hata ayıklama modunda çalıştırın ve kurs dizini sayfasını seçin. Kod kesme noktasına ulaştığında, `query` değişkeni inceleyin. SQL Server gönderilen sorguyu görürsünüz. Bu basit bir `Select` ifadedir:
 
-[!code-json[Main](advanced-entity-framework-scenarios-for-an-mvc-web-application/samples/sample14.json)]
+[!code-json[Main](advanced-entity-framework-scenarios-for-an-mvc-web-application/samples/sample14.sql)]
 
 ![](advanced-entity-framework-scenarios-for-an-mvc-web-application/_static/image12.png)
 
@@ -219,7 +219,7 @@ Kesme noktaları sınıfta hala ayarlandığında `GenericRepository` , kurs diz
 
 Bu kez, ilk kesme noktası, açılan liste için departmanlar sorgusu olacaktır. Bu sorguyu atlayın ve bir `query` sonraki kod, şimdi sorgunun nasıl göründüğünü görmek için kesme noktasına bir sonraki sefer ulaştığında değişkeni görüntüleyin `Course` . Aşağıdakine benzer bir şey göreceksiniz:
 
-[!code-json[Main](advanced-entity-framework-scenarios-for-an-mvc-web-application/samples/sample17.json)]
+[!code-json[Main](advanced-entity-framework-scenarios-for-an-mvc-web-application/samples/sample17.sql)]
 
 Sorgunun artık verileri verilerle `JOIN` birlikte yükleyen bir sorgu olduğunu `Department` `Course` ve bir `WHERE` yan tümce içerdiğine bakabilirsiniz.
 

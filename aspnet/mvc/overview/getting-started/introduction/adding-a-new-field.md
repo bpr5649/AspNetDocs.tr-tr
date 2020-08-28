@@ -8,18 +8,18 @@ ms.date: 10/17/2013
 ms.assetid: 4085de68-d243-4378-8a64-86236ea8d2da
 msc.legacyurl: /mvc/overview/getting-started/introduction/adding-a-new-field
 msc.type: authoredcontent
-ms.openlocfilehash: 5974e53e4610dccc7812df261dc97a9b0327de85
-ms.sourcegitcommit: e7e91932a6e91a63e2e46417626f39d6b244a3ab
+ms.openlocfilehash: 7018de3eab9d7cced72c76d0b74a79f7c8154f9d
+ms.sourcegitcommit: 4e6d586faadbe4d9ef27122f86335ec9385134af
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/06/2020
-ms.locfileid: "78582910"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89045149"
 ---
 # <a name="adding-a-new-field"></a>Yeni Alan Ekleme
 
 [Rick Anderson](https://twitter.com/RickAndMSFT) tarafından
 
-[!INCLUDE [Tutorial Note](index.md)]
+[!INCLUDE [consider RP](~/includes/razor.md)]
 
 Bu bölümde, değişikliğin veritabanına uygulanması için model sınıflarında bazı değişiklikleri geçirmek üzere Entity Framework Code First Migrations kullanacaksınız.
 
@@ -37,7 +37,7 @@ Hata olmadığından emin olmak için uygulamayı derleyin.
 
 ![Paket Man 'ı Ekle](adding-a-new-field/_static/image2.png)
 
-**Paket Yöneticisi konsol** penceresinde `PM>` istemine şunu girin:
+**Paket Yöneticisi konsol** penceresinde, `PM>` isteminde şunu girin:
 
 Enable-geçişler-ContextTypeName MvcMovie. modeller. MovieDBContext
 
@@ -47,11 +47,11 @@ Enable-geçişler-ContextTypeName MvcMovie. modeller. MovieDBContext
 
 ![](adding-a-new-field/_static/image4.png)
 
-Visual Studio, *Configuration.cs* dosyasını açar. *Configuration.cs* dosyasındaki `Seed` yöntemini aşağıdaki kodla değiştirin:
+Visual Studio, *Configuration.cs* dosyasını açar. `Seed` *Configuration.cs* dosyasındaki yöntemi aşağıdaki kodla değiştirin:
 
 [!code-csharp[Main](adding-a-new-field/samples/sample1.cs)]
 
-`Movie` altındaki kırmızı dalgalı çizgi üzerine gelin ve `Show Potential Fixes` ' a tıklayın ve ardından **mvcmovie. modellerini** **kullanma** ' ya tıklayın.
+Altındaki kırmızı dalgalı çizginin üzerine gelin `Movie` ve `Show Potential Fixes` ardından **Mvcmovie. modellerini** **kullanma** ' ya tıklayın.
 
 ![](adding-a-new-field/_static/image5.png)
 
@@ -61,7 +61,7 @@ Bunun yapılması Aşağıdaki using ifadesini ekler:
 
 > [!NOTE]
 > 
-> Code First Migrations her geçişten sonra `Seed` yöntemini çağırır (yani, Paket Yöneticisi konsolundaki **Update-Database** ' i çağırarak) ve bu yöntem önceden eklenmiş satırları güncelleştirir veya henüz yoksa onları ekler.
+> Code First Migrations `Seed` her geçişten sonra (yani, Package Manager konsolunda **Update-Database** ' i çağırarak) yöntemi çağırır ve bu yöntem zaten eklenmiş olan satırları güncelleştirir veya henüz yoksa onları ekler.
 > 
 > Aşağıdaki koddaki [AddOrUpdate](https://msdn.microsoft.com/library/system.data.entity.migrations.idbsetextensions.addorupdate(v=vs.103).aspx) yöntemi "upsert" bir işlem gerçekleştirir:
 > 
@@ -69,7 +69,7 @@ Bunun yapılması Aşağıdaki using ifadesini ekler:
 > 
 > [Çekirdek](https://msdn.microsoft.com/library/hh829453(v=vs.103).aspx) yöntemi her geçişte çalıştığı için, eklemeye çalıştığınız satırlar veritabanını oluşturan ilk geçişten sonra zaten mevcut olacağı için yalnızca verileri ekleyemezsiniz. "[Upsert](http://en.wikipedia.org/wiki/Upsert)" işlemi, zaten var olan bir satır eklemeye çalışırsanız, ancak uygulamayı test ederken yapmış olduğunuz verilerde yapılan değişiklikleri geçersiz kılar. Bazı tablolardaki test verileri ile bu durum oluşmasını istemeyebilirsiniz: bazı durumlarda verileri değiştirirken değişiklikler veritabanı güncelleştirmelerinden sonra kalmasını istiyor. Bu durumda, bir koşullu ekleme işlemi yapmak istiyorsanız, yalnızca mevcut değilse bir satır ekleyin.   
 > 
-> [AddOrUpdate](https://msdn.microsoft.com/library/system.data.entity.migrations.idbsetextensions.addorupdate(v=vs.103).aspx) metoduna geçirilen ilk parametre, bir satırın zaten var olup olmadığını denetlemek için kullanılacak özelliği belirtir. Sağlayabileceğinizden test filmi verileri için, listedeki her bir başlık benzersiz olduğundan bu amaçla `Title` özelliği kullanılabilir:
+> [AddOrUpdate](https://msdn.microsoft.com/library/system.data.entity.migrations.idbsetextensions.addorupdate(v=vs.103).aspx) metoduna geçirilen ilk parametre, bir satırın zaten var olup olmadığını denetlemek için kullanılacak özelliği belirtir. Sağlanan test filmi verileri için, `Title` listedeki her bir başlık benzersiz olduğundan bu amaçla özellik kullanılabilir:
 > 
 > [!code-csharp[Main](adding-a-new-field/samples/sample4.cs)]
 > 
@@ -81,19 +81,19 @@ Bunun yapılması Aşağıdaki using ifadesini ekler:
 
 **Projeyi derlemek IÇIN CTRL-SHIFT-B tuşlarına basın.** (Bu noktada derleme yapmazsanız aşağıdaki adımlar başarısız olur.)
 
-Sonraki adım, ilk geçiş için bir `DbMigration` sınıfı oluşturmaktır. Bu geçiş yeni bir veritabanı oluşturur. bu nedenle, önceki bir adımda bulunan *Movie. mdf* dosyasını silmiş olursunuz.
+Sonraki adım, `DbMigration` ilk geçiş için bir sınıf oluşturmaktır. Bu geçiş yeni bir veritabanı oluşturur. bu nedenle, önceki bir adımda bulunan *Movie. mdf* dosyasını silmiş olursunuz.
 
-**Paket Yöneticisi konsolu** penceresinde, ilk geçişi oluşturmak için komutu `add-migration Initial` girin. "Initial" adı rasgele olur ve oluşturulan geçiş dosyasını adlandırmak için kullanılır.
+**Paket Yöneticisi konsolu** penceresinde, `add-migration Initial` ilk geçişi oluşturmak için komutunu girin. "Initial" adı rasgele olur ve oluşturulan geçiş dosyasını adlandırmak için kullanılır.
 
 ![](adding-a-new-field/_static/image6.png)
 
-Code First Migrations, *geçişler* klasöründe başka bir sınıf dosyası oluşturur ( *{datestamp}\_Initial.cs* ) ve bu sınıf veritabanı şemasını oluşturan kodu içerir. Geçiş dosya adı, sıralamaya yardımcı olması için zaman damgasıyla önceden düzeltilir. *{DateStamp}\_Initial.cs* dosyasını Inceleyerek, film DB için `Movies` tablo oluşturma yönergelerini içerir. Aşağıdaki yönergelerdeki veritabanını güncelleştirdiğinizde, bu *{dateStamp}\_Initial.cs* dosyası ÇALıŞACAKTıR ve DB şemasını oluşturacaktır. Ardından, VERITABANıNı test verileriyle doldurmak için **çekirdek** yöntemi çalışacaktır.
+Code First Migrations *geçişler* klasöründe başka bir sınıf dosyası oluşturur ( *{datestamp} \_ Initial.cs* adıyla) ve bu sınıf veritabanı şemasını oluşturan kodu içerir. Geçiş dosya adı, sıralamaya yardımcı olması için zaman damgasıyla önceden düzeltilir. *{DateStamp} \_ Initial.cs* dosyasını Inceleyerek, `Movies` film DB için tablo oluşturma yönergelerini içerir. Aşağıdaki yönergelerdeki veritabanını güncelleştirdiğinizde, bu *{dateStamp} \_ Initial.cs* dosyası çalışacaktır ve DB şemasını oluşturacaktır. Ardından, VERITABANıNı test verileriyle doldurmak için **çekirdek** yöntemi çalışacaktır.
 
-**Paket Yöneticisi konsolunda**veritabanını oluşturmak ve `Seed` metodunu çalıştırmak için `update-database` komutunu girin.
+**Paket Yöneticisi konsolunda**, `update-database` veritabanını oluşturmak ve metodunu çalıştırmak için komutunu girin `Seed` .
 
 ![](adding-a-new-field/_static/image7.png)
 
-Bir tablonun zaten var olduğunu ve oluşturulamayabileceğini belirten bir hata alırsanız, veritabanını sildikten sonra ve `update-database`çalıştırmadan önce uygulamayı çalıştırmanızdan kaynaklanıyor olabilirsiniz. Bu durumda, *filmler. mdf* dosyasını yeniden silin ve `update-database` komutunu yeniden deneyin. Yine de bir hata alırsanız, geçişler klasörünü ve içeriğini silin ve ardından bu sayfanın üst kısmındaki yönergelerden başlayın (yani, *filmler. mdf* dosyasını silin ve ardından geçişlere devam edin). Hala bir hata alırsanız, SQL Server Nesne Gezgini açın ve veritabanını listeden kaldırın.
+Bir tablonun zaten var olduğunu ve oluşturulamayabileceğini belirten bir hata alırsanız, veritabanını sildikten ve çalıştırmadan önce uygulamayı çalıştırmanızdan kaynaklanıyor olabilirsiniz `update-database` . Bu durumda, *filmler. mdf* dosyasını yeniden silin ve komutu yeniden deneyin `update-database` . Yine de bir hata alırsanız, geçişler klasörünü ve içeriğini silin ve ardından bu sayfanın üst kısmındaki yönergelerden başlayın (yani, *filmler. mdf* dosyasını silin ve ardından geçişlere devam edin). Hala bir hata alırsanız, SQL Server Nesne Gezgini açın ve veritabanını listeden kaldırın.
 
 Uygulamayı çalıştırın ve */filmler* URL 'sine gidin. Çekirdek veriler görüntülenir.
 
@@ -101,41 +101,41 @@ Uygulamayı çalıştırın ve */filmler* URL 'sine gidin. Çekirdek veriler gö
 
 ## <a name="adding-a-rating-property-to-the-movie-model"></a>Film modeline bir derecelendirme özelliği ekleme
 
-Yeni bir `Rating` özelliğini varolan `Movie` sınıfına ekleyerek başlayın. *Models\movie.cs* dosyasını açın ve bunun gibi `Rating` özelliğini ekleyin:
+Yeni bir `Rating` özelliği var olan sınıfa ekleyerek başlayın `Movie` . *Models\movie.cs* dosyasını açın ve `Rating` Şu şekilde bir özelliği ekleyin:
 
 [!code-csharp[Main](adding-a-new-field/samples/sample5.cs)]
 
-Tüm `Movie` sınıfı artık aşağıdaki kod gibi görünür:
+Tüm `Movie` sınıf artık aşağıdaki kod gibi görünür:
 
 [!code-csharp[Main](adding-a-new-field/samples/sample6.cs?highlight=12)]
 
 Uygulamayı derleyin (Ctrl + Shift + B).
 
-`Movie` sınıfına yeni bir alan eklediyseniz, bu yeni özelliğin dahil edilmesini sağlamak için bağlama *beyaz listesini* de güncelleştirmeniz gerekir. `Create` ve `Edit` eylem yöntemlerinin `bind` özniteliğini `Rating` özelliği içerecek şekilde güncelleştirin:
+Sınıfa yeni bir alan eklediyseniz `Movie` , bu yeni özelliğin dahil edilmesini sağlamak için bağlama *beyaz listesini* de güncelleştirmeniz gerekir. `bind` `Create` Ve eylem yöntemlerine ait özniteliği `Edit` Özelliği içerecek şekilde güncelleştirin `Rating` :
 
 [!code-csharp[Main](adding-a-new-field/samples/sample7.cs?highlight=1)]
 
-Ayrıca, tarayıcı görünümündeki yeni `Rating` özelliğini görüntülemek, oluşturmak ve düzenlemek için görünüm şablonlarını güncelleştirmeniz gerekir.
+Ayrıca, tarayıcı görünümündeki yeni özelliği görüntülemek, oluşturmak ve düzenlemek için görünüm şablonlarını güncelleştirmeniz gerekir `Rating` .
 
-*\Views\Movies\Index.cshtml* dosyasını açın ve **Fiyat** sütununun hemen ardından `<th>Rating</th>` bir sütun başlığı ekleyin. Sonra, `@item.Rating` değerini işlemek için şablonun sonuna yakın bir `<td>` sütunu ekleyin. Güncelleştirilmiş *Index. cshtml* görünüm şablonu şöyle görünür:
+*\Views\Movies\Index.cshtml* dosyasını açın ve `<th>Rating</th>` **Fiyat** sütunundan hemen sonra bir sütun başlığı ekleyin. Sonra `<td>` değeri işlemek için şablonun sonuna yakın bir sütun ekleyin `@item.Rating` . Güncelleştirilmiş *Index. cshtml* görünüm şablonu şöyle görünür:
 
 [!code-cshtml[Main](adding-a-new-field/samples/sample8.cshtml?highlight=31-33,52-54)]
 
-Sonra, *\Views\Movies\Create.cshtml* dosyasını açın ve aşağıdaki vurgulanmış işaretlerle `Rating` alanını ekleyin. Bu, yeni bir film oluşturulduğunda bir derecelendirme belirleyebilmeniz için bir metin kutusu oluşturur.
+Sonra, *\Views\Movies\Create.cshtml* dosyasını açın ve `Rating` aşağıdaki vurgulanmış işaretlerle alanı ekleyin. Bu, yeni bir film oluşturulduğunda bir derecelendirme belirleyebilmeniz için bir metin kutusu oluşturur.
 
 [!code-cshtml[Main](adding-a-new-field/samples/sample9.cshtml?highlight=9-15)]
 
-Artık uygulama kodunu yeni `Rating` özelliğini destekleyecek şekilde güncelleştirdiniz.
+Artık yeni özelliği desteklemek için uygulama kodunu güncelleştirdiniz `Rating` .
 
 Uygulamayı çalıştırın ve */filmler* URL 'sine gidin. Bunu yaptığınızda, aşağıdaki hatalardan birini görürsünüz:
 
 ![](adding-a-new-field/_static/image9.png)  
   
-' MovieDBContext ' bağlamını destekleyen model veritabanı oluşturulduktan sonra değiştirildi. Veritabanını güncelleştirmek için Code First Migrations kullanmayı düşünün (https://go.microsoft.com/fwlink/?LinkId=238269).
+' MovieDBContext ' bağlamını destekleyen model veritabanı oluşturulduktan sonra değiştirildi. Veritabanını güncelleştirmek için Code First Migrations kullanmayı düşünün ( https://go.microsoft.com/fwlink/?LinkId=238269) .
 
 ![](adding-a-new-field/_static/image10.png)
 
-Bu hatayı, uygulamadaki güncelleştirilmiş `Movie` modeli sınıfı artık var olan veritabanının `Movie` tablosunun şemasından farklı olduğu için görüyorsunuz. (Veritabanı tablosunda `Rating` sütunu yoktur.)
+Bu hatayı `Movie` , uygulamadaki güncelleştirilmiş model sınıfı artık mevcut veritabanının tablosunun şemasından farklı olduğu için görüyorsunuz `Movie` . ( `Rating` Veritabanı tablosunda sütun yok.)
 
 Hatayı çözmek için birkaç yaklaşım vardır:
 
@@ -153,13 +153,13 @@ Bu öğretici için Code First Migrations kullanacağız.
 
 `add-migration Rating`
 
-`add-migration` komutu, geçiş çerçevesinin geçerli film modelini geçerli film DB şemasıyla incelemesini ve VERITABANıNı yeni modele geçirmek için gerekli kodu oluşturmasını söyler. Ad *derecelendirmesi* rasgele ve geçiş dosyasını adlandırmak için kullanılır. Geçiş adımı için anlamlı bir ad kullanılması yararlı olur.
+Bu `add-migration` komut, geçiş çerçevesinin geçerli film modelini geçerli fılm DB şemasıyla incelemesini ve veritabanını yeni modele geçirmek için gerekli kodu oluşturmasını söyler. Ad *derecelendirmesi* rasgele ve geçiş dosyasını adlandırmak için kullanılır. Geçiş adımı için anlamlı bir ad kullanılması yararlı olur.
 
-Bu komut tamamlandığında, Visual Studio yeni `DbMigration` türetilen sınıfı tanımlayan sınıf dosyasını açar ve `Up` yönteminde yeni sütunu oluşturan kodu görebilirsiniz.
+Bu komut tamamlandığında, Visual Studio yeni türetilmiş sınıfı tanımlayan sınıf dosyasını açar `DbMigration` ve `Up` yönteminde yeni sütunu oluşturan kodu görebilirsiniz.
 
 [!code-csharp[Main](adding-a-new-field/samples/sample11.cs)]
 
-Çözümü oluşturun ve ardından **Paket Yöneticisi konsolu** penceresine `update-database` komutunu girin.
+Çözümü oluşturun ve ardından `update-database` **Paket Yöneticisi konsolu** penceresine komutu girin.
 
 Aşağıdaki görüntüde, **Paket Yöneticisi konsol** penceresinde çıkış gösterilmektedir (Tarih damgası ön bekleyen *Derecelendirme* farklı olacaktır.)
 
@@ -173,18 +173,18 @@ Yeni bir film eklemek için **Yeni oluştur** bağlantısına tıklayın. Bir de
 
 ![7_CreateRioII](adding-a-new-field/_static/image13.png)
 
-**Oluştur**'u tıklatın. Yeni film, derecelendirme de dahil, artık filmler listesinde görüntülenir:
+**Oluştur**’a tıklayın. Yeni film, derecelendirme de dahil, artık filmler listesinde görüntülenir:
 
 ![7_ourNewMovie_SM](adding-a-new-field/_static/image14.png)
 
 Artık proje geçişleri kullanıyor olduğuna göre, yeni bir alan eklediğinizde veya şemayı güncelleştirdiğinizde veritabanını bırakmalısınız. Sonraki bölümde, daha fazla şema değişikliği yapacağız ve veritabanını güncelleştirmek için geçişleri kullanacağız.
 
-Ayrıca, `Rating` alanını Düzenle, Ayrıntılar ve Sil görünüm şablonlarına de eklemeniz gerekir.
+Ayrıca `Rating` alanı düzenleme, Ayrıntılar ve Sil görünüm şablonlarına de eklemeniz gerekir.
 
-**Paket Yöneticisi konsol** penceresinde "Güncelleştir-veritabanı" komutunu tekrar girebilir ve şema modelle eşleştiğinden geçiş kodu çalıştırılmaz. Bununla birlikte, "Update-Database" çalıştırmak `Seed` yöntemini yeniden çalıştırır ve çekirdek verilerinden herhangi birini değiştirdiyseniz değişiklikler kaybedilir çünkü `Seed` yöntemi de bu verileri çıkarır. Tom Dykstra 'in popüler [ASP.NET MVC/Entity Framework öğreticisinde](../getting-started-with-ef-using-mvc/creating-an-entity-framework-data-model-for-an-asp-net-mvc-application.md)`Seed` yöntemi hakkında daha fazla bilgi edinebilirsiniz.
+**Paket Yöneticisi konsol** penceresinde "Güncelleştir-veritabanı" komutunu tekrar girebilir ve şema modelle eşleştiğinden geçiş kodu çalıştırılmaz. Bununla birlikte, "Update-Database" çalıştırmak `Seed` yöntemi yeniden çalıştırır ve çekirdek verilerinden herhangi birini değiştirdiyseniz, bu değişiklikler kaybedilir çünkü bu `Seed` Yöntem verileri çıkarır. `Seed`Tom Dykstra 'in popüler [ASP.NET MVC/Entity Framework öğreticisindeki](../getting-started-with-ef-using-mvc/creating-an-entity-framework-data-model-for-an-asp-net-mvc-application.md)yöntemi hakkında daha fazla bilgi edinebilirsiniz.
 
 Bu bölümde, model nesnelerini nasıl değiştirebileceğiniz ve veritabanını değişikliklerle eşitlenmiş halde tutan bir şekilde gördünüz. Ayrıca, senaryoları deneyebilmeniz için yeni oluşturulan bir veritabanını örnek verilerle doldurmanın bir yolunu öğrenmiş olursunuz. Bu yalnızca Code First hızlı bir giriştir, konu hakkında daha kapsamlı bir öğretici için [ASP.NET MVC uygulaması için Entity Framework veri modeli oluşturma](../getting-started-with-ef-using-mvc/creating-an-entity-framework-data-model-for-an-asp-net-mvc-application.md) konusuna bakın. Daha sonra model sınıflarına daha zengin doğrulama mantığı ekleme ve bazı iş kurallarının uygulanmasını sağlama konusuna bakalım.
 
 > [!div class="step-by-step"]
-> [Önceki](adding-search.md)
-> [İleri](adding-validation.md)
+> [Önceki](adding-search.md) 
+>  [Sonraki](adding-validation.md)
