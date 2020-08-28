@@ -8,12 +8,12 @@ ms.date: 08/19/2008
 ms.assetid: a106374a-5e74-4fd0-9ac0-1a32280e5d0d
 msc.legacyurl: /mvc/overview/older-versions-1/overview/understanding-models-views-and-controllers-vb
 msc.type: authoredcontent
-ms.openlocfilehash: e11487cbb863bae230ccb9dfdaf7172c65ec4d43
-ms.sourcegitcommit: ffd0f59ef9b7d221a5b2010c32aa61c89c14f406
+ms.openlocfilehash: 6d669d00a1e061b4bcaf38b1a4002757cdebb21a
+ms.sourcegitcommit: 4e6d586faadbe4d9ef27122f86335ec9385134af
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89042098"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89045201"
 ---
 # <a name="understanding-models-views-and-controllers-vb"></a>Modelleri, Görünümleri ve Denetleyicileri Anlama (VB)
 
@@ -111,7 +111,7 @@ Denetleyici = çalışan
 
 Eylem = Dizin
 
-Kimlik =?
+Kimlik = 
 
 Son olarak, herhangi bir URL (örneğin,) sağlamadan bir ASP.NET MVC uygulaması açarsanız `http://localhost` , URL şöyle ayrıştırılır:
 
@@ -119,7 +119,7 @@ Denetleyici = ana
 
 Eylem = Dizin
 
-Kimlik =?
+Kimlik = 
 
 İstek, HomeController sınıfında dizin () eylemine yönlendirilir.
 
