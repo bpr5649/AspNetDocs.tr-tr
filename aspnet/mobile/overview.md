@@ -8,22 +8,24 @@ ms.date: 01/28/2011
 ms.assetid: 1febce65-cdd4-47da-bdb5-1e6022ccd20a
 msc.legacyurl: /mobile
 msc.type: content
-ms.openlocfilehash: 769484ee505599eef48ff4a106ddd4f7ec7d99af
-ms.sourcegitcommit: 0cf7d06071a8ff986e6c028ac9daf0c0e7490412
+ms.openlocfilehash: 41cf393f307808e457e0ab2529129ca8ecbc3b5d
+ms.sourcegitcommit: dfd3ce87ffc9e3a7076f8252abb5d5d6b991333b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85240737"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89449710"
 ---
 # <a name="mobile-apps--sites-with-aspnet"></a>ASP.NET & siteleri Mobile Apps
 
 ## <a name="develop-mobile-apps"></a>Mobile Apps geliştirin
 
-### <a name="cloud-connected-mobile-apps---create-a-web-service-with-azure-web-apps-and-webjobspart-1"></a>[Buluta bağlı Mobile Apps-Azure Web Apps ve WebJobs Ile Web hizmeti oluşturma](https://msdn.microsoft.com/magazine/mt185572)(Bölüm 1)
+### <a name="cloud-connected-mobile-apps"></a>Buluta bağlı Mobile Apps
+
+[1. Bölüm-Azure Web Apps ve WebJobs ile Web hizmeti oluşturma](https://msdn.microsoft.com/magazine/mt185572)
 
 İki bölümden oluşan bir makalenin ilk bölümünde yazarlar, verileri toplayan ve işleyen ve mobil istemcilere sunan bir bulut arka ucu oluşturmayla ilgili bazı sorunları keşfedebilir.
 
-### <a name="cloud-connected-mobile-apps---build-a-xamarin-app-with-authentication-and-offline-supportpart-2"></a>[Buluta bağlı Mobile Apps-kimlik doğrulama ve çevrimdışı desteğiyle bir Xamarin uygulaması derleme](https://msdn.microsoft.com/magazine/mt422581.aspx)(2. bölüm)
+[Bölüm 2-kimlik doğrulama ve çevrimdışı desteğiyle bir Xamarin uygulaması oluşturma](https://msdn.microsoft.com/magazine/mt422581.aspx)
 
 İçindeki ikinci makalede, yazarlar birden çok mobil istemci platformunu hedeflemek için Xamarin 'i nasıl kullanacağınızı tartışır ve kimlik doğrulamasının nasıl uygulanacağını ve verilerin eşitlenmiş istemci tarafı önbelleğini nasıl koruyacağınızı gösterir.
 
