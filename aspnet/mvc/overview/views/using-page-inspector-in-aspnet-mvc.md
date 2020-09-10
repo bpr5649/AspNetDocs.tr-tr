@@ -8,12 +8,12 @@ ms.date: 08/15/2012
 ms.assetid: c7e4e1ab-4932-4614-9f53-aaf7c706d498
 msc.legacyurl: /mvc/overview/views/using-page-inspector-in-aspnet-mvc
 msc.type: authoredcontent
-ms.openlocfilehash: 5da3e142c52a770f59222c21d9f9a53cbbdbf498
-ms.sourcegitcommit: e7e91932a6e91a63e2e46417626f39d6b244a3ab
+ms.openlocfilehash: 42d5683ce75467a159c9d13edf302bd6bf24a11d
+ms.sourcegitcommit: 45754124123403520b9fa2e706a4d1292494159b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/06/2020
-ms.locfileid: "78538019"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89643691"
 ---
 # <a name="using-page-inspector-in-aspnet-mvc"></a>ASP.NET MVC'de Sayfa Denetçisini Kullanma
 
@@ -53,11 +53,11 @@ Sayfa denetçisi Microsoft Web Geliştirici Araçları ile paketlenmiştir. En s
 
 ## <a name="create-a-web-application"></a>Web uygulaması oluşturma
 
-İlk olarak, ile sayfa denetçisi kullanacağınız bir Web uygulaması oluşturun. Visual Studio 'da **dosya** &gt; **Yeni proje**' yi seçin. Sol tarafta, **C#görsel**' i genişletin, **Web**' i seçin ve **ASP.net MVC4 Web uygulaması**' nı seçin.
+İlk olarak, ile sayfa denetçisi kullanacağınız bir Web uygulaması oluşturun. Visual Studio 'da **Dosya** &gt; **Yeni proje**' yi seçin. Sol tarafta, **Visual C#**' yi genişletin, **Web**' i seçin ve **ASP.net MVC4 Web uygulaması**' nı seçin.
 
 ![Yeni ASP.NET MVC uygulaması](using-page-inspector-in-aspnet-mvc/_static/image2.png)
 
-**Tamam**’a tıklayın.
+**Tamam**'a tıklayın.
 
 **Yeni ASP.NET MVC 4 projesi** Iletişim kutusunda **Internet uygulaması**' nı seçin. **Razor** 'yi varsayılan görünüm altyapısı olarak bırakın.
 
@@ -111,23 +111,23 @@ Sayfa denetçisi, konumu açık olmayabilir olan biçimlendirmeyi bulmanızı sa
 
 Bunu görmek için, **İncele** ' ye tıklayın ve ardından sayfa denetçisi penceresinde sayfanın en altına gidin.
 
-Fare işaretçisini altbilgi alanına taşıdığınızda, sayfa denetçisi \_Layout. cshtml dosyasını açar ve seçtiğiniz düzen sayfasının bölümünü vurgular. Gördüğünüz gibi, alt bilgi, görünümün kendisi değil, düzen dosyasında tanımlanmıştır.
+Fare işaretçisini altbilgi alanına taşıdığınızda, sayfa denetçisi \_ Layout. cshtml dosyasını açar ve seçtiğiniz düzen sayfasının bölümünü vurgular. Gördüğünüz gibi, alt bilgi alanı, görünümün kendisi değil, düzen dosyasında tanımlanır.
 
-![Arasında](using-page-inspector-in-aspnet-mvc/_static/image16.png)
+![Alt bilgi](using-page-inspector-in-aspnet-mvc/_static/image16.png)
 
-Artık fare işaretçinizi, telif hakkı <a id="a"> </a>bildiriminin bulunduğu çizginin üzerine taşıyın. \_Layout. cshtml sayfasında, karşılık gelen çizgi vurgulanır.
+Artık fare işaretçinizi, telif hakkı bildiriminin bulunduğu çizginin üzerine taşıyın <a id="a"></a> . \_Layout. cshtml sayfasında, karşılık gelen çizgi vurgulanır.
 
 ![Alt bilgi için telif hakkı satırı vurgulanmış](using-page-inspector-in-aspnet-mvc/_static/image18.png)
 
-\_Layout. cshtml dosyasındaki satırın sonuna bir metin ekleyin.
+Layout. cshtml dosyasındaki satırın sonuna bir metin ekleyin \_ .
 
-&lt;p&gt;&amp;kopyalama; @DateTime.Now.Year-My ASP.NET MVC uygulaması Rolaları!&lt;/p&gt;
+&lt;p &gt; &amp; copy; @DateTime.Now.Year -My ASP.NET MVC uygulaması rolaları! &lt; /p&gt;
 
 Şimdi, sayfa denetçisi tarayıcı penceresinde sonuçları görmek için CTRL + ALT + ENTER tuşlarına basın veya güncelleştirme çubuğuna tıklayın.
 
 ![ASP.NET uygulamamın özellikleri!](using-page-inspector-in-aspnet-mvc/_static/image20.png)
 
-Alt bilginin Index. cshtml 'de tanımlandığını düşündük, ancak \_Layout. cshtml dosyasında olduğunu ve sayfa denetçisi sizin için bulmuştur.
+Alt bilginin Index. cshtml 'de tanımlandığını düşündük, ancak Layout. cshtml içinde olduğu gibi, \_ sayfa denetçisi ise sizin için buldu.
 
 <a id="_inspection_mode_and_1"></a><a id="_6_inspection_mode"></a>
 
@@ -143,7 +143,7 @@ Sayfanın "buraya logonuzu" belirten üst kısmına tıklayın. Belirli bir öğ
 
 ![HTML penceresi](using-page-inspector-in-aspnet-mvc/_static/image22.png)
 
-Daha önce olduğu gibi, sayfa denetçisi geçici bir sekmede sizin için \_Layout. cshtml dosyasını açar. \_Layout. cshtml geçici sekmesine tıklayın ve ilgili biçimlendirme, sizin için &lt;üst bilgi&gt; bölümünde vurgulanacaktır:
+Daha önce olduğu gibi, sayfa denetçisi, \_ geçici bir sekmede sizin için Layout. cshtml dosyasını açar. \_ Layout. cshtml geçici sekmesine tıklayın ve ilgili biçimlendirme, &lt; sizin için üst bilgi bölümünde vurgulanacaktır &gt; :
 
 ![Vurgulanan işaretleme](using-page-inspector-in-aspnet-mvc/_static/image24.png)
 
@@ -187,7 +187,7 @@ Sayfa denetçisi tarayıcısında, **div. Content-Wrapper** etiketi görünene k
 
 ![](using-page-inspector-in-aspnet-mvc/_static/image32.png)
 
-Şimdi `background-color` değerini "Red" olarak değiştirin. Değişiklik, sayfa denetçisi tarayıcısında hemen görünür.
+Şimdi değerini `background-color` "Red" olarak değiştirin. Değişiklik, sayfa denetçisi tarayıcısında hemen görünür.
 
 ![](using-page-inspector-in-aspnet-mvc/_static/image34.png)
 
@@ -196,7 +196,7 @@ Sayfa denetçisi tarayıcısında, **div. Content-Wrapper** etiketi görünene k
 
 Visual Studio 2012 ' deki CSS Düzenleyicisi, renkleri seçip eklemeyi kolaylaştıran bir renk seçicisine sahiptir. Renk Seçici standart bir renk paleti içerir, standart renk adlarını, karma kodları, RGB, RGBA, HSL ve HSLA renklerini destekler ve belgede en son kullandığınız renklerin bir listesini tutar.
 
-Önceki bölümde `background-color` özelliğinin değerini değiştirdiniz. Renk seçiciyi çağırmak için, ekleme noktasını özellik adından sonra yerleştirin ve **#** ya da **RGB (** ) yazın.
+Önceki bölümde, özelliğinin değerini değiştirdiniz `background-color` . Renk seçiciyi çağırmak için, ekleme noktasını Özellik adı ve tür ya da RGB 'den sonra **#** yerleştirin **(**.
 
 ![CSS Renk Seçici Çubuğu](using-page-inspector-in-aspnet-mvc/_static/image36.png)
 
@@ -236,7 +236,7 @@ Sürüm 1,3 ile, sayfa denetçisi artık sayfaya otomatik olarak eklenen öğele
 > [!NOTE]
 > SPA şablonu [ASP.NET and Web Tools 2012,2](https://go.microsoft.com/fwlink/?LinkId=282650) güncelleştirmesini gerektirir.
 
-Visual Studio 'da **dosya** &gt; **Yeni proje**' yi seçin. Sol tarafta, **C#görsel**' i genişletin, **Web**' i seçin ve **ASP.net MVC4 Web uygulaması**' nı seçin. **Tamam**’a tıklayın.
+Visual Studio 'da **Dosya** &gt; **Yeni proje**' yi seçin. Sol tarafta, **Visual C#**' yi genişletin, **Web**' i seçin ve **ASP.net MVC4 Web uygulaması**' nı seçin. **Tamam**'a tıklayın.
 
 **Yeni ASP.NET MVC 4 proje** Iletişim kutusunda **tek sayfalı uygulama**' yı seçin.
 
