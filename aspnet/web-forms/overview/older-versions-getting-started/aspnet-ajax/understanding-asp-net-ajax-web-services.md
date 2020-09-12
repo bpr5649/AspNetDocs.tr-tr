@@ -9,10 +9,10 @@ ms.assetid: 3332d6e7-e2e1-4144-b805-e71d51e7e415
 msc.legacyurl: /web-forms/overview/older-versions-getting-started/aspnet-ajax/understanding-asp-net-ajax-web-services
 msc.type: authoredcontent
 ms.openlocfilehash: eac3d53fd871d0cb5a2870488ce752c057cc5b1a
-ms.sourcegitcommit: e7e91932a6e91a63e2e46417626f39d6b244a3ab
+ms.sourcegitcommit: 45754124123403520b9fa2e706a4d1292494159b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/06/2020
+ms.lasthandoff: 09/12/2020
 ms.locfileid: "86162841"
 ---
 # <a name="understanding-aspnet-ajax-web-services"></a>ASP.NET AJAX Web Hizmetlerini Anlama
@@ -289,7 +289,7 @@ AutoCompleteExtender, sunucu denetimlerinde bulunan standart KIMLIK ve runat öz
 
 ASP.NET AJAX, istek ve yanıt iletilerini işlemek için çok sayıda özel JavaScript kodu yazmadan Web hizmetlerini çağırmak için mükemmel destek sağlar. Bu makalede, .NET Web Hizmetleri 'nin JSON iletilerini işlemesini ve ScriptManager denetimini kullanarak JavaScript proxy 'leri nasıl tanımlanacağını belirlemek için AJAX 'ı nasıl etkinleştireceğinizi gördünüz. JavaScript proxy 'lerinin Web hizmetlerini çağırmak, basit ve karmaşık türleri işlemek ve hatalarla başa çıkmak için nasıl kullanılabileceğini de gördünüz. Son olarak, Web hizmeti çağrıları oluşturma ve kurma sürecini ve AutoCompleteExtender denetiminin, yazdıkları sürece son kullanıcılara nasıl yardım sağlayabileceğini basitleştirmek için sayfa yöntemlerinin nasıl kullanılabileceğini gördünüz. ASP.NET AJAX 'ta kullanılabilir olan UpdatePanel, basitliği nedeniyle birçok AJAX programcısı için tercih edilen denetim olacak olsa da, JavaScript proxy 'leri aracılığıyla Web hizmetlerinin nasıl çağrılacağını bilmek birçok uygulamada yararlı olabilir.
 
-## <a name="bio"></a>Biyografisi
+## <a name="bio"></a>Biyografi
 
 Dan Wahlin (ASP.NET ve XML Web Hizmetleri için Microsoft en değerli profesyonel), arabirim teknik eğitimi () adresindeki bir .NET geliştirme eğitmeni ve mimari danışmanıdır [http://www.interfacett.com](http://www.interfacett.com) . , ASP.NET geliştiricileri Web sitesi ([www.XMLforASP.net](http://www.XMLforASP.NET)) için XML, bir konuşmacı bürosuna ve birçok konferansda konuşuyor. Dan co-yazılan profesyonel Windows DNA (SaaS x), ASP.NET: Ipuçları, öğreticiler ve kod (Sams), ASP.NET 1,1 Insider Solutions, Professional ASP.NET 2,0 AJAX (SaaS x), ASP.NET 2,0 MVP Hacks ve yazılan XML for ASP.NET Developers (Sams). Kod, makale veya kitap yazmadığınızda, bol ve çocukları kullanarak müzik yazma ve kaydetme ve Golf ve basketbol topu oynatma.
 
