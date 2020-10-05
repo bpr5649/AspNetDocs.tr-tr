@@ -10,10 +10,10 @@ ms.assetid: 50e6e62b-e72e-4a29-8293-4b67377bd21f
 msc.legacyurl: /web-api/overview/odata-support-in-aspnet-web-api/supporting-odata-query-options
 msc.type: authoredcontent
 ms.openlocfilehash: 96820fab7ac89885058962f44ded86cb0184ee97
-ms.sourcegitcommit: ce28244209db8615bc9bdd576a2e2c88174d318d
+ms.sourcegitcommit: 4ed0b65ae32d9f35e42ee6296b877747e063df4d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/06/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "86188649"
 ---
 # <a name="supporting-odata-query-options-in-aspnet-web-api-2"></a>ASP.NET Web API 2 ' de OData sorgu seçeneklerini destekleme
@@ -81,12 +81,12 @@ $Top seçeneği döndürülecek en fazla girdi sayısını verir ve $skip seçen
 
 $Filter seçeneği, bir istemcinin Boole ifadesi uygulayarak sonuçları filtrelemesine olanak sağlar. Filtre ifadeleri oldukça güçlüdür; mantıksal ve aritmetik işleçler, dize işlevleri ve Tarih işlevleri içerirler.
 
-| Kategori "Toys" değerine eşit olan tüm ürünleri döndürür. | `http://localhost/Products?$filter=Category`EQ ' Toys ' |
+| Kategori "Toys" değerine eşit olan tüm ürünleri döndürür. | `http://localhost/Products?$filter=Category` EQ ' Toys ' |
 | --- | --- |
-| Fiyatı 10 ' dan küçük olan tüm ürünleri döndürün. | `http://localhost/Products?$filter=Price`lt 10 |
-| Mantıksal işleçler: Price >= 5 ve Price <= 15 olan tüm ürünleri döndürün. | `http://localhost/Products?$filter=Price`GE 5 ve fiyat Le 15 |
+| Fiyatı 10 ' dan küçük olan tüm ürünleri döndürün. | `http://localhost/Products?$filter=Price` lt 10 |
+| Mantıksal işleçler: Price >= 5 ve Price <= 15 olan tüm ürünleri döndürün. | `http://localhost/Products?$filter=Price` GE 5 ve fiyat Le 15 |
 | Dize işlevleri: adında "ZZ" olan tüm ürünleri döndürün. | `http://localhost/Products?$filter=substringof('zz',Name)` |
-| Tarih işlevleri: 2005 sonrasında ReleaseDate ile tüm ürünleri döndürün. | `http://localhost/Products?$filter=year(ReleaseDate)`gt 2005 |
+| Tarih işlevleri: 2005 sonrasında ReleaseDate ile tüm ürünleri döndürün. | `http://localhost/Products?$filter=year(ReleaseDate)` gt 2005 |
 
 **Sıralama**
 
