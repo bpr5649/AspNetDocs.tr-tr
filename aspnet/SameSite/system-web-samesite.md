@@ -5,12 +5,12 @@ description: ASP.NET içindeki site tanımlama bilgilerini nasıl kullanacağın
 ms.author: riande
 ms.date: 2/15/2019
 uid: samesite/system-web-samesite
-ms.openlocfilehash: 2a39663dcbfa97ae441edd9a9768172cafbaab03
-ms.sourcegitcommit: 09a34635ed0e74d6c2625f6a485c78f201c689ee
+ms.openlocfilehash: d50f157c6d92cb56cb6c59381af9139d1d3d1d3d
+ms.sourcegitcommit: a309ca7af61e59195beb745b501a1a9f06fcd493
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/06/2020
-ms.locfileid: "91763462"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92119369"
 ---
 # <a name="work-with-samesite-cookies-in-aspnet"></a>ASP.NET içinde SameSite tanımlama bilgileriyle çalışma
 
@@ -115,7 +115,7 @@ Microsoft, aynı-site tanımlama bilgisi özniteliğini yazmak için 4.7.2 'in d
 * Düzeltme ekinin bir değeri `None` :
   * Özniteliği hiçbir şekilde gösterme.
 * Düzeltme ekiyle sonra:
-  * Bunun bir değeri, `None` "özniteliği değeri Ile yay" anlamına gelir `None` .
+  * Bir değeri, `None` "özniteliği değeri Ile yay" anlamına gelir `None` .
   * Bir `SameSite` değeri `(SameSiteMode)(-1)` özniteliğin yayınlanmasına neden olur.
 
 Form kimlik doğrulaması ve oturum durumu tanımlama bilgileri için varsayılan SameSite değeri, ' dan ' a değiştirilmiştir `None` `Lax` .
@@ -163,7 +163,7 @@ Azure App Service .NET 4.7.2 uygulamalarında SameSite davranışlarını yapıl
 
 ## <a name="supporting-older-browsers"></a>Eski tarayıcıları destekleme
 
-2016 SameSite Standard uygulanan, bilinmeyen değerlerin değer olarak değerlendirilmelidir `SameSite=Strict` . 2016 SameSite standardını destekleyen eski tarayıcılardan erişilen uygulamalar, bir değeri olan bir SameSite özelliği edindiklerinde kesintiye uğramayabilir `None` . Web uygulamaları, eski tarayıcıları desteklemek istiyorlarsa, tarayıcı algılaması gerçekleştirmelidir. ASP.NET tarayıcı algılamayı uygulamaz; çünkü kullanıcı aracıları değerleri yüksek ölçüde geçici ve sık sık değiştirilir.
+2016 SameSite Standard uygulanan, bilinmeyen değerlerin değer olarak değerlendirilmelidir `SameSite=Strict` . 2016 SameSite standardını destekleyen eski tarayıcılardan erişilen uygulamalar, bir değeri olan bir SameSite özelliği edindiklerinde kesintiye uğramayabilir `None` . Web uygulamaları, eski tarayıcıları desteklemek istiyorlarsa, tarayıcı algılaması gerçekleştirmelidir. User-Agents değerleri yüksek ölçüde geçici ve sık sık değiştiğinden, ASP.NET tarayıcı algılamayı uygulamıyor.
 
 Microsoft 'un sorunu çözme yaklaşımı, tarayıcıyı `sameSite=None` desteklemez olarak bilindiğinde özniteliği tanımlama bilgilerinden atmak için tarayıcı algılama bileşenleri uygulamanıza yardımcı olur. Google 'ın önerisi, biri yeni özniteliğiyle, diğeri de özniteliği olmayan çift tanımlama bilgileri veriliydi. Bununla birlikte, Google 'ın öner, sınırlı olduğunu düşüntik. Bazı tarayıcılar, özellikle de mobil tarayıcılar bir sitenin tanımlama bilgisi sayısı veya bir etki alanı adı için çok küçük sınırlara sahiptir. Birden çok tanımlama bilgisi gönderdiğinizde, özellikle kimlik doğrulama tanımlama bilgileri gibi büyük tanımlama bilgileri mobil tarayıcı sınırına çok hızlı ulaşabilir ve bu da tanılama ve düzeltilmesi zor olan uygulama arızalarına yol açabilir. Framework 'ün yanı sıra, bir çift tanımlama bilgisi yaklaşımı kullanmak üzere güncelleştirilemeyebilir üçüncü taraf kodu ve bileşenleri büyük bir ekosistemi vardır.
 

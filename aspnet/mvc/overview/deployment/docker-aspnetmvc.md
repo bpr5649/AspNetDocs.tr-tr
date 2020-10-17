@@ -7,16 +7,16 @@ author: BillWagner
 ms.author: wiwagn
 ms.date: 12/14/2018
 ms.assetid: c9f1d52c-b4bd-4b5d-b7f9-8f9ceaf778c4
-ms.openlocfilehash: 1c5e6af79c87123891ddd4d30c60e3a427910e9d
-ms.sourcegitcommit: 09a34635ed0e74d6c2625f6a485c78f201c689ee
+ms.openlocfilehash: d706c07fdb7fea3d271cb61fde3a245187ea9e84
+ms.sourcegitcommit: a309ca7af61e59195beb745b501a1a9f06fcd493
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/06/2020
-ms.locfileid: "91763495"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92119382"
 ---
 # <a name="migrating-aspnet-mvc-applications-to-windows-containers"></a>ASP.NET MVC Uygulamalarını Windows Kapsayıcılarına Geçirme
 
-Bir Windows kapsayıcısında mevcut .NET Framework tabanlı bir uygulamayı çalıştırmak için uygulamanızda herhangi bir değişiklik yapılması gerekmez. Uygulamanızı bir Windows kapsayıcısında çalıştırmak için uygulamanızı içeren bir Docker görüntüsü oluşturun ve kapsayıcıyı başlatın. Bu konu başlığı altında, var olan bir [ASP.NET MVC uygulamasının](http://www.asp.net/mvc) nasıl yapılacağı ve bir Windows kapsayıcısında nasıl dağıtılacağı açıklanmaktadır.
+Bir Windows kapsayıcısında mevcut .NET Framework tabanlı bir uygulamayı çalıştırmak için uygulamanızda herhangi bir değişiklik yapılması gerekmez. Uygulamanızı bir Windows kapsayıcısında çalıştırmak için uygulamanızı içeren bir Docker görüntüsü oluşturun ve kapsayıcıyı başlatın. Bu konu başlığı altında, var olan bir [ASP.NET MVC uygulamasının](https://dotnet.microsoft.com/apps/aspnet/mvc) nasıl yapılacağı ve bir Windows kapsayıcısında nasıl dağıtılacağı açıklanmaktadır.
 
 Mevcut bir ASP.NET MVC uygulamasıyla başlayın ve ardından Visual Studio 'Yu kullanarak yayımlanmış varlıkları derleyin. Uygulamanızı içeren ve çalıştıran görüntüyü oluşturmak için Docker 'ı kullanırsınız. Bir Windows kapsayıcısında çalışan siteye gözatıp uygulamanın çalıştığını doğrularsınız.
 
@@ -93,7 +93,7 @@ ASP.NET uygulamanızı çalıştıran görüntüyü oluşturmak için Docker Bui
 docker build -t mvcrandomanswers .
 ```
 
-Bu komut, Dockerfile içindeki yönergeleri kullanarak yeni görüntüyü oluşturur ve bu görüntüyü mvcrandomanlar olarak adlandırırın. Bu, temel görüntünün [Docker Hub 'ından](http://hub.docker.com)çekilerek uygulamanızı bu görüntüye ekleyerek içerebilir.
+Bu komut, Dockerfile içindeki yönergeleri kullanarak yeni görüntüyü oluşturur ve bu görüntüyü mvcrandomanlar olarak adlandırırın. Bu, temel görüntünün [Docker Hub 'ından](https://hub.docker.com)çekilerek uygulamanızı bu görüntüye ekleyerek içerebilir.
 
 Komut tamamlandıktan sonra, `docker images` yeni görüntüyle ilgili bilgileri görmek için komutunu çalıştırabilirsiniz:
 
