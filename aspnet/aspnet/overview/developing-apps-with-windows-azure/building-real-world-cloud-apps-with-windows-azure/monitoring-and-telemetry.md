@@ -1,292 +1,292 @@
 ---
 uid: aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/monitoring-and-telemetry
-title: İzleme ve Telemetri (Azure ile Gerçek Dünya Bulut Uygulamaları Oluşturma) | Microsoft Dokümanlar
+title: İzleme ve telemetri (Azure ile Real-World bulut uygulamaları oluşturma) | Microsoft Docs
 author: MikeWasson
-description: Azure e-kitaplı Building Real World Cloud Apps, Scott Guthrie tarafından geliştirilen bir sunuya dayanmaktadır. Bu 13 desen ve uygulamaları açıklar ki o olabilir ...
+description: Azure e-Book ile gerçek dünyada bulut uygulamaları oluşturma, Scott Guthrie tarafından geliştirilen bir sunuyu temel alır. 13 desen ve şunları yapabilir...
 ms.author: riande
 ms.date: 07/09/2015
 ms.assetid: 7e986ab5-6615-4638-add7-4614ce7b51db
 msc.legacyurl: /aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/monitoring-and-telemetry
 msc.type: authoredcontent
 ms.openlocfilehash: f61810ea7b486b2fa0bbb234edea7541eedde835
-ms.sourcegitcommit: ce28244209db8615bc9bdd576a2e2c88174d318d
+ms.sourcegitcommit: c62ec20b453cee3249eb894ecd75013b57d078f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "80676036"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92345568"
 ---
-# <a name="monitoring-and-telemetry-building-real-world-cloud-apps-with-azure"></a>İzleme ve Telemetri (Azure ile Gerçek Dünya Bulut Uygulamaları Oluşturma)
+# <a name="monitoring-and-telemetry-building-real-world-cloud-apps-with-azure"></a>İzleme ve telemetri (Azure ile Real-World bulut uygulamaları oluşturma)
 
-Mike [Wasson](https://github.com/MikeWasson)tarafından , [Rick Anderson](https://twitter.com/RickAndMSFT), Tom [Dykstra](https://github.com/tdykstra)
+, [Mike te son](https://github.com/MikeWasson), [Rick Anderson](https://twitter.com/RickAndMSFT), [Tom Dykstra](https://github.com/tdykstra) tarafından
 
-[Fix It Project](https://code.msdn.microsoft.com/Fix-It-app-for-Building-cdd80df4) veya Download [E-kitap indirin](https://blogs.msdn.com/b/microsoft_press/archive/2014/07/23/free-ebook-building-cloud-apps-with-microsoft-azure.aspx)
+[Onarma projesini indirin](https://code.msdn.microsoft.com/Fix-It-app-for-Building-cdd80df4) veya [E-kitabı indirin](https://blogs.msdn.com/b/microsoft_press/archive/2014/07/23/free-ebook-building-cloud-apps-with-microsoft-azure.aspx)
 
-> Azure e-kitaplı **Building Real World Cloud Apps,** Scott Guthrie tarafından geliştirilen bir sunuya dayanmaktadır. Bulut için web uygulamalarını geliştirmekte başarılı olmanıza yardımcı olabilecek 13 model ve uygulamayı açıklar. E-kitap hakkında bilgi için [ilk bölüme](introduction.md)bakın.
+> Azure e-book **Ile gerçek dünyada bulut uygulamaları oluşturma** , Scott Guthrie tarafından geliştirilen bir sunuyu temel alır. Bulut için Web Apps 'i başarılı bir şekilde geliştirmeye yardımcı olabilecek 13 desen ve uygulamaları açıklar. E-kitap hakkında daha fazla bilgi için [ilk bölüme](introduction.md)bakın.
 
-Birçok kişi, uygulamalarının ne zaman kapanacağını bildirmek için müşterilere güvenir. Bu gerçekten her yerde en iyi uygulama değil, özellikle bulut. Hızlı bildirim garantisi yoktur ve size haber verildiğinde, genellikle ne olduğu hakkında en az veya yanıltıcı veri alırsınız. İyi telemetri ve günlük sistemleri ile uygulamanızda neler olup bittiğinin farkında olabilirsiniz ve bir şeyler ters gittiğinde hemen öğrenir ve yardımcı sorun giderme bilgilerine sahip olabilirsiniz.
+Birçok kişi, uygulamasının uygulamalarının ne zaman olduğu konusunda bilgi sahibi olmalarını sağlamak için müşterileri kullanır. Bu, özellikle bulutta değil, her yerde en iyi yöntem değildir. Hızlı bildirim garantisi yoktur ve bildirim aldığınızda, genellikle ne olduğu hakkında en az veya yanıltıcı veriler alırsınız. İyi telemetri ve günlüğe kaydetme sistemleriyle, uygulamanızda neler olduğunu biliyor olabilirsiniz ve yanlış bir şeyler olduğunda hemen öğreniyor ve ile çalışmak için yararlı sorun giderme bilgileri bulabilirsiniz.
 
-## <a name="buy-or-rent-a-telemetry-solution"></a>Bir telemetri çözümü satın alın veya kiralayın
+## <a name="buy-or-rent-a-telemetry-solution"></a>Telemetri çözümü satın alma veya kira
 
 > [!NOTE]
-> Bu [makale, Application Insights](/azure/application-insights/app-insights-overview) yayımlanmadan önce yazılmıştır. Application Insights, Azure'daki telemetri çözümleri için tercih edilen bir yaklaşımdır. Daha fazla bilgi [için ASP.NET web siteniz için Uygulama Öngörüleri Ayarla'ya](/azure/application-insights/app-insights-asp-net) bakın.
+> Bu makale [Application Insights](/azure/application-insights/app-insights-overview) yayınlanmadan önce yazılmıştır. Azure 'da Telemetri Çözümleri için tercih edilen yaklaşım Application Insights. Daha fazla bilgi için bkz. [ASP.NET Web siteniz için Application Insights ayarlama](/azure/application-insights/app-insights-asp-net) .
 
-Bulut ortamının en güzel yanlarından biri de zafere giden yolu satın almanın veya kiralamanın gerçekten kolay olmasıdır. Telemetri bir örnektir. Çok fazla çaba sarf etmeden gerçekten iyi bir telemetri sistemi kurup çalışır, çok uygun maliyetli. Azure ile entegre olan bir grup harika iş ortağı vardır ve bazıları nın ücretsiz katmanları vardır , böylece temel telemetriyi boşuna alabilirsiniz. Şu anda Azure'da kullanılabilenlerden yalnızca birkaçı şunlardır:
+Bulut ortamı hakkında harika olan şeylerden biri, yakın bir şekilde satın alma veya sizin için uygun hale getirmenin oldukça kolay bir işlemdir. Telemetri bir örnektir. Çok çaba duymadan, iyi maliyetli bir telemetri sistemini çalışır duruma getirebilirsiniz. Azure ile tümleştirilen harika iş ortakları vardır ve bunlardan bazılarının ücretsiz katmanları vardır. bu sayede, hiçbir şey için temel telemetri alabilirsiniz. Azure 'da Şu anda kullanılabilir olanlardan yalnızca birkaçını bulabilirsiniz:
 
 - [New Relic](http://newrelic.com/)
 - [AppDynamics](http://www.appdynamics.com/)
 - [Dynatrace](https://datamarket.azure.com/application/b4011de2-1212-4375-9211-e882766121ff)
 
-[Microsoft System Center](http://www.petri.co.il/microsoft-system-center-introduction.htm#) izleme özellikleri de içerir.
+[Microsoft System Center](http://www.petri.co.il/microsoft-system-center-introduction.htm#) , izleme özelliklerini de içerir.
 
-Bir telemetri sistemi kullanmanın ne kadar kolay olabileceğini göstermek için Yeni Emanet'i kurmayı çabucak yürüyeceğiz.
+Bir telemetri sistemi kullanmanın ne kadar kolay olduğunu göstermek için yeni bir relik ayarlamayı hızla adım adım inceleyeceğiz.
 
-Azure yönetim portalında hizmete kaydolun. **Yeni'yi**tıklatın ve ardından **Depola'yı**tıklatın. Eklenti iletişim kutusu **seç** görüntülenir. Aşağı kaydırın ve **Yeni Emanet'e**tıklayın.
+Azure Yönetim Portalı ' nda hizmete kaydolun. **Yeni**' ye ve ardından **Mağaza**' ya tıklayın. **Eklenti Seç** iletişim kutusu görüntülenir. Aşağı kaydırın ve **Yeni relik**' e tıklayın.
 
-![Eklenti Seçin](monitoring-and-telemetry/_static/image1.png)
+![Bir eklenti seçin](monitoring-and-telemetry/_static/image1.png)
 
-Sağ ok'u tıklatın ve istediğiniz servis katmanını seçin. Bu demo için ücretsiz katmanı kullanacağız.
+Sağ oka tıklayın ve istediğiniz hizmet katmanını seçin. Bu tanıtımda ücretsiz katmanı kullanacağız.
 
-![Eklentiyi kişiselleştirin](monitoring-and-telemetry/_static/image2.png)
+![Eklentiyi Kişiselleştir](monitoring-and-telemetry/_static/image2.png)
 
-Sağ ok'u tıklatın, "satın alma"yı onaylayın ve Yeni Emanet şimdi portalda Eklenti olarak gösterilmektedir.
+Sağ oka tıklayın, "satın al" seçeneğini onaylayın ve yeni relik artık portalda eklenti olarak gösterilir.
 
-![Satın alma işlemini gözden geçirme](monitoring-and-telemetry/_static/image3.png)
+![Satın alma gözden geçirme](monitoring-and-telemetry/_static/image3.png)
 
-![Yönetim portalında yeni Emanet eklentisi](monitoring-and-telemetry/_static/image4.png)
+![Yönetim Portalı 'nda yeni relik eklentisi](monitoring-and-telemetry/_static/image4.png)
 
-**Bağlantı Bilgileri'ni**tıklatın ve lisans anahtarını kopyalayın.
+**Bağlantı bilgileri**' ne tıklayın ve lisans anahtarını kopyalayın.
 
 ![Bağlantı bilgileri](monitoring-and-telemetry/_static/image5.png)
 
-Portaldaki web uygulamanız için **Yapılandır sekmesine** gidin, **Performans İzlemeyi** **Eklenti**olarak ayarlayın ve **Eklenti** açılır listesini **Yeni Emanet**olarak ayarlayın. Daha sonra **Kaydet**'e tıklayın.
+Portalda Web uygulamanızın **Yapılandır** sekmesine gidin, **performans izlemeyi** **eklenti**olarak ayarlayın ve **eklenti Seç** açılan listesini **Yeni relik**olarak ayarlayın. Daha sonra **Kaydet**'e tıklayın.
 
-![Yapılandırma sekmesinde Yeni Emanet](monitoring-and-telemetry/_static/image6.png)
+![Yapılandır sekmesinde yeni relik](monitoring-and-telemetry/_static/image6.png)
 
-Visual Studio'da Yeni Emanet NuGet paketini uygulamanızda yükleyin.
+Visual Studio 'da, yeni relik NuGet paketini uygulamanıza yükler.
 
-![Yapılandırma sekmesinde geliştirici analitiği](monitoring-and-telemetry/_static/image7.png)
+![Yapılandır sekmesinde geliştirici Analizi](monitoring-and-telemetry/_static/image7.png)
 
-Uygulamayı Azure'a dağıtın ve kullanmaya başlayın. Yeni Emanet'in izlemesi için bazı etkinlikler sağlamak için birkaç Fix It görevi oluşturun.
+Uygulamayı Azure 'a dağıtın ve kullanmaya başlayın. Yeni relik izlemeye yönelik bazı etkinlikler sağlamak için birkaç çözüm görevi oluşturun.
 
-Ardından portalın **Eklentiler** sekmesindeki **Yeni Emanet** sayfasına geri dön ve **Yönet'i**tıklatın. Portal, kimlik bilgilerinizi yeniden girmek zorunda kalmamanız için kimlik doğrulama için tek oturum açma kullanarak sizi Yeni Emanet yönetim portalına gönderir. Genel Bakış sayfası çeşitli performans istatistikleri sunar. (Genel bakış sayfasını tam boyutlu görmek için resmi tıklatın.)
+Ardından portalın **Eklentiler** sekmesinde **Yeni relik** sayfasına dönün ve **Yönet**' e tıklayın. Portal, sizi kimlik doğrulaması için çoklu oturum açma 'yı kullanarak yeni relik yönetim portalına gönderir, böylece kimlik bilgilerinizi yeniden girmeniz gerekmez. Genel Bakış sayfasında çeşitli performans istatistikleri sunulmaktadır. (Genel Bakış sayfasının tam boyutunu görmek için resme tıklayın.)
 
-[![Yeni Emanet İzleme sekmesi](monitoring-and-telemetry/_static/image9.png)](monitoring-and-telemetry/_static/image8.png)
+[![Yeni relik Izleme sekmesi](monitoring-and-telemetry/_static/image9.png)](monitoring-and-telemetry/_static/image8.png)
 
-Görebileceğiniz istatistiklerden sadece birkaçı şunlardır:
+Görebileceğiniz istatistiğin bazıları aşağıda verilmiştir:
 
 - Günün farklı saatlerinde ortalama yanıt süresi.
 
     ![Yanıt süresi](monitoring-and-telemetry/_static/image10.png)
-- Günün farklı saatlerinde (dakika başına isteklerde) iş mesuliyet oranları.
+- Gün sayısı (dakika başına isteklerde), günün farklı saatlerinde.
 
     ![Aktarım hızı](monitoring-and-telemetry/_static/image11.png)
-- Sunucu CPU zaman farklı HTTP istekleriişleme harcanan.
+- Farklı HTTP isteklerini işlemek için harcanan sunucu CPU süresi.
 
-    ![Web İşlem süreleri](monitoring-and-telemetry/_static/image12.png)
+    ![Web Işlem süreleri](monitoring-and-telemetry/_static/image12.png)
 - Uygulama kodunun farklı bölümlerinde harcanan CPU süresi:
 
     ![İzleme ayrıntıları](monitoring-and-telemetry/_static/image13.png)
-- Tarihsel performans istatistikleri.
+- Geçmiş performans istatistikleri.
 
-    ![Tarihsel performans](monitoring-and-telemetry/_static/image14.png)
-- Blob hizmeti gibi harici hizmetlere yapılan aramalar ve hizmetin ne kadar güvenilir ve duyarlı olduğu yla ilgili istatistikler.
+    ![Geçmiş performans](monitoring-and-telemetry/_static/image14.png)
+- Blob hizmeti gibi harici hizmetlere ve hizmetin ne kadar güvenilir ve hızlı yanıt verdiğini gösteren bir çağrı.
 
     ![Dış hizmetler](monitoring-and-telemetry/_static/image15.png)
 
     ![Dış hizmetler](monitoring-and-telemetry/_static/image16.png)
 
     ![Dış hizmet](monitoring-and-telemetry/_static/image17.png)
-- Dünyanın neresinde veya ABD'de web uygulaması trafiğinin nereden geldiği hakkında bilgi.
+- Dünyanın neresinde veya ABD web uygulaması trafiğinden nereden geldiği hakkında bilgi.
 
     ![Coğrafya](monitoring-and-telemetry/_static/image18.png)
 
-Ayrıca raporlar ve etkinlikler ayarlayabilirsiniz. Örneğin, hataları görmeye başladığınızda, destek personelini soruna karşı uyarmak için bir e-posta gönderebileceğinizi söyleyebilirsiniz.
+Ayrıca, raporları ve olayları da ayarlayabilirsiniz. Örneğin, hataları görmeye başladığınızda sorun için uyarı destek personeline bir e-posta gönderebilirsiniz.
 
 ![Raporlar](monitoring-and-telemetry/_static/image19.png)
 
-Yeni Emanet bir telemetri sisteminin sadece bir örneğidir; tüm bunları diğer servislerden de alabilirsiniz. Bulutun güzelliği, herhangi bir kod yazmak zorunda kalmadan ve en az veya hiç masrafsız, aniden uygulamanızın nasıl kullanıldığı ve müşterilerinizin gerçekte ne yaşadığı hakkında çok daha fazla bilgi alabilirsiniz.
+Yeni relik, telemetri sistemine yalnızca bir örnektir; Bunu diğer hizmetlerden de edinebilirsiniz. Bulutun kullanımı herhangi bir kod yazmak zorunda kalmadan, en az veya ücretsiz bir masraf için, uygulamanızın nasıl kullanıldığı ve müşterilerinizin gerçekten ne yaşdığı hakkında daha fazla bilgi edinebilirsiniz.
 
 <a id="log"></a>
-## <a name="log-for-insight"></a>Kavrayış için günlük
+## <a name="log-for-insight"></a>Öngörüler için günlüğe kaydet
 
-Bir telemetri paketi iyi bir ilk adımdır, ama yine de kendi kod enstrüman var. Telemetri hizmeti size bir sorun olduğunda ve müşterilerin neler yaşadığını söyler, ancak kodunuzda neler olup bittiğini size çok fazla fikir vermeyebilir.
+Bir telemetri paketi iyi bir ilk adımdır, ancak yine de kendi kodunuzu işaretlememelisiniz. Telemetri hizmeti size bir sorun olduğunda size bildirir ve müşterilerin ne yaşar olduğunu söyler, ancak kodunuzda neler olduğuna ilişkin çok sayıda öngörü sunmayabilir.
 
-Uygulamanızın ne yaptığını görmek için bir üretim sunucusuna remote yapmak zorunda kalmak istemezsiniz. Bir sunucunuz olduğunda bu pratik olabilir, ancak yüzlerce sunucuya ölçeklediğinizde ve hangilerini uzaktan kumanda etmeniz gerektiğini bilmediğiniz zaman ne olacak? Günlüğe kaydetmeniz, sorunları çözümlemek ve hata ayıklamak için üretim sunucularına uzaktan kumanda etmek zorunda kalmayacağınız yeterli bilgi sağlamalıdır. Sorunları yalnızca günlükler aracılığıyla yalıtabilmeniz için yeterli bilgileri günlüğe kaydetmelisiniz.
+Uygulamanızın ne yaptığını görmek için bir üretim sunucusuna uzaktan gerek olmasını istemezsiniz. Bu, bir sunucuya sahip olduğunuzda, ancak yüzlerce sunucuya ölçeklendirdiğinizde ve ne zaman uzak bir sürümüne ihtiyacınız olduğunu bilmediğinizde pratik olabilir mi? Günlüğe kaydetme, sorunları çözümlemek ve hatalarını ayıklamak için üretim sunucularına hiçbir şekilde uzaktan ihtiyacınız olmayan bilgiler sağlamalıdır. Sorunları yalnızca günlüklerde yalıtmak için yeterli bilgileri günlüğe kaydetmelisiniz.
 
-### <a name="log-in-production"></a>Üretime giriş yapın
+### <a name="log-in-production"></a>Üretimde oturum aç
 
-Birçok insan sadece bir sorun olduğunda ve hata ayıklamak istediğinde üretimde izlemeyi açar. Bu, bir sorunun farkında olduğunuz zaman ile bu sorunla ilgili yararlı sorun giderme bilgileri aldığınız zaman arasında önemli bir gecikmeye neden olabilir. Ve aldığınız bilgiler aralıklı hatalar için yararlı olmayabilir.
+Çok sayıda insan, yalnızca bir sorun olduğunda ve hata ayıklamak istediklerinde üretimde izlemeyi açabilir. Bu, bir sorunun farkında olduğunuz zaman ile ilgili yararlı sorun giderme bilgileri hakkında önemli bir gecikme ortaya çıkarabilir. Ve aldığınız bilgiler aralıklı hatalar için yararlı olmayabilir.
 
-Depolamanın ucuz olduğu bulut ortamında tavsiye ettiğimiz şey, her zaman üretimde oturum açmayı bırakmanızdır. Bu şekilde hatalar olduğunda, bunları zaten günlüğe kaydetmiş olursunuz ve zaman içinde gelişen veya farklı zamanlarda düzenli olarak meydana gelen sorunları çözümlemenize yardımcı olabilecek geçmiş verilere sahip olursunuz. Eski günlükleri silmek için bir temizleme işlemini otomatikleştirebilirsiniz, ancak böyle bir işlemi ayarlamanın günlükleri tutmaktan daha pahalı olduğunu görebilirsiniz.
+Bulut ortamında, depolamanın her zaman üretimde oturum açmasını her zaman nerede bırakılabileceği, bulut ortamında neleri öneririz. Bu şekilde, hatalar zaten günlüğe kaydedilir ve zaman içinde ortaya çıkan veya düzenli olarak farklı zamanlarda oluşan sorunları çözümlemenize yardımcı olabilecek geçmiş verileriniz vardır. Eski günlükleri silmek için temizleme işlemini otomatikleştirebilir, ancak bu tür bir işlemin daha pahalı olduğunu fark edebilirsiniz.
 
-Günlük kaydetme nin ek gideri, bir şeyler ters gittiğinde zaten mevcut olan tüm bilgilere sahip olarak tasarruf edebilirsiniz sorun giderme süresi ve para miktarı ile karşılaştırıldığında önemsizdir. Sonra birisi size dün gece 8:00 civarında rastgele bir hata olduğunu söylediğinde, hatayı hatırlamazlarsa sorunun ne olduğunu kolayca öğrenebilirsiniz.
+Ek günlük harcama miktarı, sorun giderme süresi ve para miktarı ile karşılaştırıldığında, bir şeyler yanlış kaldığında daha önce kullanılabilir olan tüm bilgilere sahip olabilirsiniz. Daha sonra, bir sorun 8:00 son gece etrafında rastgele bir hata olduğunu söylediklerinde, ancak hatayı anımsamadığında, sorunun ne olduğunu kolayca öğrenebilirsiniz.
 
-Ayda 4 dolardan daha az bir süre için 50 gigabaytlık günlükleri elinizde tutabilirsiniz ve günlük tutmanın performans etkisi, performans darboğazlarını önlemek için, günlük kitaplığınızın eşzamanlı olduğundan emin olmak için tek bir şeyi aklınızda tutsanız önemsizdir.
+Bir ay $4 ' den az olduğunda, her şeyi göz önünde bulundurarak, günlük kaydı kitaplığınızın zaman uyumsuz olduğundan emin olmak için en az 50 gigabayt oturum açma performansı vardır.
 
-### <a name="differentiate-logs-that-inform-from-logs-that-require-action"></a>Eylem gerektiren günlüklerden bilgi veren günlükleri ayırt etme
+### <a name="differentiate-logs-that-inform-from-logs-that-require-action"></a>İşlem gerektiren günlüklerden haberdar olan günlükleri ayırt etme
 
-Günlükleri (Bir şey bilmek istiyorum) veya ACT (Ben bir şey yapmak istiyorum) INFORM içindir. Yalnızca bir kişinin veya otomatik bir işlemin harekete geçmesini gerektiren sorunlar için ACT günlükleri yazmaya dikkat edin. Çok fazla ACT günlükleri gerçek sorunları bulmak için tüm üzerinden elemek için çok fazla iş gerektiren, gürültü yaratacaktır. Act günlükleriniz destek personeline e-posta göndermek gibi bazı eylemleri otomatik olarak tetiklerse, bu tür binlerce eylemin tek bir sorun tarafından tetiklenebilmiş olmasını önlemek.
+Günlükler BILGILENDIRMEYE yöneliktir (bir şeyi bilmeniz istiyorum) veya hareket (bir şey yapmak istiyorum). Yalnızca bir kişi ya da otomatikleştirilmiş bir işlemin işlem yapması için gerekli olan konularda yalnızca eylem günlüklerini yazmaya dikkat edin. Çok fazla sayıda Işlem günlüğü gürültü oluşturacak ve bu, orijinal sorunları bulmak için tamamen bu kadar çok iş gerektirir. Ve hareket günlükleriniz, destek personeline e-posta göndermek gibi bazı eylemleri otomatik olarak tetikleriyorsa, bu tür eylemlerin tek bir sorun tarafından tetiklenmesine izin vermekten kaçının.
 
-.NET System.Diagnostics izleme, günlükleri Hata, Uyarı, Bilgi ve Hata Ayıklama / Verbose düzeyi atanabilir. ACT günlükleri için Hata düzeyini ayırarak ve INFORM günlükleri için alt düzeyleri kullanarak ACT günlüklerini INFORM günlüklerinden ayırt edebilirsiniz.
+.NET System. Diagnostics izlenirken, günlüklere hata, uyarı, bilgi ve hata ayıklama/ayrıntı düzeyi atanabilir. Işlem günlükleri için hata düzeyini ayırarak ve BILGI günlükleri için alt düzeyleri kullanarak, Işlem günlüklerini bilgilendirebilirler.
 
-![Günlük seviyeleri](monitoring-and-telemetry/_static/image20.png)
+![Günlüğe kaydetme düzeyleri](monitoring-and-telemetry/_static/image20.png)
 
-### <a name="configure-logging-levels-at-run-time"></a>Günlük düzeylerini çalışma zamanında yapılandırma
+### <a name="configure-logging-levels-at-run-time"></a>Çalışma zamanında günlük düzeylerini yapılandırma
 
-Her zaman üretimde oturum açmanın değerli olmasına ek olsa da, diğer bir iyi uygulama da, uygulamanızı yeniden dağıtmadan veya yeniden başlatmadan, günlüğe kaydettiğiniz ayrıntı düzeyini çalışma zamanında ayarlamanızı sağlayan bir günlük çerçevesi uygulamaktır. Örneğin izleme tesisini kullandığınızda `System.Diagnostics` Hata, Uyarı, Bilgi ve Hata Ayıklama/Verbose günlükleri oluşturabilirsiniz. Üretimde her zaman Hata, Uyarı ve Bilgi günlüklerini günlüğe kaydetmenizi öneririz ve sorun giderme için hata giderme için debug/Verbose günlüğelerini tek tek dinamik olarak eklemek isteyebilirsiniz.
+Her zaman üretimde oturum açmak çok iyi bir uygulamadır, ancak uygulamanızı yeniden dağıtmanıza veya yeniden başlatmanıza gerek kalmadan, günlük kaydı yaptığınız ayrıntı düzeyinde ayarlamanıza olanak tanıyan bir günlüğe kaydetme çerçevesi uygulamaktır. Örneğin, ' de izleme özelliğini kullandığınızda `System.Diagnostics` hata, uyarı, bilgi ve hata ayıklama/ayrıntılı günlükleri oluşturabilirsiniz. Üretim sırasında hata, uyarı ve bilgi günlüklerini her zaman günlüğe kaydetmenizi ve büyük/küçük harfe göre sorun giderme için hata ayıklama/ayrıntılı günlük eklemek istediğinizi öneririz.
 
-Azure Uygulama Hizmeti'ndeki Web Apps, `System.Diagnostics` dosya sistemine, Tablo depolamaya veya Blob depolamasına günlük yazmak için yerleşik destek sağlar. Her depolama hedefi için farklı günlük düzeyleri seçebilir ve uygulamanızı yeniden başlatmadan anında günlük düzeyini değiştirebilirsiniz. Blob depolama desteği, [HDInsight'ın](https://docs.microsoft.com/azure/hdinsight/) doğrudan Blob depolama ile nasıl çalışacağını bildiğinden, uygulama günlüklerinizde HDInsight analiz işlerini çalıştırmayı kolaylaştırır.
+Azure App Service Web Apps `System.Diagnostics` , dosya sistemine, tablo depolamaya veya blob depolamaya günlük yazma desteği sağlar. Her depolama hedefi için farklı günlüğe kaydetme düzeyleri seçebilir ve uygulamanızı yeniden başlatmadan hızlı bir şekilde günlüğe kaydetme düzeyini değiştirebilirsiniz. HDInsight 'ın BLOB depolama ile doğrudan nasıl çalışacağını bildiği için BLOB depolama desteği, uygulama günlüklerinizde [HDInsight](https://docs.microsoft.com/azure/hdinsight/) analiz işlerinin çalıştırılmasını kolaylaştırır.
 
 ### <a name="log-exceptions"></a>Özel Durumları Günlüğe Kaydetme
 
-Sadece *istisna koyma. ToString()* günlük kodunuzda. Bu bağlamsal bilgi dışında bırakır. SQL hataları durumunda, SQL hata numarasını dışarıda bırakır. Tüm özel durumlar için, sorun giderme için gereken her şeyi sağladığından emin olmak için bağlam bilgilerini, özel durum kendisini ve iç özel durumları içerir. Örneğin, bağlam bilgileri sunucu adını, bir işlem tanımlayıcısını ve kullanıcı adını (parola yı veya herhangi bir sırlar değil!) içerebilir.
+Yalnızca *özel durum yerleştirmeyin. Günlük kodunuzda ToString ()* . Bu, bağlamsal bilgileri bırakır. SQL hataları söz konusu olduğunda, SQL hata numarasını bırakır. Tüm özel durumlar için bağlam bilgilerini, özel durumunun kendisini ve iç özel durumları, sorun giderme için gerekli olacak her şeyi sağladığınızdan emin olmak için ekleyin. Örneğin, bağlam bilgileri sunucu adı, işlem tanımlayıcısı ve Kullanıcı adı (parola veya herhangi bir gizli dizi) içerebilir.
 
-Her geliştiricinin özel durum günlüğe kaydetme yle doğru şeyi yapacağına güveniyorsanız, bazıları bunu yapmaz. Her seferinde doğru şekilde yapıldığından emin olmak için, logger arabiriminize özel durum işleme yi oluşturun: özel durum nesnesini logger sınıfına geçirin ve özel durum verilerini logger sınıfında düzgün bir şekilde günlüğe kaydedin.
+Özel durum günlüğü ile doğru şeyi yapmak için her bir geliştiriciye güveniyorsanız, bunlardan bazıları olmayacaktır. Her seferinde doğru şekilde yapıldığından emin olmak için, günlükçü arabiriminize özel durum işleme oluşturun: özel durum nesnesini günlükçü sınıfına geçirin ve özel durum verilerini günlükçü sınıfında doğru şekilde günlüğe kaydedin.
 
-### <a name="log-calls-to-services"></a>Hizmetleri günlüğe kaydetme çağrıları
+### <a name="log-calls-to-services"></a>Hizmetlere günlük çağrıları
 
-Uygulamanız bir hizmete her çağrıda, ister bir veritabanına, ister REST API'sine veya herhangi bir harici hizmete seslenirse, bir günlük yazmanızı öneririz. Günlüklerinize yalnızca başarı veya başarısızlığın bir göstergesi değil, aynı zamanda her isteğin ne kadar sürdüğünü de ekleyin. Bulut ortamında, kesintileri tamamlamak yerine yavaşlamalarla ilgili sorunlar sık sık görürsünüz. Normalde 10 milisaniye süren bir şey aniden bir saniye almaya başlayabilir. Birisi size uygulamanızın yavaş olduğunu söylediğinde, Yeni Emanet'e veya sahip olduğunuz telemetri hizmetine bakıp deneyimlerini doğrulayabilmek ve sonra da neden yavaş olduğu yla ilgili ayrıntılara dalmak için kendi günlüklerinize bakmak isteyebilirsiniz.
+Bir veritabanı veya REST API ya da herhangi bir dış hizmet olsun, uygulamanız bir hizmete her çağırdığında bir günlük yazmanızı kesinlikle öneririz. Günlüklerinizi yalnızca başarı veya başarısızlık göstergesi değil, her isteğin ne kadar sürdüğünü ekleyin. Bulut ortamında, genellikle tüm kesintiler yerine yavaşlamalarla ilgili sorunları görürsünüz. Normalde 10 milisaniyeye sahip olan bir şey aniden bir saniye almaya başlayabilir. Birisi uygulamanızın yavaş olduğunu söyledikçe, yeni relik 'e veya sahip olduğunuz telemetri hizmetine bakmak ve deneyimlerini doğrulamanız ve sonra neden yavaş olduğuna ilişkin ayrıntıları görmek için kendi günlüklerinizi bakabilmek isteyebilirsiniz.
 
 ### <a name="use-an-ilogger-interface"></a>ILogger arabirimi kullanma
 
-Bir üretim uygulaması oluştururken yapmanızı tavsiye ettiğimiz şey, basit bir *ILogger* arabirimi oluşturmak ve bazı yöntemleri sokmaktır. Bu, günlüğe kaydetme uygulamasını daha sonra değiştirmenizi ve bunu yapmak için tüm kodunuzu gözden geçirmemenizi kolaylaştırır. Biz Fix It `System.Diagnostics.Trace` uygulaması boyunca sınıf kullanıyor olabilir, ama bunun yerine *iLogger*uygulayan bir günlük sınıfında kapakları altında kullanıyoruz , ve biz uygulama boyunca *ILogger* yöntemi aramaları yapmak.
+Bir üretim uygulaması oluşturduğunuzda ne yapmanız önerilir basit bir *ILogger* arabirimi oluşturmak ve içindeki bazı yöntemleri kontrol etmek. Bu, daha sonra günlüğe kaydetme uygulamasının değiştirilmesini kolaylaştırır ve bunu yapmak için tüm kodunuzun üzerine gitmemelidir. `System.Diagnostics.Trace`Çözümü, çözüm uygulamasının tamamında kullanabiliriz, ancak bunun yerine *ILogger*uygulayan bir günlüğe kaydetme sınıfındaki kapsamakta ve uygulama genelinde *ILogger* Yöntem çağrıları yaptık.
 
-Bu şekilde, günlüğe kaydetmenizi daha zengin hale [`System.Diagnostics.Trace`](https://docs.microsoft.com/azure/app-service-web/web-sites-dotnet-troubleshoot-visual-studio#apptracelogs) getirmek istiyorsanız, istediğiniz günlük mekanizmasını değiştirebilirsiniz. Örneğin, uygulamanız büyüdükçe [NLog](http://nlog-project.org/) veya [Enterprise Library Logging Application Block](https://msdn.microsoft.com/library/dn440731(v=pandp.60).aspx)gibi daha kapsamlı bir günlük paketi kullanmak istediğinize karar verebilirsiniz. ([Log4Net](http://logging.apache.org/log4net/) başka bir popüler günlük çerçevesi ama asynchronous günlük yapmaz.)
+Bu şekilde, günlüğü daha zengin hale getirmek isterseniz, istediğiniz [`System.Diagnostics.Trace`](https://docs.microsoft.com/azure/app-service-web/web-sites-dotnet-troubleshoot-visual-studio#apptracelogs) günlüğe kaydetme mekanizmasıyla değiştirebilirsiniz. Örneğin, uygulamanız büyüdükçe [NLog](http://nlog-project.org/) veya [Kurumsal kitaplık günlüğü uygulama bloğu](https://msdn.microsoft.com/library/dn440731(v=pandp.60).aspx)gibi daha kapsamlı bir günlük paketi kullanmak istediğinize karar verebilirsiniz. ([Log4Net](http://logging.apache.org/log4net/) başka bir popüler günlük çerçevesidir ancak zaman uyumsuz günlüğe kaydetme yapmaz.)
 
-NLog gibi bir çerçeve kullanmanın olası nedenlerinden biri, günlük çıktısının ayrı yüksek hacimli ve yüksek değerli veri depolarına bölünmesini kolaylaştırmaktır. Bu, ACT verilerine hızlı erişimi korurken, hızlı sorguları yürütmeniz gerekmeyen büyük hacimli INFORM verilerini verimli bir şekilde depolamanıza yardımcı olur.
+NLog gibi bir Framework kullanmanın olası bir nedeni, günlük çıkışını ayrı yüksek hacimli ve yüksek değerli veri depolarına bölmek için kullanılır. Bu, hızlı sorguları yürütmenize gerek kalmaz büyük hacimlere yönelik verileri verimli bir şekilde depolamanıza yardımcı olur. böylece, hareket verilerine hızlı erişim sağlar.
 
-### <a name="semantic-logging"></a>Anlamsal Günlük
+### <a name="semantic-logging"></a>Anlam günlüğe kaydetme
 
-Daha yararlı tanılama bilgileri üretebilen günlük oluşturmanın nispeten yeni bir yolu [için, Bkz. Kurumsal Kitaplık Anlamsal Günlük Uygulama Bloğu (SLAB).](http://convective.wordpress.com/2013/08/12/semantic-logging-application-block-slab/) SLAB, daha yapılandırılmış ve sorgulanabilir günlükler oluşturmanıza olanak sağlamak için .NET 4.5'te [Windows için Olay İzleme](https://msdn.microsoft.com/library/windows/desktop/bb968803.aspx) (ETW) ve [EventSource](https://msdn.microsoft.com/library/system.diagnostics.tracing.eventsource.aspx) desteğini kullanır. Günlüğe kaydettiğiniz her olay türü için farklı bir yöntem tanımlarsınız ve bu da yazdığınız bilgileri özelleştirmenize olanak tanır. Örneğin, bir SQL Veritabanı hatasını günlüğe kaydetmek için bir `LogSQLDatabaseError` yöntem çağırabilirsiniz. Bu tür bir özel durum için, önemli bir bilgi parçasının hata numarası olduğunu bilirsiniz, bu nedenle yöntem imzaya bir hata numarası parametresi ekleyebilir ve hata numarasını yazdığınız günlük kaydında ayrı bir alan olarak kaydedebilirsiniz. Sayı ayrı bir alanda olduğundan, hata numarasını bir ileti dizesine dahil ediyorsanız, SQL hata numaralarına dayalı raporları alabileceğinizden daha kolay ve güvenilir bir şekilde alabilirsiniz.
+Daha kullanışlı tanılama bilgileri üreten günlüğe kaydetme işleminin görece yeni bir yolu için bkz. [Enterprise Library anlam günlüğü uygulama bloğu (blok)](http://convective.wordpress.com/2013/08/12/semantic-logging-application-block-slab/). BLOK, daha fazla yapılandırılmış ve sorgulanabilir Günlükler oluşturmanızı sağlamak üzere .NET 4,5 ' de [Windows Için olay izleme](https://msdn.microsoft.com/library/windows/desktop/bb968803.aspx) (ETW) ve [EventSource](https://msdn.microsoft.com/library/system.diagnostics.tracing.eventsource.aspx) desteği kullanır. Günlüğe girdiğiniz her bir olay türü için farklı bir yöntem tanımlarsınız ve bu, yazdığınız bilgileri özelleştirmenize olanak sağlar. Örneğin, bir SQL veritabanı hatasını günlüğe kaydetmek için bir `LogSQLDatabaseError` yöntemi çağırabilirsiniz. Bu tür bir özel durum için, önemli bir bilgi parçasının hata numarası olduğunu bildiğiniz için, yöntem imzasına bir hata numarası parametresi ekleyebilir ve hata numarasını yazdığınız günlük kaydında ayrı bir alan olarak kaydedebilirsiniz. Bu sayı ayrı bir alanda olduğundan, hata numarasını bir ileti dizesinde zaten saydıysanız, SQL hata numaralarına göre daha kolay ve güvenilir bir şekilde rapor alabilirsiniz.
 
-## <a name="logging-in-the-fix-it-app"></a>Fix It uygulamasında oturum açma
+## <a name="logging-in-the-fix-it-app"></a>BT BT uygulamasında günlüğe kaydetme
 
-### <a name="the-ilogger-interface"></a>ILogger arayüzü
+### <a name="the-ilogger-interface"></a>ILogger arabirimi
 
-İşte Fix It uygulamasındaki *ILogger* arabirimi.
+Bu, çözüm uygulamasındaki *ILogger* arabirimidir.
 
 [!code-csharp[Main](monitoring-and-telemetry/samples/sample1.cs)]
 
-Bu yöntemler *System.Diagnostics*tarafından desteklenen aynı dört düzeyde günlükleri yazmanızı sağlar. TraceApi yöntemleri, gecikme hakkında bilgi içeren harici servis çağrılarını günlüğe kaydetmeniz içindir. Hata Ayıklama/Verbose düzeyi için bir yöntem kümesi de ekleyebilirsiniz.
+Bu yöntemler, *System. Diagnostics*tarafından desteklenen aynı dört düzeyde Günlükler yazmanızı sağlar. Traceapı yöntemleri, dış hizmet çağrılarının gecikme süresiyle ilgili bilgilerle günlüğe kaydedilmesine yöneliktir. Hata ayıklama/ayrıntı düzeyi için bir yöntemler kümesi de ekleyebilirsiniz.
 
-### <a name="the-logger-implementation-of-the-ilogger-interface"></a>ILogger arabiriminin Logger uygulaması
+### <a name="the-logger-implementation-of-the-ilogger-interface"></a>ILogger arabiriminin günlükçü uygulama
 
-Arayüzün uygulanması gerçekten basittir. Temelde sadece standart *System.Diagnostics* yöntemleri çağırır. Aşağıdaki parçacık, bilgi yöntemlerinin üçünü ve diğerlerinden birini gösterir.
+Arabirimin uygulanması gerçekten basittir. Temel olarak yalnızca standart *System. Diagnostics* yöntemlerine çağrı yapılır. Aşağıdaki kod parçacığında, her üç bilgi yönteminin ve bir birinin her biri gösterilmektedir.
 
 [!code-csharp[Main](monitoring-and-telemetry/samples/sample2.cs)]
 
-### <a name="calling-the-ilogger-methods"></a>ILogger yöntemlerini arama
+### <a name="calling-the-ilogger-methods"></a>ILogger yöntemlerini çağırma
 
-Fix It uygulamasındaki her kod bir özel durum yakaladığında, özel durum ayrıntılarını günlüğe kaydetmek için bir *ILogger* yöntemi çağırır. Veritabanına, Blob servisine veya REST API'ye her arama yaptığında, aramadan önce kronometreyi başlatır, hizmet döndüğünde kronometreyi durdurur ve geçen süreyi başarı veya başarısızlık la birlikte kaydeder.
+BT BT uygulamasındaki her kod bir özel durumu yakalar, özel durum ayrıntılarını günlüğe kaydetmek için bir *ILogger* yöntemi çağırır. Veritabanı, blob hizmeti ya da bir REST API her ne zaman bir çağrı yaptığında, çağrıdan önce bir kronometre başlatılır, hizmet döndüğünde kronometre 'u sonlandırır ve başarı veya başarısızlık hakkındaki bilgilerle birlikte geçen süreyi günlüğe kaydeder.
 
-Günlük iletisinin sınıf adını ve yöntem adını içerdiğine dikkat edin. Günlük iletilerinin uygulama kodunun hangi bölümünün bunları yazdığını belirlediğinden emin olmak iyi bir uygulamadır.
+Günlük iletisinin sınıf adı ve yöntem adını içerdiğine dikkat edin. Günlük iletilerinin, uygulama kodunun hangi bölümünün yazabileceğinizden emin olmak iyi bir uygulamadır.
 
 [!code-csharp[Main](monitoring-and-telemetry/samples/sample3.cs?highlight=6,14,20-21,25)]
 
-Şimdi Fix It uygulaması SQL Veritabanı'nı her aradığında, aramayı, onu çağıran yöntemi ve tam olarak ne kadar zaman aldığını görebilirsiniz.
+Böylece BT uygulamasının her bir SQL veritabanı çağrısı yaptığı her seferinde, çağrıyı, çağıran yöntemi ve tam olarak ne kadar zaman sürdüğünü görebilirsiniz.
 
-![Günlüklerde SQL Veritabanı sorgusu](monitoring-and-telemetry/_static/image21.png)
+![Günlüklerde SQL veritabanı sorgusu](monitoring-and-telemetry/_static/image21.png)
 
 ![](monitoring-and-telemetry/_static/image22.png)
 
-Günlüklerde gezinmeye giderseniz, veritabanı aramalarının zaman larının değişken olduğunu görebilirsiniz. Bu bilgiler yararlı olabilir: uygulama tüm bunları kaydettiği için veritabanı hizmetinin zaman içinde nasıl performans gösterdiğine dair geçmiş eğilimleri analiz edebilirsiniz. Örneğin, bir hizmet çoğu zaman hızlı olabilir, ancak istekler başarısız olabilir veya yanıtlar günün belirli saatlerinde yavaşlayabilir.
+Günlüklere göz atmaya giderseniz, zaman veritabanının Take değişkeninin olduğunu görebilirsiniz. Bu bilgiler yararlı olabilir: uygulama tüm bunları günlüğe kaydettiğinden, veritabanı hizmetinin zaman içinde nasıl gerçekleştiridiğiyle ilgili geçmiş eğilimlerini çözümleyebilirsiniz. Örneğin, bir hizmet çoğu zaman hızlı olabilir, ancak istekler başarısız olabilir veya yanıt belirli zamanlarda yavaşlayabilir.
 
-Blob hizmeti için de aynı şeyi yapabilirsiniz – uygulama yeni bir dosya yüklediği her seferde bir günlük vardır ve her dosyayı yüklemenin tam olarak ne kadar sürdüğünü görebilirsiniz.
+Blob hizmeti için aynı şeyi yapabilirsiniz. her uygulama yeni bir dosyayı her yüklediğinde, bir günlük bulunur ve her bir dosyayı karşıya yüklemek için ne kadar sürdüğünü tam olarak görebilirsiniz.
 
-![Blob yükleme günlüğü](monitoring-and-telemetry/_static/image23.png)
+![Blob karşıya yükleme günlüğü](monitoring-and-telemetry/_static/image23.png)
 
-Bir hizmeti her aradığınızda yazmak için fazladan birkaç kod satırı, ve şimdi birisi bir sorunla karşılaştığını söylediğinde, sorunun tam olarak ne olduğunu, bir hata olup olmadığını, ya da sadece yavaş çalışıp çalışmadığını biliyorsunuz. Sorunun kaynağını bir sunucuya uzaktan kumanda etmek zorunda kalmadan saptayabiliyor veya hata olduktan sonra günlüğe kaydetmeyi açabilir ve yeniden oluşturmayı umabilirsiniz.
+Her bir hizmeti her çağırdığınızda yazmak üzere yalnızca birkaç ek kod satırı vardır ve birisi bir sorunla karşılaştığında, tam olarak ne olduğunu, bir hata olup olmadığını ve yalnızca yavaş çalışıyor olsa bile, bir sorun olduğunu bilirsiniz. Sorunun kaynağını bir sunucuda uzaktan açmaya gerek kalmadan veya hata olduktan sonra günlüğü açıp yeniden oluşturmayı umuyoruz.
 
-## <a name="dependency-injection-in-the-fix-it-app"></a>Fix It uygulamasında Bağımlılık Enjeksiyonu
+## <a name="dependency-injection-in-the-fix-it-app"></a>BT BT uygulamasına bağımlılık ekleme
 
-Yukarıdaki örnekte depo oluşturucu sundurma arabirimi uygulamasını nasıl alır merak edebilirsiniz:
+Yukarıda gösterilen örnekteki depo oluşturucusunun günlükçü arabirimi uygulamasını nasıl aldığından merak edebilirsiniz:
 
 [!code-csharp[Main](monitoring-and-telemetry/samples/sample4.cs?highlight=6)]
 
-Uygulama nın arayüzü ne kadar kabloyla bağdaştırmak için [autofac](http://autofac.org/)ile [bağımlılık enjeksiyonu](http://en.wikipedia.org/wiki/Dependency_injection)(DI) kullanır. DI, kodunuz boyunca birçok yerde arabirara dayalı bir nesneyi kullanmanıza olanak tanır ve arabirim anında kullanıldığında kullanılan uygulamayı tek bir yerde belirtmeniz gerekir. Bu, uygulamayı değiştirmeyi kolaylaştırır: örneğin, System.Diagnostics logger'ını bir NLog logger ile değiştirmek isteyebilirsiniz. Veya otomatik test için logger sahte bir sürümünü değiştirmek isteyebilirsiniz.
+Uygulamayı uygulamaya bağlamak için uygulama, [AutoFac](http://autofac.org/)ile [bağımlılık ekleme](http://en.wikipedia.org/wiki/Dependency_injection)(dı) kullanır. Dı, kodunuzun tamamında birçok yerde bir arabirime dayalı bir nesne kullanmanıza olanak sağlar ve yalnızca arabirim örneği oluşturulurken kullanılan uygulamayı tek bir yerde belirtmeniz gerekir. Bu, uygulamanın değiştirilmesini kolaylaştırır: Örneğin, System. Diagnostics günlükçüsü ' yi bir NLog günlükçüsü ile değiştirmek isteyebilirsiniz. Ya da otomatik test için, günlükçü 'nin bir sahte sürümünü yerine koymak isteyebilirsiniz.
 
-Fix It uygulaması tüm depolarda ve tüm denetleyicilerde DI kullanır. Denetleyici sınıflarının oluşturucuları, deponun logger arabirimini aldığı gibi *bir ITaskRepository* arabirimine sahiptir:
+BT uygulaması, tüm depolarda ve tüm denetleyicilerde DI kullanır. Denetleyici sınıflarının oluşturucuları bir *ıtaskrepository* arabirimini, deponun bir günlükçü arabirimi aldığı şekilde alır:
 
 [!code-csharp[Main](monitoring-and-telemetry/samples/sample5.cs?highlight=5)]
 
-Uygulama otomatik olarak bu oluşturucular için *TaskRepository* ve *Logger* örnekleri sağlamak için AutoFac DI kitaplığını kullanır.
+Uygulama, bu oluşturucular için *Taskrepository* ve *günlükçü* örneklerini otomatik olarak sağlamak için AutoFac dı kitaplığını kullanır.
 
 [!code-csharp[Main](monitoring-and-telemetry/samples/sample6.cs?highlight=8,10)]
 
-Bu kod temelde her yerde bir yapıcı bir *ILogger* arayüzü ihtiyacı olduğunu söylüyor, *Logger* sınıfının bir örnek geçmek, ve bir *IFixItTaskRepository* arayüzü gerektiğinde, *FixItTaskRepository* sınıf bir örnek geçmek.
+Bu kod, bir oluşturucunun hiçbir yerde bir *ILogger* arabirimine ihtiyacı olduğunu, *günlükçü* sınıfının bir örneğini geçirdiğini ve bir *ıfixittaskrepository* arabirimine Ihtiyaç duyduğunda, *fixittaskrepository* sınıfının bir örneğini geçirdiğini söyler.
 
-[AutoFac](http://autofac.org/) kullanabileceğiniz birçok bağımlılık enjeksiyon çerçeveleri biridir. Başka bir popüler bir [Birlik](https://blogs.msdn.com/b/agile/archive/2013/08/20/new-guide-dependency-injection-with-unity.aspx), hangi tavsiye edilir ve Microsoft Patterns ve Uygulamalar tarafından desteklenir.
+[AutoFac](http://autofac.org/) , kullanabileceğiniz birçok bağımlılık ekleme çerçevelerinden biridir. Diğer popüler bir tane, Microsoft düzenleri ve uygulamaları tarafından önerilen ve desteklenen [Unity](https://blogs.msdn.com/b/agile/archive/2013/08/20/new-guide-dependency-injection-with-unity.aspx)'dir.
 
-## <a name="built-in-logging-support-in-azure"></a>Azure'da yerleşik günlük desteği
+## <a name="built-in-logging-support-in-azure"></a>Azure 'da yerleşik günlük desteği
 
-Azure, [Azure Uygulama Hizmeti'nde Web Uygulamaları için](https://docs.microsoft.com/azure/app-service-web/web-sites-dotnet-troubleshoot-visual-studio)aşağıdaki türde günlük leri destekler:
+Azure, [Azure App Service Web Apps için aşağıdaki günlük](https://docs.microsoft.com/azure/app-service-web/web-sites-dotnet-troubleshoot-visual-studio)türlerini destekler:
 
-- System.Diagnostics izleme (siteyi yeniden başlatmadan açıp kapatabilir ve seviyeleri anında ayarlayabilirsiniz).
-- Windows Olayları.
-- IIS Günlükleri (HTTP/FREB).
+- System. Diagnostics izleme (siteyi yeniden başlatmadan sırasıyla açık ve kapalı bir şekilde düzeyler ayarlayabilirsiniz).
+- Windows olayları.
+- IIS günlükleri (HTTP/FREB).
 
-Azure, Bulut Hizmetlerinde aşağıdaki [türde günlük leri](https://docs.microsoft.com/azure/cloud-services/cloud-services-dotnet-diagnostics)destekler:
+Azure, [Cloud Services ' de aşağıdaki günlük](https://docs.microsoft.com/azure/cloud-services/cloud-services-dotnet-diagnostics)türlerini destekler:
 
-- System.Diagnostics izleme.
+- System. Diagnostics izleme.
 - Performans sayaçları.
-- Windows Olayları.
-- IIS Günlükleri (HTTP/FREB).
+- Windows olayları.
+- IIS günlükleri (HTTP/FREB).
 - Özel dizin izleme.
 
-Fix It uygulaması System.Diagnostics izleme kullanır. System.Diagnostics'in bir web uygulamasında oturum açmasını etkinleştirmek için tek yapmanız gereken portaldaki bir anahtarı çevirmek veya REST API'yi aramaktır. Portalda, sitenizin **Yapılandırma** sekmesini tıklatın ve Uygulama **Tanılama** bölümünü görmek için aşağı kaydırın. Günlüğe kaydetmeyi açabilir veya kapatabilir ve istediğiniz günlük düzeyini seçebilirsiniz. Azure'a günlükleri dosya sistemine veya bir depolama hesabına yazmasını sağlayabilirsiniz.
+Bu BT uygulaması, System. Diagnostics izlemesini kullanır. Sistemi etkinleştirmek için yapmanız gereken tek şey. bir Web uygulamasında tanılama günlüğü, portalda bir anahtarı ters çevirme veya REST API çağırma. Portalda sitenizin **yapılandırma** sekmesine tıklayın ve **Uygulama Tanılama** bölümünü görmek için sayfayı aşağı kaydırın. Günlüğe kaydetmeyi açabilir veya kapatabilir ve istediğiniz günlüğe kaydetme düzeyini seçebilirsiniz. Azure 'un günlükleri dosya sistemine veya bir depolama hesabına yazmasını sağlayabilirsiniz.
 
-![Yapılandırma sekmesinde uygulama tanılama ve site tanılama](monitoring-and-telemetry/_static/image24.png)
+![Yapılandır sekmesinde Uygulama Tanılama ve site tanılama](monitoring-and-telemetry/_static/image24.png)
 
-Azure'da günlüğe kaydetmeyi etkinleştirdikten sonra, günlükleri oluşturulan Visual Studio Çıktı penceresinde görebilirsiniz.
+Azure 'da günlüğü etkinleştirdikten sonra, Visual Studio çıktı penceresinde oluşturuldukları gibi günlükleri görebilirsiniz.
 
 ![Akış günlükleri menüsü](http://wacomdpsstorage.blob.core.windows.net/articlesmedia/content-ppe.windowsazure.com/documentation/articles/web-sites-dotnet-troubleshoot-visual-studio/20140115062810/tws-viewlogsmenu.png)
 
 ![Akış günlükleri menüsü](http://wacomdpsstorage.blob.core.windows.net/articlesmedia/content-ppe.windowsazure.com/documentation/articles/web-sites-dotnet-troubleshoot-visual-studio/20140115062810/tws-nologsyet.png)
 
-Ayrıca günlükleri depolama hesabınıza yazılı olabilir ve Bunları Visual Studio'daki **Sunucu Gezgini** veya [Azure Depolama Gezgini](https://azure.microsoft.com/features/storage-explorer/)gibi Azure Depolama Masası hizmetine erişebilecek herhangi bir araçla görüntüleyebilirsiniz.
+Ayrıca, depolama hesabınıza yazılır ve bunları Visual Studio veya [Azure Depolama Gezgini](https://azure.microsoft.com/features/storage-explorer/) **Sunucu Gezgini** gibi Azure depolama tablo hizmetine erişebilen herhangi bir araçla görüntüleyebilirsiniz.
 
-![Sunucu Gezgini'nde oturum açma](http://wacomdpsstorage.blob.core.windows.net/articlesmedia/content-ppe.windowsazure.com/documentation/articles/web-sites-dotnet-troubleshoot-visual-studio/20140115062810/tws-storagelogs.png)
+![Sunucu Gezgini oturum açar](http://wacomdpsstorage.blob.core.windows.net/articlesmedia/content-ppe.windowsazure.com/documentation/articles/web-sites-dotnet-troubleshoot-visual-studio/20140115062810/tws-storagelogs.png)
 
 ## <a name="summary"></a>Özet
 
-Kutudan çıkmış bir telemetri sistemi uygulamak, kendi kodunuzda enstrüman günlüğü uygulamak ve Azure'da günlük işlemlerini yapılandırmak gerçekten çok kolaydır. Ve üretim sorunları varsa, bir telemetri sistemi ve özel günlükleri kombinasyonu müşterileriniz için önemli sorunlar haline gelmeden önce hızlı bir şekilde sorunları çözmek yardımcı olacaktır.
+Kullanıma hazır bir telemetri sistemi uygulamak, kendi kodunuzda oturum açmak ve Azure 'da günlüğe kaydetmeyi yapılandırmak oldukça basittir. Üretim sorunlarınız varsa, bir telemetri sisteminin ve özel günlüklerin birleşimi, sorunları müşterilerinizin önemli bir sorunu haline gelmeden hızlı bir şekilde çözmenize yardımcı olur.
 
-Bir [sonraki bölümde](transient-fault-handling.md) geçici hataların nasıl işleyeceğiniince, araştırmanız gereken üretim sorunları haline gelmezler.
+[Sonraki bölümde](transient-fault-handling.md) , araştırmanız gereken üretim sorunları haline gelmemesi için geçici hataların nasıl işleneceğini inceleyeceğiz.
 
 ## <a name="resources"></a>Kaynaklar
 
 Daha fazla bilgi için aşağıdaki kaynaklara bakın.
 
-Dokümantasyon ağırlıklı olarak telemetri ile ilgili:
+Temel olarak telemetri ile ilgili belgeler:
 
-- [Microsoft Desenleri ve Uygulamaları - Azure Kılavuzu](https://msdn.microsoft.com/library/dn568099.aspx). Bkz. Enstrümantasyon ve Telemetri kılavuzu, Hizmet Ölçümleme kılavuzu, Sistem Sonu İzleme deseni ve Çalışma Zamanı Yeniden Yapılandırma deseni.
-- [Bulutta Penny Pinching: Azure Web Sitelerinde Yeni Emanet Performans İzlemesini Etkinleştirme.](http://www.hanselman.com/blog/PennyPinchingInTheCloudEnablingNewRelicPerformanceMonitoringOnWindowsAzureWebsites.aspx)
-- [Azure Bulut Hizmetlerinde Büyük Ölçekli Hizmetlerin Tasarımı için En İyi Uygulamalar.](https://msdn.microsoft.com/library/windowsazure/jj717232.aspx) Mark Simms ve Michael Thomassy tarafından beyaz kağıt. Telemetri ve Tanılama bölümüne bakın.
-- [Uygulama Öngörüleri ile Yeni Nesil Geliştirme](https://msdn.microsoft.com/magazine/dn683794.aspx). MSDN Dergisi makalesi.
+- [Microsoft desenleri ve uygulamaları-Azure Kılavuzu](https://msdn.microsoft.com/library/dn568099.aspx). Bkz. Izleme ve Telemetri kılavuzu, hizmet ölçümü Kılavuzu, sistem durumu uç nokta Izleme düzeni ve çalışma zamanı yeniden yapılandırma düzeni.
+- [Bulutta kuruş doldurma: Azure Web siteleri 'Nde yeni relik performansı Izleme etkinleştiriliyor](http://www.hanselman.com/blog/PennyPinchingInTheCloudEnablingNewRelicPerformanceMonitoringOnWindowsAzureWebsites.aspx).
+- [Azure Cloud Services 'de Large-Scale Hizmetleri tasarlamak Için En Iyi uygulamalar](https://msdn.microsoft.com/library/windowsazure/jj717232.aspx). Simms ve Michael Thomassy ' i Işaretleyen Teknik İnceleme. Telemetri ve Tanılamalar bölümüne bakın.
+- [Application Insights Ile yeni nesil geliştirme](https://msdn.microsoft.com/magazine/dn683794.aspx). MSDN Magazine makalesi.
 
-Özellikle günlük le ilgili belgeler:
+Genellikle günlüğe kaydetme ile ilgili belgeler:
 
-- [Anlamsal Günlük Uygulama Bloğu (SLAB)](http://convective.wordpress.com/2013/08/12/semantic-logging-application-block-slab/). Neil Mackenzie SLAB ile anlamsal günlük için durumda sunar.
-- [Anlamsal Günlük ile Yapılandırılmış ve Anlamlı Günlükler Oluşturma](https://channel9.msdn.com/Events/Build/2013/3-336). (Video) Julian Dominguez SLAB ile anlamsal günlük için durumda sunar.
-- [EF6 SQL Günlük – Bölüm 1: Basit Günlük .](http://blog.oneunicorn.com/2013/05/08/ef6-sql-logging-part-1-simple-logging/) Arthur Vickers, Varlık Çerçevesi tarafından yürütülen sorguları EF 6'da nasıl günlüğe kaydedin gösterir.
-- [ASP.NET Bir MVC Uygulamasında Taraf Çerçevesi ile Bağlantı Esnekliği ve Komut Durdurma](../../../../mvc/overview/getting-started/getting-started-with-ef-using-mvc/connection-resiliency-and-command-interception-with-the-entity-framework-in-an-asp-net-mvc-application.md). Dokuz bölümlük bir öğretici serisinin dördüncüsü, Entity Framework tarafından veritabanına gönderilen SQL komutlarını günlüğe kaydetmek için EF 6 komut durdurma özelliğinin nasıl kullanılacağını gösterir.
-- [C# 5.0 Arayan Bilgi Özniteliklerini kullanarak Günlüğe Kaydetmeyi Geliştirin.](http://www.dotnetcurry.com/showarticle.aspx?ID=972) Nasıl kolayca okuma içine zor kodlama veya el ile almak için yansıma kullanmadan arama yönteminin adını günlüğe kaydetmeye.
+- [Anlamsal günlük uygulama bloğu (blok)](http://convective.wordpress.com/2013/08/12/semantic-logging-application-block-slab/). NEIL Mackenzie, blok ile anlam günlüğe kaydetme durumunu gösterir.
+- [Anlamsal günlük yapılandırılmış ve anlamlı Günlükler oluşturma](https://channel9.msdn.com/Events/Build/2013/3-336). Video Jülyen Dominguez, blok ile anlam günlüğe kaydetme durumunu gösterir.
+- [EF6 SQL günlüğü – 1. Bölüm: basit günlük kaydı](http://blog.oneunicorn.com/2013/05/08/ef6-sql-logging-part-1-simple-logging/). Arthur Vicranlılar, Entity Framework tarafından yürütülen sorguların EF 6 ' da nasıl günlüğe alınacağını gösterir.
+- [Bir ASP.NET MVC uygulamasındaki Entity Framework Ile bağlantı dayanıklılığı ve komut yakalaşmayı](../../../../mvc/overview/getting-started/getting-started-with-ef-using-mvc/connection-resiliency-and-command-interception-with-the-entity-framework-in-an-asp-net-mvc-application.md). Dört bölümden oluşan bir öğretici serisinde, Entity Framework tarafından veritabanına gönderilen SQL komutlarının günlüğe kaydetmek için EF 6 komut yakatım özelliğinin nasıl kullanılacağını gösterir.
+- [C# 5,0 çağıran bilgi özniteliklerini kullanarak günlüğü geliştirme](http://www.dotnetcurry.com/showarticle.aspx?ID=972). Çağıran metodun adını sabit kodlamadan kolayca günlüğe kaydetme veya el ile almak için yansıma kullanma.
 
-Özellikle sorun giderme ile ilgili dokümantasyon:
+Temel olarak sorun giderme ile ilgili belgeler:
 
-- [Azure Sorun &amp; Giderme Hata Ayıklama blogu](https://blogs.msdn.com/b/kwill/).
-- [AzureTools – Azure Geliştirici Destek Ekibi tarafından kullanılan Tanılama Yardımcı Programı.](https://blogs.msdn.com/b/kwill/archive/2013/08/26/azuretools-the-diagnostic-utility-used-by-the-windows-azure-developer-support-team.aspx?Redirected=true) Çok çeşitli tanılama ve izleme araçlarını indirmek ve çalıştırmak için Azure VM'de kullanılabilecek bir araç için indirme bağlantısı sunar ve sağlar. Belirli bir VM'de bir sorunu tanılamanız gerektiğinde yararlıdır.
-- [Visual Studio'yu kullanarak Azure Uygulama Hizmeti'ndeki bir web uygulamasının sorun giderme](https://docs.microsoft.com/azure/app-service-web/web-sites-dotnet-troubleshoot-visual-studio)sorunu. System.Diagnostics izleme ve uzaktan hata ayıklama ile başlamak için adım adım öğretici.
+- [Azure sorunlarını giderme &amp; Blogda hata ayıklama](https://blogs.msdn.com/b/kwill/).
+- [AzureTools: Azure Geliştirici desteği ekibi tarafından kullanılan tanılama yardımcı programı](https://blogs.msdn.com/b/kwill/archive/2013/08/26/azuretools-the-diagnostic-utility-used-by-the-windows-azure-developer-support-team.aspx?Redirected=true). , Çok çeşitli tanılama ve izleme araçlarını indirmek ve çalıştırmak için bir Azure VM 'de kullanılabilen bir araç için indirme bağlantısı sağlar. Belirli bir sanal makinede bir sorunu tanılamanıza gerek duyduğunuzda faydalıdır.
+- [Visual Studio 'yu kullanarak Azure App Service bir Web uygulamasının sorunlarını giderin](https://docs.microsoft.com/azure/app-service-web/web-sites-dotnet-troubleshoot-visual-studio). System. Diagnostics izlemeyi ve uzaktan hata ayıklamayı kullanmaya başlamak için adım adım öğretici.
 
 Videolar:
 
-- [FailSafe: Ölçeklenebilir, Esnek Bulut Hizmetleri Oluşturma.](https://channel9.msdn.com/Series/FailSafe) Ulrich Homann, Marc Mercuri ve Mark Simms tarafından dokuz bölümlük dizi. Microsoft Müşteri Danışma Ekibi'nin (CAT) gerçek müşterilerle olan deneyiminden alınan hikayelerle, üst düzey kavramları ve mimari ilkeleri çok erişilebilir ve ilginç bir şekilde sunar. Bölüm 4 ve 9 izleme ve telemetri hakkında. Bölüm 9 izleme hizmetleri MetricsHub, AppDynamics, New Relic ve PagerDuty genel bir bakış içerir.
-- [Building Big: Azure müşterilerinden alınan dersler - Bölüm II](https://channel9.msdn.com/Events/Build/2012/3-030). Mark Simms başarısızlık için tasarım ve her şeyi enstrümanting hakkında konuşuyor. Failsafe serisine benzer ancak daha fazla nasıl yapIlebilen ayrıntılara girer.
+- [Failsafe: ölçeklenebilir, dayanıklı Cloud Services oluşturma](https://channel9.msdn.com/Series/FailSafe). Ulrich Homann, Marc Mercuri ve Mark Simms ile dokuz bölümden oluşan seriler. , Microsoft Müşteri danışmanlık ekibi (CAT) deneyiminden gerçek müşterilerle çekilen hikayelerle, yüksek düzeyde kavramlar ve mimari ilkeleri çok erişilebilir ve ilginç bir şekilde sunar. Bölüm 4 ve 9, izleme ve telemetri hakkında. Bölüm 9, izleme hizmetleri MetricsHub, AppDynamics, yeni relik ve Pagerharcı 'e genel bakış içerir.
+- [Büyük oluşturma: Azure müşterileri-Bölüm II 'den öğrenilen dersler](https://channel9.msdn.com/Events/Build/2012/3-030). Simms 'nin hata tasarlama ve her şeyi işaretleme hakkında işaret edin. Failsafe serisine benzer ancak daha fazla nasıl yapılır ayrıntılarına gider.
 
 Kod örneği:
 
-- [Azure'da Bulut Hizmeti Temelleri](https://code.msdn.microsoft.com/Cloud-Service-Fundamentals-4ca72649). Microsoft Azure Müşteri Danışma Ekibi tarafından oluşturulan örnek uygulama. Aşağıdaki makalelerde açıklandığı gibi hem telemetri hem de günlük uygulamalarını gösterir. Örnek [NLog](http://nlog-project.org/)kullanarak uygulama günlüğe kaydetme uygular. İlgili belgeler için, [telemetri ve günlük hakkında dört TechNet wiki makalelerin serisine](https://social.technet.microsoft.com/wiki/contents/articles/17987.cloud-service-fundamentals.aspx#Telemetry_coming_soon)bakın.
+- [Azure 'Da bulut hizmeti temelleri](https://code.msdn.microsoft.com/Cloud-Service-Fundamentals-4ca72649). Microsoft Azure müşteri danışmanlık ekibi tarafından oluşturulan örnek uygulama. Aşağıdaki makalelerde açıklandığı gibi telemetri ve günlüğe kaydetme uygulamalarını gösterir. Örnek, [NLog](http://nlog-project.org/)kullanarak uygulama günlüğünü uygular. İlgili belgeler için bkz. [telemetri ve günlüğe kaydetme hakkında dört TechNet wiki makalesi dizisi](https://social.technet.microsoft.com/wiki/contents/articles/17987.cloud-service-fundamentals.aspx#Telemetry_coming_soon).
 
 > [!div class="step-by-step"]
-> [Önceki](design-to-survive-failures.md)
-> [Sonraki](transient-fault-handling.md)
+> [Önceki](design-to-survive-failures.md) 
+>  [Sonraki](transient-fault-handling.md)

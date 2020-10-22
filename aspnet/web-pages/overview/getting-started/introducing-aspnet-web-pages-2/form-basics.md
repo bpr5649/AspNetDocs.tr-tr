@@ -1,359 +1,359 @@
 ---
 uid: web-pages/overview/getting-started/introducing-aspnet-web-pages-2/form-basics
-title: ASP.NET Web Sayfaları Tanıtımı - HTML Form Temelleri | Microsoft Dokümanlar
+title: ASP.NET Web sayfalarına giriş-HTML form temelleri | Microsoft Docs
 author: Rick-Anderson
-description: Bu öğretici, bir giriş formu oluşturmanın ve web sayfalarını (Ustura) ASP.NET kullandığınızda kullanıcının girdisini nasıl işleyeceğiniz le ilgili temel bilgileri gösterir. Ve şimdi sen ...
+description: Bu öğreticide, ASP.NET Web Pages (Razor) kullandığınızda bir giriş formu oluşturma ve kullanıcının girişini işleme hakkında temel bilgiler gösterilmektedir. Şimdi...
 ms.author: riande
 ms.date: 05/28/2015
 ms.assetid: 81ed82bf-b940-44f1-b94a-555d0cb7cc98
 msc.legacyurl: /web-pages/overview/getting-started/introducing-aspnet-web-pages-2/form-basics
 msc.type: authoredcontent
 ms.openlocfilehash: f57661077ec3bb13f3d4ec41b130bda4d2fb9070
-ms.sourcegitcommit: ce28244209db8615bc9bdd576a2e2c88174d318d
+ms.sourcegitcommit: c62ec20b453cee3249eb894ecd75013b57d078f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "80676330"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92345462"
 ---
-# <a name="introducing-aspnet-web-pages---html-form-basics"></a>Web Sayfalarından ASP.NET Tanıtımı - HTML Form Temelleri
+# <a name="introducing-aspnet-web-pages---html-form-basics"></a>ASP.NET Web sayfalarına giriş-HTML form temelleri
 
  yazan: [Tom FitzMacken](https://github.com/tfitzmac)
 
-> Bu öğretici, bir giriş formu oluşturmanın ve web sayfalarını (Ustura) ASP.NET kullandığınızda kullanıcının girdisini nasıl işleyeceğiniz le ilgili temel bilgileri gösterir. Artık bir veritabanınız olduğuna göre, kullanıcıların veritabanındaki belirli filmleri bulmasına izin vermek için form becerilerinizi kullanacaksınız. [Web Sayfalarını kullanarak Veri Görüntülemeye Giriş](/aspnet/web-pages/overview/getting-started/introducing-aspnet-web-pages-2/displaying-data)yoluyla seriyi tamamladığınızı varsayar ASP.NET.
+> Bu öğreticide, ASP.NET Web Pages (Razor) kullandığınızda bir giriş formu oluşturma ve kullanıcının girişini işleme hakkında temel bilgiler gösterilmektedir. Artık bir veritabanınız olduğuna göre, kullanıcıların veritabanında belirli filmleri bulmasına izin vermek için form becerilerinizi kullanacaksınız. [ASP.NET Web sayfalarını kullanarak verileri görüntülemeye giriş](/aspnet/web-pages/overview/getting-started/introducing-aspnet-web-pages-2/displaying-data)ile seriyi tamamlamış olduğunu varsayar.
 > 
 > Öğrenecekleriniz:
 > 
 > - Standart HTML öğelerini kullanarak form oluşturma.
-> - Nasıl bir formda kullanıcının giriş okumak için.
-> - Kullanıcının sağladığı bir arama terimini kullanarak seçici olarak veri alan bir SQL sorgusu nasıl oluşturulur?
-> - Sayfada alanların kullanıcının ne girişettiğini "unutma" sağlay
+> - Kullanıcının bir formdaki girişini okuma.
+> - Kullanıcının sağladığı bir arama terimini kullanarak verileri seçmeli olarak alan bir SQL sorgusu oluşturma.
+> - "Kullanıcının ne girdiği" konusunda "hatırlama" sayfasında alan
 >   
 > 
-> Tartışılan özellikler/teknolojiler:
+> Ele alınan özellikler/teknolojiler:
 > 
 > - `Request` nesnesi.
 > - SQL `Where` yan tümcesi.
 
-## <a name="what-youll-build"></a>Ne İnşa Edeceksiniz
+## <a name="what-youll-build"></a>Ne oluşturacağız?
 
-Önceki öğreticide, bir veritabanı oluşturdunuz, veritabanına veri `WebGrid` eklediniz ve sonra da verileri görüntülemek için yardımcıyı kullandınız. Bu öğreticide, belirli bir türün filmlerini bulmanıza olanak tanıyan veya başlığı girdiğiniz sözcüğü içeren bir arama kutusu eklersiniz. (Örneğin, türü "Aksiyon" olan veya başlığı "Harry" veya "Macera" içeren tüm filmleri bulabilirsiniz.)
+Önceki öğreticide, bir veritabanı oluşturdunuz, ona veri ekledi ve sonra `WebGrid` verileri göstermek için yardımcı 'yı kullandınız. Bu öğreticide, belirli bir tarzın filmlerini bulmanıza veya başlığında girdiğiniz herhangi bir sözcük içeren bir arama kutusu ekleyeceksiniz. (Örneğin, tarzı "Action" olan veya başlığı "Harry" veya "Adventure" içeren tüm filmleri bulabilirsiniz.
 
-Bu öğretici ile bittiğinde, bu gibi bir sayfa olacak:
+Bu öğreticiyi tamamladığınızda, şöyle bir sayfanız olacaktır:
 
-![Tür ve Başlık araması yapılan filmler sayfası](form-basics/_static/image1.png)
+![Tarz ve başlık arama içeren filmler sayfası](form-basics/_static/image1.png)
 
-Sayfanın listeleme bölümü, son öğretici &mdash; ızgaradakiyle aynıdır. Aradaki fark, ızgaranın yalnızca aradığınız filmleri göstermesi olacaktır.
+Sayfanın listeleme bölümü, bir kılavuzun son öğreticisiyle aynıdır &mdash; . Fark, kılavuzun yalnızca aradığınız filmleri gösterecektir.
 
-## <a name="about-html-forms"></a>HTML Formları Hakkında
+## <a name="about-html-forms"></a>HTML formları hakkında
 
-(HTML formları oluşturma ve arasındaki `GET` fark ile ilgili `POST`deneyime sahipseniz, bu bölümü atlayabilirsiniz.)
+(HTML formları oluşturma ve ile arasındaki fark ile ilgili deneyiminiz varsa `GET` `POST` , bu bölümü atlayabilirsiniz.)
 
-Formda kullanıcı giriş &mdash; öğeleri metin kutuları, düğmeler, radyo düğmeleri, onay kutuları, açılır listeler ve benzeri öğeler vardır. Kullanıcılar bu denetimleri doldurur veya seçim yapar ve bir düğmeyi tıklatarak formu gönderir.
+Bir formda Kullanıcı giriş öğeleri &mdash; metin kutuları, düğmeler, radyo düğmeleri, onay kutuları, açılan listeler vb. bulunur. Kullanıcılar bu denetimleri doldurur veya seçimler yapar ve ardından bir düğmeye tıklayarak formu gönderir.
 
-Bir formun temel HTML sözdizimi şu örnekte gösterilmiştir:
+Bir formun temel HTML sözdizimi bu örneğe göre gösterilmiştir:
 
 [!code-html[Main](form-basics/samples/sample1.html)]
 
-Bu biçimlendirme bir sayfada çalıştığında, bu çizime benzeyen basit bir form oluşturur:
+Bu biçimlendirme bir sayfada çalıştığında, bu çizimi şöyle görünen basit bir form oluşturur:
 
-![Tarayıcıda işlenen temel HTML formu](form-basics/_static/image2.png)
+![Tarayıcıda işlenmiş şekilde temel HTML formu](form-basics/_static/image2.png)
 
-Öğe `<form>` gönderilecek HTML öğelerini içine alar. (Kolay bir hata yapmak sayfaya öğeleri eklemek için ama sonra `<form>` bir öğe içine koymak için unutmak. Bu durumda, hiçbir şey sunulmaz.) Öznitelik, `method` tarayıcıya kullanıcı girişinin nasıl gönderilebildiğini söyler. Bunu, sunucuda bir güncelleştirme gerçekleştiriyorsanız veya `post` `get` yalnızca sunucudan veri alıyorsanız ayarlayabilirsiniz.
+`<form>`Öğesi GÖNDERILECEK HTML öğelerini barındırır. (Oluşturmanın kolay bir hata olması, sayfaya öğe eklemek ve ardından bunları bir öğe içine koymayı unutmak olur `<form>` . Bu durumda hiçbir şey gönderilmez.) `method` Özniteliği, tarayıcıya Kullanıcı girişini nasıl gönderebileceklerini bildirir. `post`Sunucuda bir güncelleştirme gerçekleştirmeniz veya `get` sunucudan yalnızca veri getirmeniz durumunda bunu olarak ayarlayın.
 
 <a id="GET,_POST,_and_HTTP_Verb_Safety"></a>
 
 > [!TIP] 
 > 
-> **GET, POST ve HTTP Fiil Güvenliği**
+> **GET, POST ve HTTP fiil güvenliği**
 > 
-> Tarayıcıların ve sunucuların bilgi alışverişinde kullanmak için kullandığı protokol HTTP, temel işlemlerinde son derece basittir. Tarayıcılar sunuculara istekte bulunmak için yalnızca birkaç fiil kullanır. Web için kod yazarken, bu fiilleri ve tarayıcının ve sunucunun bunları nasıl kullandığını anlamak yararlıdır. Uzak ve uzak en sık kullanılan fiiller şunlardır:
+> Tarayıcı ve sunucuların bilgi alışverişi için kullandığı protokol olan HTTP, temel işlemlerinde daha basit bir işlemdir. Tarayıcılar, sunuculara istek yapmak için yalnızca birkaç fiil kullanır. Web için kod yazdığınızda, bu yüklemleri ve tarayıcının ve sunucunun bunları nasıl kullandığını anlamanız yararlı olur. En yaygın olarak kullanılan fiiller şunlardır:
 > 
-> - `GET`. Tarayıcı sunucudan bir şey almak için bu fiili kullanır. Örneğin, tarayıcınıza bir URL yazdığınızda, tarayıcı `GET` istediğiniz sayfayı istemek için bir işlem gerçekleştirir. Sayfa grafikler içeriyorsa, tarayıcı `GET` görüntüleri almak için ek işlemler gerçekleştirir. İşlemin `GET` bilgileri sunucuya aktarması gerekiyorsa, bilgiler sorgu dizesindeki URL'nin bir parçası olarak aktarılır.
-> - `POST`. Tarayıcı, sunucuya eklenecek veya değiştirilecek verileri göndermek için bir `POST` istek gönderir. Örneğin, `POST` fiil bir veritabanında kayıt oluşturmak veya varolanları değiştirmek için kullanılır. Çoğu zaman, bir formu doldurup gönder düğmesini tıklattığınızda, `POST` tarayıcı bir işlem gerçekleştirir. Bir `POST` işlemde, sunucuya aktarılan veriler sayfanın gövdesindedir.
+> - `GET`. Tarayıcı, sunucudan bir şeyi getirmek için bu fiili kullanır. Örneğin, tarayıcınıza bir URL yazdığınızda, tarayıcı `GET` istediğiniz sayfayı istemek için bir işlem gerçekleştirir. Sayfa grafik içeriyorsa, tarayıcı `GET` görüntüleri almak için ek işlemler gerçekleştirir. `GET`İşlemin sunucuya bilgi geçirmesi gerekiyorsa, bilgiler sorgu DIZESINDEKI URL 'nin bir parçası olarak geçirilir.
+> - `POST`. Tarayıcı, `POST` sunucuda eklenecek veya değiştirilecek verileri göndermek için bir istek gönderir. Örneğin, `POST` fiil bir veritabanında kayıtlar oluşturmak veya var olanları değiştirmek için kullanılır. Çoğu zaman, bir formu doldururken ve Gönder düğmesine tıkladığınızda tarayıcı bir `POST` işlem gerçekleştirir. Bir `POST` işlemde, sunucuya geçirilmekte olan veriler sayfanın gövdesinde bulunur.
 > 
-> Bu fiiller arasındaki önemli bir `GET` ayrım, bir işlemin sunucudaki hiçbir şeyi değiştirmemesi veya biraz daha `GET` soyut bir şekilde ifade etmesi, bir işlemin sunucuda durum değişikliğine yol açamayan olmasıdır. Aynı kaynaklarda `GET` istediğiniz kadar işlem gerçekleştirebilirsiniz ve bu kaynaklar değişmez. (Bir `GET` işlemin genellikle "güvenli" olduğu veya teknik bir terim kullandığı söylenir, *iktidara gelir.)* Buna karşılık, tabii `POST` ki, bir istek işlemi gerçekleştirmek her zaman sunucuda bir şey değiştirir.
+> Bu fiiller arasındaki önemli bir ayrım, bir `GET` işlemin sunucu üzerinde herhangi bir şeyi değiştirmesi veya biraz daha soyut bir şekilde yerleştirmek için beklenmemelidir; bir `GET` işlem, sunucuda durumunda değişikliğe neden olmaz. `GET`Aynı kaynaklar üzerinde dilediğiniz kadar bir işlem yapabilirsiniz ve bu kaynaklar değişmez. (Bir `GET` işlem genellikle "güvenli" olarak ya da teknik bir dönem kullanmak için *ıdempotent*.) Bunun aksine, bir `POST` istek işlemi gerçekleştirdiğiniz her seferinde sunucuda bir şeyi değiştirir.
 > 
-> İki örnek bu ayrımı niçin göstermeme yardımcı olacaktır. Bing veya Google gibi bir motoru kullanarak arama yaptığınızda, bir metin kutusundan oluşan bir form doldurursunuz ve ardından arama düğmesini tıklatırsınız. Tarayıcı, URL'nin bir parçası olarak geçirilen kutuya girdiğiniz değerle bir `GET` işlem gerçekleştirir. Bu `GET` form türü için bir işlem kullanmak iyidir, çünkü bir arama işlemi sunucudaki kaynakları değiştirmez, yalnızca bilgileri getirir.
+> Bu ayrımı göstermeye yardımcı olacak iki örnek vardır. Bing veya Google gibi bir altyapıyı kullanarak arama gerçekleştirdiğinizde, tek bir metin kutusundan oluşan bir formu doldurup Ara düğmesine tıklayabilirsiniz. Tarayıcı, `GET` URL 'nin bir parçası olarak geçirilen kutuya girdiğiniz değerle bir işlem gerçekleştirir. `GET`Bu tür bir form için bir işlem kullanmak iyidir, çünkü bir arama işlemi sunucudaki kaynakları değiştirmez, yalnızca bilgi getirir.
 > 
-> Şimdi çevrimiçi bir şey sipariş süreci düşünün. Sipariş ayrıntılarını doldurun ve sonra gönder düğmesini tıklatın. Bu işlem bir `POST` istek olacaktır, çünkü işlem sunucuda yeni bir sipariş kaydı, hesap bilgilerinizde değişiklik ve belki de diğer birçok değişiklik gibi değişikliklere neden olur. İşlemin `GET` aksine, isteğinizi `POST` yineleyemezsiniz — eğer yaptıysa, isteği her yeniden gönderdiğinizde, sunucuda yeni bir sipariş oluşturursunuz. (Bu gibi durumlarda, web siteleri genellikle bir gönder düğmesini birden fazla kez tıklatmamanız konusunda sizi uyarır veya formu yanlışlıkla yeniden göndermemeniz için gönder düğmesini devre dışı kalacaktır.)
+> Şimdi bir şeyi çevrimiçi olarak sıralama sürecini göz önünde bulundurun. Sipariş Ayrıntıları ' nı doldurup Gönder düğmesine tıklayabilirsiniz. Bu işlem bir istek olacaktır `POST` , çünkü işlem yeni bir sipariş kaydı, hesap bilgilerinde bir değişiklik ve belki de birçok başka değişiklik gibi sunucu üzerinde değişikliklere neden olur. İşlemin aksine `GET` , isteğinizi tekrarlayükleyemezsiniz `POST` — siz isteği her yeniden yapılandırdığınızda, sunucuda yeni bir sipariş oluşturursunuz. (Bu gibi durumlarda, Web siteleri genellikle bir Gönder düğmesine birden çok kez tıklamamanızı veya formu yanlışlıkla yeniden gönderemeyecek şekilde Gönder düğmesini devre dışı bırakacağını uyarır.)
 > 
-> Bu öğretici süresince, HTML formları ile `GET` çalışmak `POST` için hem bir işlem hem de bir işlem kullanırsınız. Her durumda kullandığınız fiilin neden uygun olduğunu açıklayacağız.
+> Bu öğreticide, `GET` HTML formlarıyla çalışmak için hem işlem hem de bir işlem kullanacaksınız `POST` . Kullandığınız fiilin her durumda uygun bir durum olduğunu açıklayacağız.
 > 
-> (HTTP fiilleri hakkında daha fazla bilgi edinmek için W3C sitesindeki [Yöntem Tanımları](http://www.w3.org/Protocols/rfc2616/rfc2616-sec9.html) makalesine bakın.)
+> (HTTP fiilleri hakkında daha fazla bilgi için bkz. W3C sitesindeki [Yöntem tanımları](http://www.w3.org/Protocols/rfc2616/rfc2616-sec9.html) makalesi.)
 
-Çoğu kullanıcı giriş öğesi `<input>` HTML öğeleridir. Bunlar, `<input type="type" name="name">,` *yazın* istediğiniz kullanıcı giriş denetimi türünü gösterdiği yere benzer. Bu öğeler ortak olanlardır:
+Çoğu kullanıcı girişi öğesi HTML `<input>` öğeleridir. `<input type="type" name="name">,`Burada *tür* , istediğiniz kullanıcı giriş denetimi türünü gösterir. Bu öğeler yaygın olanlardır:
 
-- Metin kutusu:`<input type="text">`
-- Onay kutusu:`<input type="check">`
-- Radyo düğmesi:`<input type="radio">`
-- Düğme:`<input type="button">`
-- Gönder düğmesi:`<input type="submit">`
+- Metin kutusu: `<input type="text">`
+- Onay kutusu: `<input type="check">`
+- Radyo düğmesi: `<input type="radio">`
+- Bu `<input type="button">`
+- Gönder düğmesi: `<input type="submit">`
 
-Ayrıca, çok `<textarea>` satırlı bir metin kutusu ve `<select>` bir açılır liste veya kaydırılabilir liste oluşturmak için öğe oluşturmak için öğeyi kullanabilirsiniz. (HTML form öğeleri hakkında daha fazla bilgi için W3Schools sitesindeki [HTML Formları ve Giriş'e](http://www.w3schools.com/html/html_forms.asp) bakın.)
+Ayrıca, `<textarea>` öğesini kullanarak bir çoklu satır metin kutusu ve `<select>` bir açılan liste veya kaydırılabilir liste oluşturmak için öğesi de kullanabilirsiniz. (HTML form öğeleri hakkında daha fazla bilgi için, bkz. W3Schools sitesinde [HTML Forms and Input](http://www.w3schools.com/html/html_forms.asp) .)
 
-Öznitelik `name` çok önemlidir, çünkü ad, kısa bir süre sonra göreceğiniz gibi öğenin değerini daha sonra nasıl alacağınızdır.
+`name`Özniteliği çok önemlidir, çünkü ad daha sonra göreceğiniz gibi, daha sonra bir öğenin değerini alabilir.
 
-İşin ilginç yanı, sayfa geliştiricisi olarak kullanıcının girişiyle ne yaptığınızdır. Bu öğelerle ilişkili yerleşik bir davranış yoktur. Bunun yerine, kullanıcının girdiği veya seçtiği değerleri almanız ve onlarla bir şeyler yapmanız gerekir. Bu öğreticide bunu öğreneceksiniz.
+İlginç olan bölüm, sayfa geliştiricisi, kullanıcının girişi ile yapılır. Bu öğelerle ilişkili yerleşik davranış yok. Bunun yerine, kullanıcının girdiği veya seçtiği değerleri almanız ve bunlarla ilgili bir şey yapmanız gerekir. Bu öğreticide öğrenirsiniz.
 
 > [!TIP] 
 > 
-> **HTML5 ve Giriş Formları**
+> **HTML5 ve giriş formları**
 > 
-> Bildiğiniz gibi, HTML geçiş ve en son sürümü (HTML5) kullanıcıların bilgi girmek için daha sezgisel yollar için destek içerir. Örneğin, HTML5'te siz (sayfa geliştiricisi) sayfaya kullanıcının bir tarih girmesini istediğinizi söyleyebilirsiniz. Tarayıcı daha sonra, kullanıcının bir tarihi el ile girmesini gerektirmek yerine takvimi otomatik olarak görüntüleyebilir. Ancak, HTML5 yenidir ve henüz tüm tarayıcılarda desteklenmez.
+> Bildiğiniz gibi, HTML geçiştir ve en son sürüm (HTML5), kullanıcıların bilgi girmesi için daha sezgisel yollar desteği içerir. Örneğin, HTML5 'de, sizin (sayfa geliştiricisi), sayfanın bir tarih girmesini istediğinizi söyleyebilir. Tarayıcı, kullanıcının el ile tarih girmesini gerektirmek yerine otomatik olarak bir takvim görüntüleyebilir. Ancak HTML5 yenidir ve henüz tüm tarayıcılarda desteklenmez.
 > 
-> ASP.NET Web Sayfaları HTML5 girdisini kullanıcının tarayıcısı kadar destekler. HTML5'teki `<input>` öğenin yeni öznitelikleri hakkında bir fikir için W3Schools sitesindeki [HTML &lt;giriş&gt; türü Özniteliği'ne](http://www.w3schools.com/html/html_form_input_types.asp) bakın.
+> ASP.NET Web sayfaları, kullanıcı tarayıcısının bulunduğu ölçüde HTML5 girişini destekler. HTML5 içindeki öğe için yeni öznitelikler hakkında fikir için `<input>` , bkz. w3schools sitesinde [HTML &lt; giriş &gt; türü özniteliği](http://www.w3schools.com/html/html_form_input_types.asp) .
 
 ## <a name="creating-the-form"></a>Form Oluşturma
 
-WebMatrix'te, **Dosyalar** çalışma alanında *Movies.cshtml* sayfasını açın.
+WebMatrix 'te **dosyalar** çalışma alanında, *filmler. cshtml* sayfasını açın.
 
-Kapanış `</h1>` etiketinden sonra ve `<div>` aramanın `grid.GetHtml` açılış etiketinden önce aşağıdaki işaretlemeyi ekleyin:
+Kapanış etiketinden sonra `</h1>` ve çağrının açılış etiketinden önce `<div>` `grid.GetHtml` , aşağıdaki biçimlendirmeyi ekleyin:
 
 [!code-html[Main](form-basics/samples/sample2.html)]
 
-Bu biçimlendirme, bir metin kutusu ve `searchGenre` bir gönder düğmesi olan bir form oluşturur. Metin kutusu ve gönder düğmesi, `<form>` özniteliği `method` `get`'' olarak ayarlanmış bir öğeyle çevrilidir. (Metin kutusunu koymazsanız ve düğmeyi bir `<form>` öğenin içine göndermezseniz, düğmeyi tıklattığınızda hiçbir şey gönderilmeyecektir.) `GET` Burada fiili kullanırsınız, çünkü sunucuda herhangi bir değişiklik yapmayan bir form oluşturuyorsunuz — bu sadece bir aramayla sonuçlanır. (Önceki öğreticide, sunucuya `post` değişiklikleri gönderme yöntemini kullandınız. Bunu bir sonraki öğreticide tekrar göreceksiniz.)
+Bu biçimlendirme, adlı bir metin kutusu ve Gönder düğmesi içeren bir form oluşturur `searchGenre` . Metin kutusu ve Gönder düğmesi, `<form>` özniteliği olarak ayarlanmış bir öğe içine alınmıştır `method` `get` . (Metin kutusunu ve Gönder düğmesini bir öğesi içine yerleştirmezseniz `<form>` , düğmeye tıkladığınızda hiçbir şey gönderilmeyecektir.) `GET` Burada fiil, sunucuda herhangi bir değişiklik yapmayan bir form oluşturduğunuz için kullanılır; yalnızca bir aramaya neden olur. (Önceki öğreticide, bir `post` yöntemi kullandınız, bu da sunucuya değişiklikleri nasıl gönderirsiniz. Sonraki öğreticide bir daha görürsünüz.)
 
-Sayfayı çalıştırın. Form için herhangi bir davranış tanımlamamış olsanız da, nasıl göründüğünü görebilirsiniz:
+Sayfayı çalıştırın. Form için herhangi bir davranış tanımlamamış olsanız da, neye benzebileceğinize bakabilirsiniz:
 
-![Tür için arama kutusu ile Filmler sayfası](form-basics/_static/image3.png)
+![Tarz için arama kutusu içeren filmler sayfası](form-basics/_static/image3.png)
 
-Metin kutusuna "Komedi" gibi bir değer girin. Ardından **Arama Türü'ne**tıklayın.
+Metin kutusuna "komedi" gibi bir değer girin. Ardından **Ara tarzı**' ne tıklayın.
 
-Sayfanın URL'sini not alın. Öğenin `<form>` `method` özniteliğini `get`, girdiğiniz değer artık URL'deki sorgu dizesinin bir parçası olarak ayarladığınızda, aşağıdaki gibi:
+Sayfanın URL 'sini bir yere göz atın. `<form>`Öğenin `method` özniteliğini olarak ayarlarsanız `get` , GIRDIĞINIZ değer artık URL 'deki sorgu dizesinin bir parçasıdır, örneğin:
 
 `http://localhost:45661/Movies.cshtml?searchGenre=Comedy`
 
-## <a name="reading-form-values"></a>Okuma Formu Değerleri
+## <a name="reading-form-values"></a>Form değerlerini okuma
 
-Sayfa zaten veritabanı verilerini alan ve sonuçları bir ızgarada görüntüleyen bazı kodlar içerir. Şimdi arama terimini içeren bir SQL sorgusu çalıştırabilmeniz için metin kutusunun değerini okuyan bazı kodlar eklemeniz gerekir.
+Sayfa, veritabanı verilerini alan ve sonuçları bir kılavuzda görüntüleyen bazı kodları zaten içeriyor. Artık, arama terimini içeren bir SQL sorgusunu çalıştırabilmeniz için metin kutusunun değerini okuyan bazı kodlar eklemeniz gerekir.
 
-Formun yöntemini `get`, metin kutusuna girilen değeri aşağıdaki gibi kod kullanarak okuyabilirsiniz:
+Formun yöntemini olarak ayarladığınız için `get` , aşağıdaki gibi bir kod kullanarak metin kutusuna girilen değeri okuyabilirsiniz:
 
 `var searchTerm = Request.QueryString["searchGenre"];`
 
-Nesne `Request.QueryString` `QueryString` `Request` (nesnenin özelliği) `GET` işlemin bir parçası olarak gönderilen öğelerin değerlerini içerir. Özellik, `Request.QueryString` formda gönderilen değerlerin bir *koleksiyonunu* (bir liste) içerir. Herhangi bir bireysel değer almak için, istediğiniz öğenin adını belirtirsiniz. Bu nedenle metin kutusunu oluşturan `name` `<input>` öğe`searchTerm`() öğesi üzerinde bir öznitelik olması gerekir. `Request` (Nesne hakkında daha fazla bilgi için kenar [çubuğuna](#BKMK_TheRequestObject) daha sonra bakın.)
+`Request.QueryString`Nesnesi ( `QueryString` `Request` nesnesinin özelliği), işlemin bir parçası olarak gönderilen öğelerin değerlerini içerir `GET` . `Request.QueryString`Özelliği, formda gönderilen değerlerin bir *koleksiyonunu* (bir listesini) içerir. Tek bir değer almak için istediğiniz öğenin adını belirtirsiniz. Bu nedenle, `name` `<input>` metin kutusunu oluşturan öğesinde () bir özniteliğe sahip olmanız gerekir `searchTerm` . (Nesne hakkında daha fazla bilgi için, `Request` [kenar çubuğuna](#BKMK_TheRequestObject) daha sonra bakın.)
 
-Metin kutusunun değerini okuyacak kadar basit. Ancak kullanıcı metin kutusuna hiçbir şey girmemişse ancak yine de **Ara'yı** tıklattıysa, aranacak bir şey olmadığından bu tıklamayı yok sayabilirsiniz.
+Metin kutusunun değerini okumak yeterince basittir. Ancak Kullanıcı, metin kutusuna hiç bir şey girmediyse ancak **Ara** ' yı tıklamadığında, arama yapmak için hiçbir şey olmadığından, tıklamayı yoksayabilirsiniz.
 
-Aşağıdaki kod, bu koşulların nasıl uygulanacağını gösteren bir örnektir. (Henüz bu kodu eklemek zorunda değilsiniz; bir dakika içinde bunu yapacağız.)
+Aşağıdaki kod, bu koşulların nasıl uygulanacağını gösteren bir örnektir. (Bu kodu henüz eklemeniz gerekmez; bunu bir süre sonra yapmanız gerekir.)
 
 [!code-csharp[Main](form-basics/samples/sample3.cs)]
 
-Test bu şekilde bozulur:
+Test şu şekilde aşağı doğru bir şekilde kesilir:
 
-- Adlı `Request.QueryString["searchGenre"]` `searchGenre` `<input>` öğeye girilen değeri , yani değeri alın.
-- `IsEmpty` Yöntemi kullanarak boş olup olmadığını öğrenin. Bu yöntem, bir şeyin (örneğin, form öğesi) bir değer iyp içermediğini belirlemenin standart yoludur. Ama gerçekten, bu nedenle, boş *değilse* sadece bakım ...
-- `IsEmpty` İşleç'i `!` testin önüne ekleyin. (Operatör `!` mantıksal NOT anlamına gelir).
+- Değerini `Request.QueryString["searchGenre"]` , adlı öğesine girilen değeri değerini alır `<input>` `searchGenre` .
+- Yöntemini kullanarak boş olup olmadığını öğrenin `IsEmpty` . Bu yöntem, bir şeyin (örneğin, form öğesi) bir değer içerip içermediğini belirlemenin standart yoludur. Ancak aslında yalnızca boş *değil* , bu nedenle...
+- `!`Testin önüne işleci ekleyin `IsEmpty` . ( `!` İşleç MANTıKSAL değil anlamına gelir).
 
-Düz İngilizce, tüm `if` durum aşağıdaki çevirir: *formun searchGenre öğesi boş değilse, o zaman ...*
+Düz Ingilizce olarak, tüm `if` koşul aşağıdaki gibi *olur: formun searchtarz öğesi boş değilse.* ..
 
-Bu blok, arama terimini kullanan bir sorgu oluşturmak için sahneyi ayarlar. Bunu bir sonraki bölümde yapacaksın.
+Bu blok arama terimini kullanan bir sorgu oluşturmak için aşamayı belirler. Bunu bir sonraki bölümde yapacaksınız.
 
 <a id="BKMK_TheRequestObject"></a>
 
 > [!TIP] 
 > 
-> **İstek Nesnesi**
+> **Istek nesnesi**
 > 
-> Nesne, `Request` bir sayfa istendiğinde veya gönderildiğinde tarayıcının uygulamanıza gönderdiği tüm bilgileri içerir. Bu nesne, metin kutusu değerleri veya yüklenmesi gereken bir dosya gibi kullanıcının sağladığı tüm bilgileri içerir. Ayrıca, çerezler, URL sorgu dizesindeki değerler (varsa), çalışan sayfanın dosya yolu, kullanıcının kullandığı tarayıcı türü, tarayıcıda ayarlanan dillerin listesi ve çok daha fazlası gibi her türlü ek bilgi içerir.
+> `Request`Nesnesi, bir sayfa istendiğinde veya gönderildiğinde tarayıcının uygulamanıza gönderdiği tüm bilgileri içerir. Bu nesne, kullanıcının sağladığı, metin kutusu değerleri veya karşıya yüklenecek bir dosya gibi tüm bilgileri içerir. Ayrıca, tanımlama bilgileri, URL sorgu dizesindeki (varsa), çalışan sayfanın dosya yolu, kullanıcının kullandığı tarayıcı türü, tarayıcıda ayarlanan dillerin listesi ve çok daha fazlası gibi ek bilgilerin tümünü de içerir.
 > 
-> Nesne, `Request` değerler *topluluğudur.* Adını belirterek koleksiyondan tek bir değer elde elabilirsiniz:
+> `Request`Nesne, değerlerin bir *koleksiyon* (liste). Adını belirterek koleksiyondan tek bir değer alırsınız:
 > 
 > `var someValue = Request["name"];`
 > 
-> Nesne `Request` aslında birkaç alt kümeleri ortaya çıkarır. Örneğin:
+> `Request`Nesnesi aslında çeşitli alt kümeler sunar. Örneğin:
 > 
-> - `Request.Form`istek bir `POST` istekse, `<form>` gönderilen öğeiçindeki öğelerden değerler verir.
-> - `Request.QueryString`URL'nin sorgu dizesinde sadece değerleri verir. (URL gibi `http://mysite/myapp/page?searchGenre=action&page=2`bir `?searchGenre=action&page=2` URL'de, URL'nin bölümü sorgu dizesidir.)
-> - `Request.Cookies`toplama, tarayıcının gönderdiği çerezlere erişmenizi sağlar.
+> - `Request.Form``<form>`istek bir istek ise, gönderilen öğe içindeki öğelerin değerlerini verir `POST` .
+> - `Request.QueryString` size yalnızca URL 'nin sorgu dizesindeki değerleri verir. (Benzer bir URL 'de `http://mysite/myapp/page?searchGenre=action&page=2` , `?searchGenre=action&page=2` URL 'nin bölümü sorgu dizesidir.)
+> - `Request.Cookies` koleksiyon, tarayıcının gönderdiği tanımlama bilgilerine erişmenizi sağlar.
 > 
-> Gönderdiğiniz formda olduğunu bildiğiniz bir değeri elde etmek `Request["name"]`için . Alternatif olarak, daha özel sürümleri `Request.Form["name"]` (istekler `Request.QueryString["name"]` için) `GET` `POST` veya (istekler için) kullanabilirsiniz. Tabii ki, *adı* almak için öğenin adıdır.
+> Gönderilen formda olduğunu bildiğiniz bir değer almak için kullanabilirsiniz `Request["name"]` . Alternatif olarak, daha belirli sürümleri `Request.Form["name"]` ( `POST` istekler için) veya `Request.QueryString["name"]` (istekler için) kullanabilirsiniz `GET` . Kuşkusuz, *ad* alınacak öğenin adıdır.
 > 
-> Almak istediğiniz öğenin adı, kullanmakta olduğunuz koleksiyonda benzersiz olmalıdır. Bu nedenle `Request` nesne, aşağıdaki gibi `Request.Form` alt `Request.QueryString`kümeleri sağlar. Sayfanızın adlı `userName` bir form öğesi içerdiğini ve `userName` *ayrıca* bir çerez içerdiğini varsayalım. `Request["userName"]`Alırsanız, form değerini mi yoksa çerezi mi istediğiniz belirsizdir. Ancak, hangi `Request.Form["userName"]` değeri `Request.Cookie["userName"]`alacağınız konusunda açık bir şekilde bilgi sahibi oluyorsunuz.
+> Almak istediğiniz öğenin adı, kullanmakta olduğunuz koleksiyon içinde benzersiz olmalıdır. Bu nedenle nesne, `Request` ve gibi alt kümeleri sağlar `Request.Form` `Request.QueryString` . Sayfanızın adlı bir form öğesi içerdiğini `userName` ve *Ayrıca* adlı bir tanımlama bilgisi içerdiğini varsayalım `userName` . `Request["userName"]`Bu değeri alırsanız, form değerinin mi yoksa tanımlama bilgisinin mi olmasını istediğinize belirsizdir. Ancak, `Request.Form["userName"]` veya alırsanız `Request.Cookie["userName"]` , hangi değeri alacağınız hakkında açık olursunuz.
 > 
-> Belirli olmak ve ilgilendiğiniz alt kümesini `Request` kullanmak iyi bir uygulamadır, `Request.Form` `Request.QueryString`örneğin. Bu öğretici oluşturduğunuz basit sayfalar için, muhtemelen gerçekten herhangi bir fark yaratmaz. Ancak, müstehcen sürümü `Request.Form` kullanarak daha karmaşık sayfalar `Request.QueryString` oluşturduğunuzda veya sayfa bir form (veya birden çok form), tanımlama bilgileri, sorgu dize değerleri vb. içerdiğinde ortaya çıkabilecek sorunları önlemenize yardımcı olabilir.
+> Belirli bir uygulama `Request` , veya gibi ilgilendiğiniz alt kümesini kullanmak iyi bir uygulamadır `Request.Form` `Request.QueryString` . Bu öğreticide oluşturmakta olduğunuz basit sayfalar için büyük olasılıkla herhangi bir farklılık yapmaz. Ancak, daha karmaşık sayfalar oluştururken, açık sürümü kullanarak `Request.Form` veya `Request.QueryString` sayfa bir form (veya birden çok form içerdiğinde), tanımlama bilgileri, sorgu dizesi değerleri vb. içerdiğinde ortaya çıkabilecek sorunları önlemenize yardımcı olabilir.
 
-## <a name="creating-a-query-by-using-a-search-term"></a>Arama Terimi Kullanarak Sorgu Oluşturma
+## <a name="creating-a-query-by-using-a-search-term"></a>Arama terimi kullanarak sorgu oluşturma
 
-Artık kullanıcının girdiği arama terimini nasıl alacağınızı bildiğinize göre, onu kullanan bir sorgu oluşturabilirsiniz. Tüm film öğelerini veritabanından çıkarmak için şu deyime benzeyen bir SQL sorgusu kullandığınızı unutmayın:
+Artık kullanıcının girdiği arama teriminin nasıl alınacağını öğrenmiş olduğunuza göre, onu kullanan bir sorgu oluşturabilirsiniz. Tüm film öğelerini veritabanından almak için, bu ifadeye benzeyen bir SQL sorgusu kullandığınızı unutmayın:
 
 `SELECT * FROM Movies`
 
-Yalnızca belirli filmleri almak için, yan tümce `Where` içeren bir sorgu kullanmanız gerekir. Bu yan tümce, sorgu tarafından satırları döndürülen bir koşul ayarlamanızı sağlar. Bir örneği aşağıda verilmiştir:
+Yalnızca belirli filmleri almak için, yan tümce içeren bir sorgu kullanmanız gerekir `Where` . Bu yan tümce, sorgu tarafından döndürülen satırları ayarlamanıza olanak sağlar. İşte bir örnek:
 
 `SELECT * FROM Movies WHERE Genre = 'Action'`
 
-Temel biçimi `WHERE column = value`. Aradığınız alete bağlı `=`olarak, sadece , `>` (büyük), (daha az), `<` `<>` (eşit olmayan), `<=` (daha az veya eşit olmayan), vb. dışında farklı işleçler kullanabilirsiniz.
+Temel biçim `WHERE column = value` . `=` `>` `<` `<>` Ne aradığınıza bağlı olarak, tıpkı (büyüktür), (küçüktür), (eşit değildir), `<=` vb. gibi farklı işleçleri kullanabilirsiniz.
 
-Eğer merak ediyorsanız, SQL deyimleri &mdash; `SELECT` büyük/küçük `Select` harf duyarlı `select`değildir (veya bile) aynıdır. Ancak, insanlar okunmasını kolaylaştırmak için genellikle `SELECT` `WHERE`bir SQL deyimindeki anahtar kelimeleri büyük harfe benzer.
+Merak ediyorsanız SQL deyimleri büyük/küçük harfe duyarlı değildir &mdash; `SELECT` `Select` (veya hatta `select` ). Ancak insanlar, daha kolay okunmasını sağlamak için, ve gibi bir SQL deyimindeki anahtar kelimeleri genellikle büyük harfle `SELECT` `WHERE` okur.
 
-### <a name="passing-the-search-term-as-a-parameter"></a>Arama terimini parametre olarak geçirme
+### <a name="passing-the-search-term-as-a-parameter"></a>Arama terimi parametre olarak geçiliyor
 
-Belirli bir türü aramak yeterince`WHERE Genre = 'Action'`kolaydır (), ancak kullanıcının girdiği herhangi bir türü arayabilmek istersiniz. Bunu yapmak için, arama değeri için bir yer tutucu içeren SQL sorgusu olarak oluşturursunuz. Bu komut gibi görünecektir:
+Belirli bir tarzı aramak yeterince kolay ( `WHERE Genre = 'Action'` ), ancak kullanıcının girdiği tarz için arama yapmak isteyebilirsiniz. Bunu yapmak için, Aranacak değer için bir yer tutucu içeren bir SQL sorgusu oluşturun. Bu komut şöyle görünür:
 
 `SELECT * FROM Movies WHERE Genre = @0`
 
-Yer tutucu sıfırın `@` ardından gelen karakterdir. Tahmin edebileceğiniz gibi, bir sorgu birden çok yer tutucu `@0`içerebilir `@1` `@2`ve bu sorgular , , vb. olarak adlandırılır.
+Yer tutucu, `@` ardından sıfır karakter olur. Tahmin edebildiği gibi, bir sorgu birden fazla yer tutucu içerebilir ve adı,, `@0` `@1` `@2` vb. olarak adlandırılır.
 
-Sorguyu ayarlamak ve değeri gerçekten aktarmak için kodu aşağıdaki gibi kullanırsınız:
+Sorguyu ayarlamak ve bunu gerçekten değeri geçirmek için, aşağıdaki gibi bir kod kullanın:
 
 [!code-sql[Main](form-basics/samples/sample4.sql)]
 
-Bu kod, ızgaradaki verileri görüntülemek için zaten yaptığınız koda benzer. Tek fark:
+Bu kod, kılavuzda verileri göstermek için yapmış olduğunuz verilere benzer. Tek farklar şunlardır:
 
-- Sorgu bir yer tutucu`WHERE Genre = @0"`( ) içerir.
-- Sorgu bir değişkene konur (`selectCommand`); önce, sorguyu doğrudan `db.Query` yönteme aktardınız.
-- `db.Query` Yöntemi aradiğinizde, hem sorguyu hem de yer tutucu için kullanılacak değeri geçersiniz. (Sorguda birden çok yer tutucusu varsa, hepsini yönteme ayrı değerler olarak geçirirsiniz.)
+- Sorgu bir yer tutucu ( `WHERE Genre = @0"` ) içeriyor.
+- Sorgu bir değişkene ( `selectCommand` ) konur, önce sorguyu doğrudan yöntemine geçirtiniz `db.Query` .
+- `db.Query`Yöntemini çağırdığınızda, hem sorguyu hem de yer tutucu için kullanılacak değeri geçitirsiniz. (Sorguda birden fazla yer tutucu varsa, bunları yönteme ayrı değerler olarak geçirirsiniz.)
 
-Tüm bu öğeleri bir araya getirirseniz, aşağıdaki kodu alırsınız:
+Tüm bu öğeleri birlikte yerleştirirseniz, aşağıdaki kodu alırsınız:
 
 [!code-csharp[Main](form-basics/samples/sample5.cs)]
 
 > [!NOTE] 
 > 
-> **Önemli!** Değerleri SQL komutuna geçirmek için yer tutucuları (beğen) `@0`kullanmak güvenlik açısından son derece *önemlidir.* Burada gördüğünüz şekilde, değişken veri için yer tutucular, SQL komutları oluşturmanız gereken tek yoldur.
+> **Önemli!** `@0`SQL komutuna değer geçirmek için yer tutucuları (gibi) kullanmak, güvenlik açısından *son derece önemlidir* . Burada gördüğünüz gibi, değişken veri yertutucuları ile birlikte SQL komutları oluşturmanız gereken tek yoldur.
 > 
-> Kullanıcıdan aldığınız gerçek metin ve değerleri bir araya getirerek (birleşerek) bir SQL deyimi oluşturmayın. Kullanıcı girişini bir SQL deyimine dahil etmek, sitenizi kötü amaçlı bir kullanıcının veritabanınızı hackleyen değerler gönderdiği bir *SQL enjeksiyon saldırısına* açar. (Sen [makaleSQL Enjeksiyon](https://msdn.microsoft.com/library/ms161953.aspx) MSDN web sitesinde daha fazla bilgi edinebilirsiniz.)
+> Değişmez değer metin ve kullanıcıdan aldığınız değerleri birlikte koyarak bir SQL ifadesini hiçbir şekilde oluşturun. Kullanıcı girişini bir SQL ifadesine bitiştirme, sitenizi kötü niyetli bir kullanıcının sayfanıza bir değer gönderdiği bir *SQL ekleme saldırısında* açar. (MSDN Web sitesini [ekleme](https://msdn.microsoft.com/library/ms161953.aspx) başlıklı makalede daha fazla bilgi edinebilirsiniz.)
 
-## <a name="updating-the-movies-page-with-search-code"></a>Arama Kodu ile Filmler Sayfasını Güncelleme
+## <a name="updating-the-movies-page-with-search-code"></a>Filmler sayfasını arama koduyla güncelleştirme
 
-Artık *Movies.cshtml* dosyasındaki kodu güncelleştirebilirsiniz. Başlamak için, sayfanın üst kısmındaki kod bloğundaki kodu bu kodla değiştirin:
+Artık *film. cshtml* dosyasındaki kodu güncelleştirebilirsiniz. Başlamak için, sayfanın üst kısmındaki kod bloğundaki kodu şu kodla değiştirin:
 
 [!code-csharp[Main](form-basics/samples/sample6.cs)]
 
-Buradaki fark, sorguyu daha sonra geçeceğiniz `selectCommand` değişkene `db.Query` koymuş olmasıdır. SQL deyimini bir değişkene koymak, aramayı gerçekleştirmek için yapacağınız ifadeyi değiştirmenize olanak tanır.
+Buradaki fark, `selectCommand` daha sonra geçirilecek olan değişkenine sorgu koymanızdır `db.Query` . SQL ifadesini bir değişkene koymak, aramayı gerçekleştirmek için yapmanız gereken ifadeyi değiştirmenize olanak sağlar.
 
-Daha sonra geri koyacağınız bu iki satırı da kaldırdınız:
+Ayrıca, daha sonra geri yerleştirilecek bu iki satırı da kaldırmış olursunuz:
 
 [!code-csharp[Main](form-basics/samples/sample7.cs)]
 
-Sorguyu henüz çalıştırmak istemiyorsun (diğer bir şey, arama) `db.Query`ve yardımcının `WebGrid` başlatılmasını da henüz istemiyorsunuz. Bunları, hangi SQL deyiminin çalışması gerektiğini bulduktan sonra yaparsınız.
+Sorguyu henüz çalıştırmak istemezsiniz (yani çağrısı `db.Query` ) ve yardımcı 'yı henüz başlatmak istemezsiniz `WebGrid` . Bu şeyleri, SQL deyimin çalıştırılacağı iletişime aldıktan sonra gerçekleştirirsiniz.
 
-Bu yeniden yazıldı bloktan sonra, aramayı işlemek için yeni mantığı ekleyebilirsiniz. Tamamlanan kod aşağıdaki gibi görünecektir. Sayfanızdaki kodu şu örneğe uygun şekilde güncelleştirin:
+Bu yeniden yazan bloğundan sonra, aramayı işlemeye yönelik yeni mantığı ekleyebilirsiniz. Tamamlanan kod aşağıdaki gibi görünür. Sayfanızdaki kodu, bu örnekle eşleşecek şekilde güncelleştirin:
 
 [!code-cshtml[Main](form-basics/samples/sample8.cshtml)]
 
-Sayfa şimdi bu şekilde çalışıyor. Sayfa her çalıştığında, kod veritabanını açar `selectCommand` ve değişken `Movies` tablodaki tüm kayıtları alan SQL deyimine ayarlanır. Kod ayrıca değişkeni `searchTerm` de başharfe ait hale tir.
+Sayfa artık bunun gibi çalışmaktadır. Sayfa her çalıştığında, kod veritabanını açar ve `selectCommand` değişken, tablodaki tüm kayıtları alan SQL ifadesine ayarlanır `Movies` . Kod ayrıca değişkeni de başlatır `searchTerm` .
 
-Ancak, geçerli istek `searchGenre` öğe için bir değer içeriyorsa, kod farklı bir sorguya ayarlar `selectCommand` - yani, bir tür aramak için yan tümceyi `Where` içeren birine. Ayrıca arama `searchTerm` kutusu (hiçbir şey olabilir) için geçti ne olursa olsun ayarlar.
+Ancak, geçerli istek öğesi için bir değer içeriyorsa `searchGenre` , kod `selectCommand` farklı bir sorguya (yani, `Where` bir tarz aramak için yan tümcesini içeren bir) ayarlar. Ayrıca `searchTerm` , arama kutusu için geçirilmiş şekilde ayarlanır (hiçbir şey olmayabilir).
 
-Hangi SQL deyiminde `selectCommand`olursa olsun, kod `db.Query` sonra sorguyu çalıştırmak için `searchTerm`çağırır, ne olursa olsun geçen . Eğer içinde bir `searchTerm`şey yoksa, önemli değil, çünkü bu durumda zaten değeri geçmek `selectCommand` için hiçbir parametre yok.
+Hangi SQL deyimden bağımsız olarak olursa olsun `selectCommand` , kod daha sonra `db.Query` sorguyu çalıştırmak için ' i çağırır `searchTerm` . İçinde hiçbir şey yoksa `searchTerm` , bu durum büyük değildir, çünkü bu durumda değeri yine de değerine geçirmek için parametre yoktur `selectCommand` .
 
-Son olarak, kod, `WebGrid` daha önce olduğu gibi sorgu sonuçlarını kullanarak yardımcıyı işe adatandır.
+Son olarak, kod, `WebGrid` daha önce olduğu gibi sorgu sonuçlarını kullanarak yardımcı başlatır.
 
-SQL deyimini ve arama terimini değişkenlere koyarak koda esneklik eklediğinizi görebilirsiniz. Bu öğreticide daha sonra göreceğiniz gibi, bu temel çerçeveyi kullanabilir ve farklı arama türleri için mantık eklemeye devam edebilirsiniz.
+SQL ifadesini ve arama terimini değişkenlere koyarak koda esneklik eklemişseniz bunu görebilirsiniz. Bu öğreticide daha sonra göreceğiniz gibi, bu temel çerçeveyi kullanabilir ve farklı arama türleri için mantık eklemeyi koruyabilirsiniz.
 
-## <a name="testing-the-search-by-genre-feature"></a>Türe Göre Arama Özelliğini Test Etme
+## <a name="testing-the-search-by-genre-feature"></a>Türe göre arama özelliğini test etme
 
-WebMatrix'te *Movies.cshtml* sayfasını çalıştırın. Tür için metin kutusu olan sayfayı görürsünüz.
+WebMatrix 'te, *filmler. cshtml* sayfasını çalıştırın. Sayfayı tarz için metin kutusuyla görürsünüz.
 
-Test kayıtlarınızdan biri için girdiğiniz bir tür girin ve ardından **Ara'yı**tıklatın. Bu sefer sadece bu tür eşleşen filmlerin bir listesini görmek:
+Test kayıtlarınız için girmiş olduğunuz bir tarz girin ve **Ara**' ya tıklayın. Bu zaman, yalnızca bu tarz ile eşleşen filmlerle ilgili bir liste görürsünüz:
 
-![Tür 'Komediler' aradıktan sonra Filmler sayfa listesi](form-basics/_static/image4.png)
+![' Comedies ' tarzı aranırken filmlere sayfa listeleme](form-basics/_static/image4.png)
 
-Farklı bir tür girin ve yeniden arama yapın. Aramanın büyük/küçük harf olmadığını görebilmeniz için tüm küçük harfleri veya tüm büyük harfleri kullanarak türgirmeyi deneyin.
+Farklı bir tarz girin ve tekrar arama yapın. Aramanın büyük/küçük harfe duyarlı olmadığını görebilmeniz için tüm küçük harfleri veya tüm büyük harfleri kullanarak tarzı girmeyi deneyin.
 
-## <a name="remembering-what-the-user-entered"></a>Kullanıcının Girdiğini "Hatırlama"
+## <a name="remembering-what-the-user-entered"></a>Kullanıcının girdiği "hatırlama"
 
-Bir tür girdikten ve **Arama Türünü**tıklattıktan sonra, bu tür için bir liste gördüğünüzün fark etmiş olabilirsiniz. Ancak, arama metin kutusu &mdash; başka bir deyişle boştu, ne girdiğinizi hatırlamıyordu.
+Bir tarz girdikten ve **arama tarzında**tıklandıktan sonra, bu tarz için bir liste gördünüz. Ancak, arama metin kutusu &mdash; diğer sözcüklerde boştu, ne girdiğinizi hatıraramamıştı.
 
-Bu davranışın neden oluştuğunu anlamak önemlidir. Bir sayfa gönderdiğinde, tarayıcı web sunucusuna bir istek gönderir. ASP.NET isteği aldığında, sayfanın yepyeni bir örneğini oluşturur, sayfadaki kodu çalıştırır ve sayfayı yeniden tarayıcıya işler. Sonuç olarak, ancak, sayfa sadece kendisi bir önceki sürümü ile çalıştığını bilmiyor. Tek bildiği, içinde bazı form verileri olan bir istek olduğu.
+Bu davranışın neden oluştuğunu anlamak önemlidir. Bir sayfa gönderdiğinizde, tarayıcı Web sunucusuna bir istek gönderir. ASP.NET isteği aldığında, sayfanın marka-yeni bir örneğini oluşturur, kod içinde çalıştırır ve sonra sayfayı tarayıcıda yeniden oluşturur. Aslında, sayfa yalnızca önceki bir sürümü ile çalıştıbildiğinizi bilmez. Tüm BT, içinde bazı form verileri bulunan bir istek olduğunu bilir.
 
-Bir sayfayı &mdash; ilk kez istediğinizde veya göndererek &mdash; her istediğinizde yeni bir sayfa elde esiniz. Web sunucusu, son isteğinizle ilgili hiçbir belleğe sahip değildir. Ne ASP.NET, ne de tarayıcı yok. Sayfanın bu ayrı örnekleri arasındaki tek bağlantı, aralarında ilettiğiniz verilerdir. Örneğin, bir sayfa gönderirseniz, yeni sayfa örneği önceki örnek tarafından gönderilen form verilerini alabilir. (Sayfalar arasında veri aktarmanın başka bir yolu da çerezleri kullanmaktır.)
+İlk kez veya gönderdikten sonra bir sayfa istediğinizde &mdash; &mdash; Yeni bir sayfa alıyorsunuz. Web sunucusunda son isteğiniz bellek yok. , ASP.NET yapmaz ve hiçbir ikisini de yapmaz. Sayfanın bu ayrı örnekleri arasındaki tek bağlantı, aralarında iletim yaptığınız herhangi bir veri olur. Örneğin, yeni sayfa örneği, bir sayfa gönderirseniz, önceki örnek tarafından gönderilen form verileri alabilir. (Sayfalar arasında veri geçirmenin diğer bir yolu tanımlama bilgilerini kullanmaktır.)
 
-Bu durumu açıklamak için resmi bir yolu web sayfaları *vatansız*olduğunu söylemektir. Web sunucuları ve sayfaların kendileri ve sayfadaki öğeler, bir sayfanın önceki durumu hakkında herhangi bir bilgi tutmaz. Web bu şekilde tasarlanmıştır, çünkü tek tek istekler için durumu korumak, genellikle saniyede binlerce, belki de yüz binlerce isteği işleyen web sunucularının kaynaklarını hızla tüketir.
+Bu durumu tanımlamanın resmi bir yolu, Web sayfalarının *durum bilgisiz*olduğu söydir. Web sunucuları ve sayfaları ve sayfadaki öğeler, sayfanın önceki durumu hakkında herhangi bir bilgi bulundurmaz. Web bu şekilde tasarlanmıştır çünkü bireysel isteklerin bakım durumu, genellikle binlerce, hatta yüzlerce binlerce istek (saniyede) işleyen Web sunucularının kaynaklarını hızla tüketti.
 
-Bu yüzden metin kutusu boştu. Sayfayı gönderdikten sonra, ASP.NET sayfanın yeni bir örneğini oluşturdu ve kod ve biçimlendirme de koştu. O kodda ASP.NET metin kutusuna değer biçmelerini söyleyen hiçbir şey yoktu. Yani ASP.NET bir şey yapmadı ve metin kutusu içinde bir değer olmadan işlendi.
+Bu nedenle metin kutusunun boş olması neden oldu. Sayfayı gönderdikten sonra, ASP.NET sayfanın yeni bir örneğini oluşturdu ve kod ve biçimlendirme üzerinden çalışır. Bu kodda, metin kutusuna bir değer ASP.NET söylenecek bir şey yok. Bu nedenle ASP.NET hiçbir şey yapmamıştı ve metin kutusu bu değerde bir değer olmadan işlenmiştir.
 
-Aslında bu sorunu aşmak için kolay bir yolu var. Metin *kutusuna* girdiğiniz tür, içinde bulunduğu &mdash; kodda `Request.QueryString["searchGenre"]`kullanılabilir.
+Bu sorunu geçici olarak yapmanın kolay bir yolu vardır. Metin *kutusuna girdiğiniz tarz,* içinde olduğu kodda sizin için kullanılabilir &mdash; `Request.QueryString["searchGenre"]` .
 
-Metin kutusunun biçimlendirmesini, özniteliğin değerini şu `searchTerm`örnekteki gibi alabilmesi `value` için güncelleştirin:
+`value` `searchTerm` Bu örnekte olduğu gibi, özniteliğin değerini aldığından, metin kutusu için biçimlendirmeyi güncelleştirin:
 
 [!code-html[Main](form-basics/samples/sample9.html?highlight=1)]
 
-Bu sayfada, bu değişken girdiğiniz türü `searchTerm` de içerdiğinden, değişkene özniteliği de ayarlamış `value` olabilirsiniz. Ancak, `Request` burada gösterildiği `value` gibi özniteliği ayarlamak için nesneyi kullanmak, bu görevi gerçekleştirmenin standart yoludur. (Bazı durumlarda bunu &mdash; yapmak istediğinizi varsayarsak, sayfayı alanlarda değerler *olmadan* işlemek isteyebilirsiniz. Her şey uygulamanızda neler olduğuna bağlıdır.)
+Bu sayfada Ayrıca, `value` `searchTerm` girmiş olduğunuz tarz da içerdiği için özniteliği değişkenine de ayarlayabilirsiniz. Ancak, `Request` `value` Bu görevi gerçekleştirmenin standart yolu aşağıda gösterildiği gibi özniteliğini ayarlamak için nesnesini kullanmaktır. (Bazı durumlarda bunu yapmak istediğiniz varsayılarak &mdash; , bu sayfayı alanlarda değer *olmadan* işlemek isteyebilirsiniz. Hepsi, uygulamanızla ilgili olan yeniliklere bağlıdır.)
 
 > [!NOTE]
-> Parolalar için kullanılan bir metin kutusunun değerini "hatırlayamaz". Bu, kişilerin kod kullanarak parola alanını doldurmasına izin veren bir güvenlik açığı olacaktır.
+> Parolalar için kullanılan bir metin kutusunun değerini "hatırlayamıyorum". Bu, kullanıcıların kod kullanarak bir parola alanını doldurmasına izin veren bir güvenlik deliği olacaktır.
 
-Sayfayı yeniden çalıştırın, bir tür girin ve **Arama Türünü**tıklatın. Bu kez sadece arama sonuçlarını görmekle kalmıyor, metin kutusu da geçen kez girdiğiniz şeyi hatırlıyor:
+Sayfayı yeniden çalıştırın, bir tarz girin ve **tarz ara**' yı tıklatın. Bu süre yalnızca aramanın sonuçlarını görmemiş, ancak metin kutusu son kez girdiklerinizi anımsar:
 
-![Metin kutusunun önceki girişi 'hatırladığını' gösteren sayfa](form-basics/_static/image5.png)
+![Metin kutusunun önceki girişin ' hatırlanan ' olduğunu gösteren sayfa](form-basics/_static/image5.png)
 
-## <a name="searching-for-any-word-in-the-title"></a>Başlıkta Herhangi Bir Sözcük Aranıyor
+## <a name="searching-for-any-word-in-the-title"></a>Başlıktaki herhangi bir sözcük aranıyor
 
-Artık herhangi bir türü arayabilirsiniz, ancak bir başlık da aramak isteyebilirsiniz. Arama yaparken tam olarak doğru bir başlık almak zordur, bu nedenle bir başlığın içinde herhangi bir yerde görünen bir sözcüğü arayabilirsiniz. Bunu SQL'de yapmak için `LIKE` işleci ve sözdizimini aşağıdaki gibi kullanırsınız:
+Artık herhangi bir tarz için arama yapabilirsiniz, ancak bir başlık aramak da isteyebilirsiniz. Arama yaptığınızda bir başlık tam olarak doğru bir şekilde almak zordur. bunun yerine başlık içinde herhangi bir yerde görünen bir sözcük arayabilirsiniz. Bunu SQL 'de yapmak için `LIKE` aşağıdaki gibi işlecini ve sözdizimini kullanın:
 
 `SELECT * FROM Movies WHERE Title LIKE '%adventure%'`
 
-Bu komut, başlıkları "macera" içeren tüm filmleri alır. İşleç `LIKE` kullandığınızda, arama teriminin `%` bir parçası olarak joker karakter eklersiniz. Arama `LIKE 'adventure%'` "macera' ile başlayan" anlamına gelir. (Teknik olarak, "dize 'macera' bir şey takip anlamına gelir.) Benzer şekilde, arama `LIKE '%adventure'` terimi "'macera' ile biten" demenin başka bir yolu olan "macera" dizesini takip eden her şey anlamına gelir.
+Bu komut, başlıkları "Adventure" içeren tüm filmleri alır. `LIKE`İşlecini kullandığınızda, `%` arama teriminin bir parçası olarak joker karakterini dahil edersiniz. Arama `LIKE 'adventure%'` "' Adventure ' ile başlıyor" anlamına gelir. (Teknik olarak, "Adventure" dizesinin ardından herhangi bir şey olduğu anlamına gelir. ") Benzer şekilde, arama terimi `LIKE '%adventure'` "' Adventure '" dizesi tarafından izlenen "" Adventure "ile biten" söylemenin bir diğer yolu anlamına gelir.
 
-Bu nedenle `LIKE '%adventure%'` arama terimi başlığın herhangi bir yerinde "macera" anlamına gelir. (Teknik olarak, "başlık bir şey, 'macera' takip, bir şey takip.")
+Bu nedenle arama terimi, `LIKE '%adventure%'` "Adventure" başlığında her yerde "Adventure" anlamına gelir. " (Teknik olarak, başlıktaki her şey, ' Adventure ' ve ardından herhangi bir şey). ")
 
-Öğenin `<form>` içine, tür araması için `</div>` kapanış etiketinin hemen altına aşağıdaki `</form>` biçimlendirmeyi ekleyin (kapanış öğesinden hemen önce):
+Öğesinin içinde `<form>` , aşağıdaki biçimlendirmeyi, tarz aramasının sağ etiketi altına ekleyin `</div>` (kapanış öğesinden hemen önce `</form>` ):
 
 [!code-html[Main](form-basics/samples/sample10.html)]
 
-Bu aramayı işleyen kod, `LIKE` aramayı birleştirmeniz dışında tür aramasının koduna benzer. Sayfanın üst kısmındaki kod bloğunun `if` içine, tür `if` araması için bloktan hemen sonra bu bloğu ekleyin:
+Bu aramayı işleme kodu, ara değer arama koduna benzer, ancak aramayı birleştirme yapmanız gerekir `LIKE` . Sayfanın üst kısmındaki kod bloğunun içinde, bu `if` bloğu yalnızca `if` tarz arama bloğundan sonra ekleyin:
 
 [!code-csharp[Main](form-basics/samples/sample11.cs)]
 
-Bu kod, aramanın bir `LIKE` işleç kullanması ve kodun arama`%`teriminden önce ve sonra " olarak koyması dışında, daha önce gördüğünüz mantığı kullanır.
+Bu kod, daha önce gördüğünüz mantığı kullanır, ancak arama bir `LIKE` işleç kullanır ve kod, `%` arama teriminden önce ve sonra "" koyar.
 
-Sayfaya başka bir arama eklemenin ne kadar kolay olduğuna dikkat edin. Tek yapman gereken:
+Sayfada başka bir aramanın nasıl daha kolay bir şekilde ekleneceğini fark edin. Yapmanız gerekdik:
 
-- İlgili `if` arama kutusunun bir değeri olup olmadığını görmek için sınanan bir blok oluşturun.
-- Değişkeni `selectCommand` yeni bir SQL deyimine ayarlayın.
-- Değişkeni `searchTerm` sorguya geçmek üzere değere ayarlayın.
+- `if`İlgili arama kutusunun bir değere sahip olup olmadığını görmek için test edilmiş bir blok oluşturun.
+- `selectCommand`Değişkeni yeni BIR SQL ifadesine ayarlayın.
+- `searchTerm`Değişkeni sorguya geçirilecek değere ayarlayın.
 
-Başlık araması için yeni mantığı içeren tam kod bloğu aşağıda veda eder:
+Aşağıda bir başlık araması için yeni mantığı içeren tüm kod bloğu verilmiştir:
 
 [!code-cshtml[Main](form-basics/samples/sample12.cshtml)]
 
-Bu kodun yaptıklarının bir özeti aşağıda vereb:
+Bu kodun ne işe yönelik bir özet aşağıda verilmiştir:
 
-- Değişkenler `searchTerm` ve `selectCommand` üst te başharf. Bu değişkenleri, kullanıcının sayfada yaptıklarına göre uygun arama terimine (varsa) ve uygun SQL komutuna göre ayarlayasınız. Varsayılan arama veritabanından tüm filmleri alma basit bir durumdur.
-- Için `searchGenre` ve `searchTitle`, kod için `searchTerm` testlerde aramak istediğiniz değere ayarlar. Bu kod blokları `selectCommand` da bu arama için uygun bir SQL komutu ayarlanır.
-- Yöntem, `db.Query` SQL komutu ne olursa olsun `selectedCommand` ve hangi değerde `searchTerm`olursa olsun kullanılarak yalnızca bir kez çağrılır. Arama terimi yoksa (tür ve başlık sözcüğü yok), değeri boş bir `searchTerm` dizedir. Ancak, bu durumda sorgu bir parametre gerektirmez, çünkü bu önemli değildir.
+- Değişkenler `searchTerm` ve `selectCommand` en üstte başlatılır. Bu değişkenleri, kullanıcının sayfada ne yaptığını temel alarak uygun arama terimine (varsa) ve uygun SQL komutuna göre ayarlayacağız. Varsayılan arama, tüm filmlerden veritabanından alınması için basit bir durumdur.
+- Ve için testlerinde `searchGenre` `searchTitle` , kod, `searchTerm` aramak istediğiniz değere ayarlanır. Bu kod blokları `selectCommand` , bu arama için uygun BIR SQL komutuna de ayarlanır.
+- `db.Query`Yöntemi yalnızca bir kez çağrılır, HANGI SQL komutunun içinde olduğu `selectedCommand` ve hangi değerin bulunduğu `searchTerm` . Arama terimi (tarz yok ve başlık sözcüğü yoksa) yoksa, değeri `searchTerm` boş bir dizedir. Ancak, bu nedenle sorgu bir parametre gerektirmediğinden bu durum değildir.
 
-## <a name="testing-the-title-search-feature"></a>Başlık Arama Özelliğini Test Etme
+## <a name="testing-the-title-search-feature"></a>Başlık arama özelliğini test etme
 
-Artık tamamlanmış arama sayfanızı test edebilirsiniz. *Filmler.cshtml*çalıştırın.
+Artık tamamlanan arama sayfanızı test edebilirsiniz. *Filmleri. cshtml*'yi çalıştırın.
 
-Bir tür girin ve **Arama Türünü**tıklatın. Izgara, daha önce olduğu gibi, bu türün filmlerini görüntüler.
+Bir tarz girin ve **Ara türe**tıklayın. Kılavuz, daha önce olduğu gibi bu tarzın filmlerini görüntüler.
 
-Bir başlık sözcüğü girin ve **Arama Başlığı'nı**tıklatın. Izgara, başlıkta bu sözcüğü içeren filmleri görüntüler.
+Bir başlık sözcüğü girin ve **başlık ara**' yı tıklatın. Kılavuz, başlığında bu sözcüğe sahip olan filmleri görüntüler.
 
-![Başlıkta 'The' arandıktan sonra filmler sayfası nın listesi](form-basics/_static/image6.png)
+![Başlıkta ' The ' aranırken filmlere sayfa listeleme](form-basics/_static/image6.png)
 
-Her iki metin kutularını da boş bırakın ve her iki düğmeye tıklayın. Izgara tüm filmleri görüntüler.
+Her iki metin kutusunu da boş bırakın ve düğmeye tıklayın. Kılavuzda tüm filmler görüntülenir.
 
-## <a name="combining-the-queries"></a>Sorguları Birleştirme
+## <a name="combining-the-queries"></a>Sorguları birleştirme
 
-Gerçekleştirebileceğiniz aramaların özel olduğunu fark edebilirsiniz. Her iki arama kutusuda da değerler olsa bile, başlığı ve türü aynı anda arayamaabilirsiniz. Örneğin, başlığı "Macera" olan tüm aksiyon filmlerini arayamaabilirsiniz. (Sayfa şimdi kodlanmış olduğundan, hem tür hem de başlık için değerler girerseniz, başlık araması öncelikli olur.) Koşulları birleştiren bir arama oluşturmak için, aşağıdaki gibi sözdizimi olan bir SQL sorgusu oluşturmanız gerekir:
+Gerçekleştirebileceğiniz aramaların dışlamalı olduğunu fark edebilirsiniz. Her iki arama kutusunda de değerler olsa bile başlık ve tarzda aynı anda arama yapamazsınız. Örneğin, başlığı "Adventure" içeren tüm eylem filmlerini araymıyorsunuz. (Sayfa şu anda kodlandığında, hem tarz hem de başlık için değer girerseniz, başlık araması önceliklidir.) Koşulları birleştiren bir arama oluşturmak için, aşağıdaki gibi bir sözdizimi içeren bir SQL sorgusu oluşturmanız gerekir:
 
 `SELECT * FROM Movies WHERE Genre = @0 AND Title LIKE @1`
 
-Ve aşağıdaki gibi bir ifade kullanarak sorgu çalıştırmak gerekir (kabaca konuşma):
+Ve aşağıdaki gibi bir ifade kullanarak (kabaca konuşulur) sorguyu çalıştırmanız gerekir:
 
 `var selectedData = db.Query(selectCommand, searchGenre, searchTitle);`
 
-Gördüğünüz gibi, arama ölçütlerinin birçok permütasyonuna izin verecek mantık oluşturmak biraz karışabilir. Bu yüzden burada duracağız.
+Birçok permütasyon arama ölçütünden izin vermek için mantık oluşturma, görebileceğiniz gibi bir bit dahil olabilir. Bu nedenle, burada duracağız.
 
-## <a name="coming-up-next"></a>Sonraki Geliyor
+## <a name="coming-up-next"></a>Sonraki adımda
 
-Bir sonraki öğreticide, kullanıcıların veritabanına film eklemesine izin vermek için form kullanan bir sayfa oluşturursunuz.
+Sonraki öğreticide, kullanıcıların veritabanına film eklemesine izin vermek için form kullanan bir sayfa oluşturacaksınız.
 
-## <a name="complete-listing-for-movie-page-updated-with-search"></a>Film Sayfası için Tam Listeleme (Arama ile Güncellendi)
+## <a name="complete-listing-for-movie-page-updated-with-search"></a>Film sayfası listesinin tamamını listeleme (aramayla güncelleştirildi)
 
 [!code-cshtml[Main](form-basics/samples/sample13.cshtml)]
 
 ## <a name="additional-resources"></a>Ek Kaynaklar
 
-- [Jilet Sözdizimini Kullanarak ASP.NET Web Programlamaya Giriş](https://go.microsoft.com/fwlink/?LinkID=202890)
-- W3Schools sitesinde [SQL WHERE Yan tümcesi](http://www.w3schools.com/sql/sql_where.asp)
-- W3C sitesinde [Yöntem Tanımları](http://www.w3.org/Protocols/rfc2616/rfc2616-sec9.html) makale
+- [Razor söz dizimini kullanarak ASP.NET Web programlamaya giriş](https://go.microsoft.com/fwlink/?LinkID=202890)
+- W3Schools sitesinde [SQL WHERE yan tümcesi](http://www.w3schools.com/sql/sql_where.asp)
+- W3C sitesindeki [Yöntem tanımları](http://www.w3.org/Protocols/rfc2616/rfc2616-sec9.html) makalesi
 
 > [!div class="step-by-step"]
-> [Önceki](displaying-data.md)
-> [Sonraki](entering-data.md)
+> [Önceki](displaying-data.md) 
+>  [Sonraki](entering-data.md)

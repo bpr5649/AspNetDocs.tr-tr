@@ -1,8 +1,8 @@
 ---
 uid: web-api/overview/formats-and-model-binding/json-and-xml-serialization
-title: ASP.NET Web API'de JSON ve XML Serileştirme - ASP.NET 4.x
+title: ASP.NET Web API-ASP.NET 4. x içinde JSON ve XML serileştirme
 author: MikeWasson
-description: JSON ve XML formatters ASP.NET Web API için ASP.NET 4.x açıklar.
+description: ASP.NET 4. x için ASP.NET Web API 'sindeki JSON ve XML formatlarını açıklar.
 ms.author: riande
 ms.date: 05/30/2012
 ms.custom: seoapril2019
@@ -10,76 +10,76 @@ ms.assetid: 1cd7525d-de5e-4ab6-94f0-51480d3255d1
 msc.legacyurl: /web-api/overview/formats-and-model-binding/json-and-xml-serialization
 msc.type: authoredcontent
 ms.openlocfilehash: e6e02fa1c48e9c5fb8499379508619ddb317ccc9
-ms.sourcegitcommit: ce28244209db8615bc9bdd576a2e2c88174d318d
+ms.sourcegitcommit: c62ec20b453cee3249eb894ecd75013b57d078f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "80676225"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92345168"
 ---
-# <a name="json-and-xml-serialization-in-aspnet-web-api"></a>ASP.NET Web API'sinde JSON ve XML Serileştirme
+# <a name="json-and-xml-serialization-in-aspnet-web-api"></a>ASP.NET Web API 'sinde JSON ve XML serileştirme
 
-Mike [Wasson](https://github.com/MikeWasson) tarafından
+, [Mike te son](https://github.com/MikeWasson)
 
-Bu makalede, ASP.NET Web API'sında JSON ve XML ön seçimlerini açıkçık
+Bu makalede ASP.NET Web API 'sindeki JSON ve XML formatlayıcıları açıklanmaktadır.
 
-ASP.NET Web API'sinde, *medya türü formatter* şunları yapabilecek bir nesnedir:
+ASP.NET Web API 'sinde, bir *medya türü biçimlendiricisi* şunları yapabilir:
 
-- BIR HTTP ileti gövdesinden CLR nesnelerini okuma
-- CLR nesnelerini http ileti gövdesine yazma
+- Bir HTTP ileti gövdesinden CLR nesnelerini okuma
+- CLR nesnelerini bir HTTP ileti gövdesine yazma
 
-Web API hem JSON hem de XML için ortam tipi formatters sağlar. Çerçeve, varsayılan olarak bu formatters boru hattına ekler. İstemciler, HTTP isteğinin kabul üstbilgisinde JSON veya XML'i isteyebilir.
+Web API 'si hem JSON hem de XML için medya türü biçimleri sağlar. Framework, varsayılan olarak bu biçimleri ardışık düzene ekler. İstemciler, HTTP isteğinin Accept üst bilgisinde JSON veya XML isteğinde bulunabilir.
 
 ## <a name="contents"></a>İçindekiler
 
-- [JSON Medya Tipi Formatter](#json_media_type_formatter)
+- [JSON Media-Type biçimlendiricisi](#json_media_type_formatter)
 
-    - [Salt Okunur Özellikler](#json_readonly)
-    - [Tarih](#json_dates)
+    - [Salt okunurdur özellikleri](#json_readonly)
+    - [Tarihler](#json_dates)
     - [Girintileme](#json_indenting)
-    - [Deve Kılıfı](#json_camelcasing)
-    - [Anonim ve Zayıf Yazılan Nesneler](#json_anon)
-- [XML Medya Tipi Formatter](#xml_media_type_formatter)
+    - [Kamel büyük harfleri](#json_camelcasing)
+    - [Anonim ve Weakly-Typed nesneler](#json_anon)
+- [XML Media-Type biçimlendiricisi](#xml_media_type_formatter)
 
-    - [Salt Okunur Özellikler](#xml_readonly)
-    - [Tarih](#xml_dates)
+    - [Salt okunurdur özellikleri](#xml_readonly)
+    - [Tarihler](#xml_dates)
     - [Girintileme](#xml_indenting)
-    - [XML Serializers Başına Ayar](#xml_pertype)
-- [JSON veya XML Formatter kaldırma](#removing_the_json_or_xml_formatter)
-- [Dairesel Nesne Başvurularının İşlemesi](#handling_circular_object_references)
-- [Nesne Serileştirmeyi Test Etme](#testing_object_serialization)
+    - [Per-Type XML serileştiricileri ayarlama](#xml_pertype)
+- [JSON veya XML biçimlendirici kaldırılıyor](#removing_the_json_or_xml_formatter)
+- [Döngüsel nesne başvurularını işleme](#handling_circular_object_references)
+- [Test nesnesi serileştirme](#testing_object_serialization)
 
 <a id="json_media_type_formatter"></a>
-## <a name="json-media-type-formatter"></a>JSON Medya Tipi Formatter
+## <a name="json-media-type-formatter"></a>JSON Media-Type biçimlendiricisi
 
-JSON biçimlendirme **JsonMediaTypeFormatter** sınıfı tarafından sağlanmaktadır. Varsayılan olarak, **JsonMediaTypeFormatter** serileştirme gerçekleştirmek için [Json.NET](https://github.com/JamesNK/Newtonsoft.Json) kitaplığını kullanır. Json.NET üçüncü taraf bir açık kaynak projesidir.
+JSON biçimlendirmesi, **Jsonmediatypeformatter** sınıfı tarafından sağlanır. Varsayılan olarak, **Jsonmediatypeformatter** serileştirme gerçekleştirmek için [JSON.net](https://github.com/JamesNK/Newtonsoft.Json) kitaplığını kullanır. Json.NET, üçüncü taraf bir açık kaynak projem.
 
-İsterseniz, **JsonMediaTypeFormatter** sınıfını Json.NET yerine **DataContractJsonSerializer'ı** kullanacak şekilde yapılandırabilirsiniz. Bunu yapmak için, **UseDataContractJsonSerializer** özelliğini **doğru**olarak ayarlayın:
+İsterseniz, Json.NET yerine **DataContractJsonSerializer** kullanmak Için **Jsonmediatypeformatter** sınıfını yapılandırabilirsiniz. Bunu yapmak için **Usedatacontractjsonserializer** özelliğini **true**olarak ayarlayın:
 
 [!code-csharp[Main](json-and-xml-serialization/samples/sample1.cs)]
 
 ### <a name="json-serialization"></a>JSON Seri Hale Getirme
 
-Bu bölümde, varsayılan [Json.NET](https://github.com/JamesNK/Newtonsoft.Json) serializer kullanarak, JSON formatter bazı özel davranışları açıklanır. Bu, Json.NET kitaplığın kapsamlı bir belgelenmesi değildir; daha fazla bilgi için [Json.NET Belgeler'e](http://james.newtonking.com/projects/json/help/)bakın.
+Bu bölümde, varsayılan [JSON.net](https://github.com/JamesNK/Newtonsoft.Json) serileştirici kullanılarak JSON biçimlendirici 'nin bazı belirli davranışları açıklanmaktadır. Bu, Json.NET kitaplığı hakkında kapsamlı bir belge olması anlamına gelir; daha fazla bilgi için [JSON.net belgelerine](http://james.newtonking.com/projects/json/help/)bakın.
 
-#### <a name="what-gets-serialized"></a>Ne Serialized alır?
+#### <a name="what-gets-serialized"></a>Ne seri hale getirilebilir?
 
-Varsayılan olarak, tüm ortak özellikler ve alanlar serileştirilmiş JSON'a dahil edilir. Bir özelliği veya alanı atlamak için, **jsonIgnore** özniteliği ile süsleyin.
+Varsayılan olarak, tüm ortak özellikler ve alanlar serileştirilmiş JSON 'a dahil edilir. Bir özellik veya alanı atlamak için, bunu **Jsonıgnore** özniteliğiyle süsle.
 
 [!code-csharp[Main](json-and-xml-serialization/samples/sample2.cs)]
 
-&quot;Bir kabul&quot; yaklaşımı tercih ederseniz, sınıfı **DataContract** özniteliğiyle süsleyin. Bu öznitelik varsa, **üyeler DataMember**yoksa yoksayılır. Özel üyeleri seri hale getirmek için **DataMember'ı** da kullanabilirsiniz.
+Bir &quot; katılım yaklaşımı tercih ediyorsanız &quot; , sınıfı **DataContract** özniteliğiyle süsler. Bu öznitelik mevcutsa, **DataMember**öğesine sahip olmadıkları müddetçe Üyeler göz ardı edilir. Özel üyeleri seri hale getirmek için **DataMember** de kullanabilirsiniz.
 
 [!code-csharp[Main](json-and-xml-serialization/samples/sample3.cs)]
 
 <a id="json_readonly"></a>
-### <a name="read-only-properties"></a>Salt Okunur Özellikler
+### <a name="read-only-properties"></a>Read-Only özellikleri
 
-Salt okunur özellikler varsayılan olarak seri hale getirilir.
+Salt okuma özellikleri varsayılan olarak serileştirilir.
 
 <a id="json_dates"></a>
-### <a name="dates"></a>Dates
+### <a name="dates"></a>Tarihler
 
-Varsayılan olarak, Json.NET [tarihleri ISO 8601](http://www.w3.org/TR/NOTE-datetime) biçiminde yazar. UTC'deki tarihler (Eşgüdümlü Evrensel Zaman) "Z" soneki ile yazılır. Yerel saatdeki tarihler arasında saat dilimi mahsulü içerir. Örneğin:
+Varsayılan olarak, Json.NET tarihleri [ıso 8601](http://www.w3.org/TR/NOTE-datetime) biçiminde yazar. UTC (Eşgüdümlü Evrensel Saat) tarihleri "Z" sonekiyle yazılır. Yerel saat içindeki tarihler, saat dilimi konumunu içerir. Örneğin:
 
 [!code-console[Main](json-and-xml-serialization/samples/sample4.cmd)]
 
@@ -87,156 +87,156 @@ Varsayılan olarak, Json.NET saat dilimini korur. DateTimeZoneHandling özelliğ
 
 [!code-csharp[Main](json-and-xml-serialization/samples/sample5.cs)]
 
-ISO 8601 yerine [Microsoft JSON tarih biçimini](https://msdn.microsoft.com/library/bb299886.aspx#intro_to_json_sidebarb) (`"\/Date(ticks)\/"`) kullanmayı tercih ederseniz, **DateFormatHandling** özelliğini serializer ayarlarında ayarlayın:
+ISO 8601 yerine [MICROSOFT JSON tarih biçimini](https://msdn.microsoft.com/library/bb299886.aspx#intro_to_json_sidebarb) () kullanmayı tercih ediyorsanız `"\/Date(ticks)\/"` , serileştirici ayarlarındaki **DateFormatHandling** özelliğini ayarlayın:
 
 [!code-csharp[Main](json-and-xml-serialization/samples/sample6.cs)]
 
 <a id="json_indenting"></a>
 ### <a name="indenting"></a>Girintileme
 
-Girintilen JSON yazmak için **Biçimlendirme** ayarını **Biçimlendirme.Girini**olarak ayarlayın:
+Girintili JSON yazmak için **biçimlendirme** ayarını **biçimlendirme. girintili**olarak ayarlayın:
 
 [!code-csharp[Main](json-and-xml-serialization/samples/sample7.cs)]
 
 <a id="json_camelcasing"></a>
-### <a name="camel-casing"></a>Deve Kılıfı
+### <a name="camel-casing"></a>Kamel büyük harfleri
 
-Deve kasalı JSON özellik adlarını yazmak için, veri modelinizi değiştirmeden **CamelCasePropertyNamesContractResolver'ı** serializer'a ayarlayın:
+Veri modelinizi değiştirmeden JSON özellik adlarını kamel büyük küçük harfe yazmak için, seri hale getirici üzerinde **Camelcasepropertynamescontractresolver** ' ı ayarlayın:
 
 [!code-csharp[Main](json-and-xml-serialization/samples/sample8.cs)]
 
 <a id="json_anon"></a>
-### <a name="anonymous-and-weakly-typed-objects"></a>Anonim ve Zayıf Yazılan Nesneler
+### <a name="anonymous-and-weakly-typed-objects"></a>Anonim ve Weakly-Typed nesneler
 
-Eylem yöntemi anonim bir nesneyi döndürebilir ve JSON'a serileştirebilir. Örneğin:
+Bir eylem yöntemi, anonim bir nesne döndürebilir ve bunu JSON 'a seri hale getirebilirsiniz. Örneğin:
 
 [!code-csharp[Main](json-and-xml-serialization/samples/sample9.cs)]
 
-Yanıt iletisi gövdesi aşağıdaki JSON'u içerir:
+Yanıt iletisi gövdesinde şu JSON yer alacak:
 
 [!code-json[Main](json-and-xml-serialization/samples/sample10.json)]
 
-Web API'niz istemcilerden gevşek yapılandırılmış JSON nesneleri alıyorsa, istek gövdesini **Newtonsoft.Json.Linq.JObject** türüne dizileştirebilirsiniz.
+Web API 'niz istemcilerden gevşek olarak yapılandırılmış JSON nesneleri alırsa, istek gövdesinin serisini ' de birNewtonsoft.Jsiçin silebilirsiniz ** . LINQ. JObject** türü.
 
 [!code-csharp[Main](json-and-xml-serialization/samples/sample11.cs)]
 
-Ancak, genellikle güçlü dakti-si yazılan veri nesneleri kullanmak daha iyidir. Daha sonra verileri ayrıştırmanız gerekmez ve model doğrulamanın avantajlarından yararlanırsınız.
+Ancak, türü kesin belirlenmiş veri nesneleri kullanmak genellikle daha iyidir. Daha sonra verileri kendiniz ayrıştırmanıza gerek kalmaz ve model doğrulamasının avantajlarını elde edersiniz.
 
-XML seri gösterici anonim türleri veya **JObject** örneklerini desteklemez. Bu özellikleri JSON verileriniz için kullanıyorsanız, bu makalede daha sonra açıklandığı gibi XML formatter'ı ardışık kaynaktan kaldırmanız gerekir.
+XML serileştiricisi anonim türleri veya **JObject** örneklerini desteklemez. JSON verileriniz için bu özellikleri kullanırsanız, bu makalenin ilerleyen kısımlarında açıklandığı gibi, XML biçimlendirici ' i ardışık düzen öğesinden kaldırmanız gerekir.
 
 <a id="xml_media_type_formatter"></a>
-## <a name="xml-media-type-formatter"></a>XML Medya Tipi Formatter
+## <a name="xml-media-type-formatter"></a>XML Media-Type biçimlendiricisi
 
-XML biçimlendirme **XmlMediaTypeFormatter** sınıfı tarafından sağlanır. Varsayılan olarak, **XmlMediaTypeFormatter** serileştirme gerçekleştirmek için **DataContractSerializer** sınıfını kullanır.
+XML biçimlendirmesi **Xmlmediatypeformatter** sınıfı tarafından sağlanır. Varsayılan olarak, **Xmlmediatypeformatter** serileştirme işlemini gerçekleştirmek için **DataContractSerializer** sınıfını kullanır.
 
-İsterseniz, **XmlMediaTypeFormatter'ı** **DataContractSerializer**yerine **XmlSerializer** kullanacak şekilde yapılandırabilirsiniz. Bunu yapmak için, **UseXmlSerializer** özelliğini **doğru**olarak ayarlayın:
+Tercih ederseniz, **Xmlmediatypeformatter** 'ı **DataContractSerializer**yerine **XmlSerializer** 'ı kullanacak şekilde yapılandırabilirsiniz. Bunu yapmak için **useXmlSerializer** özelliğini **true**olarak ayarlayın:
 
 [!code-csharp[Main](json-and-xml-serialization/samples/sample12.cs)]
 
-**XmlSerializer** sınıfı **DataContractSerializer'dan**daha dar bir tür kümesini destekler, ancak elde edilen XML üzerinde daha fazla denetim sağlar. Varolan bir XML şemasıyla eşleşmeniz gerekiyorsa **XmlSerializer** kullanmayı düşünün.
+**XmlSerializer** sınıfı, **DataContractSerializer**'dan daha dar bir tür kümesini destekler, ancak sonuçta elde edilen XML üzerinde daha fazla denetim sağlar. Mevcut bir XML şemasıyla eşleşmesi gerekiyorsa **XmlSerializer** kullanmayı düşünün.
 
 ### <a name="xml-serialization"></a>XML seri hale getirme
 
-Bu bölümde, varsayılan **DataContractSerializer**kullanarak XML formatter bazı özel davranışları açıklanır.
+Bu bölümde, varsayılan **DataContractSerializer**kullanılarak XML biçimlendirici 'nin bazı belirli davranışları açıklanmaktadır.
 
-Varsayılan olarak, DataContractSerializer aşağıdaki gibi çalışır:
+Varsayılan olarak, DataContractSerializer aşağıdaki gibi davranır:
 
-- Tüm ortak okuma/yazma özellikleri ve alanları seri hale getirilir. Bir özelliği veya alanı atlamak için, onu **IgnoreDataMember** özniteliğiyle süsleyin.
-- Özel ve korunan üyeler serileştirilmeyecektir.
-- Salt okunur özellikler seri hale getirilir. (Ancak, salt okunur toplama özelliğinin içeriği seri hale getirilmiştir.)
-- Sınıf ve üye adları XML'de sınıf bildiriminde göründükleri gibi yazılır.
+- Tüm genel okuma/yazma özellikleri ve alanları serileştirilir. Bir özellik veya alanı atlamak için, **ıgnoredatamember** özniteliğiyle süslenmiş.
+- Özel ve korunan Üyeler serileştirilmez.
+- Salt okuma özellikleri serileştirilmez. (Ancak, salt okunurdur bir koleksiyon özelliğinin içeriği serileştirilir.)
+- Sınıf ve üye adları, sınıf bildiriminde göründükleri gibi XML 'e tam olarak yazılır.
 - Varsayılan bir XML ad alanı kullanılır.
 
-Serileştirme üzerinde daha fazla denetime ihtiyacınız varsa, sınıfı **DataContract** özniteliğiyle dekore edebilirsiniz. Bu öznitelik mevcut olduğunda, sınıf aşağıdaki gibi serihale edilir:
+Serileştirme üzerinde daha fazla denetime ihtiyacınız varsa, bir sınıfı **DataContract** özniteliğiyle süslemek için kullanabilirsiniz. Bu öznitelik mevcut olduğunda, sınıf aşağıdaki şekilde serileştirilir:
 
-- &quot;Yaklaşımı&quot; devre dışı bırakma: Özellikler ve alanlar varsayılan olarak serileştirilemez. Bir özelliği veya alanı seri hale getirmek için, **onu DataMember** özniteliğiyle süsleyin.
-- Özel veya korumalı bir üyeyi seri hale getirmek için, **onu DataMember** özniteliğiyle süsleyin.
-- Salt okunur özellikler seri hale getirilir.
-- Sınıf adının XML'de nasıl göründüğünü değiştirmek için **DataContract** özniteliğindeki *Ad* parametresini ayarlayın.
-- Bir üye adının XML'de nasıl görüneceğini değiştirmek **için, DataMember** özyüründeki *Ad* parametresini ayarlayın.
-- XML ad alanını değiştirmek için **DataContract** *sınıfındaAd Alanı* parametresini ayarlayın.
+- &quot;Kabul etme &quot; yaklaşımı: Özellikler ve alanlar varsayılan olarak serileştirilmez. Bir özellik veya alanı seri hale getirmek için, bunu **DataMember** özniteliğiyle süsle.
+- Özel veya korumalı bir üyeyi seri hale getirmek için, bunu **DataMember** özniteliğiyle süsle.
+- Salt okuma özellikleri serileştirilmez.
+- Sınıf adının XML 'de nasıl göründüğünü değiştirmek için, **DataContract** özniteliğinde *Name* parametresini ayarlayın.
+- Bir üye adının XML 'de nasıl göründüğünü değiştirmek için, **DataMember** özniteliğinde *Name* parametresini ayarlayın.
+- XML ad alanını değiştirmek için, **DataContract** sınıfında *ad alanı* parametresini ayarlayın.
 
 <a id="xml_readonly"></a>
-### <a name="read-only-properties"></a>Salt Okunur Özellikler
+### <a name="read-only-properties"></a>Read-Only özellikleri
 
-Salt okunur özellikler seri hale getirilir. Salt okunur bir özelliğin desteközel bir alanı varsa, özel alanı **DataMember** özniteliğiyle işaretleyebilirsiniz. Bu yaklaşım, **sınıftaki DataContract** özniteliğini gerektirir.
+Salt okuma özellikleri serileştirilmez. Salt okunurdur bir özelliğin bir yedekleme özel alanı varsa, özel alanı **DataMember** özniteliğiyle işaretleyebilirsiniz. Bu yaklaşım, sınıfında **DataContract** özniteliğini gerektirir.
 
 [!code-csharp[Main](json-and-xml-serialization/samples/sample13.cs)]
 
 <a id="xml_dates"></a>
-### <a name="dates"></a>Dates
+### <a name="dates"></a>Tarihler
 
-Tarihler ISO 8601 formatında yazılmıştır. Örneğin, &quot;2012-05-23T20:21:37.9116538Z&quot;.
+Tarihler ISO 8601 biçiminde yazılır. Örneğin, &quot; 2012-05-23T20:21:37.9116538 z &quot; .
 
 <a id="xml_indenting"></a>
 ### <a name="indenting"></a>Girintileme
 
-Girintilen XML yazmak için **Girintisi** **özelliğini doğru**olarak ayarlayın:
+Girintili XML yazmak için **Girintile** özelliğini **true**olarak ayarlayın:
 
 [!code-csharp[Main](json-and-xml-serialization/samples/sample14.cs)]
 
 <a id="xml_pertype"></a>
-## <a name="setting-per-type-xml-serializers"></a>XML Serializers Başına Ayar
+## <a name="setting-per-type-xml-serializers"></a>Per-Type XML serileştiricileri ayarlama
 
-Farklı CLR türleri için farklı XML serializers ayarlayabilirsiniz. Örneğin, geriye dönük uyumluluk için **XmlSerializer** gerektiren belirli bir veri nesneniz olabilir. Bu nesne için **XmlSerializer** kullanabilir ve diğer türler için **DataContractSerializer** kullanmaya devam edebilirsiniz.
+Farklı CLR türleri için farklı XML serileştiricileri ayarlayabilirsiniz. Örneğin, geriye doğru uyumluluk için **XmlSerializer** gerektiren belirli bir veri nesneniz olabilir. Bu nesne için **XmlSerializer** 'ı kullanabilir ve diğer türler için **DataContractSerializer** kullanmaya devam edebilirsiniz.
 
-Belirli bir tür için bir XML serializer ayarlamak **için, SetSerializer'ı**arayın.
+Belirli bir tür için bir XML serileştirici ayarlamak için **setserializer**çağırın.
 
 [!code-csharp[Main](json-and-xml-serialization/samples/sample15.cs)]
 
-Bir **XmlSerializer** veya **XmlObjectSerializer**türetilen herhangi bir nesne belirtebilirsiniz.
+Bir **XmlSerializer** veya **XmlObjectSerializer**öğesinden türetilen herhangi bir nesne belirtebilirsiniz.
 
 <a id="removing_the_json_or_xml_formatter"></a>
-## <a name="removing-the-json-or-xml-formatter"></a>JSON veya XML Formatter kaldırma
+## <a name="removing-the-json-or-xml-formatter"></a>JSON veya XML biçimlendirici kaldırılıyor
 
-Kullanmak istemiyorsanız, JSON formatter veya XML formatter formatters listesinden kaldırabilirsiniz. Bunu yapmak için ana nedenleri şunlardır:
+JSON biçimlendirici veya XML biçimlendirici, bunları kullanmak istemiyorsanız Formatters listesinden kaldırabilirsiniz. Bunu yapmak için başlıca nedenler şunlardır:
 
-- Web API yanıtlarınızı belirli bir ortam türüyle sınırlamak için. Örneğin, yalnızca JSON yanıtlarını desteklemeye ve XML formatter'ı kaldırmaya karar verebilirsiniz.
-- Varsayılan formatter'ı özel bir formatter ile değiştirmek için. Örneğin, JSON formatter'ı kendi özel uygulamanızla değiştirebilirsiniz.
+- Web API yanıtlarınızı belirli bir medya türüyle sınırlamak için. Örneğin, yalnızca JSON yanıtlarını desteklemeye karar verebilir ve XML biçimlendirici ' ı kaldırabilirsiniz.
+- Varsayılan biçimlendiricisi özel bir biçimlendirici ile değiştirmek için. Örneğin, JSON biçimlendirici bir JSON biçimlendiricisi kendi özel uygulamanıza göre değiştirebilirsiniz.
 
-Aşağıdaki kod, varsayılan formatters kaldırmak için nasıl gösterir. Bunu Global.asax'ta tanımlanan **Uygulama\_Başlangıç** yönteminizden arayın.
+Aşağıdaki kod, varsayılan formatlamalara nasıl kaldırılacağını gösterir. Bunu, Global. asax içinde tanımlanan **uygulama \_ başlatma** yönteminden çağırın.
 
 [!code-csharp[Main](json-and-xml-serialization/samples/sample16.cs)]
 
 <a id="handling_circular_object_references"></a>
-## <a name="handling-circular-object-references"></a>Dairesel Nesne Başvurularının İşlemesi
+## <a name="handling-circular-object-references"></a>Döngüsel nesne başvurularını işleme
 
-Varsayılan olarak, JSON ve XML formatters değerleri olarak tüm nesneleri yazın. İki özellik aynı nesneye başvuruyorsa veya aynı nesne bir koleksiyonda iki kez görünüyorsa, madde nesneyi iki kez serileştirir. Nesne grafiğiniz döngüler içeriyorsa, bu belirli bir sorundur, çünkü serileştirici grafikte bir döngü algıladığında bir özel durum atar.
+Varsayılan olarak, JSON ve XML formatlayıcıları tüm nesneleri değer olarak yazar. İki özellik aynı nesneye başvurursanız veya aynı nesne bir koleksiyonda iki kez görünürse, biçimlendirici nesneyi iki kez serileştirilir. Bu, nesne grafikleriniz döngüler içeriyorsa, bu bir sorundur çünkü seri hale getirici grafikte bir döngü algıladığında bir özel durum oluşturur.
 
-Aşağıdaki nesne modellerini ve denetleyiciyi düşünün.
+Aşağıdaki nesne modellerini ve denetleyiciyi göz önünde bulundurun.
 
 [!code-csharp[Main](json-and-xml-serialization/samples/sample17.cs)]
 
-Bu eylemi çağırmak, formatter'ın istemciye bir durum kodu 500 (İç Sunucu Hatası) yanıtı anlamına gelen bir özel durum atmasını sağlar.
+Bu eylemi çağırmak, biçimlendirici bir durum kodu 500 (Iç sunucu hatası) yanıtına çeviren bir özel durum oluşturulmasına neden olur.
 
-JSON'daki nesne başvurularını korumak için Global.asax dosyasındaki **Uygulama\_Başlat** yöntemine aşağıdaki kodu ekleyin:
+JSON 'daki nesne başvurularını korumak için, Global. asax dosyasındaki **uygulama \_ başlatma** yöntemine aşağıdaki kodu ekleyin:
 
 [!code-csharp[Main](json-and-xml-serialization/samples/sample18.cs)]
 
-Şimdi denetleyici eylem bu gibi görünüyor JSON dönecektir:
+Artık denetleyici eylemi şuna benzer bir JSON döndürür:
 
 [!code-json[Main](json-and-xml-serialization/samples/sample19.json)]
 
-Serileştiricinin her iki &quot;nesneye de $id&quot; özelliği eklediğine dikkat edin. Ayrıca, Employee.Department özelliğinin bir döngü oluşturduğunu algılar, bu nedenle değeri bir nesne&quot;&quot;başvurusuyla değiştirir: { $ref :&quot;1&quot;}.
+Seri hale getiricinin &quot; her iki nesneye bir $id özelliği eklediğine dikkat edin &quot; . Ayrıca, Employee. Department özelliğinin bir döngü oluşturduğunu algılar, bu yüzden değeri bir nesne başvurusuyla değiştirir: { &quot; $ref &quot; : &quot; 1 &quot; }.
 
 > [!NOTE]
-> Nesne başvuruları JSON'da standart değildir. Bu özelliği kullanmadan önce, müşterilerinizin sonuçları ayrıştırıp ayrıştıramayacağını düşünün. Grafiklerden döngüleri kaldırmak daha iyi olabilir. Örneğin, Çalışan'dan Departmana bağlantı bu örnekte gerçekten gerekli değildir.
+> Nesne başvuruları JSON 'da standart değildir. Bu özelliği kullanmadan önce, istemcilerinizin sonuçları ayrıştırabilecek olup olmayacağını göz önünde bulundurun. Yalnızca grafikten döngüleri kaldırmak daha iyi olabilir. Örneğin, çalışana kadar olan bağlantı bu örnekte gerçekten gerekli değildir.
 
-XML'de nesne başvurularını korumak için iki seçeneğiniz vardır. Daha basit seçenek model `[DataContract(IsReference=true)]` sınıfınıza eklemektir. *IsReference* parametresi nesne başvuruları sağlar. **DataContract'ın** serileştirmeyi devre dışı bırakma özelliğine sahip olduğunu unutmayın, bu nedenle özelliklere **DataMember** öznitelikleri eklemeniz de gerekir:
+XML 'deki nesne başvurularını korumak için iki seçeneğiniz vardır. Daha basit seçeneği `[DataContract(IsReference=true)]` model sınıfınıza eklemektir. *IsReference* parametresi nesne başvurularını mümkün bir şekilde sunar. **DataContract** serileştirme kabul eder, bu nedenle ayrıca özelliklere **DataMember** öznitelikleri eklemeniz gerekir:
 
 [!code-csharp[Main](json-and-xml-serialization/samples/sample20.cs)]
 
-Şimdi formatter aşağıdaki benzer XML üretecek:
+Artık biçimlendirici şuna benzer bir XML oluşturacak:
 
 [!code-xml[Main](json-and-xml-serialization/samples/sample21.xml)]
 
-Model sınıfınızdaki özniteliklerden kaçınmak istiyorsanız, başka bir seçenek daha vardır: Yeni bir türe özgü **DataContractSerializer** örneği oluşturun ve constructor'da **geçerli** olan *ObjectReferences'ı koruyun'* u ayarlayın. Daha sonra bu örneği XML ortam türü nde bir tür başına serileştirici olarak ayarlayın. Aşağıdaki kod, bunun nasıl yapılacağını gösterir:
+Model sınıfınıza ait özniteliklerin önüne geçmek istiyorsanız, başka bir seçenek vardır: yeni türe özgü bir **DataContractSerializer** örneği oluşturun ve bu tür Için *preserveObjectReferences* öğesini **true** olarak ayarlayın. Sonra bu örneği, XML medya türü biçimlendirici üzerinde tür başına seri hale getirici olarak ayarlayın. Aşağıdaki kod bunun nasıl yapılacağını göstermektedir:
 
 [!code-csharp[Main](json-and-xml-serialization/samples/sample22.cs?highlight=3)]
 
 <a id="testing_object_serialization"></a>
-## <a name="testing-object-serialization"></a>Nesne Serileştirmeyi Test Etme
+## <a name="testing-object-serialization"></a>Test nesnesi serileştirme
 
-Web API'nizi tasarlarken, veri nesnelerinizin nasıl seri hale getirileceğini test etmek yararlıdır. Bunu bir denetleyici oluşturmadan veya bir denetleyici eylemi çağırmadan yapabilirsiniz.
+Web API 'nizi tasarlarken, veri nesnelerinizin nasıl seri hale getirileceğinin test olması yararlı olur. Bunu, denetleyici oluşturmadan veya bir denetleyici eylemi çağırmadan yapabilirsiniz.
 
 [!code-csharp[Main](json-and-xml-serialization/samples/sample23.cs)]

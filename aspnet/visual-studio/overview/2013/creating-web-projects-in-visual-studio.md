@@ -1,424 +1,424 @@
 ---
 uid: visual-studio/overview/2013/creating-web-projects-in-visual-studio
-title: Visual Studio 2013'te ASP.NET Web Projeleri Oluşturma | Microsoft Dokümanlar
+title: Visual Studio 2013 'de ASP.NET Web projeleri oluşturuluyor | Microsoft Docs
 author: tdykstra
-description: Bu konu Visual Studio ASP.NET web projeleri oluşturmak için seçenekleri açıklar 2013 Güncelleme ile 2013 İşte web geliştirme c için yeni özelliklerden bazıları ...
+description: Bu konuda, ASP.NET Web projeleri oluşturma seçenekleri açıklanmaktadır. güncelleştirme 3 ile Visual Studio 2013 web geliştirme c için yeni özelliklerden bazıları aşağıda verilmiştir...
 ms.author: riande
 ms.date: 12/01/2014
 ms.assetid: 61941e64-0c0d-4996-9270-cb8ccfd0cabc
 msc.legacyurl: /visual-studio/overview/2013/creating-web-projects-in-visual-studio
 msc.type: authoredcontent
 ms.openlocfilehash: fbb4cd7afa2506879d47bce980bf0164aad40c2c
-ms.sourcegitcommit: ce28244209db8615bc9bdd576a2e2c88174d318d
+ms.sourcegitcommit: c62ec20b453cee3249eb894ecd75013b57d078f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "80676050"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92345473"
 ---
 # <a name="creating-aspnet-web-projects-in-visual-studio-2013"></a>Visual Studio 2013’te ASP.NET Web Projeleri Oluşturma
 
-tarafından [Tom Dykstra](https://github.com/tdykstra)
+[Tom Dykstra](https://github.com/tdykstra) tarafından
 
-> Bu konu, Visual Studio 2013'te Güncelleme 3 ile ASP.NET web projeleri oluşturma seçeneklerini açıklar
+> Bu konu, güncelleştirme 3 ile Visual Studio 2013 'de ASP.NET Web projeleri oluşturma seçeneklerini açıklamaktadır.
 > 
-> Burada Visual Studio önceki sürümleri ile karşılaştırıldığında web geliştirme için yeni özelliklerden bazıları şunlardır:
+> Visual Studio 'nun önceki sürümleriyle karşılaştırıldığında Web geliştirme için yeni özelliklerden bazıları şunlardır:
 > 
-> - [Birden çok ASP.NET çerçevesi](#add) (Web Forms, MVC ve Web API) için destek sunan projeler oluşturmak için basit bir kullanıcı arabirimi.
-> - [ASP.NET Kimlik,](#indauth)tüm ASP.NET çerçevelerinde aynı şekilde çalışan ve IIS dışındaki web barındırma yazılımı ile çalışan yeni bir ASP.NET üyelik sistemidir.
-> - [Bootstrap'ın](#bootstrap) duyarlı tasarım ve temalı özellikler sağlamak için kullanılması.
-> - [Otomatik test proje oluşturma](#testproj) ve [Intranet site şablonu](#winauth)gibi yalnızca MVC için sunulan Web Formları için yeni özellikler.
+> - [Çoklu ASP.net çerçeveleri](#add) (Web Forms, MVC ve Web API) için destek sunan projeler oluşturmaya yönelik basit bir kullanıcı arabirimi.
+> - [ASP.NET Identity](#indauth), tüm ASP.net çerçeveleri ile aynı ve IIS dışında Web barındırma yazılımıyla birlikte çalışarak yeni bir ASP.NET üyelik sistemidir.
+> - Yanıt veren tasarım ve tema özellikleri sağlamak için [önyükleme](#bootstrap) kullanımı.
+> - Yalnızca MVC için sunulan, [otomatik test projesi oluşturma](#testproj) ve bir [Intranet site şablonu](#winauth)gibi Web Forms yeni özellikler.
 > 
-> Azure Bulut Hizmetleri veya Azure Mobil Hizmetleri için web projeleri oluşturma hakkında bilgi için Azure [Bulut Hizmetleri ve ASP.NET ile Başlayın ve](https://azure.microsoft.com/documentation/articles/cloud-services-dotnet-get-started/) Azure Mobil Hizmetleri [.NET Arka Uç ile Lider Panosu Uygulaması Oluşturma'ya](https://azure.microsoft.com/documentation/articles/mobile-services-dotnet-backend-windows-store-dotnet-leaderboard/)bakın.
+> Azure Cloud Services veya Azure Mobile Services için Web projeleri oluşturma hakkında daha fazla bilgi için bkz. [azure Cloud Services Ile çalışmaya başlama ve ASP.net](https://azure.microsoft.com/documentation/articles/cloud-services-dotnet-get-started/) ve [Azure Mobile Services .net arka ucu Ile bir Leaderboard uygulaması oluşturma](https://azure.microsoft.com/documentation/articles/mobile-services-dotnet-backend-windows-store-dotnet-leaderboard/).
 
 <a id="prerequisites"></a>
 ## <a name="prerequisites"></a>Ön koşullar
 
-Bu makale, Visual [Studio 2013](https://go.microsoft.com/fwlink/?LinkId=306566) için güncelleştirme [3](https://go.microsoft.com/fwlink/?linkid=397827&amp;clcid=0x409) yüklü olarak geçerlidir.
+Bu makale, [güncelleştirme 3](https://go.microsoft.com/fwlink/?linkid=397827&amp;clcid=0x409) ' ün yüklü olduğu [Visual Studio 2013](https://go.microsoft.com/fwlink/?LinkId=306566) için geçerlidir.
 
 <a id="wap"></a>
-## <a name="web-application-projects-versus-web-site-projects"></a>Web uygulama projeleri karşı web sitesi projeleri
+## <a name="web-application-projects-versus-web-site-projects"></a>Web uygulaması projeleri Web sitesi projelerine karşı
 
-ASP.NET web projeleri iki tür arasında bir seçim verir: *web uygulama projeleri* ve web sitesi *projeleri.* Yeni geliştirme için web uygulama projeleri öneririz ve bu makale yalnızca web uygulama projeleri için geçerlidir. Daha fazla bilgi için, MSDN sitesindeki [Visual Studio'daki Web Uygulama Projeleri ve Web Sitesi Projeleri'ne](https://msdn.microsoft.com/library/dd547590(v=vs.120).aspx) bakın.
+ASP.NET iki tür Web projesi arasında seçim sağlar: *Web uygulaması projeleri* ve *Web sitesi projeleri*. Web uygulaması projelerini yeni geliştirme için öneriyoruz ve bu makale yalnızca Web uygulaması projeleri için geçerlidir. Daha fazla bilgi için MSDN sitesinde [Visual Studio 'daki Web sitesi projelerine karşı Web uygulaması projelerine](https://msdn.microsoft.com/library/dd547590(v=vs.120).aspx) bakın.
 
 <a id="overview"></a>
-## <a name="overview-of-web-application-project-creation"></a>Web uygulaması proje oluşturmaya genel bakış
+## <a name="overview-of-web-application-project-creation"></a>Web uygulaması projesi oluşturmaya genel bakış
 
-Aşağıdaki adımlar, bir web projesinin nasıl oluşturulacak olduğunu gösterir:
+Aşağıdaki adımlarda bir Web projesinin nasıl oluşturulacağı gösterilmektedir:
 
-1. **Başlat** sayfasında veya **Dosya** menüsünde **Yeni Proje'yi** tıklatın.
-2. Yeni **Proje** iletişim kutusunda, sol bölmede **Web'i** ve orta bölmede **Web Uygulaması'nı ASP.NET** tıklatın.
+1. **Başlangıç** sayfasında veya **Dosya** menüsünde **Yeni proje** ' ye tıklayın.
+2. **Yeni proje** iletişim kutusunda sol bölmedeki **Web** ' e tıklayın ve ortadaki bölmedeki **Web uygulamasında ASP.net** .
 
     ![Yeni Proje iletişim kutusu](creating-web-projects-in-visual-studio/_static/image1.png)
 
-    [Bir Azure Bulut Hizmeti, Azure](https://docs.microsoft.com/azure/cloud-services/cloud-services-how-to-create-deploy)Mobil [Hizmeti](https://msdn.microsoft.com/library/windows/apps/dn629482.aspx)veya [Azure WebJob](https://azure.microsoft.com/documentation/articles/web-sites-dotnet-deploy-webjobs)oluşturmak için sol bölmede **Bulut'u** seçebilirsiniz. Bu konu bu şablonları kapsamaz.
-3. Sağ bölmede, uygulamanız için sistem durumu ve kullanım izlemesini istiyorsanız Proje onay **kutusuna Uygulama Öngörüleri Ekle'yi** tıklatın. Daha fazla bilgi için web [uygulamalarında performansı izleyin'](https://azure.microsoft.com/documentation/articles/app-insights-web-monitor-performance/)e bakın.
-4. Proje **Adı,** **Konum**ve diğer seçenekleri belirtin ve ardından **Tamam'ı**tıklatın.
+    [Azure bulut hizmeti](https://docs.microsoft.com/azure/cloud-services/cloud-services-how-to-create-deploy), [Azure Mobile Service](https://msdn.microsoft.com/library/windows/apps/dn629482.aspx)veya [Azure WebJob](https://azure.microsoft.com/documentation/articles/web-sites-dotnet-deploy-webjobs)oluşturmak için sol bölmedeki **bulut** ' u seçebilirsiniz. Bu konu, bu şablonları kapsamaz.
+3. Uygulamanızın sistem durumu ve kullanım izlemesini istiyorsanız sağ bölmede, **projeye Application Insights Ekle** onay kutusunu tıklatın. Daha fazla bilgi için bkz. [Web uygulamalarında performansı izleme](https://azure.microsoft.com/documentation/articles/app-insights-web-monitor-performance/).
+4. Proje **adını**, **konumunu**ve diğer seçenekleri belirtin ve ardından **Tamam**' a tıklayın.
 
-    **Yeni ASP.NET Projesi** iletişim kutusu görüntülenir.
+    **Yeni ASP.NET projesi** iletişim kutusu görüntülenir.
 
     ![Yeni Proje iletişim kutusu](creating-web-projects-in-visual-studio/_static/image2.png)
-5. Şablonu tıklatın.
+5. Bir şablona tıklayın.
 
     ![Şablon seçin](creating-web-projects-in-visual-studio/_static/image3.png)
-6. Şablonda yer almayan ek çerçeveler için destek eklemek istiyorsanız, uygun onay kutusunu tıklatın. (Gösterilen örnekte, Bir Web Forms projesine MVC ve/veya Web API ekleyebilirsiniz.)
+6. Şablona dahil olan ek çerçeveler için destek eklemek istiyorsanız, ilgili onay kutusuna tıklayın. (Gösterilen örnekte, bir Web Forms projesine MVC ve/veya Web API 'SI ekleyebilirsiniz.)
 
     ![Çerçeve ekleme](creating-web-projects-in-visual-studio/_static/image4.png)
-7. <a id="testproj"></a>Birim test projesi eklemek istiyorsanız, **birim testleri ekle'yi**tıklatın.
+7. <a id="testproj"></a>Birim testi projesi eklemek istiyorsanız **birim testleri Ekle**' ye tıklayın.
 
     ![Birim testi ekleme](creating-web-projects-in-visual-studio/_static/image5.png)
-8. Şablonun varsayılan olarak sağladığından farklı bir kimlik doğrulama yöntemi istiyorsanız, **Kimlik Doğruluğunu Değiştir'i**tıklatın.
+8. Şablonun varsayılan olarak sağladığı farklı bir kimlik doğrulama yöntemi istiyorsanız, **kimlik doğrulamasını Değiştir**' e tıklayın.
 
-    ![Kimlik doğrulama düğmesini yapılandırma](creating-web-projects-in-visual-studio/_static/image6.png)
+    ![Kimlik doğrulama düğmesini Yapılandır](creating-web-projects-in-visual-studio/_static/image6.png)
 
-    ![Kimlik doğrulama iletişim kutusunu yapılandırma](creating-web-projects-in-visual-studio/_static/image7.png)
+    ![Kimlik doğrulamasını Yapılandır iletişim kutusu](creating-web-projects-in-visual-studio/_static/image7.png)
 
 <a id="azurenewproj"></a>
-### <a name="create-a-web-app-or-virtual-machine-in-azure"></a>Azure'da bir web uygulaması veya sanal makine oluşturma
+### <a name="create-a-web-app-or-virtual-machine-in-azure"></a>Azure 'da bir Web uygulaması veya sanal makine oluşturma
 
-Visual Studio, web uygulamalarını barındırmak için Azure hizmetleriyle çalışmayı kolaylaştıran özellikler içerir. Örneğin, Visual Studio IDE'den aşağıdaki lerin tümlerini yapabilirsiniz:
+Visual Studio, Web uygulamalarını barındırmak için Azure hizmetleriyle çalışmayı kolaylaştıran özellikler içerir. Örneğin, Visual Studio IDE 'den aşağıdaki her türlü hakkı gerçekleştirebilirsiniz:
 
-- Uygulamanızı Internet üzerinden kullanılabilir hale getiren web uygulamaları veya sanal makineler oluşturun ve yönetin.
-- Bulutta çalışırken uygulama tarafından oluşturulan günlükleri görüntüleyin.
+- Uygulamanızı Internet üzerinden kullanılabilir hale getirmek için Web uygulamaları veya sanal makineler oluşturun ve yönetin.
+- Uygulama tarafından bulutta çalışırken oluşturulan günlükleri görüntüleyin.
 - Uygulama bulutta çalışırken hata ayıklama modunda uzaktan çalıştırın.
 - SQL veritabanları gibi diğer Azure hizmetlerini görüntüleyin ve yönetin.
 
-Ücretsiz web uygulamaları gibi temel hizmetleri içeren [bir Azure hesabı oluşturabilirsiniz](https://www.windowsazure.com/pricing/free-trial/) ve MSDN abonesiyseniz, ek Azure hizmetlerine yönelik aylık krediler veren [avantajları etkinleştirebilirsiniz.](https://azure.microsoft.com/pricing/member-offers/visual-studio-subscriptions/) 
+Ücretsiz olarak Web Apps gibi temel hizmetleri içeren [bir Azure hesabı oluşturabilir](https://www.windowsazure.com/pricing/free-trial/) ve bir MSDN abonesi olduğunuzda, ek Azure hizmetlerine yönelik aylık krediler sunan [avantajları etkinleştirebilirsiniz](https://azure.microsoft.com/pricing/member-offers/visual-studio-subscriptions/) . 
 
-Varsayılan olarak **Yeni ASP.NET Projesi** iletişim kutusu, yeni bir web projesi için bir web uygulaması veya sanal makine oluşturmanıza olanak tanır. Yeni bir web uygulaması veya sanal makine oluşturmak istemiyorsanız, Bulut onay kutusunda **Ana Bilgisayar'ı** temizleyin.
+Varsayılan olarak, **yeni ASP.NET projesi** iletişim kutusu yeni bir Web projesi için bir Web uygulaması veya sanal makine oluşturmanızı sağlar. Yeni bir Web uygulaması veya sanal makine oluşturmak istemiyorsanız, **bulutta konak** onay kutusunun işaretini kaldırın.
 
 ![Uzak kaynaklar oluşturma](creating-web-projects-in-visual-studio/_static/image8.png)
 
-Onay kutusu başlığı **bulutta Ana Bilgisayar** veya **Uzak Kaynaklar Oluştur**olabilir ve her iki durumda da etkisi aynıdır. Onay kutusunu seçili bırakırsanız, Visual Studio varsayılan olarak Azure Uygulama Hizmeti'nde bir web uygulaması oluşturur. İsterseniz sanal **makine** olarak değiştirmek için açılır kutusunu kullanabilirsiniz. Azure'da zaten oturum açmış değilseniz, Azure kimlik bilgileri için istenirsiniz. Oturum açtıktan sonra, bir iletişim kutusu Visual Studio'nun projeniz için oluşturacağı kaynakları yapılandırmanızı sağlar. Aşağıdaki resimde bir web uygulaması için iletişim gösterir; sanal bir makine oluşturmayı seçerseniz farklı seçenekler görüntülenir.
+Onay kutusu başlığı, **bulutta ana bilgisayar** olabilir veya **Uzak kaynaklar oluşturabilir**, aksi durumda etkilerden biri aynı olur. Onay kutusunu seçili bırakırsanız, Visual Studio varsayılan olarak Azure App Service bir Web uygulaması oluşturur. İsterseniz açılan kutuyu bir **sanal makineye** değiştirmek için kullanabilirsiniz. Zaten Azure 'da oturum açmadıysanız Azure kimlik bilgileri istenir. Oturum açtıktan sonra bir iletişim kutusu, Visual Studio 'Nun projeniz için oluşturulacağı kaynakları yapılandırmanızı sağlar. Aşağıdaki çizimde bir Web uygulaması için iletişim kutusu gösterilmektedir; bir sanal makine oluşturmayı seçerseniz farklı seçenekler görüntülenir.
 
-![Azure Uygulama Ayarlarını Yapılandırma](creating-web-projects-in-visual-studio/_static/image9.png)
+![Azure uygulama ayarlarını yapılandırma](creating-web-projects-in-visual-studio/_static/image9.png)
 
-Azure kaynakları oluşturmak için bu işlemi nasıl kullanacağınız hakkında daha fazla bilgi için azure [ve ASP.NET ile başlayın ve](https://docs.microsoft.com/azure/app-service-web/app-service-web-get-started-dotnet) Visual [Studio'ya sahip bir web sitesi için sanal makine oluşturma](https://azure.microsoft.com/documentation/articles/virtual-machines-dotnet-create-visual-studio-powershell/)bilgisine bakın.
+Bu işlemin Azure kaynakları oluşturmak için nasıl kullanılacağı hakkında daha fazla bilgi için bkz. [Azure ve ASP.NET kullanmaya başlama](https://docs.microsoft.com/azure/app-service-web/app-service-web-get-started-dotnet) ve [Visual Studio ile bir Web sitesi Için sanal makine oluşturma](https://azure.microsoft.com/documentation/articles/virtual-machines-dotnet-create-visual-studio-powershell/).
 
-Bu makalenin geri kalanı, kullanılabilir şablonlar ve seçenekleri hakkında daha fazla bilgi sağlar. Makalede ayrıca Bootstrap, düzen ve şablonlarda kullanılan temalı çerçeve tanıtılır.
+Bu makalenin geri kalanında, kullanılabilir şablonlar ve bunların seçenekleri hakkında daha fazla bilgi sağlanmaktadır. Makalede ayrıca, şablonlarda kullanılan düzen ve tema çerçevesi de önyükleme, kullanıma sunulmuştur.
 
 <a id="vs2013"></a>
-## <a name="visual-studio-2013-web-project-templates"></a>Visual Studio 2013 Web Proje Şablonları
+## <a name="visual-studio-2013-web-project-templates"></a>Visual Studio 2013 Web projesi şablonları
 
-Visual Studio, web projeleri oluşturmak için şablonlar kullanır. Proje şablonu yeni projede dosya ve klasörler oluşturabilir, NuGet paketlerini yükleyebilir ve temel bir çalışma uygulaması için örnek kod sağlayabilir. Şablonlar en son web standartlarını uygular ve ASP.NET teknolojilerinnasıl kullanılacağına ilişkin en iyi uygulamaları göstermek ve kendi uygulamanızı oluşturmanızda size hızlı bir başlangıç sağlamak için tasarlanmıştır.
+Visual Studio, Web projeleri oluşturmak için şablonlar kullanır. Proje şablonu yeni projede dosya ve klasörler oluşturabilir, NuGet paketlerini yükleyebilir ve ilkel çalışan bir uygulama için örnek kod verebilir. Şablonlar en son web standartlarını uygular ve ASP.NET teknolojilerinin nasıl kullanılacağına ilişkin en iyi yöntemleri göstermek ve kendi uygulamanızı oluşturmaya yönelik bir hızlı başlangıç sağlamak üzere tasarlanmıştır.
 
-Visual Studio 2013, .NET çerçevesinin .NET 4.5 veya sonraki sürümlerini hedefleyen projeler için web proje şablonları için aşağıdaki seçenekleri sağlar:
+Visual Studio 2013, .NET Framework 'ün .NET 4,5 veya sonraki sürümlerini hedefleyen projeler için Web projesi şablonları için aşağıdaki seçenekleri sağlar:
 
 - [Boş şablon](#empty)
-- [Web Formları şablonu](#wf)
+- [Web Forms şablonu](#wf)
 - [MVC şablonu](#mvc)
 - [Web API şablonu](#webapi)
-- [Tek Sayfa Uygulama şablonu](#spa)
-- [Azure Mobil Hizmet şablonu](https://azure.microsoft.com/documentation/articles/mobile-services-dotnet-backend-windows-store-dotnet-leaderboard/)
-- [Visual Studio 2012 Şablonları](#vs2012)
+- [Tek sayfalı uygulama şablonu](#spa)
+- [Azure mobil hizmet şablonu](https://azure.microsoft.com/documentation/articles/mobile-services-dotnet-backend-windows-store-dotnet-leaderboard/)
+- [Visual Studio 2012 şablonları](#vs2012)
 
 Ayrıca, [Facebook şablonu](#facebook)sağlayan bir Visual Studio uzantısı da yükleyebilirsiniz.
 
-.NET 4'e yönelik projelerin nasıl oluşturulabildiğini öğrenmek için visual [studio 2012 Şablonları'na](#vs2012) bakın.
+.NET 4 ' ü hedefleyen projeler oluşturma hakkında daha fazla bilgi için bu konunun ilerleyen kısımlarında yer alan [Visual Studio 2012 şablonları](#vs2012) bölümüne bakın.
 
-Mobil istemciler için ASP.NET uygulamaları nın nasıl oluşturulabildiğini öğrenmek için [ASP.NET'da Mobil Destek'e](../../../mobile/overview.md)bakın.
+Mobil istemciler için ASP.NET uygulamaları oluşturma hakkında daha fazla bilgi için bkz. [ASP.net 'de mobil destek](../../../mobile/overview.md).
 
 <a id="empty"></a>
-### <a name="empty-template"></a>Boş Şablon
+### <a name="empty-template"></a>Boş şablon
 
-Boş ASP.NET şablon, proje dosyası (*.csproj* veya .* vbproj*) ve bir *Web.config* dosyası. Klasörekle altındaki onay kutularını ve aşağıdaki etiket için **temel referansları** kullanarak Web Formları, MVC ve/veya Web API desteği ekleyebilirsiniz.
+Boş şablon, bir ASP.NET Web uygulaması için bir proje dosyası (*. csproj* veya gibi) için en az klasör ve dosya sağlar.* vbproj*) ve bir *Web.config* dosyası. Web Forms, MVC ve/veya Web API 'SI için, **Klasör Ekle ve temel başvurular:** etiketi altındaki onay kutularını kullanarak destek ekleyebilirsiniz.
 
-Boş şablon için kimlik doğrulama seçeneği kullanılamaz. Örnek uygulamalarda kimlik doğrulama işlevi uygulanır ve Boş şablon örnek bir uygulama oluşturmaz.
+Boş şablon için kimlik doğrulama seçeneği yok. Kimlik doğrulama işlevselliği örnek uygulamalarda uygulanır ve boş şablon bir örnek uygulama oluşturmaz.
 
 <a id="wf"></a>
-### <a name="web-forms-template"></a>Web Formları Şablonu
+### <a name="web-forms-template"></a>Web Forms şablonu
 
-Web Formları çerçevesi, kullanıcı lık bilgisi ve veri erişim özellikleri açısından zengin web sitelerini hızla yürütmenize izin veren şeni' dir:
+Web Forms Framework, Kullanıcı arabirimi ve veri erişim özelliklerinde zengin Web sitelerini hızlı bir şekilde oluşturmanıza olanak sağlayan aşağıdaki özellikleri sağlar:
 
-- Visual Studio'da wysiwyg tasarımcısı.
-- HTML'yi oluşturan ve özellikleri ve stilleri ayarlayarak özelleştirebileceğiniz sunucu denetimleri.
+- Visual Studio 'da bir WYSıWYG Tasarımcısı.
+- HTML işleyen ve özellikleri ve stilleri ayarlayarak özelleştirebileceğiniz sunucu denetimleri.
 - Veri erişimi ve veri görüntüleme için zengin bir denetim yelpazesi.
-- WPF gibi bir istemci uygulamasını programlayacağınız gibi programlayabildiğiniz olayları ortaya çıkaran bir olay modeli.
-- HTTP istekleri arasındaki durum (verilerin) otomatik olarak korunması.
+- WPF gibi bir istemci uygulamasını programlayabilirsiniz gibi programlayabilirsiniz.
+- HTTP istekleri arasında durum (veri) otomatik olarak korunması.
 
-Genel olarak, Bir Web Forms uygulaması oluşturmak, ASP.NET MVC çerçevesini kullanarak aynı uygulamayı oluşturmaktan daha az programlama çabası gerektirir. Ancak, Web Formları sadece hızlı uygulama geliştirme için değildir. Web Formları'nın üzerine inşa edilmiş birçok karmaşık ticari uygulama ve çerçeve vardır.
+Genel olarak, Web Forms bir uygulama oluşturmak, ASP.NET MVC çerçevesini kullanarak aynı uygulamayı oluşturmaktan daha az programlama çabasını gerektirir. Ancak, Web Forms yalnızca hızlı uygulama geliştirmeye yönelik değildir. Web Forms en üstünde oluşturulmuş çok karmaşık ticari uygulamalar ve çerçeveler vardır.
 
-Bir Web Forms sayfası ve sayfadaki denetimler otomatik olarak tarayıcıya gönderilen biçimlendirmenin çoğunu oluşturduğundan, MVC'nin sunduğu ASP.NET HTML üzerinde ince taneli denetime sahip değilsiniz. Sayfaları ve denetimleri yapılandırmak için bildirimsel model, yazmanız gereken kod miktarını en aza indirir, ancak HTML ve HTTP'nin bazı davranışlarını gizler. Örneğin, bir denetim tarafından tam olarak hangi biçimlendirmenin oluşturulabileceğini belirtmek her zaman mümkün değildir.
+Bir Web Forms sayfası ve sayfadaki denetimler tarayıcıya gönderilen biçimlendirmenin çoğunu otomatik olarak oluşturduğundan, ASP.NET MVC 'nin sunduğu HTML üzerinde ayrıntılı denetim türü yoktur. Sayfaları ve denetimleri yapılandırmaya yönelik bildirim temelli model, HTML ve HTTP 'nin bazı davranışlarının yazılması için yazdığınız kod miktarını en aza indirir. Örneğin, bir denetim tarafından tam olarak hangi biçimlendirmenin üretibileceğini belirtmek her zaman mümkün değildir.
 
-Web Forms çerçevesi, [test odaklı geliştirme,](http://en.wikipedia.org/wiki/Test-driven_development) [endişelerin ayrılması,](http://en.wikipedia.org/wiki/Separation_of_concerns) [kontrol ters çevrilmesi](http://en.wikipedia.org/wiki/Inversion_of_control)ve [bağımlılık enjeksiyonu](http://en.wikipedia.org/wiki/Dependency_injection)gibi kalıptabanlı geliştirme uygulamalarına MVC ASP.NET kadar kolay bir şekilde kendini ödünç vermez. Bu şekilde çarpana kodu yazmak istiyorsanız, yapabilirsiniz; sadece ASP.NET MVC çerçevesinde olduğu gibi otomatik değil. ASP.NET Web Forms MVP projesi, Web [Formlarının](http://webformsmvp.com/) sunmak üzere inşa edildiği hızlı gelişimi sürdürürken endişelerin ve test edilebilirliğin ayrılmasını kolaylaştıran bir yaklaşım gösterir. Microsoft SharePoint, Web Forms MVP'si üzerine kurulmuştur.
+Web Forms Framework kendisini, [test odaklı geliştirme](http://en.wikipedia.org/wiki/Test-driven_development), [kaygıları ayırma](http://en.wikipedia.org/wiki/Separation_of_concerns), [denetimin sürümü](http://en.wikipedia.org/wiki/Inversion_of_control)ve [bağımlılık ekleme](http://en.wikipedia.org/wiki/Dependency_injection)gibi desenlere dayalı geliştirme uygulamalarına ASP.NET MVC olarak kullanıma hazır değildir. Bu şekilde kod yazmak istiyorsanız, şunları yapabilirsiniz; ASP.NET MVC çerçevesinde olduğu kadar otomatik değildir. [ASP.NET Web Forms MVP](http://webformsmvp.com/) projesinde, Web Forms sunmaya yönelik olarak oluşturulan hızlı geliştirmeyi sürdürirken kaygıları ve test edilebilir ayrımı sağlayan bir yaklaşım gösterilmektedir. Microsoft SharePoint, Web Forms MVP üzerine kurulmuştur.
 
-Web Formları şablonu, duyarlı tasarım ve temalı özellikler sağlamak için [Bootstrap](#bootstrap) kullanan örnek bir Web Forms uygulaması oluşturur. Aşağıdaki resimde ana sayfa gösterilmektedir.
+Web Forms şablonu, yanıt veren tasarım ve tema özellikleri sağlamak için [bootstrap](#bootstrap) kullanan bir örnek Web Forms uygulaması oluşturur. Aşağıdaki çizimde giriş sayfası gösterilmektedir.
 
-![Web Formları şablon uygulaması giriş sayfası](creating-web-projects-in-visual-studio/_static/image10.png)
+![Web Forms şablon uygulaması giriş sayfası](creating-web-projects-in-visual-studio/_static/image10.png)
 
-Web Formları hakkında daha fazla bilgi için [ASP.NET Web Formları'na](https://asp.net/web-forms)bakın. Web Formları şablonu sizin için ne yaptığı hakkında bilgi için Visual [Studio 2013'ün kullanımıyla temel bir Web Formları uygulaması oluşturma](https://blogs.msdn.com/b/webdev/archive/2013/12/19/building-a-basic-web-forms-application-using-visual-studio-2013.aspx)'ya bakın.
+Web Forms hakkında daha fazla bilgi için bkz. [ASP.NET Web Forms](https://asp.net/web-forms). Web Forms şablonunun sizin için yaptığı bilgiler hakkında daha fazla bilgi için, bkz. [Visual Studio 2013 kullanarak temel Web Forms uygulaması oluşturma](https://blogs.msdn.com/b/webdev/archive/2013/12/19/building-a-basic-web-forms-application-using-visual-studio-2013.aspx).
 
 <a id="mvc"></a>
-### <a name="mvc-template"></a>MVC Şablonu
+### <a name="mvc-template"></a>MVC şablonu
 
-ASP.NET MVC, [test odaklı geliştirme,](http://en.wikipedia.org/wiki/Test-driven_development) [endişelerin ayrılması,](http://en.wikipedia.org/wiki/Separation_of_concerns) [kontrol ters çevrilmesi](http://en.wikipedia.org/wiki/Inversion_of_control)ve bağımlılık [enjeksiyonu](http://en.wikipedia.org/wiki/Dependency_injection)gibi kalıp tabanlı geliştirme uygulamalarını kolaylaştırmak üzere tasarlanmıştır. Çerçeve, bir web uygulamasının iş mantığı katmanını sunum katmanından ayırmayı teşvik eder. Uygulamayı modellere (M), görünümlere (V) ve denetleyicilere (C) bölerek, mvc ASP.NET daha büyük uygulamalarda karmaşıklığı yönetmeyi kolaylaştırabilir.
+ASP.NET MVC, [test odaklı geliştirme](http://en.wikipedia.org/wiki/Test-driven_development), [kaygıları ayırma](http://en.wikipedia.org/wiki/Separation_of_concerns), [denetimin INVERSION](http://en.wikipedia.org/wiki/Inversion_of_control)ve [bağımlılık ekleme](http://en.wikipedia.org/wiki/Dependency_injection)gibi desenlere dayalı geliştirme uygulamalarını kolaylaştırmak için tasarlanmıştır. Framework, bir Web uygulamasının iş mantığı katmanını sunum katmanından ayırmayı teşvik eder. Uygulamayı modeller (M), görünümler (V) ve denetleyiciler (C) olarak bölerek ASP.NET MVC, daha büyük uygulamalarda karmaşıklığı yönetmeyi kolaylaştırabilir.
 
-MVC ASP.NET, Web Formlar'dan daha doğrudan HTML ve HTTP ile çalışırsınız. Örneğin, Web Formları HTTP istekleri arasındaki durumu otomatik olarak koruyabilir, ancak açıkça MVC'de kodlaman gerekir. MVC modelinin avantajı, uygulamanızın tam olarak ne yaptığı ve web ortamında nasıl davrandığı üzerinde tam kontrol edebilmenizi sağlamasıdır. Dezavantajı daha fazla kod yazmak zorunda olmasıdır.
+ASP.NET MVC ile doğrudan HTML ve HTTP ile Web Forms daha fazla çalışırsınız. Örneğin, Web Forms HTTP istekleri arasındaki durumu otomatik olarak koruyabilir, ancak MVC 'de açıkça kod yazmanız gerekir. MVC modelinin avantajı, tam olarak uygulamanızın yaptığı ve Web ortamında nasıl davrandığı konusunda tam denetim yapmanızı sağlar. Dezavantajı, daha fazla kod yazmanız gerekir.
 
-MVC genişletilebilir olacak şekilde tasarlanmıştır, güç geliştiricilerkendi uygulama ihtiyaçları için çerçeve özelleştirmek için yeteneği sağlayan. Buna ek olarak, ASP.NET MVC kaynak kodu bir OSI lisansı altında kullanılabilir.
+MVC genişletilebilir olacak şekilde tasarlandı, Power Developers 'ın uygulama ihtiyaçları için çerçeveyi özelleştirme yeteneği sağlar. Ayrıca, ASP.NET MVC kaynak kodu bir OSı lisansı altında bulunabilir.
 
-MVC şablonu, duyarlı tasarım ve temalı özellikler sağlamak için [Bootstrap](#bootstrap) kullanan örnek bir MVC 5 uygulaması oluşturur. Aşağıdaki resimde ana sayfa gösterilmektedir.
+MVC şablonu, yanıt veren tasarım ve tema özellikleri sağlamak için [bootstrap](#bootstrap) kullanan örnek bir MVC 5 uygulaması oluşturur. Aşağıdaki çizimde giriş sayfası gösterilmektedir.
 
 ![MVC örnek uygulaması](creating-web-projects-in-visual-studio/_static/image11.png)
 
-MVC hakkında daha fazla bilgi için [ASP.NET MVC'ye](https://asp.net/mvc)bakın. MVC 4 şablonu nasıl seçilecek hakkında daha fazla bilgi için bu makalenin ilerleyen saatlerinde [Visual Studio 2012 şablonlarına](#vs2012) bakın.
+MVC hakkında daha fazla bilgi için bkz. [ASP.NET MVC](https://asp.net/mvc). MVC 4 şablonunu seçme hakkında daha fazla bilgi için bu makaledeki [Visual Studio 2012 şablonlar](#vs2012) bölümüne bakın.
 
 <a id="webapi"></a>
-### <a name="web-api-template"></a>Web API Şablonu
+### <a name="web-api-template"></a>Web API şablonu
 
-Web API şablonu, MVC'yi temel alan API yardım sayfaları da dahil olmak üzere Web API'sini temel alan örnek bir web hizmeti oluşturur.
+Web API şablonu, MVC 'ye dayalı API Yardım sayfaları da dahil olmak üzere Web API 'sini temel alan örnek bir Web hizmeti oluşturur.
 
-ASP.NET Web API, tarayıcılar ve mobil cihazlar da dahil olmak üzere çok çeşitli istemcilere ulaşan HTTP hizmetlerinin oluşturulmasını kolaylaştıran bir çerçevedir. ASP.NET Web API,.NET Framework üzerinde yeni hizmetler oluşturmak için ideal bir platformdur.
+ASP.NET Web API 'SI, tarayıcılar ve mobil cihazlar dahil olmak üzere çok çeşitli istemcilere ulaşan HTTP Hizmetleri oluşturmayı kolaylaştıran bir çerçevedir. ASP.NET Web API 'SI, .NET Framework daha fazla hizmet oluşturmaya yönelik ideal bir platformdur.
 
-Web API şablonu örnek bir web hizmeti oluşturur. Aşağıdaki resimlerörnek yardım sayfalarını gösterir.
+Web API şablonu, örnek bir Web hizmeti oluşturur. Aşağıdaki çizimler, örnek yardım sayfalarını gösterir.
 
-![Web API yardım sayfası](creating-web-projects-in-visual-studio/_static/image12.png)
+![Web API Yardım sayfası](creating-web-projects-in-visual-studio/_static/image12.png)
 
-![GET API için Web API yardım sayfası](creating-web-projects-in-visual-studio/_static/image13.png)
+![GET API için Web API Yardım sayfası](creating-web-projects-in-visual-studio/_static/image13.png)
 
-Web API hakkında daha fazla bilgi için [ASP.NET Web API'ye](https://asp.net/web-api)bakın.
+Web API 'SI hakkında daha fazla bilgi için bkz. [ASP.NET Web API](https://asp.net/web-api).
 
 <a id="spa"></a>
-### <a name="single-page-application-template"></a>Tek Sayfa uygulama şablonu
+### <a name="single-page-application-template"></a>Tek sayfalı uygulama şablonu
 
-Tek Sayfa uygulaması (SPA) şablonu, istemcide JavaScript, HTML 5 ve [KnockoutJS](http://knockoutjs.com/) kullanan bir örnek uygulama oluşturur ve sunucuda Web API'ASP.NET.
+Tek sayfalı uygulama (SPA) şablonu, istemcide JavaScript, HTML 5 ve [altını gizleme](http://knockoutjs.com/) ve ASP.NET Web API 'si kullanan bir örnek uygulama oluşturur.
 
-SPA şablonu için tek kimlik doğrulama seçeneği [Bireysel Kullanıcı Hesapları'dır.](#indauth)
+SPA şablonuna yönelik tek kimlik doğrulama seçeneği [bireysel kullanıcı hesaplarıdır](#indauth).
 
-Aşağıdaki resimde, SPA şablonunun oluşturduğu örnek uygulamanın ilk durumu gösterilmektedir.
+Aşağıdaki çizimde, SPA şablonunun Derlemeleriyle ilgili örnek uygulamanın ilk durumu gösterilmektedir.
 
 ![SPA örnek uygulaması](creating-web-projects-in-visual-studio/_static/image14.png)
 
-SPA şablonunu kullanarak uygulama oluşturma hakkında daha fazla bilgi için [Web API - Dış Kimlik Doğrulama Hizmetleri'ne](../../../web-api/overview/security/external-authentication-services.md)bakın.
+SPA şablonunu kullanarak bir uygulama oluşturma hakkında daha fazla bilgi için bkz. [Web API-dış kimlik doğrulama hizmetleri](../../../web-api/overview/security/external-authentication-services.md).
 
-ASP.NET Tek Sayfa uygulamaları ve KnockoutJS dışındaki JavaScript çerçevelerini kullanan ek SPA şablonları hakkında daha fazla bilgi için aşağıdaki kaynaklara bakın:
+ASP.NET tek sayfalı uygulamalar hakkında daha fazla bilgi edinmek ve altını gizleme dışında JavaScript çerçeveleri kullanan ek SPA şablonları hakkında daha fazla bilgi için aşağıdaki kaynaklara bakın:
 
-- [ASP.NET Tek Sayfa Uygulaması](../../../single-page-application/index.md).
-- [VS2013 RC için SPA Şablonundaki Güvenlik Özelliklerini Anlama](https://blogs.msdn.com/b/webdev/archive/2013/09/20/understanding-security-features-in-spa-template.aspx)
-- [Tek Sayfauygulamaları: ASP.NET ile Modern, Duyarlı Web Uygulamaları Oluşturun](https://msdn.microsoft.com/magazine/dn463786.aspx)
+- [ASP.net tek sayfalı uygulama](../../../single-page-application/index.md).
+- [VS2013 RC için SPA şablonundaki güvenlik özelliklerini anlama](https://blogs.msdn.com/b/webdev/archive/2013/09/20/understanding-security-features-in-spa-template.aspx)
+- [Tek sayfalı uygulamalar: ASP.NET ile modern, yanıt veren Web Apps oluşturma](https://msdn.microsoft.com/magazine/dn463786.aspx)
 
 <a id="facebook"></a>
-### <a name="facebook-template"></a>Facebook Şablonu
+### <a name="facebook-template"></a>Facebook şablonu
 
-[Facebook şablonu sağlayan bir Visual Studio uzantısı](https://go.microsoft.com/fwlink/?LinkID=509965&amp;clcid=0x409)yükleyebilirsiniz. Bu şablon, Facebook web sitesi içinde çalışacak şekilde tasarlanmış bir örnek uygulama oluşturur. MVC ASP.NET dayanır ve gerçek zamanlı güncelleştirme işlevleri için Web API kullanır.
+[Facebook şablonu sağlayan bir Visual Studio uzantısı](https://go.microsoft.com/fwlink/?LinkID=509965&amp;clcid=0x409)yükleyebilirsiniz. Bu şablon, Facebook web sitesi içinde çalışacak şekilde tasarlanan bir örnek uygulama oluşturur. Bu, ASP.NET MVC 'yi temel alır ve gerçek zamanlı güncelleştirme işlevselliği için Web API kullanır.
 
-Facebook uygulamaları Facebook sitesi içinde çalıştığı ve Facebook'un kimlik doğrulamasını güvendiği için Facebook şablonu için kimlik doğrulama seçeneği yoktur.
+Facebook uygulaması Facebook sitesi içinde çalıştığından ve Facebook kimlik doğrulamasına güventiğinden Facebook şablonu için kimlik doğrulama seçeneği yok.
 
-ASP.NET Facebook uygulamaları hakkında daha fazla bilgi için [MVC Facebook API'sını güncelleştirmeye](https://blogs.msdn.com/b/webdev/archive/2014/06/10/updating-the-mvc-facebook-api.aspx)bakın.
+ASP.NET Facebook uygulamaları hakkında daha fazla bilgi için bkz. [MVC Facebook API 'Sini güncelleştirme](https://blogs.msdn.com/b/webdev/archive/2014/06/10/updating-the-mvc-facebook-api.aspx).
 
 <a id="vs2012"></a>
-### <a name="visual-studio-2012-templates"></a>Visual Studio 2012 Şablonları
+### <a name="visual-studio-2012-templates"></a>Visual Studio 2012 şablonları
 
-Visual Studio 2013 web proje oluşturma iletişim kutusu Visual Studio 2012'de bulunan bazı şablonlara erişim sağlamaz. Bu şablonlardan birini kullanmak istiyorsanız, Visual Studio Yeni Proje iletişim kutusunun sol bölmesinde Visual Studio 2012 düğüm'üne tıklayabilirsiniz.
+Visual Studio 2013 Web projesi oluşturma iletişim kutusu, Visual Studio 2012 ' de bulunan bazı şablonlara erişim sağlamaz. Bu şablonlardan birini kullanmak istiyorsanız, Visual Studio yeni proje iletişim kutusunun sol bölmesinde Visual Studio 2012 düğümüne tıklayabilirsiniz.
 
 ![Visual Studio 2012 şablonları](creating-web-projects-in-visual-studio/_static/image15.png)
 
-**Visual Studio 2012** düğümü, Visual Studio 2013 için varsayılan şablonlar listesinde erişiminiz olmayan aşağıdaki web şablonlarını seçmenize olanak tanır:
+**Visual Studio 2012** düğümü, Visual Studio 2013 için varsayılan şablon listesinde erişiminizin olmadığı aşağıdaki Web şablonlarını seçmenizi sağlar:
 
-- ASP.NET MVC 4 Web Uygulaması
-- ASP.NET Dinamik Veri Varlıkları Web Uygulaması
-- ASP.NET AJAX Sunucu Kontrolü
-- ASP.NET AJAX Sunucu Kontrol Genişletici
-- ASP.NET Sunucu Denetimi
+- ASP.NET MVC 4 Web uygulaması
+- ASP.NET dinamik veri varlıkları Web uygulaması
+- ASP.NET AJAX sunucu denetimi
+- ASP.NET AJAX Server Control genişletici
+- ASP.NET sunucu denetimi
 
 <a id="bootstrap"></a>
-## <a name="bootstrap-in-the-visual-studio-2013-web-project-templates"></a>Görsel Stüdyo 2013 web proje şablonlarında Bootstrap
+## <a name="bootstrap-in-the-visual-studio-2013-web-project-templates"></a>Visual Studio 2013 Web projesi şablonlarında önyükleme
 
-Visual Studio 2013 proje şablonları [Bootstrap](http://getbootstrap.com/)kullanın , bir düzen ve Twitter tarafından oluşturulan temalı çerçeve. Bootstrap, duyarlı tasarım sağlamak için CSS3 kullanır, bu da düzenlerin farklı tarayıcı pencere boyutlarına dinamik olarak adapte olabileceği anlamına gelir. Örneğin, geniş bir tarayıcı penceresinde Web Formları şablonu tarafından oluşturulan ana sayfa aşağıdaki çizime benzer:
+Visual Studio 2013 proje şablonları, Twitter tarafından oluşturulan bir düzen ve tema çerçevesi olan [önyükleme](http://getbootstrap.com/)'yi kullanır. Bootstrap, yanıt veren tasarım sağlamak için CSS3 kullanır, bu da mizanpajlar farklı tarayıcı pencere boyutlarına dinamik olarak uyum sağlayabilir. Örneğin, geniş bir tarayıcı penceresinde Web Forms şablonu tarafından oluşturulan giriş sayfası aşağıdaki çizimde gösterildiği gibi görünür:
 
-![Web Formları şablon uygulaması giriş sayfası](creating-web-projects-in-visual-studio/_static/image16.png)
+![Web Forms şablon uygulaması giriş sayfası](creating-web-projects-in-visual-studio/_static/image16.png)
 
-Pencereyi daraltın ve yatay olarak düzenlenmiş sütunlar dikey düzenlemeye taşınır:
+Pencereyi daha dar yapın ve yatay olarak düzenlenmiş sütunlar dikey düzenlemeye geçer:
 
-![Bootstrap dikey kolon düzenlemesi](creating-web-projects-in-visual-studio/_static/image17.png)
+![Dikey sütun düzenlemesini önyükleme](creating-web-projects-in-visual-studio/_static/image17.png)
 
-Pencereyi biraz daha daraltın ve yatay üst menü dikey olarak yönlendirilmiş bir menüye genişletmek için tıklatabileceğiniz bir simgeye dönüşür:
+Pencereyi biraz daha daraltın ve yatay üst menü, dikey yönelimli bir menüye genişletmek için tıklabileceğiniz bir simgeye dönüşür:
 
-![Bootstrap menü simgesi](creating-web-projects-in-visual-studio/_static/image18.png)
+![Önyükleme menüsü simgesi](creating-web-projects-in-visual-studio/_static/image18.png)
 
-![Bootstrap dikey menü](creating-web-projects-in-visual-studio/_static/image19.png)
+![Önyükleme dikey menüsü](creating-web-projects-in-visual-studio/_static/image19.png)
 
-Uygulamanın görünümündeki ve hislerindeki bir değişikliği kolayca etkilemek için Bootstrap'ın temalı özelliğini de kullanabilirsiniz. Örneğin, temayı değiştirmek için aşağıdaki adımları yapabilirsiniz.
+Uygulamanın görünüm veya hisde bir değişikliği kolay bir şekilde uygulamak için önyükleme 'nin Tema özelliğini de kullanabilirsiniz. Örneğin, temayı değiştirmek için aşağıdaki adımları uygulayabilirsiniz.
 
-1. Tarayıcınızda, bir [http://Bootswatch.com](http://Bootswatch.com)tema seçin ve ardından **İndir'i**tıklatın. (Bu indirir *bootstrap.min.css* varsayılan olarak; CSS kodunu incelemek istiyorsanız, minified sürümü yerine *bootstrap.css* olsun.)
+1. Tarayıcınızda şuraya gidin [http://Bootswatch.com](http://Bootswatch.com) , bir tema seçin ve ardından **İndir**' e tıklayın. (Bu, varsayılan olarak *Bootstrap. min. css* dosyasını INDIRIR; CSS kodunu incelemek istiyorsanız, Mini belirtilen sürüm yerine *Bootstrap. css* dosyasını alın.)
 2. İndirilen CSS dosyasının içeriğini kopyalayın.
-3. Visual Studio'da, *İçerik* klasöründe *bootstrap-theme.css* adlı yeni bir **Stil Sayfası** dosyası oluşturun ve indirilen CSS kodunu yapıştırın.
-4. Açık *\_App Başlat /Bundle.config* ve *bootstrap.css için bootstrap.css* *değiştirin*.
+3. Visual Studio 'da, *içerik* klasöründe *bootstrap-Theme. css* adlı yeni bir **stıl sayfası** oluşturun ve indirilen CSS kodunu bu dosyaya yapıştırın.
+4. *Uygulama \_ başlat/Bundle.config* açın ve *Bootstrap. css* ' ye *bootstrap-Theme. css*' ye geçin.
 
-Projeyi yeniden çalıştırın ve uygulama yeni bir görünüme sahip. Aşağıdaki resimde Amelia temasının etkisi gösterilmektedir:
+Projeyi yeniden çalıştırın ve uygulamanın yeni bir görünümü vardır. Aşağıdaki çizimde Amelia temasının etkisi gösterilmektedir:
 
 ![Bootstrap Amelia teması](creating-web-projects-in-visual-studio/_static/image20.png)
 
-Birçok Bootstrap temalar mevcuttur, hem ücretsiz ve prim sürümleri. Bootstrap ayrıca [açılır bırakma,](http://twitter.github.io/bootstrap/components.html#dropdowns) [düğme grupları](http://twitter.github.io/bootstrap/components.html#buttonGroups)ve [simgeler](http://twitter.github.io/bootstrap/base-css.html#images)gibi çok çeşitli UI bileşenleri sunar. Bootstrap hakkında daha fazla bilgi için [Bootstrap sitesine](http://twitter.github.io/bootstrap/)bakın.
+Birçok önyükleme teması mevcuttur, hem ücretsiz hem de Premium sürümler. Bootstrap Ayrıca, [açılan](http://twitter.github.io/bootstrap/components.html#dropdowns)listeler, [düğme grupları](http://twitter.github.io/bootstrap/components.html#buttonGroups)ve [simgeler](http://twitter.github.io/bootstrap/base-css.html#images)gibi çok çeşitli kullanıcı arabirimi bileşenleri sunar. Önyükleme hakkında daha fazla bilgi için bkz. [önyükleme sitesi](http://twitter.github.io/bootstrap/).
 
-Visual Studio'da Web Forms tasarımcısını kullanıyorsanız, tasarımcının CSS3'ü desteklemediğini, bu nedenle Bootstrap temalarının veya duyarlı düzen değişikliklerinin tüm etkilerini doğru şekilde göstermediğini unutmayın. Ancak, Web Formları sayfaları bir tarayıcıyla görüntülendiğinde doğru şekilde görüntülenir.
+Visual Studio 'da Web Forms Tasarımcısını kullanıyorsanız, tasarımcı 'nın CSS3 desteklemediğini, bu nedenle önyükleme temalarının veya yanıt veren düzen değişikliklerinin tüm etkilerini doğru bir şekilde göstermediğini unutmayın. Ancak, Web Forms sayfaları bir tarayıcıyla görüntülenirken doğru şekilde görüntülenir.
 
 <a id="add"></a>
-## <a name="adding-support-for-additional-frameworks"></a>Ek Çerçeveler için Destek Ekleme
+## <a name="adding-support-for-additional-frameworks"></a>Ek çerçeveler için destek ekleme
 
-Bir şablon seçtiğinizde, şablon tarafından kullanılan framework(ler) için onay kutusu otomatik olarak seçilir. Örneğin, **Web Formları** şablonu seçerseniz, Web **Formları** onay kutusu seçilir ve bunu temizleyemezsiniz.
+Bir şablon seçtiğinizde, şablon tarafından kullanılan çerçeve (ler) i onay kutusu otomatik olarak seçilir. Örneğin, **Web Forms** şablonunu seçerseniz, **Web Forms** onay kutusu seçilidir ve bunu temizleyemezsiniz.
 
 ![Şablon seçin](creating-web-projects-in-visual-studio/_static/image21.png)
 
 ![Çerçeve ekleme](creating-web-projects-in-visual-studio/_static/image22.png)
 
-Proje oluşturulduğunda bu çerçeve için destek eklemek için şablona dahil olmayan bir çerçeve için onay kutusunu seçebilirsiniz. Örneğin, MVC şablonu seçtiğinizde Web Forms *.aspx* sayfalarının kullanımını etkinleştirmek için **Web Formları** onay kutusunu seçin. Veya Web Formları şablonu kullanırken MVC'yi etkinleştirmek için **MVC** onay kutusunu tıklatın. Bir çerçeve eklemek, tasarım zamanının yanı sıra çalışma zamanı desteği sağlar. Örneğin, bir Web Forms projesine MVC desteği eklerseniz, denetleyicileri ve görünümleri iskeleye göre şekillendirebilirsiniz.
+Proje oluşturulduğunda, bu çerçeveye yönelik destek eklemek için şablonda bulunmayan bir çerçevenin onay kutusunu seçebilirsiniz. Örneğin, MVC şablonunu seçtiğinizde Web Forms *. aspx* sayfalarının kullanımını etkinleştirmek için **Web Forms** onay kutusunu seçin. Veya Web Forms şablonunu kullanırken MVC 'yi etkinleştirmek için **MVC** onay kutusuna tıklayın. Bir Framework eklemek tasarım zamanı ve çalışma zamanı desteği sunar. Örneğin, bir Web Forms projesine MVC desteği eklerseniz, fkatlama denetleyicilerini ve görünümlerini dolandırabileceksiniz.
 
-Web Formlarını ve MVC'yi bir projede birleştirir ve Web [Formlarında Dost URL'leri](http://www.hanselman.com/blog/IntroducingASPNETFriendlyUrlsCleanerURLsEasierRoutingAndMobileViewsForASPNETWebForms.aspx) etkinleştirirseniz, bir URL'nin birden çok olası hedefi olduğu beklenmeyen yönlendirme sorunları olabilir. İlk olarak tanımlanan yollar öncelikli olacaktır. Örneğin, `Home` bir denetleyiciniz ve *Home.aspx* sayfanız `http://contoso.com/home` varsa, *RouteConfig.cs*yöntemi ni çağırmadan `MapRoute` `EnableFriendlyUrls` önce yöntemi ararsanız URL *Home.aspx'e* gider veya `Home` daha önce `EnableFriendlyUrls` `MapRoute` ararsanız aynı URL denetleyiciniz için varsayılan görünüme gider.
+Bir projede Web Forms ve MVC 'yi birleştirip Web Forms [kolay URL 'leri](http://www.hanselman.com/blog/IntroducingASPNETFriendlyUrlsCleanerURLsEasierRoutingAndMobileViewsForASPNETWebForms.aspx) etkinleştirirseniz, BIR URL 'nin birden çok olası hedefi olduğu beklenmeyen yönlendirme sorunları olabilir. İlk olarak tanımlanan yollar öncelikli olur. Örneğin, bir `Home` denetleyicinize ve bir *Home. aspx* sayfanız varsa, `http://contoso.com/home` RouteConfig.cs ' de yöntemi çağırmadan önce yöntemi çağırırsanız, URL *Home. aspx* ' e gider `EnableFriendlyUrls` veya daha `MapRoute` *RouteConfig.cs* `Home` önce çağrdıysanız aynı URL, denetleyicinizin varsayılan görünümüne gidecektir `MapRoute` `EnableFriendlyUrls` .
 
-Çerçeve eklemek herhangi bir örnek uygulama işlevi eklemez. Örneğin, MVC şablonu seçtiğinizde Web Formları desteği eklerseniz, *Varsayılan.aspx* ana sayfa dosyası oluşturulmaz. Yalnızca çerçeveyi desteklemek için gereken klasörler, dosyalar ve başvurular eklenir. Bu nedenle, çerçeve eklemek, şablonlar tarafından oluşturulan örnek uygulamalarda kod tarafından uygulanan kimlik doğrulama seçeneklerini değiştirmez. Örneğin, Boş şablonunu seçip Web Formları veya MVC desteği eklerseniz, **Kimlik Doğrulamayı Yapılandır** düğmesi yine devre dışı bırakılır.
+Çerçeve eklemek, örnek uygulama işlevselliği eklemez. Örneğin, MVC şablonunu seçtiğinizde Web Forms desteği eklerseniz, *default. aspx* giriş sayfası dosyası oluşturulmaz. Yalnızca çerçeveyi desteklemek için gereken klasörler, dosyalar ve başvurular eklenir. Bu nedenle, çerçeveler eklendiğinde, şablonlar tarafından oluşturulan örnek uygulamalardaki kodla uygulanan kimlik doğrulama seçenekleri değişmez. Örneğin, boş şablonu seçer ve Web Forms veya MVC desteği eklerseniz, **kimlik doğrulamasını Yapılandır** düğmesi yine de devre dışı bırakılır.
 
-Aşağıdaki bölümlerde her onay kutusunun etkisi kısaca açıklayınız.
+Aşağıdaki bölümlerde her onay kutusunun etkisi kısaca açıklanmıştır.
 
-### <a name="add-web-forms-support"></a>Web Formları Desteği Ekle
+### <a name="add-web-forms-support"></a>Web Forms desteği ekle
 
-Boş *\_Uygulama Verileri* ve *Modelleri* klasörleri ve *Global.asax* dosyası oluşturur. Bunlar zaten Boş şablon dışındaki tüm şablonlar tarafından oluşturulur, bu nedenle Web Formları onay kutusunu seçmek diğer şablonlar için fark etmez.
+Boş *uygulama \_ verileri* ve *modeller* klasörleri ve *Global. asax* dosyası oluşturur. Bunlar, boş şablon dışındaki tüm şablonlar tarafından zaten oluşturulmuştur, bu nedenle Web Forms onay kutusunun seçilmesi diğer şablonlar için farklılık yapmaz.
 
-Web Formları şablonu varsayılan olarak Ortak URL'lere olanak sağlar, ancak Web Formları onay kutusunu seçerek diğer şablonlara Web Formları desteği eklediğinizde Otomatik olarak etkinleştirilmez.
+Web Forms şablonu, varsayılan olarak kolay URL 'Ler sağlar, ancak Web Forms onay kutusunu seçerek diğer şablonlara Web Forms desteği eklediğinizde kolay URL 'Ler otomatik olarak etkinleştirilmez.
 
-### <a name="add-mvc-support"></a>MVC Desteği Ekle
+### <a name="add-mvc-support"></a>MVC desteği ekle
 
-MVC, Razor ve WebPages NuGet paketlerini yükler, boş *\_Uygulama Verileri,* *Denetleyiciler,* *Modeller*ve *Görünümklasörleri* oluşturur, *RouteConfig.cs* dosyasıyla *App\_Start* klasörü oluşturur ve *Global.asax* dosyaoluşturur.
+MVC, Razor ve Web sayfası NuGet paketlerini, boş *uygulama \_ verileri*, *denetleyiciler*, *modeller*ve *Görünümler* klasörleri oluşturur, *RouteConfig.cs* dosyası ile *App \_ Start* klasörü oluşturur ve *Global. asax* dosyası oluşturur.
 
-### <a name="add-web-api-support"></a>Web API Desteği Ekle
+### <a name="add-web-api-support"></a>Web API desteği ekle
 
-WebApi ve Newtonsoft.Json NuGet paketlerini yükler, boş *\_Uygulama Verileri,* *Denetleyiciler*ve *Modeller* klasörleri oluşturur, *WebApiConfig.cs* dosyasıyla *App\_Start* klasörü oluşturur ve *Global.asax* dosyalarını oluşturur.
+NuGet paketlerine bir WebApi ve Newtonsoft.Jsyükleyip boş *uygulama \_ verileri*, *denetleyiciler*ve *modeller* klasörleri oluşturur, *WebApiConfig.cs* dosyası ile *App \_ Start* klasörü oluşturur ve *Global. asax* dosyası oluşturur.
 
 <a id="auth"></a>
 ## <a name="authentication-methods"></a>Kimlik Doğrulaması Yöntemleri
 
-Visual Studio 2013, Web Formları, MVC ve Web API şablonları için çeşitli kimlik doğrulama seçenekleri sunar:
+Visual Studio 2013, Web Forms, MVC ve Web API şablonları için çeşitli kimlik doğrulama seçenekleri sunar:
 
-- [Kimlik Doğrulaması Yok](#noauth)
-- [Bireysel Kullanıcı Hesapları](#indauth) (ASP.NET Kimliği, eski adıyla ASP.NET üyelik)
-- [Kuruluş Hesapları](#orgauth) (Windows Server Etkin Dizini veya Azure Etkin Dizini)
-- [Windows Kimlik Doğrulama](#winauth) (Intranet)
+- [Kimlik doğrulaması yok](#noauth)
+- [Bireysel kullanıcı hesapları](#indauth) (ASP.NET Identity, eski adıyla ASP.NET üyeliği olarak biliniyordu)
+- [Kuruluş hesapları](#orgauth) (Windows Server Active Directory veya Azure Active Directory)
+- [Windows kimlik doğrulaması](#winauth) (Intranet)
 
-![Kimlik doğrulama iletişim kutusunu yapılandırma](creating-web-projects-in-visual-studio/_static/image23.png)
+![Kimlik doğrulamasını Yapılandır iletişim kutusu](creating-web-projects-in-visual-studio/_static/image23.png)
 
 <a id="noauth"></a>
 
 ### <a name="no-authentication"></a>Kimlik Doğrulaması Yok
 
-**Kimlik Doğrulama Yok'u**seçerseniz, örnek uygulama oturum açmak için web sayfası içermez, kimlerin oturum açtığını gösteren kullanıcı arabirimi, üyelik veritabanı için varlık sınıfları ve üyelik veritabanı için bağlantı dizesi içermez.
+**Kimlik doğrulaması yok**' u seçerseniz, örnek uygulama oturum açma için Web sayfası içermez, oturum açmış kişiyi belirten kullanıcı arabirimi, bir üyelik veritabanı için varlık sınıfı yok ve bir üyelik veritabanı için bağlantı dizesi yok.
 
 <a id="indauth"></a>
-### <a name="individual-user-accounts"></a>Bireysel Kullanıcı Hesapları
+### <a name="individual-user-accounts"></a>Bireysel kullanıcı hesapları
 
-**Bireysel Kullanıcı Hesapları'nı**seçerseniz, örnek uygulama kullanıcı kimlik doğrulaması için ASP.NET Kimlik (eski adıyla ASP.NET üyelik olarak bilinir) kullanacak şekilde yapılandırılır. ASP.NET Kimlik, kullanıcının sitede bir kullanıcı adı ve parola oluşturarak veya Facebook, Google, Microsoft Hesabı veya Twitter gibi sosyal sağlayıcılarla oturum açarak bir hesap kaydetmesini sağlar. ASP.NET Identity'deki kullanıcı profilleri için varsayılan veri deposu, üretim sitesi için SQL Server veya Azure SQL Veritabanı'na dağıtabileceğiniz bir SQL Server LocalDB veritabanıdır.
+**Bireysel kullanıcı hesapları**seçerseniz, örnek uygulama kullanıcı kimlik doğrulaması için ASP.NET Identity (eski adıyla ASP.NET üyeliği) kullanacak şekilde yapılandırılır. ASP.NET Identity, kullanıcının sitede Kullanıcı adı ve parola oluşturarak ya da Facebook, Google, Microsoft hesabı veya Twitter gibi sosyal sağlayıcılarla oturum açarak bir hesabı kaydetmesini sağlar. ASP.NET Identity 'daki Kullanıcı profilleri için varsayılan veri deposu, üretim sitesi için SQL Server veya Azure SQL veritabanı 'na dağıtabileceğiniz bir SQL Server LocalDB veritabanıdır.
 
-Visual Studio 2013'te bu özellikler Visual Studio 2012'dekiyle aynıdır, ancak ASP.NET üyelik sisteminin temel kodu yeniden yazılmıştır. Yeni kod tabanının avantajları şunlardır:
+Visual Studio 2013 Bu özellikler Visual Studio 2012 ile aynıdır, ancak ASP.NET üyelik sisteminin temel alınan kodu yeniden yazıldı. Yeni kod tabanının avantajları şunları içerir:
 
-- Yeni üyelik sistemi, formlar kimlik doğrulama modülüASP.NET yerine [OWIN'e](http://owin.org/) dayanmaktadır. Bu, IIS'de Web Formları veya MVC kullanıyor sanız veya Web API veya SignalR'ı kendi kendine barındıran aynı kimlik doğrulama mekanizmasını kullanabileceğiniz anlamına gelir.
-- Yeni üyelik veritabanı Önce Varlık Çerçeve Kodu tarafından yönetilir ve tüm tablolar değiştirebileceğiniz varlık sınıfları tarafından temsil edilir. Bu, veritabanı şemasını ve profille ilgili web ui'sini kendi gereksinimlerinize uyacak şekilde kolayca özelleştirebileceğiniz ve güncelleştirmelerinizi Kod İlk Geçişleri'ni kullanarak kolayca dağıtabileceğiniz anlamına gelir.
+- Yeni üyelik sistemi, ASP.NET Forms kimlik doğrulama modülü yerine [owın](http://owin.org/) 'u temel alır. Bu, IIS 'de Web Forms veya MVC kullanırken aynı kimlik doğrulama mekanizmasını kullanabileceğiniz gibi, Web API 'SI veya SignalR 'yi de kendi kendine barındırmanıza yol açabilir.
+- Yeni üyelik veritabanı Entity Framework Code First tarafından yönetilir ve tüm tablolar, değiştirebileceğiniz varlık sınıfları tarafından temsil edilir. Bu, veritabanı şemasını ve profille ilgili Web Kullanıcı arabirimini kendi gereksinimlerinize uyacak şekilde kolayca özelleştirebilmeniz ve Code First Migrations kullanarak güncelleştirmelerinizi kolayca dağıtabilmeniz anlamına gelir.
 
-Yeni üyelik sistemi yeni şablonlarda otomatik olarak uygulanır ve .NET 4.5 veya daha sonrasını hedefleyen herhangi bir projede el ile uygulanabilir.
+Yeni üyelik sistemi yeni şablonlarda otomatik olarak uygulanır ve .NET 4,5 veya üstünü hedefleyen herhangi bir projede el ile uygulanabilir.
 
-ASP.NET Kimlik, özellikle dış müşteriler için bir Internet web sitesi oluşturuyorsanız iyi bir seçimdir. Kuruluşunuz Active Directory veya Office 365 kullanıyorsa ve çalışanlar ve iş ortakları için tek oturum açmasağlayan bir proje oluşturmak istiyorsanız, **Kuruluş Hesapları** seçeneği daha iyi bir seçim olabilir.
+ASP.NET Identity, genellikle dış müşterilere yönelik bir Internet Web sitesi oluşturuyorsanız iyi bir seçenektir. Kuruluşunuz Active Directory veya Office 365 kullanıyorsa ve çalışanlar ve iş ortakları için çoklu oturum açma olanağı sağlayan bir proje oluşturmak istiyorsanız, **kuruluş hesapları** seçeneği daha iyi bir seçim olabilir.
 
-Bireysel Kullanıcı Hesapları seçeneği hakkında daha fazla bilgi için aşağıdaki kaynaklara bakın:
+Bireysel kullanıcı hesapları seçeneği hakkında daha fazla bilgi için aşağıdaki kaynaklara bakın:
 
-- [www.asp.net/identity.](../../../identity/index.md) ASP.NET web sitesinde ASP.NET Kimliği ile ilgili belgeler.
-- [Facebook ve Google OAuth2 ve OpenID Oturum Aç ile ASP.NET Bir MVC 5 Uygulaması oluşturun.](../../../mvc/overview/security/create-an-aspnet-mvc-5-app-with-facebook-and-google-oauth2-and-openid-sign-on.md) Ayrıca, kullanıcı profili verilerinin nasıl özelleştirilebildiğini de gösterir.
-- [Web API - Dış Kimlik Doğrulama Hizmetleri](../../../web-api/overview/security/external-authentication-services.md)
-- [Visual Studio 2013'te ASP.NET uygulamanıza Harici Giriş Ekleme](https://blogs.msdn.com/b/webdev/archive/2013/06/27/adding-external-logins-to-your-asp-net-application-in-visual-studio-2013.aspx)
+- [www.asp.net/identity](../../../identity/index.md). ASP.NET Web sitesindeki ASP.NET Identity hakkındaki belgeler.
+- [Facebook ve Google OAuth2 ve OpenID oturum açma ile ASP.NET MVC 5 uygulaması oluşturun](../../../mvc/overview/security/create-an-aspnet-mvc-5-app-with-facebook-and-google-oauth2-and-openid-sign-on.md). Ayrıca, Kullanıcı profili verilerinin nasıl özelleştirileceğini gösterir.
+- [Web API-dış kimlik doğrulama hizmetleri](../../../web-api/overview/security/external-authentication-services.md)
+- [Visual Studio 2013 'de ASP.NET uygulamanıza dış oturum açma işlemleri ekleme](https://blogs.msdn.com/b/webdev/archive/2013/06/27/adding-external-logins-to-your-asp-net-application-in-visual-studio-2013.aspx)
 
 <a id="orgauth"></a>
-### <a name="organizational-accounts"></a>Kuruluş Hesapları
+### <a name="organizational-accounts"></a>Kuruluş hesapları
 
-**Kuruluş Hesapları'nı**seçerseniz, örnek uygulama, Azure Active Directory (Azure AD, Office 365) veya Windows Server Active Directory'deki kullanıcı hesaplarına dayalı kimlik doğrulama için Windows Identity Foundation (WIF) kullanacak şekilde yapılandırılır. Daha fazla bilgi için, bu konuda daha sonra [Kuruluş hesabı kimlik doğrulama seçeneklerine](#orgauthoptions) bakın.
+**Kuruluş hesapları**' nı seçerseniz örnek uygulama, Azure Active Directory (Office 365 IÇEREN Azure AD) veya Windows Server Active Directory Kullanıcı hesaplarına dayalı kimlik doğrulaması Için Windows Identity Foundation (WIF) kullanacak şekilde yapılandırılır. Daha fazla bilgi için bu konunun ilerleyen kısımlarında bulunan [kuruluş hesabı kimlik doğrulaması seçenekleri](#orgauthoptions) bölümüne bakın.
 
 <a id="winauth"></a>
 ### <a name="windows-authentication"></a>Windows Kimlik Doğrulaması
 
-**Windows Kimlik Doğrulama'yı**seçerseniz, örnek uygulama kimlik doğrulama için Windows Kimlik Doğrulama IIS modülünü kullanacak şekilde yapılandırılır. Uygulama, Windows'a giriş yapılan ancak kullanıcı kaydı veya oturum açma kullanıcı ui içermeyen Etkin dizinin veya yerel makine hesabının etki alanını ve kullanıcı kimliğini görüntüler. Bu seçenek Intranet web siteleri için tasarlanmıştır.
+**Windows kimlik doğrulaması**' nı seçerseniz örnek uygulama, kimlik doğrulaması Için Windows KIMLIK doğrulaması IIS modülünü kullanacak şekilde yapılandırılır. Uygulama, Windows 'da oturum açan ancak kullanıcı kaydı veya oturum açma kullanıcı ARABIRIMI içermeyen Active Directory veya yerel makine hesabının etki alanını ve kullanıcı KIMLIĞINI görüntüler. Bu seçenek Intranet web sitelerine yöneliktir.
 
-Alternatif olarak, [Kuruluş Hesapları altında Şirket İçi seçeneğini](#orgauthonprem)seçerek AD kimlik doğrulamasını kullanan bir Intranet sitesi oluşturabilirsiniz. Şirket Içi seçeneği, Windows Kimlik Doğrulama modülü yerine Windows Identity Foundation (WIF) kullanır. Şirket İçi seçeneğini ayarlamak için bazı ek adımlar gerekir, ancak WIF, Windows Kimlik Doğrulama modülünde kullanılamayan özellikleri etkinleştirir. Örneğin, WIF ile Etkin Dizin ve sorgu dizini verilerinde uygulama erişimini yapılandırabilirsiniz.
+Alternatif olarak, [kuruluş hesapları altında şirket içi seçeneğini](#orgauthonprem)belirleyerek ad kimlik doğrulaması kullanan bir Intranet sitesi oluşturabilirsiniz. Şirket Içi seçeneği Windows kimlik doğrulama modülü yerine Windows Identity Foundation (WıF) kullanır. Şirket Içi seçeneğini ayarlamak için bazı ek adımlar gereklidir, ancak WıF, Windows kimlik doğrulama modülü ile kullanılamayan özellikleri sağlar. Örneğin, Active Directory ve sorgu dizini verilerinde uygulama erişimini yapılandırabiliyorsanız, WıF ile.
 
 <a id="orgauthoptions"></a>
 ## <a name="organizational-account-authentication-options"></a>Kuruluş hesabı kimlik doğrulama seçenekleri
 
-**Yapılı Kimlik Doğrulama** iletişim kutusu, Azure Etkin Dizini (Office 365' i i çeken Azure AD) veya Windows Server Active Directory (AD) hesap kimlik doğrulaması için çok sayıda seçenek sunar:
+**Kimlik doğrulaması yapılandırma** iletişim kutusu, Azure Active Directory (Office 365 IÇEREN Azure AD) veya Windows Server ACTIVE DIRECTORY (ad) hesabı kimlik doğrulaması için çeşitli seçenekler sunar:
 
-- [Bulut - Tek Kuruluş](#orgauthsingle) (Azure AD veya AD, Azure AD ile dizin tümleştirmesi kullanarak)
-- [Bulut - Çoklu Organizasyon](#orgauthmulti) (Azure AD veya AD, Azure AD ile dizin tümleştirmesi kullanarak)
-- [Şirket Içi](#orgauthonprem) (AD)
+- [Bulut-tek kuruluş](#orgauthsingle) (Azure AD veya Azure AD ile dizin TÜMLEŞTIRMESI kullanarak ad)
+- [Bulut çoklu kuruluş](#orgauthmulti) (Azure AD ile dizin tümleştirmesini kullanarak Azure AD veya ad)
+- Şirket [içi](#orgauthonprem) (ad)
 
-Azure AD seçeneklerinden birini denemek istiyorsanız ancak henüz bir hesabınız yoksa, [Azure AD hesabına kaydolmak için burayı tıklatın.](https://go.microsoft.com/fwlink/?LinkId=309942)
+Azure AD seçeneklerinden birini denemek ancak henüz bir hesabınız yoksa, [Azure AD hesabına kaydolmak için buraya tıklayın](https://go.microsoft.com/fwlink/?LinkId=309942).
 
 > [!NOTE]
-> Azure AD seçeneklerinden birini seçerseniz, projeniz in bir veritabanı gerektirir ve Azure AD kiracınız için genel bir yönetici hesabında oturum açmanız gerekir. Azure AD kiracınız için yönetim izinleri admin@contoso.onmicrosoft.comolan bir kuruluş hesabının adını ve parolasını girin.
+> Azure AD seçeneklerinden birini seçerseniz, projeniz bir veritabanı gerektirir ve Azure AD kiracınız için bir genel yönetici hesabında oturum açmanız gerekir. admin@contoso.onmicrosoft.comAzure AD kiracınız için yönetici izinlerine sahip olan bir kuruluş hesabının adını ve parolasını girin (örneğin,).
 > 
-> **Oturum açma iletişim kutusuna bir Microsoft contoso@hotmail.comhesabının kimlik bilgilerini (örneğin, ) girmeyin.**
+> **Oturum açma iletişim kutusunda bir Microsoft hesabı (örneğin,) için kimlik bilgilerini girmeyin contoso@hotmail.com .**
 
 <a id="orgauthsingle"></a>
-### <a name="cloud---single-organization-authentication"></a>Bulut - Tek Kuruluş Kimlik Doğrulama
+### <a name="cloud---single-organization-authentication"></a>Bulut-tek kuruluş kimlik doğrulaması
 
-![Tek Kuruluş Kimlik Doğrulama](creating-web-projects-in-visual-studio/_static/image24.png)
+![Tek kuruluş kimlik doğrulaması](creating-web-projects-in-visual-studio/_static/image24.png)
 
-Bir Azure AD [kiracısında](https://technet.microsoft.com/library/jj573650.aspx)tanımlanan kullanıcı hesapları için kimlik doğrulamasını etkinleştirmek istiyorsanız bu seçeneği belirleyin. Örneğin, site contoso.com ve contoso.onmicrosoft.com kiracı olan Contoso Şirket çalışanları için kullanılabilir hale getirilecektir. Azure AD'yi diğer kiracılardan kullanıcıların uygulamaya erişmesine izin verecek şekilde yapılandıramazsınız.
+Tek bir Azure AD [kiracısında](https://technet.microsoft.com/library/jj573650.aspx)tanımlanan Kullanıcı hesapları için kimlik doğrulamasını etkinleştirmek istiyorsanız bu seçeneği belirleyin. Örneğin, site contoso.com ve contoso.onmicrosoft.com kiracısında bulunan contoso şirketinin çalışanları tarafından kullanılabilir hale getirilir. Diğer kiracılardan gelen kullanıcıların uygulamaya erişmesine izin vermek için Azure AD 'yi yapılandıramayacaksınız.
 
-#### <a name="domain"></a>Domain
+#### <a name="domain"></a>Etki alanı
 
-Uygulamayı ayarlamak istediğiniz Azure AD etki alanını girin, örneğin: `contoso.onmicrosoft.com`. Özel bir [etki alanınız](http://www.cloudidentity.com/blog/2013/04/14/adding-a-custom-domain-to-your-windows-azure-ad/) `contoso.com` varsa, `contoso.onmicrosoft.com`bunun yerine, bunu buradan girebilirsiniz.
+İçinde uygulamayı kurmak istediğiniz Azure AD etki alanını girin, örneğin: `contoso.onmicrosoft.com` . Yerine [özel bir etki alanınız](http://www.cloudidentity.com/blog/2013/04/14/adding-a-custom-domain-to-your-windows-azure-ad/)varsa, `contoso.com` `contoso.onmicrosoft.com` Bu alana buradan giriş yapabilirsiniz.
 
-#### <a name="access-level"></a>Erişim Düzeyi
+#### <a name="access-level"></a>Erişim düzeyi
 
-Uygulamanın Grafik API'sini kullanarak dizin bilgilerini sorgulaması veya güncelleştirmesi gerekiyorsa, **Tek Oturum Açma, Dizin Verilerini Okuma** veya Tek Oturum **Açma, Okuma ve Yazma Dizin Verileri'ni**seçin. Aksi takdirde, **Tek Oturum Açma'yı**seçin. Daha fazla bilgi için, Azure REKLAMını Sorgulamak için [Uygulama Erişim Düzeyleri](https://msdn.microsoft.com/library/windowsazure/b08d91fa-6a64-4deb-92f4-f5857add9ed8#BKMK_AccessLevels) ve Grafik [API'sini kullanma'ya](https://msdn.microsoft.com/library/windowsazure/dn151791.aspx)bakın.
+Uygulamanın Graph API kullanarak dizin bilgilerini sorgulaması veya güncelleştirmesi gerekiyorsa, **Çoklu oturum açma, dizin verilerini okuma** veya **Çoklu oturum açma, dizin verilerini okuma ve yazma**seçeneklerini belirleyin. Aksi takdirde, **Çoklu oturum açma**seçeneğini belirleyin. Daha fazla bilgi için bkz. [uygulama erişim düzeyleri](https://msdn.microsoft.com/library/windowsazure/b08d91fa-6a64-4deb-92f4-f5857add9ed8#BKMK_AccessLevels) ve [Graph API kullanarak Azure AD 'yi sorgulama](https://msdn.microsoft.com/library/windowsazure/dn151791.aspx).
 
-#### <a name="application-id-uri"></a>Uygulama Kimliği URI
+#### <a name="application-id-uri"></a>Uygulama KIMLIĞI URI 'SI
 
-Varsayılan olarak, şablon, proje adını Azure AD etki alanına ekleyerek sizin için bir uygulama kimliği URI oluşturur. Örneğin, proje adı ve `Example` etki alanı `contoso.onmicrosoft.com`ise, uygulama `https://contoso.onmicrosoft.com/Example`kimliği URI olur. Uygulama Kimliği URI'yi el ile belirtmek istiyorsanız, **Daha Fazla Seçenek** bölümünü genişletin ve metin kutusuna uygulama kimliği URI'yi girin. Uygulama Kimliği URI ile `https://`başlamalıdır.
+Varsayılan olarak, şablon proje adını Azure AD etki alanına ekleyerek sizin için bir uygulama KIMLIĞI URI 'SI oluşturur. Örneğin, proje adı `Example` ve etki alanı ise `contoso.onmicrosoft.com` , uygulama kimliği URI 'si olur `https://contoso.onmicrosoft.com/Example` . Uygulama KIMLIĞI URI 'sini el ile belirtmek istiyorsanız, **diğer seçenekler** bölümünü genişletin ve metin kutusuna uygulama kimliği URI 'sini girin. Uygulama KIMLIĞI URI 'SI ile başlamalıdır `https://` .
 
-Varsayılan olarak, Azure AD'de zaten sağlanan bir uygulama Visual Studio'nun proje için kullandığı uygulama kimliği URI ile aynıysa, proje yeni bir uygulama sağlamak yerine varolan uygulamaya bağlanır. Bu durumda yeni bir uygulamanın sağlanmasını istiyorsanız, **aynı kimlikte olan onay kutusunun** üzerinde yazan uygulama girişini temizleyin.
+Varsayılan olarak, Azure AD 'de zaten sağlanmış olan bir uygulama, Visual Studio 'nun proje için kullandığı aynı uygulama KIMLIĞI URI 'sine sahipse, proje yeni bir tane sağlamak yerine mevcut uygulamaya bağlanır. Bu durumda yeni bir uygulamanın sağlanmasını istiyorsanız, **aynı kimliğe sahip bir tane zaten varsa, uygulama girişinin üzerine yaz** onay kutusunu temizleyin.
 
-**Overwrite** onay kutusu temizlenir sa ve Visual Studio aynı uygulama kimliği URI ile varolan bir uygulama bulursa, kullanmak için gidiyordu URI bir numara ekleyerek yeni bir URI oluşturur. Örneğin, proje adının `Example`, metin kutusunu boş bıraktığınız, **Overwrite onay** kutusunu temizlediğinizi ve Azure AD `https://contoso.onmicrosoft.com/Example`kiracısının URI ile zaten bir uygulaması olduğunu varsayalım. Bu durumda, yeni bir uygulama gibi `https://contoso.onmicrosoft.com/Example_20130619330903`bir uygulama Kimliği URI ile sağlanacaktır.
+**Üzerine yaz** onay kutusu silinirse ve Visual Studio aynı uygulama kimliği URI 'sine sahip mevcut bir uygulamayı bulursa, kullanacağı URI 'ye bir sayı ekleyerek yenı bir URI oluşturur. Örneğin, proje adının olduğunu varsayalım, `Example` metin kutusunu boş bırakın, **üzerine yazma** onay kutusunun Işaretini KALDıRıN ve Azure AD kiracısının URI 'si olan bir uygulaması zaten var `https://contoso.onmicrosoft.com/Example` . Bu durumda yeni bir uygulama, gibi bir uygulama KIMLIĞI URI 'SI ile sağlanır `https://contoso.onmicrosoft.com/Example_20130619330903` .
 
-#### <a name="provisioning-the-application-in-azure-ad"></a>Azure AD'de uygulama nın sağlanması
+#### <a name="provisioning-the-application-in-azure-ad"></a>Azure AD 'de uygulamayı sağlama
 
-Uygulamayı Azure AD'de sağlamak veya projeyi varolan bir uygulamaya bağlamak için Visual Studio'nun etki alanı için genel bir yöneticinin kimlik bilgilerine ihtiyacı vardır. **Yapılandırma Kimlik Doğrulama** iletişim kutusunda **Tamam'ı** tıklattığınızda, belirttiğiniz etki alanı için genel bir yöneticinin kullanıcı adı ve parolası istenir. Daha sonra, Yeni ASP.NET **Projesi** iletişim kutusunda **Project Oluştur'u** tıklattığınızda, Visual Studio uygulamayı Azure AD'de karşılar. Bu işlemin bir parçası olarak Visual Studio'nun, oluşturulduktan bir yıl sonra süresi dolan Web.config dosyasına istemci gizli değerlerini yerleştirdiğini unutmayın.
+Uygulamayı Azure AD 'de sağlamak veya projeyi mevcut bir uygulamaya bağlamak için, Visual Studio 'nun etki alanı için bir genel yönetici kimlik bilgilerine ihtiyacı vardır. **Kimlik doğrulamasını Yapılandır** Iletişim kutusunda **Tamam** ' a tıkladığınızda, belirttiğiniz etki alanı için bir genel yöneticinin Kullanıcı adı ve parolası istenir. Daha sonra, **yeni ASP.NET proje** Iletişim kutusunda **proje oluştur** ' u tıklattığınızda, VISUAL Studio uygulamayı Azure AD 'de sağlar. Bu işlemin bir parçası olarak, Visual Studio 'nun, oluşturulduktan sonra bir yılda bir yıl dolacak Web.config dosyadaki istemci gizli değerlerini götini unutmayın.
 
-**Bulut - Tek Kuruluş** kimlik doğrulamasını kullanan uygulamaların nasıl oluşturulacagerektiği hakkında bilgi için aşağıdaki kaynaklara bakın:
+**Bulut tek kuruluş** kimlik doğrulaması kullanan uygulamalar oluşturma hakkında daha fazla bilgi için aşağıdaki kaynaklara bakın:
 
-- [Azure Kimlik Doğrulama](../2012/windows-azure-authentication.md)
-- [Azure AD'yi Kullanarak Web Uygulamanıza Oturum Açma Ekleme](https://msdn.microsoft.com/library/windowsazure/dn151790.aspx)
+- [Azure kimlik doğrulaması](../2012/windows-azure-authentication.md)
+- [Azure AD kullanarak Web uygulamanıza Sign-On ekleme](https://msdn.microsoft.com/library/windowsazure/dn151790.aspx)
 - [Azure Active Directory ile ASP.NET Uygulamaları geliştirme](../../../identity/overview/getting-started/developing-aspnet-apps-with-windows-azure-active-directory.md)
-- [Azure AD ve Microsoft OWIN Bileşenleri ile Web API ASP.NET güvenli](https://msdn.microsoft.com/magazine/dn463788.aspx)
+- [Azure AD ve Microsoft OWIN bileşenleriyle güvenli ASP.NET Web API 'SI](https://msdn.microsoft.com/magazine/dn463788.aspx)
 
-Eğitimler Visual Studio 2013 için henüz güncellenmedi; bazı öğreticiler el ile yapmak için doğrudan Visual Studio 2013 otomatiktir.
+Öğreticiler henüz Visual Studio 2013 için güncelleştirilmemiş; el ile yapmanız gereken öğreticilerin bazıları Visual Studio 2013 ' de otomatikleştirilmiştir.
 
 <a id="orgauthmulti"></a>
-### <a name="cloud---multi-organization-authentication"></a>Bulut - Çoklu Organizasyon Kimlik Doğrulaması
+### <a name="cloud---multi-organization-authentication"></a>Bulut-çoklu kuruluş kimlik doğrulaması
 
 ![Birden çok kuruluş kimlik doğrulaması](creating-web-projects-in-visual-studio/_static/image25.png)
 
-Birden çok Azure AD [kiracısında](https://technet.microsoft.com/library/jj573650.aspx)tanımlanan kullanıcı hesapları için kimlik doğrulamasını etkinleştirmek istiyorsanız bu seçeneği belirleyin. Örneğin, site contoso.com ve contoso.onmicrosoft.com kiracı olan Contoso Şirket çalışanları ve fabrikam.onmicrosoft.com kiracı olan Fabrikam Şirket çalışanları için kullanılabilir hale getirilecektir.
+Birden çok Azure AD [kiracılarında](https://technet.microsoft.com/library/jj573650.aspx)tanımlanan Kullanıcı hesapları için kimlik doğrulamasını etkinleştirmek istiyorsanız bu seçeneği belirleyin. Örneğin, site contoso.com ve contoso.onmicrosoft.com kiracısındaki contoso şirketinin çalışanları ve fabrikam.onmicrosoft.com kiracısında bulunan Fabrikam şirketinin çalışanları tarafından kullanılabilir hale getirilir.
 
-Girdiğiniz ayarlar ve uygulama sağlama adımı [tek bir kuruluş kimlik doğrulaması](#orgauthsingle)benzer.
+Girdiğiniz ayarlar ve uygulama sağlama adımı [tek kuruluş kimlik doğrulamasına](#orgauthsingle)benzerdir.
 
-**Bulut - Çoklu Kuruluş** kimlik doğrulaması kullanan uygulamaların nasıl oluşturulacagerektiği hakkında bilgi için aşağıdaki kaynaklara bakın:
+**Bulut çoklu kuruluş** kimlik doğrulaması kullanan uygulamalar oluşturma hakkında daha fazla bilgi için aşağıdaki kaynaklara bakın:
 
-- Active Directory Team blogunda [Azure &amp; Active Directory ile Kolay Web Uygulaması Entegrasyonu, ASP.NET Visual Studio.](https://blogs.msdn.com/b/active_directory_team_blog/archive/2013/06/26/improved-windows-azure-active-directory-integration-with-asp-net-amp-visual-studio.aspx)
-- [Azure AD öğreticisiyle Çok Kiracılı Web Uygulamaları Geliştirme.](https://msdn.microsoft.com/library/windowsazure/dn151789.aspx) Öğretici henüz Visual Studio 2013 için güncellenmedi; öğreticinin sizi el ile yapmaya yönlendiren bazı öğeleri Visual Studio 2013'te otomatiktir.
-- [Oturum Açmadan Önce Kendi Çoklu Kuruluşlarınız ASP.NET Uygulamasına Kaydolabilirsiniz.](http://www.cloudidentity.com/blog/2013/10/26/you-have-to-sign-up-with-your-own-multiple-organizations-asp-net-app-before-you-can-sign-in/) Vittorio Bertocci tarafından blog nasıl çok organizasyon kimlik doğrulaması kullanan bir proje oluştururken insanların karşılaştığı ortak bir sorun çözmek için açıklar.
+- [Azure Active Directory, ASP.net &amp; Ile kolay Web uygulaması tümleştirmesi ](https://blogs.msdn.com/b/active_directory_team_blog/archive/2013/06/26/improved-windows-azure-active-directory-integration-with-asp-net-amp-visual-studio.aspx) Active Directory ekip blogu üzerinde Visual Studio.
+- [Azure AD öğreticisi Ile çok kiracılı web uygulamaları geliştirme](https://msdn.microsoft.com/library/windowsazure/dn151789.aspx) . Öğretici henüz Visual Studio 2013 için güncelleştirilmedi; öğreticinin ne kadar el ile yapılacağını yönlendirdikleriniz Visual Studio 2013 ' de otomatikleştirilir.
+- [Oturum açabilmeniz Için kendi birden çok kuruluşların ASP.NET uygulamasına kaydolmanız gerekir](http://www.cloudidentity.com/blog/2013/10/26/you-have-to-sign-up-with-your-own-multiple-organizations-asp-net-app-before-you-can-sign-in/). Birden çok kuruluş kimlik doğrulaması kullanan bir proje oluştururken karşılaştığı yaygın bir sorunu çözmeyi açıklayan Vittorio Bertoccı tarafından blog.
 
 <a id="orgauthonprem"></a>
-### <a name="on-premises-organizational-authentication"></a>Şirket Içi Kurumsal Kimlik Doğrulama
+### <a name="on-premises-organizational-authentication"></a>Şirket Içi kuruluş kimlik doğrulaması
 
 ![Şirket içi kuruluş kimlik doğrulaması](creating-web-projects-in-visual-studio/_static/image26.png)
 
-Windows Server Active Directory 'de (AD) tanımlanan kullanıcı hesapları için kimlik doğrulamasını etkinleştirmek istiyorsanız ve Azure AD'yi kullanmak istemiyorsanız bu seçeneği belirleyin. Bu seçeneği, bir Intranet sitesi veya Internet sitesi oluşturmak için kullanabilirsiniz. Bir Internet sitesi için, AD'ye erişim sağlamak için Active Directory Federation Services 'ı (ADFS) kullanın. Daha fazla bilgi için Visual [Studio 2013'te ASP.NET ile Şirket İçi Kurumsal Kimlik Doğrulama Seçeneğini (ADFS) Kullanın'a](http://www.cloudidentity.com/blog/2014/02/12/use-the-on-premises-organizational-authentication-option-adfs-with-asp-net-in-visual-studio-2013/)bakın.
+Windows Server Active Directory (AD) ' de tanımlı kullanıcı hesapları için kimlik doğrulamasını etkinleştirmek istiyorsanız ve Azure AD 'yi kullanmak istemiyorsanız bu seçeneği belirleyin. Bu seçeneği, bir Intranet sitesi veya bir Internet sitesi oluşturmak için kullanabilirsiniz. Bir Internet sitesi için AD 'ye erişim sağlamak üzere Active Directory Federasyon Hizmetleri (AD FS) (ADFS) kullanın. Daha fazla bilgi için, bkz. [ASP.net Ile şirket Içi kuruluş kimlik doğrulaması seçeneğini (ADFS) kullanma Visual Studio 2013](http://www.cloudidentity.com/blog/2014/02/12/use-the-on-premises-organizational-authentication-option-adfs-with-asp-net-in-visual-studio-2013/).
 
-Bir Intranet sitesi için alternatif olarak bu seçenek yerine [Windows Kimlik Doğrulama'yı](#winauth) seçebilirsiniz. Windows Kimlik Doğrulama seçeneği için meta veri belge URL'si sağlamanız gerekmez. Ancak, Windows Kimlik Doğrulama, Etkin Dizin'de uygulama erişimini denetleme veya dizin verilerini sorgulama olanağı sağlamaz.
+Bir Intranet sitesi için, alternatif olarak, bu seçenek yerine [Windows kimlik doğrulaması](#winauth) ' nı seçebilirsiniz. Windows kimlik doğrulama seçeneği için bir meta veri belgesi URL 'SI sağlamanız gerekmez. Ancak, Windows kimlik doğrulaması size Active Directory veya dizin verilerini sorgulamak için uygulama erişimini denetleme olanağı sağlamaz.
 
-#### <a name="on-premises-authority"></a>Şirket Içi Yetki
+#### <a name="on-premises-authority"></a>Şirket Içi yetkili
 
-Meta veri belgesini işaret eden bir URL girin. Meta veri belgesi otoritenin koordinatlarını içerir. Uygulama web oturum açma akışını yönlendirmek için bu koordinatları kullanır.
+Meta veri belgesine işaret eden bir URL girin. Meta veri belgesi, yetkilinin koordinatlarını içerir. Uygulama, Web oturumu açma akışını barındıracak şekilde bu koordinatları kullanacaktır.
 
-#### <a name="application-id-uri"></a>Uygulama Kimliği URI
+#### <a name="application-id-uri"></a>Uygulama KIMLIĞI URI 'SI
 
-AD'nin bu uygulamayı tanımlamak için kullanabileceği benzersiz bir URI sağlayın veya Visual Studio'nun bir uygulama oluşturmasına izin vermek için boş bırakın.
+AD 'nin bu uygulamayı tanımlamak için kullanabileceği benzersiz bir URI sağlayın veya Visual Studio 'Nun bir tane oluşturmasını sağlamak için boş bırakın.
 
 <a id="nextsteps"></a>
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bu belge Visual Studio 2013'te yeni bir ASP.NET web projesi oluşturmak için bazı temel yardım lar sağlamıştır. Web geliştirme için Visual Studio için kullanma [https://www.asp.net/visual-studio/](../../index.md)hakkında daha fazla bilgi için bkz.
+Bu belge, Visual Studio 2013 yeni bir ASP.NET Web projesi oluşturmak için bazı temel yardım sağladı. Web geliştirme için Visual Studio 'yu kullanma hakkında daha fazla bilgi için bkz [https://www.asp.net/visual-studio/](../../index.md) ..
