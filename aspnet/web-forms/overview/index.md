@@ -8,12 +8,12 @@ ms.date: 08/08/2011
 ms.assetid: b3fb4480-0f41-495b-add6-163ca92dc8a3
 msc.legacyurl: /web-forms/overview
 msc.type: book
-ms.openlocfilehash: 4b38d6b54f53508f7b568207fe7f1a624a7af5f3
-ms.sourcegitcommit: e7e91932a6e91a63e2e46417626f39d6b244a3ab
+ms.openlocfilehash: 86e587ff46835bbef5d4234bd247bae10c930dd2
+ms.sourcegitcommit: db13f9477981daabd57b99a410ec34e31e8d6aae
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/06/2020
-ms.locfileid: "78639449"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94670238"
 ---
 # <a name="aspnet-web-forms-guidance"></a>ASP.NET Web Forms Kılavuzu
 
@@ -22,17 +22,18 @@ ms.locfileid: "78639449"
     - [ASP.NET 4.5 Web Forms ve Visual Studio 2013 ile Çalışmaya Başlama](getting-started/getting-started-with-aspnet-45-web-forms/index.md)
 
         - [Web Forms ve Visual Studio ile Çalışmaya Başlama](getting-started/getting-started-with-aspnet-45-web-forms/introduction-and-overview.md)
-        - [Projeyi Oluşturma](getting-started/getting-started-with-aspnet-45-web-forms/create-the-project.md)
+        - [Projeyi oluşturma](getting-started/getting-started-with-aspnet-45-web-forms/create-the-project.md)
         - [Veri Erişim Katmanını Oluşturma](getting-started/getting-started-with-aspnet-45-web-forms/create_the_data_access_layer.md)
         - [Kullanıcı Arabirimi ve Gezinti](getting-started/getting-started-with-aspnet-45-web-forms/ui_and_navigation.md)
         - [Veri Öğelerini ve Ayrıntıları Görüntüleme](getting-started/getting-started-with-aspnet-45-web-forms/display_data_items_and_details.md)
         - [Alışveriş Sepeti](getting-started/getting-started-with-aspnet-45-web-forms/shopping-cart.md)
         - [PayPal ile Kasa İşlemleri ve Ödeme](getting-started/getting-started-with-aspnet-45-web-forms/checkout-and-payment-with-paypal.md)
         - [Üyelik ve Yönetim](getting-started/getting-started-with-aspnet-45-web-forms/membership-and-administration.md)
-        - [URL Yönlendirme](getting-started/getting-started-with-aspnet-45-web-forms/url-routing.md)
+        - [URL yönlendirme](getting-started/getting-started-with-aspnet-45-web-forms/url-routing.md)
         - [ASP.NET Hata İşleme](getting-started/getting-started-with-aspnet-45-web-forms/aspnet-error-handling.md)
     - [Visual Studio 2013'te Temel Web Forms Sayfası Oluşturma](getting-started/creating-a-basic-web-forms-page.md)
     - [Visual Studio 2013’te ASP.NET Web Forms Kodunu Düzenleme](getting-started/code-editing-in-web-forms-pages.md)
+    - [Nasıl yapılır: Web Forms uygulamasındaki olayları kullanma](how-to-consume-events.md)
     - [ASP.NET Web Forms’da Visual Studio 2012 için Sayfa Denetçisini Kullanma](getting-started/using-page-inspector-in-a-visual-studio-11-beta-web-forms-project.md)
     - [Visual Studio 2012 Uygulamalı Laboratuvarları](getting-started/hands-on-labs/index.md)
 
@@ -95,7 +96,7 @@ ms.locfileid: "78639449"
         - [Sunucu Ortamlarını Web Dağıtımı için Yapılandırma](deployment/configuring-server-environments-for-web-deployment/configuring-server-environments-for-web-deployment.md)
         - [Web Dağıtımı için Doğru Yaklaşımı Seçme](deployment/configuring-server-environments-for-web-deployment/choosing-the-right-approach-to-web-deployment.md)
         - [Senaryo: Web Dağıtımı için Test Ortamı Yapılandırma](deployment/configuring-server-environments-for-web-deployment/scenario-configuring-a-test-environment-for-web-deployment.md)
-        - [Senaryo: Web Dağıtımı için Hazırlama Ortamı Yapılandırma](deployment/configuring-server-environments-for-web-deployment/scenario-configuring-a-staging-environment-for-web-deployment.md)
+        - [Senaryo: Web Dağıtımı için Hazırlık Ortamı Yapılandırma](deployment/configuring-server-environments-for-web-deployment/scenario-configuring-a-staging-environment-for-web-deployment.md)
         - [Senaryo: Web Dağıtımı için Üretim Ortamı Yapılandırma](deployment/configuring-server-environments-for-web-deployment/scenario-configuring-a-production-environment-for-web-deployment.md)
         - [Bir Web Sunucusunu Web Dağıtımı Yayımlama için Yapılandırma (Uzak Aracı)](deployment/configuring-server-environments-for-web-deployment/configuring-a-web-server-for-web-deploy-publishing-remote-agent.md)
         - [Bir Web Sunucusunu Web Dağıtımı Yayımlama için Yapılandırma (Web Dağıtımı İşleyicisi)](deployment/configuring-server-environments-for-web-deployment/configuring-a-web-server-for-web-deploy-publishing-web-deploy-handler.md)
@@ -111,7 +112,7 @@ ms.locfileid: "78639449"
         - [Bir TFS Derleme Sunucusunu Web Dağıtımı için Yapılandırma](deployment/configuring-team-foundation-server-for-web-deployment/configuring-a-tfs-build-server-for-web-deployment.md)
         - [Dağıtımı Destekleyen Bir Derleme Tanımı Oluşturma](deployment/configuring-team-foundation-server-for-web-deployment/creating-a-build-definition-that-supports-deployment.md)
         - [Belirli bir Derlemeyi Dağıtma](deployment/configuring-team-foundation-server-for-web-deployment/deploying-a-specific-build.md)
-        - [Takım Derleme Dağıtımı İzinlerini Yapılandırma ](deployment/configuring-team-foundation-server-for-web-deployment/configuring-permissions-for-team-build-deployment.md)
+        - [Takım Derleme Dağıtımı İzinlerini Yapılandırma](deployment/configuring-team-foundation-server-for-web-deployment/configuring-permissions-for-team-build-deployment.md)
     - [ASP.NET 4 - Kurumsal Dağıtım Serisi 4 Gelişmiş Konular](deployment/advanced-enterprise-web-deployment/index.md)
 
         - [Gelişmiş Kurumsal Web Dağıtımı](deployment/advanced-enterprise-web-deployment/advanced-enterprise-web-deployment.md)
@@ -131,13 +132,13 @@ ms.locfileid: "78639449"
     - [ASP.NET 4 - Tailspin Spyworks](older-versions-getting-started/tailspin-spyworks/index.md)
 
         - [1. Bölüm: Dosya -> Yeni Proje](older-versions-getting-started/tailspin-spyworks/tailspin-spyworks-part-1.md)
-        - [2. Bölüm: Veri Erişim Katmanı](older-versions-getting-started/tailspin-spyworks/tailspin-spyworks-part-2.md)
-        - [3. Bölüm: Düzen ve Kategori Menüsü](older-versions-getting-started/tailspin-spyworks/tailspin-spyworks-part-3.md)
-        - [4. Bölüm: Ürünleri Listeleme](older-versions-getting-started/tailspin-spyworks/tailspin-spyworks-part-4.md)
-        - [5. Bölüm: İş Mantığı](older-versions-getting-started/tailspin-spyworks/tailspin-spyworks-part-5.md)
-        - [6. Bölüm: ASP.NET Üyeliği](older-versions-getting-started/tailspin-spyworks/tailspin-spyworks-part-6.md)
-        - [7. Bölüm: Özellik Ekleme](older-versions-getting-started/tailspin-spyworks/tailspin-spyworks-part-7.md)
-        - [8. Bölüm: Son Sayfalar, Özel Durum İşleme ve Sonuç](older-versions-getting-started/tailspin-spyworks/tailspin-spyworks-part-8.md)
+        - [Bölüm 2: Veri Erişim Katmanı](older-versions-getting-started/tailspin-spyworks/tailspin-spyworks-part-2.md)
+        - [Bölüm 3: Düzen ve Kategori Menüsü](older-versions-getting-started/tailspin-spyworks/tailspin-spyworks-part-3.md)
+        - [Bölüm 4: Ürünleri Listeleme](older-versions-getting-started/tailspin-spyworks/tailspin-spyworks-part-4.md)
+        - [Bölüm 5: İş Mantığı](older-versions-getting-started/tailspin-spyworks/tailspin-spyworks-part-5.md)
+        - [Bölüm 6: ASP.NET Üyeliği](older-versions-getting-started/tailspin-spyworks/tailspin-spyworks-part-6.md)
+        - [Bölüm 7: Özellik Ekleme](older-versions-getting-started/tailspin-spyworks/tailspin-spyworks-part-7.md)
+        - [Bölüm 8: Son Sayfalar, Özel Durum İşleme ve Sonuç](older-versions-getting-started/tailspin-spyworks/tailspin-spyworks-part-8.md)
     - [ASP.NET 4 - Entity Framework 4 ve Web Forms ile Çalışmaya Başlama](older-versions-getting-started/getting-started-with-ef/index.md)
 
         - [Entity Framework 4.0 Database First ile Çalışmaya Başlama](older-versions-getting-started/getting-started-with-ef/the-entity-framework-and-aspnet-getting-started-part-1.md)
@@ -150,9 +151,9 @@ ms.locfileid: "78639449"
         - [Entity Framework 4.0 Database First ile Çalışmaya Başlama - 8. Bölüm](older-versions-getting-started/getting-started-with-ef/the-entity-framework-and-aspnet-getting-started-part-8.md)
     - [ASP.NET 4 - Entity Framework 4 ve Web Forms ile Devam Etme](older-versions-getting-started/continuing-with-ef/index.md)
 
-        - [Entity Framework 4.0 ve ObjectDataSource Denetimi, 1. Bölüm: Başlarken](older-versions-getting-started/continuing-with-ef/using-the-entity-framework-and-the-objectdatasource-control-part-1-getting-started.md)
-        - [Entity Framework 4.0 ve ObjectDataSource Denetimi, 2. Bölüm: İş Mantığı Katmanı ve Birim Testleri Ekleme](older-versions-getting-started/continuing-with-ef/using-the-entity-framework-and-the-objectdatasource-control-part-2-adding-a-business-logic-layer-and-unit-tests.md)
-        - [Entity Framework 4.0 ve ObjectDataSource Denetimi, 3. Bölüm: Sıralama ve Filtreleme](older-versions-getting-started/continuing-with-ef/using-the-entity-framework-and-the-objectdatasource-control-part-3-sorting-and-filtering.md)
+        - [Entity Framework 4.0 ve ObjectDataSource Denetimi, Bölüm 1: Başlarken](older-versions-getting-started/continuing-with-ef/using-the-entity-framework-and-the-objectdatasource-control-part-1-getting-started.md)
+        - [Entity Framework 4.0 ve ObjectDataSource Denetimi, Bölüm 2: İş Mantığı Katmanı ve Birim Testleri Ekleme](older-versions-getting-started/continuing-with-ef/using-the-entity-framework-and-the-objectdatasource-control-part-2-adding-a-business-logic-layer-and-unit-tests.md)
+        - [Entity Framework 4.0 ve ObjectDataSource Denetimi, Bölüm 3: Sıralama ve Filtreleme](older-versions-getting-started/continuing-with-ef/using-the-entity-framework-and-the-objectdatasource-control-part-3-sorting-and-filtering.md)
         - [ASP.NET 4 Sürümünde Entity Framework 4.0 ile Eş Zamanlılığı İşleme](older-versions-getting-started/continuing-with-ef/handling-concurrency-with-the-entity-framework-in-an-asp-net-web-application.md)
         - [ASP.NET 4 Sürümünde Entity Framework 4.0 ile Performansı En Üst Düzeye Çıkarma](older-versions-getting-started/continuing-with-ef/maximizing-performance-with-the-entity-framework-in-an-asp-net-web-application.md)
         - [Entity Framework 4.0 Sürümündeki Yenilikler](older-versions-getting-started/continuing-with-ef/what-s-new-in-the-entity-framework-4.md)
@@ -185,8 +186,8 @@ ms.locfileid: "78639449"
         - [Ana Sayfada Başlık, Meta Etiketler ve Diğer HTML Üst Bilgilerini Belirtme (C#)](older-versions-getting-started/master-pages/specifying-the-title-meta-tags-and-other-html-headers-in-the-master-page-cs.md)
         - [Ana Sayfalardaki URL'ler (C#)](older-versions-getting-started/master-pages/urls-in-master-pages-cs.md)
         - [İçerik Sayfalarında Denetim Kimliği Adlandırma (C#)](older-versions-getting-started/master-pages/control-id-naming-in-content-pages-cs.md)
-        - [İçerik Sayfasından Ana Sayfa ile Etkileşim Kurma (C#)](older-versions-getting-started/master-pages/interacting-with-the-master-page-from-the-content-page-cs.md)
-        - [Ana Sayfadan İçerik Sayfası ile Etkileşim Kurma (C#)](older-versions-getting-started/master-pages/interacting-with-the-content-page-from-the-master-page-cs.md)
+        - [Ana Sayfadan İçerik Sayfası ile Etkileşim Kurma (C#)](older-versions-getting-started/master-pages/interacting-with-the-master-page-from-the-content-page-cs.md)
+        - [İçerik Sayfasından Ana Sayfa ile Etkileşim Kurma (C#)](older-versions-getting-started/master-pages/interacting-with-the-content-page-from-the-master-page-cs.md)
         - [Ana Sayfalar ve ASP.NET AJAX (C#)](older-versions-getting-started/master-pages/master-pages-and-asp-net-ajax-cs.md)
         - [Ana Sayfayı Programlı Olarak Belirtme (C#)](older-versions-getting-started/master-pages/specifying-the-master-page-programmatically-cs.md)
         - [İç İçe Geçmiş Ana Sayfalar (C#)](older-versions-getting-started/master-pages/nested-master-pages-cs.md)
@@ -195,8 +196,8 @@ ms.locfileid: "78639449"
         - [Ana Sayfada Başlık, Meta Etiketler ve Diğer HTML Üst Bilgilerini Belirtme (VB)](older-versions-getting-started/master-pages/specifying-the-title-meta-tags-and-other-html-headers-in-the-master-page-vb.md)
         - [Ana Sayfalardaki URL'ler (VB)](older-versions-getting-started/master-pages/urls-in-master-pages-vb.md)
         - [İçerik Sayfalarında Denetim Kimliği Adlandırma (VB)](older-versions-getting-started/master-pages/control-id-naming-in-content-pages-vb.md)
-        - [İçerik Sayfasından Ana Sayfa ile Etkileşim Kurma (VB)](older-versions-getting-started/master-pages/interacting-with-the-master-page-from-the-content-page-vb.md)
-        - [Ana Sayfadan İçerik Sayfası ile Etkileşim Kurma (VB)](older-versions-getting-started/master-pages/interacting-with-the-content-page-from-the-master-page-vb.md)
+        - [Ana Sayfadan İçerik Sayfası ile Etkileşim Kurma (VB)](older-versions-getting-started/master-pages/interacting-with-the-master-page-from-the-content-page-vb.md)
+        - [İçerik Sayfasından Ana Sayfa ile Etkileşim Kurma (VB)](older-versions-getting-started/master-pages/interacting-with-the-content-page-from-the-master-page-vb.md)
         - [Ana Sayfalar ve ASP.NET AJAX (VB)](older-versions-getting-started/master-pages/master-pages-and-asp-net-ajax-vb.md)
         - [Ana Sayfayı Programlı Olarak Belirtme (VB)](older-versions-getting-started/master-pages/specifying-the-master-page-programmatically-vb.md)
         - [İç İçe Geçmiş Ana Sayfalar (VB)](older-versions-getting-started/master-pages/nested-master-pages-vb.md)
@@ -210,7 +211,7 @@ ms.locfileid: "78639449"
         - [IIS ile ASP.NET Geliştirme Sunucusu Arasındaki Temel Farklılıklar (C#)](older-versions-getting-started/deploying-web-site-projects/core-differences-between-iis-and-the-asp-net-development-server-cs.md)
         - [Veritabanı Dağıtma (C#)](older-versions-getting-started/deploying-web-site-projects/deploying-a-database-cs.md)
         - [Üretim Web Uygulamasını Üretim Veritabanını Kullanacak Şekilde Yapılandırma (C#)](older-versions-getting-started/deploying-web-site-projects/configuring-the-production-web-application-to-use-the-production-database-cs.md)
-        - [App Services Kullanan Bir Web Sitesi Yapılandırma (C#)](older-versions-getting-started/deploying-web-site-projects/configuring-a-website-that-uses-application-services-cs.md)
+        - [Uygulama Hizmetleri Kullanan Bir Web Sitesi Yapılandırma (C#)](older-versions-getting-started/deploying-web-site-projects/configuring-a-website-that-uses-application-services-cs.md)
         - [Veritabanı Geliştirme ve Dağıtma Stratejileri (C#)](older-versions-getting-started/deploying-web-site-projects/strategies-for-database-development-and-deployment-cs.md)
         - [Özel Hata Sayfası Görüntüleme (C#)](older-versions-getting-started/deploying-web-site-projects/displaying-a-custom-error-page-cs.md)
         - [İşlenmemiş Özel Durumları İşleme (C#)](older-versions-getting-started/deploying-web-site-projects/processing-unhandled-exceptions-cs.md)
@@ -226,7 +227,7 @@ ms.locfileid: "78639449"
         - [IIS ile ASP.NET Geliştirme Sunucusu Arasındaki Temel Farklılıklar (VB)](older-versions-getting-started/deploying-web-site-projects/core-differences-between-iis-and-the-asp-net-development-server-vb.md)
         - [Veritabanı Dağıtma (VB)](older-versions-getting-started/deploying-web-site-projects/deploying-a-database-vb.md)
         - [Üretim Web Uygulamasını Üretim Veritabanını Kullanacak Şekilde Yapılandırma (VB)](older-versions-getting-started/deploying-web-site-projects/configuring-the-production-web-application-to-use-the-production-database-vb.md)
-        - [App Services Kullanan Bir Web Sitesi Yapılandırma (VB)](older-versions-getting-started/deploying-web-site-projects/configuring-a-website-that-uses-application-services-vb.md)
+        - [Uygulama Hizmetleri Kullanan Bir Web Sitesi Yapılandırma (VB)](older-versions-getting-started/deploying-web-site-projects/configuring-a-website-that-uses-application-services-vb.md)
         - [Veritabanı Geliştirme ve Dağıtma Stratejileri (VB)](older-versions-getting-started/deploying-web-site-projects/strategies-for-database-development-and-deployment-vb.md)
         - [Özel Hata Sayfası Görüntüleme (VB)](older-versions-getting-started/deploying-web-site-projects/displaying-a-custom-error-page-vb.md)
         - [İşlenmemiş Özel Durumları İşleme (VB)](older-versions-getting-started/deploying-web-site-projects/processing-unhandled-exceptions-vb.md)
@@ -374,7 +375,7 @@ ms.locfileid: "78639449"
         - [ReorderList Aracılığıyla Sürükle ve Bırak (C#)](ajax-control-toolkit/reorderlist/drag-and-drop-via-reorderlist-cs.md)
         - [ReorderList ile Geri Gönderme Kullanma (VB)](ajax-control-toolkit/reorderlist/using-postbacks-with-reorderlist-vb.md)
         - [ReorderList Aracılığıyla Sürükle ve Bırak (VB)](ajax-control-toolkit/reorderlist/drag-and-drop-via-reorderlist-vb.md)
-    - [Kaydırıcı](ajax-control-toolkit/slider/index.md)
+    - [Slider](ajax-control-toolkit/slider/index.md)
 
         - [Otomatik Geri Gönderme Özellikli Kaydırıcı Denetimi (C#)](ajax-control-toolkit/slider/using-the-slider-control-with-auto-postback-cs.md)
         - [Kaydırıcı Denetiminde Veri Bağlama (C#)](ajax-control-toolkit/slider/databinding-the-slider-control-cs.md)
@@ -617,6 +618,6 @@ ms.locfileid: "78639449"
     - [Veri Kaynağı Denetimleri](moving-to-aspnet-20/data-source-controls.md)
     - [Veri Sınırı Denetimleri](moving-to-aspnet-20/data-bound-controls.md)
     - [Önbelleğe Alma](moving-to-aspnet-20/caching.md)
-    - [Üyelik](moving-to-aspnet-20/membership.md)
+    - [Lene](moving-to-aspnet-20/membership.md)
     - [Yapılandırma ve İzleme](moving-to-aspnet-20/configuration-and-instrumentation.md)
     - [Profiller, Temalar ve Web Bölümleri](moving-to-aspnet-20/profiles-themes-and-web-parts.md)
